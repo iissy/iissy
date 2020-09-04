@@ -1,17 +1,17 @@
 <template>
   <div id="master">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="欢迎使用飞猫任务管理系统"/>
+    <img alt="Vue logo" src="/public/favicon.ico">
+    <Login msg="欢迎使用飞猫任务管理系统"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './login.vue'
+import Login from './login.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Login
   }
 }
 </script>
