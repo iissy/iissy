@@ -1,0 +1,255 @@
+body {
+    background-color: #eeeeee;
+    margin: 0;
+    font-size: 12px;
+    color: #333333;
+    font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
+}
+
+body, div, h3, th, td, p, span, img, a, .table td, .table th, .table thead tr th {
+    font-size: 12px;
+}
+
+a:link {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:active {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e47911;
+    text-decoration: none;
+}
+
+html,
+div,
+h3,
+td,
+p,
+span,
+img,
+a {
+    font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    margin: 0 auto 0 auto;
+}
+
+#header {
+    color: #ffffff;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+
+#main {
+    margin: 0 auto 0 auto;
+    max-width: 1200px;
+    background-color: #ffffff;
+    overflow: hidden;
+    min-height: 700px;
+}
+
+#list {
+    overflow: hidden;
+    min-height: 700px;
+    margin-left:10px;
+    background-color: #ffffff;
+    padding-top: 10px;
+}
+
+#imgfileinput.fileinput {
+    top: 0;
+    position: absolute;
+    right: 0;
+    padding-right: 15px;
+}
+
+#imgfileinput.fileinput {
+    margin-bottom: 0;
+}
+
+.leftBar {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 235px;
+    /* border-right: 1px solid #d2d6e0; */
+    background: #364150;
+}
+
+.rightMain {
+    margin-left: 235px;
+    margin-right: 20px;
+    /* margin-bottom: 20px; */
+    min-height: 100%;
+    /*background-color: #ffffff;*/
+}
+
+.leftBar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.leftBar ul li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.leftBar ul li a {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #b4bcc8;
+}
+
+.leftBar li.active a {
+    color:#eeeeee;
+    background-color: #17C4BB;
+    border-left: 5px solid #ff0000;
+    padding-left: 25px;
+}
+
+.leftBar li.active a:after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    margin-top: -10px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #eeeeee transparent transparent;
+}
+
+.rightMain:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.leftBar ul li span {
+    display: block;
+    margin: 14px 0 15px 0;
+    border-bottom: 1px solid #555555;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "ForoSans-Regular", Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+div.pic:hover {
+    background-color: #FFF5EE;
+}
+
+.table th {
+    text-align: center;
+}
+
+.portlet {
+    margin-bottom: 0;
+}
+
+.portlet.light{ padding: 5px 20px 5px; }
+
+.inputclass {
+    display: inline-block;
+    padding: 3px 10px 3px 10px;
+    line-height: 22px;
+    font-size: 14px;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+    border-radius: 2px;
+    color: rgb(95, 95, 95);
+}
+
+#list .hd-button { color:#ffffff;padding:3px 20px 3px 20px;background-color: #36c6d3;font-size:14px;border-radius:10px;border: 1px solid #2bb8c4;float:right; }
+
+div#list .ck-editor__main .ck-content {
+    min-height: 594px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div#list .ck-editor__main .ck-content div,
+div#list .ck-editor__main .ck-content span,
+div#list .ck-editor__main .ck-content td,
+div#list .ck-editor__main .ck-content p,
+div#list .ck-editor__main .ck-content ul,
+div#list .ck-editor__main .ck-content ol,
+div#list .ck-editor__main .ck-content th,
+div#list .ck-editor__main .ck-content a,
+div#list .ck-editor__main .ck-content tr,
+div#list .ck-editor__main .ck-content pre,
+div#list .ck-editor__main .ck-content code,
+div#list .ck-editor__main .ck-content label,
+div#list .ck-editor__main .ck-content input
+{
+    font-size: 14px;
+}
+
+div#list .ck-editor__main .ck-content input
+{
+    margin-top: -3px;
+}
+
+div#list .ck-content .todo-list li,
+div#list .ck-editor__main .ck-content label {
+    margin-bottom: 0;
+}
+
+div#list .ck-editor__main .ck-content pre code {
+    border: 0;
+    box-shadow: 0 1px 4px transparent;
+}
+
+.ck ul, .ck ol {
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+ul, ul.shu li {
+    list-style: disc;
+}
+
+div#list .ck-content pre {
+    background-color: #f9f9f9;
+    border: 1px solid #eeeeee;
+}
+
+a.name {
+    font-size: 22px !important;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 3px;
+    margin: 0 0 0 0;
+    text-align: center;
+}
