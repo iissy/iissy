@@ -9,9 +9,11 @@ html, body {
     overflow: hidden;
 }
 
-body, div, h3, th, td, p, span, img, a, .table td, .table th, .table thead tr th {
+html, body, div, h3, th, td, p, span, img, a, .table td, .table th, .table thead tr th {
     font-size: 12px;
     font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 a:link {
@@ -34,26 +36,13 @@ a:hover {
     text-decoration: none;
 }
 
-html,
-div,
-h3,
-td,
-p,
-span,
-img,
-a {
-    font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 #app, #app > div {
     margin: 0 auto 0 auto;
     width: 100%;
     height: 100%;
 }
 
-#header {
+.left-header {
     color: #ffffff;
     padding: 0;
     text-align: center;
@@ -62,13 +51,28 @@ a {
     overflow: hidden;
 }
 
-#main {
-    margin: 0 auto 0 auto;
-    max-width: 1200px;
-    background-color: #ffffff;
-    overflow: hidden;
-    min-height: 700px;
+.app-header {
+    background: #fff;
+    color: #606060;
+    padding-right: 20px;
+    min-width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 #d3d3d3;
+    position: relative;
+    z-index: 1;
+    height:48px;
 }
+
+/*#main {*/
+/*    margin: 0 auto 0 auto;*/
+/*    max-width: 1200px;*/
+/*    background-color: #ffffff;*/
+/*    overflow: hidden;*/
+/*    min-height: 700px;*/
+/*}*/
 
 .app-main-container {
     height: 100%;
@@ -97,17 +101,6 @@ a {
     background: #fff;
 }
 
-#imgfileinput.fileinput {
-    top: 0;
-    position: absolute;
-    right: 0;
-    padding-right: 15px;
-}
-
-#imgfileinput.fileinput {
-    margin-bottom: 0;
-}
-
 .app-row {
     display: -webkit-flex;
     display: flex;
@@ -122,20 +115,13 @@ a {
     height: 100%;
     width: 235px;
     flex: 0 0 auto;
-    background: #364150;
+    background: #2c2f31;
     flex-direction: column;
     display: flex;
     box-sizing: border-box;
 }
 
 .rightMain {
-    /*!*margin-right: 20px;*!*/
-    /*flex-direction: column;*/
-    /*height: 100%;*/
-    /*flex: 1 1 auto;*/
-    /*-webkit-flex: 1 1 auto;*/
-    /*width: 100%;*/
-
     background: #f8f8f8;
     display: -webkit-flex;
     display: flex;
@@ -204,96 +190,65 @@ a {
     border-bottom: 1px solid #555555;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "ForoSans-Regular", Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
-
-div.pic:hover {
-    background-color: #FFF5EE;
-}
-
 .table th {
     text-align: center;
 }
 
-.portlet {
-    margin-bottom: 0;
-}
+.hd-button { color:#ffffff;padding:3px 20px 3px 20px;background-color: #36c6d3;font-size:14px;border-radius:10px;border: 1px solid #2bb8c4;float:right; }
 
-.portlet.light{ padding: 5px 20px 5px; }
+/*div#list .ck-editor__main .ck-content {*/
+/*    min-height: 594px;*/
+/*    padding-left: 15px;*/
+/*    padding-right: 15px;*/
+/*}*/
 
-.inputclass {
-    display: inline-block;
-    padding: 3px 10px 3px 10px;
-    line-height: 22px;
-    font-size: 14px;
-    border: 2px solid rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
-    border-radius: 2px;
-    color: rgb(95, 95, 95);
-}
+/*div#list .ck-editor__main .ck-content div,*/
+/*div#list .ck-editor__main .ck-content span,*/
+/*div#list .ck-editor__main .ck-content td,*/
+/*div#list .ck-editor__main .ck-content p,*/
+/*div#list .ck-editor__main .ck-content ul,*/
+/*div#list .ck-editor__main .ck-content ol,*/
+/*div#list .ck-editor__main .ck-content th,*/
+/*div#list .ck-editor__main .ck-content a,*/
+/*div#list .ck-editor__main .ck-content tr,*/
+/*div#list .ck-editor__main .ck-content pre,*/
+/*div#list .ck-editor__main .ck-content code,*/
+/*div#list .ck-editor__main .ck-content label,*/
+/*div#list .ck-editor__main .ck-content input*/
+/*{*/
+/*    font-size: 14px;*/
+/*}*/
 
-#list .hd-button { color:#ffffff;padding:3px 20px 3px 20px;background-color: #36c6d3;font-size:14px;border-radius:10px;border: 1px solid #2bb8c4;float:right; }
+/*div#list .ck-editor__main .ck-content input*/
+/*{*/
+/*    margin-top: -3px;*/
+/*}*/
 
-div#list .ck-editor__main .ck-content {
-    min-height: 594px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+/*div#list .ck-content .todo-list li,*/
+/*div#list .ck-editor__main .ck-content label {*/
+/*    margin-bottom: 0;*/
+/*}*/
 
-div#list .ck-editor__main .ck-content div,
-div#list .ck-editor__main .ck-content span,
-div#list .ck-editor__main .ck-content td,
-div#list .ck-editor__main .ck-content p,
-div#list .ck-editor__main .ck-content ul,
-div#list .ck-editor__main .ck-content ol,
-div#list .ck-editor__main .ck-content th,
-div#list .ck-editor__main .ck-content a,
-div#list .ck-editor__main .ck-content tr,
-div#list .ck-editor__main .ck-content pre,
-div#list .ck-editor__main .ck-content code,
-div#list .ck-editor__main .ck-content label,
-div#list .ck-editor__main .ck-content input
-{
-    font-size: 14px;
-}
+/*div#list .ck-editor__main .ck-content pre code {*/
+/*    border: 0;*/
+/*    box-shadow: 0 1px 4px transparent;*/
+/*}*/
 
-div#list .ck-editor__main .ck-content input
-{
-    margin-top: -3px;
-}
+/*.ck ul, .ck ol {*/
+/*    padding-left: 20px;*/
+/*    margin-left: 20px;*/
+/*}*/
 
-div#list .ck-content .todo-list li,
-div#list .ck-editor__main .ck-content label {
-    margin-bottom: 0;
-}
+/*ul, ul.shu li {*/
+/*    list-style: disc;*/
+/*}*/
 
-div#list .ck-editor__main .ck-content pre code {
-    border: 0;
-    box-shadow: 0 1px 4px transparent;
-}
+/*div#list .ck-content pre {*/
+/*    background-color: #f9f9f9;*/
+/*    border: 1px solid #eeeeee;*/
+/*}*/
 
-.ck ul, .ck ol {
-    padding-left: 20px;
-    margin-left: 20px;
-}
-
-ul, ul.shu li {
-    list-style: disc;
-}
-
-div#list .ck-content pre {
-    background-color: #f9f9f9;
-    border: 1px solid #eeeeee;
-}
-
-a.name {
+a.logo {
     font-size: 22px !important;
     font-weight: bold;
     color: #ffffff;

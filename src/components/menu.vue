@@ -1,10 +1,10 @@
 <template>
     <div class="leftBar">
-        <div id="header">
+        <div class="left-header">
             <div style="margin:0 auto 0 auto;text-align:left;height:40px;">
                 <div style="overflow:hidden;">
                     <div style="margin-left:30px;margin-top: 10px;float:left;">
-                        <a href="/" class="name">爱斯园</a>
+                        <a href="/" class="logo">爱斯园</a>
                     </div>
                     <div style="width: 18px;height: 18px;float: right;margin-top: 11px;margin-right: 10px;">
                         <img src="/shouqi.png" />

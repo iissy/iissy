@@ -7,7 +7,9 @@
         <div class="app-main-container">
           <div class="app-main-content">
             <div>
-              <p>asdf</p>
+              <div>
+asdfasdf
+              </div>
             </div>
           </div>
         </div>
@@ -32,6 +34,8 @@ export default {
   created: function () {
   },
   methods: {
+    add: function () {
+    }
   }
 };
 </script>
