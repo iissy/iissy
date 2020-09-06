@@ -20,7 +20,7 @@
             <li :class="{active: (currentIndex == 3)}"><router-link to="/main/team/uh8rjki3/member/setting">团队配置中心</router-link></li>
             <li :class="{active: (currentIndex == 4)}"><router-link to="/main/team/uh8rjki3/project/setting">Project 配置中心</router-link></li>
             <li><span></span></li>
-            <li :class="{active: (currentIndex == 5)}"><router-link to="/main/help">帮助中心</router-link></li>
+            <li><a href="/help" target="_blank">帮助中心</a></li>
         </ul>
     </div>
 </template>

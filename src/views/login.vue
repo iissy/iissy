@@ -2,9 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      <a href="https://oapi.dingtalk.com/connect/qrconnect?appid=dingoalb2yow51ilsojddu&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=https://www.hrefs.cn" target="_blank" rel="noopener">登录爱斯园</a>.
- -
-      <a href="https://oapi.dingtalk.com/connect/qrconnect?appid=dingoahn9mncsgwihecc9k&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=http://www.iissy.com/api/ding/get_user_info/dingoahn9mncsgwihecc9k" target="_blank" rel="noopener">登录万森科技</a>.
+      <a href="https://oapi.dingtalk.com/connect/qrconnect?appid=dingoahn9mncsgwihecc9k&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=http://www.iissy.com/api/ding/get_user_info/dingoahn9mncsgwihecc9k" target="_blank" rel="noopener">登录</a>
     </p>
   </div>
 </template>
