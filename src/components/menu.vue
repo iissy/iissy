@@ -15,10 +15,12 @@
         <ul>
             <li :class="{active: (currentIndex == 1)}"><router-link to="/main">我的工作台</router-link></li>
             <li><span></span></li>
-            <li :class="{active: (currentIndex == 2)}"><router-link to="/main/project">GOOA Project</router-link></li>
+            <li :class="{active: (currentIndex == 21)}"><router-link to="/main/notice">消息通知</router-link></li>
+          <li :class="{active: (currentIndex == 22)}"><router-link to="/main/task">待办任务</router-link></li>
+          <li :class="{active: (currentIndex == 23)}"><router-link to="/main/robot">群机器人</router-link></li>
             <li><span></span></li>
-            <li :class="{active: (currentIndex == 3)}"><router-link to="/main/team/uh8rjki3/member/setting">团队配置中心</router-link></li>
-            <li :class="{active: (currentIndex == 4)}"><router-link to="/main/team/uh8rjki3/project/setting">Project 配置中心</router-link></li>
+            <li :class="{active: (currentIndex == 81)}"><router-link to="/main/team/uh8rjki3/member/setting">团队配置中心</router-link></li>
+            <li :class="{active: (currentIndex == 82)}"><router-link to="/main/team/uh8rjki3/ding/setting">钉钉配置中心</router-link></li>
             <li><span></span></li>
             <li><a href="/help" target="_blank">帮助中心</a></li>
         </ul>

@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="4"></Menu>
+      <Menu tagIndex="23"></Menu>
       <div class="rightMain">
-        <Header title="Project 配置中心"></Header>
+        <Header title="群机器人"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div>
-              <p>asdf</p>
+              <div>
+asdfasdf
+              </div>
             </div>
           </div>
         </div>
@@ -32,6 +34,8 @@ export default {
   created: function () {
   },
   methods: {
+    add: function () {
+    }
   }
 };
 </script>

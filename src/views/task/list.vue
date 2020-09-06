@@ -1,15 +1,13 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="2"></Menu>
+      <Menu tagIndex="22"></Menu>
       <div class="rightMain">
-        <Header title="GOOA Project"></Header>
+        <Header title="待办任务"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div>
-              <div>
-asdfasdf
-              </div>
+              <p>asdf</p>
             </div>
           </div>
         </div>
@@ -34,8 +32,6 @@ export default {
   created: function () {
   },
   methods: {
-    add: function () {
-    }
   }
 };
 </script>
