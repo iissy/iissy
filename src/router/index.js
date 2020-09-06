@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Master from '../views/master';
+import Help from '../views/help';
 import Main from '../views/main';
 import Notice from '../views/notice/list';
 import Task from '../views/task/list';
@@ -14,13 +15,18 @@ Vue.use(Router);
 const routes = [
     {
         path: '/',
-        meta: { title: "主站" },
+        meta: { title: "爱斯园 - 你找的人正在找你" },
         component: Master
     }, {
         path: '/main',
-        meta: { title: "首页" },
+        meta: { title: "我的工作台" },
         name: 'Main',
         component: Main
+    }, {
+        path: '/main/help',
+        meta: { title: "帮助文档中心" },
+        name: 'Help',
+        component: Help
     }, {
         path: '/main/notice',
         meta: { title: "消息通知" },
