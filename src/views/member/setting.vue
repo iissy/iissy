@@ -7,27 +7,14 @@
           <div class="app-main-container">
             <div class="app-main-content">
               <div>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-
-                <p>asdf</p><p>as<br/>df</p><p>asdf</p>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-
-                <p>asdf</p><p>as<br/>df</p><p>asdf</p>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-
-                <p>asdf</p><p>as<br/>df</p><p>asdf</p>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
-                <p>asdf</p><br/>
+                <div v-for="d in departmentTree" v-bind:key="d.id">
+                  <div>
+                    <div>{{d.name}}</div>
+                    <div style="margin-left: 20px;" v-for="c in d.children" v-bind:key="c.id">
+                      <div>{{c.name}}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -39,10 +26,12 @@
 <script>
     import Header from '../../components/header';
     import Menu from '../../components/menu';
+    import http from '../../util/httper';
 
     export default {
         data: function () {
             return {
+              departmentTree: {}
             };
         },
         components: {
@@ -50,6 +39,11 @@
             Menu
         },
         created: function () {
+          let self = this;
+          let url = '/api/ding/get_department_list';
+          http.get(url).then(function (response) {
+            self.departmentTree = response;
+          });
         },
         methods: {
         }
