@@ -49,7 +49,7 @@ a:hover {
     text-align: center;
     margin-bottom: 20px;
     height: 40px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .app-header {
@@ -65,6 +65,7 @@ a:hover {
     position: relative;
     z-index: 1;
     height:48px;
+    /*margin-left: 1px;*/
 }
 
 .layout-container-column {
@@ -81,14 +82,6 @@ a:hover {
     position: absolute;
 }
 
-/*#main {*/
-/*    margin: 0 auto 0 auto;*/
-/*    max-width: 1200px;*/
-/*    background-color: #ffffff;*/
-/*    overflow: hidden;*/
-/*    min-height: 700px;*/
-/*}*/
-
 .app-main-container {
     height: 100%;
     overflow: auto;
@@ -96,7 +89,6 @@ a:hover {
     flex: 1 1 auto;
     width: auto;
     min-width: 0;
-    /*margin-left: -4px;*/
     padding-left: 4px;
     display: -webkit-flex;
     display: flex;
@@ -137,6 +129,15 @@ a:hover {
 
     display: -webkit-flex;
     -webkit-flex-direction: column;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 11;
+}
+
+/* for Chrome */
+.leftBar::-webkit-scrollbar {
+    display: none;
 }
 
 .rightMain {
