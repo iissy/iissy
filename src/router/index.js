@@ -10,10 +10,16 @@ import Robot from '../views/robot/list';
 import MemberSetting from '../views/member/setting';
 import DingSetting from '../views/ding/setting';
 
+import Hello from '../views/hello';
+
 Vue.use(Router);
 
 const routes = [
     {
+        path: '/main/hello',
+        meta: { title: "爱斯园 - 你找的人正在找你" },
+        component: Hello
+    }, {
         path: '/',
         meta: { title: "爱斯园 - 你找的人正在找你" },
         component: Master

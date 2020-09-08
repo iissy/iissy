@@ -6,6 +6,10 @@ html, body {
     overflow: hidden;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body, div, h3, th, td, p, span, img, a, .table td, .table th, .table thead tr th {
     font-size: 14px;
     font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
@@ -63,6 +67,20 @@ a:hover {
     height:48px;
 }
 
+.layout-container-column {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    /*height: auto;*/
+    max-height: 100%;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 100%;
+    position: absolute;
+}
+
 /*#main {*/
 /*    margin: 0 auto 0 auto;*/
 /*    max-width: 1200px;*/
@@ -78,7 +96,7 @@ a:hover {
     flex: 1 1 auto;
     width: auto;
     min-width: 0;
-    margin-left: -4px;
+    /*margin-left: -4px;*/
     padding-left: 4px;
     display: -webkit-flex;
     display: flex;
@@ -105,7 +123,7 @@ a:hover {
     flex-direction: row;
     height: 100%;
     min-width: 1280px;
-    min-height: 600px;
+    min-height: 300px;
 }
 
 .leftBar {
@@ -116,6 +134,9 @@ a:hover {
     flex-direction: column;
     display: flex;
     box-sizing: border-box;
+
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
 }
 
 .rightMain {
@@ -126,7 +147,7 @@ a:hover {
     flex-direction: column;
     height: 100%;
     -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
+    flex: 1 1 auto;;
     position: relative;
     display: flex;
 }
@@ -170,7 +191,7 @@ a:hover {
     overflow: hidden;
     border-style: solid;
     border-width: 10px;
-    border-color: transparent #eeeeee transparent transparent;
+    border-color: transparent #f8f8f8 transparent transparent;
 }
 
 .rightMain:after {
@@ -193,58 +214,6 @@ a:hover {
 
 .hd-button { color:#ffffff;padding:3px 20px 3px 20px;background-color: #36c6d3;font-size:14px;border-radius:10px;border: 1px solid #2bb8c4;float:right; }
 
-/*div#list .ck-editor__main .ck-content {*/
-/*    min-height: 594px;*/
-/*    padding-left: 15px;*/
-/*    padding-right: 15px;*/
-/*}*/
-
-/*div#list .ck-editor__main .ck-content div,*/
-/*div#list .ck-editor__main .ck-content span,*/
-/*div#list .ck-editor__main .ck-content td,*/
-/*div#list .ck-editor__main .ck-content p,*/
-/*div#list .ck-editor__main .ck-content ul,*/
-/*div#list .ck-editor__main .ck-content ol,*/
-/*div#list .ck-editor__main .ck-content th,*/
-/*div#list .ck-editor__main .ck-content a,*/
-/*div#list .ck-editor__main .ck-content tr,*/
-/*div#list .ck-editor__main .ck-content pre,*/
-/*div#list .ck-editor__main .ck-content code,*/
-/*div#list .ck-editor__main .ck-content label,*/
-/*div#list .ck-editor__main .ck-content input*/
-/*{*/
-/*    font-size: 14px;*/
-/*}*/
-
-/*div#list .ck-editor__main .ck-content input*/
-/*{*/
-/*    margin-top: -3px;*/
-/*}*/
-
-/*div#list .ck-content .todo-list li,*/
-/*div#list .ck-editor__main .ck-content label {*/
-/*    margin-bottom: 0;*/
-/*}*/
-
-/*div#list .ck-editor__main .ck-content pre code {*/
-/*    border: 0;*/
-/*    box-shadow: 0 1px 4px transparent;*/
-/*}*/
-
-/*.ck ul, .ck ol {*/
-/*    padding-left: 20px;*/
-/*    margin-left: 20px;*/
-/*}*/
-
-/*ul, ul.shu li {*/
-/*    list-style: disc;*/
-/*}*/
-
-/*div#list .ck-content pre {*/
-/*    background-color: #f9f9f9;*/
-/*    border: 1px solid #eeeeee;*/
-/*}*/
-
 a.logo {
     font-size: 22px !important;
     font-weight: bold;
@@ -252,4 +221,161 @@ a.logo {
     letter-spacing: 3px;
     margin: 0 0 0 0;
     text-align: center;
+}
+
+.teamDepartment {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.teamDepartmentTree {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: -webkit-flex;
+    display: flex;
+    padding: 10px;
+}
+
+.left-team-tree {
+    width: 309px;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 1px 10px 1px 1px;
+    background: #fff;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
+    border-radius: 3px;
+}
+
+.right-member-list {
+    -webkit-flex: 1;
+    flex: 1;
+    margin: 1px;
+    box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 3px;
+    background: #fff;
+    overflow: auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.ui-table {
+    border: solid 1px #dedede;
+    border-radius: 3px;
+    background-color: #fff;
+    overflow: hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.member-left {
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.memberList {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.memberList .ui-table {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -webkit-flex: 1;
+    flex: 1;
+    position: relative;
+    z-index: 0;
+}
+
+.ui-table .ui-table-header {
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #303030;
+    font-weight: 500;
+    height: 48px;
+    background-color: #f8f8f8;
+    border-bottom: solid 1px #dedede;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ui-table .ui-table-row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    border-bottom: solid 1px #dedede;
+    font-size: 14px;
+    color: #303030;
+    box-sizing: border-box;
+}
+
+.ui-table .ui-table-body {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 1450px;
+    box-sizing: border-box;
+}
+
+.memberList .ui-table-row {
+    cursor: default;
+    width: 100%;
+    min-width: 1450px;
+    min-height: 52px;
+    padding: .8em 0em .8em 2em;
+}
+
+.memberList-field {
+    padding-right: 15px;
+    width: 234px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.memberList-field-name {
+    padding-right: 15px;
+    min-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
 }

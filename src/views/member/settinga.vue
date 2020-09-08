@@ -14,30 +14,8 @@
                 </div>
               </div>
               <div class="right-member-list">
-                <div class="member-left">
-                  <div class="memberList">
-                    <div class="ui-table">
-                      <div class="ui-table-header ui-table-row">
-                        <div class="memberList-field-name">姓名</div>
-                        <div class="memberList-field">职务</div>
-                        <div class="memberList-field">手机</div>
-                        <div class="memberList-field">邮箱</div>
-                        <div class="memberList-field">入职时间</div>
-                        <div class="memberList-field">工号</div>
-                      </div>
-                      <div class="ui-table-body">
-                        <div v-for="u in users" v-bind:key="u.uuid">
-                          <div class="ui-table-row">
-                            <div class="memberList-field-name">{{u.name}}</div>
-                            <div class="memberList-field">{{u.position}}</div>
-                            <div class="memberList-field">{{u.mobile}}</div>
-                            <div class="memberList-field">{{u.email}}</div>
-                            <div class="memberList-field">{{u.hiredDate}}</div>
-                            <div class="memberList-field">{{u.jobnumber}}</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                <div class="ui-table">
+                  <div class="ui-table-header ui-table-row">
                   </div>
                 </div>
               </div>
