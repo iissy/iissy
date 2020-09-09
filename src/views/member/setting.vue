@@ -20,8 +20,8 @@
                       <div class="ui-table-header ui-table-row">
                         <div class="memberList-field-name">姓名</div>
                         <div class="memberList-field">职务</div>
-                        <div class="memberList-field">手机</div>
-                        <div class="memberList-field">邮箱</div>
+                        <div class="memberList-field">电话</div>
+                        <div class="memberList-field">激活</div>
                         <div class="memberList-field">入职时间</div>
                         <div class="memberList-field">工号</div>
                       </div>
@@ -30,8 +30,8 @@
                           <div class="ui-table-row">
                             <div class="memberList-field-name">{{u.name}}</div>
                             <div class="memberList-field">{{u.position}}</div>
-                            <div class="memberList-field">{{u.mobile}}</div>
-                            <div class="memberList-field">{{u.email}}</div>
+                            <div class="memberList-field">{{u.tel}}</div>
+                            <div class="memberList-field">{{u.active}}</div>
                             <div class="memberList-field">{{u.hiredDate}}</div>
                             <div class="memberList-field">{{u.jobnumber}}</div>
                           </div>
