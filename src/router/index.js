@@ -9,6 +9,7 @@ import Task from '../views/task/list';
 import Robot from '../views/robot/list';
 import MemberSetting from '../views/member/setting';
 import DingSetting from '../views/ding/setting';
+import Overview from '../views/code/overview';
 
 import Hello from '../views/hello';
 
@@ -58,6 +59,11 @@ const routes = [
         meta: { title: "钉钉配置中心" },
         name: 'DingSetting',
         component: DingSetting
+    },{
+        path: '/main/team/:team/code/overview',
+        meta: { title: "代码提交" },
+        name: 'Overview',
+        component: Overview
     }
 ];
 

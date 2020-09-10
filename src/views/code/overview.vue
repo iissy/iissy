@@ -1,18 +1,13 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="23"></Menu>
+      <Menu tagIndex="24"></Menu>
       <div class="rightMain">
-        <Header title="群机器人"></Header>
+        <Header title="代码提交"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div>
-              <div>
-                <div style="float: left;">服务器出口IP：</div><div style="margin-left: 30px;float:left;">47.244.143.251</div>
-              </div>
-              <div style="clear: both;">
-                <div style="float: left;">消息接收地址：</div><div style="margin-left: 30px;float:left;">http://www.iissy.com/api/ding/robot</div>
-              </div>
+              <div>{{name}}</div>
             </div>
           </div>
         </div>
@@ -28,6 +23,7 @@ import Menu from '../../components/menu';
 export default {
   data: function () {
     return {
+      name: "overview.vue"
     };
   },
   components: {
@@ -37,8 +33,10 @@ export default {
   created: function () {
   },
   methods: {
-    add: function () {
-    }
   }
 };
 </script>
+
+<style scoped>
+
+</style>
