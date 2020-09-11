@@ -11,7 +11,7 @@
               <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
             </div>
             <div>
-              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="300"/>
+              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="canvasHeight"/>
             </div>
           </div>
         </div>
@@ -29,28 +29,16 @@ import http from "../../util/httper";
 export default {
   data: function () {
     return {
-      height: 400,
+      headerHeight: 33,
+      lineHeight: 50,
+      count: 0,
       loaded: false,
       chartData: {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         }]
       },
@@ -66,7 +54,7 @@ export default {
           position: 'top',
         },
         title: {
-          display: true,
+          display: false,
           text: 'Chart.js Horizontal Bar Chart'
         },
         scales: {
@@ -84,7 +72,8 @@ export default {
     self.chartData.datasets[0].label = '天才队提交代码';
     let url = '/api/commit/team/00ff0000/overview';
     http.post(url).then(function (response) {
-      for (let i = 0; i < response.data.length; i++) {
+      self.count = response.data.length;
+      for (let i = 0; i < self.count; i++) {
         self.chartData.labels.push(response.data[i].name)
         self.chartData.datasets[0].data.push(response.data[i].count)
       }
@@ -93,11 +82,8 @@ export default {
     });
   },
   computed: {
-    styles() {
-      return {
-        height: `${this.height}px`,
-        position: 'relative'
-      }
+    canvasHeight() {
+      return this.headerHeight + this.count * this.lineHeight;
     }
   },
   components: {
