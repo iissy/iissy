@@ -9,7 +9,7 @@ import Task from '../views/task/list';
 import Robot from '../views/robot/list';
 import MemberSetting from '../views/member/setting';
 import DingSetting from '../views/ding/setting';
-import Overview from '../views/code/overview';
+import Overview from '../views/commit/overview';
 
 import Hello from '../views/hello';
 
@@ -60,7 +60,7 @@ const routes = [
         name: 'DingSetting',
         component: DingSetting
     },{
-        path: '/main/team/:team/code/overview',
+        path: '/main/team/:team/commit/overview',
         meta: { title: "代码提交" },
         name: 'Overview',
         component: Overview

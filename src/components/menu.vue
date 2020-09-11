@@ -18,7 +18,7 @@
             <li :class="{active: (currentIndex == 21)}"><router-link to="/main/notice">消息通知</router-link></li>
           <li :class="{active: (currentIndex == 22)}"><router-link to="/main/task">待办任务</router-link></li>
           <li :class="{active: (currentIndex == 23)}"><router-link to="/main/robot">群机器人</router-link></li>
-          <li :class="{active: (currentIndex == 24)}"><router-link to="/main/team/uh8rjki3/code/overview">代码提交</router-link></li>
+          <li :class="{active: (currentIndex == 24)}"><router-link to="/main/team/uh8rjki3/commit/overview">代码提交</router-link></li>
             <li><span></span></li>
             <li :class="{active: (currentIndex == 81)}"><router-link to="/main/team/uh8rjki3/member/setting">团队配置中心</router-link></li>
             <li :class="{active: (currentIndex == 82)}"><router-link to="/main/team/uh8rjki3/ding/setting">钉钉配置中心</router-link></li>
