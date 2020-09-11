@@ -11,7 +11,7 @@
               <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
             </div>
             <div>
-              <bar :chartdata="chartdata" :options="options" :height="100"/>
+              <bar :chartdata="chartData" :options="options" :height="120"/>
             </div>
           </div>
         </div>
@@ -28,11 +28,8 @@ import Bar from '../../chart/bar';
 export default {
   data: function () {
     return {
-      chartdata: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'asdfdaf'],
+      chartData: {
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3, 6],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -53,8 +50,6 @@ export default {
         }]
       },
       options: {
-        // Elements options apply to all of the options unless overridden in a dataset
-        // In this case, we are setting the border of each horizontal bar to be 2px wide
         elements: {
           rectangle: {
             borderWidth: 2,
@@ -77,6 +72,11 @@ export default {
         }
       }
     };
+  },
+  created () {
+    this.chartData.labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'asdfdaf'];
+    this.chartData.datasets[0].data = [12, 19, 3, 5, 2, 3, 6];
+    this.chartData.datasets[0].label = '天才队提交代码';
   },
   components: {
     Header,
