@@ -11,7 +11,7 @@
               <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
             </div>
             <div>
-              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="120"/>
+              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="300"/>
             </div>
           </div>
         </div>
@@ -29,6 +29,7 @@ import http from "../../util/httper";
 export default {
   data: function () {
     return {
+      height: 400,
       loaded: false,
       chartData: {
         labels: [],
@@ -54,6 +55,7 @@ export default {
         }]
       },
       options: {
+        maintainAspectRatio: false, showTooltips: false, scaleGridLineWidth: 10, scaleFontColor: "#ff0000", bezierCurve: false,
         elements: {
           rectangle: {
             borderWidth: 2,
@@ -89,6 +91,14 @@ export default {
 
       self.loaded = true;
     });
+  },
+  computed: {
+    styles() {
+      return {
+        height: `${this.height}px`,
+        position: 'relative'
+      }
+    }
   },
   components: {
     Header,
