@@ -11,7 +11,7 @@
               <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
             </div>
             <div>
-              <bar :chartdata="chartData" :options="options" :height="120"/>
+              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="120"/>
             </div>
           </div>
         </div>
@@ -24,12 +24,16 @@
 import Header from '../../components/header';
 import Menu from '../../components/menu';
 import Bar from '../../chart/bar';
+import http from "../../util/httper";
 
 export default {
   data: function () {
     return {
+      loaded: false,
       chartData: {
+        labels: [],
         datasets: [{
+          data: [],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -74,9 +78,17 @@ export default {
     };
   },
   created () {
-    this.chartData.labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'asdfdaf'];
-    this.chartData.datasets[0].data = [12, 19, 3, 5, 2, 3, 6];
-    this.chartData.datasets[0].label = '天才队提交代码';
+    let self = this;
+    self.chartData.datasets[0].label = '天才队提交代码';
+    let url = '/api/commit/team/00ff0000/overview';
+    http.post(url).then(function (response) {
+      for (let i = 0; i < response.data.length; i++) {
+        self.chartData.labels.push(response.data[i].name)
+        self.chartData.datasets[0].data.push(response.data[i].count)
+      }
+
+      self.loaded = true;
+    });
   },
   components: {
     Header,
