@@ -8,10 +8,10 @@
         <div style="color:#666666;font-weight: 300;margin-top: 20px;width: 100%;background-color: #ffffff;padding: 20px;flex: 0 0 auto;">
           <div>在钉钉开放平台 -> 创建扫码登录应用授权</div>
           <div style="font-style: italic;">
-            授权页面LOGO地址：http://www.iissy.com/favicon.ico
+            授权页面LOGO地址：https://www.iissy.com/favicon.ico
           </div>
           <div style="font-style: italic;">
-            回调域名: http://www.iissy.com/
+            回调域名: https://www.iissy.com/
           </div>
           <div style="font-style: italic;color: #d71b29;">
             如果以前已经完成了第一步，第二步，可以直接到第三步生成扫码连接登陆
