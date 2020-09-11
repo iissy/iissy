@@ -11,7 +11,7 @@
               <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
             </div>
             <div>
-              <bar v-if="loaded" :chartdata="chartData" :options="options" :height="canvasHeight"/>
+              <bar v-if="loaded" :chartData="chartData" :options="options" :height="canvasHeight"/>
             </div>
           </div>
         </div>
