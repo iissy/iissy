@@ -8,7 +8,7 @@
           <div class="app-main-content">
             <div style="flex: 0;display: flex;flex-direction: row;">
               <div style="flex: 1;">控制区</div>
-              <div style="flex:0 0 auto;width: 100px;text-align: right;">配置</div>
+              <div style="flex:0 0 auto;width: 100px;text-align: right;">团队配置</div>
             </div>
             <div>
               <bar v-if="loaded" :chartData="chartData" :options="options" :height="canvasHeight"/>
