@@ -10,6 +10,7 @@ import Robot from '../views/robot/list';
 import MemberSetting from '../views/member/setting';
 import DingSetting from '../views/ding/setting';
 import Overview from '../views/commit/overview';
+import Me from '../views/member/me';
 
 import Hello from '../views/hello';
 
@@ -64,6 +65,11 @@ const routes = [
         meta: { title: "代码提交" },
         name: 'Overview',
         component: Overview
+    },{
+        path: '/main/me',
+        meta: { title: "个人中心" },
+        name: 'Me',
+        component: Me
     }
 ];
 
