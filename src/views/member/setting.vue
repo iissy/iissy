@@ -19,21 +19,21 @@
                     <div class="ui-table">
                       <div class="ui-table-header ui-table-row">
                         <div class="memberList-field-name">姓名</div>
-                        <div class="memberList-field">职务</div>
-                        <div class="memberList-field">电话</div>
-                        <div class="memberList-field">激活</div>
-                        <div class="memberList-field">入职时间</div>
-                        <div class="memberList-field">工号</div>
+                        <div class="memberList-field">UUID</div>
+                        <div class="memberList-field">UnionID</div>
+                        <div class="memberList-field">OpenID</div>
+                        <div class="memberList-field">AppID</div>
+                        <div class="memberList-field">CreateTime</div>
                       </div>
                       <div class="ui-table-body">
                         <div v-for="u in users" v-bind:key="u.uuid">
                           <div class="ui-table-row">
                             <div class="memberList-field-name">{{u.name}}</div>
-                            <div class="memberList-field">{{u.position}}</div>
-                            <div class="memberList-field">{{u.tel}}</div>
-                            <div class="memberList-field">{{u.active}}</div>
-                            <div class="memberList-field">{{u.hiredDate}}</div>
-                            <div class="memberList-field">{{u.jobnumber}}</div>
+                            <div class="memberList-field">{{u.uuid}}</div>
+                            <div class="memberList-field">{{u.union_id}}</div>
+                            <div class="memberList-field">{{u.open_id}}</div>
+                            <div class="memberList-field">{{u.app_id}}</div>
+                            <div class="memberList-field">{{u.create_time}}</div>
                           </div>
                         </div>
                       </div>
