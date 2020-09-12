@@ -1,11 +1,11 @@
 <template>
   <div id="change" class="hello">
-    <div class="tab-tilte" style="border-bottom: 1px solid #ccc;display: flex;flex-direction: row;background-color: #ffffff;padding: 10px 50px 0 50px;">
-      <div style="flex:1;text-align: center;cursor: pointer;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
+    <div class="tab-tilte">
+      <div style="flex:1;text-align: center;cursor: pointer;font-weight: 600;padding: 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
     </div>
     <div class="tab-content">
-      <div v-show="cur==0" style="display: flex;flex-direction: column;height: 100%;">
-        <div style="color:#666666;font-weight: 300;margin-top: 20px;width: 100%;background-color: #ffffff;padding: 20px;flex: 0 0 auto;">
+      <div v-show="cur==0" style="display: flex;flex-direction: column;height: 100%;flex: 1 0 auto;-webkit-flex-direction: column;">
+        <div style="color:#666666;font-weight: 300;padding: 20px;width: 100%;margin-top: 20px;background-color: #ffffff;flex: 0 0 auto;">
           <div>在钉钉开放平台 -> 创建扫码登录应用授权</div>
           <div style="font-style: italic;">
             授权页面LOGO地址：https://www.iissy.com/favicon.ico
@@ -17,12 +17,12 @@
             如果以前已经完成了第一步，第二步，可以直接到第三步生成扫码连接登陆
           </div>
         </div>
-        <div style="flex: 1;background-color: #ffffff;margin-top: 20px;">
-          <img src="/add.jpg" width="90%">
+        <div style="flex: 0;background-color: #ffffff;margin-top: 20px;">
+          <img style="flex: 1 0 auto;" src="/add.jpg">
         </div>
       </div>
       <div v-show="cur==1" style="display: flex;flex-direction: column;height: 100%;">
-        <div style="color:#666666;font-weight: 300;margin-top: 20px;width: 100%;background-color: #ffffff;padding: 20px;">
+        <div style="color:#666666;font-weight: 300;margin-top: 20px;width: 100%;background-color: #ffffff;padding: 20px;flex: 0 1 auto;">
           <div>提交扫码登录应用授权到平台</div>
           <div style="font-style: italic;">
             将第一步创建的登陆凭证提交到平台
@@ -143,44 +143,46 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-ul li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+/*h3 {*/
+/*  margin: 40px 0 0;*/
+/*}*/
+/*ul {*/
+/*  list-style-type: none;*/
+/*  padding: 0;*/
+/*}*/
+/*li {*/
+/*  display: inline-block;*/
+/*  margin: 0 10px;*/
+/*}*/
+/*a {*/
+/*  color: #42b983;*/
+/*}*/
+/*ul li {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  list-style: none;*/
+/*}*/
 #change {
-  max-width: 1200px;
+  width: 1200px;
+  mmin-width: 600px;
   margin: 0 auto 0 auto;
-  height: 100%;
+  /*height: 100%;*/
   display: flex;
   flex-direction: column;
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  /*display: -webkit-flex;*/
+  -webkit-flex-direction: column;
+  padding: 0 10px 10px 10px;
 }
 .tab-tilte{
   width: 100%;
+  border-bottom: 1px solid #ccc;display: flex;
+  background-color: #ffffff;padding: 0 50px 0 50px;
+  flex: 0 0 auto;
+  flex-direction: row;
 }
-.tab-tilte li{
-  float: left;
-  /*width: 25%;*/
-  padding: 10px 0;
-  text-align: center;
-  background-color:#f4f4f4;
-  cursor: pointer;
-}
-/* 点击对应的标题添加对应的背景颜色 */
+
 .tab-tilte .active{
   border-bottom: 2px solid #1890ff;
   /*background-color: #09f;*/
@@ -188,8 +190,10 @@ ul li {
 }
 .tab-content {
   /*background-color: #ffffff;*/
-  height: 100%;
-  flex: 1;
+  /*height: 100%;*/
+  flex: 1 0 auto;
+  flex-direction: column;
+  display: flex;
 }
 .tab-content div{
   /*float: left;*/

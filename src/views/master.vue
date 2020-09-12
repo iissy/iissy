@@ -22,9 +22,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding: 10px;
   height: 100%;
+  display: flex;
   overflow: auto;
+  flex: 1 1 auto;
+  flex-direction: column;
 }
 
 #master div {
