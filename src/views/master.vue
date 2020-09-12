@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app > #master {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,9 +27,5 @@ export default {
   overflow: auto;
   flex: 1 1 auto;
   flex-direction: column;
-}
-
-#master div {
-  text-align: left;
 }
 </style>
