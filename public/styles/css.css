@@ -346,14 +346,14 @@ a.logo {
 .memberList .ui-table-row {
     cursor: default;
     width: 100%;
-    min-width: 1710px;
+    min-width: 1650px;
     min-height: 52px;
     padding: .8em 0em .8em 2em;
 }
 
 .memberList-field {
     padding-right: 15px;
-    width: 250px;
+    width: 238px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -363,7 +363,7 @@ a.logo {
 
 .memberList-field-name {
     padding-right: 15px;
-    min-width: 180px;
+    min-width: 190px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

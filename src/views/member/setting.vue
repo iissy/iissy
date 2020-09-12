@@ -34,8 +34,8 @@
                             <div class="memberList-field">{{u.union_id}}</div>
                             <div class="memberList-field">{{u.open_id}}</div>
                             <div class="memberList-field">{{u.app_id}}</div>
-                            <div class="memberList-field">{{u.create_time}}</div>
-                            <div class="memberList-field">{{u.access_time}}</div>
+                            <div class="memberList-field">{{u.create_time | formatDate}}</div>
+                            <div class="memberList-field">{{u.access_time | formatDate}}</div>
                           </div>
                         </div>
                       </div>
@@ -55,6 +55,7 @@
 import Header from '../../components/header';
 import Menu from '../../components/menu';
 import http from '../../util/httper';
+import { formatDate } from '../../util/date.js';
 
 export default {
   data: function () {
@@ -75,6 +76,12 @@ export default {
     });
 
     self.member_list();
+  },
+  filters: {
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, "yyyy-MM-dd hh:mm:ss");
+    }
   },
   methods: {
     member_list: function() {
