@@ -23,7 +23,8 @@
                         <div class="memberList-field">UnionID</div>
                         <div class="memberList-field">OpenID</div>
                         <div class="memberList-field">AppID</div>
-                        <div class="memberList-field">CreateTime</div>
+                        <div class="memberList-field">创建时间</div>
+                        <div class="memberList-field">最近访问</div>
                       </div>
                       <div class="ui-table-body">
                         <div v-for="u in users" v-bind:key="u.uuid">
@@ -34,6 +35,7 @@
                             <div class="memberList-field">{{u.open_id}}</div>
                             <div class="memberList-field">{{u.app_id}}</div>
                             <div class="memberList-field">{{u.create_time}}</div>
+                            <div class="memberList-field">{{u.access_time}}</div>
                           </div>
                         </div>
                       </div>
