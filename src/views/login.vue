@@ -18,7 +18,7 @@
           </div>
         </div>
         <div style="flex: 1;background-color: #ffffff;margin-top: 20px;">
-          <img src="/add.jpg" width="1000">
+          <img src="/add.jpg" width="90%">
         </div>
       </div>
       <div v-show="cur==1" style="display: flex;flex-direction: column;height: 100%;">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="form-horizontal mg0" role="form" style="margin-top: 20px;background-color: #ffffff;flex: 1 1 auto;">
-          <div class="form-body" style="padding:20px 0 0 0;">
+          <div class="form-body" style="padding:20px;">
             <div class="form-group">
               <label class="col-md-4 control-label">name</label>
               <div class="col-md-6">
@@ -65,7 +65,7 @@
           <div>进入扫码登录界面</div>
         </div>
         <div class="form-horizontal mg0" role="form" style="margin-top: 20px;background-color: #ffffff;flex: 1 1 auto;">
-          <div class="form-body" style="padding:20px 0 0 0;text-align: center;">
+          <div class="form-body" style="padding:20px;text-align: center;">
             <div class="form-group">
               <label class="col-md-4 control-label">appId</label>
               <div class="col-md-6">
@@ -163,7 +163,7 @@ ul li {
   list-style: none;
 }
 #change {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto 0 auto;
   height: 100%;
   display: flex;
