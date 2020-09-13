@@ -70,7 +70,7 @@ export default {
   created () {
     let self = this;
     self.chartData.datasets[0].label = '天才队提交代码';
-    let url = '/api/commit/team/00ff0000/overview';
+    let url = '/api/team/00ff0000/commit/overview';
     http.post(url).then(function (response) {
       self.count = response.data.length;
       for (let i = 0; i < self.count; i++) {
