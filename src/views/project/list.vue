@@ -3,7 +3,7 @@
     <div class="app-row">
       <Menu tagIndex="21"></Menu>
       <div class="rightMain">
-        <Header title="消息通知"></Header>
+        <Header title="项目管理"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div>

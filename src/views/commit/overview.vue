@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="24"></Menu>
+      <Menu tagIndex="22"></Menu>
       <div class="rightMain">
         <Header title="代码提交"></Header>
         <div class="app-main-container">

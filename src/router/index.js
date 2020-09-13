@@ -4,13 +4,15 @@ import Router from 'vue-router';
 import Master from '../views/master';
 import Help from '../views/help';
 import Main from '../views/main';
-import Notice from '../views/notice/list';
-import Task from '../views/task/list';
-import Robot from '../views/robot/list';
+import Project from '../views/project/list';
+import Doc from '../views/doc/list';
+import DocSetting from '../views/doc/setting';
+import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
-import DingSetting from '../views/ding/setting';
+import ProjectSetting from '../views/project/setting';
 import Overview from '../views/commit/overview';
 import Me from '../views/member/me';
+import Logout from '../views/logout';
 
 import Hello from '../views/hello';
 
@@ -19,7 +21,7 @@ Vue.use(Router);
 const routes = [
     {
         path: '/main/hello',
-        meta: { title: "爱斯园 - 你找的人正在找你" },
+        meta: { title: "爱斯园" },
         component: Hello
     }, {
         path: '/',
@@ -36,17 +38,22 @@ const routes = [
         name: 'Help',
         component: Help
     }, {
-        path: '/main/notice',
-        meta: { title: "消息通知" },
-        name: 'Notice',
-        component: Notice
+        path: '/main/project',
+        meta: { title: "项目管理" },
+        name: 'Project',
+        component: Project
     }, {
-        path: '/main/task',
-        meta: { title: "待办任务" },
-        name: 'Task',
-        component: Task
+        path: '/main/team/uh8rjki3/doc',
+        meta: { title: "项目文档" },
+        name: 'Doc',
+        component: Doc
     }, {
-        path: '/main/robot',
+        path: '/main/team/uh8rjki3/doc/setting',
+        meta: { title: "文档配置中心" },
+        name: 'DocSetting',
+        component: DocSetting
+    }, {
+        path: '/main/ding/robot',
         meta: { title: "群机器人" },
         name: 'Robot',
         component: Robot
@@ -56,12 +63,12 @@ const routes = [
         name: 'MemberSetting',
         component: MemberSetting
     },{
-        path: '/main/team/:team/ding/setting',
-        meta: { title: "钉钉配置中心" },
-        name: 'DingSetting',
-        component: DingSetting
+        path: '/main/team/:team/project/setting',
+        meta: { title: "项目配置中心" },
+        name: 'ProjectSetting',
+        component: ProjectSetting
     },{
-        path: '/main/team/:team/commit/overview',
+        path: '/main/team/:team/commit',
         meta: { title: "代码提交" },
         name: 'Overview',
         component: Overview
@@ -70,6 +77,11 @@ const routes = [
         meta: { title: "个人中心" },
         name: 'Me',
         component: Me
+    },{
+        path: '/main/logout',
+        meta: { title: "退出登录" },
+        name: 'Logout',
+        component: Logout
     }
 ];
 

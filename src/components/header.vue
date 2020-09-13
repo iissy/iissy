@@ -1,8 +1,10 @@
 <template>
   <div class="app-header">
-    <div style="background-color: #ffffff;height:48px;padding:10px;display: flex;flex-direction: row;width: 100%;">
-      <div style="flex: 1;">
-        <span style="font-size: 18px;font-weight: 500;color:#606060;display: flex;white-space: nowrap;vertical-align: middle;align-items: center;">{{title}}</span>
+    <div style="background-color: #ffffff;height:48px;padding:10px 10px 10px 20px;display: flex;flex-direction: row;width: 100%;">
+      <div style="flex: 1;flex-direction: column;align-items: center;justify-content: center;">
+        <div style="flex:1;vertical-align: middle;align-items: center;height: 100%;display: flex;">
+          <div style="font-size: 18px;font-weight: 500;color:#303030;flex: 0 0 auto;">天才团队 | {{title}}</div>
+        </div>
       </div>
       <div style="flex: 0;">
         <div class="wrapper" ref="mbMenu">
@@ -62,6 +64,6 @@ ul.dropdownWrapper { padding: 5px 0 5px 0; }
 .dropdownWrapper li { width: 100%;text-align: center;padding: 5px 0 5px 0; }
 .dropdownWrapper li:hover{ background-color: #eee; }
 .nav-item { cursor: pointer;display: flex;display: flex;display: -webkit-flex;flex-direction: column;flex: 1;align-items:center;justify-content:center; }
-.nav-item .active { color: #0fd59d;font-size: 14px;text-align: center; }
+.nav-item .active { font-size: 14px;text-align: center; }
 .dropdownBtn { display: inline-block; width: 100%; flex: 0 0 auto; }
 </style>
