@@ -12,7 +12,7 @@ import MemberSetting from '../views/member/setting';
 import ProjectSetting from '../views/project/setting';
 import Overview from '../views/commit/overview';
 import CenterAccount from '../views/center/account';
-import CenterTeam from '../views/center/team';
+import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import CenterRobot from '../views/center/robot';
 
@@ -82,10 +82,10 @@ const routes = [
         name: 'CenterAccount',
         component: CenterAccount
     },{
-        path: '/main/center/team',
+        path: '/main/center/safe',
         meta: { title: "个人中心" },
-        name: 'CenterTeam',
-        component: CenterTeam
+        name: 'CenterSafe',
+        component: CenterSafe
     },{
         path: '/main/center/certificate',
         meta: { title: "个人中心" },
