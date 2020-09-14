@@ -35,26 +35,26 @@
           <div class="form-horizontal mg0" role="form" style="margin-top: 20px;background-color: #ffffff;flex: 1 1 auto;">
             <div class="form-body" style="padding:20px;">
               <div class="form-group">
-                <label class="col-md-4 control-label">name</label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label">name</label>
+                <div class="col-md-7">
                   <input type="text" v-model="name" name="name" class="form-control" placeholder="name">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label">appId</label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label">appId</label>
+                <div class="col-md-7">
                   <input type="text" v-model="app_id" name="app_id" class="form-control" placeholder="appId">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label">appSecret</label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label">appSecret</label>
+                <div class="col-md-7">
                   <input type="text" v-model="app_secret" name="app_secret" class="form-control" placeholder="appSecret">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-7">
                   <button style="color:#ffffff;padding:5px 30px 5px 30px;background-color: #36c6d3;font-size:16px;width: 100%;border: 1px solid #2bb8c4;" v-on:click="add">添  加</button>
                 </div>
               </div>
@@ -68,14 +68,14 @@
           <div class="form-horizontal mg0" role="form" style="margin-top: 20px;background-color: #ffffff;flex: 1 1 auto;">
             <div class="form-body" style="padding:20px;text-align: center;">
               <div class="form-group">
-                <label class="col-md-4 control-label">appId</label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label">appId</label>
+                <div class="col-md-7">
                   <input type="text" v-model="app_id" name="app_id_login" class="form-control" placeholder="appId" v-on:change="change" @paste="change">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-6">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-7">
                   <button style="color:#ffffff;padding:5px 30px 5px 30px;background-color: #36c6d3;font-size:16px;width: 100%;border: 1px solid #2bb8c4;" v-on:click="generate">生成连接</button>
                 </div>
               </div>
