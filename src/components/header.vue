@@ -14,7 +14,7 @@
         </div>
         <div>
           <ul class="dropdownWrapper" v-show='dropdownActive'>
-            <li><router-link to="/main/me">个人中心</router-link></li>
+            <li><router-link to="/main/center/account">个人中心</router-link></li>
             <li><router-link to="/main/logout">退出登录</router-link></li>
           </ul>
         </div>

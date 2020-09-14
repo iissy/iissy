@@ -11,7 +11,11 @@ import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
 import ProjectSetting from '../views/project/setting';
 import Overview from '../views/commit/overview';
-import Me from '../views/member/me';
+import CenterAccount from '../views/center/account';
+import CenterTeam from '../views/center/team';
+import CenterCertificate from '../views/center/certificate';
+import CenterRobot from '../views/center/robot';
+
 import Logout from '../views/logout';
 
 import Hello from '../views/hello';
@@ -73,10 +77,25 @@ const routes = [
         name: 'Overview',
         component: Overview
     },{
-        path: '/main/me',
+        path: '/main/center/account',
         meta: { title: "个人中心" },
-        name: 'Me',
-        component: Me
+        name: 'CenterAccount',
+        component: CenterAccount
+    },{
+        path: '/main/center/team',
+        meta: { title: "个人中心" },
+        name: 'CenterTeam',
+        component: CenterTeam
+    },{
+        path: '/main/center/certificate',
+        meta: { title: "个人中心" },
+        name: 'CenterCertificate',
+        component: CenterCertificate
+    },{
+        path: '/main/center/robot',
+        meta: { title: "个人中心" },
+        name: 'CenterRobot',
+        component: CenterRobot
     },{
         path: '/main/logout',
         meta: { title: "退出登录" },
