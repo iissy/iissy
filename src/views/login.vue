@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import http from "@/util/httper";
+import http from "@/util/http";
 
 export default {
   data: function () {

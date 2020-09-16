@@ -1,10 +1,10 @@
 ﻿import axios from 'axios'
-import server from "../conf/config";
+import config from "../conf/config";
 
-let httper = {
+let http = {
     get(url, data) {
         return new Promise((resolve, reject) => {
-            axios.get(server.url + url, {
+            axios.get(config.base_url + url, {
                 params: data
             }).then((response) => {
                 if (response) {
@@ -18,12 +18,7 @@ let httper = {
 
     post(url, data) {
         return new Promise((resolve, reject) => {
-            axios.post(server.url + url, data, {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Accept': 'application/json'
-                }
-            }).then((response) => {
+            axios.post(config.base_url + url, data).then((response) => {
                 if (response) {
                     resolve(response);
                 }
@@ -34,4 +29,4 @@ let httper = {
     }
 };
 
-export default httper;
+export default http;

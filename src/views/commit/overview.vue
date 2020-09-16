@@ -24,7 +24,7 @@
 import Header from '../../components/header';
 import Menu from '../../components/menu';
 import Bar from '../../chart/bar';
-import http from "../../util/httper";
+import http from "../../util/http";
 
 export default {
   data: function () {

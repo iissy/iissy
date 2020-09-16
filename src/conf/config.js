@@ -1,6 +1,6 @@
-let server  = {
-    url: "/proxy",
-    upload: "/proxy/api/upload"
+let config  = {
+    base_url: "/proxy",
+    upload_url: "/proxy/api/upload"
 };
 
-export default server;
+export default config

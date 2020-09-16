@@ -54,7 +54,7 @@
 <script>
 import Header from '../../components/header';
 import Menu from '../../components/menu';
-import http from '../../util/httper';
+import http from '../../util/http';
 import { formatDate } from '../../util/date.js';
 
 export default {
