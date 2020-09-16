@@ -21,7 +21,7 @@
 
       <li><span></span></li>
       <li :class="{active: (currentIndex == 81)}"><router-link to="/main/team/uh8rjki3/member/setting">团队配置中心</router-link></li>
-      <li :class="{active: (currentIndex == 82)}"><router-link to="/main/team/uh8rjki3/project/setting">项目配置中心</router-link></li>
+      <li :class="{active: (currentIndex == 82)}"><router-link to="/main/team/uh8rjki3/project/manager">项目配置中心</router-link></li>
       <li :class="{active: (currentIndex == 83)}"><router-link to="/main/team/uh8rjki3/doc/setting">文档配置中心</router-link></li>
 
       <li><span></span></li>

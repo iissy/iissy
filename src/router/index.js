@@ -9,7 +9,6 @@ import Doc from '../views/doc/list';
 import DocSetting from '../views/doc/setting';
 import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
-import ProjectSetting from '../views/project/setting';
 import Overview from '../views/commit/overview';
 import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
@@ -20,9 +19,11 @@ import Logout from '../views/logout';
 
 import Hello from '../views/hello';
 
+import ProjectComponent from './project.js';
+
 Vue.use(Router);
 
-const routes = [
+const index = [
     {
         path: '/main/hello',
         meta: { title: "爱斯园" },
@@ -67,11 +68,6 @@ const routes = [
         name: 'MemberSetting',
         component: MemberSetting
     },{
-        path: '/main/team/:team/project/setting',
-        meta: { title: "项目配置中心" },
-        name: 'ProjectSetting',
-        component: ProjectSetting
-    },{
         path: '/main/team/:team/commit',
         meta: { title: "代码提交" },
         name: 'Overview',
@@ -103,6 +99,8 @@ const routes = [
         component: Logout
     }
 ];
+
+let routes = index.concat(ProjectComponent)
 
 export default new Router({
     mode: 'history',

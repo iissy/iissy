@@ -7,21 +7,9 @@
         <div class="app-main-container">
           <div class="app-main-no-border">
             <div style="display: flex;flex-direction: row;height: 100%;">
-              <div id="project-setting-menu">
-                <div style="flex: 0;padding: 5px 0 5px 30px;width: 100%;font-size: 18px;margin-bottom: 20px;">配置中心</div>
-
-                <div style="flex: 0;padding: 5px 30px 5px 30px;width: 100%;color:#aaaaaa;">项目</div>
-                <div>认证信息</div>
-                <div>第三方</div>
-                <div>第三方</div>
-                <div class="active">团队信息</div>
-
-                <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">工作项</div>
-                <div>认证信息</div>
-                <div>第三方</div>
-              </div>
+              <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
               <div style="background-color: #ffffff;flex: 1 1 auto;padding: 20px;height: 100%;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);">
-                asdfsaf
+                <component v-bind:is="currentTabComponent"></component>
               </div>
             </div>
           </div>
@@ -34,28 +22,55 @@
 <script>
 import Header from '../../components/header';
 import Menu from '../../components/menu';
+import Control from './control';
+import ProjectManager from "@/views/component/project/manager";
+import ProjectField from "@/views/component/project/field";
+import ProjectStatus from "@/views/component/project/status";
 
 export default {
   data: function () {
     return {
+      currentTabComponent: ProjectManager,
+      tagIndex: 1
     };
   },
   components: {
     Header,
-    Menu
+    Menu,
+    Control,
+    ProjectManager,
+    ProjectField,
+    ProjectStatus
   },
   created: function () {
+    let self = this;
+    let id = self.$route.params.com;
+    self.tag_switch(id);
+  },
+  watch: {
+    '$route' () {
+      let id = this.$route.params.com;
+      this.tag_switch(id);
+    }
   },
   methods: {
-    add: function () {
+    tag_switch: function (com) {
+      let self = this;
+      switch (com) {
+        case "manager":
+          self.tagIndex = 1;
+          self.currentTabComponent = ProjectManager;
+          break;
+        case "field":
+          self.tagIndex = 2;
+          self.currentTabComponent = ProjectField;
+          break;
+        case "status":
+          self.tagIndex = 3;
+          self.currentTabComponent = ProjectStatus;
+          break;
+      }
     }
   }
 };
 </script>
-
-<style scoped>
-#project-setting-menu { flex: 0 0 auto;width: 188px;height: 100%;flex-direction: column; }
-#project-setting-menu > div { flex: 0;padding: 5px 30px 5px 40px;width: 100%;text-align: left; }
-#project-setting-menu > div.active { flex: 0;width: 100%;background-color: #e8e8e8;color: #338fe5; }
-#project-setting-menu > div.active a { color: #338fe5; }
-</style>
