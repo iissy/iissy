@@ -380,3 +380,5 @@ a.logo {
     -webkit-flex: 0 0 auto;
     flex: 0 0 auto;
 }
+
+.app-main-center { margin: 20px;-webkit-flex: 1 0 auto;flex: 1 0 auto;max-width: 100%;box-sizing: border-box;width: 1000px;background-color: #ffffff;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2); }

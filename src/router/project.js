@@ -1,9 +1,10 @@
 import ProjectSetting from "@/views/project/setting";
 import Project from '../views/project/list';
+import AddProject from '../views/project/add';
 
 let project = [
     {
-        path: '/main/team/:team/project/:com',
+        path: '/main/setting/team/:team/project/:com',
         meta: { title: "项目管理" },
         name: 'ProjectSetting',
         component: ProjectSetting
@@ -12,6 +13,11 @@ let project = [
         meta: { title: "项目管理" },
         name: 'Project',
         component: Project
+    }, {
+        path: '/main/team/:team/project/add',
+        meta: { title: "新建项目" },
+        name: 'AddProject',
+        component: AddProject
     }
 ]
 

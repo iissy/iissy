@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div style="flex: 0 0 0 auto;" class="button">{{title}}</div>
+    <div class="button">{{title}}</div>
   </div>
 </template>
 

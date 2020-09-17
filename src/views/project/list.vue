@@ -7,138 +7,55 @@
           <Header title="项目管理"></Header>
           <div class="app-main-container">
             <div class="project-container">
-
               <div class="project-container-inner">
-              <div id="project-top-row">
-                <div style="flex: 0 1 auto;">
-                  <div class="tab-title">
-                    <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
-                  </div>
-                </div>
-                <div style="flex: 1;">
-                  <div style="text-align: right;padding-right: 20px;">项目配置中心</div>
-                </div>
-              </div>
-              <div id="project-new-row">
-                <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-                  <AddProjectButton title="新增项目" @submit="add">新增项目</AddProjectButton>
-                </div>
-                <div style="flex: 1;flex-direction: row;">
-                  <div style="width: 100%;text-align: right;flex: 1;flex-direction: row;">
-                    <div style="flex: 1;display: inline-block;padding-right: 20px;">asdf</div>
-                    <div style="flex: 1;display: inline-block;padding-right: 20px;">asdf</div>
-                  </div>
-                </div>
-              </div>
-              <div id="project-main">
-                <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;">
-                  <div class="table">
-                    <div class="table-row-header">
-                      <div class="th big">项目名称</div>
-                      <div class="th">项目状态</div>
-                      <div class="th">项目负责人</div>
-                      <div class="th">计划开始时间</div>
-                      <div class="th">计划完成时间</div>
-                      <div class="th">工作项目完成度</div>
-                      <div class="th">工作项数量</div>
-                      <div class="th">进行中工作项</div>
+                <div id="project-top-row">
+                  <div style="flex: 0 1 auto;">
+                    <div class="tab-title">
+                      <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
                     </div>
+                  </div>
+                  <div style="flex: 1;">
+                    <div style="text-align: right;padding-right: 20px;">项目配置中心</div>
+                  </div>
+                </div>
+                <div id="project-new-row">
+                  <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
+                    <AddProjectButton title="新增项目" @submit="add">新增项目</AddProjectButton>
+                  </div>
+                  <div style="flex: 1;flex-direction: row;">
+                    <div style="width: 100%;text-align: right;flex: 1;flex-direction: row;">
+                      <div style="flex: 1;display: inline-block;padding-right: 20px;">asdf</div>
+                      <div style="flex: 1;display: inline-block;padding-right: 20px;">asdf</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="project-main">
+                  <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;">
+                    <div class="table">
+                      <div class="table-row-header">
+                        <div class="th big">项目名称</div>
+                        <div class="th">项目状态</div>
+                        <div class="th">项目负责人</div>
+                        <div class="th">计划开始时间</div>
+                        <div class="th">计划完成时间</div>
+                        <div class="th">工作项目完成度</div>
+                        <div class="th">工作项数量</div>
+                        <div class="th">进行中工作项</div>
+                      </div>
 
-                    <div class="table-row">
-                      <div class="td big">项目名称</div>
-                      <div class="td">项目状态</div>
-                      <div class="td">项目负责人</div>
-                      <div class="td">计划开始时间</div>
-                      <div class="td">计划完成时间</div>
-                      <div class="td">工作项目完成度</div>
-                      <div class="td">工作项数量</div>
-                      <div class="td">进行中工作项</div>
+                      <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
+                        <div class="td big">{{ item.name }}</div>
+                        <div class="td">{{ item.status_uuid }}</div>
+                        <div class="td">{{ item.assign }}</div>
+                        <div class="td">{{ item.plan_start_time }}</div>
+                        <div class="td">{{ item.plan_start_time }}</div>
+                        <div class="td">80%</div>
+                        <div class="td">{{ item.status }}</div>
+                        <div class="td">{{ item.status }}</div>
+                      </div>
                     </div>
-                    <div class="table-row">
-                      <div class="td big">项目名称</div>
-                      <div class="td">项目状态</div>
-                      <div class="td">项目负责人</div>
-                      <div class="td">计划开始时间</div>
-                      <div class="td">计划完成时间</div>
-                      <div class="td">工作项目完成度</div>
-                      <div class="td">工作项数量</div>
-                      <div class="td">进行中工作项</div>
-                    </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div><div class="table-row">
-                    <div class="td big">项目名称</div>
-                    <div class="td">项目状态</div>
-                    <div class="td">项目负责人</div>
-                    <div class="td">计划开始时间</div>
-                    <div class="td">计划完成时间</div>
-                    <div class="td">工作项目完成度</div>
-                    <div class="td">工作项数量</div>
-                    <div class="td">进行中工作项</div>
-                  </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -152,12 +69,15 @@
 import Header from '../component/header';
 import Menu from '../component/menu';
 import AddProjectButton from '../component/button';
+import router from '../../router';
+import http from "@/util/http";
 
 export default {
   data: function () {
     return {
       cur: 0,
-      tabTitle: ['进行中', '未开始', '已完成', '全部项目']
+      tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
+      items: []
     };
   },
   components: {
@@ -166,10 +86,21 @@ export default {
     AddProjectButton
   },
   created: function () {
+    let self = this;
+    self.project_list();
   },
   methods: {
     add: function () {
-      alert("asf")
+      let team = "HacWichD";
+      console.log(team)
+      router.push({ name: 'AddProject', params: { team: team } });
+    },
+    project_list: function() {
+      let self = this;
+      let url = '/api/team/Sxv5vAgD/project/list';
+      http.post(url).then(function (response) {
+        self.items = response.data;
+      });
     }
   }
 };

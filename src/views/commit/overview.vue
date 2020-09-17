@@ -6,11 +6,11 @@
         <Header title="代码提交"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
-            <div style="flex: 0;display: flex;flex-direction: row;">
+            <div style="flex: 0;display: flex;flex-direction: row;padding: 10px 20px 0 20px;">
               <div style="flex: 1;">控制区</div>
               <div style="flex:0 0 auto;width: 100px;text-align: right;">团队配置</div>
             </div>
-            <div>
+            <div style="padding: 0 20px 0 20px;">
               <bar v-if="loaded" :chartData="chartData" :options="options" :height="canvasHeight"/>
             </div>
           </div>
