@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import Header from '../../components/header';
-import Menu from '../../components/menu';
-import Control from './control';
+import Header from '../component/header';
+import Menu from '../component/menu';
+import Control from '../component/project/control';
 import ProjectManager from "@/views/component/project/manager";
 import ProjectField from "@/views/component/project/field";
 import ProjectStatus from "@/views/component/project/status";

@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import Header from '../../components/header';
-import Menu from '../../components/menu';
+import Header from '../component/header';
+import Menu from '../component/menu';
 import http from '../../util/http';
 import { formatDate } from '../../util/date.js';
 

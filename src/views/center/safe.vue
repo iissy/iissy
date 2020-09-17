@@ -70,9 +70,9 @@
 </template>
 
 <script>
-import Header from '../../components/header';
-import Menu from '../../components/menu';
-import Personal from '../../components/personal';
+import Header from '../component/header';
+import Menu from '../component/menu';
+import Personal from '../component/personal';
 
 export default {
   data: function () {

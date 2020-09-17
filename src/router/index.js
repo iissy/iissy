@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import Master from '../views/master';
 import Help from '../views/help';
 import Main from '../views/main';
-import Project from '../views/project/list';
+
 import Doc from '../views/doc/list';
 import DocSetting from '../views/doc/setting';
 import Robot from '../views/ding/robot';
@@ -42,11 +42,6 @@ const index = [
         meta: { title: "帮助文档中心" },
         name: 'Help',
         component: Help
-    }, {
-        path: '/main/project',
-        meta: { title: "项目管理" },
-        name: 'Project',
-        component: Project
     }, {
         path: '/main/team/uh8rjki3/doc',
         meta: { title: "项目文档" },

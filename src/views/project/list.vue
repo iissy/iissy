@@ -19,8 +19,8 @@ asdfasdf
 </template>
 
 <script>
-import Header from '../../components/header';
-import Menu from '../../components/menu';
+import Header from '../component/header';
+import Menu from '../component/menu';
 
 export default {
   data: function () {
