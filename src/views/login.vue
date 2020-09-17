@@ -145,32 +145,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/*h3 {*/
-/*  margin: 40px 0 0;*/
-/*}*/
-/*ul {*/
-/*  list-style-type: none;*/
-/*  padding: 0;*/
-/*}*/
-/*li {*/
-/*  display: inline-block;*/
-/*  margin: 0 10px;*/
-/*}*/
-/*a {*/
-/*  color: #42b983;*/
-/*}*/
-/*ul li {*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  list-style: none;*/
-/*}*/
 #change {
-  /*height: 100%;*/
   display: flex;
   flex-direction: column;
   -webkit-flex: 1 1 auto;
   flex: 1 1 auto;
-  /*display: -webkit-flex;*/
   -webkit-flex-direction: column;
   padding: 0 10px 10px 10px;
 }
@@ -187,18 +166,14 @@ export default {
 
 .tab-tilte .active{
   border-bottom: 2px solid #1890ff;
-  /*background-color: #09f;*/
   color: #1890ff;
 }
 .tab-content {
-  /*background-color: #ffffff;*/
-  /*height: 100%;*/
   flex: 1 0 auto;
   flex-direction: column;
   display: flex;
 }
 .tab-content div{
-  /*float: left;*/
   line-height: 30px;
   text-align: center;
 }

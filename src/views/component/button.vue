@@ -1,0 +1,31 @@
+<template>
+  <div style="display: flex;flex-direction: row;background-color: #36c6d3;height: 100%;padding: 5px 5px 5px 10px;cursor: pointer;" v-on:click="onsubmit">
+    <div style="flex:0 0 auto;flex-direction: column;align-items: center;height: 100%;display: flex;">
+      <div style="flex: 1;align-items: center;vertical-align: center;display: flex;">
+        <div style="flex: 0 0 auto;display: flex;">
+          <svg t="1600309036377" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4086" width="16" height="16"><path d="M929.0101333333333 574.9621333333333h-354.4458666666667v354.5024c0 34.54613333333333-28.018133333333328 62.536533333333324-62.56533333333334 62.536533333333324-34.54613333333333 0-62.56426666666667-27.990399999999998-62.56426666666667-62.536533333333324v-354.5024h-354.44800000000004c-34.574933333333334 0-62.56426666666667-27.990399999999998-62.56426666666667-62.536533333333324 0-34.53333333333333 27.99253333333333-62.536533333333324 62.56426666666667-62.536533333333324h354.4458666666667v-354.5024c0-34.53333333333333 28.018133333333328-62.536533333333324 62.56426666666667-62.536533333333324 34.5472 0 62.56533333333334 28.004266666666666 62.56533333333334 62.536533333333324v354.50346666666667h354.4458666666667c34.574933333333334 0 62.56533333333334 28.00213333333333 62.56533333333334 62.534400000000005-0.0010666666666666667 34.54613333333333-27.990399999999998 62.534400000000005-62.56533333333334 62.534400000000005z" p-id="4087" fill="#ffffff"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 0 0 0 auto;" class="button">{{title}}</div>
+  </div>
+</template>
+
+<script>
+export default {
+  data: function () {
+    return {
+    };
+  },
+  props: ['title'],
+  methods: {
+    onsubmit: function () {
+      this.$emit('submit');
+    }
+  }
+};
+</script>
+
+<style scoped>
+.button { color:#ffffff;padding:0 10px 0 5px;font-size:14px;border-radius:10px; }
+</style>
