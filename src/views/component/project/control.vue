@@ -3,9 +3,9 @@
     <div style="flex: 0;padding: 5px 0 5px 30px;width: 100%;font-size: 18px;margin-bottom: 20px;">配置中心</div>
 
     <div style="flex: 0;padding: 5px 30px 5px 30px;width: 100%;color:#aaaaaa;">项目</div>
-    <div :class="{active: (tagIndex == 1)}"><router-link to="/main/team/uh8rjki3/project/manager">项目管理</router-link></div>
-    <div :class="{active: (tagIndex == 2)}"><router-link to="/main/team/uh8rjki3/project/field">项目属性</router-link></div>
-    <div :class="{active: (tagIndex == 3)}"><router-link to="/main/team/uh8rjki3/project/status">项目状态</router-link></div>
+    <div :class="{active: (tagIndex == 1)}"><router-link to="/main/setting/team/uh8rjki3/project/manager">项目管理</router-link></div>
+    <div :class="{active: (tagIndex == 2)}"><router-link to="/main/setting/team/uh8rjki3/project/field">项目属性</router-link></div>
+    <div :class="{active: (tagIndex == 3)}"><router-link to="/main/setting/team/uh8rjki3/project/status">项目状态</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">工作项</div>
     <div :class="{active: (currentIndex == 11)}"><router-link to="/main/team/uh8rjki3/issue_type">工作项类型</router-link></div>

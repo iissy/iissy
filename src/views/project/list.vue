@@ -122,7 +122,7 @@ export default {
 .table .th { flex: 1 1 auto;width: 300px;padding: 5px 0 5px 20px;font-size: 12px; }
 .table .other { border-left: 1px solid #e8e8e8; }
 .table .td { flex: 1 1 auto;width: 300px;padding: 5px 0 5px 20px; }
-.table .big { width: 400px; }
+.table .big { width: 555px; }
 .table-row:nth-child(odd){ background:#f8f8f8; }
 .table-row:nth-child(even){ background:#ffffff; }
 </style>
