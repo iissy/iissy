@@ -8,8 +8,8 @@
       </div>
       <div style="flex: 0;">
         <div class="wrapper" ref="mbMenu">
-          <div class='nav-item'>
-            <div class='active dropdownBtn' @click='dropdown'>我的账号</div>
+          <div class='nav-item' @click='dropdown'>
+            <div class='active dropdownBtn'>我的账号</div>
           </div>
         </div>
         <div>
@@ -26,7 +26,8 @@
 <script>
 export default {
   data() {
-    return { dropdownActive: false,
+    return {
+      dropdownActive: false,
       dropParams: ['个人中心', '退出登录']
     }
   },
