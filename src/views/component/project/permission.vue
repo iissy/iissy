@@ -34,18 +34,20 @@
               <div class="virtualize-select-arrow"></div>
             </div>
             <div class="dropdown-role-list" v-show='dropdownActive'>
-              <div style="overflow: auto;">
-                <div v-show='dropdownActive' style="display: flex;flex-direction: column;">
-                  <div class="perm-item"><router-link to="/main/center/account">个人中心</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
-                  <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+              <div style="flex: 1;box-shadow: 0 1px 6px rgba(0,0,0,0.2);width: 100%;background-color: #fff;">
+                <div style="overflow: auto;height: 200px;width: 100%;">
+                  <div v-show='dropdownActive' style="display: flex;flex-direction: column;">
+                    <div class="perm-item"><router-link to="/main/center/account">个人中心</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                    <div class="perm-item"><router-link to="/main/logout">退出登录</router-link></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,80 +119,17 @@ export default {
 .table .th { padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { width: 60px;flex: 0 0 auto; }
+
 .virtualize-select { display: -webkit-flex;display: flex;height: 30px;outline: none;border: 1px solid #d9d9d9;-webkit-align-items: center;align-items: center;text-overflow: ellipsis;white-space: nowrap;width: 280px;position: relative; }
-/*.virtualize-select .virtualize-select-value {*/
-/*  position: relative;*/
-/*  overflow: hidden;*/
-/*  text-overflow: ellipsis;*/
-/*  white-space: nowrap;*/
-/*  -webkit-flex: 1 1 auto;*/
-/*  flex: 1 1 auto;*/
-/*  height: 100%;*/
-/*}*/
-.virtualize-select .text-input {
-  border: 0px !important;
-  z-index: 5;
-  height: 26px;
-  overflow: hidden;
-  position: absolute;
-  background: transparent;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-}
-/*.ui-input.ui-input-focus, .ui-input:focus {*/
-/*  outline: none;*/
-/*  border-color: #338fe5;*/
-/*}*/
-.text-input {
-  border-radius: 3px;
-  box-sizing: border-box;
-  display: inline-block;
-  height: 30px;
-  line-height: 28px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-.ui-input {
-  display: inline-block;
-  border-radius: 3px;
-  border: 1px solid rgba(134,147,160,0.5);
-  transition: border-color .2s;
-}
-.virtualize-select .text-input input {
-  padding-left: 7px;
-  background: transparent;
-}
-.text-input>input {
-  width: 100%;
-  height: 100%;
-  line-height: normal;
-  padding-left: 10px;
-  box-sizing: border-box;
-  border: 0 none;
-  outline: 0 none;
-}
-.virtualize-select .virtualize-select-placeholder {
-  height: 100%;
-  -webkit-flex: 1 1 auto;
-  flex: 1 1 auto;
-  -webkit-align-items: center;
-  align-items: center;
-  display: -webkit-flex;
-  display: flex;
-  padding-left: 10px;
-  font-size: 14px;
-  color: #909090;
-  color: #909090;
-  font-family: PingFang SC,"\5FAE\8F6F\96C5\9ED1",Arial;
-  opacity: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.dropdown-role-list { width: 280px;height: 200px;display: flex;flex-direction: column;position: absolute;background-color: #fff;box-shadow: 0 1px 6px rgba(0,0,0,0.2);overflow: hidden; }
+.virtualize-select .text-input { border: 0px !important;z-index: 5;height: 26px;overflow: hidden;position: absolute;background: transparent;margin: auto;top: 0;bottom: 0; }
+/*.ui-input.ui-input-focus, .ui-input:focus { outline: none; border-color: #338fe5; }*/
+.text-input { display: inline-block;height: 30px;line-height: 28px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;vertical-align: middle; }
+.ui-input { display: inline-block;border-radius: 3px;border: 1px solid rgba(134,147,160,0.5);transition: border-color .2s; }
+.virtualize-select .text-input input { padding-left: 7px;background: transparent; }
+.text-input>input { width: 100%;height: 100%;line-height: normal;padding-left: 10px;box-sizing: border-box;border: 0 none;outline: 0 none; }
+
+.virtualize-select .virtualize-select-placeholder { padding-left: 10px;color: #909090; }
+.dropdown-role-list { width: 280px;height: 0;display: flex;flex-direction: column;position: relative;align-items: center; }
 .perm-item { flex: 1;padding: 5px 5px 5px 10px; }
 .perm-item:hover { background-color: #f8f8f8; }
 </style>
