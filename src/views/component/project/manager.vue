@@ -78,27 +78,4 @@ export default {
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { flex: 0 0 auto; }
-
-.text-input {
-  border-radius: 3px;
-  box-sizing: border-box;
-  display: inline-block;
-  height: 30px;
-  line-height: 28px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-.ui-icon-input {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  height: 30px;
-  width: 300px;
-  border-radius: 3px;
-  border: 1px solid rgba(134,147,160,0.5);
-  transition: border-color .2s;
-}
 </style>
