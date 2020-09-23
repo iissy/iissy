@@ -24,7 +24,7 @@
       <input type="text" v-model="name" name="name" class="form-control" style="padding-left: 40px;height: 100%;padding-top: 5px;padding-bottom: 5px;" placeholder="项目名字">
     </div>
     <div id="project-main">
-      <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;">
+      <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
             <div class="th">属性名称</div>
@@ -33,13 +33,21 @@
             <div class="th last">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
-            <div class="td">{{ item.name }}</div>
-            <div class="td">{{ item.name }}</div>
-            <div class="td">{{ item.name }}</div>
-            <div class="td last">
-              <router-link :to="{name:'ProjectPermissionSetting', params: { team: item.team_uuid, project: item.uuid, title: item.name }}">
-                <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
-              </router-link>
+            <div class="td flex-row">
+              <div style="flex: 0 0 auto;">{{ item.name }}</div>
+              <div style="flex: 0 1 auto;border-radius: 30%!important;color: #cecece;margin-left: 5px;padding: 0 5px 0 5px;border: solid 1px #cecece;font-size: 12px;line-height: 18px;" v-if="item.built_in">系统</div>
+            </div>
+            <div class="td">{{ item.field_type }}</div>
+            <div class="td">所有项目</div>
+            <div class="td last" style="display: flex;align-items: center;">
+              <div style="width: 30px;height: 2px;" v-if="item.built_in">
+                <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
+              </div>
+              <div v-else>
+                <router-link :to="{name:'ProjectPermissionSetting', params: { team: item.team_uuid, project: item.uuid, title: item.name }}">
+                  <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -64,7 +72,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/project/list';
+      let url = '/api/team/Sxv5vAgD/project/field';
       http.post(url).then(function (response) {
         self.items = response.data;
       });
