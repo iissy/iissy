@@ -72,7 +72,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/project/field';
+      let url = '/api/team/Sxv5vAgD/setting/project/field';
       http.post(url).then(function (response) {
         self.items = response.data;
       });

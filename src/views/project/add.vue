@@ -57,7 +57,7 @@ export default {
   methods: {
     add: function () {
       let self = this;
-      http.post('/api/team/Sxv5vAgD/project/add', {
+      http.post('/api/team/Sxv5vAgD/add/project', {
         name: self.name
       }).then(function (response) {
         if (response.data.status == true) {

@@ -97,7 +97,7 @@ export default {
     },
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/project/list';
+      let url = '/api/team/Sxv5vAgD/list/project';
       http.post(url).then(function (response) {
         self.items = response.data;
       });

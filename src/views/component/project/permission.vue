@@ -102,7 +102,7 @@ export default {
       self.ProjectName = self.$route.params.title
       if (!self.ProjectName) {
         let id = this.$route.params.project;
-        let url = '/api/team/Sxv5vAgD/project/get/' + id;
+        let url = '/api/team/Sxv5vAgD/setting/project/' + id + '/get';
         http.post(url).then(function (response) {
           self.ProjectName = response.data.name;
         });

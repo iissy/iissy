@@ -60,7 +60,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/project/manager';
+      let url = '/api/team/Sxv5vAgD/setting/project/manager';
       http.post(url).then(function (response) {
         self.items = response.data;
       });
