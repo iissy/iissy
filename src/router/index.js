@@ -20,7 +20,7 @@ import Logout from '../views/center/logout';
 import Hello from '../views/help/hello';
 
 import ProjectComponent from './project.js';
-// import IssueTypeComponent from './issue_type.js';
+import IssueTypeComponent from './issue_type.js';
 
 Vue.use(Router);
 
@@ -97,7 +97,7 @@ const index = [
 ];
 
 let routes = index.concat(ProjectComponent)
-// routes = routes.concat(IssueTypeComponent)
+routes = routes.concat(IssueTypeComponent)
 
 export default new Router({
     mode: 'history',

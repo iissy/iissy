@@ -39,7 +39,7 @@
                 <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">系统</div>
               </div>
             </div>
-            <div class="td">
+            <div class="td" style="display: flex;align-items: center;">
               <div>
                 <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
                   <div class="status" :class="item.uuid">{{ item.name }}</div>

@@ -27,14 +27,29 @@
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;">
         <div class="table">
           <div class="table-row-header">
-            <div class="th">项目名称</div>
+            <div class="th">工作项类型</div>
+            <div class="th">类型</div>
+            <div class="th">使用到的项目</div>
             <div class="th last">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
-            <div class="td">{{ item.name }}</div>
+            <div class="td flex-row">
+              <div style="flex: 0 0 auto;">{{ item.name }}</div>
+              <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
+                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
+              </div>
+            </div>
+            <div class="td">
+              <div v-if="item.detail_type == 0">自定义类型</div>
+              <div v-else>标准类型</div>
+            </div>
+            <div class="td">3个项目</div>
             <div class="td last">
-              <router-link :to="{name:'ProjectPermissionSetting', params: { team: item.team_uuid, project: item.uuid, title: item.name }}">
-                <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
+              <router-link v-if="item.built_in != 1" :to="{name:'IssueTypeSetting', params: { team: item.team_uuid, issue_type: item.uuid, title: item.name, path: 'rename' }}">
+                重命名
+              </router-link>
+              <router-link :to="{name:'IssueTypeSetting', params: { team: item.team_uuid, issue_type: item.uuid, title: item.name, path: 'setting' }}">
+                配置
               </router-link>
             </div>
           </div>
@@ -61,7 +76,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/project/manager';
+      let url = '/api/team/Sxv5vAgD/setting/issue_type/manager';
       http.post(url).then(function (response) {
         self.items = response.data;
       });
@@ -78,5 +93,6 @@ export default {
 .table-row:hover { background-color: #f8f8f8; }
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
-.table .last { flex: 0 0 auto; }
+.table .last { flex: 0 0 auto;width: 150px; }
+.table .last a { color: #337ab7;padding-right: 10px; }
 </style>
