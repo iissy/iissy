@@ -1,11 +1,11 @@
-import ProjectSetting from "@/views/project/setting";
+import ProjectSetting from "@/views/setting";
 import Project from '../views/project/list';
 import AddProject from '../views/project/add';
 import ProjectPermissionSetting from '../views/project/permission';
 
 let project = [
     {
-        path: '/main/setting/team/:team/project/:com',
+        path: '/main/setting/team/:team/:type/:com',
         meta: { title: "项目管理" },
         name: 'ProjectSetting',
         component: ProjectSetting

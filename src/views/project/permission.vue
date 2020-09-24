@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import Header from '../component/header';
-import Menu from '../component/menu';
-import Control from '../component/project/control';
+import Header from '../component/common/form/header';
+import Menu from '../component/common/menu';
+import Control from '../component/setting/control';
 import ProjectPermission from "@/views/component/project/permission";
 
 export default {

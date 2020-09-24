@@ -8,13 +8,13 @@
     <div :class="{active: (tagIndex == 3)}"><router-link to="/main/setting/team/uh8rjki3/project/status">项目状态</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">工作项</div>
-    <div :class="{active: (currentIndex == 11)}"><router-link to="/main/team/uh8rjki3/issue_type">工作项类型</router-link></div>
-    <div :class="{active: (currentIndex == 12)}"><router-link to="/main/team/uh8rjki3/issue_type/task_feild">工作项属性</router-link></div>
-    <div :class="{active: (currentIndex == 13)}"><router-link to="/main/team/uh8rjki3/task_status/">工作项状态</router-link></div>
-    <div :class="{active: (currentIndex == 14)}"><router-link to="/main/team/uh8rjki3/priority_config">优先级</router-link></div>
+    <div :class="{active: (tagIndex == 11)}"><router-link to="/main/setting/team/uh8rjki3/issue_type/manager">工作项类型</router-link></div>
+    <div :class="{active: (tagIndex == 12)}"><router-link to="/main/setting/team/uh8rjki3/issue_type/field">工作项属性</router-link></div>
+    <div :class="{active: (tagIndex == 13)}"><router-link to="/main/setting/team/uh8rjki3/issue_type/status">工作项状态</router-link></div>
+    <div :class="{active: (tagIndex == 14)}"><router-link to="/main/setting/team/uh8rjki3/issue_type/priority">优先级</router-link></div>
 
-    <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">角色</div>
-    <div :class="{active: (currentIndex == 21)}"><router-link to="/main/team/uh8rjki3/role_setting">角色管理</router-link></div>
+<!--    <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">角色</div>-->
+<!--    <div :class="{active: (currentIndex == 21)}"><router-link to="/main/team/uh8rjki3/role_setting">角色管理</router-link></div>-->
   </div>
 </template>
 
@@ -22,15 +22,14 @@
 export default {
   data: function () {
     return {
-      currentIndex: parseInt(this.tagIndex)
     };
   },
   props: ['tagIndex'],
   methods: {
-    tag_switch: function (com) {
-      console.log(com)
-      this.$emit('tag_switch', com);
-    }
+    // tag_switch: function (com) {
+    //   console.log(com)
+    //   this.$emit('tag_switch', com);
+    // }
   }
 };
 </script>

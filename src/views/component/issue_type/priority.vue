@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div style="font-size: 18px;margin-bottom: 20px;">项目状态</div>
+    <div style="font-size: 18px;margin-bottom: 20px;">优先级</div>
     <div style="margin-top: 20px;" class="flex-row">
       <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 1px solid #e8e8e8;">
         <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
           <div style="flex: 0 0 auto;">
-            项目状态用于标示项目所处状态，不同状态类型下可以有多种状态，当前为系统项目状态列表，不同项目可以共用同一个状态。
+            通过不同的组合设定，个性化您的优先级显示方式。
           </div>
         </div>
       </div>

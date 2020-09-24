@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Master from '../views/master';
-import Help from '../views/help';
+import Master from '../views/help/master';
+import Help from '../views/help/help';
 import Main from '../views/main';
 
 import Doc from '../views/doc/list';
@@ -15,11 +15,12 @@ import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import CenterRobot from '../views/center/robot';
 
-import Logout from '../views/logout';
+import Logout from '../views/center/logout';
 
-import Hello from '../views/hello';
+import Hello from '../views/help/hello';
 
 import ProjectComponent from './project.js';
+// import IssueTypeComponent from './issue_type.js';
 
 Vue.use(Router);
 
@@ -96,6 +97,7 @@ const index = [
 ];
 
 let routes = index.concat(ProjectComponent)
+// routes = routes.concat(IssueTypeComponent)
 
 export default new Router({
     mode: 'history',

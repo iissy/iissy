@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div style="font-size: 18px;margin-bottom: 20px;">项目状态</div>
+    <div style="font-size: 18px;margin-bottom: 20px;">工作项属性</div>
     <div style="margin-top: 20px;" class="flex-row">
       <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 1px solid #e8e8e8;">
         <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
           <div style="flex: 0 0 auto;">
-            项目状态用于标示项目所处状态，不同状态类型下可以有多种状态，当前为系统项目状态列表，不同项目可以共用同一个状态。
+            工作项属性用于配置工作项需要的显示字段，可以用多种属性类型来进行配置，不同项目可以共用同一个属性。
           </div>
         </div>
       </div>
@@ -21,14 +21,14 @@
           <svg t="1600686491561" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11218" width="16" height="16"><path d="M240.776 240.872A302.952 302.952 0 0 0 157.328 512c18.048-81.912 60.48-161.952 126.576-228.096C350.048 217.736 430.088 175.328 512 157.28c-95.28-17.952-197.52 9.864-271.224 83.592z" fill="#969696" p-id="11219"></path><path d="M959.6 802.736l-114.096-114.096a110.64 110.64 0 0 0-87-31.992c107.304-155.208 91.8-369.744-46.392-507.96-155.568-155.616-407.856-155.616-563.472 0-155.568 155.616-155.568 407.928 0 563.544 138.192 138.216 352.56 153.6 507.864 46.296-2.4 31.2 8.304 63.312 31.992 87l114.096 114.12c43.2 43.104 113.784 43.104 156.888 0 43.32-43.104 43.32-113.712 0.12-156.912zM665.84 665.84c-130.008 130.008-340.68 130.008-470.64 0-130.008-130.008-130.008-340.728 0-470.736 129.96-130.008 340.632-130.008 470.64 0 129.984 129.912 129.984 340.728 0 470.736z" fill="#969696" p-id="11220"></path></svg>
         </div>
       </div>
-      <input type="text" v-model="name" name="name" class="form-control" style="padding-left: 40px;height: 100%;padding-top: 5px;padding-bottom: 5px;" placeholder="状态名字">
+      <input type="text" v-model="name" name="name" class="form-control" style="padding-left: 40px;height: 100%;padding-top: 5px;padding-bottom: 5px;" placeholder="属性名字">
     </div>
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
-            <div class="th">状态名称</div>
-            <div class="th">状态类型</div>
+            <div class="th">属性名称</div>
+            <div class="th">属性类型</div>
             <div class="th">使用到的项目</div>
             <div class="th last">操作</div>
           </div>
@@ -36,20 +36,19 @@
             <div class="td flex-row">
               <div style="flex: 0 0 auto;">{{ item.name }}</div>
               <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">系统</div>
+                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
               </div>
             </div>
-            <div class="td">
-              <div>
-                <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                  <div class="status" :class="item.uuid">{{ item.name }}</div>
-                </div>
-              </div>
-            </div>
+            <div class="td">{{ item.field_type }}</div>
             <div class="td">所有项目</div>
             <div class="td last" style="display: flex;align-items: center;">
-              <div style="width: 30px;height: 2px;">
+              <div style="width: 30px;height: 2px;" v-if="item.built_in">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
+              </div>
+              <div v-else>
+                <router-link :to="{name:'ProjectPermissionSetting', params: { team: item.team_uuid, project: item.uuid, title: item.name }}">
+                  <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
+                </router-link>
               </div>
             </div>
           </div>
@@ -76,7 +75,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/project/status';
+      let url = '/api/team/Sxv5vAgD/setting/project/field';
       http.post(url).then(function (response) {
         self.items = response.data;
       });
@@ -94,8 +93,4 @@ export default {
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { flex: 0 0 auto; }
-.table .td .status { border-radius: 20px!important;padding: 0 6px 0 6px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
-.todo { color: #f0a100;border: solid 1px #f0a100; }
-.in_progress { color: #338fe5;border: solid 1px #338fe5; }
-.done { color: #24b47e;border: solid 1px #24b47e; }
 </style>

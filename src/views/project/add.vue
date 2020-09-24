@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import Header from '../component/header';
-import Menu from '../component/menu';
+import Header from '../component/common/form/header';
+import Menu from '../component/common/menu';
 import AddProjectButton from '../component/button/common';
 import http from "@/util/http";
 import router from '../../router';

@@ -50,6 +50,7 @@ import http from "@/util/http";
 export default {
   data: function () {
     return {
+      name: '',
       items: []
     };
   },

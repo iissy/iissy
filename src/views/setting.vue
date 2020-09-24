@@ -20,12 +20,17 @@
 </template>
 
 <script>
-import Header from '../component/header';
-import Menu from '../component/menu';
-import Control from '../component/project/control';
+import Header from './component/common/form/header';
+import Menu from './component/common/menu';
+import Control from './component/setting/control';
 import ProjectManager from "@/views/component/project/manager";
 import ProjectField from "@/views/component/project/field";
 import ProjectStatus from "@/views/component/project/status";
+
+import IssueTypeManager from "@/views/component/issue_type/manager";
+import IssueTypeField from "@/views/component/issue_type/field";
+import IssueTypeStatus from "@/views/component/issue_type/status";
+import IssueTypePriority from "@/views/component/issue_type/priority";
 
 export default {
   data: function () {
@@ -40,34 +45,57 @@ export default {
     Control,
     ProjectManager,
     ProjectField,
-    ProjectStatus
+    ProjectStatus,
+    IssueTypeManager,
+    IssueTypeField,
+    IssueTypeStatus,
+    IssueTypePriority
   },
   created: function () {
     let self = this;
+    let type = self.$route.params.type;
     let id = self.$route.params.com;
-    self.tag_switch(id);
+    self.tag_switch(type + "_" + id);
   },
   watch: {
     '$route' () {
+      let type = this.$route.params.type;
       let id = this.$route.params.com;
-      this.tag_switch(id);
+      this.tag_switch(type + "_" + id);
+      console.log(type + "_" + id);
     }
   },
   methods: {
     tag_switch: function (com) {
       let self = this;
       switch (com) {
-        case "manager":
+        case "project_manager":
           self.tagIndex = 1;
           self.currentTabComponent = ProjectManager;
           break;
-        case "field":
+        case "project_field":
           self.tagIndex = 2;
           self.currentTabComponent = ProjectField;
           break;
-        case "status":
+        case "project_status":
           self.tagIndex = 3;
           self.currentTabComponent = ProjectStatus;
+          break;
+        case "issue_type_manager":
+          self.tagIndex = 11;
+          self.currentTabComponent = IssueTypeManager;
+          break;
+        case "issue_type_field":
+          self.tagIndex = 12;
+          self.currentTabComponent = IssueTypeField;
+          break;
+        case "issue_type_status":
+          self.tagIndex = 13;
+          self.currentTabComponent = IssueTypeStatus;
+          break;
+        case "issue_type_priority":
+          self.tagIndex = 14;
+          self.currentTabComponent = IssueTypePriority;
           break;
       }
     }

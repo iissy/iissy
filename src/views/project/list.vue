@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import Header from '../component/header';
-import Menu from '../component/menu';
-import AddProjectButton from '../component/button';
+import Header from '../component/common/form/header';
+import Menu from '../component/common/menu';
+import AddProjectButton from '../component/common/form/button';
 import router from '../../router';
 import http from "@/util/http";
 
