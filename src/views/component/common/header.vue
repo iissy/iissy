@@ -13,7 +13,7 @@
           <template v-slot:button-content>
             <img src="/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
           </template>
-          <b-dropdown-item cent href="/main/center/account">个人中心</b-dropdown-item>
+          <b-dropdown-item href="/main/center/account">个人中心</b-dropdown-item>
           <b-dropdown-item href="/main/logout">退出登录</b-dropdown-item>
         </b-dropdown>
       </div>

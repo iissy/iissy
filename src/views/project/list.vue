@@ -119,9 +119,9 @@ export default {
 .table { margin-top: 10px;flex: 1;display: flex;flex-direction: column; }
 .table-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f0f0f0;font-weight: bolder; }
 .table-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #e8e8e8; }
-.table .th { flex: 1 1 auto;width: 300px;padding: 5px 0 5px 20px;font-size: 12px; }
+.table .th { flex: 1 1 auto;width: 300px;padding: 10px 0 10px 20px;font-size: 12px; }
 .table .other { border-left: 1px solid #e8e8e8; }
-.table .td { flex: 1 1 auto;width: 300px;padding: 5px 0 5px 20px; }
+.table .td { flex: 1 1 auto;width: 300px;padding: 10px 0 10px 20px; }
 .table .big { width: 555px; }
 .table-row:nth-child(odd){ background:#f8f8f8; }
 .table-row:nth-child(even){ background:#ffffff; }
