@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Header from '../component/common/form/header';
+import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Bar from '../../chart/bar';
 import http from "../../util/http";

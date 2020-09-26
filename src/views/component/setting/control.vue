@@ -38,5 +38,6 @@ export default {
 #project-setting-menu { flex: 0 0 auto;width: 218px;height: 100%;flex-direction: column; }
 #project-setting-menu > div { flex: 0;padding: 5px 30px 5px 40px;width: 100%;text-align: left; }
 #project-setting-menu > div.active { flex: 0;width: 100%;background-color: #e8e8e8;color: #338fe5; }
+#project-setting-menu div a { display: block; }
 #project-setting-menu > div.active a { color: #338fe5; }
 </style>

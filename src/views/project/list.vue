@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Header from '../component/common/form/header';
+import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import AddProjectButton from '../component/common/form/button';
 import router from '../../router';

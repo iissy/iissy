@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Header from '../component/common/form/header';
+import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/control';
 import ProjectManager from "@/views/component/project/manager";

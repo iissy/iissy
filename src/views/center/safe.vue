@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Header from '../component/common/form/header';
+import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Personal from '../component/center/personal';
 
