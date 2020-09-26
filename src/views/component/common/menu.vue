@@ -31,12 +31,12 @@
 </template>
 
 <script>
-    export default {
-        data: function () {
-            return {
-                currentIndex: parseInt(this.tagIndex)
-            };
-        },
-        props: ['tagIndex']
+export default {
+  data: function () {
+    return {
+      currentIndex: parseInt(this.tagIndex)
     };
+  },
+  props: ['tagIndex']
+};
 </script>
