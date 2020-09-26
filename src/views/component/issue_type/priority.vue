@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div style="overflow:hidden;margin: 20px 0 0 0;width: 300px;height: 30px;">
+    <div style="overflow:hidden;margin: 20px 0 0 0;width: 300px;height: 30px;position: relative;">
       <div class="flex-column" style="position: absolute;height: 30px;margin-left: 10px;">
         <div style="flex: 1;display: flex;align-items: center;">
           <svg t="1600686491561" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11218" width="16" height="16"><path d="M240.776 240.872A302.952 302.952 0 0 0 157.328 512c18.048-81.912 60.48-161.952 126.576-228.096C350.048 217.736 430.088 175.328 512 157.28c-95.28-17.952-197.52 9.864-271.224 83.592z" fill="#969696" p-id="11219"></path><path d="M959.6 802.736l-114.096-114.096a110.64 110.64 0 0 0-87-31.992c107.304-155.208 91.8-369.744-46.392-507.96-155.568-155.616-407.856-155.616-563.472 0-155.568 155.616-155.568 407.928 0 563.544 138.192 138.216 352.56 153.6 507.864 46.296-2.4 31.2 8.304 63.312 31.992 87l114.096 114.12c43.2 43.104 113.784 43.104 156.888 0 43.32-43.104 43.32-113.712 0.12-156.912zM665.84 665.84c-130.008 130.008-340.68 130.008-470.64 0-130.008-130.008-130.008-340.728 0-470.736 129.96-130.008 340.632-130.008 470.64 0 129.984 129.912 129.984 340.728 0 470.736z" fill="#969696" p-id="11220"></path></svg>
@@ -27,14 +27,14 @@
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
-            <div class="th">状态名称</div>
-            <div class="th">状态类型</div>
-            <div class="th">使用到的项目</div>
+            <div class="th">优先级名称</div>
+            <div class="th">描述</div>
+            <div class="th">显示样式</div>
             <div class="th last">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td flex-row">
-              <div style="flex: 0 0 auto;">{{ item.name }}</div>
+              <div style="flex: 0 0 auto;">{{ item.value }}</div>
               <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
                 <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">系统</div>
               </div>
@@ -42,11 +42,15 @@
             <div class="td">
               <div>
                 <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                  <div class="status" :class="item.uuid">{{ item.name }}</div>
+                  <div class="status">{{ item.desc }}</div>
                 </div>
               </div>
             </div>
-            <div class="td">所有项目</div>
+            <div class="td">
+              <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
+                <div class="status" :style="'background-color: '+item.background_color+';color:'+item.color+';'">{{ item.value }}</div>
+              </div>
+            </div>
             <div class="td last" style="display: flex;align-items: center;">
               <div style="width: 30px;height: 2px;">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
@@ -76,9 +80,9 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/project/status';
+      let url = '/api/team/Sxv5vAgD/setting/issue_type/priority';
       http.post(url).then(function (response) {
-        self.items = response.data;
+        self.items = response.data.options;
       });
     }
   }
@@ -94,7 +98,7 @@ export default {
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { flex: 0 0 auto; }
-.table .td .status { border-radius: 20px!important;padding: 0 6px 0 6px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
+.table .td .status { border-radius: 4px!important;padding: 0 6px 0 6px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
 .todo { color: #f0a100;border: solid 1px #f0a100; }
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
