@@ -2,7 +2,7 @@
   <div>
     <div style="font-size: 18px;margin-bottom: 20px;">项目管理</div>
     <div style="margin-top: 20px;" class="flex-row">
-      <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 1px solid #e8e8e8;">
+      <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;">
         <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
           <div style="flex: 0 0 auto;">
             项目管理页展示当前所有项目，可对项目进行权限编辑和删除操作。

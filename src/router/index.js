@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Master from '../views/help/master';
-import Help from '../views/help/help';
 import Main from '../views/main';
 
 import Doc from '../views/doc/list';
@@ -17,19 +16,14 @@ import CenterRobot from '../views/center/robot';
 
 import Logout from '../views/center/logout';
 
-import Hello from '../views/help/hello';
-
 import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
+import Helper from './help.js';
 
 Vue.use(Router);
 
 const index = [
     {
-        path: '/main/hello',
-        meta: { title: "爱斯园" },
-        component: Hello
-    }, {
         path: '/',
         meta: { title: "爱斯园 - 你找的人正在找你" },
         component: Master
@@ -38,11 +32,6 @@ const index = [
         meta: { title: "我的工作台" },
         name: 'Main',
         component: Main
-    }, {
-        path: '/main/help',
-        meta: { title: "帮助文档中心" },
-        name: 'Help',
-        component: Help
     }, {
         path: '/main/team/uh8rjki3/doc',
         meta: { title: "项目文档" },
@@ -98,6 +87,7 @@ const index = [
 
 let routes = index.concat(ProjectComponent)
 routes = routes.concat(IssueTypeComponent)
+routes = routes.concat(Helper)
 
 export default new Router({
     mode: 'history',
