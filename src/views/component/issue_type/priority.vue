@@ -35,8 +35,8 @@
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td flex-row">
               <div style="flex: 0 0 auto;">{{ item.value }}</div>
-              <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">系统</div>
+              <div v-if="item.uuid == defaultValue" style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
+                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">默认</div>
               </div>
             </div>
             <div class="td">
@@ -70,7 +70,8 @@ export default {
   data: function () {
     return {
       name: '',
-      items: []
+      items: [],
+      defaultValue: ''
     };
   },
   created: function () {
@@ -83,6 +84,7 @@ export default {
       let url = '/api/team/Sxv5vAgD/setting/issue_type/priority';
       http.post(url).then(function (response) {
         self.items = response.data.options;
+        self.defaultValue = response.data.default_value;
       });
     }
   }

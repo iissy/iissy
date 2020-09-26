@@ -60,7 +60,7 @@ export default {
 <style scoped>
 .app-header .wrapper { display: flex; justify-content: center; width: 100px;border-radius: 20%!important;flex: 0;height: 100%; }
 /*.wrapper>div { flex: 1; text-align: center; }*/
-ul.dropdownWrapper { padding: 5px 0 5px 0; }
+ul.dropdownWrapper { padding: 5px 0 5px 0;margin: 0;list-style-type: none; }
 .dropdownWrapper { border: 1px solid #eeeeee; font-size: 14px;background-color: #ffffff;display: flex;flex-direction: column;}
 .dropdownWrapper li { width: 100%;text-align: center;padding: 5px 0 5px 0; }
 .dropdownWrapper li:hover{ background-color: #eee; }
