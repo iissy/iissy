@@ -1,6 +1,7 @@
 import ProjectSetting from "@/views/setting";
 import Project from '../views/project/list';
 import AddProject from '../views/project/add';
+import Overview from '../views/project/overview';
 import ProjectPermissionSetting from '../views/project/permission';
 
 let project = [
@@ -24,6 +25,11 @@ let project = [
         meta: { title: "新建项目" },
         name: 'AddProject',
         component: AddProject
+    }, {
+        path: '/main/team/:team/project/:project/overview',
+        meta: { title: "项目管理" },
+        name: 'Overview',
+        component: Overview
     }
 ]
 

@@ -10,12 +10,18 @@ html, body {
     box-sizing: border-box;
 }
 
-html, body, div, h3, th, td, p, span, img, a, .table td, .table th, .table thead tr th {
+html, body, div, h3, td, p, span, img, a {
     font-size: 14px;
     font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
+
+.rightMain .table th div{ color: #333333;text-align: left;font-weight: normal; }
+.rightMain .table thead th { border-bottom: 0;background-color: #f8f8f8; }
+.rightMain .table th,.rightMain .table td { padding: 6px 0 6px 10px; }
+.rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #ffffff; }
+.rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #f8f8f8; }
 
 a:link {
     color: #333333;
@@ -208,10 +214,6 @@ a:hover {
     display: block;
     margin: 14px 0 15px 0;
     border-bottom: 1px solid #555555;
-}
-
-.table th {
-    text-align: center;
 }
 
 .hd-button { color:#ffffff;padding:3px 20px 3px 20px;background-color: #36c6d3;font-size:14px;border-radius:10px;border: 1px solid #2bb8c4;float:right; }
