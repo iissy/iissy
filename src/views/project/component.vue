@@ -3,7 +3,7 @@
     <div class="app-row">
       <Menu tagIndex="21"></Menu>
       <div class="rightMain">
-        <Header title="项目配置中心"></Header>
+        <Header :items="items" title="项目"></Header>
         <div class="app-main-container">
           <div class="right-container">
             <div class="right-container-inner">
@@ -25,7 +25,18 @@ import router from '../../router';
 export default {
   data: function () {
     return {
-      name: ''
+      name: '',
+      items: [
+        { name: '项目概况', com: 'u5eu33i1', key: 'task' },
+        { name: '任务', com: 'u8e733i0', key: 'task' },
+        { name: '需求', com: 'u8e734i0', key: 'task' },
+        { name: '缺陷缺陷', com: 'u5eu33i0', key: 'task' },
+        { name: '缺陷', com: 'u8eu33i0', key: 'task' },
+        { name: '缺陷缺陷', com: 'u80u33i0', key: 'task' },
+        { name: '缺陷缺陷', com: 'u88u33i0', key: 'task' },
+        { name: '人员培训', com: 'u5eu33i2', key: 'task' },
+        { name: '测试任务', com: 'u5eu33i3', key: 'task' }
+      ]
     };
   },
   components: {
@@ -33,7 +44,6 @@ export default {
     Menu
   },
   created: function () {
-    // let self = this;
   },
   watch: {
   },

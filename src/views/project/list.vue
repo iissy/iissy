@@ -4,7 +4,7 @@
       <Menu tagIndex="21"></Menu>
       <div class="rightMain">
         <div class="layout-container-column">
-          <Header title="项目管理"></Header>
+          <Header title="项目"></Header>
           <div class="app-main-container">
             <div class="right-container">
               <div class="right-container-inner">
@@ -32,8 +32,8 @@
                 <div id="project-main">
                   <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
                     <b-table :fields="fields" :items="items" bordered striped>
-                      <template v-slot:cell(name)="data">
-                        <router-link to="/main/team/:team/project/:project/overview">{{ data.value }}</router-link>
+                      <template v-slot:cell(nameuuid)="data">
+                        <router-link :to="{ name:'Component', params: { team: 'uh8rjki3', project: data.item.uuid, com: 'u8e733i0' } }">{{ data.item.name }}</router-link>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
@@ -62,9 +62,11 @@ export default {
   data: function () {
     return {
       cur: 0,
+      team: '',
+      project: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
       fields: [
-        { key: 'name', label: '项目名称', formatter: '项目名称' },
+        { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
         { key: 'status_uuid', label: '项目状态', formatter: '项目状态' },
         { key: 'assign', label: '项目负责人', formatter: '项目负责人' },
         { key: 'plan_start_time', label: '计划开始时间', formatter: '计划开始时间' },
@@ -83,6 +85,8 @@ export default {
   },
   created: function () {
     let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
     self.project_list();
   },
   filters: {
@@ -92,13 +96,12 @@ export default {
   },
   methods: {
     add: function () {
-      let team = "HacWichD";
-      console.log(team)
-      router.push({ name: 'AddProject', params: { team: team } });
+      let self = this;
+      router.push({ name: 'AddProject', params: { team: self.team } });
     },
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/list/project';
+      let url = '/api/team/' + self.team + '/list/project';
       http.post(url).then(function (response) {
         self.items = response.data;
       });

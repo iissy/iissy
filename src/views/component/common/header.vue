@@ -1,13 +1,14 @@
 <template>
   <div class="app-header">
     <div class="flex-row" style="width: 100%;">
-      <div style="background-color: #ffffff;height:48px;padding:10px 10px 10px 20px;display: flex;flex-direction: row;width: 100%;flex: 1;">
+      <div style="background-color: #ffffff;height:48px;padding:10px 10px 10px 20px;display: flex;flex-direction: row;flex: 0 0 auto;">
         <div style="flex: 1;flex-direction: column;align-items: center;justify-content: center;">
           <div style="flex:1;vertical-align: middle;align-items: center;height: 100%;display: flex;">
-            <div style="font-size: 18px;font-weight: 500;color:#303030;flex: 0 0 auto;">天才团队 | {{title}}</div>
+            <div style="font-size: 18px;font-weight: 500;color:#303030;flex: 0 0 auto;">{{title}}</div>
           </div>
         </div>
       </div>
+      <ProjectHeader :items="items"></ProjectHeader>
       <div style="flex: 0;">
         <b-dropdown size="lg" right variant="link" toggle-class="text-decoration-none" offset="-10" no-caret>
           <template v-slot:button-content>
@@ -22,6 +23,8 @@
 </template>
 
 <script>
+import ProjectHeader from '../project/header';
+
 export default {
   data() {
     return {
@@ -30,7 +33,8 @@ export default {
     }
   },
   props: {
-    title: String
+    title: String,
+    items: Array
   },
   mounted() {
     document.addEventListener('click', (e) => {
@@ -51,6 +55,9 @@ export default {
     tabToggle: function() {
       this.dropdownActive = false;
     }
+  },
+  components: {
+    ProjectHeader
   }
 }
 </script>

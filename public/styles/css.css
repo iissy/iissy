@@ -17,11 +17,12 @@ html, body, div, h3, td, p, span, img, a {
     padding: 0;
 }
 
-.rightMain .table th div{ color: #333333;text-align: left;font-weight: normal; }
-.rightMain .table thead th { border-bottom: 0;background-color: #f8f8f8; }
-.rightMain .table th,.rightMain .table td { padding: 6px 0 6px 10px; }
-.rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #ffffff; }
-.rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #f8f8f8; }
+.rightMain .table { margin-bottom: 0; }
+.rightMain .table th div{ color: #333333;text-align: left;font-size: 12px; }
+.rightMain .table thead th { border-bottom: 0; }
+.rightMain .table th,.rightMain .table td { padding: 10px 0 10px 10px;border: 1px solid #e7ecf1; }
+.rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #fbfcfd; }
+.rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #ffffff; }
 
 a:link {
     color: #333333;
@@ -179,13 +180,15 @@ a:hover {
     line-height: 30px;
     font-size: 14px;
     color: #b4bcc8;
+    text-decoration: none;
 }
 
 .leftBar li.active a {
     color:#eeeeee;
-    background-color: #17C4BB;
-    border-left: 5px solid #ff0000;
-    padding-left: 25px;
+    background-color: #444444;
+    border-left: 3px solid #ffffff;
+    padding-left: 27px;
+    text-decoration: none;
 }
 
 .leftBar li.active a:after {
