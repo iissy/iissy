@@ -5,7 +5,7 @@
         <div style="flex:1;vertical-align: middle;align-items: center;height: 100%;display: flex;">
           <div style="font-size: 18px;font-weight: 500;color:#303030;flex: 0 0 auto;" class="flex-row">
             <div style="flex: 0 0 auto;">
-              <svg t="1601207608457" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3222" width="28" height="28"><path d="M512 0h32v160h-32zM512 256h32v160h-32zM512 512h32v160h-32zM512 768h32v160h-32z" p-id="3223" fill="#8a8a8a"></path></svg>
+              <svg t="1601280003066" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1530" width="28" height="28"><path d="M499 21.8h25.2v980H499z" fill="#9996A9" p-id="1531"></path></svg>
             </div>
             <div style="flex: 0 0 auto;font-size: 16px;margin: 0 10px 0 0;">
               国庆有奖活动
