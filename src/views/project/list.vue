@@ -33,7 +33,7 @@
                   <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
                     <b-table :fields="fields" :items="items" bordered striped>
                       <template v-slot:cell(nameuuid)="data">
-                        <router-link :to="{ name:'Component', params: { team: 'uh8rjki3', project: data.item.uuid, com: 'u8e733i0' } }">{{ data.item.name }}</router-link>
+                        <router-link :to="{ name:'Component', params: { team: 'uh8rjki3', project: data.item.uuid, com: 'u5eu33i1' } }">{{ data.item.name }}</router-link>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
