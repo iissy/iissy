@@ -3,7 +3,7 @@
     <div class="app-row">
       <Menu tagIndex="21"></Menu>
       <div class="rightMain">
-        <Header :items="items" title="项目"></Header>
+        <Header :items="items" title="项目管理"></Header>
         <div class="app-main-container">
           <div class="right-container">
             <div class="right-container-inner">

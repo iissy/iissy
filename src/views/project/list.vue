@@ -4,7 +4,7 @@
       <Menu tagIndex="21"></Menu>
       <div class="rightMain">
         <div class="layout-container-column">
-          <Header title="项目"></Header>
+          <Header title="项目管理"></Header>
           <div class="app-main-container">
             <div class="right-container">
               <div class="right-container-inner">
