@@ -4,8 +4,6 @@ import Router from 'vue-router';
 import Master from '../views/help/master';
 import Main from '../views/main';
 
-import Doc from '../views/doc/list';
-import DocSetting from '../views/doc/setting';
 import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
 import Overview from '../views/commit/overview';
@@ -19,6 +17,7 @@ import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
 import Helper from './help.js';
 import Component from './component.js'
+import Doc from './doc.js'
 
 Vue.use(Router);
 
@@ -32,16 +31,6 @@ const index = [
         meta: { title: "我的工作台" },
         name: 'Main',
         component: Main
-    }, {
-        path: '/main/team/uh8rjki3/doc',
-        meta: { title: "项目文档" },
-        name: 'Doc',
-        component: Doc
-    }, {
-        path: '/main/team/uh8rjki3/doc/setting',
-        meta: { title: "文档配置中心" },
-        name: 'DocSetting',
-        component: DocSetting
     }, {
         path: '/main/ding/robot',
         meta: { title: "群机器人" },
@@ -89,6 +78,7 @@ let routes = index.concat(ProjectComponent)
 routes = routes.concat(IssueTypeComponent)
 routes = routes.concat(Helper)
 routes = routes.concat(Component)
+routes = routes.concat(Doc)
 
 export default new Router({
     mode: 'history',

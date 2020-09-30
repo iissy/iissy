@@ -17,12 +17,12 @@
       <li><span></span></li>
       <li :class="{active: (currentIndex == 21)}"><router-link to="/main/team/Sxv5vAgD/projects">项目管理</router-link></li>
       <li :class="{active: (currentIndex == 22)}"><router-link to="/main/team/Sxv5vAgD/commit">代码提交</router-link></li>
-      <li :class="{active: (currentIndex == 23)}"><router-link to="/main/team/Sxv5vAgD/doc">项目文档</router-link></li>
+      <li :class="{active: (currentIndex == 23)}"><router-link :to="{ name:'Doc', params: { team: team } }">项目文档</router-link></li>
 
       <li><span></span></li>
       <li :class="{active: (currentIndex == 81)}"><router-link to="/main/team/Sxv5vAgD/member/setting">团队配置中心</router-link></li>
       <li :class="{active: (currentIndex == 82)}"><router-link to="/main/setting/team/Sxv5vAgD/project/manager">项目配置中心</router-link></li>
-      <li :class="{active: (currentIndex == 83)}"><router-link to="/main/team/Sxv5vAgD/doc/setting">文档配置中心</router-link></li>
+      <li :class="{active: (currentIndex == 83)}"><router-link :to="{ name:'DocSetting', params: { team: team } }">文档配置中心</router-link></li>
 
       <li><span></span></li>
       <li><a href="/main/help" target="_blank">帮助中心</a></li>
@@ -34,7 +34,8 @@
 export default {
   data: function () {
     return {
-      currentIndex: parseInt(this.tagIndex)
+      currentIndex: parseInt(this.tagIndex),
+      team: 'Sxv5vAgD'
     };
   },
   props: ['tagIndex']

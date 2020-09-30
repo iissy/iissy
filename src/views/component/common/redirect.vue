@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="1"></Menu>
+      <Menu tagIndex="21"></Menu>
       <div class="rightMain">
         <Header title="项目管理"></Header>
         <div class="app-main-container">
