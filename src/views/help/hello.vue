@@ -22,6 +22,9 @@ export default {
       submittedNames: []
     }
   },
+  mounted() {
+    console.log(this.urls.list_project.format("u892uy27"));
+  },
   methods: {
   }
 }

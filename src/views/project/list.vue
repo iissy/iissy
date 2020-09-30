@@ -127,7 +127,7 @@ export default {
     },
     project_list: function() {
       let self = this;
-      let url = '/api/team/' + self.team + '/list/project';
+      let url = self.urls.list_project.format(self.team);
       http.post(url).then(function (response) {
         self.items = response.data;
       });

@@ -5,10 +5,12 @@ import router from '@/router';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/util/string'
+import urls from '@/util/urls'
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
-
+Vue.prototype.urls = urls
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
