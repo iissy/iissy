@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <ProjectHeader :items="items"></ProjectHeader>
+      <ProjectHeader :items="items" :projectName="projectName"></ProjectHeader>
       <div style="flex: 0;">
         <b-dropdown size="lg" right variant="link" toggle-class="text-decoration-none" offset="-10" no-caret>
           <template v-slot:button-content>
@@ -36,7 +36,8 @@ export default {
   },
   props: {
     title: String,
-    items: Array
+    items: Array,
+    projectName: String
   },
   mounted() {
     document.addEventListener('click', (e) => {
