@@ -41,7 +41,8 @@ import router from '../../router';
 export default {
   data: function () {
     return {
-      name: ''
+      name: '',
+      team: ''
     };
   },
   components: {
@@ -50,7 +51,8 @@ export default {
     AddProjectButton
   },
   created: function () {
-    // let self = this;
+    let self = this;
+    self.team = self.$route.params.team;
   },
   watch: {
   },
@@ -60,7 +62,7 @@ export default {
       http.post('/api/team/Sxv5vAgD/add/project', { project: {"name":self.name}, "template_id":"project-t1",members:["Reuqev9Y"] }
       ).then(function (response) {
         if (response.data.status == true) {
-          router.push({ name: 'Project' });
+          router.push({ name: 'Projects', params: { team: self.team } });
         } else {
           alert(response.data.msg)
         }

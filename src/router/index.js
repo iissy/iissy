@@ -13,12 +13,12 @@ import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import CenterRobot from '../views/center/robot';
-
 import Logout from '../views/center/logout';
 
 import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
 import Helper from './help.js';
+import Component from './component.js'
 
 Vue.use(Router);
 
@@ -88,6 +88,7 @@ const index = [
 let routes = index.concat(ProjectComponent)
 routes = routes.concat(IssueTypeComponent)
 routes = routes.concat(Helper)
+routes = routes.concat(Component)
 
 export default new Router({
     mode: 'history',

@@ -1,5 +1,5 @@
 import ProjectSetting from "@/views/setting";
-import Project from '../views/project/list';
+import Projects from '../views/project/list';
 import AddProject from '../views/project/add';
 import Component from '../views/project/component';
 import ProjectPermissionSetting from '../views/project/permission';
@@ -16,10 +16,10 @@ let project = [
         name: 'ProjectPermissionSetting',
         component: ProjectPermissionSetting
     }, {
-        path: '/main/project',
+        path: '/main/team/:team/projects',
         meta: { title: "项目管理" },
-        name: 'Project',
-        component: Project
+        name: 'Projects',
+        component: Projects
     }, {
         path: '/main/team/:team/project/add',
         meta: { title: "新建项目" },

@@ -33,7 +33,7 @@
                   <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
                     <b-table :fields="fields" :items="items" bordered striped>
                       <template v-slot:cell(nameuuid)="data">
-                        <router-link :to="{ name:'Component', params: { team: 'uh8rjki3', project: data.item.uuid, com: 'u5eu33i1' } }">{{ data.item.name }}</router-link>
+                        <router-link :to="{ name:'Redirect', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
@@ -63,7 +63,7 @@ export default {
     return {
       cur: 0,
       team: '',
-      project: '',
+      com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
       fields: [
         { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
@@ -86,7 +86,6 @@ export default {
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
     self.project_list();
   },
   filters: {

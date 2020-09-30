@@ -26,16 +26,10 @@ export default {
   data: function () {
     return {
       name: '',
+      team: '',
+      project: '',
+      com: '',
       items: [
-        { name: '项目概况', com: 'u5eu33i1', key: 'task' },
-        { name: '任务', com: 'u8e733i0', key: 'task' },
-        { name: '需求', com: 'u8e734i0', key: 'task' },
-        { name: '缺陷缺陷', com: 'u5eu33i0', key: 'task' },
-        { name: '缺陷', com: 'u8eu33i0', key: 'task' },
-        { name: '缺陷缺陷', com: 'u80u33i0', key: 'task' },
-        { name: '缺陷缺陷', com: 'u88u33i0', key: 'task' },
-        { name: '人员培训', com: 'u5eu33i2', key: 'task' },
-        { name: '测试任务', com: 'u5eu33i3', key: 'task' }
       ]
     };
   },
@@ -44,6 +38,14 @@ export default {
     Menu
   },
   created: function () {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.com = self.$route.params.com;
+    let url = '/api/team/' + self.team + '/project/' + self.project + '/components';
+    http.get(url).then(function (response) {
+      self.items = response.data;
+    });
   },
   watch: {
   },

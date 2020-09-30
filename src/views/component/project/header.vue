@@ -14,7 +14,7 @@
         </div>
       </div>
       <div v-for="item in items" :key="item.com">
-        <div :class="{active: (item.com == selectedCom)}" class="com" @click="shift_tab({ name:'Component', params: { team: team, project: project, com: item.com } })">
+        <div :class="{active: (item.uuid == selectedCom)}" class="com" @click="shift_tab({ name:'Component', params: { team: team, project: project, com: item.uuid } })">
           <div style="font-size: 16px;font-weight: 500;color:#303030;flex: 0 0 auto;">
             {{ item.name }}
           </div>
