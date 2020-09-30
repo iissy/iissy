@@ -6,7 +6,7 @@ import Main from '../views/main';
 
 import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
-import Overview from '../views/commit/overview';
+import Commit from '../views/commit/overview';
 import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
@@ -44,8 +44,8 @@ const index = [
     },{
         path: '/main/team/:team/commit',
         meta: { title: "代码提交" },
-        name: 'Overview',
-        component: Overview
+        name: 'Commit',
+        component: Commit
     },{
         path: '/main/center/account',
         meta: { title: "个人中心" },

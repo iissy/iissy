@@ -13,24 +13,26 @@
       </div>
     </div>
     <ul>
-      <li :class="{active: (currentIndex == 1)}"><router-link to="/main">我的工作台</router-link></li>
+      <li :class="{active: (currentIndex == 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Main' }" /></li>
       <li><span></span></li>
-      <li :class="{active: (currentIndex == 21)}"><router-link to="/main/team/Sxv5vAgD/projects">项目管理</router-link></li>
-      <li :class="{active: (currentIndex == 22)}"><router-link to="/main/team/Sxv5vAgD/commit">代码提交</router-link></li>
-      <li :class="{active: (currentIndex == 23)}"><router-link :to="{ name:'Doc', params: { team: team } }">项目文档</router-link></li>
+      <li :class="{active: (currentIndex == 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex == 22)}"><Link name="代码提交" icon="Commit" :to="{ name: 'Commit', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex == 23)}"><Link name="项目文档" icon="Doc" :to="{ name:'Doc', params: { team: team } }" /></li>
 
       <li><span></span></li>
-      <li :class="{active: (currentIndex == 81)}"><router-link to="/main/team/Sxv5vAgD/member/setting">团队配置中心</router-link></li>
-      <li :class="{active: (currentIndex == 82)}"><router-link to="/main/setting/team/Sxv5vAgD/project/manager">项目配置中心</router-link></li>
-      <li :class="{active: (currentIndex == 83)}"><router-link :to="{ name:'DocSetting', params: { team: team } }">文档配置中心</router-link></li>
+      <li :class="{active: (currentIndex == 81)}"><Link name="团队配置中心" icon="MemberSetting" :to="{ name: 'MemberSetting', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex == 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex == 83)}"><Link name="文档配置中心" icon="DocSetting" :to="{ name:'DocSetting', params: { team: team } }" /></li>
 
       <li><span></span></li>
-      <li><a href="/main/help" target="_blank">帮助中心</a></li>
+      <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>
     </ul>
   </div>
 </template>
 
 <script>
+import Link from './block/link';
+
 export default {
   data: function () {
     return {
@@ -38,6 +40,9 @@ export default {
       team: 'Sxv5vAgD'
     };
   },
-  props: ['tagIndex']
+  props: ['tagIndex'],
+  components: {
+    Link
+  }
 };
 </script>

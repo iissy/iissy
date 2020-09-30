@@ -172,22 +172,30 @@ a:hover {
     text-align: -webkit-match-parent;
 }
 
+.leftBar ul li > div {
+    padding-left: 20px;
+}
+
+.leftBar li.active > div {
+    padding-left: 17px;
+}
+
 .leftBar ul li a {
     position: relative;
     display: block;
-    padding-left: 30px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
     color: #b4bcc8;
     text-decoration: none;
 }
 
+.leftBar li.active {
+    border-left: 3px solid #ffffff;
+    background-color: #444444;
+}
+
 .leftBar li.active a {
     color:#eeeeee;
-    background-color: #444444;
-    border-left: 3px solid #ffffff;
-    padding-left: 27px;
     text-decoration: none;
 }
 
