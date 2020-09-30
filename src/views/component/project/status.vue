@@ -15,13 +15,8 @@
         </div>
       </div>
     </div>
-    <div style="overflow:hidden;margin: 20px 0 0 0;width: 300px;height: 30px;position: relative;">
-      <div class="flex-column" style="position: absolute;height: 30px;margin-left: 10px;">
-        <div style="flex: 1;display: flex;align-items: center;">
-          <svg t="1600686491561" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11218" width="16" height="16"><path d="M240.776 240.872A302.952 302.952 0 0 0 157.328 512c18.048-81.912 60.48-161.952 126.576-228.096C350.048 217.736 430.088 175.328 512 157.28c-95.28-17.952-197.52 9.864-271.224 83.592z" fill="#969696" p-id="11219"></path><path d="M959.6 802.736l-114.096-114.096a110.64 110.64 0 0 0-87-31.992c107.304-155.208 91.8-369.744-46.392-507.96-155.568-155.616-407.856-155.616-563.472 0-155.568 155.616-155.568 407.928 0 563.544 138.192 138.216 352.56 153.6 507.864 46.296-2.4 31.2 8.304 63.312 31.992 87l114.096 114.12c43.2 43.104 113.784 43.104 156.888 0 43.32-43.104 43.32-113.712 0.12-156.912zM665.84 665.84c-130.008 130.008-340.68 130.008-470.64 0-130.008-130.008-130.008-340.728 0-470.736 129.96-130.008 340.632-130.008 470.64 0 129.984 129.912 129.984 340.728 0 470.736z" fill="#969696" p-id="11220"></path></svg>
-        </div>
-      </div>
-      <input type="text" v-model="name" name="name" class="form-control" style="padding-left: 40px;height: 100%;padding-top: 5px;padding-bottom: 5px;" placeholder="状态名字">
+    <div style="margin: 20px 0 0 0;">
+      <Search placeholder="状态名字" />
     </div>
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
@@ -40,11 +35,7 @@
               </div>
             </div>
             <div class="td" style="display: flex;align-items: center;">
-              <div>
-                <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                  <div class="status" :class="item.uuid">{{ item.name }}</div>
-                </div>
-              </div>
+              <Status :name="item.name" :color="item.uuid"></Status>
             </div>
             <div class="td">所有项目</div>
             <div class="td last" style="display: flex;align-items: center;">
@@ -60,7 +51,9 @@
 </template>
 
 <script>
-import http from "@/util/http";
+import http from '@/util/http';
+import Status from '../common/block/status';
+import Search from '../common/form/search';
 
 export default {
   data: function () {
@@ -81,6 +74,10 @@ export default {
         self.items = response.data;
       });
     }
+  },
+  components: {
+    Status,
+    Search
   }
 };
 </script>
@@ -94,8 +91,4 @@ export default {
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { flex: 0 0 auto; }
-.table .td .status { border-radius: 20px!important;padding: 0 6px 0 6px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
-.todo { color: #f0a100;border: solid 1px #f0a100; }
-.in_progress { color: #338fe5;border: solid 1px #338fe5; }
-.done { color: #24b47e;border: solid 1px #24b47e; }
 </style>
