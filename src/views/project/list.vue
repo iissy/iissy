@@ -41,8 +41,8 @@
                       <template v-slot:cell(nameuuid)="data">
                         <router-link :to="{ name:'Redirect', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
                       </template>
-                      <template v-slot:cell(status_uuid)>
-                        <Status name="未开始" color="in_progress" />
+                      <template v-slot:cell(status)="data">
+                        <Status :name="data.item.status_category" :color="data.item.status_uuid" />
                       </template>
                       <template v-slot:cell(owner)>
                         <b-progress :value="25" variant="success" striped :animated="animate"></b-progress>
@@ -92,11 +92,11 @@ export default {
       tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
       fields: [
         { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
-        { key: 'status_uuid', label: '项目状态', formatter: '项目状态' },
+        { key: 'status', label: '项目状态', formatter: '项目状态' },
         { key: 'assign', label: '项目负责人', formatter: '项目负责人' },
+        { key: 'owner', label: '工作项目完成度', formatter: '工作项目完成度' },
         { key: 'plan_start_time', label: '计划开始时间', formatter: '计划开始时间' },
         { key: 'plan_end_time', label: '计划完成时间', formatter: '计划完成时间' },
-        { key: 'owner', label: '工作项目完成度', formatter: '工作项目完成度' },
         { key: 'team_uuid', label: '工作项数量', formatter: '工作项数量' },
         { key: 'create_time', label: '进行中工作项', formatter: '进行中工作项' }
       ],
