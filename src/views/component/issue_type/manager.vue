@@ -91,8 +91,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/issue_type/manager';
-      http.post(url).then(function (response) {
+      http.post(this.urls.issue_type_manager.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     },

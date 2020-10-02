@@ -74,7 +74,7 @@ export default {
     project_list: function() {
       let self = this;
       let url = '/api/team/Sxv5vAgD/setting/issue_type/status';
-      http.post(url).then(function (response) {
+      http.post(this.urls.issue_type_status.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     }

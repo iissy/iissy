@@ -13,8 +13,7 @@ export default {
     };
   },
   created: function () {
-    let url = '/api/logout';
-    http.get(url).then(function (response) {
+    http.get(this.urls.logout).then(function (response) {
       if(response.data.status) {
         window.location.href="/"
       }

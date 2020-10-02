@@ -29,6 +29,7 @@ import http from "../../util/http";
 export default {
   data: function () {
     return {
+      team: '',
       headerHeight: 33,
       lineHeight: 50,
       count: 0,
@@ -70,8 +71,8 @@ export default {
   created () {
     let self = this;
     self.chartData.datasets[0].label = '天才队提交代码';
-    let url = '/api/team/00ff0000/commit/overview';
-    http.post(url).then(function (response) {
+    self.team = self.$route.params.team
+    http.post(self.urls.commit_overview.format(self.team)).then(function (response) {
       self.count = response.data.length;
       for (let i = 0; i < self.count; i++) {
         self.chartData.labels.push(response.data[i].name)

@@ -13,16 +13,16 @@
       </div>
     </div>
     <ul>
-      <li :class="{active: (currentIndex == 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Main' }" /></li>
+      <li :class="{active: (currentIndex === 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Main' }" /></li>
       <li><span></span></li>
-      <li :class="{active: (currentIndex == 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
-      <li :class="{active: (currentIndex == 22)}"><Link name="代码提交" icon="Commit" :to="{ name: 'Commit', params: { team: team } }" /></li>
-      <li :class="{active: (currentIndex == 23)}"><Link name="项目文档" icon="Doc" :to="{ name:'Doc', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 22)}"><Link name="代码提交" icon="Commit" :to="{ name: 'Commit', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 23)}"><Link name="项目文档" icon="Doc" :to="{ name:'Doc', params: { team: team } }" /></li>
 
       <li><span></span></li>
-      <li :class="{active: (currentIndex == 81)}"><Link name="团队配置中心" icon="MemberSetting" :to="{ name: 'MemberSetting', params: { team: team } }" /></li>
-      <li :class="{active: (currentIndex == 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team } }" /></li>
-      <li :class="{active: (currentIndex == 83)}"><Link name="文档配置中心" icon="DocSetting" :to="{ name:'DocSetting', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="MemberSetting" :to="{ name: 'MemberSetting', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team } }" /></li>
+      <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="DocSetting" :to="{ name:'DocSetting', params: { team: team } }" /></li>
 
       <li><span></span></li>
       <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>

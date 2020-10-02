@@ -81,8 +81,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/issue_type/priority';
-      http.post(url).then(function (response) {
+      http.post(this.urls.issue_type_priority.format(self.team)).then(function (response) {
         self.items = response.data.options;
         self.defaultValue = response.data.default_value;
       });

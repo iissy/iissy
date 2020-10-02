@@ -6,7 +6,6 @@ import Main from '../views/main';
 
 import Robot from '../views/ding/robot';
 import MemberSetting from '../views/member/setting';
-import Commit from '../views/commit/overview';
 import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
@@ -15,9 +14,10 @@ import Logout from '../views/center/logout';
 
 import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
-import Helper from './help.js';
+import Ex from './help.js';
 import Component from './component.js'
 import Doc from './doc.js'
+import Commit from './commit.js'
 
 Vue.use(Router);
 
@@ -41,11 +41,6 @@ const index = [
         meta: { title: "团队配置中心" },
         name: 'MemberSetting',
         component: MemberSetting
-    },{
-        path: '/main/team/:team/commit',
-        meta: { title: "代码提交" },
-        name: 'Commit',
-        component: Commit
     },{
         path: '/main/center/account',
         meta: { title: "个人中心" },
@@ -76,9 +71,10 @@ const index = [
 
 let routes = index.concat(ProjectComponent)
 routes = routes.concat(IssueTypeComponent)
-routes = routes.concat(Helper)
+routes = routes.concat(Ex)
 routes = routes.concat(Component)
 routes = routes.concat(Doc)
+routes = routes.concat(Commit)
 
 export default new Router({
     mode: 'history',

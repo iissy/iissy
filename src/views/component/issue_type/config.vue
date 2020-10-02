@@ -70,21 +70,23 @@ export default {
   data: function () {
     return {
       title: '',
+      team: '',
+      issue_type: '',
       items: []
     };
   },
   created: function () {
     let self = this;
     self.title = self.$route.params.title;
+    self.team = self.$route.params.team;
+    self.issue_type = self.$route.params.issue_type;
     self.project_list();
   },
   methods: {
     project_list: function() {
       let self = this;
-      self.title = self.$route.params.title
       if (!self.title) {
-        let url = '/api/team/Sxv5vAgD/issue_type/' + self.$route.params.issue_type + "/get";
-        http.get(url).then(function (response) {
+        http.get(this.urls.issue_type_config.format(self.team, self.issue_type)).then(function (response) {
           self.title = response.data.name;
         });
       }
