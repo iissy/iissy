@@ -100,11 +100,7 @@ export default {
       self.team = self.$route.params.team;
       self.project = self.$route.params.project;
       self.com = self.$route.params.com;
-      let url = '/api/team/' + self.team + '/project/' + self.project + '/component/get/' + self.com;
-      http.get(url).then(function (response) {
-        // switch (response.data.template_uuid) {
-        //   case
-        // }
+      http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
         self.currentTabComponent = response.data.template_uuid;
       });
     }

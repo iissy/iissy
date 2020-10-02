@@ -65,6 +65,8 @@ export default {
   data: function () {
     return {
       dropdownActive: false,
+      team: '',
+      project: '',
       isLabel: true,
       ProjectName: '',
       readerValue: ''
@@ -80,6 +82,9 @@ export default {
     })
   },
   created: function () {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = this.$route.params.project;
     this.GetProjectName();
   },
   methods: {
@@ -101,9 +106,7 @@ export default {
       let self = this;
       self.ProjectName = self.$route.params.title
       if (!self.ProjectName) {
-        let id = this.$route.params.project;
-        let url = '/api/team/Sxv5vAgD/setting/project/' + id + '/get';
-        http.post(url).then(function (response) {
+        http.post(this.urls.project_field.format(self.team, self.project)).then(function (response) {
           self.ProjectName = response.data.name;
         });
       }

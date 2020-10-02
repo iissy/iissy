@@ -97,8 +97,8 @@ export default {
         { key: 'owner', label: '工作项目完成度', formatter: '工作项目完成度' },
         { key: 'plan_start_time', label: '计划开始时间', formatter: '计划开始时间' },
         { key: 'plan_end_time', label: '计划完成时间', formatter: '计划完成时间' },
-        { key: 'team_uuid', label: '工作项数量', formatter: '工作项数量' },
-        { key: 'create_time', label: '进行中工作项', formatter: '进行中工作项' }
+        { key: 'issue_type_count', label: '工作项数量', formatter: '工作项数量' },
+        { key: 'on_issue_type_count', label: '进行中工作项', formatter: '进行中工作项' }
       ],
       items: []
     };

@@ -110,13 +110,13 @@ export default {
   methods: {
     add: function() {
       let self = this;
-      http.post('/api/ding/login_certificate/add', {
+      http.post(self.urls.certificate_add, {
         app_id: self.app_id,
         app_secret: self.app_secret,
         name: self.name,
         url: self.Url
       }).then(function (response) {
-        if (response.data.status == true) {
+        if (response.data.status === true) {
           alert("成功")
         } else {
           alert(response.data.msg)

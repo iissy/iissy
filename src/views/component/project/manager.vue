@@ -35,19 +35,20 @@ export default {
   data: function () {
     return {
       name: '',
+      team: '',
       desc: '项目管理页展示当前所有项目，可对项目进行权限编辑和删除操作。',
       items: []
     };
   },
   created: function () {
     let self = this;
+    self.team = self.$route.params.team;
     self.project_list();
   },
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/project/manager';
-      http.post(url).then(function (response) {
+      http.post(this.urls.project_manager.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     }

@@ -59,9 +59,9 @@ export default {
   methods: {
     add: function () {
       let self = this;
-      http.post('/api/team/Sxv5vAgD/add/project', { project: {"name":self.name}, "template_id":"project-t1",members:["Reuqev9Y"] }
+      http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1",members:["Reuqev9Y"] }
       ).then(function (response) {
-        if (response.data.status == true) {
+        if (response.data.status === true) {
           router.push({ name: 'Projects', params: { team: self.team } });
         } else {
           alert(response.data.msg)

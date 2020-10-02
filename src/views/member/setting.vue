@@ -54,7 +54,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import http from '../../util/http';
+// import http from '../../util/http';
 import { formatDate } from '@/util/date';
 
 export default {
@@ -69,13 +69,13 @@ export default {
     Menu
   },
   created: function () {
-    let self = this;
-    let url = '/api/ding/get_department_list';
-    http.get(url).then(function (response) {
-      self.departmentTree = response.data;
-    });
-
-    self.member_list();
+    // let self = this;
+    // let url = '/api/ding/get_department_list';
+    // http.get(url).then(function (response) {
+    //   self.departmentTree = response.data;
+    // });
+    //
+    // self.member_list();
   },
   filters: {
     formatDate(time) {
@@ -83,13 +83,13 @@ export default {
     }
   },
   methods: {
-    member_list: function() {
-      let self = this;
-      let url = '/api/ding/get_user_list';
-      http.get(url).then(function (response) {
-        self.users = response.data;
-      });
-    }
+    // member_list: function() {
+    //   let self = this;
+    //   let url = '/api/ding/get_user_list';
+    //   http.get(url).then(function (response) {
+    //     self.users = response.data;
+    //   });
+    // }
   }
 };
 </script>
