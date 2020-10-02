@@ -63,17 +63,18 @@ export default {
   data: function () {
     return {
       name: '',
+      team: '',
       items: []
     };
   },
   created: function () {
     let self = this;
+    self.team = self.$route.params.team;
     self.project_list();
   },
   methods: {
     project_list: function() {
       let self = this;
-      let url = '/api/team/Sxv5vAgD/setting/issue_type/status';
       http.post(this.urls.issue_type_status.format(self.team)).then(function (response) {
         self.items = response.data;
       });

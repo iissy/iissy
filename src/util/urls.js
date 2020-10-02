@@ -7,7 +7,7 @@ let urls = {
     issue_type_field: '/api/team/{0}/setting/issue_type/field',
     issue_type_manager: '/api/team/{0}/setting/issue_type/manager',
     issue_type_priority: '/api/team/{0}/setting/issue_type/priority',
-    issue_type_status: '/api/team/Sxv5vAgD/setting/issue_type/status'
+    issue_type_status: '/api/team/{0}/setting/issue_type/status'
 };
 
 export default urls

@@ -71,11 +71,13 @@ export default {
     return {
       name: '',
       items: [],
+      team: '',
       defaultValue: ''
     };
   },
   created: function () {
     let self = this;
+    self.team = self.$route.params.team;
     self.project_list();
   },
   methods: {

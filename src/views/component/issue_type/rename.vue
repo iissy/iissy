@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import http from "@/util/http";
+// import http from "@/util/http";
 
 export default {
   data: function () {
