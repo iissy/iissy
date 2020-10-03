@@ -24,7 +24,7 @@
                 </div>
                 <div id="project-new-row">
                   <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-                    <AddProjectButton title="新增项目" @submit="add">新增项目</AddProjectButton>
+                    <AddProjectButton title="新增项目" @submit="add"></AddProjectButton>
                   </div>
                   <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
                   <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">

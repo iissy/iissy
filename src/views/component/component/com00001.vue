@@ -1,6 +1,6 @@
 <template>
-  <div style="flex: 1 0 auto;">
-    <div style="overflow:hidden;flex: 1;padding: 10px;flex-direction: row;height: 400px;">
+  <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
+    <div style="overflow:hidden;flex: 1;padding: 10px;flex-direction: row;height: 100%;display: flex;width: 100%;">
       <div class="right-container-inner">
         <div id="project-top-row">
           <div style="flex: 0 1 auto;">
@@ -18,21 +18,21 @@
         </div>
         <div id="project-new-row">
           <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-            <AddTaskButton title="新增任务" @submit="add"></AddTaskButton>
+            <AddTaskButton title="新增需求" @submit="add"></AddTaskButton>
           </div>
           <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
             <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
               <div style="flex: 1;display: inline-block;padding-right: 20px;">
-                <Search placeholder="项目名字" />
+                <Search placeholder="需求标题" />
               </div>
             </div>
           </div>
         </div>
-        <div id="project-main">
-          <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;padding: 10px;">
-            <div style="overflow: auto;">
-              <div>
+        <div id="project-main" style="overflow:hidden;">
+          <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;border-top: 1px solid #e8e8e8;">
+            <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
+              <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 10px;">
                 <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
                 <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
                 <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
@@ -40,6 +40,17 @@
                 <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
                 <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
               </div>
+            </div>
+            <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
+              <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 10px;">
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+              </div>
+              <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
             </div>
           </div>
         </div>
@@ -50,6 +61,7 @@
 
 <script>
 import AddTaskButton from '../common/form/button';
+import Search from "@/views/component/common/form/search";
 
 export default {
   data: function () {
@@ -57,14 +69,15 @@ export default {
       cur: 0,
       team: '',
       com: '',
-      tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
+      tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
       items: []
     };
   },
   methods: {
   },
   components: {
-    AddTaskButton
+    AddTaskButton,
+    Search
   }
 }
 </script>
@@ -75,6 +88,6 @@ export default {
 .tab-title{ width: 100%;background-color: #ffffff;padding: 0 0 0 20px;flex: 0 0 auto;flex-direction: row;display: flex; }
 .tab-title .active{ border-bottom: 2px solid #1890ff;color: #1890ff; }
 
-#project-new-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;margin-top: 10px;width: 100%;align-items: center; }
+#project-new-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;margin: 10px 0 10px 0;width: 100%;align-items: center; }
 #project-main { flex: 1;display: flex; }
 </style>
