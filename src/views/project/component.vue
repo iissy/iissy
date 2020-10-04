@@ -5,7 +5,7 @@
       <div class="rightMain">
         <Header :items="items" title="项目管理" :projectName="projectName"></Header>
         <div class="project-main-container">
-          <component v-bind:is="currentTabComponent"></component>
+          <component v-bind:is="currentTabComponent" ref="com"></component>
         </div>
       </div>
     </div>
@@ -37,7 +37,8 @@ export default {
       com: '',
       items: [
       ],
-      currentTabComponent: ''
+      currentTabComponent: '',
+      issue_type_uuid: ''
     };
   },
   components: {
@@ -83,6 +84,10 @@ export default {
       self.com = self.$route.params.com;
       http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
         self.currentTabComponent = response.data.template_uuid;
+
+        if(response.data.objects.length > 0) {
+          self.issue_type_uuid = response.data.objects[0].uuid;
+        }
       });
     }
   }

@@ -18,7 +18,9 @@ let urls = {
     component_get: '/api/team/{0}/project/{1}/component/get/{2}',
     components: '/api/team/{0}/project/{1}/components',
 
-    certificate_add: '/api/ding/login_certificate/add'
+    certificate_add: '/api/ding/login_certificate/add',
+
+    task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task'
 };
 
 export default urls
