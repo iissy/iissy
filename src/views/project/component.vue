@@ -16,7 +16,6 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import http from "@/util/http";
-import router from '../../router';
 import com00001 from '../component/component/com00001';
 import com00002 from '../component/component/com00002';
 import com00003 from '../component/component/com00003';
@@ -60,13 +59,11 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
-    let url = '/api/team/' + self.team + '/project/' + self.project + '/components';
-    http.get(url).then(function (response) {
+    http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
       self.items = response.data;
     });
 
-    url = '/api/team/' + self.team + '/project/' + self.project + '/get';
-    http.get(url).then(function (response) {
+    http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
       self.projectName = response.data.name;
     });
   },
@@ -79,18 +76,6 @@ export default {
     }
   },
   methods: {
-    add: function () {
-      let self = this;
-      http.post('/api/team/Sxv5vAgD/add/project', {
-        name: self.name
-      }).then(function (response) {
-        if (response.data.status === true) {
-          router.push({ name: 'Project' });
-        } else {
-          alert(response.data.msg)
-        }
-      });
-    },
     shift: function () {
       let self = this;
       self.team = self.$route.params.team;

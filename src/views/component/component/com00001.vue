@@ -18,7 +18,7 @@
         </div>
         <div id="project-new-row">
           <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-            <AddTaskButton title="新增需求" @submit="add"></AddTaskButton>
+            <AddTaskButton title="新增需求" @submit="add" v-b-modal.modal-prevent-closing></AddTaskButton>
           </div>
           <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
@@ -56,6 +56,46 @@
         </div>
       </div>
     </div>
+
+    <b-modal size="lg" id="modal-prevent-closing" ref="modal" title="新建需求" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <div style="padding: 0 10px 0 10px;">
+          <b-form-group :state="nameState" label="标题" label-for="name-input">
+            <b-form-input id="name-input" v-model="name" :state="nameState" required></b-form-input>
+          </b-form-group>
+        </div>
+        <div style="" class="flex-row">
+          <div style="flex: 1;padding: 0 10px 0 10px;">
+            <b-form-group :state="projectState" label="所在项目" label-for="project-select">
+              <b-form-select id="project-select" v-model="projectSelect" :options="projects" required></b-form-select>
+            </b-form-group>
+          </div>
+          <div style="flex: 1;padding: 0 10px 0 10px;">
+            <b-form-group :state="issueTypeState" label="工作项类型" label-for="issue-type-select">
+              <b-form-select id="issue-type-select" v-model="issueTypeSelect" :options="issue_types" required></b-form-select>
+            </b-form-group>
+          </div>
+        </div>
+        <div style="" class="flex-row">
+          <div style="flex: 1;padding: 0 10px 0 10px;">
+            <b-form-group label="负责人" label-for="project-select">
+              <b-form-select id="project-select" v-model="projectSelect" :options="projects" required></b-form-select>
+            </b-form-group>
+          </div>
+          <div style="flex: 1;padding: 0 10px 0 10px;">
+            <b-form-group label="优先级" label-for="issue-type-select">
+              <b-form-select id="issue-type-select" v-model="issueTypeSelect" :options="issue_types" required></b-form-select>
+            </b-form-group>
+          </div>
+        </div>
+        <div style="padding: 0 10px 0 10px;">
+          <b-form-group label="描述" label-for="desc-input">
+            <b-form-textarea id="desc-input" v-model="desc" rows="5" required></b-form-textarea>
+          </b-form-group>
+        </div>
+      </form>
+    </b-modal>
+
   </div>
 </template>
 
@@ -70,10 +110,33 @@ export default {
       team: '',
       com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
-      items: []
+      items: [],
+      name: '',
+      desc: '',
+      projects: ['你好爱上对方', '阿斯顿发送'],
+      issue_types: ['你按时发', '摸弄激活接口']
     };
   },
   methods: {
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity()
+      return valid
+    },
+    resetModal() {
+    },
+    handleOk(bvModalEvt) {
+      bvModalEvt.preventDefault()
+      this.handleSubmit()
+    },
+    handleSubmit() {
+      if (!this.checkFormValidity()) {
+        return
+      }
+
+      this.$nextTick(() => {
+        this.$bvModal.hide('modal-prevent-closing')
+      })
+    }
   },
   components: {
     AddTaskButton,
