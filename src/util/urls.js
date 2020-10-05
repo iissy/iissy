@@ -21,7 +21,8 @@ let urls = {
     certificate_add: '/api/ding/login_certificate/add',
 
     task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task',
-    task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task'
+    task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
+    task_get: '/api/team/{0}/project/{1}/issue_type/{2}/get/task/{3}',
 };
 
 export default urls

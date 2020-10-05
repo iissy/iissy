@@ -33,26 +33,40 @@
           <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;border-top: 1px solid #e8e8e8;">
             <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
               <div id="task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
-                <div v-for="task in tasks" v-bind:key="task.uuid" class="flex-row">
-                  <div class="flex-row" style="margin: 0 10px 0 10px;border-bottom: 1px solid #f8f8f8;flex: 1;">
-                    <div style="flex: 0;margin-left: 10px;padding: 10px;" class="flex-row">
-                      <div style="flex: 0 0 auto;">{{task.priority}}</div>
-                      <div style="flex: 0 0 auto;margin-left: 5px;">{{task.owner}}</div>
+                <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row" :class="{active: (selectedUUID === t.uuid)}">
+                  <div class="flex-row" style="margin: 0 10px 0 10px;border-bottom: 1px solid #f8f8f8;flex: 1;cursor: pointer;padding: 10px;">
+                    <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row">
+                      <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"></Priority>
+                      <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;">{{t.owner.name}}</div>
                     </div>
-                    <div style="flex: 1;margin-left: 10px;">{{task.summary}}</div>
-                    <div style="flex: 0;padding: 10px;">{{task.status_uuid}}</div>
+                    <div style="flex: 1;margin-left: 10px;" @click="select_task(t.uuid)">{{t.summary}}</div>
+                    <div style="flex: 0 0 auto;">
+                      <Status :name="t.task_status.name" :color="t.task_status.category.toString()"></Status>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
               <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 10px;">
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+                <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
+                  <div style="flex: 1;">#{{ task.number }}</div>
+                  <div style="flex: 0 0 auto;">...</div>
+                </div>
+                <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
+                  <div style="flex: 1;">{{ task.summary }}</div>
+                </div>
+                <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
+                  <div style="flex: 1;text-align: center;">{{ task.assign.name }}</div>
+                  <div style="flex: 1;text-align: center;">{{ task.task_status.name }}</div>
+                  <div style="flex: 1;text-align: center;">{{ task.priority.value }}</div>
+                </div>
+                <div>
+                  描述
+                </div>
+                <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
+                  {{ task.desc }}
+                </div>
               </div>
               <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
             </div>
@@ -106,6 +120,8 @@
 <script>
 import AddTaskButton from '../common/form/button';
 import Search from "@/views/component/common/form/search";
+import Priority from "@/views/component/common/block/priority";
+import Status from '@/views/component/common/block/status';
 import http from "@/util/http";
 import router from "@/router";
 
@@ -126,7 +142,9 @@ export default {
       issueTypeSelect: '',
       assignSelect: '',
       prioritySelect: '',
-      tasks: []
+      task: {assign:{}, task_status: {}, priority: {}},
+      tasks: [],
+      selectedUUID: ''
     };
   },
   mounted() {
@@ -180,12 +198,31 @@ export default {
       let url = self.urls.task_list.format(self.team, self.project, self.$parent.issue_type_uuid);
       http.post(url).then(function (response) {
         self.tasks = response.data;
+        if(self.tasks.length > 0) {
+          //self.task_get(self.tasks[0].uuid);
+          self.task = self.tasks[0]
+          self.selectedUUID = self.tasks[0].uuid;
+        }
+      });
+    },
+    select_task: function (uuid) {
+      let self = this;
+      self.selectedUUID = uuid;
+      self.task_get(uuid)
+    },
+    task_get: function (uuid) {
+      let self = this;
+      let url = self.urls.task_get.format(self.team, self.project, self.$parent.issue_type_uuid, uuid);
+      http.get(url).then(function (response) {
+        self.task = response.data;
       });
     }
   },
   components: {
     AddTaskButton,
-    Search
+    Search,
+    Priority,
+    Status
   }
 }
 </script>
@@ -198,4 +235,6 @@ export default {
 
 #project-new-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;margin: 10px 0 10px 0;width: 100%;align-items: center; }
 #project-main { flex: 1;display: flex; }
+
+#task-list .active { background-color: #f9f9f9;border-left: 3px solid #17C4BB; }
 </style>

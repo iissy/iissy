@@ -48,7 +48,7 @@
             </div>
             <div class="td">
               <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                <div class="status" :style="'background-color: '+item.background_color+';color:'+item.color+';'">{{ item.value }}</div>
+                <Priority :color="item.color" :name="item.value" :bgColor="item.background_color"></Priority>
               </div>
             </div>
             <div class="td last" style="display: flex;align-items: center;">
@@ -65,6 +65,7 @@
 
 <script>
 import http from "@/util/http";
+import Priority from "@/views/component/common/block/priority";
 
 export default {
   data: function () {
@@ -88,6 +89,9 @@ export default {
         self.defaultValue = response.data.default_value;
       });
     }
+  },
+  components: {
+    Priority
   }
 };
 </script>
@@ -101,8 +105,4 @@ export default {
 .table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 .table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 .table .last { flex: 0 0 auto; }
-.table .td .status { border-radius: 4px!important;padding: 0 6px 0 6px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
-.todo { color: #f0a100;border: solid 1px #f0a100; }
-.in_progress { color: #338fe5;border: solid 1px #338fe5; }
-.done { color: #24b47e;border: solid 1px #24b47e; }
 </style>
