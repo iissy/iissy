@@ -18,13 +18,13 @@
         </div>
         <div id="project-new-row">
           <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-            <AddTaskButton title="新增需求" v-b-modal.modal-prevent-closing></AddTaskButton>
+            <AddTaskButton :title="add_label" v-b-modal.modal-prevent-closing></AddTaskButton>
           </div>
           <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
             <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
               <div style="flex: 1;display: inline-block;padding-right: 20px;">
-                <Search placeholder="需求标题" />
+                <Search :placeholder="search_label" />
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <b-modal size="lg" id="modal-prevent-closing" ref="modal" title="新建需求" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+    <b-modal size="lg" id="modal-prevent-closing" ref="modal" :title="add_label" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
@@ -146,6 +146,9 @@ export default {
       selectedUUID: ''
     };
   },
+  props: {
+    comName: String
+  },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
@@ -159,7 +162,7 @@ export default {
   },
   methods: {
     checkFormValidity() {
-      const valid = this.$refs.form.checkValidity()
+      let valid = this.$refs.form.checkValidity()
       return valid
     },
     resetModal() {
@@ -214,6 +217,16 @@ export default {
       http.get(url).then(function (response) {
         self.task = response.data;
       });
+    }
+  },
+  computed: {
+    add_label: function () {
+      let self = this;
+      return "新增{0}".format(self.comName);
+    },
+    search_label: function () {
+      let self = this;
+      return "搜索{0}".format(self.comName);
     }
   },
   components: {
