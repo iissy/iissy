@@ -32,13 +32,17 @@
         <div id="project-main" style="overflow:hidden;">
           <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;border-top: 1px solid #e8e8e8;">
             <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
-              <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 10px;">
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
-                <p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p><p>asdfa</p>
+              <div id="task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
+                <div v-for="task in tasks" v-bind:key="task.uuid" class="flex-row">
+                  <div class="flex-row" style="margin: 0 10px 0 10px;border-bottom: 1px solid #f8f8f8;flex: 1;">
+                    <div style="flex: 0;margin-left: 10px;padding: 10px;" class="flex-row">
+                      <div style="flex: 0 0 auto;">{{task.priority}}</div>
+                      <div style="flex: 0 0 auto;margin-left: 5px;">{{task.owner}}</div>
+                    </div>
+                    <div style="flex: 1;margin-left: 10px;">{{task.summary}}</div>
+                    <div style="flex: 0;padding: 10px;">{{task.status_uuid}}</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
@@ -121,7 +125,8 @@ export default {
       projectSelect: '',
       issueTypeSelect: '',
       assignSelect: '',
-      prioritySelect: ''
+      prioritySelect: '',
+      tasks: []
     };
   },
   mounted() {
@@ -129,7 +134,11 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
+    self.task_list();
     console.log(self.$parent.issue_type_uuid);
+  },
+  created() {
+    // let self = this;
   },
   methods: {
     checkFormValidity() {
@@ -164,6 +173,13 @@ export default {
         } else {
           alert(response.data.msg)
         }
+      });
+    },
+    task_list: function() {
+      let self = this;
+      let url = self.urls.task_list.format(self.team, self.project, self.$parent.issue_type_uuid);
+      http.post(url).then(function (response) {
+        self.tasks = response.data;
       });
     }
   },
