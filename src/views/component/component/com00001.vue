@@ -33,13 +33,13 @@
           <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;border-top: 1px solid #e8e8e8;">
             <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
               <div id="task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
-                <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row" :class="{active: (selectedUUID === t.uuid)}">
+                <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row" :class="{active: (selectedUUID === t.uuid)}" @click="select_task(t.uuid)">
                   <div class="flex-row" style="margin: 0 10px 0 10px;border-bottom: 1px solid #f8f8f8;flex: 1;cursor: pointer;padding: 10px;">
                     <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row">
                       <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"></Priority>
                       <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;">{{t.owner.name}}</div>
                     </div>
-                    <div style="flex: 1;margin-left: 10px;" @click="select_task(t.uuid)">{{t.summary}}</div>
+                    <div style="flex: 1;margin-left: 10px;">{{t.summary}}</div>
                     <div style="flex: 0 0 auto;">
                       <Status :name="t.task_status.name" :color="t.task_status.category.toString()"></Status>
                     </div>
