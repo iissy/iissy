@@ -45,7 +45,7 @@
                         <Status :name="data.item.status_category" :color="data.item.status_uuid" />
                       </template>
                       <template v-slot:cell(owner)>
-                        <b-progress :value="25" variant="success" striped :animated="animate"></b-progress>
+                        <b-progress :value="25" variant="success" striped animate></b-progress>
                       </template>
                       <template v-slot:cell(assign)>
                         <div class="flex-row">
