@@ -123,7 +123,6 @@ import Search from "@/views/component/common/form/search";
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';
 import http from "@/util/http";
-import router from "@/router";
 
 export default {
   data: function () {
@@ -183,11 +182,11 @@ export default {
       let data = {
         summary: self.name,
         desc: self.desc,
-        priority: 'Mkt3j1DC'
+        priority: {uuid: 'Mkt3j1DC'}
       }
       http.post(self.urls.task_add.format(self.team, self.project, self.$parent.issue_type_uuid), data).then(function (response) {
         if (response.data.status === true) {
-          router.push({ name: 'Component', params: { team: self.team, project: self.project, com: self.com } });
+          self.task_list();
         } else {
           alert(response.data.msg)
         }
@@ -199,7 +198,6 @@ export default {
       http.post(url).then(function (response) {
         self.tasks = response.data;
         if(self.tasks.length > 0) {
-          //self.task_get(self.tasks[0].uuid);
           self.task = self.tasks[0]
           self.selectedUUID = self.tasks[0].uuid;
         }
