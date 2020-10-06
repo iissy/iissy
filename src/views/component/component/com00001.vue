@@ -48,18 +48,24 @@
               </div>
             </div>
             <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
-              <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 10px;">
+              <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
                 <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
                   <div style="flex: 1;">#{{ task.number }}</div>
                   <div style="flex: 0 0 auto;">...</div>
                 </div>
                 <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
-                  <div style="flex: 1;">{{ task.summary }}</div>
+                  <div style="flex: 1;font-size: 18px;">{{ task.summary }}</div>
                 </div>
-                <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
-                  <div style="flex: 1;text-align: center;">{{ task.assign.name }}</div>
-                  <div style="flex: 1;text-align: center;">{{ task.task_status.name }}</div>
-                  <div style="flex: 1;text-align: center;">{{ task.priority.value }}</div>
+                <div class="flex-row" style="width: 100%;padding: 0 10px 10px 10px;justify-content: space-between;">
+                  <div style="flex: 0 0 auto;text-align: center;">
+                    <Assign :user="task.assign"></Assign>
+                  </div>
+                  <div style="flex: 0 0 auto;text-align: center;">
+                    <TaskStatus :status="task.task_status"></TaskStatus>
+                  </div>
+                  <div style="flex: 0 0 auto;text-align: center;">
+                    <TaskPriority :option="task.priority"></TaskPriority>
+                  </div>
                 </div>
                 <div>
                   描述
@@ -122,6 +128,9 @@ import AddTaskButton from '../common/form/button';
 import Search from "@/views/component/common/form/search";
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';
+import Assign from '@/views/component/task/assign';
+import TaskStatus from '@/views/component/task/status';
+import TaskPriority from '@/views/component/task/priority';
 import http from "@/util/http";
 
 export default {
@@ -233,7 +242,10 @@ export default {
     AddTaskButton,
     Search,
     Priority,
-    Status
+    Status,
+    Assign,
+    TaskStatus,
+    TaskPriority
   }
 }
 </script>
