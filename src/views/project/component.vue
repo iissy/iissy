@@ -16,6 +16,7 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import http from "@/util/http";
+import com00000 from '../component/component/com00000';
 import com00001 from '../component/component/com00001';
 import com00002 from '../component/component/com00001';
 import com00003 from '../component/component/com00001';
@@ -26,7 +27,6 @@ import com00007 from '../component/component/com00007';
 import com00008 from '../component/component/com00008';
 import com00009 from '../component/component/com00009';
 import com00010 from '../component/component/com00010';
-import abcdefgh from '../component/component/abcdefgh';
 
 export default {
   data: function () {
@@ -46,6 +46,7 @@ export default {
   components: {
     Header,
     Menu,
+    com00000,
     com00001,
     com00002,
     com00003,
@@ -55,8 +56,7 @@ export default {
     com00007,
     com00008,
     com00009,
-    com00010,
-    abcdefgh
+    com00010
   },
   mounted() {
     let self = this;
@@ -86,8 +86,8 @@ export default {
       self.project = self.$route.params.project;
       self.com = self.$route.params.com;
 
-      if(self.com == "abcdefgh") {
-        self.currentTabComponent = abcdefgh;
+      if(self.com == "com00000") {
+        self.currentTabComponent = com00000;
       } else {
         http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
           self.currentTabComponent = response.data.template_uuid;
