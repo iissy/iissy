@@ -50,7 +50,7 @@
             <div style="overflow: auto;flex: 0 0 555px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
               <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
                 <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
-                  <div style="flex: 1;color: #363636;">#{{ task.number }}</div>
+                  <div style="flex: 1;">#{{ task.number }}</div>
                   <div style="flex: 0 0 auto;">
                     <svg t="1601948666806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10407" width="20" height="20"><path d="M509.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10408"></path><path d="M849.1 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10409"></path><path d="M174.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10410"></path></svg>
                   </div>
@@ -76,6 +76,65 @@
                 </div>
                 <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
                   {{ task.desc }}
+                </div>
+                <div style="margin-top: 30px;margin-bottom: 10px;font-size: 15px;">属性</div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div style="border-top: 1px solid #e8e8e8;"></div>
+                <div style="margin-top: 30px;margin-bottom: 10px;font-size: 15px;">基础信息</div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
+                </div>
+                <div class="flex-row" style="margin-bottom: 10px;">
+                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
+                  <div style="flex: 1;">未设置</div>
                 </div>
               </div>
               <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
