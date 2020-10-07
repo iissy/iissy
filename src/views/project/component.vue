@@ -26,6 +26,7 @@ import com00007 from '../component/component/com00007';
 import com00008 from '../component/component/com00008';
 import com00009 from '../component/component/com00009';
 import com00010 from '../component/component/com00010';
+import abcdefgh from '../component/component/abcdefgh';
 
 export default {
   data: function () {
@@ -54,7 +55,8 @@ export default {
     com00007,
     com00008,
     com00009,
-    com00010
+    com00010,
+    abcdefgh
   },
   mounted() {
     let self = this;
@@ -83,14 +85,19 @@ export default {
       self.team = self.$route.params.team;
       self.project = self.$route.params.project;
       self.com = self.$route.params.com;
-      http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
-        self.currentTabComponent = response.data.template_uuid;
-        self.comName = response.data.name;
 
-        if(response.data.objects.length > 0) {
-          self.issue_type_uuid = response.data.objects[0].uuid;
-        }
-      });
+      if(self.com == "abcdefgh") {
+        self.currentTabComponent = abcdefgh;
+      } else {
+        http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
+          self.currentTabComponent = response.data.template_uuid;
+          self.comName = response.data.name;
+
+          if(response.data.objects.length > 0) {
+            self.issue_type_uuid = response.data.objects[0].uuid;
+          }
+        });
+      }
     }
   }
 };

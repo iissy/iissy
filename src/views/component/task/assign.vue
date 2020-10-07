@@ -4,8 +4,8 @@
       <img src="/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
     </div>
     <div style="flex: 0 0 auto;margin-left: 10px;align-items: normal;" class="flex-column">
-      <div style="text-align: left;">{{ user.name }}</div>
-      <div style="text-align: left;color: #999999;">负责人</div>
+      <div style="text-align: left;color: #363636;">{{ user.name }}</div>
+      <div style="text-align: left;color: #999999;font-size: 12px;">负责人</div>
     </div>
   </div>
 </template>
