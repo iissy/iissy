@@ -1,4 +1,4 @@
-import Redirect from '../views/redirect'
+import Redirect from '../views/project/redirect'
 
 let component = [
     {
