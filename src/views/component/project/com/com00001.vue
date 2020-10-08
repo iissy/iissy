@@ -47,7 +47,7 @@
                 </div>
               </div>
             </div>
-            <div style="overflow: auto;flex: 0 0 555px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
+            <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
               <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
                 <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
                   <div style="flex: 1;">#{{ task.number }}</div>
@@ -76,6 +76,9 @@
                 </div>
                 <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
                   {{ task.desc }}
+                </div>
+                <div style="padding: 5px;">
+                  <router-link target="_blank" style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid } }">全屏查看</router-link>
                 </div>
                 <div style="margin-top: 30px;margin-bottom: 10px;font-size: 15px;">属性</div>
                 <div class="flex-row" style="margin-bottom: 10px;">
@@ -202,6 +205,7 @@ export default {
       cur: 0,
       team: '',
       project: '',
+      issue_type: '',
       com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
       items: [],
@@ -226,6 +230,7 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
+    self.issue_type = self.$parent.issue_type_uuid;
     self.task_list();
     console.log(self.$parent.issue_type_uuid);
   },
