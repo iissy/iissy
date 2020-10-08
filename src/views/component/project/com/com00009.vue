@@ -107,7 +107,7 @@ export default {
     return {
       team: '',
       project: '',
-      item: ''
+      item: { assign: {} }
     }
   },
   mounted() {
