@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="21"></Menu>
+      <Menu tagIndex="21" ref="Menu"></Menu>
       <div class="rightMain">
         <div class="layout-container-column">
-          <Header title="项目管理"></Header>
+          <Header title="项目管理" ref="Header"></Header>
           <div class="app-main-container">
             <div class="right-container">
               <div class="right-container-inner">

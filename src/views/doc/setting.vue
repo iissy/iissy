@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="83"></Menu>
+      <Menu tagIndex="83" ref="Menu"></Menu>
       <div class="rightMain">
-        <Header title="文档配置中心"></Header>
+        <Header title="文档配置中心" ref="Header"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div style="overflow: hidden;width: 100%;height: 100%;flex: 1;display: flex;flex-direction: column;">

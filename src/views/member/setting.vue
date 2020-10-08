@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="81"></Menu>
+      <Menu tagIndex="81" ref="Menu"></Menu>
       <div class="rightMain">
         <div class="layout-container-column">
-          <Header title="团队配置中心"></Header>
+          <Header title="团队配置中心" ref="Header"></Header>
           <div class="app-main-container">
             <div class="teamDepartmentTree">
               <div class="left-team-tree">

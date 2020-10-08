@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="app-row">
-      <Menu tagIndex="23"></Menu>
+      <Menu tagIndex="23" ref="Menu"></Menu>
       <div class="rightMain">
-        <Header title="群机器人"></Header>
+        <Header title="群机器人" ref="Header"></Header>
         <div class="app-main-container">
           <div class="app-main-content">
             <div>

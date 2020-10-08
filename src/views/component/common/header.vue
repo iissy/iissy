@@ -1,12 +1,13 @@
 <template>
   <div class="app-header">
     <div class="flex-row" style="width: 100%;">
-      <div style="background-color: #ffffff;height:48px;padding:10px 10px 10px 20px;display: flex;flex-direction: row;flex: 0 0 auto;">
-        <div style="flex: 1;flex-direction: column;align-items: center;justify-content: center;">
-          <div style="flex:1;vertical-align: middle;align-items: center;height: 100%;display: flex;">
-            <div style="color: #777777;font-weight: bolder;flex: 0 0 auto;font-size: 19px;margin: 0 10px 0 5px;letter-spacing: 3px;font-family: 'museo-1', 'museo-2', Verdana;text-shadow: #EEE 1px 1px 1px;">
-              {{title}}
-            </div>
+      <div style="background-color: #ffffff;height:48px;padding:10px;display: flex;flex-direction: row;flex: 0 0 auto;">
+        <div style="flex: 1;" class="flex-row">
+          <div v-if="hidden" style="flex:1;align-items: center;height: 22px;display: flex;cursor: pointer;padding-right: 10px;border-right: 1px solid #cccccc;" @click="open">
+            <svg t="1602142142391" class="icon" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24788" width="20" height="20"><path d="M744.32 684.32L987.68 510.55999999l-243.36-173.75999999zM949.28 829.76l-881.28 0c-21.12 0-38.4 17.28-38.4 38.4s17.28 38.4 38.4 38.4L949.28 906.56c21.12 0 38.4-17.28 38.4-38.4s-17.28-38.4-38.4-38.4zM67.52 190.88L949.28 190.88c21.12 0 38.4-17.28 38.4-38.39999999s-17.28-38.4-38.4-38.40000001l-881.28 0c-21.12 0-38.4 17.28-38.4 38.4s16.8 38.4 37.92 38.4zM67.52 429.44L640.64 429.44c21.12 0 38.4-17.28 38.4-38.4s-17.28-38.4-38.4-38.4l-572.64 0c-21.12 0-38.4 17.28-38.4 38.4s16.8 38.4 37.92 38.4zM67.52 668L640.64 668c21.12 0 38.4-17.28 38.4-38.4s-17.28-38.4-38.4-38.4l-572.64-1e-8c-21.12 0-38.4 17.28-38.4 38.40000001s16.8 38.4 37.92 38.4z" p-id="24789"></path></svg>
+          </div>
+          <div style="color: #777777;font-weight: bolder;flex: 0 0 auto;font-size: 19px;margin: 0 10px 0 10px;letter-spacing: 3px;font-family: 'museo-1', 'museo-2', Verdana;text-shadow: #EEE 1px 1px 1px;">
+            {{title}}
           </div>
         </div>
       </div>
@@ -31,7 +32,8 @@ export default {
   data() {
     return {
       dropdownActive: false,
-      dropParams: ['个人中心', '退出登录']
+      dropParams: ['个人中心', '退出登录'],
+      hidden: false
     }
   },
   props: {
@@ -57,7 +59,12 @@ export default {
     },
     tabToggle: function() {
       this.dropdownActive = false;
-    }
+    },
+    open: function () {
+      let self = this;
+      self.$parent.$refs.Menu.isOpen = true;
+      self.hidden = false;
+    },
   },
   components: {
     ProjectHeader
