@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ProjectHeader from '../project/header';
+import ProjectHeader from '../project/project_header';
 
 export default {
   data() {
