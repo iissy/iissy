@@ -1,9 +1,13 @@
 <template>
-  <div style="overflow:auto;flex: 1 0 auto;">
-    <div style="overflow:visible;flex: 1;padding: 10px;flex-direction: row;height: 100%;">
+  <div style="overflow:auto;flex: 1 0 auto;padding: 10px;width: 100%;">
+    <div class="flex-row header-container-inner" style="border-radius: 3px;padding: 15px;flex: 1;">
+      <div style="flex: 1;font-size: 18px;">项目概览</div>
+      <div style="flex: 1;">asd asdf</div>
+    </div>
+    <div style="overflow:visible;flex: 1;flex-direction: row;margin-top: 10px;">
       <div style="flex: 1;" class="flex-row">
         <div style="flex: 0 0 auto;width: 30%;max-width: 400px;border-radius: 3px;height: 330px;" class="header-container-inner">
-          <div style="padding: 10px;">
+          <div style="padding: 15px;">
             <div style="margin-bottom: 30px;font-size: 15px;">项目信息</div>
             <div style="flex: 0 0 auto;text-align: center;margin-bottom: 30px;">
               <Assign :user="item.assign"></Assign>
@@ -76,21 +80,30 @@
             </div>
           </div>
         </div>
-        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;" class="header-container-inner">
+        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
           <div>
-            <div>工作项趋势</div>
+            <div style="font-size: 15px;flex: 0 0 auto;">工作项趋势</div>
+            <div style="flex: 1;">
+              <line-chart :chart-data="datacollection" :options="options" :height="280"></line-chart>
+            </div>
           </div>
         </div>
       </div>
       <div style="flex: 1;margin-top: 10px;" class="flex-row">
-        <div style="flex: 0 0 auto;width: 30%;max-width: 400px;border-radius: 3px;height: 330px;" class="header-container-inner">
+        <div style="flex: 0 0 auto;width: 30%;max-width: 400px;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
           <div>
-            <div>公告</div>
+            <div style="font-size: 15px;margin-bottom: 20px;">公告</div>
+            <div style="line-height: 25px;">
+              爱上对方爱上对方爱上对方阿斯顿发生的发生的发生的， 阿斯顿发生的发生的发送发送打赏，阿斯顿阿斯顿发生的发送大声道爱死大声道发达撒大声地，阿斯顿发生的阿斯顿爱上对方爱死范德萨。
+            </div>
           </div>
         </div>
-        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;" class="header-container-inner">
+        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
           <div>
-            <div>工作项类型统计</div>
+            <div style="font-size: 15px;">工作项类型统计</div>
+            <div>
+              <line-chart :chart-data="datacollection" :options="options" :height="280" :styles="myStyles"></line-chart>
+            </div>
           </div>
         </div>
       </div>
@@ -100,6 +113,7 @@
 
 <script>
 import Assign from "@/views/component/task/assign";
+import LineChart from '@/chart/line'
 import http from "@/util/http";
 
 export default {
@@ -107,8 +121,33 @@ export default {
     return {
       team: '',
       project: '',
-      item: { assign: {} }
+      item: { assign: {} },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      },
+      datacollection: {
+        labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        datasets: [
+          {
+            label: 'Data One',
+            borderColor: '#FF6A6A',
+            borderWidth: 1,
+            fill: false,
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          }, {
+            label: 'Data Two',
+            borderColor: '#FFD700',
+            borderWidth: 1,
+            fill: false,
+            data: [60, 30, 22, 49, 50, 60, 49, 70, 60, 40, 32, 18]
+          }
+        ]
+      }
     }
+  },
+  created () {
+    //this.fillData();
   },
   mounted() {
     let self = this;
@@ -126,11 +165,20 @@ export default {
     }
   },
   components: {
-    Assign
+    Assign,
+    LineChart
+  },
+  computed: {
+    myStyles () {
+      return {
+        width: '100%',
+        position: 'relative'
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-
+div > canvas { width: 100%; }
 </style>
