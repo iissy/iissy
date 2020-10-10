@@ -84,7 +84,7 @@
           <div>
             <div style="font-size: 15px;flex: 0 0 auto;">工作项趋势</div>
             <div style="flex: 1;">
-              <line-chart :chart-data="datacollection" :options="options" :height="280"></line-chart>
+              <line1 :chart-data="datacollection" :options="options" :height="280" />
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
           <div>
             <div style="font-size: 15px;">工作项类型统计</div>
             <div>
-              <line-chart :chart-data="datacollection" :options="options" :height="280" :styles="myStyles"></line-chart>
+              <bar :chartData="chartData" :options="options" :height="canvasHeight" />
             </div>
           </div>
         </div>
@@ -113,30 +113,61 @@
 
 <script>
 import Assign from "@/views/component/task/assign";
-import LineChart from '@/chart/line'
+import Line1 from '@/chart/line'
+import Bar from '@/chart/bar';
 import http from "@/util/http";
 
 export default {
   data() {
     return {
+      headerHeight: 15,
+      lineHeight: 45,
+      count: 6,
       team: '',
       project: '',
       item: { assign: {} },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            stack: true
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            stack: true
+          }]
+        }
+      },
+      chartData: {
+        labels: ['需求', '任务', '缺陷'],
+        datasets: [{
+          label: '未开始',
+          data: [11, 10, 3],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)'
+        },{
+          label: '进行中',
+          data: [8, 5, 1],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)'
+        },{
+          label: '已完成',
+          data: [5, 2, 3],
+          backgroundColor: 'rgba(255, 206, 86, 0.5)'
+        }]
       },
       datacollection: {
         labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         datasets: [
           {
-            label: 'Data One',
+            label: '组一',
             borderColor: '#FF6A6A',
             borderWidth: 1,
             fill: false,
             data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
           }, {
-            label: 'Data Two',
+            label: '组二',
             borderColor: '#FFD700',
             borderWidth: 1,
             fill: false,
@@ -166,19 +197,16 @@ export default {
   },
   components: {
     Assign,
-    LineChart
+    Line1,
+    Bar
   },
   computed: {
-    myStyles () {
-      return {
-        width: '100%',
-        position: 'relative'
-      }
+    canvasHeight() {
+      return this.headerHeight + this.count * this.lineHeight;
     }
   }
 }
 </script>
 
 <style scoped>
-div > canvas { width: 100%; }
 </style>

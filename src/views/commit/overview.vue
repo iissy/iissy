@@ -23,7 +23,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Bar from '../../chart/bar';
+import Bar from '../../chart/horizontalBar';
 import http from "../../util/http";
 
 export default {
