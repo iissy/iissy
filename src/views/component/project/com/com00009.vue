@@ -130,14 +130,14 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          xAxes: [{
-            stack: true
-          }],
           yAxes: [{
             ticks: {
               beginAtZero: true
             },
-            stack: true
+            stacked: true
+          }],
+          xAxes: [{
+            stacked: true
           }]
         }
       },
