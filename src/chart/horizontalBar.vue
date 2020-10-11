@@ -6,7 +6,7 @@ export default {
   extends: HorizontalBar,
   mixins: [reactiveProp],
   props: ['chartData', 'options'],
-  mounted () {
+  mounted() {
     this.renderChart(this.chartData, this.options)
   }
 }

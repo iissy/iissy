@@ -1,12 +1,12 @@
 <template>
-  <div style="overflow:auto;flex: 1 0 auto;padding: 10px;width: 100%;">
+  <div style="overflow:auto;flex: 1 0 auto;padding: 10px;width: 100%;position: relative;">
     <div class="flex-row header-container-inner" style="border-radius: 3px;padding: 15px;flex: 1;">
       <div style="flex: 1;font-size: 18px;">项目概览</div>
       <div style="flex: 1;">asd asdf</div>
     </div>
-    <div style="overflow:visible;flex: 1;flex-direction: row;margin-top: 10px;">
-      <div style="flex: 1;" class="flex-row">
-        <div style="flex: 0 0 auto;width: 30%;max-width: 400px;border-radius: 3px;height: 330px;" class="header-container-inner">
+    <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;">
+      <div style="flex: 1;position: relative;" class="flex-row">
+        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;width: 25%;max-width: 400px;" class="header-container-inner">
           <div style="padding: 15px;">
             <div style="margin-bottom: 30px;font-size: 15px;">项目信息</div>
             <div style="flex: 0 0 auto;text-align: center;margin-bottom: 30px;">
@@ -80,17 +80,18 @@
             </div>
           </div>
         </div>
-        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
-          <div>
-            <div style="font-size: 15px;flex: 0 0 auto;">工作项趋势</div>
-            <div style="flex: 1;">
+        <div style="flex: 0 0 1%;max-width: 10px;"></div>
+        <div style="flex: 1 1 74%;border-radius: 3px;height: 330px;padding: 15px;position: relative;width: 74%;min-width: 74%;" class="header-container-inner">
+          <div style="position: relative;">
+            <div style="font-size: 15px;">工作项趋势</div>
+            <div  style="position: relative;display: block;" id="com00009Line">
               <line1 :chart-data="datacollection" :options="options" :height="280" />
             </div>
           </div>
         </div>
       </div>
-      <div style="flex: 1;margin-top: 10px;" class="flex-row">
-        <div style="flex: 0 0 auto;width: 30%;max-width: 400px;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
+      <div style="flex: 1;margin-top: 10px;position: relative;" class="flex-row">
+        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;padding: 15px;width: 25%;max-width: 400px;" class="header-container-inner">
           <div>
             <div style="font-size: 15px;margin-bottom: 20px;">公告</div>
             <div style="line-height: 25px;">
@@ -98,10 +99,11 @@
             </div>
           </div>
         </div>
-        <div style="margin-left: 10px;flex: 1;border-radius: 3px;height: 330px;padding: 15px;" class="header-container-inner">
-          <div>
+        <div style="flex: 0 0 1%;max-width: 10px;"></div>
+        <div style="flex: 1 1 74%;border-radius: 3px;height: 330px;padding: 15px;position: relative;width: 74%;min-width: 74%;" class="header-container-inner">
+          <div style="position: relative;flex: 1;">
             <div style="font-size: 15px;">工作项类型统计</div>
-            <div>
+            <div style="position: relative;flex: 1;">
               <bar :chartData="chartData" :options="options" :height="canvasHeight" />
             </div>
           </div>
@@ -146,14 +148,17 @@ export default {
         datasets: [{
           label: '未开始',
           data: [11, 10, 3],
+          barPercentage: 0.6,
           backgroundColor: 'rgba(255, 99, 132, 0.5)'
         },{
           label: '进行中',
           data: [8, 5, 1],
+          barPercentage: 0.6,
           backgroundColor: 'rgba(54, 162, 235, 0.5)'
         },{
           label: '已完成',
           data: [5, 2, 3],
+          barPercentage: 0.6,
           backgroundColor: 'rgba(255, 206, 86, 0.5)'
         }]
       },
@@ -209,4 +214,5 @@ export default {
 </script>
 
 <style scoped>
+#com00009Line > div { position: relative;display: block; }
 </style>
