@@ -5,7 +5,6 @@ import Master from '../views/help/master';
 import Main from '../views/main';
 
 import Robot from '../views/ding/robot';
-import MemberSetting from '../views/member/setting';
 import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
@@ -18,6 +17,7 @@ import Ex from './help.js';
 import Component from './component.js'
 import Doc from './doc.js'
 import Commit from './commit.js'
+import Team from './team.js'
 
 Vue.use(Router);
 
@@ -36,11 +36,6 @@ const index = [
         meta: { title: "群机器人" },
         name: 'Robot',
         component: Robot
-    }, {
-        path: '/main/team/:team/member/setting',
-        meta: { title: "团队配置中心" },
-        name: 'MemberSetting',
-        component: MemberSetting
     },{
         path: '/main/center/account',
         meta: { title: "个人中心" },
@@ -75,6 +70,7 @@ routes = routes.concat(Ex)
 routes = routes.concat(Component)
 routes = routes.concat(Doc)
 routes = routes.concat(Commit)
+routes = routes.concat(Team)
 
 export default new Router({
     mode: 'history',

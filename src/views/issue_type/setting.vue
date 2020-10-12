@@ -22,7 +22,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Control from '../component/setting/control';
+import Control from '../component/setting/project_control';
 import ProjectManager from "@/views/component/project/manager";
 import ProjectField from "@/views/component/project/field";
 import ProjectStatus from "@/views/component/project/status";

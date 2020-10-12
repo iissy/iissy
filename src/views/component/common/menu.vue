@@ -21,7 +21,7 @@
         <li :class="{active: (currentIndex === 23)}"><Link name="项目文档" icon="Doc" :to="{ name:'Doc', params: { team: team } }" /></li>
 
         <li><span></span></li>
-        <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="MemberSetting" :to="{ name: 'MemberSetting', params: { team: team } }" /></li>
+        <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="TeamSetting" :to="{ name: 'TeamSettingDefault', params: { team: team } }" /></li>
         <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team } }" /></li>
         <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="DocSetting" :to="{ name:'DocSetting', params: { team: team } }" /></li>
 
