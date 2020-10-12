@@ -6,7 +6,7 @@
     </div>
     <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;">
       <div style="flex: 1;position: relative;" class="flex-row">
-        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;width: 25%;max-width: 400px;" class="header-container-inner">
+        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;width: 25%;max-width: 400px;min-width: 300px;" class="header-container-inner">
           <div style="padding: 15px;">
             <div style="margin-bottom: 30px;font-size: 15px;">项目信息</div>
             <div style="flex: 0 0 auto;text-align: center;margin-bottom: 30px;">
@@ -91,7 +91,7 @@
         </div>
       </div>
       <div style="flex: 1;margin-top: 10px;position: relative;" class="flex-row">
-        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;padding: 15px;width: 25%;max-width: 400px;" class="header-container-inner">
+        <div style="flex: 0 0 25%;border-radius: 3px;height: 330px;padding: 15px;width: 25%;max-width: 400px;min-width: 300px;" class="header-container-inner">
           <div>
             <div style="font-size: 15px;margin-bottom: 20px;">公告</div>
             <div style="line-height: 25px;">
