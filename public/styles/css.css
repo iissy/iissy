@@ -23,10 +23,10 @@ html, body, div, h3, td, p, span, img, a {
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
 
-.rightMain .table { margin-bottom: 0; }
+/*.rightMain .table { margin-bottom: 0; }*/
 .rightMain .table th div{ text-align: left;font-size: 12px; }
 .rightMain .table thead th { border-bottom: 0; }
-.rightMain .table th,.rightMain .table td { padding: 0 10px 0 10px;border: 1px solid #e7ecf1;height: 34px;vertical-align: middle; }
+.rightMain .table th,.rightMain .table td { padding: 0 10px 0 10px;height: 34px;vertical-align: middle;white-space: nowrap; }
 .rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #fbfcfd; }
 .rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #ffffff; }
 
@@ -254,16 +254,15 @@ a.logo {
 
 .teamDepartmentTree {
     height: 100%;
-    width: 100%;
+    flex: 1;
     overflow: auto;
     display: -webkit-flex;
     display: flex;
-    padding: 10px;
+    flex-direction: row;
 }
 
 .left-team-tree {
-    width: 309px;
-    margin: 0;
+    flex: 0 0 298px;
     box-sizing: border-box;
     padding: 20px;
     margin: 1px 10px 1px 1px;
@@ -279,23 +278,19 @@ a.logo {
 .right-member-list {
     -webkit-flex: 1;
     flex: 1;
-    margin: 1px;
     box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
     box-sizing: border-box;
-    padding: 20px;
     border-radius: 3px;
-    background: #fff;
-    overflow: auto;
+    overflow: hidden;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: column;
+    padding: 20px;
+    margin: 1px;
+    background-color: #fff;
     flex-direction: column;
 }
 
 .ui-table {
-    border: solid 1px #dedede;
-    border-radius: 3px;
-    background-color: #fff;
     overflow: hidden;
     display: -webkit-flex;
     display: flex;
@@ -310,6 +305,9 @@ a.logo {
     overflow: hidden;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .memberList {
@@ -318,7 +316,6 @@ a.logo {
     -webkit-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    overflow: hidden;
 }
 
 .memberList .ui-table {
@@ -330,75 +327,5 @@ a.logo {
     position: relative;
     z-index: 0;
 }
-
-.ui-table .ui-table-header {
-    -webkit-flex: 0 0 auto;
-    flex: 0 0 auto;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
-    font-size: 14px;
-    color: #303030;
-    font-weight: 500;
-    height: 48px;
-    background-color: #f8f8f8;
-    border-bottom: solid 1px #dedede;
-    box-sizing: border-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.ui-table .ui-table-row {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
-    border-bottom: solid 1px #dedede;
-    font-size: 14px;
-    color: #303030;
-    box-sizing: border-box;
-}
-
-.ui-table .ui-table-body {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
-    width: 100%;
-    min-width: 1450px;
-    box-sizing: border-box;
-}
-
-.memberList .ui-table-row {
-    cursor: default;
-    width: 100%;
-    min-width: 1650px;
-    min-height: 52px;
-    padding: .8em 0em .8em 2em;
-}
-
-.memberList-field {
-    padding-right: 15px;
-    width: 238px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    -webkit-flex: 0 0 auto;
-    flex: 0 0 auto;
-}
-
-.memberList-field-name {
-    padding-right: 15px;
-    min-width: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    -webkit-flex: 0 0 auto;
-    flex: 0 0 auto;
-}
-
+.memberList .ui-table table { border-bottom: 1px solid #dee2e6;border-top: none; }
 .app-main-center { margin: 20px;-webkit-flex: 1 0 auto;flex: 1 0 auto;max-width: 100%;box-sizing: border-box;width: 1000px;background-color: #ffffff;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2); }
