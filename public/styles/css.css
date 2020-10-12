@@ -264,7 +264,6 @@ a.logo {
 .left-team-tree {
     flex: 0 0 298px;
     box-sizing: border-box;
-    padding: 20px;
     margin: 1px 10px 1px 1px;
     background: #fff;
     display: -webkit-flex;
