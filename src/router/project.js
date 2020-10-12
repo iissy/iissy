@@ -1,4 +1,4 @@
-import ProjectSetting from "@/views/setting";
+import ProjectSetting from "@/views/project/setting";
 import Projects from '../views/project/list';
 import AddProject from '../views/project/add';
 import Task from '../views/project/task';
