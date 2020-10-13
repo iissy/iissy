@@ -1,6 +1,6 @@
 <template>
-  <div style="display: inline-block;box-shadow: none;">
-    <div class="button" :class="{disabled: disabled}" v-on:click="onsubmit">{{title}}</div>
+  <div style="display: inline-block;box-shadow: none;outline: none;">
+    <div  style="box-shadow: none;outline: none;" class="button" :class="{disabled: disabled}" v-on:click="onsubmit">{{title}}</div>
   </div>
 </template>
 

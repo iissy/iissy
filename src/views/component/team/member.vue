@@ -32,9 +32,7 @@
         <div style="flex: 0 0 auto;">
           <Search placeholder="输入用户名，邮箱查找成员" />
         </div>
-        <div style="flex: 1;text-align: right;">
-          <AddProjectButton title="邀请新成员"></AddProjectButton>
-        </div>
+        <InviterUser></InviterUser>
       </div>
       <div class="member-left">
         <div class="memberList">
@@ -109,7 +107,7 @@
 import { formatDate } from '@/util/date';
 import http from '@/util/http';
 import Search from '../common/form/search';
-import AddProjectButton from '../button/common';
+import InviterUser from '../member/inviter_user';
 
 export default {
   data: function () {
@@ -129,12 +127,13 @@ export default {
       items: [],
       name: '',
       nameState: null,
-      selectedDepartment: ''
+      selectedDepartment: '',
+      email: ''
     };
   },
   components: {
     Search,
-    AddProjectButton
+    InviterUser
   },
   created: function () {
     let self = this;
@@ -204,4 +203,5 @@ export default {
 <style scoped>
 .tree-item { cursor: pointer;line-height: 30px; }
 .left-team-tree .active { background-color: #f3f3f3; }
+.tree-item:hover { background-color: #F0FFFF; }
 </style>

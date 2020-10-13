@@ -1,5 +1,7 @@
 let urls = {
     team_member_list: '/api/team/{0}/get_team_member_list',
+    team_member_add: '/api/team/{0}/member/add',
+
     list_project: '/api/team/{0}/list/project',
     logout: '/api/logout',
     commit_overview: '/api/team/{0}/commit/overview',
