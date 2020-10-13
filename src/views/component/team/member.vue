@@ -29,9 +29,9 @@
       <div class="member-left">
         <div class="memberList">
           <div class="ui-table">
-            <b-table style="width: 800px;" :fields="fields" :items="items" striped>
+            <b-table :fields="fields" :items="items" striped>
               <template v-slot:cell(name)="data">
-                <div class="flex-row" style="width: 150px;">
+                <div class="flex-row" style="min-width: 120px;">
                   <div style="flex: 0 0 auto;display: flex;align-items: center;">
                     <b-img left src="https://picsum.photos/25/25/?image=25" rounded="circle" alt="Left image"></b-img>
                   </div>
@@ -40,11 +40,25 @@
                   </div>
                 </div>
               </template>
+              <template v-slot:cell(email)="data">
+                <div style="min-width: 120px;">{{ data.value }}</div>
+              </template>
+              <template v-slot:cell(phone)="data">
+                <div style="min-width: 120px;">{{ data.value }}</div>
+              </template>
+              <template v-slot:cell(verify_status)="data">
+                <div style="min-width: 80px;">{{ data.value }}</div>
+              </template>
               <template v-slot:cell(create_time)="data">
-                <div>{{ data.value | formatDate }}</div>
+                <div style="min-width: 120px;">{{ data.value | formatDate }}</div>
               </template>
               <template v-slot:cell(access_time)="data">
-                <div>{{ data.value | formatDate }}</div>
+                <div style="min-width: 120px;">{{ data.value | formatDate }}</div>
+              </template>
+              <template v-slot:cell(op)="data">
+                <router-link :to="{name:'TeamSettingDefault', params: { team: data.item.uuid }}">
+                  <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
+                </router-link>
               </template>
             </b-table>
           </div>
@@ -89,16 +103,17 @@ import Search from '../common/form/search';
 export default {
   data: function () {
     return {
+      team: '',
       departmentOption: [],
       departmentTree: {},
       fields: [
-        { key: 'name', label: '姓名', formatter: '项目名称' },
-        { key: 'uuid', label: 'UUID', formatter: '项目状态' },
-        { key: 'union_id', label: 'UnionId', formatter: '项目负责人' },
-        { key: 'open_id', label: 'OpenId', formatter: '工作项目完成度' },
-        { key: 'app_id', label: 'AppId', formatter: '计划开始时间' },
-        { key: 'create_time', label: '创建时间', formatter: '计划完成时间' },
-        { key: 'access_time', label: '最后访问时间', formatter: '工作项数量' }
+        { key: 'name', label: '姓名' },
+        { key: 'email', label: '邮箱' },
+        { key: 'phone', label: '电话' },
+        { key: 'verify_status', label: '状态' },
+        { key: 'create_time', label: '创建时间' },
+        { key: 'access_time', label: '最后访问时间' },
+        { key: 'op', label: '操作' }
       ],
       items: [],
       name: '',
@@ -115,7 +130,7 @@ export default {
       self.departmentTree = response.data;
     });
 
-    self.member_list();
+    self.get_team_members();
   },
   filters: {
     formatDate(time) {
@@ -123,10 +138,10 @@ export default {
     }
   },
   methods: {
-    member_list: function() {
+    get_team_members: function() {
       let self = this;
-      let url = '/api/ding/get_user_list';
-      http.get(url).then(function (response) {
+      self.team = self.$route.params.team;
+      http.get(self.urls.team_member_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     },
