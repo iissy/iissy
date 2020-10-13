@@ -35,7 +35,7 @@
       <b-row>
         <b-col sm="1"></b-col>
         <b-col>
-          <b-button :disabled="disabled" variant="success">更新信息</b-button>
+          <AddProjectButton :disabled="disabled" title="更新信息"></AddProjectButton>
         </b-col>
       </b-row>
     </b-container>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import AddProjectButton from '../button/common';
+
 export default {
   data: function () {
     return {
@@ -56,6 +58,9 @@ export default {
       let self = this;
       self.disabled = false;
     }
+  },
+  components: {
+    AddProjectButton
   }
 }
 </script>

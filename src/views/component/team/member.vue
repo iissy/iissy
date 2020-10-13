@@ -2,10 +2,20 @@
   <div class="teamDepartmentTree">
     <div class="left-team-tree">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
-      <div style="flex: 1;padding: 0 0 0 20px;">
-        <div style="line-height: 30px;">{{departmentTree.name}}</div>
-        <div style="margin-left: 20px;" v-for="c in departmentTree.children" v-bind:key="c.id">
-          <div style="line-height: 30px;">{{c.name}}</div>
+      <div style="flex: 1;padding: 0 0 0 5px;">
+        <div class="tree-item flex-row" :class="{active: (selectedDepartment === '')}" @click="select_department('')" style="padding-left: 15px;">
+          <div style="flex: 0 0 auto;">
+            <svg t="1602580577253" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37322" width="20" height="20"><path d="M455.224889 171.406222c12.572444 33.223111 48.014222 56.092444 84.935111 57.571556H910.222222c31.004444 0 56.888889 26.567111 56.888889 57.628444v515.470222a58.026667 58.026667 0 0 1-56.888889 57.628445H114.062222c-31.061333 0-56.888889-26.624-56.888889-57.628445V171.406222a58.026667 58.026667 0 0 1 56.888889-57.628444h284.330667m0 0.739555c27.306667 1.479111 49.493333 34.702222 56.888889 57.628445" fill="#cdcdcd" p-id="37323"></path></svg>
+          </div>
+          <div style="flex: 1;margin-left: 5px;">{{departmentTree.name}}</div>
+        </div>
+        <div v-for="c in departmentTree.children" v-bind:key="c.id">
+          <div class="tree-item flex-row" @click="select_department(c.uuid)" :class="{active: (selectedDepartment === c.uuid)}" style="padding-left: 30px;">
+            <div style="flex: 0 0 auto;">
+              <svg t="1602580577253" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37322" width="20" height="20"><path d="M455.224889 171.406222c12.572444 33.223111 48.014222 56.092444 84.935111 57.571556H910.222222c31.004444 0 56.888889 26.567111 56.888889 57.628444v515.470222a58.026667 58.026667 0 0 1-56.888889 57.628445H114.062222c-31.061333 0-56.888889-26.624-56.888889-57.628445V171.406222a58.026667 58.026667 0 0 1 56.888889-57.628444h284.330667m0 0.739555c27.306667 1.479111 49.493333 34.702222 56.888889 57.628445" fill="#cdcdcd" p-id="37323"></path></svg>
+            </div>
+            <div style="flex: 1;margin-left: 5px;">{{c.name}}</div>
+          </div>
         </div>
       </div>
       <div style="flex: 0 0 30px;border-top: 1px solid #dee2e6;justify-content: center;" title="添加部门" class="flex-column">
@@ -20,10 +30,10 @@
       </div>
       <div style="flex: 0 0 auto;margin-bottom: 20px;" class="flex-row">
         <div style="flex: 0 0 auto;">
-          <Search placeholder="项目属性" />
+          <Search placeholder="输入用户名，邮箱查找成员" />
         </div>
         <div style="flex: 1;text-align: right;">
-          <b-button style="outline: none;box-shadow: none;" variant="success">邀请新成员</b-button>
+          <AddProjectButton title="邀请新成员"></AddProjectButton>
         </div>
       </div>
       <div class="member-left">
@@ -84,8 +94,8 @@
           <div style="flex: 0 0 50px;"></div>
           <div style="flex: 1;">
             <b-form-group label="选择所属部门" label-for="dep-select">
-              <b-form-select id="dep-select" v-model="departmentOption" required>
-                <b-form-select-option value="1">爱斯园</b-form-select-option>
+              <b-form-select id="dep-select" v-model="departmentOption">
+                <b-form-select-option value="">爱斯园</b-form-select-option>
               </b-form-select>
             </b-form-group>
           </div>
@@ -99,6 +109,7 @@
 import { formatDate } from '@/util/date';
 import http from '@/util/http';
 import Search from '../common/form/search';
+import AddProjectButton from '../button/common';
 
 export default {
   data: function () {
@@ -107,7 +118,7 @@ export default {
       departmentOption: [],
       departmentTree: {},
       fields: [
-        { key: 'name', label: '姓名' },
+        { key: 'name', label: '用户名' },
         { key: 'email', label: '邮箱' },
         { key: 'phone', label: '电话' },
         { key: 'verify_status', label: '状态' },
@@ -117,19 +128,18 @@ export default {
       ],
       items: [],
       name: '',
-      nameState: null
+      nameState: null,
+      selectedDepartment: ''
     };
   },
   components: {
-    Search
+    Search,
+    AddProjectButton
   },
   created: function () {
     let self = this;
-    let url = '/api/ding/get_department_list';
-    http.get(url).then(function (response) {
-      self.departmentTree = response.data;
-    });
-
+    self.team = self.$route.params.team;
+    self.get_department_tree();
     self.get_team_members();
   },
   filters: {
@@ -138,9 +148,14 @@ export default {
     }
   },
   methods: {
+    get_department_tree: function () {
+      let self = this;
+      http.get(self.urls.department_tree.format(self.team)).then(function (response) {
+        self.departmentTree = response.data;
+      });
+    },
     get_team_members: function() {
       let self = this;
-      self.team = self.$route.params.team;
       http.get(self.urls.team_member_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
@@ -165,17 +180,28 @@ export default {
       if (!this.checkFormValidity()) {
         return
       }
-      // Push the name to submitted names
-      // alert(this.name)
-      // Hide the modal manually
+      this.add_department();
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
       })
+    },
+    add_department: function () {
+      let self = this;
+      self.team = self.$route.params.team;
+      let data = { name: self.name, parent_uuid: self.departmentOption }
+      http.post(self.urls.department_add.format(self.team), data).then(function (response) {
+        self.items = response.data;
+        self.get_department_tree();
+      });
+    },
+    select_department: function (uuid) {
+      this.selectedDepartment = uuid;
     }
   }
 };
 </script>
 
 <style scoped>
-
+.tree-item { cursor: pointer;line-height: 30px; }
+.left-team-tree .active { background-color: #f3f3f3; }
 </style>
