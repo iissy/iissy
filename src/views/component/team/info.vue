@@ -6,7 +6,7 @@
         <b-col sm="1">
           <label>名字</label>
         </b-col>
-        <b-col sm="6">
+        <b-col sm="5">
           <b-form-input @change="name_change" @keydown="name_change" v-model="name"></b-form-input>
         </b-col>
       </b-row>
