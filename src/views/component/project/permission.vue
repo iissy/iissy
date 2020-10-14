@@ -106,7 +106,7 @@ export default {
       let self = this;
       self.ProjectName = self.$route.params.title
       if (!self.ProjectName) {
-        http.post(self.urls.project_field.format(self.team, self.project)).then(function (response) {
+        http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
           self.ProjectName = response.data.name;
         });
       }
