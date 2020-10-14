@@ -190,7 +190,7 @@
 </template>
 
 <script>
-import AddTaskButton from '../../common/form/button';
+import AddTaskButton from '../common/form/button';
 import Search from "@/views/component/common/form/search";
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';

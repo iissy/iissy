@@ -2,7 +2,6 @@ import ProjectSetting from "@/views/project/setting";
 import Projects from '../views/project/list';
 import AddProject from '../views/project/add';
 import Task from '../views/project/task';
-import Component from '../views/project/component';
 import ProjectPermissionSetting from '../views/project/permission';
 
 let project = [
@@ -31,11 +30,6 @@ let project = [
         meta: { title: "新建项目" },
         name: 'AddProject',
         component: AddProject
-    }, {
-        path: '/main/team/:team/project/:project/component/:com',
-        meta: { title: "项目管理" },
-        name: 'Component',
-        component: Component
     }, {
         path: '/main/team/:team/project/:project/issue_type/:issue_type/task/:task',
         meta: { title: "查看任务" },

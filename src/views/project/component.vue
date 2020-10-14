@@ -16,17 +16,16 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import http from "@/util/http";
-import com00000 from '../component/project/com/com00000';
-import com00001 from '../component/project/com/com00001';
-import com00002 from '../component/project/com/com00001';
-import com00003 from '../component/project/com/com00001';
-import com00004 from '../component/project/com/com00004';
-import com00005 from '../component/project/com/com00005';
-import com00006 from '../component/project/com/com00006';
-import com00007 from '../component/project/com/com00007';
-import com00008 from '../component/project/com/com00008';
-import com00009 from '../component/project/com/com00009';
-import com00010 from '../component/project/com/com00010';
+import com00001 from '../component/com/com00001';
+import com00002 from '../component/com/com00001';
+import com00003 from '../component/com/com00001';
+import com00004 from '../component/com/com00004';
+import com00005 from '../component/com/com00005';
+import com00006 from '../component/com/com00006';
+import com00007 from '../component/com/com00007';
+import com00008 from '../component/com/com00008';
+import com00009 from '../component/com/com00009';
+import com00010 from '../component/com/com00010';
 
 export default {
   data: function () {
@@ -46,7 +45,6 @@ export default {
   components: {
     Header,
     Menu,
-    com00000,
     com00001,
     com00002,
     com00003,
@@ -86,18 +84,14 @@ export default {
       self.project = self.$route.params.project;
       self.com = self.$route.params.com;
 
-      if(self.com == "com00000") {
-        self.currentTabComponent = com00000;
-      } else {
-        http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
-          self.currentTabComponent = response.data.template_uuid;
-          self.comName = response.data.name;
+      http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
+        self.currentTabComponent = response.data.template_uuid;
+        self.comName = response.data.name;
 
-          if(response.data.objects.length > 0) {
-            self.issue_type_uuid = response.data.objects[0].uuid;
-          }
-        });
-      }
+        if(response.data.objects.length > 0) {
+          self.issue_type_uuid = response.data.objects[0].uuid;
+        }
+      });
     }
   }
 };

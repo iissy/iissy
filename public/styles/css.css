@@ -74,7 +74,7 @@ a:hover {
     display: flex;
     -webkit-align-items: center;
     align-items: center;
-    box-shadow: 0 2px 4px 0 #d3d3d3;
+
     position: relative;
     z-index: 1;
     height:48px;
