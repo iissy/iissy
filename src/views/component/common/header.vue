@@ -25,8 +25,8 @@
       </div>
     </div>
     <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row">
-      <div class="feature" v-for="f in features" :key="f.uuid">
-        <router-link :class="{active: f.uuid === 'f'}" :to="{ name: 'Main' }">{{ f.name }}</router-link>
+      <div class="attr" v-for="a in attrs" :key="a.uuid">
+        <router-link :class="{active: a.uuid === attr}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
     </div>
   </div>
@@ -41,14 +41,17 @@ export default {
       dropdownActive: false,
       dropParams: ['个人中心', '退出登录'],
       hidden: false,
-      features: [
-        { uuid: 'a', name: '项目组建' },
-        { uuid: 'b', name:'工作项类型' },
-        { uuid: 'c', name:'项目权限' },
-        { uuid: 'd', name:'项目配置' },
-        { uuid: 'e', name:'项目信息' },
-        { uuid: 'f', name:'更多' }
-      ]
+      attrs: [
+        { uuid: 'com', name: '项目组建' },
+        { uuid: 'issue_type', name:'工作项类型' },
+        { uuid: 'project_permission', name:'项目权限' },
+        { uuid: 'project_setting', name:'项目配置' },
+        { uuid: 'project_info', name:'项目信息' },
+        { uuid: 'more', name:'更多' }
+      ],
+      team: '',
+      project: '',
+      attr: 'com'
     }
   },
   props: {
@@ -66,6 +69,22 @@ export default {
       }
     })
   },
+  watch: {
+    '$route' () {
+      let self = this;
+      if(self.designer) {
+        self.attr = self.$route.params.attr;
+      }
+    }
+  },
+  created() {
+    let self = this;
+    if(self.designer) {
+      self.team = self.$route.params.team;
+      self.project = self.$route.params.project;
+      self.attr = self.$route.params.attr;
+    }
+  },
   methods: {
     dropdown: function()
     {
@@ -82,6 +101,13 @@ export default {
       self.hidden = false;
     },
   },
+  computed: {
+    hasTitle: function () {
+      let self = this;
+      let hasItems = self.items && self.items.length > 0;
+      return !hasItems;
+    }
+  },
   components: {
     ProjectHeader
   }
@@ -90,7 +116,7 @@ export default {
 
 <style scoped>
 .app-header .wrapper { display: flex; justify-content: center; flex: 0;height: 100%;margin-right: 10px; }
-.feature { flex: 0 0 auto;padding: 0 10px;display: flex;height: 100%;align-items: center; }
-.feature a { padding: 0 5px;font-size: 15px;text-decoration: none;height: 30px;display: flex;align-items: center;border-radius: 3px; }
-.feature a.active { color: #17C4BB!important;background-color: #E0EEEE; }
+.attr { flex: 0 0 auto;padding: 0 10px;display: flex;height: 100%;align-items: center; }
+.attr a { padding: 0 5px;font-size: 15px;text-decoration: none;height: 30px;display: flex;align-items: center;border-radius: 3px; }
+.attr a.active { color: #17C4BB!important;background-color: #E0EEEE; }
 </style>

@@ -14,7 +14,7 @@ let component = [
         name: 'Component',
         component: Component
     }, {
-        path: '/main/team/:team/project/:project/component_designer/:feature',
+        path: '/main/team/:team/project/:project/component_designer/:attr',
         meta: { title: "项目设置" },
         name: 'ComponentDesigner',
         component: ComponentDesigner

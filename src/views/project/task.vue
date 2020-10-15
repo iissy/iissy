@@ -119,9 +119,9 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
-    self.issue_type = self.$route.params.issue_type
-    self.task_uuid = self.$route.params.task
-    self.task_get(self.task_uuid)
+    self.issue_type = self.$route.params.issue_type;
+    self.task_uuid = self.$route.params.task;
+    self.task_get(self.task_uuid);
   },
   methods: {
     task_get: function (uuid) {
