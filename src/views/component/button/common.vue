@@ -13,7 +13,10 @@ export default {
   props: ['title','disabled'],
   methods: {
     onsubmit: function () {
-      this.$emit('submit');
+      let self = this;
+      if (!self.disabled) {
+        this.$emit('submit');
+      }
     }
   }
 };

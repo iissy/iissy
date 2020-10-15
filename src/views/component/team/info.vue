@@ -35,15 +35,17 @@
       <b-row>
         <b-col sm="1"></b-col>
         <b-col>
-          <AddProjectButton :disabled="disabled" title="更新信息"></AddProjectButton>
+          <AddProjectButton :disabled="disabled" title="更新信息" @submit="update"></AddProjectButton>
         </b-col>
       </b-row>
     </b-container>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
 import AddProjectButton from '../button/common';
+import Alert from '@/views/component/common/block/alert';
 
 export default {
   data: function () {
@@ -57,10 +59,16 @@ export default {
     name_change: function () {
       let self = this;
       self.disabled = false;
+    },
+    update: function () {
+      let self = this;
+      self.$refs.alert.dismissCountDown = 1;
+      self.$refs.alert.variant = "danger";
     }
   },
   components: {
-    AddProjectButton
+    AddProjectButton,
+    Alert
   }
 }
 </script>

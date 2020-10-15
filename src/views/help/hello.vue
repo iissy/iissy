@@ -1,89 +1,47 @@
 <template>
-  <div class="flex-row" style="position: relative;">
-    <div style="flex: 0 0 20%;display: block;position: relative;width: 20%;min-width: 20%;max-width: 20%;">asdfasdf</div>
-    <div style="background-color: #e0e0e0;justify-content: center;position: relative;align-items: center;flex: 1 1 70%;display: block;width: 70%;min-width: 70%;max-width: 70%;">
-      <div style="background-color: #ffffff;display: block;position: relative;">
-        <div style="display: block;">
-          <line1 :chart-data="datacollection" :options="options" :height="280" />
-        </div>
-      </div>
-    </div>
+  <div>
+    <b-form-group label="Aspect ratio" label-for="ratio" label-cols-md="auto" class="mb-3">
+      <b-form-select id="ratio" v-model="aspect" :options="aspects"></b-form-select>
+    </b-form-group>
+    <b-card>
+      <b-aspect :aspect="aspect">
+        This will always be an aspect of "{{ aspect }}",
+        except when the content is too tall.
+      </b-aspect>
+    </b-card>
   </div>
 </template>
 
 <script>
-import Line1 from '@/chart/line';
-
 export default {
   data() {
     return {
-      headerHeight: 15,
-      lineHeight: 45,
-      count: 6,
-      team: '',
-      project: '',
-      item: { assign: {} },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            stacked: true
-          }],
-          xAxes: [{
-            stacked: true
-          }]
-        }
-      },
-      chartData: {
-        labels: ['需求', '任务', '缺陷'],
-        datasets: [{
-          label: '未开始',
-          data: [11, 10, 3],
-          barPercentage: 0.6,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)'
-        },{
-          label: '进行中',
-          data: [8, 5, 1],
-          barPercentage: 0.6,
-          backgroundColor: 'rgba(54, 162, 235, 0.5)'
-        },{
-          label: '已完成',
-          data: [5, 2, 3],
-          barPercentage: 0.6,
-          backgroundColor: 'rgba(255, 206, 86, 0.5)'
-        }]
-      },
-      datacollection: {
-        labels: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-        datasets: [
-          {
-            label: '组一',
-            borderColor: '#FF6A6A',
-            borderWidth: 1,
-            fill: false,
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-          }, {
-            label: '组二',
-            borderColor: '#FFD700',
-            borderWidth: 1,
-            fill: false,
-            data: [60, 30, 22, 49, 50, 60, 49, 70, 60, 40, 32, 18]
-          }
-        ]
-      }
-    }
-  },
-  components: {
-    Line1
-  },
-  computed: {
-    canvasHeight() {
-      return this.headerHeight + this.count * this.lineHeight;
+      aspect: '16:9',
+      aspects: [
+        { text: '4:3 (SD)', value: '4:3' },
+        { text: '1:1 (Square)', value: '1:1' },
+        { text: '16:9 (HD)', value: '16:9' },
+        { text: '1.85:1 (Widescreen)', value: '1.85:1' },
+        { text: '2:1 (Univisium/Superscope)', value: '2:1' },
+        { text: '21:9 (Anamorphic)', value: '21:9' },
+        { text: '1.43:1 (IMAX)', value: '1.43:1' },
+        { text: '3:2 (35mm Film)', value: '3:2' },
+        { text: '3:1 (APS-P)', value: '3:1', disabled: true },
+        { text: '4/3 (Same as 4:3)', value: 4 / 3 },
+        { text: '16/9 (Same as 16:9)', value: 16 / 9 },
+        { text: '3 (Same as 3:1)', value: 3 },
+        { text: '2 (Same as 2:1)', value: 2 },
+        { text: '1.85 (Same as 1.85:1)', value: 1.85 },
+        { text: '1.5', value: 1.5 },
+        { text: '1 (Same as 1:1)', value: 1 }
+      ]
     }
   }
 }
 </script>
+
+<style scoped>
+option:disabled { background-color: #f8f8f8;color:#000000; }
+/*select > optgroup { padding: 0;margin: 0;background-color: #f8f8f8;font-weight: 400; }*/
+/*select > optgroup > option { padding: 0;margin: 0;background-color: #ffffff;font-weight: 400; }*/
+</style>

@@ -6,7 +6,7 @@ import ProjectPermissionSetting from '../views/project/permission';
 
 let project = [
     {
-        path: '/main/setting/team/:team',
+        path: '/main/setting/team/:team/project/manager',
         meta: { title: "项目管理" },
         name: 'ProjectSetting',
         component: ProjectSetting
