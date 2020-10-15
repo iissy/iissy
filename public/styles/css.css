@@ -23,12 +23,12 @@ html, body, div, h3, td, p, span, img, a {
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
 
-/*.rightMain .table { margin-bottom: 0; }*/
 .rightMain .table th div{ text-align: left;font-size: 12px; }
 .rightMain .table thead th { border-bottom: 0; }
 .rightMain .table th,.rightMain .table td { padding: 0 10px 0 10px;height: 34px;vertical-align: middle;white-space: nowrap; }
 .rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #fbfcfd; }
 .rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #ffffff; }
+.shadow { box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);box-sizing: border-box;border-radius: 3px;background: #fff; }
 
 a:link {
     color: #4F4F4F;

@@ -1,5 +1,5 @@
 <template>
-  <div style="flex: 1;box-shadow: 0 2px 4px 0 #d3d3d3;" class="flex-column">
+  <div style="flex: 0 0 auto;box-shadow: 0 2px 4px 0 #d3d3d3;" class="flex-column">
     <div class="app-header">
       <div class="flex-row" style="width: 100%;">
         <div style="background-color: #ffffff;height:48px;padding:10px;display: flex;flex-direction: row;flex: 0 0 auto;">

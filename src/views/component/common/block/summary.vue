@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top: 20px;" class="flex-row">
-    <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;">
+    <div class="summary">
       <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
         <div style="flex: 0 0 auto;">
           {{ desc }}
@@ -26,3 +26,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.summary { height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #17C4BB;border-radius: 3px; }
+</style>

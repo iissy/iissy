@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 10px;">
+  <div class="project-main-container">
     <component v-bind:is="currentTabComponent"></component>
   </div>
 </template>

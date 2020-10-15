@@ -4,9 +4,7 @@
       <Menu tagIndex="21" ref="Menu"></Menu>
       <div class="rightMain">
         <Header :items="items" title="项目管理" :projectName="projectName" :designer="designer" ref="Header"></Header>
-        <div class="project-main-container">
-          <Designer></Designer>
-        </div>
+        <Designer></Designer>
       </div>
     </div>
   </div>

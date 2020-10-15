@@ -28,7 +28,7 @@
 
 <script>
 import http from "@/util/http";
-import Summary from '../../component/common/block/summary';
+import Summary from '@/views/component/common/block/summary';
 import Search from "@/views/component/common/form/search";
 
 export default {
