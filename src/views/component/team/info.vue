@@ -62,8 +62,7 @@ export default {
     },
     update: function () {
       let self = this;
-      self.$refs.alert.dismissCountDown = 1;
-      self.$refs.alert.variant = "danger";
+      self.$refs.alert.success();
     }
   },
   components: {

@@ -29,6 +29,14 @@ export default {
   methods: {
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown
+    },
+    success: function () {
+      this.dismissCountDown = 1;
+      this.variant = "success";
+    },
+    fail: function () {
+      this.dismissCountDown = 1;
+      this.variant = "danger";
     }
   }
 }
