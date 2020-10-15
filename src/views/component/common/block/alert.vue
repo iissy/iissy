@@ -1,7 +1,7 @@
 <template>
   <div id="iissy" class="alert flex-column">
     <div style="align-items: center;flex: 0 0 auto;">
-      <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0" @dismiss-count-down="countDownChanged">
+      <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
         <div class="flex-row" style="color: inherit;">
           <div class="mb-0">
             <b-iconstack font-scale="2">
@@ -27,9 +27,6 @@ export default {
     showAlert: Boolean
   },
   methods: {
-    countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-    },
     success: function () {
       this.dismissCountDown = 1;
       this.variant = "success";
