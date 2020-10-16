@@ -217,7 +217,7 @@ export default {
       issueTypeSelect: '',
       assignSelect: '',
       prioritySelect: '',
-      task: {assign:{}, task_status: {}, priority: {}},
+      task: {assign:{}, task_status: {}, priority: {}, uuid: '-'},
       tasks: [],
       selectedUUID: ''
     };
@@ -226,16 +226,14 @@ export default {
     comName: String
   },
   mounted() {
+  },
+  created() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
     self.issue_type = self.$parent.issue_type_uuid;
     self.task_list();
-    console.log(self.$parent.issue_type_uuid);
-  },
-  created() {
-    // let self = this;
   },
   methods: {
     checkFormValidity() {
