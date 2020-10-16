@@ -1,6 +1,6 @@
 <template>
   <div class="project-main-container">
-    <component v-bind:is="currentTabComponent"></component>
+    <component v-bind:is="currentTabComponent" :items="items"></component>
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default {
       currentTabComponent: 'com',
       attr: ''
     }
+  },
+  props: {
+    items: Array
   },
   watch: {
     '$route' () {
