@@ -55,8 +55,6 @@ import ProjectHeader from '../project/project_header';
 export default {
   data() {
     return {
-      dropdownActive: false,
-      dropParams: ['个人中心', '退出登录'],
       hidden: false,
       attrs: [
         { uuid: 'com', name: '项目组建' },
@@ -78,13 +76,6 @@ export default {
     designer: Boolean
   },
   mounted() {
-    document.addEventListener('click', (e) => {
-      if (this.$refs.mbMenu) {
-        if (!this.$refs.mbMenu.contains(e.target)) {
-          this.dropdownActive = false
-        }
-      }
-    })
   },
   watch: {
     '$route' () {
@@ -103,15 +94,6 @@ export default {
     }
   },
   methods: {
-    dropdown: function()
-    {
-      // console.log(event.target.getAttribute('class'));
-      // if(event.target.getAttribute('class') === 'dropdownBtn')
-      this.dropdownActive = !this.dropdownActive;
-    },
-    tabToggle: function() {
-      this.dropdownActive = false;
-    },
     open: function () {
       let self = this;
       self.$parent.$refs.Menu.isOpen = true;
@@ -119,11 +101,6 @@ export default {
     },
   },
   computed: {
-    hasTitle: function () {
-      let self = this;
-      let hasItems = self.items && self.items.length > 0;
-      return !hasItems;
-    }
   },
   components: {
     ProjectHeader

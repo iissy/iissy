@@ -23,17 +23,8 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project_control';
-import ProjectManager from "@/views/component/project/manager";
-import ProjectField from "@/views/component/project/field";
-import ProjectStatus from "@/views/component/project/status";
-
-import IssueTypeManager from "@/views/component/issue_type/manager";
-import IssueTypeField from "@/views/component/issue_type/field";
-import IssueTypeStatus from "@/views/component/issue_type/status";
-import IssueTypePriority from "@/views/component/issue_type/priority";
 
 import IssueTypeConfig from "@/views/component/issue_type/config";
-import IssueTypeRename from "@/views/component/issue_type/rename";
 
 export default {
   data: function () {
@@ -46,15 +37,7 @@ export default {
     Header,
     Menu,
     Control,
-    ProjectManager,
-    ProjectField,
-    ProjectStatus,
-    IssueTypeManager,
-    IssueTypeField,
-    IssueTypeStatus,
-    IssueTypePriority,
-    IssueTypeConfig,
-    IssueTypeRename
+    IssueTypeConfig
   },
   created: function () {
     let self = this;
@@ -67,9 +50,6 @@ export default {
       switch (path) {
         case "config":
           self.currentTabComponent = IssueTypeConfig;
-          break;
-        case "rename":
-          self.currentTabComponent = IssueTypeRename;
           break;
       }
     }

@@ -6,11 +6,6 @@ let issue_type = [
         meta: { title: "工作项管理" },
         name: 'IssueTypeSetting',
         component: IssueTypeSetting
-    },{
-        path: '/main/setting/team/:team/issue_type/:issue_type/rename',
-        meta: { title: "工作项管理" },
-        name: 'IssueTypeSetting',
-        component: IssueTypeSetting
     }
 ]
 
