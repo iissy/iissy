@@ -97,7 +97,7 @@ a:hover {
 
 .app-main-container {
     height: 100%;
-    /*overflow: auto;*/
+    overflow: auto;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
     width: auto;
