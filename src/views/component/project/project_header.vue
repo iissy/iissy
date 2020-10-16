@@ -24,7 +24,7 @@
       <div>
         <div :class="{active: designer}" class="com" @click="shift_tab({ name:'ComponentDesigner', params: { team: team, project: project, attr: 'com' } })">
           <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;" class="flex-row">
-            <div style="flex: 0 0 auto;"><svg t="1601475264212" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="30270" width="14" height="14"><path d="M958.464 385.024 819.2 385.024 917.504 286.72c24.576-24.576 24.576-65.536 0-90.112l-90.112-90.112c-24.576-24.576-65.536-24.576-90.112 0L638.976 204.8 638.976 65.536c0-36.864-28.672-65.536-65.536-65.536l-126.976 0c-36.864 0-65.536 28.672-65.536 65.536L380.928 204.8 286.72 106.496c-24.576-24.576-65.536-24.576-90.112 0L106.496 196.608C77.824 221.184 77.824 262.144 106.496 286.72L204.8 385.024 65.536 385.024C28.672 385.024 0 413.696 0 446.464l0 126.976c0 36.864 28.672 65.536 65.536 65.536L204.8 638.976 106.496 737.28c-24.576 24.576-24.576 65.536 0 90.112l90.112 90.112c24.576 24.576 65.536 24.576 90.112 0L385.024 819.2l0 139.264c0 36.864 28.672 65.536 65.536 65.536l126.976 0c36.864 0 65.536-28.672 65.536-65.536L643.072 819.2l98.304 98.304c24.576 24.576 65.536 24.576 90.112 0l90.112-90.112c24.576-24.576 24.576-65.536 0-90.112L819.2 638.976l139.264 0c36.864 0 65.536-28.672 65.536-65.536l0-126.976C1024 413.696 995.328 385.024 958.464 385.024zM512 704.512c-106.496 0-192.512-86.016-192.512-192.512 0-106.496 86.016-192.512 192.512-192.512 106.496 0 192.512 86.016 192.512 192.512C704.512 618.496 618.496 704.512 512 704.512z" p-id="30271" :fill="fill"></path></svg></div>
+            <div style="flex: 0 0 auto;"><svg t="1601475264212" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="30270" width="14" height="14"><path d="M958.464 385.024 819.2 385.024 917.504 286.72c24.576-24.576 24.576-65.536 0-90.112l-90.112-90.112c-24.576-24.576-65.536-24.576-90.112 0L638.976 204.8 638.976 65.536c0-36.864-28.672-65.536-65.536-65.536l-126.976 0c-36.864 0-65.536 28.672-65.536 65.536L380.928 204.8 286.72 106.496c-24.576-24.576-65.536-24.576-90.112 0L106.496 196.608C77.824 221.184 77.824 262.144 106.496 286.72L204.8 385.024 65.536 385.024C28.672 385.024 0 413.696 0 446.464l0 126.976c0 36.864 28.672 65.536 65.536 65.536L204.8 638.976 106.496 737.28c-24.576 24.576-24.576 65.536 0 90.112l90.112 90.112c24.576 24.576 65.536 24.576 90.112 0L385.024 819.2l0 139.264c0 36.864 28.672 65.536 65.536 65.536l126.976 0c36.864 0 65.536-28.672 65.536-65.536L643.072 819.2l98.304 98.304c24.576 24.576 65.536 24.576 90.112 0l90.112-90.112c24.576-24.576 24.576-65.536 0-90.112L819.2 638.976l139.264 0c36.864 0 65.536-28.672 65.536-65.536l0-126.976C1024 413.696 995.328 385.024 958.464 385.024zM512 704.512c-106.496 0-192.512-86.016-192.512-192.512 0-106.496 86.016-192.512 192.512-192.512 106.496 0 192.512 86.016 192.512 192.512C704.512 618.496 618.496 704.512 512 704.512z" p-id="30271" fill="#707070"></path></svg></div>
             <div style="flex: 0 0 auto;margin-left: 5px;">项目设置</div>
           </div>
         </div>
@@ -45,8 +45,7 @@ export default {
       dropParams: ['个人中心', '退出登录'],
       team: '',
       project: '',
-      selectedCom: '',
-      fill: '#707070'
+      selectedCom: ''
     }
   },
   props: {
@@ -56,23 +55,18 @@ export default {
     designer: Boolean
   },
   mounted() {
-    document.addEventListener('click', (e) => {
-      if (this.$refs.mbMenu) {
-        if (!this.$refs.mbMenu.contains(e.target)) {
-          this.dropdownActive = false
-        }
-      }
-    })
+    // document.addEventListener('click', (e) => {
+    //   if (this.$refs.mbMenu) {
+    //     if (!this.$refs.mbMenu.contains(e.target)) {
+    //       this.dropdownActive = false
+    //     }
+    //   }
+    // })
   },
   watch: {
     '$route' () {
       let self = this;
       self.selectedCom = self.$route.params.com;
-      if (self.designer) {
-        self.fill = '#17C4BB';
-      } else {
-        self.fill = '#707070';
-      }
     }
   },
   created() {
@@ -80,22 +74,15 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.selectedCom = self.$route.params.com;
-    if (self.designer) {
-      self.fill = '#17C4BB';
-    } else {
-      self.fill = '#707070';
-    }
   },
   methods: {
-    dropdown: function()
-    {
-      // console.log(event.target.getAttribute('class'));
-      // if(event.target.getAttribute('class') === 'dropdownBtn')
-      this.dropdownActive = !this.dropdownActive;
-    },
-    tabToggle: function() {
-      this.dropdownActive = false;
-    },
+    // dropdown: function()
+    // {
+    //   this.dropdownActive = !this.dropdownActive;
+    // },
+    // tabToggle: function() {
+    //   this.dropdownActive = false;
+    // },
     shift_tab: function (to) {
       router.push(to)
     }
@@ -108,6 +95,7 @@ export default {
 .com-outline .com { flex:1;vertical-align: middle;align-items: center;height: 100%;display: flex;padding: 0 20px 0 20px;cursor: pointer; }
 .com-outline .active { border-top: 3px solid #17C4BB;background-color: #f8f8f8;border-bottom: 3px solid #f8f8f8; }
 .com-outline div.active  div { color: #17C4BB!important; }
+.com-outline div.active  svg > path { fill: #17C4BB; }
 
 .nav-pills .nav-link { display: inline;padding:0; }
 </style>

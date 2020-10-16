@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row">
+    <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
         <router-link :class="{active: a.uuid === attr}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
