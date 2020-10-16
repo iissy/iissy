@@ -1,14 +1,27 @@
 <template>
-  <div>
-    <b-form-group label="Aspect ratio" label-for="ratio" label-cols-md="auto" class="mb-3">
-      <b-form-select id="ratio" v-model="aspect" :options="aspects"></b-form-select>
-    </b-form-group>
-    <b-card>
-      <b-aspect :aspect="aspect">
-        This will always be an aspect of "{{ aspect }}",
-        except when the content is too tall.
-      </b-aspect>
-    </b-card>
+  <div id="my-container">
+    <div class="my-3">
+      <!-- Our triggering (target) element -->
+      <div id="popover-reactive-1" variant="primary" ref="button">
+        Reactive Content Using Slots
+      </div>
+    </div>
+
+    <!-- Our popover title and content render container -->
+    <!-- We use placement 'auto' so popover fits in the best spot on viewport -->
+    <!-- We specify the same container as the trigger button, so that popover is close to button -->
+    <b-popover
+        target="popover-reactive-1"
+        :show.sync="popoverShow"
+        placement="auto"
+        triggers="hover">
+      <div class="flex-column" id="center">
+        <div class="menu-item">森岛帆高是改水电费</div>
+        <div class="menu-line"></div>
+        <div class="menu-item">去玩儿群翁群无</div>
+        <div class="menu-item">asdfa地方啊萨斯的</div>
+      </div>
+    </b-popover>
   </div>
 </template>
 
@@ -16,32 +29,83 @@
 export default {
   data() {
     return {
-      aspect: '16:9',
-      aspects: [
-        { text: '4:3 (SD)', value: '4:3' },
-        { text: '1:1 (Square)', value: '1:1' },
-        { text: '16:9 (HD)', value: '16:9' },
-        { text: '1.85:1 (Widescreen)', value: '1.85:1' },
-        { text: '2:1 (Univisium/Superscope)', value: '2:1' },
-        { text: '21:9 (Anamorphic)', value: '21:9' },
-        { text: '1.43:1 (IMAX)', value: '1.43:1' },
-        { text: '3:2 (35mm Film)', value: '3:2' },
-        { text: '3:1 (APS-P)', value: '3:1', disabled: true },
-        { text: '4/3 (Same as 4:3)', value: 4 / 3 },
-        { text: '16/9 (Same as 16:9)', value: 16 / 9 },
-        { text: '3 (Same as 3:1)', value: 3 },
-        { text: '2 (Same as 2:1)', value: 2 },
-        { text: '1.85 (Same as 1.85:1)', value: 1.85 },
-        { text: '1.5', value: 1.5 },
-        { text: '1 (Same as 1:1)', value: 1 }
-      ]
+      input1: '',
+      input1state: null,
+      input2: '',
+      input2state: null,
+      options: [{ text: '- Choose 1 -', value: '' }, 'Red', 'Green', 'Blue'],
+      input1Return: '',
+      input2Return: '',
+      popoverShow: false
+    }
+  },
+  // watch: {
+  //   input1(val) {
+  //     if (val) {
+  //       this.input1state = true
+  //     }
+  //   },
+  //   input2(val) {
+  //     if (val) {
+  //       this.input2state = true
+  //     }
+  //   }
+  // },
+  methods: {
+    onClose() {
+      this.popoverShow = false
+    },
+    onOk() {
+      if (!this.input1) {
+        this.input1state = false
+      }
+      if (!this.input2) {
+        this.input2state = false
+      }
+      if (this.input1 && this.input2) {
+        this.onClose()
+        // Return our popover form results
+        this.input1Return = this.input1
+        this.input2Return = this.input2
+      }
+    },
+    onShow() {
+      // This is called just before the popover is shown
+      // Reset our popover form variables
+      this.input1 = ''
+      this.input2 = ''
+      this.input1state = null
+      this.input2state = null
+      this.input1Return = ''
+      this.input2Return = ''
+    },
+    onShown() {
+      // Called just after the popover has been shown
+      // Transfer focus to the first input
+      this.focusRef(this.$refs.input1)
+    },
+    onHidden() {
+      // Called just after the popover has finished hiding
+      // Bring focus back to the button
+      this.focusRef(this.$refs.button)
+    },
+    focusRef(ref) {
+      // Some references may be a component, functional component, or plain element
+      // This handles that check before focusing, assuming a `focus()` method exists
+      // We do this in a double `$nextTick()` to ensure components have
+      // updated & popover positioned first
+      this.$nextTick(() => {
+        this.$nextTick(() => {
+          (ref.$el || ref).focus()
+        })
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-option:disabled { background-color: #f8f8f8;color:#000000; }
-/*select > optgroup { padding: 0;margin: 0;background-color: #f8f8f8;font-weight: 400; }*/
-/*select > optgroup > option { padding: 0;margin: 0;background-color: #ffffff;font-weight: 400; }*/
+.menu-item { flex: 1;padding: 10px 0 0 0;cursor: pointer; }
+.menu-item:hover { color: #d71b29; }
+.menu-line { border-top: 1px solid #eeeeee;height: 1px;margin-top: 10px; }
 </style>

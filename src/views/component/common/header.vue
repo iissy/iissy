@@ -13,15 +13,32 @@
           </div>
         </div>
         <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
-        <div style="flex: 0;">
-          <b-dropdown size="lg" right variant="link" toggle-class="text-decoration-none" offset="-10" no-caret>
-            <template v-slot:button-content>
-              <img src="/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
-            </template>
-            <b-dropdown-item href="/main/center/account">个人中心</b-dropdown-item>
-            <b-dropdown-item href="/main/logout">退出登录</b-dropdown-item>
-          </b-dropdown>
+        <div id="popover-reactive" style="flex: 0;align-items: center;display: flex;margin-right: 20px;">
+          <img src="/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
         </div>
+        <b-popover
+            target="popover-reactive"
+            placement="bottom"
+            triggers="hover">
+          <div class="flex-column" id="center">
+            <div class="menu-item">
+              <router-link :to="{ name: 'CenterAccount' }">
+                <b-icon icon="person"></b-icon> 账号设置
+              </router-link>
+            </div>
+            <div class="menu-item">
+              <router-link :to="{ name: 'CenterSafe' }">
+                <b-icon icon="shield-lock"></b-icon> 安全设置
+              </router-link>
+            </div>
+            <div class="menu-line"></div>
+            <div class="menu-item">
+              <router-link :to="{ name: 'Logout' }">
+                <b-icon icon="power"></b-icon> 退出登录
+              </router-link>
+            </div>
+          </div>
+        </b-popover>
       </div>
     </div>
     <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
@@ -119,4 +136,9 @@ export default {
 .attr { flex: 0 0 auto;padding: 0 10px;display: flex;height: 100%;align-items: center; }
 .attr a { padding: 0 5px;font-size: 15px;text-decoration: none;height: 30px;display: flex;align-items: center;border-radius: 3px; }
 .attr a.active { color: #17C4BB!important;background-color: #E0EEEE; }
+
+#center { padding: 0 10px 0 10px; }
+.menu-item { flex: 1;padding: 10px 0 0 0;cursor: pointer;letter-spacing: 3px; }
+.menu-item:hover a { color: #d71b29;text-decoration: none; }
+.menu-line { border-top: 1px solid #eeeeee;height: 1px;margin-top: 10px; }
 </style>
