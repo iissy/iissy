@@ -139,6 +139,6 @@ export default {
 
 #center { padding: 0 10px 0 10px; }
 .menu-item { flex: 1;padding: 10px 0 0 0;cursor: pointer;letter-spacing: 3px; }
-.menu-item:hover a { color: #d71b29;text-decoration: none; }
-.menu-line { border-top: 1px solid #eeeeee;height: 1px;margin-top: 10px; }
+.menu-item:hover a { color: #17C4BB;text-decoration: none; }
+.menu-line { border-top: 1px solid #e0e0e0;height: 1px;margin-top: 10px; }
 </style>
