@@ -94,6 +94,12 @@
                 <b-form-textarea v-model="desc" rows="3" max-rows="3" style="overflow: hidden;"></b-form-textarea>
               </div>
             </div>
+            <div class="flex-row align-items-center" style="margin-top: 20px;">
+              <div style="text-align: right;flex: 0 0 100px;"></div>
+              <div style="margin-left: 10px;flex: 1;overflow: hidden;">
+                <b-button variant="outline-danger">移除组建</b-button>
+              </div>
+            </div>
           </div>
           <div v-show="cur===1" style="">
             asdfasdfasdfasdf
