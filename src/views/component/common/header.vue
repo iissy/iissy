@@ -60,7 +60,8 @@ export default {
         { uuid: 'com', name: '项目组建' },
         { uuid: 'issue_type', name:'工作项类型' },
         { uuid: 'project_permission', name:'项目权限' },
-        { uuid: 'project_setting', name:'项目配置' },
+        { uuid: 'project_field', name:'项目属性' },
+        { uuid: 'project_status', name:'项目状态' },
         { uuid: 'project_info', name:'项目信息' },
         { uuid: 'more', name:'更多' }
       ],

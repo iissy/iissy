@@ -10,7 +10,8 @@ import issue_type from '../attr/issue_type';
 import more from '../attr/more';
 import project_info from '../attr/project_info';
 import project_permission from '../attr/project_permission';
-import project_setting from '../attr/project_setting';
+import project_field from '../attr/project_field';
+import project_status from '../attr/project_status';
 export default {
   data() {
     return {
@@ -26,6 +27,9 @@ export default {
       this.shift();
     }
   },
+  mounted() {
+    this.shift();
+  },
   methods: {
     shift: function () {
       let self = this;
@@ -39,7 +43,8 @@ export default {
     more,
     project_info,
     project_permission,
-    project_setting
+    project_field,
+    project_status
   }
 }
 </script>
