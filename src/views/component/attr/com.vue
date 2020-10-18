@@ -54,7 +54,7 @@
           <div class="com-line-header-title">导航自定义</div>
         </div>
         <div class="flex-row com" style="margin-top: 30px;background-color: #f8f8f8;padding-left: 10px;">
-          <div style="margin-bottom: 10px;" class="com-box-border align-items-center flex-row" :class="{active: selectedComUUID === i.uuid}" v-for="i in items" :key="i.uuid" @click="selectedComUUID=i.uuid;name=i.name;desc=i.desc;">
+          <div style="margin-bottom: 10px;" class="com-box-border align-items-center flex-row" :class="{active: selectedComUUID === i.uuid}" v-for="i in items" :key="i.uuid" @click="set_value(i);">
             <div style="flex: 0 0 auto;display: flex;">
               <svg t="1602764784806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="50821" width="15" height="15"><path d="M329.1136 793.6c63.488 0 115.2 51.712 115.2 115.2S392.6016 1024 329.1136 1024 214.016 972.288 214.016 908.8 265.6256 793.6 329.1136 793.6z m349.2864 0c63.488 0 115.2 51.712 115.2 115.2S741.888 1024 678.4 1024 563.2 972.288 563.2 908.8 614.912 793.6 678.4 793.6z m-349.184-396.8c63.488 0 115.0976 51.712 115.0976 115.2s-51.712 115.2-115.2 115.2S214.016 575.488 214.016 512s51.712-115.2 115.2-115.2z m349.184 0c63.488 0 115.2 51.712 115.2 115.2s-51.712 115.2-115.2 115.2S563.2 575.488 563.2 512s51.712-115.2 115.2-115.2zM329.216 0c63.488 0 115.0976 51.712 115.0976 115.2S392.6016 230.4 329.1136 230.4 214.016 178.688 214.016 115.2 265.6256 0 329.1136 0z m349.184 0c63.488 0 115.2 51.712 115.2 115.2S741.888 230.4 678.4 230.4 563.2 178.688 563.2 115.2 614.912 0 678.4 0z" fill="#8a8a8a" p-id="50822"></path></svg>
             </div>
@@ -125,22 +125,22 @@ export default {
       desc: ''
     }
   },
-  watch:{
-    items(newItems){
-      let self = this;
-      if (newItems && newItems.length > 0) {
-        self.selectedComUUID = newItems[0].uuid;
-        self.name = newItems[0].name;
-        self.desc = newItems[0].desc;
-      }
-    }
-  },
   created() {
+    let self = this;
+    if (self.items.length > 0) {
+      self.set_value(self.items[0]);
+    }
   },
   props: {
     items: Array
   },
   methods: {
+    set_value: function (item) {
+      let self = this;
+      self.selectedComUUID = item.uuid;
+      self.name = item.name;
+      self.desc = item.desc;
+    }
   },
   components: {
     Summary,
