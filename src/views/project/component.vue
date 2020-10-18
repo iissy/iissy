@@ -3,9 +3,9 @@
     <div class="app-row">
       <Menu tagIndex="21" ref="Menu"></Menu>
       <div class="rightMain">
-        <Header :items="items" title="项目管理" :projectName="projectName" ref="Header"></Header>
+        <Header :items="items" title="项目管理" :projectName="projectName" :designer="currentTabComponent==='designer'" ref="Header"></Header>
         <div class="project-main-container">
-          <component v-bind:is="currentTabComponent" :comName="comName"></component>
+          <component v-bind:is="currentTabComponent" :comName="comName" :items="items"></component>
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@ import com00007 from '../component/com/com00007';
 import com00008 from '../component/com/com00008';
 import com00009 from '../component/com/com00009';
 import com00010 from '../component/com/com00010';
+import designer from '../component/com/designer';
 
 export default {
   data: function () {
@@ -54,7 +55,8 @@ export default {
     com00007,
     com00008,
     com00009,
-    com00010
+    com00010,
+    designer
   },
   mounted() {
     let self = this;
@@ -63,6 +65,7 @@ export default {
     self.com = self.$route.params.com;
     http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
       self.items = response.data;
+      self.$store.state.items = self.items;
     });
 
     http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
@@ -83,6 +86,11 @@ export default {
       self.team = self.$route.params.team;
       self.project = self.$route.params.project;
       self.com = self.$route.params.com;
+
+      if (self.com === 'designer') {
+        self.currentTabComponent = 'designer'
+        return;
+      }
 
       http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
         self.currentTabComponent = response.data.template_uuid;

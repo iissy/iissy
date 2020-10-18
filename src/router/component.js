@@ -1,6 +1,5 @@
 import Redirect from '../views/project/redirect'
 import Component from "@/views/project/component";
-import ComponentDesigner from "@/views/project/component_designer";
 
 let component = [
     {
@@ -14,10 +13,10 @@ let component = [
         name: 'Component',
         component: Component
     }, {
-        path: '/main/team/:team/project/:project/component_designer/:attr',
+        path: '/main/team/:team/project/:project/component/:com/:attr',
         meta: { title: "项目设置" },
         name: 'ComponentDesigner',
-        component: ComponentDesigner
+        component: Component
     }
 ]
 

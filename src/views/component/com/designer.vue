@@ -15,8 +15,7 @@ import project_status from '../attr/project_status';
 export default {
   data() {
     return {
-      currentTabComponent: 'com',
-      attr: ''
+      currentTabComponent: 'com'
     }
   },
   props: {
@@ -33,8 +32,13 @@ export default {
   methods: {
     shift: function () {
       let self = this;
-      self.attr = self.$route.params.attr;
       self.currentTabComponent = self.attr;
+    }
+  },
+  computed: {
+    attr: function () {
+      let self = this;
+      return self.$route.params.attr || 'com';
     }
   },
   components: {

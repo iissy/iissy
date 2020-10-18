@@ -43,7 +43,7 @@
     </div>
     <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
-        <router-link :class="{active: a.uuid === attr}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, attr: a.uuid } }">{{ a.name }}</router-link>
+        <router-link :class="{active: a.uuid === attr}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
     </div>
   </div>
@@ -66,8 +66,7 @@ export default {
         { uuid: 'more', name:'更多' }
       ],
       team: '',
-      project: '',
-      attr: 'com'
+      project: ''
     }
   },
   props: {
@@ -76,23 +75,9 @@ export default {
     projectName: String,
     designer: Boolean
   },
-  mounted() {
-  },
-  watch: {
-    '$route' () {
-      let self = this;
-      if(self.designer) {
-        self.attr = self.$route.params.attr;
-      }
-    }
-  },
   created() {
     let self = this;
-    if(self.designer) {
-      self.team = self.$route.params.team;
-      self.project = self.$route.params.project;
-      self.attr = self.$route.params.attr;
-    }
+    self.initData();
   },
   methods: {
     open: function () {
@@ -100,8 +85,19 @@ export default {
       self.$parent.$refs.Menu.isOpen = true;
       self.hidden = false;
     },
+    initData: function () {
+      let self = this;
+      if(self.designer) {
+        self.team = self.$route.params.team;
+        self.project = self.$route.params.project;
+      }
+    }
   },
   computed: {
+    attr: function () {
+      let self = this;
+      return self.$route.params.attr || 'com';
+    }
   },
   components: {
     ProjectHeader

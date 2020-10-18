@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vuex from 'vuex'
 import App from '@/views/app.vue';
 import router from '@/router';
 
@@ -8,10 +9,17 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/util/string'
 import urls from '@/util/urls'
 
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
-Vue.prototype.urls = urls
-Vue.config.productionTip = false
+Vue.use(Vuex);
+Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
+Vue.prototype.urls = urls;
+Vue.config.productionTip = false;
+
+const store = new Vuex.Store({
+  state: {
+    items: []
+  }
+})
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
@@ -22,5 +30,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   render: h => h(App),
-  router: router,
+  store,
+  router,
 }).$mount('#app');
