@@ -87,10 +87,8 @@ export default {
     },
     initData: function () {
       let self = this;
-      if(self.designer) {
-        self.team = self.$route.params.team;
-        self.project = self.$route.params.project;
-      }
+      self.team = self.$route.params.team;
+      self.project = self.$route.params.project;
     }
   },
   computed: {
