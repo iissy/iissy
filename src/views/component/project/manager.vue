@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="font-size: 18px;margin-bottom: 20px;">项目管理</div>
-    <Summary desc="项目管理页展示当前所有项目，可对项目进行权限编辑和删除操作。"/>
+    <Summary :desc="desc"/>
     <div style="margin: 20px 0 0 0;">
       <Search placeholder="项目名字" />
     </div>
