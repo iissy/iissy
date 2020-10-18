@@ -14,21 +14,20 @@
         </div>
       </div>
       <div v-for="item in items" :key="item.com">
-<!--        <div :class="{active: (item.uuid === selectedCom)}" class="com" @click="shift_tab({ name:'Component', params: { team: team, project: project, com: item.uuid } })">-->
-<!--          <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">-->
-<!--            <b-icon v-if="item.uuid === 'designer'" scale="0.9" icon="gear"></b-icon>-->
-<!--            {{ item.name }}-->
-<!--          </div>-->
-<!--        </div>-->
-
-
         <router-link :class="{active: (item.uuid === selectedCom)}" class="com" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
           <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
             <b-icon v-if="item.uuid === 'designer'" scale="0.9" icon="gear"></b-icon>
             {{ item.name }}
           </div>
         </router-link>
-
+      </div>
+      <div>
+        <router-link :class="{active: ('designer' === selectedCom)}" class="com" :to="{ name:'Component', params: { team: team, project: project, com: 'designer' } }">
+          <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
+            <b-icon scale="0.9" icon="gear"></b-icon>
+            项目设置
+          </div>
+        </router-link>
       </div>
     </div>
     <div v-else class="com-outline">&nbsp;</div>
