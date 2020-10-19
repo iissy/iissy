@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../button/common';
+import AddProjectButton from '../../button/common';
 import http from "@/util/http";
 
 export default {

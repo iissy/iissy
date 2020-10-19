@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div style="font-size: 18px;margin-bottom: 20px;">项目属性</div>
+    <div style="font-size: 18px;margin-bottom: 20px;">项目状态</div>
     <div style="margin-top: 20px;" class="flex-row">
       <div style="height: 40px;flex: 1;margin-right: -22px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 1px solid #e8e8e8;">
         <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
           <div style="flex: 0 0 auto;">
-            项目属性设置可以设置项目概览页面需要显示的项目自定义属性。
+            项目状态用于标示项目所处状态，不同状态类型下可以有多种状态，当前为系统项目状态列表，不同项目可以共用同一个状态。
           </div>
         </div>
       </div>
@@ -16,14 +16,14 @@
       </div>
     </div>
     <div style="margin: 20px 0 0 0;">
-      <Search placeholder="项目属性" />
+      <Search placeholder="状态名字" />
     </div>
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
-            <div class="th">属性名称</div>
-            <div class="th">属性类型</div>
+            <div class="th">状态名称</div>
+            <div class="th">状态类型</div>
             <div class="th">使用到的项目</div>
             <div class="th last">操作</div>
           </div>
@@ -31,19 +31,16 @@
             <div class="td flex-row">
               <div style="flex: 0 0 auto;">{{ item.name }}</div>
               <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
+                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;">系统</div>
               </div>
             </div>
-            <div class="td">{{ item.field_type }}</div>
+            <div class="td" style="display: flex;align-items: center;">
+              <Status :name="item.name" :color="item.uuid"></Status>
+            </div>
             <div class="td">所有项目</div>
             <div class="td last" style="display: flex;align-items: center;">
-              <div style="width: 30px;height: 2px;" v-if="item.built_in">
+              <div style="width: 30px;height: 2px;">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
-              </div>
-              <div v-else>
-                <router-link :to="{name:'ProjectPermissionSetting', params: { team: item.team_uuid, project: item.uuid, title: item.name }}">
-                  <svg t="1600587759121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5114" width="16" height="16"><path d="M867.858 286.276c0 0 29.859-23.187-1.104-54.1l-91.687-95.672c0 0-27.363-37.252-59.429-5.235l-61.013 65.621 153.853 149.917 59.38-60.532zM773.818 387.109l-162.877-154.069-369.823 372.031 166.765 143.317 365.934-361.278zM221.15 845.308l-62.309-57.579-15.595 68.835h-0.054v49.156h737.34v-49.156h-735.708l76.327-11.256zM360.073 788.686l-164.126-137.483-20.834 92.334 95.287 80.528 89.672-35.378z" p-id="5115" fill="#2c2c2c"></path></svg>
-                </router-link>
               </div>
             </div>
           </div>
@@ -54,8 +51,9 @@
 </template>
 
 <script>
-import http from "@/util/http";
-import Search from '../common/form/search';
+import http from '@/util/http';
+import Status from '../../common/block/status';
+import Search from '../../common/form/search';
 
 export default {
   data: function () {
@@ -73,12 +71,13 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      http.post(self.urls.project_field.format(self.team)).then(function (response) {
+      http.post(this.urls.project_status.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     }
   },
   components: {
+    Status,
     Search
   }
 };

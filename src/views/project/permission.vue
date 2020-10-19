@@ -22,8 +22,8 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Control from '../component/setting/project_control';
-import ProjectPermission from "@/views/component/project/permission";
+import Control from '../component/setting/project/project_control';
+import ProjectPermission from "@/views/component/setting/project/permission";
 
 export default {
   data: function () {

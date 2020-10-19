@@ -113,7 +113,7 @@
 import { formatDate } from '@/util/date';
 import http from '@/util/http';
 import Search from '../common/form/search';
-import InviterUser from '../member/inviter_user';
+import InviterUser from '../setting/member/inviter_user';
 
 export default {
   data: function () {

@@ -22,9 +22,9 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Control from '../component/setting/project_control';
+import Control from '../component/setting/project/project_control';
 
-import IssueTypeConfig from "@/views/component/issue_type/config";
+import IssueTypeConfig from "@/views/component/setting/issue_type/config";
 
 export default {
   data: function () {

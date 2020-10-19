@@ -22,15 +22,15 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Control from '../component/setting/project_control';
-import ProjectManager from "@/views/component/project/manager";
-import ProjectField from "@/views/component/project/field";
-import ProjectStatus from "@/views/component/project/status";
+import Control from '../component/setting/project/project_control';
+import ProjectManager from "@/views/component/setting/project/manager";
+import ProjectField from "@/views/component/setting/project/field";
+import ProjectStatus from "@/views/component/setting/project/status";
 
-import IssueTypeManager from "@/views/component/issue_type/manager";
-import IssueTypeField from "@/views/component/issue_type/field";
-import IssueTypeStatus from "@/views/component/issue_type/status";
-import IssueTypePriority from "@/views/component/issue_type/priority";
+import IssueTypeManager from "@/views/component/setting/issue_type/manager";
+import IssueTypeField from "@/views/component/setting/issue_type/field";
+import IssueTypeStatus from "@/views/component/setting/issue_type/status";
+import IssueTypePriority from "@/views/component/setting/issue_type/priority";
 
 export default {
   data: function () {

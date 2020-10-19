@@ -21,7 +21,7 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 // import http from '../../util/http';
-import Control from '../component/setting/team_control';
+import Control from '../component/setting/team/team_control';
 import { formatDate } from '@/util/date';
 import Info from "@/views/component/team/info";
 import Member from "@/views/component/team/member";
