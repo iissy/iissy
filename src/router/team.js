@@ -1,4 +1,4 @@
-import TeamSetting from '../views/team/setting';
+import TeamSetting from '../views/setting/team_setting';
 
 let team = [
     {

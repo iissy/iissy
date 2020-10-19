@@ -23,9 +23,9 @@ import Menu from '../component/common/menu';
 // import http from '../../util/http';
 import Control from '../component/setting/team/team_control';
 import { formatDate } from '@/util/date';
-import Info from "@/views/component/team/info";
-import Member from "@/views/component/team/member";
-import Permission from "@/views/component/team/permission";
+import Info from "@/views/component/setting/team/info";
+import Member from "@/views/component/setting/team/member";
+import Permission from "@/views/component/setting/team/permission";
 
 export default {
   data: function () {

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../button/common';
+import AddProjectButton from '../../button/common';
 import Alert from '@/views/component/common/block/alert';
 
 export default {

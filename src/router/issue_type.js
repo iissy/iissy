@@ -1,4 +1,4 @@
-import IssueTypeSetting from "@/views/issue_type/setting";
+import IssueTypeSetting from "@/views/setting/issue_type_setting";
 
 let issue_type = [
     {
