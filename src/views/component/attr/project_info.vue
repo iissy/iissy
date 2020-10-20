@@ -7,7 +7,7 @@
           <b-col sm="1">
             <label>创建者</label>
           </b-col>
-          <b-col sm="5">
+          <b-col sm="4">
             <Creator :user="creator"/>
           </b-col>
         </b-row>
@@ -15,7 +15,7 @@
           <b-col sm="1">
             <label>创建时间</label>
           </b-col>
-          <b-col sm="5">
+          <b-col sm="4">
             2019-01-01 12:12:12
           </b-col>
         </b-row>
@@ -23,7 +23,7 @@
           <b-col sm="1">
             <label>项目名称</label>
           </b-col>
-          <b-col sm="5">
+          <b-col sm="4">
             <b-form-input @change="name_change" @keydown="name_change" v-model="name"></b-form-input>
           </b-col>
         </b-row>
@@ -31,7 +31,7 @@
           <b-col sm="1">
             <label></label>
           </b-col>
-          <b-col sm="5">
+          <b-col sm="4">
             <AddProjectButton :disabled="disabled" title="更新信息" @submit="update"></AddProjectButton>
           </b-col>
         </b-row>
