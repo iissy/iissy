@@ -37,10 +37,8 @@
               <div style="flex: 0 0 auto;">{{ item.name }}</div>
             </div>
             <div class="td">
-              <div>
-                <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                  <Status class="status" :name="item.category.toString()" :color="item.category.toString()"/>
-                </div>
+              <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;">
+                <Status :name="item.category.toString()" :color="item.category.toString()"/>
               </div>
             </div>
             <div class="td">所有项目</div>

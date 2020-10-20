@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
+    <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;">
       <div class="status" :class="curColor">{{ curName }}</div>
     </div>
   </div>
