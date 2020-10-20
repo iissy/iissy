@@ -62,7 +62,6 @@ export default {
       let type = this.$route.params.type;
       let id = this.$route.params.com;
       this.tag_switch(type + "_" + id);
-      console.log(type + "_" + id);
     }
   },
   methods: {
