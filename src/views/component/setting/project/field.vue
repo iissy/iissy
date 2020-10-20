@@ -46,7 +46,6 @@ import Summary from "@/views/component/common/block/summary";
 export default {
   data: function () {
     return {
-      name: '',
       team: '',
       items: [],
       desc: '项目属性设置可以设置项目概览页面需要显示的项目自定义属性。'
