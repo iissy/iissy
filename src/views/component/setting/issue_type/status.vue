@@ -39,7 +39,7 @@
             <div class="td">
               <div>
                 <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                  <div class="status" :class="item.uuid">{{ item.category }}</div>
+                  <Status class="status" :name="item.category.toString()" :color="item.category.toString()"/>
                 </div>
               </div>
             </div>
@@ -58,6 +58,7 @@
 
 <script>
 import http from "@/util/http";
+import Status from '@/views/component/common/block/status';
 
 export default {
   data: function () {
@@ -79,6 +80,9 @@ export default {
         self.items = response.data;
       });
     }
+  },
+  components: {
+    Status
   }
 };
 </script>

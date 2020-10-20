@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-      <div class="status" :class="curColor">{{ name }}</div>
+      <div class="status" :class="curColor">{{ curName }}</div>
     </div>
   </div>
 </template>
@@ -10,23 +10,47 @@
 export default {
   data() {
     return {
-      curColor: ''
-    }
-  },
-  mounted() {
-    if(this.color === "1") {
-      this.curColor = "to_do";
-    } else if(this.color === "2") {
-      this.curColor = "in_progress";
-    } else if(this.color === "3") {
-      this.curColor = "done";
-    } else {
-      this.curColor = this.color;
     }
   },
   props: {
     name: String,
     color: String
+  },
+  computed: {
+    curName: function () {
+      let self = this;
+      let resultName = self.name;
+      switch (self.name) {
+        case "1":
+          resultName = '未开始'
+          break;
+        case "2":
+          resultName = '未开始'
+          break;
+        case "3":
+          resultName = '已完成'
+          break;
+      }
+
+      return resultName;
+    },
+    curColor: function () {
+      let self = this;
+      let resultColor = self.color;
+      switch (self.color) {
+        case "1":
+          resultColor = 'to_do'
+          break;
+        case "2":
+          resultColor = 'in_progress'
+          break;
+        case "3":
+          resultColor = 'done'
+          break;
+      }
+
+      return resultColor;
+    }
   }
 }
 </script>
