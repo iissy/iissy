@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/util/string'
 import urls from '@/util/urls'
+import  * as filters from '@/scripts/field'
+Object.keys(filters).forEach(item => Vue.filter(item,filters[item]))
 
 Vue.use(Vuex);
 Vue.use(BootstrapVue);
