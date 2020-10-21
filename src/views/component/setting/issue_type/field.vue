@@ -33,7 +33,8 @@
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>
               <div style="font-weight: bolder;" v-else>
-                <b-icon icon="x" scale="2"></b-icon>
+                <b-icon icon="pencil-fill"></b-icon>
+                <b-icon icon="x" scale="2" style="margin-left: 15px;"></b-icon>
               </div>
             </div>
           </div>
