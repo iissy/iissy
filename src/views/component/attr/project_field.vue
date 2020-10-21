@@ -20,7 +20,7 @@
                 <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
               </div>
             </div>
-            <div style="flex: 0 0 150px;" class="td">{{ item.field_type }}</div>
+            <div style="flex: 0 0 150px;" class="td">{{ item.field_type | ProjectFieldType }}</div>
             <div style="flex: 0 0 100px;" class="td align-items-center flex-row">
               <div  class="align-items-center flex-row" style="width: 30px;height: 2px;" v-if="item.built_in">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
