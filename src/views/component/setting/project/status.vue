@@ -2,9 +2,7 @@
   <div>
     <div style="font-size: 18px;margin-bottom: 20px;">项目状态</div>
     <Summary :desc="desc"/>
-    <div style="margin: 20px 0 0 0;">
-      <Search placeholder="状态名字" />
-    </div>
+    <Search style="margin-top: 20px;" placeholder="搜索项目状态" />
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
@@ -12,7 +10,7 @@
             <div class="th">状态名称</div>
             <div class="th">状态类型</div>
             <div class="th">使用到的项目</div>
-            <div class="th last">操作</div>
+            <div class="th op">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td flex-row">
@@ -25,7 +23,7 @@
               <Status :name="item.name" :color="item.uuid"></Status>
             </div>
             <div class="td">所有项目</div>
-            <div class="td last" style="display: flex;align-items: center;">
+            <div class="td op" style="display: flex;align-items: center;">
               <div style="width: 30px;height: 2px;">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>
@@ -73,12 +71,4 @@ export default {
 </script>
 
 <style scoped>
-#project-main { flex: 1;display: flex; }
-.table { margin-top: 10px;flex: 1;display: flex;flex-direction: column;border-left: 1px solid #e8e8e8;border-right: 1px solid #e8e8e8; }
-.table-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f0f0f0;font-weight: bolder; }
-.table-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #e8e8e8; }
-.table-row:hover { background-color: #f8f8f8; }
-.table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
-.table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
-.table .last { flex: 0 0 auto; }
 </style>
