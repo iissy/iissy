@@ -19,7 +19,7 @@
                 <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
               </div>
             </div>
-            <div class="td">{{ item.type | FieldType }}</div>
+            <div class="td">{{ item.type | TaskFieldType }}</div>
             <div class="td">所有项目</div>
             <div class="td op align-items-center" style="display: flex;">
               <div style="width: 30px;height: 2px;" v-if="item.built_in">

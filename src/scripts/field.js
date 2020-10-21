@@ -1,4 +1,4 @@
-export function FieldType(type) {
+const TaskFieldType = function(type) {
     let name = '';
     switch (type) {
         case 1:
@@ -64,7 +64,46 @@ export function FieldType(type) {
         case 21:
             name = '';
             break;
+        case 22:
+            name = '状态';
+            break;
     }
 
     return name;
+}
+
+const ProjectFieldType = function (type) {
+    let name = ''
+    switch (type) {
+        case 'integer':
+            name = '整数';
+            break;
+        case 'time':
+            name = '时间';
+            break;
+        case 'percentage':
+            name = '百分数';
+            break;
+        case 'date':
+            name = '日期';
+            break;
+        case 'user':
+            name = '单选成员';
+            break;
+        case 'text':
+            name = '单行文本';
+            break;
+        case 'rich_text':
+            name = '多文本';
+            break;
+        case 'status':
+            name = '状态';
+            break;
+    }
+
+    return name;
+}
+export {
+    TaskFieldType,
+    ProjectFieldType
 }
