@@ -23,7 +23,7 @@
             <div class="td">{{ item.type | TaskFieldType }}</div>
             <div class="td">---</div>
             <div class="td">
-              <b-form-checkbox v-model="item.fixed" name="check-button" size="lg" switch/>
+              <b-form-checkbox v-model="item.fixed" name="check-button" switch></b-form-checkbox>
             </div>
             <div class="td" style="display: flex;flex: 0 0 80px;">
               <div style="width: 30px;height: 2px;" v-if="item.built_in">
