@@ -19,6 +19,8 @@ let urls = {
     project_template: '/api/team/{0}/project/{1}/setting/template',
     project_get: '/api/team/{0}/project/{1}/get',
 
+    project_issue_type_field: '/api/team/{0}/project/{1}/issue_type/{2}/field',
+
     component_get: '/api/team/{0}/project/{1}/component/get/{2}',
     components: '/api/team/{0}/project/{1}/components',
 

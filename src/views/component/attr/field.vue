@@ -21,16 +21,21 @@
               </div>
             </div>
             <div class="td">{{ item.type | TaskFieldType }}</div>
-            <div class="td">---</div>
+            <div class="td">{{ default_value || '---' }}</div>
             <div class="td">
-              <b-form-checkbox v-model="item.fixed" name="check-button" switch></b-form-checkbox>
-            </div>
-            <div class="td" style="display: flex;flex: 0 0 80px;">
-              <div style="width: 30px;height: 2px;" v-if="item.built_in">
+              <div style="font-weight: bolder;text-align: center;width: 30px;" v-if="item.can_modify_required">
+                <b-form-checkbox v-model="item.required" name="check-button" switch @change="toggle(item)"></b-form-checkbox>
+              </div>
+              <div style="width: 30px;height: 2px;" v-else>
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>
-              <div style="font-weight: bolder;text-align: center;width: 30px;" v-else>
+            </div>
+            <div class="td align-items-center" style="display: flex;flex: 0 0 80px;">
+              <div style="font-weight: bolder;text-align: center;width: 30px;" v-if="item.can_delete">
                 <b-icon icon="x" scale="2"></b-icon>
+              </div>
+              <div style="width: 30px;height: 2px;" v-else>
+                <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>
             </div>
           </div>
@@ -51,20 +56,27 @@ export default {
       name: '',
       desc: '工作项属性用于配置工作项需要的显示字段，可以用多种属性类型来进行配置，不同项目可以共用同一个属性。',
       team: '',
+      project: '',
+      issue_type: '',
       items: []
     };
   },
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.issue_type = self.$route.params.issue_type;
     self.project_list();
   },
   methods: {
     project_list: function() {
       let self = this;
-      http.post(this.urls.issue_type_field.format(self.team)).then(function (response) {
-        self.items = response.data;
+      http.get(this.urls.project_issue_type_field.format(self.team, self.project, self.issue_type)).then(function (response) {
+        self.items = response.data.field_configs;
       });
+    },
+    toggle: function (o) {
+      console.log(o.uuid, o.fixed);
     }
   },
   components: {
