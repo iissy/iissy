@@ -9,7 +9,8 @@
           <div class="table-row-header">
             <div class="th">属性名称</div>
             <div class="th">属性类型</div>
-            <div class="th">使用到的项目</div>
+            <div class="th">默认属性</div>
+            <div class="th">是否必填</div>
             <div class="th" style="display: flex;flex: 0 0 80px;">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
@@ -20,7 +21,10 @@
               </div>
             </div>
             <div class="td">{{ item.type | TaskFieldType }}</div>
-            <div class="td">所有项目</div>
+            <div class="td">---</div>
+            <div class="td">
+              <b-form-checkbox v-model="item.fixed" name="check-button" switch/>
+            </div>
             <div class="td" style="display: flex;flex: 0 0 80px;">
               <div style="width: 30px;height: 2px;" v-if="item.built_in">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
