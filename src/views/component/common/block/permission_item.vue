@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 30px;">
+  <div style="margin-top: 20px;">
     <div style="font-size: 16px;">{{ title }}</div>
     <div style="color: #909090;">{{ desc }}</div>
     <div class="table">
@@ -8,7 +8,7 @@
       </div>
       <div class="table-row">
         <div class="td">项目管理员</div>
-        <div class="td last">
+        <div class="td" style="flex: 0 0 60px;">
           <b-icon icon="x" scale="1.5"></b-icon>
         </div>
       </div>
@@ -49,10 +49,4 @@ export default {
 </script>
 
 <style scoped>
-.table { margin-top: 10px;flex: 1;display: flex;flex-direction: column;border-left: 1px solid #e8e8e8;border-right: 1px solid #e8e8e8; }
-.table-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f0f0f0; }
-.table-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #e8e8e8; }
-.table .th { padding: 10px 0 10px 20px;flex: 1 1 auto; }
-.table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
-.table .last { width: 60px;flex: 0 0 auto; }
 </style>
