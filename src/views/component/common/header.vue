@@ -43,7 +43,7 @@
     </div>
     <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
-        <router-link :class="{active: a.uuid === attr}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
+        <router-link :class="{active: isActive(a, attr)}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ export default {
       hidden: false,
       attrs: [
         { uuid: 'com', name: '项目组建' },
-        { uuid: 'issue_type', name:'工作项类型' },
+        { uuid: 'issue_type', name:'工作项类型', items: [{ uuid: 'field' }, { uuid: 'issue_type_permission' }, { uuid: 'issue_type_flow' }] },
         { uuid: 'project_permission', name:'项目权限' },
         { uuid: 'project_field', name:'项目属性' },
         { uuid: 'project_status', name:'项目状态' },
@@ -89,6 +89,21 @@ export default {
       let self = this;
       self.team = self.$route.params.team;
       self.project = self.$route.params.project;
+    },
+    isActive: function (o, i) {
+      if (o.uuid === i) {
+        return true;
+      } else {
+        if (o.items && o.items.length > 0) {
+          for(let x=0;x<o.items.length;x++) {
+            if (o.items[x].uuid === i) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
     }
   },
   computed: {

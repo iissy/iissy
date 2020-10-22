@@ -12,6 +12,10 @@ import project_info from '../attr/project_info';
 import project_permission from '../attr/project_permission';
 import project_field from '../attr/project_field';
 import project_status from '../attr/project_status';
+import field from '../attr/field';
+import issue_type_permission from '../attr/issue_type_permission';
+import issue_type_flow from '../attr/issue_type_flow';
+
 export default {
   data() {
     return {
@@ -48,7 +52,10 @@ export default {
     project_info,
     project_permission,
     project_field,
-    project_status
+    project_status,
+    field,
+    issue_type_permission,
+    issue_type_flow
   }
 }
 </script>

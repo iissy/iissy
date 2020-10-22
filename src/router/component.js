@@ -17,6 +17,11 @@ let component = [
         meta: { title: "项目设置" },
         name: 'ComponentDesigner',
         component: Component
+    }, {
+        path: '/main/team/:team/project/:project/component/:com/:attr/:issue_type',
+        meta: { title: "工作项类型设置" },
+        name: 'ComponentIssueTypeDesigner',
+        component: Component
     }
 ]
 

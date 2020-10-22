@@ -2,7 +2,7 @@
   <div style="margin-top: 20px;">
     <div style="font-size: 16px;">{{ title }}</div>
     <div style="color: #909090;">{{ desc }}</div>
-    <div class="table">
+    <div class="table" style="margin-top: 10px;">
       <div class="table-row-header">
         <div class="th">以下成员域拥有此操作权限</div>
       </div>
