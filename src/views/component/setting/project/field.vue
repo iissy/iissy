@@ -10,7 +10,7 @@
             <div class="th">属性名称</div>
             <div class="th">属性类型</div>
             <div class="th">使用到的项目</div>
-            <div class="th op">操作</div>
+            <div class="th" style="flex: 0 0 80px;">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.alias">
             <div class="td flex-row">
@@ -21,7 +21,7 @@
             </div>
             <div class="td">{{ item.field_type | ProjectFieldType }}</div>
             <div class="td">所有项目</div>
-            <div class="td op" style="display: flex;align-items: center;">
+            <div class="td" style="display: flex;align-items: center;flex: 0 0 80px;">
               <div style="width: 30px;height: 2px;" v-if="item.built_in">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>

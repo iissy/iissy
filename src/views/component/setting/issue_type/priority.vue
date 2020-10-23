@@ -10,7 +10,7 @@
             <div class="th">优先级名称</div>
             <div class="th">描述</div>
             <div class="th">显示样式</div>
-            <div class="th op">操作</div>
+            <div class="th" style="flex: 0 0 80px;">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td flex-row">
@@ -31,7 +31,7 @@
                 <Priority :color="item.color" :name="item.value" :bgColor="item.background_color"></Priority>
               </div>
             </div>
-            <div class="td op" style="display: flex;align-items: center;">
+            <div class="td" style="display: flex;align-items: center;flex: 0 0 80px;">
               <div style="width: 30px;height: 2px;">
                 <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
               </div>

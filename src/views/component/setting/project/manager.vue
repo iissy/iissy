@@ -8,11 +8,11 @@
         <div class="table">
           <div class="table-row-header">
             <div class="th">项目名称</div>
-            <div class="th op">操作</div>
+            <div class="th" style="flex: 0 0 80px;">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td">{{ item.name }}</div>
-            <div class="td op">
+            <div class="td" style="flex: 0 0 80px;">
               <router-link :to="{name:'ProjectPermissionSetting', params: { team: team, project: item.uuid, title: item.name }}">
                 <b-icon icon="pencil-fill"></b-icon>
               </router-link>
