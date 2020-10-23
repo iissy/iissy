@@ -3,8 +3,8 @@
     <div style="align-items: center;flex: 0 0 auto;">
       <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
         <div class="flex-row align-items-center" style="color: inherit;">
-          <div class="mb-0">
-            <b-iconstack font-scale="2">
+          <div class="mb-0" style="display: flex;">
+            <b-iconstack font-scale="1.8">
               <b-icon stacked icon="check-circle" :variant="variant"></b-icon>
             </b-iconstack>
           </div>
@@ -40,6 +40,6 @@ export default {
 </script>
 
 <style scoped>
-#iissy.alert { position:fixed;top: 100px;left: 0;right: 0;margin:0px auto;text-align:center;height: 0px;border: none;padding: 0;opacity: 0.8;z-index: 999; }
-#iissy .alert { border-radius: 10px;padding: 5px 10px 5px 5px; }
+#iissy.alert { position:fixed;top: 100px;left: 0;right: 0;margin:0px auto;text-align:center;height: 0px;border: none;padding: 0;opacity: 1;z-index: 999; }
+#iissy .alert { border-radius: 20px;padding: 7px 17px 7px 7px; }
 </style>
