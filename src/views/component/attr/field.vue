@@ -1,6 +1,22 @@
 <template>
   <div class="app-main-content" style="padding: 20px;">
-    <div style="font-size: 18px;margin-bottom: 20px;">工作项类型 > 工作项属性</div>
+    <div style="margin-bottom: 20px;background-color: #f0f0f0;padding: 10px;border-radius: 3px;" class="flex-row align-items-center">
+      <div style="flex: 0 0 auto;display: flex;">
+        <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">
+          <span style="font-size: 16px;">工作项类型</span>
+        </router-link>
+      </div>
+      <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
+        <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
+      </div>
+      <div style="color:#909090;font-size: 16px;display: flex;">{{ title }}</div>
+      <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
+        <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
+      </div>
+      <div style="flex: 0 0 auto;display: flex;">
+        <span style="font-size: 16px;color: #909090;">工作项属性</span>
+      </div>
+    </div>
     <Summary :desc="desc"/>
     <Search style="margin-top: 20px;" placeholder="搜索工作项属性"/>
     <div id="project-main">
@@ -53,6 +69,7 @@ import Search from "@/views/component/common/form/search";
 export default {
   data: function () {
     return {
+      title: '',
       name: '',
       desc: '工作项属性用于配置工作项需要的显示字段，可以用多种属性类型来进行配置，不同项目可以共用同一个属性。',
       team: '',
@@ -63,17 +80,27 @@ export default {
   },
   created: function () {
     let self = this;
+    self.title = self.$route.params.title;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.issue_type = self.$route.params.issue_type;
-    self.project_list();
+    self.project_issue_type_field();
+    self.issue_type_get();
   },
   methods: {
-    project_list: function() {
+    project_issue_type_field: function() {
       let self = this;
       http.get(this.urls.project_issue_type_field.format(self.team, self.project, self.issue_type)).then(function (response) {
         self.items = response.data.field_configs;
       });
+    },
+    issue_type_get: function() {
+      let self = this;
+      if (!self.title) {
+        http.get(this.urls.issue_type_get.format(self.team, self.issue_type)).then(function (response) {
+          self.title = response.data.name;
+        });
+      }
     },
     toggle: function (o) {
       console.log(o.uuid, o.fixed);

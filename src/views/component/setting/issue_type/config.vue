@@ -80,13 +80,13 @@ export default {
     self.title = self.$route.params.title;
     self.team = self.$route.params.team;
     self.issue_type = self.$route.params.issue_type;
-    self.project_list();
+    self.issue_type_get();
   },
   methods: {
-    project_list: function() {
+    issue_type_get: function() {
       let self = this;
       if (!self.title) {
-        http.get(this.urls.issue_type_config.format(self.team, self.issue_type)).then(function (response) {
+        http.get(this.urls.issue_type_get.format(self.team, self.issue_type)).then(function (response) {
           self.title = response.data.name;
         });
       }

@@ -5,7 +5,7 @@ let urls = {
     list_project: '/api/team/{0}/list/project',
     logout: '/api/logout',
     commit_overview: '/api/team/{0}/commit/overview',
-    issue_type_config: '/api/team/{0}/issue_type/{1}/get',
+    issue_type_get: '/api/team/{0}/issue_type/{1}/get',
     issue_type_field: '/api/team/{0}/setting/issue_type/field',
     issue_type_manager: '/api/team/{0}/setting/issue_type/manager',
     issue_type_priority: '/api/team/{0}/setting/issue_type/priority',
