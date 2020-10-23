@@ -45,14 +45,23 @@
 import Creator from '@/views/component/task/creator';
 import AddProjectButton from '@/views/component/button/common';
 import Alert from '@/views/component/common/block/alert';
+import http from "@/util/http";
 
 export default {
   data() {
     return {
+      team: '',
+      project: '',
       name: '',
       disabled: true,
       creator: { uuid: 'pinbor', name: 'jimmy', email: 'pinbor@iissy.com' }
     }
+  },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.project_get();
   },
   methods: {
     name_change: function () {
@@ -61,7 +70,20 @@ export default {
     },
     update: function () {
       let self = this;
-      self.$refs.alert.success();
+      http.post(self.urls.project_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
+        if (response.data.status === true) {
+          self.$refs.alert.success('更新成功');
+          self.disabled = true;
+        } else {
+          self.$refs.alert.danger('更新失败');
+        }
+      });
+    },
+    project_get: function () {
+      let self = this;
+      http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
+        self.name = response.data.name;
+      });
     }
   },
   components: {

@@ -15,6 +15,7 @@ let urls = {
     project_manager: '/api/team/{0}/setting/project/manager',
     project_status: '/api/team/{0}/setting/project/status',
     project_add: '/api/team/{0}/add/project',
+    project_update: '/api/team/{0}/project/{1}/update',
     project_first_component: '/api/team/{0}/project/{1}/component/first',
     project_template: '/api/team/{0}/project/{1}/setting/template',
     project_get: '/api/team/{0}/project/{1}/get',

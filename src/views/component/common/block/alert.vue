@@ -8,7 +8,7 @@
               <b-icon stacked icon="check-circle" :variant="variant"></b-icon>
             </b-iconstack>
           </div>
-          <div style="margin-left: 10px;color: inherit;">添加成功</div>
+          <div style="margin-left: 10px;color: inherit;">{{ msg }}</div>
         </div>
       </b-alert>
     </div>
@@ -20,17 +20,20 @@ export default {
   data() {
     return {
       dismissCountDown: 0,
-      variant: ''
+      variant: '',
+      msg: ''
     }
   },
   methods: {
-    success: function () {
+    success: function (o) {
       this.dismissCountDown = 1;
-      this.variant = "success";
+      this.variant = 'success';
+      this.msg = o;
     },
-    fail: function () {
+    danger: function (o) {
       this.dismissCountDown = 1;
-      this.variant = "danger";
+      this.variant = 'danger';
+      this.msg = o;
     }
   }
 }
