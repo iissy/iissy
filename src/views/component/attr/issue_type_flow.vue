@@ -18,12 +18,22 @@
       </div>
     </div>
     <Summary :desc="desc"/>
-    <div style="margin: 20px 0 0 0;">
-      <Search placeholder="搜索项目状态" />
-    </div>
     <div id="project-main">
-      <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
-        asdfasdfasdfasdf
+      <div class="flex-column" style="border-left: 1px solid #c8c8c8;border-top: 1px solid #c8c8c8;">
+        <div style="flex: 1;">
+          <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #c8c8c8;line-height: 48px;">
+            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #c8c8c8;">xxxx</div>
+            <div style="flex: 1;padding: 0 10px;border-right: 1px solid #c8c8c8;text-align: center;" v-for="h in headers" :key="h.uuid">{{ h.name }}</div>
+          </div>
+        </div>
+        <div style="flex: 1;" class="flex-column">
+          <div class="flex-row align-items-center" style="flex: 1;border-bottom: 1px solid #c8c8c8;" v-for="row in flows" :key="row.uuid">
+            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #c8c8c8;line-height: 48px;height: 48px;">{{ row.name }}</div>
+            <div class="align-items-center flex-row justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #c8c8c8;line-height: 48px;height: 48px;" v-for="f in row.items" :key="f.uuid">
+              <input style="height: 16px;width: 16px;" type="checkbox" v-model="f.sel"/>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +41,6 @@
 
 <script>
 import http from '@/util/http';
-import Search from '@/views/component/common/form/search';
 import Summary from "@/views/component/common/block/summary";
 
 export default {
@@ -40,7 +49,13 @@ export default {
       title: '',
       team: '',
       items: [],
-      desc: '项目状态用于定制项目所处的不同状态，支持不同状态间的切换。'
+      desc: '工作流可以用于定制对应工作项的在不同状态阶段的流转。你可以在表格视图中，通过勾选复选框的方式新建工作流步骤。你也可以切换到详情视图中新建工作流步骤。',
+      flows: [
+        {uuid: 'a', name: 'a', items: [{ uuid: 'a-a', sel: false }, { uuid: 'a-b', sel: false }, { uuid: 'a-c', sel: true }]},
+        {uuid: 'b', name: 'b', items: [{ uuid: 'b-a', sel: false }, { uuid: 'b-b', sel: false }, { uuid: 'b-c', sel: true }]},
+        {uuid: 'c', name: 'c', items: [{ uuid: 'c-a', sel: false }, { uuid: 'c-b', sel: false }, { uuid: 'c-c', sel: false }]}
+      ],
+      headers: [{ uuid: 'a', name: 'a' }, { uuid: 'b', name: 'b' }, { uuid: 'c', name: 'c' }]
     };
   },
   created: function () {
@@ -69,7 +84,6 @@ export default {
     }
   },
   components: {
-    Search,
     Summary
   }
 };
