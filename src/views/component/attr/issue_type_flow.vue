@@ -81,6 +81,7 @@ export default {
     self.issue_type = self.$route.params.issue_type;
     self.project_status();
     self.issue_type_get();
+    self.project_issue_type_status();
   },
   methods: {
     project_status: function() {
@@ -96,7 +97,13 @@ export default {
           self.title = response.data.name;
         });
       }
-    }
+    },
+    project_issue_type_status: function() {
+      let self = this;
+      http.get(this.urls.project_issue_type_status.format(self.team, self.project, self.issue_type)).then(function (response) {
+        self.headers = response.data;
+      });
+    },
   },
   components: {
     Summary
