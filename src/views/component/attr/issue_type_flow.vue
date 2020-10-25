@@ -19,17 +19,32 @@
     </div>
     <Summary :desc="desc"/>
     <div id="project-main">
-      <div class="flex-column" style="border-left: 1px solid #c8c8c8;border-top: 1px solid #c8c8c8;">
+      <div class="flex-column workFlowTable" style="border-left: 1px solid #dedede;border-top: 1px solid #dedede;">
         <div style="flex: 1;">
-          <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #c8c8c8;line-height: 48px;">
-            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #c8c8c8;">xxxx</div>
-            <div style="flex: 1;padding: 0 10px;border-right: 1px solid #c8c8c8;text-align: center;" v-for="h in headers" :key="h.uuid">{{ h.name }}</div>
+          <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #dedede;height: 60px;">
+            <div style="flex: 0 0 auto;display: flex;width: 200px;height: 60px;">
+              <div style="flex: 0 0 auto;border-right: 1px solid #dedede;position: absolute;height: 60px;width: 200px;">
+                <div style="" class="table-head-title">
+                  <div>
+                    <div class="start-status-title" style="height: initial;">开始状态</div>
+                  </div>
+                  <div>
+                    <div class="end-status-title" style="height: initial;">目标状态</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-row align-items-center justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #dedede;" v-for="h in headers" :key="h.uuid">
+              <div>
+                {{ h.name }}
+              </div>
+            </div>
           </div>
         </div>
         <div style="flex: 1;" class="flex-column">
-          <div class="flex-row align-items-center" style="flex: 1;border-bottom: 1px solid #c8c8c8;" v-for="row in flows" :key="row.uuid">
-            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #c8c8c8;line-height: 48px;height: 48px;">{{ row.name }}</div>
-            <div class="align-items-center flex-row justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #c8c8c8;line-height: 48px;height: 48px;" v-for="f in row.items" :key="f.uuid">
+          <div class="flex-row align-items-center" style="flex: 1;border-bottom: 1px solid #dedede;" v-for="row in flows" :key="row.uuid">
+            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;width: 200px;">{{ row.name }}</div>
+            <div class="align-items-center flex-row justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;" v-for="f in row.items" :key="f.uuid">
               <input style="height: 16px;width: 16px;" type="checkbox" v-model="f.sel"/>
             </div>
           </div>
@@ -90,4 +105,43 @@ export default {
 </script>
 
 <style scoped>
+.workFlowTable .table-head-title {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  position: relative;
+  height: inherit;
+  background: #f8f8f8;
+  border-bottom: 1px solid #dedede;
+}
+.workFlowTable .table-head-title:before {
+  content: "";
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dedede;
+  left: 0;
+  top: -19px;
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+  -webkit-transform: rotateZ(16deg) scale(1.04);
+  transform: rotateZ(16deg) scale(1.04);
+}
+
+.workFlowTable .start-status-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.workFlowTable .end-status-title {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
 </style>
