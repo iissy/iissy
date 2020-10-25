@@ -120,9 +120,11 @@ export default {
     },
     exist: function (uuid) {
       let self = this;
-      for(let i=0;i<self.curMember.length;i++) {
-        if(self.curMember[i].uuid === uuid) {
-          return true;
+      if(self.curMember) {
+        for(let i=0;i<self.curMember.length;i++) {
+          if(self.curMember[i].uuid === uuid) {
+            return true;
+          }
         }
       }
 
