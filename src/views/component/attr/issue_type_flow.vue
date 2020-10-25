@@ -22,7 +22,7 @@
       <div class="flex-column workFlowTable" style="border-left: 1px solid #dedede;border-top: 1px solid #dedede;">
         <div style="flex: 1;">
           <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #dedede;height: 60px;">
-            <div style="flex: 0 0 auto;display: flex;width: 200px;height: 60px;">
+            <div style="flex: 0 0 auto;display: flex;width: 200px;height: 60px;position: relative;">
               <div style="flex: 0 0 auto;border-right: 1px solid #dedede;position: absolute;height: 60px;width: 200px;">
                 <div style="" class="table-head-title">
                   <div>
