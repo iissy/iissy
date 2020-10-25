@@ -101,7 +101,8 @@ export default {
     project_issue_type_status: function() {
       let self = this;
       http.get(this.urls.project_issue_type_status.format(self.team, self.project, self.issue_type)).then(function (response) {
-        self.headers = response.data;
+        self.headers = response.data.headers;
+        self.flows = response.data.flows;
       });
     },
   },
