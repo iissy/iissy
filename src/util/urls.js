@@ -19,6 +19,7 @@ let urls = {
     project_first_component: '/api/team/{0}/project/{1}/component/first',
     project_template: '/api/team/{0}/project/{1}/setting/template',
     project_get: '/api/team/{0}/project/{1}/get',
+    project_role_members: '/api/team/{0}/project/{1}/project_role_members',
 
     project_issue_type_field: '/api/team/{0}/project/{1}/issue_type/{2}/field',
     project_issue_type_flow: '/api/team/{0}/project/{1}/issue_type/{2}/get_project_issue_type_flow',
