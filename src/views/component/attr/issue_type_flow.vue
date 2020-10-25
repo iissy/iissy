@@ -36,14 +36,23 @@
             </div>
             <div class="flex-row align-items-center justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #dedede;" v-for="h in headers" :key="h.uuid">
               <div>
-                {{ h.name }}
+                <ColorStatus :color="h.category.toString()" :name="h.name"/>
               </div>
             </div>
           </div>
         </div>
         <div style="flex: 1;" class="flex-column">
           <div class="flex-row align-items-center" style="flex: 1;border-bottom: 1px solid #dedede;" v-for="row in flows" :key="row.uuid">
-            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;width: 200px;">{{ row.name }}</div>
+            <div style="flex: 0 0 200px;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;width: 200px;">
+              <div class="flex-row">
+                <div style="flex: 0 0 auto;">
+                  <ColorStatus :color="row.category.toString()" :name="row.name"/>
+                </div>
+                <div v-if="row.default" style="margin-left: 5px;">
+                  <div style="font-size: 12px;color: #909090;display: inline-block;height: 20px;line-height: 18px;border: 1px solid rgba(134,147,160,0.5);border-radius: 20px;padding: 0px 8px;">初始状态</div>
+                </div>
+              </div>
+            </div>
             <div class="align-items-center flex-row justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;" v-for="f in row.items" :key="f.uuid">
               <input style="height: 16px;width: 16px;" type="checkbox" v-model="f.sel"/>
             </div>
@@ -57,6 +66,7 @@
 <script>
 import http from '@/util/http';
 import Summary from "@/views/component/common/block/summary";
+import ColorStatus from "@/views/component/common/block/color-status";
 
 export default {
   data: function () {
@@ -65,12 +75,8 @@ export default {
       team: '',
       items: [],
       desc: '工作流可以用于定制对应工作项的在不同状态阶段的流转。你可以在表格视图中，通过勾选复选框的方式新建工作流步骤。你也可以切换到详情视图中新建工作流步骤。',
-      flows: [
-        {uuid: 'a', name: 'a', items: [{ uuid: 'a-a', sel: false }, { uuid: 'a-b', sel: false }, { uuid: 'a-c', sel: true }]},
-        {uuid: 'b', name: 'b', items: [{ uuid: 'b-a', sel: false }, { uuid: 'b-b', sel: false }, { uuid: 'b-c', sel: true }]},
-        {uuid: 'c', name: 'c', items: [{ uuid: 'c-a', sel: false }, { uuid: 'c-b', sel: false }, { uuid: 'c-c', sel: false }]}
-      ],
-      headers: [{ uuid: 'a', name: 'a' }, { uuid: 'b', name: 'b' }, { uuid: 'c', name: 'c' }]
+      flows: [],
+      headers: []
     };
   },
   created: function () {
@@ -81,7 +87,7 @@ export default {
     self.issue_type = self.$route.params.issue_type;
     self.project_status();
     self.issue_type_get();
-    self.project_issue_type_status();
+    self.project_issue_type_flow();
   },
   methods: {
     project_status: function() {
@@ -98,16 +104,17 @@ export default {
         });
       }
     },
-    project_issue_type_status: function() {
+    project_issue_type_flow: function() {
       let self = this;
-      http.get(this.urls.project_issue_type_status.format(self.team, self.project, self.issue_type)).then(function (response) {
+      http.get(this.urls.project_issue_type_flow.format(self.team, self.project, self.issue_type)).then(function (response) {
         self.headers = response.data.headers;
         self.flows = response.data.flows;
       });
     },
   },
   components: {
-    Summary
+    Summary,
+    ColorStatus
   }
 };
 </script>

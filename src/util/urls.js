@@ -21,7 +21,7 @@ let urls = {
     project_get: '/api/team/{0}/project/{1}/get',
 
     project_issue_type_field: '/api/team/{0}/project/{1}/issue_type/{2}/field',
-    project_issue_type_status: '/api/team/{0}/project/{1}/issue_type/{2}/get_task_status_list',
+    project_issue_type_flow: '/api/team/{0}/project/{1}/issue_type/{2}/get_project_issue_type_flow',
 
     component_get: '/api/team/{0}/project/{1}/component/get/{2}',
     components: '/api/team/{0}/project/{1}/components',
