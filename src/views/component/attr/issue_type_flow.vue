@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="align-items-center flex-row justify-content-center" style="flex: 1;padding: 0 10px;border-right: 1px solid #dedede;line-height: 48px;height: 48px;" v-for="f in row.items" :key="f.uuid">
-              <input style="height: 16px;width: 16px;" type="checkbox" v-model="f.sel" @change="change_task_status(f.uuid, f.start_uuid, f.end_uuid, f.sel)"/>
+              <input style="height: 16px;width: 16px;" type="checkbox" v-model="f.sel" @change="change_task_status(f.uuid, f.name, f.start_uuid, f.end_uuid, f.sel)"/>
             </div>
           </div>
         </div>
@@ -75,7 +75,8 @@ export default {
       team: '',
       desc: '工作流可以用于定制对应工作项的在不同状态阶段的流转。你可以在表格视图中，通过勾选复选框的方式新建工作流步骤。你也可以切换到详情视图中新建工作流步骤。',
       flows: [],
-      headers: []
+      headers: [],
+      lock: true
     };
   },
   created: function () {
@@ -88,12 +89,16 @@ export default {
     self.project_issue_type_flow();
   },
   methods: {
-    change_task_status: function(uuid, start, end, state) {
+    change_task_status: function(uuid, name, start, end, state) {
       let self = this;
-      let param = { uuid: uuid, start_status: start, end_status: end, state: state }
-      http.post(this.urls.project_issue_type_flow_submit.format(self.team, self.project, self.issue_type), param).then(function () {
-        self.project_issue_type_flow();
-      });
+      if (self.lock) {
+        self.lock = false;
+        let param = { uuid: uuid, name: name, start_status: start, end_status: end, state: state }
+        http.post(this.urls.project_issue_type_flow_submit.format(self.team, self.project, self.issue_type), param).then(function () {
+          self.project_issue_type_flow();
+          self.lock = true;
+        });
+      }
     },
     issue_type_get: function() {
       let self = this;
