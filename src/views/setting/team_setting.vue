@@ -20,7 +20,6 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-// import http from '../../util/http';
 import Control from '../component/setting/team/team_control';
 import { formatDate } from '@/util/date';
 import Info from "@/views/component/setting/team/info";
@@ -76,13 +75,6 @@ export default {
           break;
       }
     }
-    // member_list: function() {
-    //   let self = this;
-    //   let url = '/api/ding/get_user_list';
-    //   http.get(url).then(function (response) {
-    //     self.users = response.data;
-    //   });
-    // }
   }
 };
 </script>
