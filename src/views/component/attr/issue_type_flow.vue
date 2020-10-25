@@ -18,7 +18,7 @@
       </div>
     </div>
     <Summary :desc="desc"/>
-    <div id="project-main">
+    <div id="project-main" style="margin-top: 20px;">
       <div class="flex-column workFlowTable" style="border-left: 1px solid #dedede;border-top: 1px solid #dedede;">
         <div style="flex: 1;">
           <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #dedede;height: 60px;">
