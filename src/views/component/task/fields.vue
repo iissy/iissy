@@ -14,23 +14,25 @@
     <div class="field-type-group">
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">所属项目</div>
-        <div style="flex: 1;color: #999999;">未设置</div>
+        <div style="flex: 1;">{{ task.project.name }}</div>
       </div>
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">工作项类型</div>
-        <div style="flex: 1;color: #999999;">未设置</div>
+        <div style="flex: 1;">{{ task.issue_type.name }}</div>
       </div>
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">创建者</div>
-        <div style="flex: 1;color: #999999;">未设置</div>
+        <div style="flex: 1;">
+          <User :user="task.owner"/>
+        </div>
       </div>
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">创建时间</div>
-        <div style="flex: 1;color: #999999;">{{ task.create_time / 1000 | formatDate }}</div>
+        <div style="flex: 1;">{{ task.create_time / 1000 | formatDate }}</div>
       </div>
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">更新时间</div>
-        <div style="flex: 1;color: #999999;">{{ task.server_update_stamp / 1000 | formatDate }}</div>
+        <div style="flex: 1;">{{ task.server_update_stamp / 1000 | formatDate }}</div>
       </div>
     </div>
 
@@ -102,6 +104,8 @@
 </template>
 
 <script>
+import User from '@/views/component/common/block/user';
+
 export default {
   data() {
     return {
@@ -109,6 +113,9 @@ export default {
   },
   props: {
     task: Object
+  },
+  components: {
+    User
   }
 }
 </script>

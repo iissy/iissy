@@ -48,7 +48,7 @@
                         <b-progress :value="25" variant="success" striped animate></b-progress>
                       </template>
                       <template v-slot:cell(assign)="data">
-                        <Avatar :user="data.item.assign"/>
+                        <User :user="data.item.assign"/>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
@@ -71,7 +71,7 @@ import Menu from '../component/common/menu';
 import AddProjectButton from '../component/common/form/button';
 import Status from '../component/common/block/status';
 import Search from '../component/common/form/search';
-import Avatar from '../component/common/block/avatar';
+import User from '../component/common/block/user';
 
 import router from '../../router';
 import http from "@/util/http";
@@ -103,7 +103,7 @@ export default {
     AddProjectButton,
     Status,
     Search,
-    Avatar
+    User
   },
   created: function () {
     let self = this;
