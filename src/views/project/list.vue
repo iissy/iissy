@@ -47,15 +47,8 @@
                       <template v-slot:cell(owner)>
                         <b-progress :value="25" variant="success" striped animate></b-progress>
                       </template>
-                      <template v-slot:cell(assign)>
-                        <div class="flex-row">
-                          <div style="flex: 0 0 auto;display: flex;align-items: center;">
-                            <b-img left src="https://picsum.photos/25/25/?image=25" rounded="circle" alt="Left image"></b-img>
-                          </div>
-                          <div style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
-                            <b-link href="#foo">何敏</b-link>
-                          </div>
-                        </div>
+                      <template v-slot:cell(assign)="data">
+                        <Avatar :user="data.item.assign"/>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
@@ -78,6 +71,7 @@ import Menu from '../component/common/menu';
 import AddProjectButton from '../component/common/form/button';
 import Status from '../component/common/block/status';
 import Search from '../component/common/form/search';
+import Avatar from '../component/common/block/avatar';
 
 import router from '../../router';
 import http from "@/util/http";
@@ -108,7 +102,8 @@ export default {
     Menu,
     AddProjectButton,
     Status,
-    Search
+    Search,
+    Avatar
   },
   created: function () {
     let self = this;

@@ -14,7 +14,7 @@
         </div>
         <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
         <div id="popover-reactive" style="flex: 0;align-items: center;display: flex;margin-right: 20px;">
-          <img src="/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
+          <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
         </div>
         <b-popover
             target="popover-reactive"
