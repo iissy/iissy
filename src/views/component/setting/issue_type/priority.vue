@@ -2,7 +2,7 @@
   <div>
     <div style="font-size: 18px;margin-bottom: 20px;">优先级</div>
     <Summary :desc="desc"/>
-    <Search style="margin-top: 20px;" placeholder="搜索优先级"/>
+    <Search style="margin: 20px 0;" placeholder="搜索优先级"/>
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">

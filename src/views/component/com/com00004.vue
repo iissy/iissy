@@ -1,7 +1,7 @@
 <template>
   <div class="app-main-content flex-column">
     <div style="flex: 0 0 auto;font-size: 18px;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;">成员</div>
-    <div class="flex-row align-items-center" style="flex: 0 0 auto;margin: 10px;">
+    <div class="flex-row align-items-center" style="flex: 0 0 auto;margin: 10px 20px;">
       <div style="flex: 0 0 300px;">
         <Search placeholder="搜索成员" />
       </div>
