@@ -219,8 +219,8 @@ export default {
       http.post(url).then(function (response) {
         self.tasks = response.data;
         if(self.tasks.length > 0) {
-          self.task = self.tasks[0]
           self.selectedUUID = self.tasks[0].uuid;
+          self.task_get(self.tasks[0].uuid);
         }
       });
     },

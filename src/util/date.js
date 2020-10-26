@@ -1,10 +1,12 @@
 ﻿export function formatDate(time) {
+    if (Number.isNaN(time)) {
+        return '0000-00-00 00:00:00';
+    }
     if (time == null) {
         return "-";
     }
-
     if (time === 0) {
-        return "-";
+        return '-';
     }
 
     let date = new Date(time);
