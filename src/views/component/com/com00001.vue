@@ -37,7 +37,7 @@
                   <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 10px 10px 7px;">
                     <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row">
                       <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"></Priority>
-                      <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;">{{t.owner.name}}</div>
+                      <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;height: 20px;">{{t.owner.name}}</div>
                     </div>
                     <div style="flex: 1;margin-left: 10px;">{{t.summary}}</div>
                     <div style="flex: 0 0 auto;">
@@ -77,68 +77,10 @@
                 <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
                   {{ task.desc }}
                 </div>
-                <div style="padding: 5px;">
+                <div style="padding: 5px 5px 0 5px;">
                   <router-link target="_blank" style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid } }">全屏查看</router-link>
                 </div>
-                <div style="margin-top: 30px;margin-bottom: 10px;font-size: 15px;">属性</div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div style="border-top: 1px solid #e8e8e8;"></div>
-                <div style="margin-top: 30px;margin-bottom: 10px;font-size: 15px;">基础信息</div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
-                <div class="flex-row" style="margin-bottom: 10px;">
-                  <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-                  <div style="flex: 1;">未设置</div>
-                </div>
+                <Fields :task="task"/>
               </div>
               <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
             </div>
@@ -197,6 +139,7 @@ import Status from '@/views/component/common/block/status';
 import Assign from '@/views/component/task/assign';
 import TaskStatus from '@/views/component/task/status';
 import TaskPriority from '@/views/component/task/priority';
+import Fields from '@/views/component/task/fields';
 import http from "@/util/http";
 
 export default {
@@ -311,7 +254,8 @@ export default {
     Status,
     Assign,
     TaskStatus,
-    TaskPriority
+    TaskPriority,
+    Fields
   }
 }
 </script>

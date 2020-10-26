@@ -3,8 +3,8 @@
         return "-";
     }
 
-    if(Number.isInteger(time)) {
-        time *= 1000;
+    if (time === 0) {
+        return "-";
     }
 
     let date = new Date(time);
