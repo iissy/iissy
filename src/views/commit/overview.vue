@@ -5,12 +5,12 @@
       <div class="rightMain">
         <Header title="代码提交" ref="Header"></Header>
         <div class="app-main-container">
-          <div class="app-main-content">
-            <div style="flex: 0;display: flex;flex-direction: row;padding: 10px 20px 0 20px;">
-              <div style="flex: 1;">控制区</div>
-              <div style="flex:0 0 auto;width: 100px;text-align: right;">团队配置</div>
+          <div class="app-main-content flex-column" style="padding: 10px 20px;">
+            <div style="flex: 0 0 auto;" class="flex-row">
+              <div style="flex: 1;width: 80%">控制区</div>
+              <div style="flex:0 0 auto;text-align: right;">团队配置</div>
             </div>
-            <div style="padding: 0 20px 0 20px;">
+            <div style="flex: 1;position: relative;width: 99%;min-width: 888px;max-width: 100%;">
               <bar v-if="loaded" :chartData="chartData" :options="options" :height="canvasHeight"/>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default {
         datasets: [{
           data: [],
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          borderColor: 'rgba(75, 192, 192, 0.2)',
           borderWidth: 1
         }]
       },
