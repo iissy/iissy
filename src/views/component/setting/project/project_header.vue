@@ -4,8 +4,8 @@
       <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
         <b-dropdown @toggle="project_list" :text="projectName" variant="outline" toggle-class="text-decoration-none">
           <b-dropdown-item disabled>进行中的项目</b-dropdown-item>
-          <b-dropdown-item v-for="p in projects" :key="p.uuid">
-            <router-link :to="{ name:'Redirect', params: { team: team, project: p.uuid } }">{{ p.name }}</router-link>
+          <b-dropdown-item v-for="p in projects" :key="p.uuid" :to="{ name:'Redirect', params: { team: team, project: p.uuid } }">
+            {{p.name}}
           </b-dropdown-item>
         </b-dropdown>
       </div>
