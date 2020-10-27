@@ -10,7 +10,7 @@
               <div style="flex: 1;width: 80%">控制区</div>
               <div style="flex:0 0 auto;text-align: right;">团队配置</div>
             </div>
-            <div style="flex: 1;position: relative;width: 99%;min-width: 888px;max-width: 100%;">
+            <div style="flex: 1;position: relative;width: 99%;min-width: 777px;max-width: 100%;">
               <bar v-if="loaded" :chartData="chartData" :options="options" :height="canvasHeight"/>
             </div>
           </div>

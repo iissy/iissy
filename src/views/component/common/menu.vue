@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .fade-leave-active {
-  margin-left: -235px;
+  margin-left: -230px;
   transform: translateX(0%);
   transition: 0.3s;
 }
@@ -69,7 +69,7 @@ export default {
   transition: 0.3s;
 }
 .fade-enter {
-  margin-left: -235px;
+  margin-left: -230px;
   transform: translateX(0%);
 }
 .fade-leave {

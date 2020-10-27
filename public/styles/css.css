@@ -116,16 +116,14 @@ a:hover { color: #4F4F4F;text-decoration: none!important; }
     -webkit-flex-direction: row;
     flex-direction: row;
     height: 100%;
-    min-width: 1280px;
+    min-width: 1024px;
     min-height: 300px;
 }
 
-
-
-.rightMain { background: #f8f8f8;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;position: relative; }
+.rightMain { background: #f8f8f8;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;position: relative;min-width: 1024px; }
 .rightMain:after { clear: both;content: ".";display: block;height: 0;visibility: hidden; }
 
-.leftBar { height: 100%;width: 235px;flex: 0 0 auto;background: #2c2f31;flex-direction: column;display: flex;box-sizing: border-box;display: -webkit-flex;-webkit-flex-direction: column;z-index: 11; }
+.leftBar { height: 100%;width: 230px;flex: 0 0 auto;background: #2c2f31;flex-direction: column;display: flex;box-sizing: border-box;display: -webkit-flex;-webkit-flex-direction: column;z-index: 11; }
 .leftBar ul { list-style: none;margin: 0;padding: 0; }
 .leftBar ul li { display: list-item;text-align: -webkit-match-parent; }
 .leftBar ul li > div { padding-left: 20px; }
