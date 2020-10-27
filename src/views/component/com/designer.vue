@@ -1,6 +1,6 @@
 <template>
   <div class="project-main-container">
-    <component v-bind:is="currentTabComponent" :items="items" v-if="items.length> 0"></component>
+    <component v-bind:is="currentTabComponent" :items="items" v-if="items && items.length> 0"></component>
   </div>
 </template>
 

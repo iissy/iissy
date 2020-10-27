@@ -55,7 +55,7 @@
                     <svg t="1601948666806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10407" width="20" height="20"><path d="M509.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10408"></path><path d="M849.1 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10409"></path><path d="M174.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10410"></path></svg>
                   </div>
                 </div>
-                <div class="flex-row" style="width: 100%;padding-bottom: 20px;">
+                <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
                   <div style="flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
                     {{ task.summary }}
                   </div>
@@ -219,7 +219,7 @@ export default {
       let url = self.urls.task_list.format(self.team, self.project, self.$parent.issue_type_uuid);
       http.post(url).then(function (response) {
         self.tasks = response.data;
-        if(self.tasks.length > 0) {
+        if(self.tasks && self.tasks.length > 0) {
           self.selectedUUID = self.tasks[0].uuid;
           self.task_get(self.tasks[0].uuid);
         }

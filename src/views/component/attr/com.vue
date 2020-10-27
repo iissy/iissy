@@ -127,7 +127,7 @@ export default {
   },
   created() {
     let self = this;
-    if (self.items.length > 0) {
+    if (self.items && self.items.length > 0) {
       self.set_value(self.items[0]);
     }
   },

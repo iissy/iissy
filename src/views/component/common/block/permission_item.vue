@@ -27,7 +27,7 @@ export default {
     return {
       read_project_perm: null,
       options: [
-        { value: null, text: 'Please select an option' },
+        { value: '', text: '' },
         { value: 'a', text: 'This is First option' },
         { value: 'b', text: 'Selected Option' },
         { value: { C: '3PO' }, text: 'This is an option with object value' },

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row">
+  <div class="flex-row assign align-items-center">
     <div style="flex: 0 0 auto;">
       <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
     </div>
@@ -23,5 +23,6 @@ export default {
 </script>
 
 <style scoped>
-
+.assign { border-radius: 30px;cursor: pointer;padding: 5px 20px 5px 5px; }
+.assign:hover { background-color: #F0F8FF; }
 </style>
