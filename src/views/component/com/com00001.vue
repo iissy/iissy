@@ -56,7 +56,7 @@
                   </div>
                 </div>
                 <div class="flex-row" style="width: 100%;padding-bottom: 20px;">
-                  <div style="flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;">
+                  <div style="flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
                     {{ task.summary }}
                   </div>
                 </div>
