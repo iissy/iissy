@@ -9,7 +9,7 @@
     </div>
     <b-popover target="popover-assign" triggers="focus" placement="bottom">
       <div v-for="u in users" :key="u.uuid">
-        <User style="padding: 5px 10px;" :user="u" :hasEmail="hasEmail"/>
+        <User style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
       </div>
     </b-popover>
   </div>
