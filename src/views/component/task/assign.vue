@@ -8,8 +8,13 @@
       <div style="text-align: left;color: #999999;font-size: 12px;">负责人</div>
     </div>
     <b-popover target="popover-assign" triggers="focus" placement="bottom">
-      <div v-for="u in users" :key="u.uuid">
-        <User style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
+      <div style="padding: 5px;">
+        <Search placeholder="搜索工作项负责人"/>
+      </div>
+      <div style="height: 180px;overflow:auto;">
+        <div v-for="u in users" :key="u.uuid">
+          <User style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
+        </div>
       </div>
     </b-popover>
   </div>
@@ -18,6 +23,7 @@
 <script>
 import http from "@/util/http";
 import User from '@/views/component/common/block/user';
+import Search from '@/views/component/common/form/search';
 
 export default {
   data() {
@@ -44,7 +50,8 @@ export default {
     user: Object
   },
   components: {
-    User
+    User,
+    Search
   }
 }
 </script>
