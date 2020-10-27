@@ -48,7 +48,7 @@
                         <b-progress :value="25" variant="success" striped animate></b-progress>
                       </template>
                       <template v-slot:cell(assign)="data">
-                        <User :user="data.item.assign"/>
+                        <User :user="data.item.assign" :hasEmail="hasEmail"/>
                       </template>
                       <template v-slot:cell(create_time)="data">
                         {{ data.value | formatDate }}
@@ -80,6 +80,7 @@ import {formatDate} from "@/util/date";
 export default {
   data: function () {
     return {
+      hasEmail: false,
       cur: 0,
       team: '',
       com: '',

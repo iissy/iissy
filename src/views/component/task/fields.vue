@@ -23,7 +23,7 @@
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">创建者</div>
         <div style="flex: 1;">
-          <User :user="task.owner"/>
+          <User :user="task.owner" :hasEmail="hasEmail"/>
         </div>
       </div>
       <div class="flex-row field-row">
@@ -109,6 +109,7 @@ import User from '@/views/component/common/block/user';
 export default {
   data() {
     return {
+      hasEmail: false
     }
   },
   props: {

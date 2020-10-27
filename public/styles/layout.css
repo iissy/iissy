@@ -11,5 +11,5 @@
 /*bootstrap 样式重写*/
 .rightMain .table-bordered { border: 1px solid #e7ecf1; }
 .rightMain button, .modal-dialog button { box-shadow: none !important;outline: none !important; }
-
 .com-outline .dropdown button { font-size: 16px; }
+.popover .popover-body { padding: 0; }
