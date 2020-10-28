@@ -34,6 +34,7 @@ let urls = {
     task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task',
     task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
     task_get: '/api/team/{0}/project/{1}/issue_type/{2}/get/task/{3}',
+    task_change_assign: '/api/team/{0}/project/{1}/change_assign/task/{2}',
 
     department_add: '/api/team/{0}/setting/department/add',
     department_tree: '/api/team/{0}/setting/department/tree'

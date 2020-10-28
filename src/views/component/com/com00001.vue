@@ -61,14 +61,14 @@
                   </div>
                 </div>
                 <div class="flex-row" style="width: 100%;padding: 0 10px 10px 10px;justify-content: space-between;">
-                  <div style="flex: 0 0 auto;text-align: center;">
-                    <Assign :user="task.assign"></Assign>
+                  <div style="flex: 1;text-align: center;">
+                    <Assign :user="task.assign" :task="task.uuid"/>
                   </div>
-                  <div style="flex: 0 0 auto;text-align: center;">
-                    <TaskStatus :status="task.task_status"></TaskStatus>
+                  <div style="flex: 1;text-align: center;">
+                    <TaskStatus :status="task.task_status"/>
                   </div>
-                  <div style="flex: 0 0 auto;text-align: center;">
-                    <TaskPriority :option="task.priority"></TaskPriority>
+                  <div style="flex: 1;text-align: center;">
+                    <TaskPriority :option="task.priority"/>
                   </div>
                 </div>
                 <div style="margin-top: 10px;">

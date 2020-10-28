@@ -7,16 +7,17 @@
       <div style="text-align: left;color: #363636;">{{ user.name }}</div>
       <div style="text-align: left;color: #999999;font-size: 12px;">负责人</div>
     </div>
-    <b-popover target="popover-assign" triggers="focus" placement="bottom">
+    <b-popover ref="popover" target="popover-assign" triggers="focus" placement="bottom">
       <div style="padding: 5px;">
         <Search placeholder="搜索工作项负责人"/>
       </div>
       <div style="height: 180px;overflow:auto;">
         <div v-for="u in users" :key="u.uuid">
-          <User style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
+          <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
         </div>
       </div>
     </b-popover>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
@@ -24,6 +25,7 @@
 import http from "@/util/http";
 import User from '@/views/component/common/block/user';
 import Search from '@/views/component/common/form/search';
+import Alert from '@/views/component/common/block/alert';
 
 export default {
   data() {
@@ -44,14 +46,29 @@ export default {
       http.post(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
         self.users = response.data;
       });
+    },
+    change_assign: function (uuid) {
+      let self = this;
+      let param = { uuid: uuid }
+      http.post(self.urls.task_change_assign.format(self.team, self.project, self.task), param).then(function (response) {
+        if (response.data.status) {
+          self.$refs.popover.$emit('close')
+          self.$refs.alert.success('更新成功');
+          self.$parent.task_get(self.task);
+        } else {
+          self.$refs.alert.danger('更新失败');
+        }
+      });
     }
   },
   props: {
-    user: Object
+    user: Object,
+    task: String
   },
   components: {
     User,
-    Search
+    Search,
+    Alert
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row user">
+  <div class="flex-row user" @click="onsubmit">
     <div style="flex: 0 0 auto;display: flex;align-items: center;">
       <b-img left src="/images/touxiang.jpg" style="height: 16px;" rounded="circle"></b-img>
     </div>
@@ -21,6 +21,12 @@ export default {
   props: {
     user: Object,
     hasEmail: Boolean
+  },
+  methods: {
+    onsubmit: function () {
+      let self = this;
+      this.$emit('submit', self.user.uuid);
+    }
   }
 }
 </script>
