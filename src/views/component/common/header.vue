@@ -13,7 +13,7 @@
           </div>
         </div>
         <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
-        <div id="popover-user-center" style="flex: 0;align-items: center;display: flex;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" tabindex="0">
+        <div id="popover-user-center" style="flex: 0;align-items: center;display: flex;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
           <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
         </div>
         <b-popover

@@ -1,5 +1,5 @@
 <template>
-  <div id="popover-assign" class="flex-row assign align-items-center" tabindex="0">
+  <div id="popover-assign" class="flex-row assign align-items-center" hidefocus="true" tabindex="0">
     <div style="flex: 0 0 auto;">
       <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
     </div>
