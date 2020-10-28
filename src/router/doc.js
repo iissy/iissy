@@ -1,5 +1,5 @@
 import Doc from "@/views/doc/list";
-import DocSetting from "@/views/doc/setting";
+import DocSetting from "@/views/setting/doc_setting";
 
 let doc = [
     {
@@ -8,7 +8,12 @@ let doc = [
         name: 'Doc',
         component: Doc
     }, {
-        path: '/main/team/:team/doc/setting',
+        path: '/main/setting/team/:team/doc',
+        meta: { title: "文档配置中心" },
+        name: 'DefaultDocSetting',
+        component: DocSetting
+    }, {
+        path: '/main/setting/team/:team/doc/:type',
         meta: { title: "文档配置中心" },
         name: 'DocSetting',
         component: DocSetting
