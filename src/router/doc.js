@@ -1,4 +1,4 @@
-import Doc from "@/views/doc/list";
+import Doc from "@/views/doc/spaces";
 import DocSetting from "@/views/setting/doc_setting";
 
 let doc = [

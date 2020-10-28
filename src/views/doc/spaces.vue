@@ -4,13 +4,7 @@
       <Menu tagIndex="23" ref="Menu"></Menu>
       <div class="rightMain">
         <Header title="项目文档" ref="Header"></Header>
-        <div class="app-main-container">
-          <div class="app-main-content">
-            <div>
-              <p>asdf</p>
-            </div>
-          </div>
-        </div>
+        <Spaces/>
       </div>
     </div>
   </div>
@@ -19,6 +13,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
+import Spaces from '../component/wiki/spaces';
 
 export default {
   data: function () {
@@ -27,7 +22,8 @@ export default {
   },
   components: {
     Header,
-    Menu
+    Menu,
+    Spaces
   },
   created: function () {
   },
