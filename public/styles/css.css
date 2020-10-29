@@ -120,6 +120,7 @@ a:hover { color: #4F4F4F;text-decoration: none!important; }
     min-height: 300px;
 }
 
+.table td a { display: block;height: 33px;line-height: 33px; }
 .rightMain { background: #f8f8f8;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;position: relative;min-width: 1024px; }
 .rightMain:after { clear: both;content: ".";display: block;height: 0;visibility: hidden; }
 
