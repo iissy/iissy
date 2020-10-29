@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;">
-      <div class="status" :class="curColor">{{ curName }}</div>
+      <div class="status" :class="curColor">{{ curName }}<b-icon v-if="icon" icon="chevron-down"/></div>
     </div>
   </div>
 </template>
@@ -14,7 +14,10 @@ export default {
   },
   props: {
     name: String,
-    color: String
+    color: String,
+    icon: {
+      default: false
+    }
   },
   computed: {
     curName: function () {
@@ -22,12 +25,15 @@ export default {
       let resultName = self.name;
       switch (self.name) {
         case "1":
+        case "to_do":
           resultName = '未开始'
           break;
         case "2":
+        case "in_progress":
           resultName = '未开始'
           break;
         case "3":
+        case "done":
           resultName = '已完成'
           break;
       }

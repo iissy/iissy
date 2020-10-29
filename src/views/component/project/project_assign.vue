@@ -50,11 +50,11 @@ export default {
     change_assign: function (uuid) {
       let self = this;
       let param = { uuid: uuid }
-      http.post(self.urls.task_change_assign.format(self.team, self.project, self.task), param).then(function (response) {
+      http.post(self.urls.project_change_assign.format(self.team, self.project), param).then(function (response) {
         if (response.data.status) {
           self.$refs.popover.$emit('close')
           self.$refs.alert.success('更新成功');
-          self.$parent.task_get(self.task);
+          self.$parent.project_get(self.project);
         } else {
           self.$refs.alert.danger('更新失败');
         }

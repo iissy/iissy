@@ -1,19 +1,26 @@
 <template>
   <div class="overview" style="overflow:auto;flex: 1 0 auto;padding: 10px;width: 100%;position: relative;">
     <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;padding: 15px;">
-      <div style="font-size: 18px;" class="left">项目概览</div>
+      <div class="left flex-row align-items-center">
+        <div style="font-size: 18px;">项目概览</div>
+        <Status style="margin-left: 5px;" :name="item.status_uuid" :color="item.status_uuid" icon="1===1"/>
+      </div>
       <div class="middle"></div>
-      <div class="right">asd asdf</div>
+      <div class="right flex-row">
+        <div style="flex: 1;"></div>
+        <div style="flex: 0 0 auto;border: 1px solid #d9d9d9;padding: 3px 10px;border-radius: 3px;cursor: pointer;" class="flex-row">
+          <div><b-icon icon="pencil-square"/></div>
+          <div style="margin-left: 5px;">编辑预览</div>
+        </div>
+      </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;">
       <div style="flex: 1;position: relative;" class="flex-row">
         <div style="border-radius: 3px;height: 330px;" class="header-container-inner left">
           <div style="padding: 15px;">
-            <div style="margin-bottom: 30px;font-size: 15px;">项目信息</div>
-            <div style="flex: 0 0 auto;text-align: center;margin-bottom: 30px;">
-              <ProjectAssign :user="item.assign"></ProjectAssign>
-            </div>
-            <div class="flex-row" style="width: 100%;justify-content: space-between;margin-bottom: 30px;">
+            <div style="margin-bottom: 20px;font-size: 15px;">项目信息</div>
+            <ProjectAssign :user="item.assign"></ProjectAssign>
+            <div class="flex-row" style="width: 100%;justify-content: space-between;margin: 30px 0;">
               <div style="flex: 0 0 auto;text-align: center;">
                 <div class="flex-row">
                   <div style="flex: 0 0 auto;">
@@ -119,6 +126,7 @@ import ProjectAssign from "@/views/component/project/project_assign";
 import Line1 from '@/chart/line'
 import Bar from '@/chart/bar';
 import http from "@/util/http";
+import Status from "@/views/component/common/block/status";
 
 export default {
   data() {
@@ -204,7 +212,8 @@ export default {
   components: {
     ProjectAssign,
     Line1,
-    Bar
+    Bar,
+    Status
   },
   computed: {
     canvasHeight() {
