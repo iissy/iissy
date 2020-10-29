@@ -11,7 +11,7 @@
           <div style="padding: 15px;">
             <div style="margin-bottom: 30px;font-size: 15px;">项目信息</div>
             <div style="flex: 0 0 auto;text-align: center;margin-bottom: 30px;">
-              <Assign :user="item.assign"></Assign>
+              <ProjectAssign :user="item.assign"></ProjectAssign>
             </div>
             <div class="flex-row" style="width: 100%;justify-content: space-between;margin-bottom: 30px;">
               <div style="flex: 0 0 auto;text-align: center;">
@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import Assign from "@/views/component/task/assign";
+import ProjectAssign from "@/views/component/project/project_assign";
 import Line1 from '@/chart/line'
 import Bar from '@/chart/bar';
 import http from "@/util/http";
@@ -202,7 +202,7 @@ export default {
     }
   },
   components: {
-    Assign,
+    ProjectAssign,
     Line1,
     Bar
   },
