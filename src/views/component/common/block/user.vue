@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row user" @click="onsubmit">
+  <div class="flex-row user align-items-center" @click="onsubmit">
     <div style="flex: 0 0 auto;display: flex;align-items: center;">
       <b-img left src="/images/touxiang.jpg" style="height: 16px;" rounded="circle"></b-img>
     </div>

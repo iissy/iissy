@@ -45,14 +45,7 @@
           <div class="ui-table">
             <b-table :fields="fields" :items="items" striped>
               <template v-slot:cell(name)="data">
-                <div class="flex-row" style="min-width: 120px;">
-                  <div style="flex: 0 0 auto;display: flex;align-items: center;">
-                    <b-img left src="https://picsum.photos/25/25/?image=25" rounded="circle" alt="Left image"></b-img>
-                  </div>
-                  <div style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
-                    <b-link href="#foo">{{ data.value }}</b-link>
-                  </div>
-                </div>
+                <User :user="data.item"/>
               </template>
               <template v-slot:cell(email)="data">
                 <div style="min-width: 120px;">{{ data.value }}</div>
@@ -114,6 +107,7 @@ import { formatDate } from '@/util/date';
 import http from '@/util/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
+import User from '@/views/component/common/block/user';
 
 export default {
   data: function () {
@@ -139,7 +133,8 @@ export default {
   },
   components: {
     Search,
-    InviterUser
+    InviterUser,
+    User
   },
   created: function () {
     let self = this;

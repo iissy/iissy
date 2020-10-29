@@ -19,7 +19,7 @@
         <b-col sm="6">
           <div>
             <div class="avatar-upload">
-              <img src="/logo.png" style="max-height: 100px;border: 1px solid #e7ecf1;">
+              <img src="/images/logo.png" style="max-height: 100px;border: 1px solid #e7ecf1;">
               <input type="file">
             </div>
             <input type="hidden" v-model="avatar" name="avatar" class="form-control" placeholder="头像">
