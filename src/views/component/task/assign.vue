@@ -11,7 +11,7 @@
       <div style="padding: 5px;">
         <Search placeholder="搜索工作项负责人"/>
       </div>
-      <div style="height: 180px;overflow-y:auto;overflow-x: hidden;">
+      <div style="max-height: 180px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
           <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
         </div>

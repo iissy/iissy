@@ -59,7 +59,7 @@ export default {
   methods: {
     add: function () {
       let self = this;
-      http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1",members:["Reuqev9Y"] }
+      http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1" }
       ).then(function (response) {
         if (response.data.status === true) {
           router.push({ name: 'Projects', params: { team: self.team } });

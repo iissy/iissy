@@ -19,8 +19,14 @@
 export default {
   data: function () {
     return {
-      team: 'Sxv5vAgD'
+      team: '-'
     };
+  },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+  },
+  created() {
   },
   props: ['tagIndex'],
   methods: {

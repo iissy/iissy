@@ -17,6 +17,7 @@
 <script>
 import Header from './component/common/header';
 import Menu from './component/common/menu';
+// import http from "@/util/http";
 
 export default {
   data: function () {
@@ -28,6 +29,11 @@ export default {
     Menu
   },
   created: function () {
+    // let self = this;
+    // let data = { name: '卓灵科技', logo: '' };
+    // http.post(self.urls.team_create, data).then(function (response) {
+    //   console.log(response.data.status)
+    // });
   },
   methods: {
   }
