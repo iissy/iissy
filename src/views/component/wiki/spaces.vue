@@ -11,30 +11,8 @@
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;" class="flex-row">
-      <div style="width: 250px;height: 175px;padding: 15px 20px 10px 20px;" class="g-container flex-column">
-        <div style="flex: 1;">
-          <div style="flex: 0 0 auto;font-size: 15px;">新员工培训文档</div>
-          <div style="flex: 0 0 auto;color: #909090;font-size: 12px;">最近页面更新于 8 小时前</div>
-        </div>
-        <div style="flex: 0 0 auto;" class="flex-row">
-          <div style="flex: 1;"></div>
-          <div style="flex: 0 0 auto;">
-            <b-icon icon="star" scale="1.2"></b-icon>
-          </div>
-        </div>
-      </div>
-      <div style="width: 250px;height: 175px;padding: 15px 20px 10px 20px;margin-left: 10px;" class="g-container flex-column">
-        <div style="flex: 1;">
-          <div style="flex: 0 0 auto;font-size: 15px;">开发技术文档</div>
-          <div style="flex: 0 0 auto;color: #909090;font-size: 12px;">最近页面更新于 8 小时前</div>
-        </div>
-        <div style="flex: 0 0 auto;" class="flex-row">
-          <div style="flex: 1;"></div>
-          <div style="flex: 0 0 auto;">
-            <b-icon icon="star" scale="1.2"></b-icon>
-          </div>
-        </div>
-      </div>
+      <Space title="新员工培训文档" desc="最近页面更新于 8 小时前"/>
+      <Space style="margin-left: 10px;" title="开发技术文档" desc="最近页面更新于 8 小时前"/>
     </div>
     <b-modal size="lg" id="modal-wiki-add">
       asdfasdf
@@ -44,6 +22,7 @@
 
 <script>
 import AddButton from '../common/form/button';
+import Space from '@/views/component/wiki/module/space';
 
 export default {
   data() {
@@ -59,7 +38,8 @@ export default {
   methods: {
   },
   components: {
-    AddButton
+    AddButton,
+    Space
   },
   computed: {
   }

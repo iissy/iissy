@@ -15,7 +15,7 @@ import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
 import Ex from './help.js';
 import Component from './component.js'
-import Doc from './doc.js'
+import Wiki from './wiki.js'
 import Commit from './commit.js'
 import Team from './team.js'
 
@@ -68,7 +68,7 @@ let routes = index.concat(ProjectComponent)
 routes = routes.concat(IssueTypeComponent)
 routes = routes.concat(Ex)
 routes = routes.concat(Component)
-routes = routes.concat(Doc)
+routes = routes.concat(Wiki)
 routes = routes.concat(Commit)
 routes = routes.concat(Team)
 

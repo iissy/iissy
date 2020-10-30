@@ -1,7 +1,8 @@
-import Doc from "@/views/doc/spaces";
+import Doc from "@/views/wiki/spaces";
 import DocSetting from "@/views/setting/doc_setting";
+import Space from "@/views/wiki/space";
 
-let doc = [
+let wiki = [
     {
         path: '/main/team/:team/doc',
         meta: { title: "项目文档" },
@@ -17,7 +18,12 @@ let doc = [
         meta: { title: "文档配置中心" },
         name: 'DocSetting',
         component: DocSetting
+    }, {
+        path: '/main/team/:team/space',
+        meta: { title: "文档中心" },
+        name: 'Space',
+        component: Space
     }
 ]
 
-export default doc;
+export default wiki;
