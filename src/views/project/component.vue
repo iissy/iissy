@@ -5,7 +5,7 @@
       <div class="rightMain">
         <Header :items="items" title="项目管理" :projectName="projectName" :designer="currentTabComponent==='designer'" ref="Header"></Header>
         <div class="project-main-container">
-          <component v-bind:is="currentTabComponent" :comName="comName" :items="items"></component>
+          <component v-bind:is="currentTabComponent" :comName="comName" :items="items" :issue_type_uuid="issue_type_uuid"></component>
         </div>
       </div>
     </div>

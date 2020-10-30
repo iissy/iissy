@@ -62,10 +62,10 @@ export default {
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
-    self.project_list();
+    self.priority_list();
   },
   methods: {
-    project_list: function() {
+    priority_list: function() {
       let self = this;
       http.post(this.urls.issue_type_priority.format(self.team)).then(function (response) {
         self.items = response.data.options;

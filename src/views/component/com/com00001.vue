@@ -17,9 +17,7 @@
           </div>
         </div>
         <div id="project-new-row">
-          <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-            <AddTaskButton :title="add_label" v-b-modal.modal-prevent-closing></AddTaskButton>
-          </div>
+          <AddTask :title="add_label" :issue_type_uuid="issue_type_uuid"/>
           <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
             <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
@@ -88,51 +86,10 @@
         </div>
       </div>
     </div>
-
-    <b-modal size="lg" id="modal-prevent-closing" ref="modal" :title="add_label" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <div style="padding: 0 10px 0 10px;">
-          <b-form-group label="标题" label-for="name-input">
-            <b-form-input id="name-input" v-model="name" required></b-form-input>
-          </b-form-group>
-        </div>
-        <div style="" class="flex-row">
-          <div style="flex: 1;padding: 0 10px 0 10px;">
-            <b-form-group label="所在项目" label-for="project-select">
-              <b-form-select id="project-select" v-model="projectSelect" :options="projects" required></b-form-select>
-            </b-form-group>
-          </div>
-          <div style="flex: 1;padding: 0 10px 0 10px;">
-            <b-form-group label="工作项类型" label-for="issue-type-select">
-              <b-form-select id="issue-type-select" v-model="issueTypeSelect" :options="issue_types" required></b-form-select>
-            </b-form-group>
-          </div>
-        </div>
-        <div style="" class="flex-row">
-          <div style="flex: 1;padding: 0 10px 0 10px;">
-            <b-form-group label="负责人" label-for="assign-select">
-              <b-form-select id="assign-select" v-model="assignSelect" :options="projects" required></b-form-select>
-            </b-form-group>
-          </div>
-          <div style="flex: 1;padding: 0 10px 0 10px;">
-            <b-form-group label="优先级" label-for="priority-select">
-              <b-form-select id="priority-select" v-model="prioritySelect" :options="issue_types" required></b-form-select>
-            </b-form-group>
-          </div>
-        </div>
-        <div style="padding: 0 10px 0 10px;">
-          <b-form-group label="描述" label-for="desc-input">
-            <b-form-textarea id="desc-input" v-model="desc" rows="5" required></b-form-textarea>
-          </b-form-group>
-        </div>
-      </form>
-    </b-modal>
-
   </div>
 </template>
 
 <script>
-import AddTaskButton from '../common/form/button';
 import Search from "@/views/component/common/form/search";
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';
@@ -140,6 +97,8 @@ import Assign from '@/views/component/task/assign';
 import TaskStatus from '@/views/component/task/status';
 import TaskPriority from '@/views/component/task/priority';
 import Fields from '@/views/component/task/fields';
+import AddTask from '@/views/component/task/add';
+
 import http from "@/util/http";
 
 export default {
@@ -152,14 +111,6 @@ export default {
       com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
       items: [],
-      name: '',
-      desc: '',
-      projects: ['你好爱上对方', '阿斯顿发送'],
-      issue_types: ['你按时发', '摸弄激活接口'],
-      projectSelect: '',
-      issueTypeSelect: '',
-      assignSelect: '',
-      prioritySelect: '',
       task: {assign:{}, task_status: {}, priority: {}, project: {}, issue_type: {}, uuid: '-'},
       tasks: [],
       selectedUUID: '',
@@ -167,7 +118,8 @@ export default {
     };
   },
   props: {
-    comName: String
+    comName: String,
+    issue_type_uuid: String
   },
   mounted() {
   },
@@ -180,40 +132,6 @@ export default {
     self.task_list();
   },
   methods: {
-    checkFormValidity() {
-      let valid = this.$refs.form.checkValidity()
-      return valid
-    },
-    resetModal() {
-    },
-    handleOk(bvModalEvt) {
-      bvModalEvt.preventDefault()
-      this.handleSubmit()
-    },
-    handleSubmit() {
-      if (!this.checkFormValidity()) {
-        return
-      }
-      this.add();
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing')
-      })
-    },
-    add: function () {
-      let self = this;
-      let data = {
-        summary: self.name,
-        desc: self.desc,
-        priority: {uuid: 'Mkt3j1DC'}
-      }
-      http.post(self.urls.task_add.format(self.team, self.project, self.$parent.issue_type_uuid), data).then(function (response) {
-        if (response.data.status === true) {
-          self.task_list();
-        } else {
-          alert(response.data.msg)
-        }
-      });
-    },
     task_list: function() {
       let self = this;
       let url = self.urls.task_list.format(self.team, self.project, self.$parent.issue_type_uuid);
@@ -250,14 +168,14 @@ export default {
     }
   },
   components: {
-    AddTaskButton,
     Search,
     Priority,
     Status,
     Assign,
     TaskStatus,
     TaskPriority,
-    Fields
+    Fields,
+    AddTask
   }
 }
 </script>
