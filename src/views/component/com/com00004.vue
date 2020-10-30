@@ -25,19 +25,12 @@
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td">
-              <div class="flex-row">
-                <div style="flex: 0 0 auto;display: flex;align-items: center;">
-                  <b-img left src="https://picsum.photos/25/25/?image=25" rounded="circle" alt="Left image"></b-img>
-                </div>
-                <div style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
-                  <b-link href="#foo">{{ item.name }}</b-link>
-                </div>
-              </div>
+              <User :user="item"/>
             </div>
             <div class="td">{{ item.email }}</div>
             <div class="td">无</div>
             <div class="td" style="flex: 0 0 80px;">
-              <b-icon icon="x" scale="2"></b-icon>
+              <b-icon icon="x" scale="1.8"></b-icon>
             </div>
           </div>
         </div>
@@ -50,6 +43,7 @@
 import http from '@/util/http';
 import Search from '@/views/component/common/form/search';
 import AddMember from '@/views/component/common/block/add_member';
+import User from '@/views/component/common/block/user';
 
 export default {
   data: function () {
@@ -61,7 +55,8 @@ export default {
   },
   components: {
     Search,
-    AddMember
+    AddMember,
+    User
   },
   created: function () {
     let self = this;
