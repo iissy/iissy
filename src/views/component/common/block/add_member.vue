@@ -28,14 +28,7 @@
             <input v-else type="checkbox" v-model="item.sel" style="width: 18px;height: 18px;">
           </div>
           <div class="td">
-            <div class="flex-row">
-              <div style="flex: 0 0 auto;display: flex;align-items: center;">
-                <b-img left src="https://picsum.photos/25/25/?image=25" rounded="circle" alt="Left image"></b-img>
-              </div>
-              <div style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
-                <b-link href="#foo">{{ item.name }}</b-link>
-              </div>
-            </div>
+            <User :user="item"/>
           </div>
           <div class="td">{{ item.email }}</div>
           <div class="td">无</div>
@@ -52,6 +45,7 @@
 import AddProjectButton from '../../button/common';
 import http from "@/util/http";
 import Search from "@/views/component/common/form/search";
+import User from '@/views/component/common/block/user';
 
 export default {
   data: function () {
@@ -68,7 +62,8 @@ export default {
   },
   components: {
     AddProjectButton,
-    Search
+    Search,
+    User
   },
   created: function () {
     let self = this;
