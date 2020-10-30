@@ -1,15 +1,12 @@
 <template>
-  <div class="app-row">
-    <Catalog ref="Catalog"/>
-    <div class="rightMain">
-      <Header ref="Header"/>
-      <div class="app-main-container">
-        <div class="app-main-content">
-          <div>
-            <p>asdf</p>
-          </div>
-        </div>
+  <div class="app-column">
+    <Header ref="Header"/>
+    <div class="rightMain flex-row">
+      <Catalog ref="Catalog"/>
+      <div class="app-main-container" style="flex: 1;">
+        <Article ref="Article"/>
       </div>
+      <Dynamic ref="dynamic"/>
     </div>
   </div>
 </template>
@@ -17,6 +14,8 @@
 <script>
 import Header from '@/views/component/wiki/header';
 import Catalog from '@/views/component/wiki/catalog';
+import Dynamic from '@/views/component/wiki/dynamic';
+import Article from "@/views/component/wiki/module/article";
 
 export default {
   data: function () {
@@ -24,8 +23,10 @@ export default {
     };
   },
   components: {
+    Article,
     Header,
-    Catalog
+    Catalog,
+    Dynamic
   },
   created: function () {
   },

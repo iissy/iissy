@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     goto: function () {
+      let self = this;
       router.push({ name: 'Space', params: { team: self.team } });
     }
   },

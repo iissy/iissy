@@ -13,26 +13,7 @@
           </div>
         </div>
         <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
-        <div id="popover-user-center" style="flex: 0;align-items: center;display: flex;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
-          <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
-        </div>
-        <b-popover
-            target="popover-user-center"
-            placement="bottom"
-            triggers="focus">
-          <div class="flex-column" id="center">
-            <div class="menu-item">
-              <router-link :to="{ name: 'CenterAccount' }">账号设置</router-link>
-            </div>
-            <div class="menu-item">
-              <router-link :to="{ name: 'CenterSafe' }">安全设置</router-link>
-            </div>
-            <div class="menu-line"></div>
-            <div class="menu-item">
-              <router-link :to="{ name: 'Logout' }">注销</router-link>
-            </div>
-          </div>
-        </b-popover>
+        <UserCenterAvatar/>
       </div>
     </div>
     <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
@@ -44,7 +25,8 @@
 </template>
 
 <script>
-import ProjectHeader from '../setting/project/project_header';
+import ProjectHeader from '@/views/component/setting/project/project_header';
+import UserCenterAvatar from '@/views/component/common/block/avatar';
 
 export default {
   data() {
@@ -107,7 +89,8 @@ export default {
     }
   },
   components: {
-    ProjectHeader
+    ProjectHeader,
+    UserCenterAvatar
   }
 }
 </script>
@@ -117,11 +100,4 @@ export default {
 .attr { flex: 0 0 auto;padding: 0 10px;display: flex;height: 100%;align-items: center; }
 .attr a { padding: 0 5px;font-size: 15px;text-decoration: none;height: 30px;display: flex;align-items: center;border-radius: 3px; }
 .attr a.active { color: #17C4BB!important;background-color: #E0EEEE; }
-
-#center { width: 138px; }
-.menu-item { flex: 1;padding: 4px 0 4px 20px;cursor: pointer;letter-spacing: 3px; }
-.menu-item a { display: block;text-decoration: none; }
-.menu-item:hover { background-color: #eff6fd;border-radius: 0.3rem; }
-.menu-item:hover a { color: inherit; }
-.menu-line { border-bottom: 1px solid #e0e0e0;height: 2px;margin-top: 3px; }
 </style>
