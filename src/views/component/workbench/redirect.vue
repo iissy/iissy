@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     let self = this;
-    router.push({ name:'Main', params: { team: self.$refs.Menu.team } });
+    router.push({ name:'Workbench', params: { team: self.$refs.Menu.team, type: 'overview' } });
   }
 }
 </script>

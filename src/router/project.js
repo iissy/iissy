@@ -1,5 +1,5 @@
 import ProjectSetting from "@/views/setting/project_setting";
-import Projects from '../views/project/list';
+import Projects from '../views/project/projects';
 import AddProject from '../views/project/add';
 import Task from '../views/project/task';
 import ProjectPermissionSetting from '../views/setting/permission';

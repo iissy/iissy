@@ -33,12 +33,7 @@ const index = [
         name: 'MainRedirect',
         component: MainRedirect
     }, {
-        path: '/main/team/:team',
-        meta: { title: "我的工作台" },
-        name: 'Main',
-        component: Main
-    }, {
-        path: '/main/team/:team/:type',
+        path: '/main/team/:team/workbench/:type',
         meta: { title: "我的工作台" },
         name: 'Workbench',
         component: Main
