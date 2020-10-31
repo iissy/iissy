@@ -6,14 +6,14 @@ import ProjectPermissionSetting from '../views/setting/permission';
 
 let project = [
     {
-        path: '/main/setting/team/:team/project/manager',
+        path: '/main/setting/team/:team/project/:type',
         meta: { title: "项目管理" },
         name: 'ProjectSetting',
         component: ProjectSetting
     }, {
-        path: '/main/setting/team/:team/:type/:com',
-        meta: { title: "项目管理" },
-        name: 'ProjectIssueTypeSetting',
+        path: '/main/setting/team/:team/issue_type/:type',
+        meta: { title: "工作项管理" },
+        name: 'TeamIssueTypeSetting',
         component: ProjectSetting
     }, {
         path: '/main/setting/team/:team/project/:project/manager/permission',

@@ -53,46 +53,46 @@ export default {
   },
   created: function () {
     let self = this;
+    let id = self.$route.name;
     let type = self.$route.params.type;
-    let id = self.$route.params.com;
-    self.tag_switch(type + "_" + id);
+    self.tag_switch("{0}_{1}".format(id, type));
   },
   watch: {
     '$route' () {
+      let id = this.$route.name;
       let type = this.$route.params.type;
-      let id = this.$route.params.com;
-      this.tag_switch(type + "_" + id);
+      this.tag_switch("{0}_{1}".format(id, type));
     }
   },
   methods: {
     tag_switch: function (com) {
       let self = this;
       switch (com) {
-        case "project_manager":
+        case "ProjectSetting_manager":
           self.tagIndex = 1;
           self.currentTabComponent = ProjectManager;
           break;
-        case "project_field":
+        case "ProjectSetting_field":
           self.tagIndex = 2;
           self.currentTabComponent = ProjectField;
           break;
-        case "project_status":
+        case "ProjectSetting_status":
           self.tagIndex = 3;
           self.currentTabComponent = ProjectStatus;
           break;
-        case "issue_type_manager":
+        case "TeamIssueTypeSetting_manager":
           self.tagIndex = 11;
           self.currentTabComponent = IssueTypeManager;
           break;
-        case "issue_type_field":
+        case "TeamIssueTypeSetting_field":
           self.tagIndex = 12;
           self.currentTabComponent = IssueTypeField;
           break;
-        case "issue_type_status":
+        case "TeamIssueTypeSetting_status":
           self.tagIndex = 13;
           self.currentTabComponent = IssueTypeStatus;
           break;
-        case "issue_type_priority":
+        case "TeamIssueTypeSetting_priority":
           self.tagIndex = 14;
           self.currentTabComponent = IssueTypePriority;
           break;

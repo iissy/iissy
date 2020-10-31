@@ -4,77 +4,11 @@
       <Menu tagIndex="83" ref="Menu"></Menu>
       <div class="rightMain">
         <Header title="文档配置中心" ref="Header"></Header>
-        <div class="app-main-container">
-          <div class="app-main-content">
-            <div style="overflow: hidden;width: 100%;height: 100%;flex: 1;display: flex;flex-direction: column;">
-              <div style="overflow:auto;z-index: 0;position: relative;display: flex;flex: 1;height: 0;">
-                <div style="overflow:auto;height: 100%;width: 100%;position: relative;">
-                  <p>asdf 爱死爱死adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                  <p>adsfasdf</p>
-                </div>
-              </div>
+        <div class="project-main-container">
+          <div class="app-main-no-border">
+            <div style="display: flex;flex-direction: row;height: 100%;">
+              <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
+              <component v-bind:is="currentTabComponent"></component>
             </div>
           </div>
         </div>
@@ -86,21 +20,58 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
+import Control from '../component/setting/wiki/wiki_control';
+import { formatDate } from '@/util/date';
+import Manager from "@/views/component/setting/wiki/manager";
+import Permission from "@/views/component/setting/wiki/permission";
 
 export default {
   data: function () {
     return {
+      currentTabComponent: Manager,
+      tagIndex: 1
     };
   },
   components: {
     Header,
-    Menu
+    Menu,
+    Control,
+    Manager
   },
   created: function () {
+    let self = this;
+    let type = self.$route.params.type;
+    self.tag_switch(type);
+  },
+  filters: {
+    formatDate(time) {
+      return formatDate(time);
+    }
+  },
+  watch: {
+    '$route' () {
+      let type = this.$route.params.type;
+      this.tag_switch(type);
+    }
   },
   methods: {
-    add: function () {
+    tag_switch: function (type) {
+      let self = this;
+      switch (type) {
+        case "manager":
+          self.tagIndex = 1;
+          self.currentTabComponent = Manager;
+          break;
+        case "permission":
+          self.tagIndex = 11;
+          self.currentTabComponent = Permission;
+          break;
+      }
     }
   }
 };
 </script>
+
+<style scoped>
+.project-main-container { height: 100%;overflow: auto;-webkit-flex: 1 1 auto;flex: 1 1 auto;width: auto;min-width: 0;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }
+</style>
