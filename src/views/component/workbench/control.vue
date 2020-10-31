@@ -2,7 +2,7 @@
   <div style="flex: 1;">
     <div class="com-outline">
       <div v-for="item in items" :key="item.com">
-        <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Workbench', params: { type: item.uuid } }">
+        <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Workbench', params: { team: team, type: item.uuid } }">
           <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
             {{ item.name }}
           </div>
@@ -16,9 +16,11 @@
 export default {
   data() {
     return {
+      team: '-',
       selectedCom: 'overview',
       items: [
         { uuid: 'overview', name: '概览' },
+        { uuid: 'dashboard', name: '仪表盘' },
         { uuid: 'filter', name: '筛选器' },
         { uuid: 'hours', name: '工时' }
       ]
@@ -31,6 +33,7 @@ export default {
   },
   mounted() {
     let self = this;
+    self.team = self.$route.params.team;
     self.shift();
   },
   methods: {

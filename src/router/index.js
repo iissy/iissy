@@ -10,6 +10,7 @@ import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import CenterRobot from '../views/center/robot';
 import Logout from '../views/center/logout';
+import MainRedirect from '@/views/component/workbench/redirect';
 
 import ProjectComponent from './project.js';
 import IssueTypeComponent from './issue_type.js';
@@ -29,10 +30,15 @@ const index = [
     }, {
         path: '/main',
         meta: { title: "我的工作台" },
+        name: 'MainRedirect',
+        component: MainRedirect
+    }, {
+        path: '/main/team/:team',
+        meta: { title: "我的工作台" },
         name: 'Main',
         component: Main
     }, {
-        path: '/main/:type',
+        path: '/main/team/:team/:type',
         meta: { title: "我的工作台" },
         name: 'Workbench',
         component: Main

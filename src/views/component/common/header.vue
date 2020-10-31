@@ -28,7 +28,7 @@
 <script>
 import ProjectHeader from '@/views/component/setting/project/project_header';
 import UserCenterAvatar from '@/views/component/common/block/avatar';
-import Workbench from '@/views/component/common/block/workbench';
+import Workbench from '@/views/component/workbench/control';
 
 export default {
   data() {
