@@ -2,7 +2,7 @@
   <div class="app-row">
     <Menu tagIndex="1" ref="Menu"></Menu>
     <div class="rightMain">
-      <Header title="我的工作台" ref="Header"></Header>
+      <Header title="我的工作台" ref="Header" workbench="true"></Header>
       <div class="app-main-container">
         <div class="app-main-content">
           <div>

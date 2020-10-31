@@ -12,6 +12,7 @@
             </div>
           </div>
         </div>
+        <Workbench v-if="workbench"/>
         <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
         <UserCenterAvatar/>
       </div>
@@ -27,6 +28,7 @@
 <script>
 import ProjectHeader from '@/views/component/setting/project/project_header';
 import UserCenterAvatar from '@/views/component/common/block/avatar';
+import Workbench from '@/views/component/common/block/workbench';
 
 export default {
   data() {
@@ -49,7 +51,10 @@ export default {
     title: String,
     items: Array,
     projectName: String,
-    designer: Boolean
+    designer: Boolean,
+    workbench: {
+      default: false
+    }
   },
   created() {
     let self = this;
@@ -90,7 +95,8 @@ export default {
   },
   components: {
     ProjectHeader,
-    UserCenterAvatar
+    UserCenterAvatar,
+    Workbench
   }
 }
 </script>

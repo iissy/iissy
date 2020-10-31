@@ -32,6 +32,11 @@ const index = [
         name: 'Main',
         component: Main
     }, {
+        path: '/main/:type',
+        meta: { title: "我的工作台" },
+        name: 'Workbench',
+        component: Main
+    }, {
         path: '/main/ding/robot',
         meta: { title: "群机器人" },
         name: 'Robot',
