@@ -1,6 +1,6 @@
 <template>
   <div class="flex-row" style="padding: 20px 10px;">
-    <Tasks style="margin-left: 10px;" :tasks="tasks_assign" title="我负责的工作项"/>
+    <Tasks :tasks="tasks_assign" title="我负责的工作项"/>
     <Tasks style="margin-left: 10px;" :tasks="tasks_owner" title="我提交的工作项"/>
     <Tasks style="margin-left: 10px;" :tasks="tasks_watcher" title="我关注的工作项"/>
   </div>
