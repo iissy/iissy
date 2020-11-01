@@ -3,9 +3,9 @@
     <Menu tagIndex="83" ref="Menu"></Menu>
     <div class="rightMain">
       <Header title="文档配置中心" ref="Header"></Header>
-      <div class="project-main-container">
-        <div class="app-main-no-border">
-          <div style="display: flex;flex-direction: row;height: 100%;">
+      <div class="project-main-container flex-column">
+        <div class="app-main-no-border flex-column">
+          <div style="height: 100%;flex: 1;" class="flex-row">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
             <component v-bind:is="currentTabComponent"></component>
           </div>
