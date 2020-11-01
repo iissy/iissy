@@ -22,12 +22,19 @@
       </div>
     </div>
     <b-sidebar id="sidebar" title="快速导航" width="300px" backdrop>
-      <div class="px-3 py-2" style="border-top: 1px solid #dedede;">
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        </p>
-        <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+      <div style="border-top: 1px solid #dedede;padding: 0 20px;">
+        <div class="tool">
+          <div class="tool-header">工具</div>
+          <div class="tool-item" v-for="t in tools" :key="t.uuid">
+            {{ t.name }}
+          </div>
+        </div>
+        <div class="tool">
+          <div class="tool-header">页面组</div>
+          <div class="tool-item" v-for="s in spaces" :key="s.uuid">
+            {{ s.name }}
+          </div>
+        </div>
       </div>
     </b-sidebar>
   </div>
@@ -37,6 +44,13 @@
 export default {
   data() {
     return {
+      tools: [
+        {uuid: 'wiki-setting', name: '文档配置中心'}
+      ],
+      spaces: [
+        { uuid: '83ue7u2s', name: '新人培训文档' },
+        { uuid: '83ue7u2c', name: '开发文档' }
+      ]
     }
   },
   mounted() {
@@ -52,4 +66,8 @@ export default {
 
 <style scoped>
 #catalog { flex: 0 0 300px;border-right: 1px solid #dedede; }
+.tool { margin-top: 20px; }
+.tool .tool-header { color: #909090; }
+.tool .tool-item { padding: 5px 0 5px 10px; }
+.tool .tool-item:hover { background-color: #e9e9e9;border-radius: 3px; }
 </style>
