@@ -4,7 +4,7 @@
     <div class="rightMain">
       <Header :items="items" title="项目管理" :projectName="projectName" :designer="currentTabComponent==='designer'" ref="Header"></Header>
       <div class="project-main-container">
-        <component v-bind:is="currentTabComponent" :comName="comName" :items="items" :issue_type_uuid="issue_type_uuid"></component>
+        <component v-bind:is="currentTabComponent" :comName="comName" :items="items" :issue_type="issue_type"></component>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@ export default {
       items: [
       ],
       currentTabComponent: '',
-      issue_type_uuid: ''
+      issue_type: ''
     };
   },
   components: {
@@ -95,7 +95,7 @@ export default {
         self.comName = response.data.name;
 
         if(response.data.objects.length > 0) {
-          self.issue_type_uuid = response.data.objects[0].uuid;
+          self.issue_type = response.data.objects[0].uuid;
         }
       });
     }

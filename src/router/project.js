@@ -31,7 +31,7 @@ let project = [
         name: 'AddProject',
         component: AddProject
     }, {
-        path: '/main/team/:team/project/:project/issue_type/:issue_type/task/:task',
+        path: '/main/team/:team/project/:project/issue_type/:issue_type/:com/task/:task',
         meta: { title: "查看任务" },
         name: 'Task',
         component: Task

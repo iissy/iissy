@@ -17,7 +17,7 @@
           </div>
         </div>
         <div id="project-new-row">
-          <AddTask :title="add_label" :issue_type_uuid="issue_type_uuid"/>
+          <AddTask :title="add_label" :issue_type="issue_type"/>
           <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
             <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
@@ -46,12 +46,7 @@
                   </div>
                 </div>
               </div>
-              <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
-                <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
-                  <Fields :task="task" v-if="task_completed"/>
-                </div>
-                <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
-              </div>
+              <Fields :task="task" v-if="task_completed"/>
             </div>
             <div v-else style="flex: 1;display: flex;padding: 10px;">
               <div v-if="!tasks_completed" class="flex-row" style="flex: 1;">
@@ -86,7 +81,6 @@ export default {
       cur: 0,
       team: '',
       project: '',
-      issue_type: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
       items: [],
       task: {},
@@ -98,7 +92,7 @@ export default {
   },
   props: {
     comName: String,
-    issue_type_uuid: String
+    issue_type: String
   },
   mounted() {
   },
@@ -106,13 +100,12 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
-    self.issue_type = self.$parent.issue_type_uuid;
     self.task_list();
   },
   methods: {
     task_list: function() {
       let self = this;
-      let url = self.urls.task_list.format(self.team, self.project, self.$parent.issue_type_uuid);
+      let url = self.urls.task_list.format(self.team, self.project, self.issue_type);
       http.post(url).then(function (response) {
         self.tasks = response.data;
         self.tasks_completed = true;
@@ -129,7 +122,7 @@ export default {
     },
     task_get: function (uuid) {
       let self = this;
-      let url = self.urls.task_get.format(self.team, self.project, self.$parent.issue_type_uuid, uuid);
+      let url = self.urls.task_get.format(self.team, self.project, self.issue_type, uuid);
       http.get(url).then(function (response) {
         self.task = response.data;
         self.task_completed = true;

@@ -71,7 +71,7 @@ export default {
   },
   props: {
     title: String,
-    issue_type_uuid: String
+    issue_type: String
   },
   mounted() {
     let self = this;
@@ -146,8 +146,8 @@ export default {
         let dataset = response.data;
         if (dataset && dataset.length > 0) {
           for (let i=0;i<dataset.length;i++) {
-            if (dataset[i].uuid === self.issue_type_uuid) {
-              self.issueTypeSelect = self.issue_type_uuid;
+            if (dataset[i].uuid === self.issue_type) {
+              self.issueTypeSelect = self.issue_type;
             }
             self.issue_types.push({ value: dataset[i].uuid, text: dataset[i].name });
           }
