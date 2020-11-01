@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="flex: 1;height: 100%;">
     <div style="font-size: 18px;margin-bottom: 20px;">工作项属性</div>
     <Summary :desc="desc"/>
     <Search style="margin: 20px 0;" placeholder="搜索工作项属性"/>

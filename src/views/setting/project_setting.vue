@@ -5,7 +5,7 @@
       <Header title="项目配置中心" ref="Header"></Header>
       <div class="project-main-container flex-column">
         <div class="app-main-no-border flex-column">
-          <div style="height: 100%;" class="flex-row">
+          <div style="height: 100%;flex: 1;" class="flex-row">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
             <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;min-height: 100%;" class="g-container">
               <component v-bind:is="currentTabComponent"></component>
