@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <div class="app-row">
-      <Menu tagIndex="81" ref="Menu"></Menu>
-      <div class="rightMain">
-        <Header title="团队配置中心" ref="Header"></Header>
-        <div class="project-main-container">
-          <div class="app-main-no-border">
-            <div style="display: flex;flex-direction: row;height: 100%;">
-              <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
-              <component v-bind:is="currentTabComponent"></component>
-            </div>
+  <div class="app-row">
+    <Menu tagIndex="81" ref="Menu"></Menu>
+    <div class="rightMain">
+      <Header title="团队配置中心" ref="Header"></Header>
+      <div class="project-main-container">
+        <div class="app-main-no-border">
+          <div style="display: flex;flex-direction: row;height: 100%;">
+            <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
+            <component v-bind:is="currentTabComponent"></component>
           </div>
         </div>
       </div>
