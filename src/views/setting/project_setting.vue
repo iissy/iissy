@@ -7,7 +7,7 @@
         <div class="app-main-no-border">
           <div style="display: flex;flex-direction: row;height: 100%;">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
-            <div style="max-width:1200px;background-color: #ffffff;flex: 1 1 auto;padding: 20px;height: 100%;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);">
+            <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%;overflow-y: auto;" class="g-container">
               <component v-bind:is="currentTabComponent"></component>
             </div>
           </div>
@@ -101,5 +101,5 @@ export default {
 </script>
 
 <style scoped>
-.project-main-container { height: 100%;overflow: auto;-webkit-flex: 1 1 auto;flex: 1 1 auto;width: auto;min-width: 0;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }
+.project-main-container { height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;width: auto;min-width: 0;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }
 </style>

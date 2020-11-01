@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="flex: 1;height: 0;">
     <div style="display: flex;flex-direction: row;align-items: center;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px;">
       <div style="font-size: 18px;flex: 0 0 auto;">项目管理</div>
       <div style="margin-left: 10px;flex: 0 0 auto;">
