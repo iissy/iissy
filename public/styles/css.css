@@ -150,6 +150,7 @@ a:hover { color: #4F4F4F;text-decoration: none!important; }
     flex-direction: column;
     box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
     border-radius: 3px;
+    height: 100%;
 }
 
 .right-member-list {
@@ -162,7 +163,7 @@ a:hover { color: #4F4F4F;text-decoration: none!important; }
     display: -webkit-flex;
     display: flex;
     padding: 20px;
-    /*margin: 1px;*/
+    height: 100%;
     background-color: #fff;
     flex-direction: column;
 }
