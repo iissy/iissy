@@ -23,18 +23,16 @@
           <TaskPriority :option="task.priority"/>
         </div>
       </div>
-      <div v-if="show_desc">
-        <div class="flex-row">
-          <div style="margin-top: 10px;flex: 1;">
-            描述
-          </div>
-          <div style="padding: 5px 5px 0 5px;flex: 0 0 auto;">
-            <router-link style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid, com: com } }">全屏查看</router-link>
-          </div>
+      <div class="flex-row">
+        <div style="margin-top: 10px;flex: 1;">
+          描述
         </div>
-        <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
-          {{ task.desc }}
+        <div style="padding: 5px 5px 0 5px;flex: 0 0 auto;">
+          <router-link style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid, com: com } }">全屏查看</router-link>
         </div>
+      </div>
+      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
+        {{ task.desc }}
       </div>
 
       <div class="field-type-group">
@@ -159,10 +157,7 @@ export default {
     }
   },
   props: {
-    task: Object,
-    show_desc: {
-      default: true
-    }
+    task: Object
   },
   created() {
     let self = this;
