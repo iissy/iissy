@@ -3,11 +3,11 @@
     <Menu tagIndex="82" ref="Menu"></Menu>
     <div class="rightMain">
       <Header title="项目配置中心" ref="Header"></Header>
-      <div class="project-main-container">
+      <div class="project-main-container flex-column">
         <div class="app-main-no-border">
-          <div style="display: flex;flex-direction: row;height: 100%;">
+          <div style="height: 100%;" class="flex-row">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
-            <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%;overflow-y: auto;" class="g-container">
+            <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;" class="g-container">
               <component v-bind:is="currentTabComponent"></component>
             </div>
           </div>
@@ -101,5 +101,4 @@ export default {
 </script>
 
 <style scoped>
-.project-main-container { height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;width: auto;min-width: 0;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }
 </style>
