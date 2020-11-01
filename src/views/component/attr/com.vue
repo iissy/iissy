@@ -163,5 +163,5 @@ export default {
 .tab-title > div { flex: 0 0 auto;text-align: center;cursor: pointer;padding: 10px;font-size: 15px;margin-right: 10px; }
 .tab-title .active{ border-bottom: 3px solid #17C4BB;color: #17C4BB; }
 .tab-content { flex: 1 0 auto; }
-.tab-content div{  }
+.shadow { box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);box-sizing: border-box;border-radius: 3px;background: #fff; }
 </style>
