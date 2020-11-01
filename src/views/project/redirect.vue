@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <div class="app-row">
-      <Menu tagIndex="21" ref="Menu"></Menu>
-      <div class="rightMain">
-        <Header title="项目管理" ref="Header"></Header>
-        <div class="app-main-container">
-          <div class="app-main-content">
-            &nbsp;
-          </div>
+  <div class="app-row">
+    <Menu tagIndex="21" ref="Menu"></Menu>
+    <div class="rightMain">
+      <Header title="项目管理" ref="Header"></Header>
+      <div class="app-main-container">
+        <div class="app-main-content">
+          &nbsp;
         </div>
       </div>
     </div>

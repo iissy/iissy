@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div class="app-row">
-      <Menu tagIndex="23" ref="Menu"></Menu>
-      <div class="rightMain">
-        <Header title="项目文档" ref="Header"></Header>
-        <Spaces/>
-      </div>
+  <div class="app-row">
+    <Menu tagIndex="23" ref="Menu"></Menu>
+    <div class="rightMain">
+      <Header title="项目文档" ref="Header"></Header>
+      <Spaces/>
     </div>
   </div>
 </template>

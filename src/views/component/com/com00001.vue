@@ -48,37 +48,6 @@
               </div>
               <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;">
                 <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
-                  <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
-                    <div style="flex: 1;">#{{ task.number }}</div>
-                    <div style="flex: 0 0 auto;">
-                      <svg t="1601948666806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10407" width="20" height="20"><path d="M509.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10408"></path><path d="M849.1 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10409"></path><path d="M174.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10410"></path></svg>
-                    </div>
-                  </div>
-                  <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
-                    <div style="flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
-                      {{ task.summary }}
-                    </div>
-                  </div>
-                  <div class="flex-row" style="width: 100%;padding: 0 10px 10px 10px;justify-content: space-between;">
-                    <div style="flex: 1;text-align: center;">
-                      <Assign :user="task.assign" :task="task.uuid" v-if="task_completed"/>
-                    </div>
-                    <div style="flex: 1;text-align: center;">
-                      <TaskStatus :status="task.task_status" v-if="task_completed"/>
-                    </div>
-                    <div style="flex: 1;text-align: center;">
-                      <TaskPriority :option="task.priority" v-if="task_completed"/>
-                    </div>
-                  </div>
-                  <div style="margin-top: 10px;">
-                    描述
-                  </div>
-                  <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
-                    {{ task.desc }}
-                  </div>
-                  <div style="padding: 5px 5px 0 5px;">
-                    <router-link v-if="task_completed" target="_blank" style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid } }">全屏查看</router-link>
-                  </div>
                   <Fields :task="task" v-if="task_completed"/>
                 </div>
                 <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
@@ -106,9 +75,6 @@
 import Search from "@/views/component/common/form/search";
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';
-import Assign from '@/views/component/task/assign';
-import TaskStatus from '@/views/component/task/status';
-import TaskPriority from '@/views/component/task/priority';
 import Fields from '@/views/component/task/fields';
 import AddTask from '@/views/component/task/add';
 
@@ -121,7 +87,6 @@ export default {
       team: '',
       project: '',
       issue_type: '',
-      com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
       items: [],
       task: {},
@@ -141,7 +106,6 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
-    self.com = self.$route.params.com;
     self.issue_type = self.$parent.issue_type_uuid;
     self.task_list();
   },
@@ -190,9 +154,6 @@ export default {
     Search,
     Priority,
     Status,
-    Assign,
-    TaskStatus,
-    TaskPriority,
     Fields,
     AddTask
   }

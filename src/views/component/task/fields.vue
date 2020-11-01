@@ -1,5 +1,39 @@
 <template>
   <div>
+    <div class="flex-row" style="width: 100%;padding-bottom: 10px;">
+      <div style="flex: 1;">#{{ task.number }}</div>
+      <div style="flex: 0 0 auto;">
+        <svg t="1601948666806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10407" width="20" height="20"><path d="M509.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10408"></path><path d="M849.1 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10409"></path><path d="M174.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10410"></path></svg>
+      </div>
+    </div>
+    <div class="flex-row" style="width: 100%;padding-bottom: 10px;line-height: 200%;">
+      <div style="flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+        {{ task.summary }}
+      </div>
+    </div>
+    <div class="flex-row" style="width: 100%;padding: 0 10px 10px 10px;justify-content: space-between;">
+      <div style="flex: 1;text-align: center;">
+        <Assign :user="task.assign" :task="task.uuid"/>
+      </div>
+      <div style="flex: 1;text-align: center;">
+        <TaskStatus :status="task.task_status"/>
+      </div>
+      <div style="flex: 1;text-align: center;">
+        <TaskPriority :option="task.priority"/>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div style="margin-top: 10px;flex: 1;">
+        描述
+      </div>
+      <div style="padding: 5px 5px 0 5px;flex: 0 0 auto;">
+        <router-link target="_blank" style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, issue_type: issue_type, task: task.uuid } }">全屏查看</router-link>
+      </div>
+    </div>
+    <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
+      {{ task.desc }}
+    </div>
+
     <div class="field-type-group">
       <div class="flex-row field-row">
         <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
@@ -105,18 +139,33 @@
 
 <script>
 import User from '@/views/component/common/block/user';
+import Assign from '@/views/component/task/assign';
+import TaskStatus from '@/views/component/task/status';
+import TaskPriority from '@/views/component/task/priority';
 
 export default {
   data() {
     return {
-      hasEmail: false
+      hasEmail: false,
+      team: '',
+      project: '',
+      issue_type: ''
     }
   },
   props: {
     task: Object
   },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.issue_type = self.$parent.issue_type_uuid;
+  },
   components: {
-    User
+    User,
+    Assign,
+    TaskStatus,
+    TaskPriority
   }
 }
 </script>
