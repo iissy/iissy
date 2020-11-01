@@ -11,7 +11,7 @@
       </div>
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
-          <div style="height: 30px;line-height: 30px;flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+          <div style="flex: 1;width: 0;height: 30px;line-height: 30px;flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
             {{ task.summary }}
           </div>
         </div>

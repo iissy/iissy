@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width:1200px;background-color: #ffffff;flex: 1 1 auto;padding: 20px;height: 100%;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);">
+  <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%;" class="g-container">
     <div style="font-size: 18px;">团队信息</div>
     <b-container style="margin-top: 40px;" fluid>
       <b-row>
