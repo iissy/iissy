@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style scoped>
-.wiki { max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%; }
+.wiki { max-width:1200px;flex: 1 1 auto;padding: 20px;min-height: 100%; }
 </style>
