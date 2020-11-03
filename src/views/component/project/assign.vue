@@ -1,5 +1,5 @@
 <template>
-  <div id="popover-assign" class="flex-row assign align-items-center" hidefocus="true" tabindex="0">
+  <div id="popover-assign" class="flex-row assign align-items-center" style="display: inline-flex;" hidefocus="true" tabindex="0">
     <div style="flex: 0 0 auto;">
       <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
     </div>
@@ -11,7 +11,7 @@
       <div style="padding: 5px;">
         <Search placeholder="搜索项目负责人"/>
       </div>
-      <div style="height: 180px;overflow-y:auto;overflow-x: hidden;">
+      <div style="max-height: 180px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
           <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
         </div>

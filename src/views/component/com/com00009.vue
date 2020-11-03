@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import ProjectAssign from "@/views/component/project/project_assign";
+import ProjectAssign from "@/views/component/project/assign";
 import Line1 from '@/chart/line'
 import Bar from '@/chart/bar';
 import http from "@/util/http";
