@@ -4,7 +4,7 @@
       <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
         <b-dropdown @toggle="project_list" :text="projectName" variant="outline" toggle-class="text-decoration-none">
           <b-dropdown-item disabled>进行中的项目</b-dropdown-item>
-          <b-dropdown-item v-for="p in projects" :key="p.uuid" :to="{ name:'Redirect', params: { team: team, project: p.uuid } }">
+          <b-dropdown-item v-for="p in projects" :key="p.uuid" :to="{ name:'Project', params: { team: team, project: p.uuid } }">
             {{p.name}}
           </b-dropdown-item>
         </b-dropdown>
@@ -18,7 +18,7 @@
         </router-link>
       </div>
       <div>
-        <router-link :class="{active: ('designer' === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: 'designer' } }">
+        <router-link :class="{active: ('designer' === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'ComponentDesigner', params: { team: team, project: project, com: 'designer', attr: 'com' } }">
           <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
             <b-icon scale="0.9" icon="gear"></b-icon>
             项目设置

@@ -36,7 +36,7 @@
             <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
               <b-table :fields="fields" :items="items" bordered striped>
                 <template v-slot:cell(nameuuid)="data">
-                  <router-link :to="{ name:'Redirect', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
+                  <router-link :to="{ name:'Project', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
                 </template>
                 <template v-slot:cell(status)="data">
                   <Status :name="data.item.status_category" :color="data.item.status_uuid" />
