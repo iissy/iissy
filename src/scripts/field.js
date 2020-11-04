@@ -1,4 +1,4 @@
-const TaskFieldType = function(type) {
+const taskFieldType = function(type) {
     let name = '';
     switch (type) {
         case 1:
@@ -72,7 +72,7 @@ const TaskFieldType = function(type) {
     return name;
 }
 
-const ProjectFieldType = function (type) {
+const projectFieldType = function (type) {
     let name = ''
     switch (type) {
         case 'integer':
@@ -104,6 +104,6 @@ const ProjectFieldType = function (type) {
     return name;
 }
 export {
-    TaskFieldType,
-    ProjectFieldType
+    taskFieldType,
+    projectFieldType
 }

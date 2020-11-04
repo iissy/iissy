@@ -109,7 +109,6 @@
 </template>
 
 <script>
-import { formatDate } from '@/util/date';
 import http from '@/util/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
@@ -150,11 +149,6 @@ export default {
     self.team = self.$route.params.team;
     self.get_department_tree();
     self.get_team_members();
-  },
-  filters: {
-    formatDate(time) {
-      return formatDate(time);
-    }
   },
   methods: {
     get_department_tree: function () {

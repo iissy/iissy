@@ -36,7 +36,7 @@
                 <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
               </div>
             </div>
-            <div class="td">{{ item.type | TaskFieldType }}</div>
+            <div class="td">{{ item.type | taskFieldType }}</div>
             <div class="td">{{ item.default_value || '---' }}</div>
             <div class="td">
               <div style="font-weight: bolder;text-align: center;width: 30px;" v-if="item.can_modify_required">

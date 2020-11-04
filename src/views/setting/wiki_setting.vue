@@ -19,7 +19,6 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/wiki/wiki_control';
-import { formatDate } from '@/util/date';
 import Manager from "@/views/component/setting/wiki/manager";
 import Permission from "@/views/component/setting/wiki/permission";
 
@@ -40,11 +39,6 @@ export default {
     let self = this;
     let type = self.$route.params.type;
     self.tag_switch(type);
-  },
-  filters: {
-    formatDate(time) {
-      return formatDate(time);
-    }
   },
   watch: {
     '$route' () {

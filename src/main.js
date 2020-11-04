@@ -10,7 +10,7 @@ import '@/util/string'
 import urls from '@/util/urls'
 import  * as fields from '@/scripts/field'
 Object.keys(fields).forEach(item => Vue.filter(item,fields[item]))
-import  * as date from '@/util/date'
+import  * as date from '@/scripts/date'
 Object.keys(date).forEach(item => Vue.filter(item,date[item]))
 
 Vue.use(Vuex);

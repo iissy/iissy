@@ -69,7 +69,6 @@ import User from '../component/common/block/user';
 
 import router from '../../router';
 import http from "@/util/http";
-import {formatDate} from "@/util/date";
 
 export default {
   data: function () {
@@ -104,11 +103,6 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project_list();
-  },
-  filters: {
-    formatDate(time) {
-      return formatDate(time);
-    }
   },
   methods: {
     add: function () {

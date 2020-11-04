@@ -71,11 +71,11 @@
         </div>
         <div class="flex-row field-row">
           <div style="flex: 0 0 200px;color: #303030;">创建时间</div>
-          <div style="flex: 1;">{{ task.create_time / 1000 | formatDate }}</div>
+          <div style="flex: 1;">{{ task.create_time | formatDate }}</div>
         </div>
         <div class="flex-row field-row">
           <div style="flex: 0 0 200px;color: #303030;">更新时间</div>
-          <div style="flex: 1;">{{ task.server_update_stamp / 1000 | formatDate }}</div>
+          <div style="flex: 1;">{{ task.server_update_stamp | formatDate }}</div>
         </div>
       </div>
 
