@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import http from '@/util/http';
+import http from '@/scripts/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
 import User from '@/views/component/common/block/user';

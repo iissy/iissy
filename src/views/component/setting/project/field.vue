@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import http from "@/util/http";
+import http from "@/scripts/http";
 import Search from '../../common/form/search';
 import Summary from "@/views/component/common/block/summary";
 

@@ -73,7 +73,7 @@ import Status from '@/views/component/common/block/status';
 import Fields from '@/views/component/task/fields';
 import AddTask from '@/views/component/task/add';
 
-import http from "@/util/http";
+import http from "@/scripts/http";
 
 export default {
   data: function () {

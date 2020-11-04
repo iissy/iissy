@@ -52,7 +52,7 @@
 import AddTaskButton from '../common/form/button';
 import User from '@/views/component/common/block/user';
 
-import http from "@/util/http";
+import http from "@/scripts/http";
 export default {
   data: function () {
     return {

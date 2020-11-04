@@ -43,7 +43,7 @@
 
 <script>
 import AddProjectButton from '../../button/common';
-import http from "@/util/http";
+import http from "@/scripts/http";
 import Search from "@/views/component/common/form/search";
 import User from '@/views/component/common/block/user';
 

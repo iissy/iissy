@@ -30,7 +30,7 @@
 import Header from "@/views/component/common/header";
 import Menu from "@/views/component/common/menu";
 import Fields from '@/views/component/task/fields';
-import http from "@/util/http";
+import http from "@/scripts/http";
 
 export default {
   data() {

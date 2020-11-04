@@ -45,7 +45,7 @@
 import Creator from '@/views/component/task/creator';
 import AddProjectButton from '@/views/component/button/common';
 import Alert from '@/views/component/common/block/alert';
-import http from "@/util/http";
+import http from "@/scripts/http";
 
 export default {
   data() {

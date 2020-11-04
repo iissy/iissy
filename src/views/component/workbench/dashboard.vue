@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import http from "@/util/http";
+import http from "@/scripts/http";
 import Tasks from "@/views/component/workbench/tasks";
 
 export default {

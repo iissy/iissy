@@ -61,7 +61,7 @@
 import Summary from '@/views/component/common/block/summary';
 import IBIcon from '@/views/component/common/block/i_b_icon';
 import Search from "@/views/component/common/form/search";
-import http from "@/util/http";
+import http from "@/scripts/http";
 
 export default {
   data() {

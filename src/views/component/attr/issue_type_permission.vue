@@ -25,7 +25,7 @@
 <script>
 import Summary from '@/views/component/common/block/summary';
 import PermissionItem from '@/views/component/common/block/permission_item';
-import http from "@/util/http";
+import http from "@/scripts/http";
 
 export default {
   data() {

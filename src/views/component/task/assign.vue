@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import http from "@/util/http";
+import http from "@/scripts/http";
 import User from '@/views/component/common/block/user';
 import Search from '@/views/component/common/form/search';
 import Alert from '@/views/component/common/block/alert';

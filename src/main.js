@@ -6,8 +6,8 @@ import router from '@/router';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import '@/util/string'
-import urls from '@/util/urls'
+import '@/scripts/string'
+import urls from '@/conf/urls'
 import  * as fields from '@/scripts/field'
 Object.keys(fields).forEach(item => Vue.filter(item,fields[item]))
 import  * as date from '@/scripts/date'

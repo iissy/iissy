@@ -33,7 +33,7 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import AddProjectButton from '../component/button/common';
-import http from "@/util/http";
+import http from "@/scripts/http";
 import router from '../../router';
 
 export default {

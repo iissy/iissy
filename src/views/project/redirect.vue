@@ -14,7 +14,7 @@
 
 <script>
 
-import http from "@/util/http";
+import http from "@/scripts/http";
 import router from '../../router';
 import Header from "@/views/component/common/header";
 import Menu from "@/views/component/common/menu";

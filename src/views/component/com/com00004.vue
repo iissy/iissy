@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import http from '@/util/http';
+import http from '@/scripts/http';
 import Search from '@/views/component/common/form/search';
 import AddMember from '@/views/component/common/block/add_member';
 import User from '@/views/component/common/block/user';
