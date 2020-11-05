@@ -7,9 +7,7 @@
         <div class="app-main-no-border">
           <div style="display: flex;flex-direction: row;height: 100%;">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
-            <div style="max-width:1200px;background-color: #ffffff;flex: 1 1 auto;padding: 20px;height: 100%;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);">
-              <component v-bind:is="currentTabComponent"></component>
-            </div>
+            <component v-bind:is="currentTabComponent"></component>
           </div>
         </div>
       </div>
@@ -22,12 +20,15 @@ import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project/project_control';
 
-import IssueTypeConfig from "@/views/component/setting/issue_type/config";
+import config from "@/views/component/setting/issue_type/config/config";
+import field from "@/views/component/setting/issue_type/config/field";
+import flow from "@/views/component/setting/issue_type/config/flow";
+import permission from "@/views/component/setting/issue_type/config/permission";
 
 export default {
   data: function () {
     return {
-      currentTabComponent: IssueTypeConfig,
+      currentTabComponent: config,
       tagIndex: 11
     };
   },
@@ -35,21 +36,26 @@ export default {
     Header,
     Menu,
     Control,
-    IssueTypeConfig
+    config,
+    field,
+    flow,
+    permission
+  },
+  watch: {
+    '$route' () {
+      let type = this.$route.params.type;
+      this.tag_switch(type);
+    }
   },
   created: function () {
     let self = this;
-    let path = self.$route.params.path;
-    self.tag_switch(path);
+    let type = self.$route.params.type;
+    self.tag_switch(type);
   },
   methods: {
-    tag_switch: function (path) {
+    tag_switch: function (type) {
       let self = this;
-      switch (path) {
-        case "config":
-          self.currentTabComponent = IssueTypeConfig;
-          break;
-      }
+      self.currentTabComponent = type;
     }
   }
 };

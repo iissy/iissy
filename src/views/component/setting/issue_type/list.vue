@@ -14,20 +14,26 @@
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
             <div class="td flex-row">
-              <div style="flex: 0 0 auto;">{{ item.name }}</div>
-              <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
-                <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
+              <IBIcon :icon="item.icon.toString()"/>
+              <div class="flex-column" style="margin-left: 10px;">
+                <div class="flex-row">
+                  <div>{{ item.name }}</div>
+                  <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
+                    <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
+                  </div>
+                </div>
+                <div style="color: #999999;">{{ item.field_count }} 工作项属性<span style="margin: 0 10px;color: #999999;"> | </span>{{ item.status_count }} 工作项状态</div>
               </div>
             </div>
-            <div class="td">
+            <div class="td flex-row align-items-center">
               <div v-if="item.detail_type == 0">自定义类型</div>
               <div v-else>标准类型</div>
             </div>
-            <div class="td">3个项目</div>
-            <div class="td op-big">
+            <div class="td flex-row align-items-center">3个项目</div>
+            <div class="td flex-row align-items-center op-big">
               <span v-b-modal.modal-prevent-closing>重命名</span>
-              <router-link :to="{name:'IssueTypeSetting', params: { team: item.team_uuid, issue_type: item.uuid, title: item.name, path: 'setting' }}">
-                配置
+              <router-link :to="{name:'IssueTypeSetting', params: { team: team, issue_type: item.uuid, title: item.name, type: 'config' }}">
+                编辑
               </router-link>
             </div>
           </div>
@@ -56,6 +62,7 @@
 import http from "@/scripts/http";
 import Summary from "@/views/component/common/block/summary";
 import Search from "@/views/component/common/form/search";
+import IBIcon from '@/views/component/common/block/i_b_icon';
 
 export default {
   data: function () {
@@ -110,7 +117,8 @@ export default {
   },
   components: {
     Summary,
-    Search
+    Search,
+    IBIcon
   }
 };
 </script>

@@ -8,7 +8,7 @@ let issue_type = [
         name: 'TeamIssueTypeSetting',
         component: ProjectSetting
     }, {
-        path: '/main/setting/team/:team/issue_type/:issue_type/config',
+        path: '/main/setting/team/:team/issue_type/:issue_type/:type',
         meta: { title: "工作项管理" },
         name: 'IssueTypeSetting',
         component: IssueTypeSetting

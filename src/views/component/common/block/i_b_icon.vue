@@ -18,6 +18,30 @@
         <div style="flex: 1;">&nbsp;</div>
       </div>
     </div>
+    <div v-if="icon==='9'" style="display: flex;">
+      <div class="flex-column align-items-center">
+        <div style="flex: 1;color: #DAA520;"><b-icon icon="flower2"/></div>
+        <div style="flex: 1;">&nbsp;</div>
+      </div>
+    </div>
+    <div v-if="icon==='10'" style="display: flex;">
+      <div class="flex-column align-items-center">
+        <div style="flex: 1;color: #556B2F;"><b-icon icon="flower1"/></div>
+        <div style="flex: 1;">&nbsp;</div>
+      </div>
+    </div>
+    <div v-if="icon==='13'" style="display: flex;">
+      <div class="flex-column align-items-center">
+        <div style="flex: 1;color: #BC8F8F;"><b-icon icon="globe"/></div>
+        <div style="flex: 1;">&nbsp;</div>
+      </div>
+    </div>
+    <div v-if="icon==='15'" style="display: flex;">
+      <div class="flex-column align-items-center">
+        <div style="flex: 1;color: #8B0000;"><b-icon icon="bell"/></div>
+        <div style="flex: 1;">&nbsp;</div>
+      </div>
+    </div>
   </div>
 </template>
 
