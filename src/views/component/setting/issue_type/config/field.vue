@@ -30,7 +30,6 @@
           <div class="table-row-header">
             <div class="th">属性名称</div>
             <div class="th">属性类型</div>
-            <div class="th">属性默认值</div>
             <div class="th">是否必填</div>
             <div class="th" style="display: flex;flex: 0 0 80px;">操作</div>
           </div>
@@ -42,7 +41,6 @@
               </div>
             </div>
             <div class="td">{{ item.type | taskFieldType }}</div>
-            <div class="td">{{ item.default_value || '---' }}</div>
             <div class="td">
               <div style="font-weight: bolder;text-align: center;width: 30px;" v-if="item.can_modify_required">
                 <b-form-checkbox v-model="item.required" name="check-button" switch @change="toggle(item)"></b-form-checkbox>
