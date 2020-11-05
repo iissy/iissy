@@ -21,11 +21,11 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project/project_control';
-import ProjectManager from "@/views/component/setting/project/manager";
+import ProjectList from "@/views/component/setting/project/list";
 import ProjectField from "@/views/component/setting/project/field";
 import ProjectStatus from "@/views/component/setting/project/status";
 
-import IssueTypeManager from "@/views/component/setting/issue_type/manager";
+import IssueTypeList from "@/views/component/setting/issue_type/list";
 import IssueTypeField from "@/views/component/setting/issue_type/field";
 import IssueTypeStatus from "@/views/component/setting/issue_type/status";
 import IssueTypePriority from "@/views/component/setting/issue_type/priority";
@@ -33,7 +33,7 @@ import IssueTypePriority from "@/views/component/setting/issue_type/priority";
 export default {
   data: function () {
     return {
-      currentTabComponent: ProjectManager,
+      currentTabComponent: ProjectList,
       tagIndex: 1
     };
   },
@@ -41,10 +41,10 @@ export default {
     Header,
     Menu,
     Control,
-    ProjectManager,
+    ProjectList,
     ProjectField,
     ProjectStatus,
-    IssueTypeManager,
+    IssueTypeList,
     IssueTypeField,
     IssueTypeStatus,
     IssueTypePriority
@@ -66,9 +66,9 @@ export default {
     tag_switch: function (com) {
       let self = this;
       switch (com) {
-        case "ProjectSetting_manager":
+        case "ProjectSetting_list":
           self.tagIndex = 1;
-          self.currentTabComponent = ProjectManager;
+          self.currentTabComponent = ProjectList;
           break;
         case "ProjectSetting_field":
           self.tagIndex = 2;
@@ -78,9 +78,9 @@ export default {
           self.tagIndex = 3;
           self.currentTabComponent = ProjectStatus;
           break;
-        case "TeamIssueTypeSetting_manager":
+        case "TeamIssueTypeSetting_list":
           self.tagIndex = 11;
-          self.currentTabComponent = IssueTypeManager;
+          self.currentTabComponent = IssueTypeList;
           break;
         case "TeamIssueTypeSetting_field":
           self.tagIndex = 12;

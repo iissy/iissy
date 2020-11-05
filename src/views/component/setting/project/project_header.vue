@@ -67,7 +67,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = self.urls.list_project.format(self.team);
+      let url = self.urls.team_project_list.format(self.team);
       http.post(url).then(function (response) {
         self.projects = response.data;
       });

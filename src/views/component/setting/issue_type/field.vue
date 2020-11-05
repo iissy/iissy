@@ -59,7 +59,7 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      http.post(this.urls.issue_type_field.format(self.team)).then(function (response) {
+      http.post(this.urls.issue_type_field_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     }
