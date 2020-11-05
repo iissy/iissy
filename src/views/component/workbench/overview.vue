@@ -37,7 +37,7 @@
     </div>
     <div style="flex: 1;flex-direction: row;margin-left: 10px;position: relative;" class="flex-row">
       <Space title="国庆活动项目" desc="最近页面更新于 8 小时前"/>
-      <Space style="margin-left: 10px;" title="爱斯园科技" desc="最近页面更新于 8 小时前"/>
+      <Space style="margin-left: 10px;" title="卓灵科技" desc="最近页面更新于 8 小时前"/>
       <Space style="margin-left: 10px;" title="程序员网址导航" desc="最近页面更新于 8 小时前"/>
     </div>
 

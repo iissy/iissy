@@ -25,7 +25,7 @@ Vue.use(Router);
 const index = [
     {
         path: '/',
-        meta: { title: "爱斯园 - 你找的人正在找你" },
+        meta: { title: "Soul - 你找的人正在找你" },
         component: Master
     }, {
         path: '/main',

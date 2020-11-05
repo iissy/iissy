@@ -9,7 +9,7 @@ let help = [
         component: Help
     },{
         path: '/main/hello',
-        meta: { title: "爱斯园" },
+        meta: { title: "Soul" },
         component: Hello
     }
 ]

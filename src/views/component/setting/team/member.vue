@@ -92,7 +92,7 @@
           <div style="flex: 1;">
             <b-form-group label="选择所属部门" label-for="dep-select">
               <b-form-select id="dep-select" v-model="departmentOption">
-                <b-form-select-option value="">爱斯园</b-form-select-option>
+                <b-form-select-option value="">Soul</b-form-select-option>
               </b-form-select>
             </b-form-group>
           </div>

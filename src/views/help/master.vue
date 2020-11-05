@@ -1,6 +1,6 @@
 <template>
   <div id="master">
-    <Login msg="欢迎使用爱斯园管理系统"/>
+    <Login msg="欢迎使用 Soul 管理系统"/>
   </div>
 </template>
 
