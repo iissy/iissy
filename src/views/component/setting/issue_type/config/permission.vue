@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       title: '',
-      desc: '项目权限可以用于定制项目的操作权限控制。'
+      desc: '配置中心下，工作项权限修改，不会同步到已经应用的项目中。'
     }
   },
   created: function () {

@@ -74,7 +74,7 @@ export default {
     return {
       title: '',
       name: '',
-      desc: '工作项属性用于配置工作项需要的显示字段，可以用多种属性类型来进行配置，不同项目可以共用同一个属性。',
+      desc: '配置中心下，工作项属性修改，不会同步到已经应用的项目中。',
       team: '',
       project: '',
       issue_type: '',
