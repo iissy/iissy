@@ -78,7 +78,8 @@ export default {
       team: '',
       project: '',
       issue_type: '',
-      items: []
+      fields: [],
+      fieldTemplates: []
     };
   },
   created: function () {
@@ -88,25 +89,42 @@ export default {
     self.project = self.$route.params.project;
     self.issue_type = self.$route.params.issue_type;
     self.project_issue_type_field();
-    self.issue_type_get();
+    self.team_field_lst();
   },
   methods: {
     project_issue_type_field: function() {
       let self = this;
-      http.get(this.urls.project_issue_type_field.format(self.team, self.project, self.issue_type)).then(function (response) {
-        self.items = response.data.field_configs;
+      http.get(self.urls.issue_type_template_get.format(self.team, self.issue_type)).then(function (response) {
+        self.title = response.data.name;
+        self.fieldTemplates = response.data.default_configs.default_field_configs;
       });
     },
-    issue_type_get: function() {
+    team_field_lst: function() {
       let self = this;
-      if (!self.title) {
-        http.get(this.urls.issue_type_get.format(self.team, self.issue_type)).then(function (response) {
-          self.title = response.data.name;
-        });
+      http.post(this.urls.issue_type_field_list.format(self.team)).then(function (response) {
+        self.fields = response.data;
+      });
+    }
+  },
+  computed: {
+    items: function () {
+      let self = this;
+      let result = [];
+      if (self.fieldTemplates.length > 0 && self.fields.length > 0) {
+        for(let i=0;i<self.fieldTemplates.length;i++) {
+          let target = {};
+          for(let j=0;j<self.fields.length;j++) {
+            if(self.fieldTemplates[i].field_uuid === self.fields[j].uuid) {
+              Object.assign(target, self.fieldTemplates[i]);
+              Object.assign(target, self.fields[j]);
+              break;
+            }
+          }
+          result.push(target);
+        }
       }
-    },
-    toggle: function (o) {
-      console.log(o.uuid, o.fixed);
+
+      return result;
     }
   },
   components: {

@@ -7,6 +7,7 @@ let urls = {
     commit_overview: '/api/team/{0}/commit/overview',
 
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
+    issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',
     issue_type_field_list: '/api/team/{0}/setting/issue_type/field',
     issue_type_list: '/api/team/{0}/setting/issue_type/list',
     issue_type_priority: '/api/team/{0}/setting/issue_type/priority',
