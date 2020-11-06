@@ -78,10 +78,13 @@ export default {
     return {
       title: '',
       team: '',
-      desc: '工作流可以用于定制对应工作项的在不同状态阶段的流转。你可以在表格视图中，通过勾选复选框的方式新建工作流步骤。你也可以切换到详情视图中新建工作流步骤。',
+      desc: '配置中心下，工作项工作流修改，不会同步到已经应用的项目中。',
       flows: [],
       headers: [],
-      lock: true
+      lock: true,
+      taskStatusConfigs: [],
+      transitions: [],
+      taskStatusItems: []
     };
   },
   created: function () {
@@ -90,8 +93,7 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.issue_type = self.$route.params.issue_type;
-    self.issue_type_get();
-    self.project_issue_type_flow();
+    self.issue_type_template_field();
   },
   methods: {
     change_task_status: function(uuid, name, start, end, state) {
@@ -100,24 +102,56 @@ export default {
         self.lock = false;
         let param = { uuid: uuid, name: name, start_status: start, end_status: end, state: state }
         http.post(this.urls.project_issue_type_flow_submit.format(self.team, self.project, self.issue_type), param).then(function () {
-          self.project_issue_type_flow();
+          self.issue_type_template_field();
           self.lock = true;
         });
       }
     },
-    issue_type_get: function() {
+    issue_type_template_field: function() {
       let self = this;
-      if (!self.title) {
-        http.get(this.urls.issue_type_get.format(self.team, self.issue_type)).then(function (response) {
-          self.title = response.data.name;
-        });
-      }
+      http.get(self.urls.issue_type_template_get.format(self.team, self.issue_type)).then(function (response) {
+        self.title = response.data.name;
+        self.taskStatusConfigs = response.data.default_configs.default_task_status_configs;
+        self.transitions = response.data.default_configs.default_transitions;
+        self.issue_type_flow();
+      });
     },
-    project_issue_type_flow: function() {
+    issue_type_flow: function() {
       let self = this;
-      http.get(this.urls.project_issue_type_flow.format(self.team, self.project, self.issue_type)).then(function (response) {
-        self.headers = response.data.headers;
-        self.flows = response.data.flows;
+      let taskStatusUUIDs = [];
+      for(let i=0;i<self.taskStatusConfigs.length;i++) {
+        taskStatusUUIDs.push(self.taskStatusConfigs[i].status_uuid);
+      }
+
+      http.post(this.urls.issue_type_task_status_list.format(self.team, self.issue_type), taskStatusUUIDs).then(function (response) {
+        self.taskStatusItems = response.data;
+        for(let i=0;i<self.taskStatusConfigs.length;i++) {
+          let start = self.taskStatusConfigs[i].status_uuid;
+          let flow = { items: []};
+          for(let m=0;m<self.taskStatusConfigs.length;m++) {
+            let end = self.taskStatusConfigs[m].status_uuid;
+            let item = { start: start, end_uuid: end, uuid: "{0}-{1}".format(start, end) };
+            for(let n=0;n<self.transitions.length;n++) {
+              if(self.transitions[n].start_status_uuid === start && self.transitions[n].end_status_uuid === end) {
+                item.sel = true;
+                break;
+              } else {
+                item.sel = false;
+              }
+            }
+
+            flow.items.push(item);
+          }
+          for(let j=0;j<self.taskStatusItems.length;j++) {
+            if(self.taskStatusConfigs[i].status_uuid === self.taskStatusItems[j].uuid) {
+              self.headers.push(self.taskStatusItems[j]);
+
+              Object.assign(flow, self.taskStatusItems[j]);
+              self.flows.push(flow);
+              break;
+            }
+          }
+        }
       });
     },
   },

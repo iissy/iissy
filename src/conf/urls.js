@@ -12,6 +12,7 @@ let urls = {
     issue_type_list: '/api/team/{0}/setting/issue_type/list',
     issue_type_priority: '/api/team/{0}/setting/issue_type/priority',
     issue_type_status: '/api/team/{0}/setting/issue_type/status',
+    issue_type_task_status_list: '/api/team/{0}/issue_type/{1}/issue_type_task_status_list',
 
     project_field: '/api/team/{0}/setting/project/field',
     project_list: '/api/team/{0}/setting/project/list',
