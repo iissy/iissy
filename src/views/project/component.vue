@@ -75,7 +75,10 @@ export default {
   },
   watch: {
     '$route' () {
-      this.shift();
+      let self = this;
+      if (self.com !== self.$route.params.com) {
+        self.shift();
+      }
     }
   },
   methods: {
