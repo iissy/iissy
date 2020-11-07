@@ -4,7 +4,7 @@
     <div class="rightMain">
       <Header title="项目管理" ref="Header"></Header>
       <div class="app-main-container">
-        <div class="app-main-content">
+        <div class="app-main-content flex-column">
           <div id="project-top-row">
             <div style="flex: 0 1 auto;">
               <div class="tab-title">
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div id="project-main">
-            <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
+            <div v-if="tasks_completed && has" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;padding: 10px;">
               <b-table :fields="fields" :items="items" bordered striped>
                 <template v-slot:cell(nameuuid)="data">
                   <router-link :to="{ name:'Project', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
@@ -52,6 +52,17 @@
                 </template>
               </b-table>
             </div>
+
+            <div v-if="!tasks_completed" class="flex-row" style="flex: 1;margin: 10px;">
+              <b-skeleton-table
+                  :rows="3"
+                  :columns="6"
+                  :table-props="{ bordered: true, striped: true }"></b-skeleton-table>
+            </div>
+            <div v-if="tasks_completed && !has" style="display: flex;flex: 1;border-top: 1px solid #e8e8e8;margin-top: 10px;" class="align-items-center justify-content-center">
+              暂无项目
+            </div>
+
           </div>
         </div>
       </div>
@@ -88,7 +99,8 @@ export default {
         { key: 'issue_type_count', label: '工作项数量', formatter: '工作项数量' },
         { key: 'on_issue_type_count', label: '进行中工作项', formatter: '进行中工作项' }
       ],
-      items: []
+      items: [],
+      tasks_completed: false
     };
   },
   components: {
@@ -114,7 +126,14 @@ export default {
       let url = self.urls.team_project_list.format(self.team);
       http.post(url).then(function (response) {
         self.items = response.data;
+        self.tasks_completed = true;
       });
+    }
+  },
+  computed: {
+    has: function () {
+      let self = this;
+      return self.tasks_completed && self.items && self.items.length > 0;
     }
   }
 };
