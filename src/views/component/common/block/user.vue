@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row user align-items-center" @click="onsubmit">
+  <div class="flex-row user align-items-center" :class="{selected: selected}" @click="onsubmit">
     <div style="flex: 0 0 auto;display: flex;align-items: center;">
       <b-img left src="/images/touxiang.jpg" style="height: 16px;" rounded="circle"></b-img>
     </div>
@@ -8,6 +8,12 @@
     </div>
     <div v-if="hasEmail" style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;font-size: 12px;">
       ({{ user.email }})
+    </div>
+    <div v-if="selected"  style="flex: 1;" class="flex-row align-items-center">
+      <div style="flex: 1;min-width:20px;"></div>
+      <div style="flex: 0 0 auto;display: flex;align-items: center;text-align: right;">
+        <b-icon icon="check"/>
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +26,12 @@ export default {
   },
   props: {
     user: Object,
-    hasEmail: Boolean
+    hasEmail: {
+      default: false
+    },
+    selected: {
+      default: false
+    }
   },
   methods: {
     onsubmit: function () {
@@ -34,4 +45,5 @@ export default {
 <style scoped>
 .user { cursor: pointer; }
 .user:hover { background-color: #F0F8FF; }
+.selected div { color: #17C4BB; }
 </style>

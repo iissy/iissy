@@ -13,7 +13,7 @@
       </div>
       <div style="max-height: 180px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
-          <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :hasEmail="hasEmail"/>
+          <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :selected="u.uuid===user.uuid" :hasEmail="hasEmail"/>
         </div>
       </div>
     </b-popover>
@@ -49,16 +49,18 @@ export default {
     },
     change_assign: function (uuid) {
       let self = this;
-      let param = { uuid: uuid }
-      http.post(self.urls.task_change_assign.format(self.team, self.project, self.task), param).then(function (response) {
-        if (response.data.status) {
-          self.$refs.popover.$emit('close')
-          self.$refs.alert.success('更新成功');
-          self.$parent.$parent.task_list();
-        } else {
-          self.$refs.alert.danger('更新失败');
-        }
-      });
+      if (self.user.uuid !== uuid) {
+        let param = { uuid: uuid }
+        http.post(self.urls.task_change_assign.format(self.team, self.project, self.task), param).then(function (response) {
+          if (response.data.status) {
+            self.$refs.popover.$emit('close')
+            self.$refs.alert.success('更新成功');
+            self.$parent.$parent.task_list();
+          } else {
+            self.$refs.alert.danger('更新失败');
+          }
+        });
+      }
     }
   },
   props: {
