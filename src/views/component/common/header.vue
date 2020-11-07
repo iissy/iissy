@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ProjectHeader from '@/views/component/setting/project/project_header';
+import ProjectHeader from '@/views/component/project/project_header';
 import UserCenterAvatar from '@/views/component/common/block/avatar';
 import Workbench from '@/views/component/workbench/control';
 
