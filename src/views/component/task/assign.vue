@@ -54,7 +54,7 @@ export default {
         if (response.data.status) {
           self.$refs.popover.$emit('close')
           self.$refs.alert.success('更新成功');
-          self.$parent.$parent.task_get(self.task);
+          self.$parent.$parent.task_list();
         } else {
           self.$refs.alert.danger('更新失败');
         }
