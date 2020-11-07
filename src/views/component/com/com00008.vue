@@ -81,6 +81,7 @@ import Fields from '@/views/component/task/fields';
 import AddTask from '@/views/component/task/add';
 
 import http from "@/scripts/http";
+import router from "@/router";
 
 export default {
   data: function () {
@@ -88,6 +89,7 @@ export default {
       cur: 0,
       team: '',
       project: '',
+      com: '',
       tabTitle: ['全部工作项', '我负责的', '我关注的'],
       items: [],
       task: {},
@@ -103,6 +105,7 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.com = self.$route.params.com;
     self.task_list();
   },
   methods: {
@@ -113,15 +116,22 @@ export default {
         self.tasks = response.data;
         self.tasks_completed = true;
         if(self.tasks && self.tasks.length > 0) {
-          self.selectedUUID = self.tasks[0].uuid;
-          self.task_get(self.tasks[0].uuid);
+          if (self.$route.name === 'Task') {
+            self.selectedUUID = self.$route.params.task;
+            self.task_get(self.$route.params.task);
+          } else {
+            self.selectedUUID = self.tasks[0].uuid;
+            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: self.tasks[0].uuid } });
+            self.task_get(self.$route.params.task);
+          }
         }
       });
     },
     select_task: function (uuid) {
       let self = this;
       self.selectedUUID = uuid;
-      self.task_get(uuid)
+      router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: uuid } });
+      self.task_get(uuid);
     },
     task_get: function (uuid) {
       let self = this;

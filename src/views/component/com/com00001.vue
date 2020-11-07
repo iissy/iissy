@@ -118,7 +118,7 @@ export default {
             self.task_get(self.$route.params.task);
           } else {
             self.selectedUUID = self.tasks[0].uuid;
-            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, issue_type: self.issue_type, task: self.tasks[0].uuid } });
+            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: self.tasks[0].uuid } });
             self.task_get(self.$route.params.task);
           }
         }
@@ -127,7 +127,7 @@ export default {
     select_task: function (uuid) {
       let self = this;
       self.selectedUUID = uuid;
-      router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, issue_type: self.issue_type, task: uuid } });
+      router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: uuid } });
       self.task_get(uuid);
     },
     task_get: function (uuid) {

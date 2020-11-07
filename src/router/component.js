@@ -12,12 +12,12 @@ let component = [
         name: 'ComponentDesigner',
         component: Component
     }, {
-        path: '/main/team/:team/project/:project/component/:com/:attr/:issue_type',
+        path: '/main/team/:team/project/:project/component/:com/issue_type/:issue_type/:attr',
         meta: { title: "工作项类型设置" },
         name: 'ComponentIssueTypeDesigner',
         component: Component
     }, {
-        path: '/main/team/:team/project/:project/component/:com/issue_type/:issue_type/task/:task',
+        path: '/main/team/:team/project/:project/component/:com/task/:task',
         meta: { title: "查看任务" },
         name: 'Task',
         component: Component
