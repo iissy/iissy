@@ -15,6 +15,7 @@ import Header from './component/common/header';
 import Menu from './component/common/menu';
 import overview from '@/views/component/workbench/overview';
 import dashboard from '@/views/component/workbench/dashboard';
+// import http from "@/scripts/http";
 
 export default {
   data: function () {
@@ -31,6 +32,13 @@ export default {
     let self = this;
     self.shift();
   },
+  // created: function () {
+  //   let self = this;
+  //   let data = { name: 'soul', logo: '' };
+  //   http.post(self.urls.team_create, data).then(function (response) {
+  //     console.log(response.data.status)
+  //   });
+  // },
   methods: {
     shift: function () {
       let self = this;
