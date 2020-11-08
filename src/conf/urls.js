@@ -42,6 +42,7 @@ let urls = {
     task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
     task_get: '/api/team/{0}/project/{1}/issue_type/{2}/get/task/{3}',
     task_change_assign: '/api/team/{0}/project/{1}/change_assign/task/{2}',
+    task_change_status: '/api/team/{0}/project/{1}/change_status/task/{2}',
     task_list_by_assign: '/api/team/{0}/task_list_by_assign',
     task_list_by_owner: '/api/team/{0}/task_list_by_owner',
     task_list_by_watcher: '/api/team/{0}/task_list_by_watcher',

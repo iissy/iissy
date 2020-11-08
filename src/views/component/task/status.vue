@@ -8,13 +8,10 @@
       <div style="text-align: left;color: #999999;font-size: 12px;">当前状态</div>
     </div>
     <b-popover ref="popover" target="popover-status" triggers="focus" placement="bottom">
-      <div style="padding: 5px;">
-        <Search placeholder="搜索工作项负责人"/>
-      </div>
       <div style="max-height: 180px;overflow-y:auto;overflow-x: hidden;">
-        <div style="padding: 0 10px;font-size: 15px;">选择步骤更改状态</div>
+        <div style="padding: 5px 10px;font-size: 15px;border-bottom: 1px solid #e8e8e8;">选择步骤更改状态</div>
         <div v-for="s in statuses" :key="s.uuid">
-          <div @submit="change_status" class="status-item">{{ s.name }}</div>
+          <div @click="change_status(s.uuid)" class="status-item">{{ s.name }}</div>
         </div>
       </div>
     </b-popover>
@@ -24,6 +21,7 @@
 
 <script>
 import http from "@/scripts/http";
+import Alert from '@/views/component/common/block/alert';
 
 export default {
   data() {
@@ -35,36 +33,43 @@ export default {
   },
   props: {
     status: Object,
-    issue_type: String
+    issue_type: String,
+    task_uuid: String
+  },
+  watch: {
+    status() {
+      this.next_status_list();
+    }
   },
   created() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
-    self.users_list();
+    self.next_status_list();
   },
   methods: {
-    users_list: function () {
+    next_status_list: function () {
       let self = this;
       http.post(self.urls.next_status_list.format(self.team, self.project, self.issue_type, self.status.uuid)).then(function (response) {
         self.statuses = response.data;
       });
     },
-    change_status: function (uuid) {
+    change_status: function (statusUUID) {
       let self = this;
-      if (self.user.uuid !== uuid) {
-        let param = { uuid: uuid }
-        http.post(self.urls.task_change_assign.format(self.team, self.project, self.task), param).then(function (response) {
-          if (response.data.status) {
-            self.$refs.popover.$emit('close')
-            self.$refs.alert.success('更新成功');
-            self.$parent.$parent.task_list();
-          } else {
-            self.$refs.alert.danger('更新失败');
-          }
-        });
-      }
+      let param = { status: statusUUID }
+      http.post(self.urls.task_change_status.format(self.team, self.project, self.task_uuid), param).then(function (response) {
+        if (response.data.status) {
+          self.$refs.popover.$emit('close')
+          self.$refs.alert.success('更新成功');
+          self.$parent.$parent.task_list();
+        } else {
+          self.$refs.alert.danger('更新失败');
+        }
+      });
     }
+  },
+  components: {
+    Alert
   }
 }
 </script>

@@ -22,7 +22,7 @@
             <Assign :user="task.assign" :task="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
-            <TaskStatus :status="task.task_status" :issue_type="task.issue_type.uuid"/>
+            <TaskStatus :status="task.task_status" :issue_type="task.issue_type.uuid" :task_uuid="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
             <TaskPriority :option="task.priority"/>
@@ -173,6 +173,8 @@ export default {
     self.project = self.$route.params.project;
     self.issue_type = self.$parent.issue_type;
     self.com = self.$route.params.com;
+  },
+  methods: {
   },
   components: {
     User,

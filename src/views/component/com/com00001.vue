@@ -126,9 +126,11 @@ export default {
     },
     select_task: function (uuid) {
       let self = this;
-      self.selectedUUID = uuid;
-      router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: uuid } });
-      self.task_get(uuid);
+      if (uuid !== self.selectedUUID) {
+        self.selectedUUID = uuid;
+        router.push({name: 'Task', params: {team: self.team, project: self.project, com: self.com, task: uuid}});
+        self.task_get(uuid);
+      }
     },
     task_get: function (uuid) {
       let self = this;
