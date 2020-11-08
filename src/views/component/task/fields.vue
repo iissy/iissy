@@ -22,7 +22,7 @@
             <Assign :user="task.assign" :task="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
-            <TaskStatus :status="task.task_status"/>
+            <TaskStatus :status="task.task_status" :issue_type="task.issue_type.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
             <TaskPriority :option="task.priority"/>
