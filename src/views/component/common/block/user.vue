@@ -10,9 +10,9 @@
       ({{ user.email }})
     </div>
     <div v-if="selected"  style="flex: 1;" class="flex-row align-items-center">
-      <div style="flex: 1;min-width:20px;"></div>
+      <div style="flex: 1;min-width:50px;"></div>
       <div style="flex: 0 0 auto;display: flex;align-items: center;text-align: right;">
-        <b-icon icon="check"/>
+        <b-icon icon="check" scale="1.5"/>
       </div>
     </div>
   </div>

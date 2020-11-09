@@ -4,6 +4,8 @@ let urls = {
     team_member_add: '/api/team/{0}/member/add',
     team_project_list: '/api/team/{0}/list/project',
 
+    priority_options_get: '/api/team/{0}/priority_options_get',
+
     commit_overview: '/api/team/{0}/commit/overview',
 
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
@@ -43,6 +45,7 @@ let urls = {
     task_get: '/api/team/{0}/project/{1}/issue_type/{2}/get/task/{3}',
     task_change_assign: '/api/team/{0}/project/{1}/change_assign/task/{2}',
     task_change_status: '/api/team/{0}/project/{1}/change_status/task/{2}',
+    task_change_priority: '/api/team/{0}/project/{1}/change_priority/task/{2}',
     task_list_by_assign: '/api/team/{0}/task_list_by_assign',
     task_list_by_owner: '/api/team/{0}/task_list_by_owner',
     task_list_by_watcher: '/api/team/{0}/task_list_by_watcher',

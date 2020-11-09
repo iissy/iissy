@@ -25,7 +25,7 @@
             <TaskStatus :status="task.task_status" :issue_type="task.issue_type.uuid" :task_uuid="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
-            <TaskPriority :option="task.priority"/>
+            <TaskPriority :option="task.priority" :task_uuid="task.uuid"/>
           </div>
         </div>
       </div>

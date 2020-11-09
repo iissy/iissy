@@ -11,9 +11,9 @@
       <div style="padding: 5px;">
         <Search placeholder="搜索工作项负责人"/>
       </div>
-      <div style="max-height: 180px;overflow-y:auto;overflow-x: hidden;">
+      <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
-          <User @submit="change_assign" style="padding: 5px 10px;border-radius: 0.3rem;" :user="u" :selected="u.uuid===user.uuid" :hasEmail="hasEmail"/>
+          <User @submit="change_assign" class="status-item" :user="u" :selected="u.uuid===user.uuid" :hasEmail="hasEmail"/>
         </div>
       </div>
     </b-popover>
@@ -79,4 +79,5 @@ export default {
 #popover-assign { box-shadow: none;outline: none; }
 #popover-assign.assign { border-radius: 30px;cursor: pointer;padding: 5px 20px 5px 5px; }
 #popover-assign.assign:hover { background-color: #F0F8FF; }
+.status-item { padding: 5px 10px 5px 10px;border-radius: 0.3rem;cursor: pointer; }
 </style>
