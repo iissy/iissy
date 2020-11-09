@@ -37,8 +37,10 @@ export default {
     task_uuid: String
   },
   watch: {
-    status() {
-      this.next_status_list();
+    status(n, o) {
+      if (n.uuid !== o.uuid) {
+        this.next_status_list();
+      }
     }
   },
   created() {

@@ -53,11 +53,16 @@ import AddTaskButton from '../common/form/button';
 import User from '@/views/component/common/block/user';
 
 import http from "@/scripts/http";
+import router from "@/router";
+
 export default {
   data: function () {
     return {
       name: '',
       desc: '',
+      team: '',
+      project: '',
+      com: '',
       projectSelect: '',
       issueTypeSelect: '',
       assignSelect: '',
@@ -77,6 +82,7 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.com = self.$route.params.com;
     self.users_list();
     self.project_list();
     self.issue_type_list();
@@ -114,6 +120,7 @@ export default {
       }
       http.post(self.urls.task_add.format(self.team, self.project, self.issueTypeSelect), data).then(function (response) {
         if (response.data.status === true) {
+          router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: response.data.payload.uuid } });
           self.$parent.task_list();
         }
       });
