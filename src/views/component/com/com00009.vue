@@ -3,7 +3,7 @@
     <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;padding: 15px;">
       <div class="left flex-row align-items-center">
         <div style="font-size: 18px;">项目概览</div>
-        <Status style="margin-left: 5px;" :name="item.status_uuid" :color="item.status_uuid" icon="1===1"/>
+        <ChangeStatus style="margin-left: 5px;" :name="item.status_uuid" :color="item.status_uuid" icon="1===1"/>
       </div>
       <div class="middle"></div>
       <div class="right flex-row">
@@ -126,7 +126,7 @@ import ProjectAssign from "@/views/component/project/assign";
 import Line1 from '@/chart/line'
 import Bar from '@/chart/bar';
 import http from "@/scripts/http";
-import Status from "@/views/component/common/block/status";
+import ChangeStatus from "@/views/component/project/change_status";
 
 export default {
   data() {
@@ -213,7 +213,7 @@ export default {
     ProjectAssign,
     Line1,
     Bar,
-    Status
+    ChangeStatus
   },
   computed: {
     canvasHeight() {
