@@ -77,12 +77,12 @@
                 </div>
                 <div style="flex: 1;margin-left: 10px;align-items: normal;" class="flex-column">
                   <div style="text-align: left;padding: 3px 0 3px 0;">
-                    <b-progress :value="25" variant="success" striped animate></b-progress>
+                    <b-progress :value="progressRate" variant="success" striped animate></b-progress>
                   </div>
                   <div style="text-align: left;color: #999999;font-size: 12px;">项目进度</div>
                 </div>
                 <div style="flex: 0 0 100px;margin-left: 10px;align-items: normal;justify-content: center;height: 100%;display: flex;" class="flex-column">
-                  <div style="flex: 1;height: 100%;text-align: left;">25%</div>
+                  <div style="flex: 1;height: 100%;text-align: left;">{{ progressRate }}%</div>
                 </div>
               </div>
             </div>
@@ -152,21 +152,22 @@ export default {
           }]
         }
       },
-      chartData: {
-        labels: ['需求', '任务', '缺陷'],
+      chartData: {},
+      chartData2: {
+        // labels: ['需求', '任务', '缺陷'],
         datasets: [{
           label: '未开始',
-          data: [11, 10, 3],
+          // data: [11, 10, 3],
           barPercentage: 0.6,
           backgroundColor: 'rgba(255, 99, 132, 0.5)'
         },{
           label: '进行中',
-          data: [8, 5, 1],
+          // data: [8, 5, 1],
           barPercentage: 0.6,
           backgroundColor: 'rgba(54, 162, 235, 0.5)'
         },{
           label: '已完成',
-          data: [5, 2, 3],
+          // data: [5, 2, 3],
           barPercentage: 0.6,
           backgroundColor: 'rgba(255, 206, 86, 0.5)'
         }]
@@ -199,6 +200,7 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.project_get();
+    self.status_data_list();
   },
   methods: {
     project_get: function () {
@@ -206,6 +208,17 @@ export default {
       let url = self.urls.project_get.format(self.team, self.project);
       http.get(url).then(function (response) {
         self.item = response.data;
+      });
+    },
+    status_data_list: function () {
+      let self = this;
+      let url = self.urls.status_data_list.format(self.team, self.project);
+      http.get(url).then(function (response) {
+        self.chartData2.labels = response.data.labels;
+        self.chartData2.datasets[0].data = response.data.datas[0];
+        self.chartData2.datasets[1].data = response.data.datas[1];
+        self.chartData2.datasets[2].data = response.data.datas[2];
+        self.chartData = self.chartData2;
       });
     }
   },
@@ -218,6 +231,11 @@ export default {
   computed: {
     canvasHeight() {
       return this.headerHeight + this.count * this.lineHeight;
+    },
+    progressRate() {
+      let self = this;
+      let rate = self.item.done_count * 100/(self.item.to_do_count + self.item.in_progress_count + self.item.done_count)
+      return rate.toFixed(0);
     }
   }
 }
