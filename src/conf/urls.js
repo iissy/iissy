@@ -28,6 +28,7 @@ let urls = {
     project_role_members: '/api/team/{0}/project/{1}/project_role_members',
     project_member_add: '/api/team/{0}/project/{1}/project_member_add',
     project_task_list: '/api/team/{0}/project/{1}/list/task',
+    project_change_status: '/api/team/{0}/project/{1}/project_change_status',
 
     project_issue_type_field: '/api/team/{0}/project/{1}/issue_type/{2}/field',
     project_issue_type_flow: '/api/team/{0}/project/{1}/issue_type/{2}/get_project_issue_type_flow',
