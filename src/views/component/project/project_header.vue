@@ -2,12 +2,7 @@
   <div style="flex: 1;">
     <div id="com" class="com-outline" v-if="items && items.length > 0">
       <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
-        <b-dropdown @toggle="project_list" :text="projectName" variant="outline" toggle-class="text-decoration-none">
-          <b-dropdown-item disabled>进行中的项目</b-dropdown-item>
-          <b-dropdown-item v-for="p in projects" :key="p.uuid" :to="{ name:'Project', params: { team: team, project: p.uuid } }">
-            {{p.name}}
-          </b-dropdown-item>
-        </b-dropdown>
+        <ProjectDropdown :team="team" :name="projectName" :projects="projects"/>
       </div>
       <div v-for="item in items" :key="item.com">
         <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
@@ -32,6 +27,7 @@
 
 <script>
 import http from "@/scripts/http";
+import ProjectDropdown from "./project_dropdown";
 
 export default {
   data() {
@@ -63,6 +59,7 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.selectedCom = self.$route.params.com;
+    self.project_list();
   },
   methods: {
     project_list: function() {
@@ -72,6 +69,9 @@ export default {
         self.projects = response.data;
       });
     }
+  },
+  components: {
+    ProjectDropdown
   }
 }
 </script>

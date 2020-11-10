@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;">
-      <div class="status" :class="curColor">{{ curName }}<b-icon v-if="icon" icon="chevron-down"/></div>
-    </div>
+  <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;">
+    <div class="status" :class="curColor">{{ curName }}<b-icon v-if="icon" icon="chevron-down"/></div>
   </div>
 </template>
 
