@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Master from '../views/help/master';
+import Master from '../views/master';
 import Main from '../views/main';
 
 import Robot from '../views/ding/robot';
@@ -25,7 +25,7 @@ Vue.use(Router);
 const index = [
     {
         path: '/',
-        meta: { title: "Soul - 你找的人正在找你" },
+        meta: { title: "爱斯园 - 任务文档管理系统" },
         component: Master
     }, {
         path: '/main',
