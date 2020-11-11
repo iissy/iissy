@@ -41,14 +41,20 @@
                 <template v-slot:cell(status)="data">
                   <Status :name="data.item.status_category" :color="data.item.status_uuid" />
                 </template>
-                <template v-slot:cell(owner)>
-                  <b-progress :value="25" variant="success" striped animate></b-progress>
+                <template v-slot:cell(progress_rate)="data">
+                  <b-progress :value="(data.item.done_count * 100/(data.item.to_do_count + data.item.in_progress_count + data.item.done_count)).toFixed(0)" variant="success" striped animate></b-progress>
                 </template>
                 <template v-slot:cell(assign)="data">
                   <User :user="data.item.assign" :hasEmail="hasEmail"/>
                 </template>
-                <template v-slot:cell(create_time)="data">
+                <template v-slot:cell(plan_start_time)="data">
                   {{ data.value | formatDate }}
+                </template>
+                <template v-slot:cell(plan_end_time)="data">
+                  {{ data.value | formatDate }}
+                </template>
+                <template v-slot:cell(issue_type_count)="data">
+                  {{ data.item.to_do_count + data.item.in_progress_count + data.item.done_count }}
                 </template>
               </b-table>
             </div>
@@ -62,7 +68,6 @@
             <div v-if="tasks_completed && !has" style="display: flex;flex: 1;border-top: 1px solid #e8e8e8;margin-top: 10px;" class="align-items-center justify-content-center">
               暂无项目
             </div>
-
           </div>
         </div>
       </div>
@@ -93,11 +98,11 @@ export default {
         { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
         { key: 'status', label: '项目状态', formatter: '项目状态' },
         { key: 'assign', label: '项目负责人', formatter: '项目负责人' },
-        { key: 'owner', label: '工作项目完成度', formatter: '工作项目完成度' },
+        { key: 'progress_rate', label: '工作项目完成度', formatter: '工作项目完成度' },
         { key: 'plan_start_time', label: '计划开始时间', formatter: '计划开始时间' },
         { key: 'plan_end_time', label: '计划完成时间', formatter: '计划完成时间' },
         { key: 'issue_type_count', label: '工作项数量', formatter: '工作项数量' },
-        { key: 'on_issue_type_count', label: '进行中工作项', formatter: '进行中工作项' }
+        { key: 'in_progress_count', label: '进行中工作项', formatter: '进行中工作项' }
       ],
       items: [],
       tasks_completed: false

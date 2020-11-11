@@ -7,7 +7,7 @@
       <div style="text-align: left;color: #363636;">{{ user.name }}</div>
       <div style="text-align: left;color: #999999;font-size: 12px;">项目负责人</div>
     </div>
-    <b-popover ref="popover" target="popover-assign" triggers="focus" placement="bottom">
+    <b-popover ref="popover" target="popover-assign" offset="70" triggers="focus" placement="bottom">
       <div style="padding: 5px;">
         <Search placeholder="搜索项目负责人"/>
       </div>

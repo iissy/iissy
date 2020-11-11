@@ -61,14 +61,8 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
-    http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
-      self.items = response.data;
-      self.$store.state.items = self.items;
-    });
-
-    http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
-      self.projectName = response.data.name;
-    });
+    self.components_get();
+    self.project_get();
   },
   created: function () {
     this.shift();
@@ -82,6 +76,19 @@ export default {
     }
   },
   methods: {
+    components_get: function () {
+      let self = this;
+      http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
+        self.items = response.data;
+        self.$store.state.items = self.items;
+      });
+    },
+    project_get: function () {
+      let self = this;
+      http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
+        self.projectName = response.data.name;
+      });
+    },
     shift: function () {
       let self = this;
       self.team = self.$route.params.team;

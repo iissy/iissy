@@ -1,9 +1,12 @@
 ﻿export function formatDate(time) {
+    if (!time) {
+        return '-'
+    }
     if (Number.isNaN(time)) {
         return '0000-00-00 00:00:00';
     }
     if (time == null) {
-        return "-";
+        return '-';
     }
     if (time === 0) {
         return '-';

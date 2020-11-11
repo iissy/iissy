@@ -2,7 +2,7 @@
   <div style="flex: 1;">
     <div id="com" class="com-outline" v-if="items && items.length > 0">
       <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
-        <ProjectDropdown :team="team" :name="projectName" :projects="projects"/>
+        <ProjectDropdown :team="team" :name="projectName"/>
       </div>
       <div v-for="item in items" :key="item.com">
         <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
 import ProjectDropdown from "./project_dropdown";
 
 export default {
@@ -59,16 +58,8 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.selectedCom = self.$route.params.com;
-    self.project_list();
   },
   methods: {
-    project_list: function() {
-      let self = this;
-      let url = self.urls.team_project_list.format(self.team);
-      http.post(url).then(function (response) {
-        self.projects = response.data;
-      });
-    }
   },
   components: {
     ProjectDropdown

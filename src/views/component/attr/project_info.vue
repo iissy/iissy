@@ -73,6 +73,7 @@ export default {
       http.post(self.urls.project_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
         if (response.data.status === true) {
           self.$refs.alert.success('更新成功');
+          self.$parent.$parent.project_get();
           self.disabled = true;
         } else {
           self.$refs.alert.danger('更新失败');
