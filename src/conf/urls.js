@@ -8,6 +8,8 @@ let urls = {
 
     commit_overview: '/api/team/{0}/commit/overview',
 
+    space_add: '/api/team/{0}/space/add',
+
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',
     issue_type_field_list: '/api/team/{0}/setting/issue_type/field',

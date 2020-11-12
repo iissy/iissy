@@ -1,7 +1,7 @@
 <template>
   <div style="flex: 1;text-align: right;">
     <AddProjectButton title="邀请新成员" v-b-modal.modal-inviter-user></AddProjectButton>
-    <b-modal size="lg" id="modal-inviter-user" ref="modalUser" title="邀请新用户" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="inviterUser">
+    <b-modal size="lg" id="modal-inviter-user" ref="modalUser" title="邀请新用户" no-close-on-backdrop cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="inviterUser">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="height: 40px;margin-bottom: 10px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;border-right: 1px solid #e8e8e8;">
           <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >

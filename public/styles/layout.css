@@ -16,3 +16,7 @@
 .com-outline .dropdown button { font-size: 16px; }
 .popover .popover-body { padding: 0; }
 .b-sidebar-header strong { font-size: 1rem;font-weight: bold; }
+
+div input,div textarea { box-shadow: none!important; }
+.form-group label { font-size: 15px; }
+.form-group.required label:after { content: "*";color: #ff0000; }

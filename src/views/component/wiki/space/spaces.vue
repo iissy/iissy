@@ -14,19 +14,20 @@
       <Space title="新员工培训文档" desc="最近页面更新于 8 小时前"/>
       <Space style="margin-left: 10px;" title="开发技术文档" desc="最近页面更新于 8 小时前"/>
     </div>
-    <b-modal size="lg" id="modal-wiki-add">
-      asdfasdf
-    </b-modal>
+    <AddSpace/>
   </div>
 </template>
 
 <script>
-import AddButton from '../common/form/button';
+import AddButton from '../../common/form/button';
 import Space from '@/views/component/wiki/module/space';
+import AddSpace from '@/views/component/wiki/space/add';
 
 export default {
   data() {
     return {
+      title: '',
+      description: ''
     }
   },
   created () {
@@ -36,10 +37,12 @@ export default {
     self.team = self.$route.params.team;
   },
   methods: {
+    space_list: function () {}
   },
   components: {
     AddButton,
-    Space
+    Space,
+    AddSpace
   },
   computed: {
   }

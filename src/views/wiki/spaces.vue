@@ -11,7 +11,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import Spaces from '../component/wiki/spaces';
+import Spaces from '../component/wiki/space/spaces';
 
 export default {
   data: function () {
