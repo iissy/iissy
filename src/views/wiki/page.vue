@@ -2,7 +2,7 @@
   <div class="app-column">
     <Header ref="Header"/>
     <div class="rightMain flex-row">
-      <Catalog ref="Catalog"/>
+      <Catalog ref="Catalog" :pages="pages" :selected="page"/>
       <div class="app-main-container" style="flex: 1;">
         <Article v-if="loaded" ref="Article" :item="item"/>
       </div>
@@ -22,9 +22,12 @@ export default {
   data: function () {
     return {
       team: '',
+      space: '',
       page: '',
       item: {},
-      loaded: false
+      loaded: false,
+      pages: [],
+      selectedPageUUID: ''
     };
   },
   components: {
@@ -36,12 +39,20 @@ export default {
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
     self.page = self.$route.params.page;
+    self.page_list();
     self.page_get();
   },
   created: function () {
   },
   methods: {
+    page_list: function () {
+      let self = this;
+      http.get(self.urls.pages.format(self.team, self.space)).then(function (response) {
+        self.pages = response.data.pages;
+      });
+    },
     page_get: function () {
       let self = this;
       http.get(self.urls.page_get.format(self.team, self.page)).then(function (response) {
