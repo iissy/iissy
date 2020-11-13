@@ -6,8 +6,8 @@
     </div>
     <div style="flex: 0 0 auto;" class="flex-row">
       <div style="flex: 1;"></div>
-      <div style="flex: 0 0 auto;">
-        <b-icon icon="star" scale="1.2"></b-icon>
+      <div style="flex: 0 0 auto;" class="pin-star">
+        <b-icon @click="setPin" icon="star" scale="1.3"></b-icon>
       </div>
     </div>
   </div>
@@ -35,6 +35,11 @@ export default {
     goto: function () {
       let self = this;
       router.push({ name: 'Space', params: { team: self.team, space: self.space.uuid } });
+    },
+    setPin: function (event) {
+      let self = this;
+      console.log(self.space.uuid);
+      event.stopPropagation();
     }
   },
   computed: {
@@ -48,5 +53,5 @@ export default {
 </script>
 
 <style scoped>
-
+.pin-star:hover { color: #f0a100; }
 </style>
