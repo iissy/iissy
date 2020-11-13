@@ -10,25 +10,39 @@
         <div style="flex: 0 0 auto;margin-left: 5px;">编辑</div></div>
     </div>
     <div style="flex: 1;background-color: #ffffff;padding: 30px;" class="flex-column">
-      <div style="font-size: 18px;">我是标题</div>
-      <div style="color: #909090;margin-top: 5px;">何敏于 2020年10月28日 上午09点35分 修改</div>
-      <div style="margin-top: 20px;">
-        <p>
-          阿斯顿发生地方阿斯顿发阿斯顿爱死；
-        </p>
-        <p>
-          爱死爱死阿斯顿发斯蒂芬静安寺蝶恋蜂狂骄傲水电费卡死大是大非； 爱丽丝框架的发；
-        </p>
-        <p>
-          阿斯顿发生的发送到开了房爱上对方看啊说法水电费可阿斯顿。
-        </p>
-      </div>
+      <div style="font-size: 28px;font-weight: 800;">{{ item.title }}</div>
+      <div style="color: #909090;margin-top: 5px;">{{ user.name }}于 {{ item.updated_time | formatTime }} 修改</div>
+      <div style="margin-top: 20px;" v-html="item.content"></div>
     </div>
   </div>
 </template>
 
 <script>
+import http from "@/scripts/http";
+
 export default {
+  data() {
+    return {
+      team: '',
+      user: {}
+    }
+  },
+  props: {
+    item: Object
+  },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.user_get();
+  },
+  methods: {
+    user_get: function () {
+      let self = this;
+      http.get(self.urls.user_get.format(self.team, self.item.owner_uuid)).then(function (response) {
+        self.user = response.data;
+      });
+    }
+  }
 }
 </script>
 

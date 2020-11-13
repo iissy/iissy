@@ -11,8 +11,7 @@
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;" class="flex-row">
-      <Space title="新员工培训文档" desc="最近页面更新于 8 小时前"/>
-      <Space style="margin-left: 10px;" title="开发技术文档" desc="最近页面更新于 8 小时前"/>
+      <Space v-for="space in spaces" :key="space.uuid" :space="space" desc="最近页面更新于 8 小时前"/>
     </div>
     <AddSpace/>
   </div>
@@ -22,22 +21,32 @@
 import AddButton from '../../common/form/button';
 import Space from '@/views/component/wiki/module/space';
 import AddSpace from '@/views/component/wiki/space/add';
+import http from "@/scripts/http";
 
 export default {
   data() {
     return {
       title: '',
-      description: ''
+      description: '',
+      spaces: []
     }
   },
   created () {
+    let self = this;
+    self.space_list();
   },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
   },
   methods: {
-    space_list: function () {}
+    space_list: function () {
+      let self = this;
+      self.team = self.$route.params.team;
+      http.get(self.urls.space_list.format(self.team)).then(function (response) {
+        self.spaces = response.data.spaces;
+      });
+    }
   },
   components: {
     AddButton,

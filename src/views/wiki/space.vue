@@ -2,35 +2,42 @@
   <div class="app-column">
     <Header ref="Header"/>
     <div class="rightMain flex-row">
-      <Catalog ref="Catalog"/>
-      <div class="app-main-container" style="flex: 1;">
-        <Article ref="Article"/>
-      </div>
-      <Dynamic ref="dynamic"/>
     </div>
   </div>
 </template>
 
 <script>
 import Header from '@/views/component/wiki/header';
-import Catalog from '@/views/component/wiki/catalog';
-import Dynamic from '@/views/component/wiki/dynamic';
-import Article from "@/views/component/wiki/module/article";
+import http from "@/scripts/http";
+import router from "@/router";
 
 export default {
   data: function () {
     return {
+      team: '',
+      space: '',
+      pages: []
     };
   },
   components: {
-    Article,
-    Header,
-    Catalog,
-    Dynamic
+    Header
   },
   created: function () {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
+    self.page_list();
   },
   methods: {
+    page_list: function () {
+      let self = this;
+      http.get(self.urls.pages.format(self.team, self.space)).then(function (response) {
+        self.pages = response.data.pages;
+        if (self.pages && self.pages.length > 0) {
+          router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.pages[0].uuid } });
+        }
+      });
+    }
   }
 };
 </script>

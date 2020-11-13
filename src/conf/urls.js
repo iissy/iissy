@@ -3,12 +3,16 @@ let urls = {
     team_member_list: '/api/team/{0}/get_team_member_list',
     team_member_add: '/api/team/{0}/member/add',
     team_project_list: '/api/team/{0}/list/project',
+    user_get: '/api/team/{0}/user/{1}',
 
     priority_options_get: '/api/team/{0}/priority_options_get',
 
     commit_overview: '/api/team/{0}/commit/overview',
 
-    space_add: '/api/team/{0}/space/add',
+    space_add: '/api/team/{0}/space_add',
+    space_list: '/api/team/{0}/space_list',
+    pages: '/api/team/{0}/space/{1}/pages',
+    page_get: '/api/team/{0}/page/{1}',
 
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',

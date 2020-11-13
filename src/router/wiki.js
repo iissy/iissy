@@ -1,6 +1,7 @@
 import Wiki from "@/views/wiki/spaces";
 import WikiSetting from "@/views/setting/wiki_setting";
 import Space from "@/views/wiki/space";
+import Page from "@/views/wiki/page";
 
 let wiki = [
     {
@@ -14,10 +15,15 @@ let wiki = [
         name: 'WikiSetting',
         component: WikiSetting
     }, {
-        path: '/main/team/:team/space',
+        path: '/main/team/:team/space/:space',
         meta: { title: "文档中心" },
         name: 'Space',
         component: Space
+    }, {
+        path: '/main/team/:team/space/:space/page/:page',
+        meta: { title: "文档中心" },
+        name: 'Page',
+        component: Page
     }
 ]
 
