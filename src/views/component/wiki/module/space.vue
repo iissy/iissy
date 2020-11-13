@@ -30,7 +30,6 @@ export default {
     self.team = self.$route.params.team;
   },
   created() {
-    console.log(this.space.title);
   },
   methods: {
     goto: function () {
