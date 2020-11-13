@@ -5,7 +5,7 @@
     </div>
     <div class="name" style="margin-left: 20px;">文档中心</div>
     <div style="flex: 0 0 auto;margin-left: 20px;">
-      <AddButton title="新建" v-b-modal.modal-wiki-add></AddButton>
+      <AddButton title="新建页面" v-b-modal.modal-wiki-add></AddButton>
     </div>
     <div style="flex: 1;"></div>
     <UserCenterAvatar/>
