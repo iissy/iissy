@@ -6,8 +6,11 @@
         <div style="flex: 0 0 auto;margin-left: 5px;">主页</div>
       </div>
       <div style="flex: 0 0 auto;" class="flex-row align-items-center">
-        <div style="flex: 0 0 auto;"><b-icon icon="pencil-square"/></div>
-        <div style="flex: 0 0 auto;margin-left: 5px;">编辑</div>
+        <div style="flex: 0 0 auto;">
+          <b-icon icon="pencil-square"/></div>
+        <div style="flex: 0 0 auto;margin-left: 5px;">
+          <router-link :to="{ name: 'EditDraft', params: { team: team, space: space, draft: item.uuid } }">编辑</router-link>
+        </div>
         <PublishButton style="margin-left: 10px;" title="发布"/>
       </div>
     </div>
@@ -25,7 +28,8 @@ import PublishButton from '@/views/component/button/custom';
 export default {
   data() {
     return {
-      team: ''
+      team: '-',
+      space: '-'
     }
   },
   props: {
@@ -34,6 +38,7 @@ export default {
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
   },
   methods: {
   },

@@ -4,7 +4,7 @@
       <div style="flex: 1;" id="toolbarContainer"></div>
       <div style="flex: 0 0 auto;margin-right: 20px;">
         <AddAndBackButton @submit="back" title="返回" :fill="fill"/>
-        <AddAndBackButton style="margin-left: 10px;" title="发布"/>
+        <AddAndBackButton @submit="publish" style="margin-left: 10px;" title="发布"/>
       </div>
     </div>
     <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" id="scrollable_container" class="flex-row">
@@ -59,17 +59,23 @@ export default {
         toolbarVisibleWithoutSelection: true,
         toolbarSticky: true
       },
-      model: 'Edit Your Content Here!'
+      model: 'Edit Your Content Here!',
+      mod: '',
+      loaded: false
     }
   },
   watch: {
     model() {
       let self = this;
-      self.list.push(true);
+      if (self.loaded) {
+        self.list.push(true);
+      }
     },
     title() {
       let self = this;
-      self.list.push(true);
+      if (self.loaded) {
+        self.list.push(true);
+      }
     }
   },
   mounted() {
@@ -77,14 +83,19 @@ export default {
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
     self.page = self.$route.params.page;
+    self.draft = self.$route.params.draft;
+    self.mod = self.$route.name;
+    if (self.mod === 'EditDraft') {
+      self.draft_get();
+    } else if(self.mod === 'AddPage') {
+      self.loaded = true;
+    }
   },
   created() {
     let self = this;
     setInterval(function() {
       if (self.list.length > 0) {
-        console.log(self.list.length);
         self.list.length = 0;
-        console.log(self.list.length);
         if (self.draft.length === 8) {
           self.update();
         } else {
@@ -92,6 +103,10 @@ export default {
         }
       }
     }, 1000)
+  },
+  updated: function () {
+    let self = this;
+    self.loaded = true;
   },
   methods: {
     back: function () {
@@ -102,9 +117,6 @@ export default {
       let self = this;
       let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1 }
       http.post(self.urls.page_draft_add.format(self.team, self.space), data).then(function (response) {
-        if(response.data.status) {
-          self.draft = response.data.uuid;
-        }
         self.draft = response.data.uuid;
       });
     },
@@ -112,10 +124,24 @@ export default {
       let self = this;
       let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: false, space_uuid: self.space }
       http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
-        if(response.data.status) {
-          self.draft = response.data.uuid;
-        }
+        self.draft = response.data.draft_uuid;
+      });
+    },
+    publish: function () {
+      let self = this;
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: true, space_uuid: self.space }
+      http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
+        let params = { team: self.team, space: self.space, page: response.data.page_uuid };
+        router.push({ name:'Page', params: params });
+      });
+    },
+    draft_get: function () {
+      let self = this;
+      http.get(self.urls.draft_get.format(self.team, self.space, self.draft)).then(function (response) {
+        self.title = response.data.title;
+        self.model = response.data.content;
         self.draft = response.data.uuid;
+        self.page = response.data.page_uuid;
       });
     }
   },
