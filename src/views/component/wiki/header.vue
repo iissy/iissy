@@ -22,11 +22,13 @@ export default {
     return {
     }
   },
+  props: {
+    page: String
+  },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
-    self.page = self.$route.params.page;
   },
   created() {
   },

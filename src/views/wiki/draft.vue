@@ -1,6 +1,6 @@
 <template>
   <div class="app-column">
-    <Header ref="Header"/>
+    <Header ref="Header" :page="page"/>
     <div class="rightMain flex-row" style="height: 0;">
       <Catalog ref="Catalog" :selected="draft"/>
       <div class="app-main-container" style="flex: 1;">
@@ -47,6 +47,7 @@ export default {
       let self = this;
       http.get(self.urls.draft_get.format(self.team, self.space, self.draft)).then(function (response) {
         self.item = response.data;
+        self.page = response.data.page_uuid;
         self.loaded = true;
       });
     }
