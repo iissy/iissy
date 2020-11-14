@@ -1,0 +1,41 @@
+<template>
+  <div class="app-column">
+    <Header ref="Header"/>
+    <div class="rightMain flex-row">
+      <AddPage/>
+    </div>
+  </div>
+</template>
+
+<script>
+import Header from '@/views/component/wiki/header';
+import AddPage from '@/views/component/wiki/page/add';
+
+export default {
+  data: function () {
+    return {
+      team: '',
+      space: '',
+      page: '',
+      item: {},
+      loaded: false,
+      pages: [],
+      spaces: []
+    };
+  },
+  components: {
+    Header,
+    AddPage
+  },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
+    self.page = self.$route.params.page;
+  },
+  created: function () {
+  },
+  methods: {
+  }
+};
+</script>

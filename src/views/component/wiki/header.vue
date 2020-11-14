@@ -4,8 +4,8 @@
       <router-link :to="{ name: 'MainRedirect' }">Soul</router-link>
     </div>
     <div class="name" style="margin-left: 20px;">文档中心</div>
-    <div style="flex: 0 0 auto;margin-left: 20px;">
-      <AddButton title="新建页面" v-b-modal.modal-wiki-add></AddButton>
+    <div style="flex: 0 0 auto;margin-left: 20px;" @click="add">
+      <AddButton title="新建页面"></AddButton>
     </div>
     <div style="flex: 1;"></div>
     <UserCenterAvatar/>
@@ -15,6 +15,7 @@
 <script>
 import AddButton from '../common/form/button';
 import UserCenterAvatar from '@/views/component/common/block/avatar';
+import router from "@/router";
 
 export default {
   data() {
@@ -22,10 +23,18 @@ export default {
     }
   },
   mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
+    self.page = self.$route.params.page;
   },
   created() {
   },
   methods: {
+    add: function () {
+      let self = this;
+      router.push({ name: 'AddPage', params: { team: self.team, space: self.space, page: self.page } });
+    }
   },
   components: {
     AddButton,
