@@ -27,6 +27,15 @@ export default {
       loaded: false
     };
   },
+  watch: {
+    '$route' () {
+      let self = this;
+      if (self.draft !== self.$route.params.draft) {
+        self.draft = self.$route.params.draft
+        self.draft_get();
+      }
+    }
+  },
   components: {
     Article,
     Header,
@@ -38,12 +47,12 @@ export default {
     self.space = self.$route.params.space;
     self.page = self.$route.params.page;
     self.draft = self.$route.params.draft;
-    self.page_get();
+    self.draft_get();
   },
   created: function () {
   },
   methods: {
-    page_get: function () {
+    draft_get: function () {
       let self = this;
       http.get(self.urls.draft_get.format(self.team, self.space, self.draft)).then(function (response) {
         self.item = response.data;

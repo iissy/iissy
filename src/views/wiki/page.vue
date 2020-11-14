@@ -34,6 +34,15 @@ export default {
     Catalog,
     Dynamic
   },
+  watch: {
+    '$route' () {
+      let self = this;
+      if (self.page !== self.$route.params.page) {
+        self.page = self.$route.params.page
+        self.page_get();
+      }
+    }
+  },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
