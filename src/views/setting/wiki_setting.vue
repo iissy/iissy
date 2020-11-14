@@ -19,13 +19,13 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/wiki/wiki_control';
-import Manager from "@/views/component/setting/wiki/manager";
+import List from "@/views/component/setting/wiki/list";
 import Permission from "@/views/component/setting/wiki/permission";
 
 export default {
   data: function () {
     return {
-      currentTabComponent: Manager,
+      currentTabComponent: List,
       tagIndex: 1
     };
   },
@@ -33,7 +33,7 @@ export default {
     Header,
     Menu,
     Control,
-    Manager
+    List
   },
   created: function () {
     let self = this;
@@ -50,9 +50,9 @@ export default {
     tag_switch: function (type) {
       let self = this;
       switch (type) {
-        case "manager":
+        case "list":
           self.tagIndex = 1;
-          self.currentTabComponent = Manager;
+          self.currentTabComponent = List;
           break;
         case "permission":
           self.tagIndex = 11;

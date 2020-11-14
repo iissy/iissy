@@ -32,7 +32,7 @@
         <li><span></span></li>
         <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info' } }" /></li>
         <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list' } }" /></li>
-        <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'manager' } }" /></li>
+        <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list' } }" /></li>
 
         <li><span></span></li>
         <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>

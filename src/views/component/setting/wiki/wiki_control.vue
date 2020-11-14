@@ -3,7 +3,7 @@
     <div style="flex: 0;padding: 5px 0 5px 30px;width: 100%;font-size: 18px;margin-bottom: 20px;">配置中心</div>
 
     <div style="flex: 0;padding: 5px 30px 5px 30px;width: 100%;color:#aaaaaa;">页面组</div>
-    <div :class="{active: (tagIndex === 1)}"><router-link :to="{name: 'WikiSetting', params: { team: team, type: 'manager' }}">页面组管理</router-link></div>
+    <div :class="{active: (tagIndex === 1)}"><router-link :to="{name: 'WikiSetting', params: { team: team, type: 'list' }}">页面组管理</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">权限</div>
     <div :class="{active: (tagIndex === 11)}"><router-link :to="{name: 'WikiSetting', params: { team: team, type: 'permission' }}">权限配置</router-link></div>

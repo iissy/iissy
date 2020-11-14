@@ -2,7 +2,7 @@
   <div class="app-column">
     <Header ref="Header"/>
     <div class="rightMain flex-row">
-      <Catalog ref="Catalog" :pages="pages" :selected="page"/>
+      <Catalog ref="Catalog" :pages="pages" :selected="page" :spaces="spaces"/>
       <div class="app-main-container" style="flex: 1;">
         <Article v-if="loaded" ref="Article" :item="item"/>
       </div>
@@ -27,7 +27,7 @@ export default {
       item: {},
       loaded: false,
       pages: [],
-      selectedPageUUID: ''
+      spaces: []
     };
   },
   components: {
@@ -43,10 +43,17 @@ export default {
     self.page = self.$route.params.page;
     self.page_list();
     self.page_get();
+    self.space_list();
   },
   created: function () {
   },
   methods: {
+    space_list: function () {
+      let self = this;
+      http.get(self.urls.space_list.format(self.team)).then(function (response) {
+        self.spaces = response.data.spaces;
+      });
+    },
     page_list: function () {
       let self = this;
       http.get(self.urls.pages.format(self.team, self.space)).then(function (response) {

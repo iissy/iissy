@@ -26,13 +26,13 @@
         <div class="tool">
           <div class="tool-header">工具</div>
           <div class="tool-item" v-for="t in tools" :key="t.uuid">
-            {{ t.name }}
+            <router-link :to="{ name: t.name, params: t.params }">{{ t.title }}</router-link>
           </div>
         </div>
         <div class="tool">
           <div class="tool-header">页面组</div>
-          <div class="tool-item" v-for="s in spaces" :key="s.uuid">
-            {{ s.name }}
+          <div class="tool-item" v-for="s in spaces" :key="s.uuid" :class="{active: s.uuid === space }">
+            <router-link :to="{ name: 'Space', params: { team: team, space: s.uuid } }">{{ s.title }}</router-link>
           </div>
         </div>
       </div>
@@ -44,26 +44,33 @@
 export default {
   data() {
     return {
-      tools: [
-        {uuid: 'wiki-setting', name: '文档配置中心'}
-      ],
-      spaces: [
-        { uuid: '83ue7u2s', name: '新人培训文档' },
-        { uuid: '83ue7u2c', name: '开发文档' }
-      ]
+      team: '-',
+      space: '-'
     }
   },
   props: {
+    spaces: Array,
     pages: Array,
     selected: String
   },
   mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
   },
   created() {
   },
   methods: {
   },
   components: {
+  },
+  computed: {
+    tools: function () {
+      let self = this;
+      return [
+        {uuid: 'wiki-setting', name: 'WikiSetting', params: { team: self.team, type: 'list' }, title: '文档配置中心'}
+      ]
+    }
   }
 }
 </script>
@@ -71,9 +78,11 @@ export default {
 <style scoped>
 #catalog { flex: 0 0 300px;border-right: 1px solid #dedede; }
 .tool { margin-top: 20px; }
-.tool .tool-header { color: #909090; }
-.tool .tool-item { padding: 5px 0 5px 10px; }
-.tool .tool-item:hover { background-color: #e9e9e9;border-radius: 3px; }
+.tool .tool-header { color: #909090;margin-bottom: 5px; }
+.tool .tool-item { padding: 5px 0 5px 10px;cursor: pointer;border-radius: 3px; }
+.tool .tool-item a { display: block; }
+.tool .tool-item:hover { background-color: #e9e9e9; }
+.tool .tool-item.active { background-color: rgba(51,143,229,0.1); }
 .page-item { flex: 0 0 auto;padding: 5px 10px;cursor: pointer; }
 .page-item.active,.page-item:hover { background-color: #e8e8e8;border-radius: 3px; }
 .page-item.active { font-weight: 600; }
