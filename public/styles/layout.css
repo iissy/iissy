@@ -20,3 +20,13 @@
 div input,div textarea { box-shadow: none!important; }
 .form-group label { font-size: 15px; }
 .form-group.required label:after { content: "*";color: #ff0000; }
+
+#toolbarContainer .fr-separator.fr-vs { margin: 4px; }
+#toolbarContainer .fr-toolbar .fr-command.fr-btn, #toolbarContainer .fr-popup .fr-command.fr-btn, #toolbarContainer .fr-modal .fr-command.fr-btn { margin: 0 2px;color: #666666; }
+#toolbarContainer .fr-toolbar .fr-btn-grp { margin: 0; }
+#toolbarContainer .fr-toolbar { background: inherit;border: none; }
+#toolbarContainer .fr-toolbar .fr-newline { margin: 0;height: 0; }
+#scrollable_container .fr-box,.fr-wrapper { flex: 1;flex-direction: column;display: flex; }
+#scrollable_container .fr-element.fr-view { margin: 0 30px 20px 30px;padding: 10px 30px 20px 30px;height: 1200px; }
+#scrollable_container .fr-second-toolbar { flex: 0 0 auto; }
+#toolbarContainer > div { display: block!important; }

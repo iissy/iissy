@@ -1,7 +1,7 @@
 <template>
   <div class="app-column">
     <Header ref="Header"/>
-    <div class="rightMain flex-row">
+    <div class="rightMain flex-row" style="height: 0;">
       <Catalog ref="Catalog" :pages="pages" :selected="page" :spaces="spaces"/>
       <div class="app-main-container" style="flex: 1;">
         <Article v-if="loaded" ref="Article" :item="item"/>
