@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-column" style="flex: 1;min-width: 1200px;">
+  <div class="flex-column" style="flex: 1;min-width: 1280px;">
     <div style="flex: 0 0 40px;background-color: #f8f8f8;" class="flex-row align-items-center">
       <div style="flex: 1;" id="toolbarContainer"></div>
       <div style="flex: 0 0 auto;margin-right: 20px;">
@@ -10,7 +10,7 @@
     <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" id="scrollable_container" class="flex-row">
       <div style="flex: 1;height: 100%;">
         <div style="flex: 0 0 auto;padding: 20px 60px 0 60px;">
-          <input type="text" class="title" v-model="title">
+          <input type="text" class="title" @change="save" v-model="title">
         </div>
         <froala :tag="'textarea'" :config="config" v-model="model"/>
       </div>
@@ -52,9 +52,14 @@ export default {
         colorsStep: 14,
         toolbarContainer: '#toolbarContainer',
         toolbarInline: true,
-        // charCounterCount: true,
-        // toolbarVisibleWithoutSelection: true,
-        toolbarSticky: true
+        charCounterCount: true,
+        toolbarVisibleWithoutSelection: true,
+        toolbarSticky: true,
+        events: {
+          'contentChanged': function () {
+            console.log(this);
+          }
+        }
       },
       model: 'Edit Your Content Here!'
     }
@@ -69,6 +74,9 @@ export default {
     back: function () {
       let self = this;
       router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
+    },
+    save: function () {
+      console.log(this);
     }
   },
   components: {
