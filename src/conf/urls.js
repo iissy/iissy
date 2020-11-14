@@ -14,6 +14,7 @@ let urls = {
     pages: '/api/team/{0}/space/{1}/pages',
     page_get: '/api/team/{0}/page/{1}',
     page_draft_add: '/api/team/{0}/space/{1}/page_draft_add',
+    page_draft_update: '/api/team/{0}/space/{1}/draft/{2}/update',
     drafts: '/api/team/{0}/space/{1}/drafts',
     draft_get: '/api/team/{0}/space/{1}/draft/{2}',
 

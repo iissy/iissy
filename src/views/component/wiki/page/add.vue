@@ -31,6 +31,8 @@ export default {
       page: '',
       title: '',
       fill: false,
+      list: [],
+      draft: '',
       config: {
         plugins: [
         ],
@@ -63,11 +65,11 @@ export default {
   watch: {
     model() {
       let self = this;
-      self.save();
+      self.list.push(true);
     },
     title() {
       let self = this;
-      self.save();
+      self.list.push(true);
     }
   },
   mounted() {
@@ -76,6 +78,21 @@ export default {
     self.space = self.$route.params.space;
     self.page = self.$route.params.page;
   },
+  created() {
+    let self = this;
+    setInterval(function() {
+      if (self.list.length > 0) {
+        console.log(self.list.length);
+        self.list.length = 0;
+        console.log(self.list.length);
+        if (self.draft.length === 8) {
+          self.update();
+        } else {
+          self.save();
+        }
+      }
+    }, 1000)
+  },
   methods: {
     back: function () {
       let self = this;
@@ -83,11 +100,22 @@ export default {
     },
     save: function () {
       let self = this;
-      let data = { title: self.title, content: self.description, page_uuid: self.page, status: 1 }
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1 }
       http.post(self.urls.page_draft_add.format(self.team, self.space), data).then(function (response) {
         if(response.data.status) {
-          console.log(response.data.status);
+          self.draft = response.data.uuid;
         }
+        self.draft = response.data.uuid;
+      });
+    },
+    update: function () {
+      let self = this;
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: false, space_uuid: self.space }
+      http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
+        if(response.data.status) {
+          self.draft = response.data.uuid;
+        }
+        self.draft = response.data.uuid;
       });
     }
   },

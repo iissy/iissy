@@ -5,9 +5,11 @@
         <div style="flex: 0 0 auto;"><b-icon icon="house-door-fill" scale="1"/></div>
         <div style="flex: 0 0 auto;margin-left: 5px;">主页</div>
       </div>
-      <div style="flex: 0 0 auto;" class="flex-row">
+      <div style="flex: 0 0 auto;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;"><b-icon icon="pencil-square"/></div>
-        <div style="flex: 0 0 auto;margin-left: 5px;">编辑</div></div>
+        <div style="flex: 0 0 auto;margin-left: 5px;">编辑</div>
+        <PublishButton style="margin-left: 10px;" title="发布"/>
+      </div>
     </div>
     <div style="flex: 1;background-color: #ffffff;padding: 30px;" class="flex-column">
       <div style="font-size: 28px;font-weight: 800;">{{ item.title }}</div>
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import PublishButton from '@/views/component/button/custom';
 
 export default {
   data() {
@@ -33,6 +36,9 @@ export default {
     self.team = self.$route.params.team;
   },
   methods: {
+  },
+  components: {
+    PublishButton
   }
 }
 </script>
