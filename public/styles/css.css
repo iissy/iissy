@@ -25,7 +25,7 @@ div.table .op { flex: 0 0 100px; }
 div.table .op-big { flex: 0 0 120px; }
 div.table .op-big a, .table .op-big span { color: #337ab7;padding-right: 10px;outline: none;text-decoration: none; }
 
-a { text-decoration: none!important; }
+a { color: #4F4F4F;text-decoration: none!important; }
 a:link { color: #4F4F4F;text-decoration: none!important; }
 a:visited { color: #4F4F4F;text-decoration: none!important;; }
 a:active { color: #4F4F4F;text-decoration: none!important;; }

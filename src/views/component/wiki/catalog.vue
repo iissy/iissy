@@ -10,12 +10,14 @@
       </div>
     </div>
 
-    <div style="flex: 0 0 auto;padding: 15px 20px 10px 20px;" class="flex-row">
-      <div style="flex: 1;color: #909090;">草稿箱</div>
-    </div>
-    <div style="padding: 0 20px;">
-      <div class="page-item" v-for="d in drafts" :key="d.uuid" :class="{active: d.uuid === selected }">
-        <router-link :to="{ name: 'Draft', params: { team: team, space: space, draft: d.uuid } }">{{ d.title }}</router-link>
+    <div v-if="drafts && drafts.length > 0">
+      <div style="flex: 0 0 auto;padding: 20px 20px 10px 20px;" class="flex-row">
+        <div style="flex: 1;color: #909090;">草稿箱</div>
+      </div>
+      <div style="padding: 0 20px;">
+        <div class="page-item" v-for="d in drafts" :key="d.uuid" :class="{active: d.uuid === selected }">
+          <router-link :to="{ name: 'Draft', params: { team: team, space: space, draft: d.uuid } }">{{ d.title }}</router-link>
+        </div>
       </div>
     </div>
 
