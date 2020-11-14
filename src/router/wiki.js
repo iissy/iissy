@@ -2,6 +2,7 @@ import Wiki from "@/views/wiki/spaces";
 import WikiSetting from "@/views/setting/wiki_setting";
 import Space from "@/views/wiki/space";
 import Page from "@/views/wiki/page";
+import Draft from "@/views/wiki/draft";
 import AddPage from "@/views/wiki/add_page";
 
 let wiki = [
@@ -25,6 +26,11 @@ let wiki = [
         meta: { title: "文档中心" },
         name: 'Page',
         component: Page
+    }, {
+        path: '/main/team/:team/space/:space/draft/:draft',
+        meta: { title: "文档中心" },
+        name: 'Draft',
+        component: Draft
     }, {
         path: '/main/team/:team/space/:space/page/:page/add',
         meta: { title: "添加页面" },

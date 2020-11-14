@@ -2,11 +2,10 @@
   <div class="app-column">
     <Header ref="Header"/>
     <div class="rightMain flex-row" style="height: 0;">
-      <Catalog ref="Catalog" :selected="page"/>
+      <Catalog ref="Catalog" :selected="draft"/>
       <div class="app-main-container" style="flex: 1;">
         <Article v-if="loaded" ref="Article" :item="item"/>
       </div>
-      <Dynamic ref="dynamic"/>
     </div>
   </div>
 </template>
@@ -14,8 +13,7 @@
 <script>
 import Header from '@/views/component/wiki/header';
 import Catalog from '@/views/component/wiki/catalog';
-import Dynamic from '@/views/component/wiki/dynamic';
-import Article from "@/views/component/wiki/module/article";
+import Article from "@/views/component/wiki/module/article_draft";
 import http from "@/scripts/http";
 
 export default {
@@ -24,6 +22,7 @@ export default {
       team: '',
       space: '',
       page: '',
+      draft: '',
       item: {},
       loaded: false
     };
@@ -31,14 +30,14 @@ export default {
   components: {
     Article,
     Header,
-    Catalog,
-    Dynamic
+    Catalog
   },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
     self.page = self.$route.params.page;
+    self.draft = self.$route.params.draft;
     self.page_get();
   },
   created: function () {
@@ -46,7 +45,7 @@ export default {
   methods: {
     page_get: function () {
       let self = this;
-      http.get(self.urls.page_get.format(self.team, self.page)).then(function (response) {
+      http.get(self.urls.draft_get.format(self.team, self.space, self.draft)).then(function (response) {
         self.item = response.data;
         self.loaded = true;
       });

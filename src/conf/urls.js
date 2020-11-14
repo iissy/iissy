@@ -13,6 +13,9 @@ let urls = {
     space_list: '/api/team/{0}/space_list',
     pages: '/api/team/{0}/space/{1}/pages',
     page_get: '/api/team/{0}/page/{1}',
+    page_draft_add: '/api/team/{0}/space/{1}/page_draft_add',
+    drafts: '/api/team/{0}/space/{1}/drafts',
+    draft_get: '/api/team/{0}/space/{1}/draft/{2}',
 
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',

@@ -10,7 +10,7 @@
     <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" id="scrollable_container" class="flex-row">
       <div style="flex: 1;height: 100%;">
         <div style="flex: 0 0 auto;padding: 20px 60px 0 60px;">
-          <input type="text" class="title" @change="save" v-model="title">
+          <input type="text" class="title" v-model="title">
         </div>
         <froala :tag="'textarea'" :config="config" v-model="model"/>
       </div>
@@ -21,6 +21,7 @@
 <script>
 import AddAndBackButton from '@/views/component/button/custom';
 import router from "@/router";
+import http from "@/scripts/http";
 
 export default {
   data() {
@@ -54,14 +55,19 @@ export default {
         toolbarInline: true,
         charCounterCount: true,
         toolbarVisibleWithoutSelection: true,
-        toolbarSticky: true,
-        events: {
-          'contentChanged': function () {
-            console.log(this);
-          }
-        }
+        toolbarSticky: true
       },
       model: 'Edit Your Content Here!'
+    }
+  },
+  watch: {
+    model() {
+      let self = this;
+      self.save();
+    },
+    title() {
+      let self = this;
+      self.save();
     }
   },
   mounted() {
@@ -76,7 +82,13 @@ export default {
       router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
     },
     save: function () {
-      console.log(this);
+      let self = this;
+      let data = { title: self.title, content: self.description, page_uuid: self.page, status: 1 }
+      http.post(self.urls.page_draft_add.format(self.team, self.space), data).then(function (response) {
+        if(response.data.status) {
+          console.log(response.data.status);
+        }
+      });
     }
   },
   components: {
