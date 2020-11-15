@@ -30,3 +30,6 @@ div input,div textarea { box-shadow: none!important; }
 #scrollable_container .fr-element.fr-view { margin: 0 30px 20px 30px;padding: 10px 30px 20px 30px;height: 1200px; }
 #scrollable_container .fr-second-toolbar { flex: 0 0 auto; }
 #toolbarContainer > div { display: block!important; }
+
+#article table,#article th,#article td { border: 1px solid #e8e8e8; }
+#article td { line-height: 30px;padding: 0 5px; }

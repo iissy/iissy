@@ -37,7 +37,6 @@ export default {
     shift: function () {
       let self = this;
       self.currentTabComponent = self.$route.params.type || self.currentTabComponent;
-      console.log(self.currentTabComponent);
     }
   },
   components: {

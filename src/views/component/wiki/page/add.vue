@@ -63,7 +63,7 @@ export default {
         toolbarVisibleWithoutSelection: true,
         toolbarSticky: true
       },
-      model: 'Edit Your Content Here!',
+      model: '欢迎使用 Soul 任务管理系统！',
       mod: '',
       loaded: false,
       ing: 0
@@ -83,23 +83,23 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
-    self.page = self.$route.params.page;
-    self.draft = self.$route.params.draft;
     self.mod = self.$route.name;
     if (self.mod === 'EditDraft') {
+      self.draft = self.$route.params.draft;
       self.draft_get();
     } else if(self.mod === 'AddPage') {
+      self.page = self.$route.params.page;
       self.loaded = true;
     }
   },
-  created() {
+  updated: function () {
     let self = this;
     setInterval(function() {
-      if (self.list.length > 0) {
+      if (self.list.length > 0 && self.ing !== 1) {
         self.ing = 1;
         self.list.length = 0;
         if (self.draft.length === 8) {
@@ -109,9 +109,6 @@ export default {
         }
       }
     }, 1000)
-  },
-  updated: function () {
-    let self = this;
     self.loaded = true;
   },
   methods: {
@@ -128,13 +125,16 @@ export default {
       let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1 }
       http.post(self.urls.page_draft_add.format(self.team, self.space), data).then(function (response) {
         self.draft = response.data.uuid;
+        self.ing = 2;
       });
     },
     update: function () {
       let self = this;
       let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: false, space_uuid: self.space }
       http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
-        self.draft = response.data.draft_uuid;
+        if(response.data && response.data.draft_uuid) {
+          self.draft = response.data.draft_uuid;
+        }
         self.ing = 2;
       });
     },
