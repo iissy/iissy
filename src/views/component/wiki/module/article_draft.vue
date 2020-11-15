@@ -9,7 +9,7 @@
         <div style="flex: 0 0 auto;">
           <b-icon icon="pencil-square"/></div>
         <div style="flex: 0 0 auto;margin-left: 5px;">
-          <router-link :to="{ name: 'EditDraft', params: { team: team, space: space, draft: item.uuid } }">编辑</router-link>
+          <router-link :to="{ name: 'EditPage', params: { team: team, space: space, draft: item.uuid } }">编辑</router-link>
         </div>
         <PublishButton style="margin-left: 10px;" title="发布"/>
       </div>

@@ -4,6 +4,7 @@ import Space from "@/views/wiki/space";
 import Page from "@/views/wiki/page";
 import Draft from "@/views/wiki/draft";
 import AddPage from "@/views/wiki/add_page";
+import EditPage from "@/views/wiki/edit_page";
 
 let wiki = [
     {
@@ -39,8 +40,8 @@ let wiki = [
     }, {
         path: '/main/team/:team/space/:space/draft/:draft/edit',
         meta: { title: "编辑页面" },
-        name: 'EditDraft',
-        component: AddPage
+        name: 'EditPage',
+        component: EditPage
     }
 ]
 

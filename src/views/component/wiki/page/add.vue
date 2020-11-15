@@ -4,17 +4,18 @@
       <div style="flex: 1;" id="toolbarContainer"></div>
       <div style="flex: 0 0 auto;margin-right: 20px;" class="flex-row align-items-center">
         <div style="margin-right: 10px;">
-          <div v-if="ing === 1" style="color: #909090;">正在保存...</div>
+          <div v-if="ing === 0" style="color: #909090;">即将保存...</div>
+          <div v-else-if="ing === 1" style="color: #909090;">正在保存...</div>
           <div v-else-if="ing === 2" style="color: #909090;">草稿已保存</div>
         </div>
-        <AddAndBackButton @submit="back" title="返回" :fill="fill"/>
-        <AddAndBackButton @submit="publish" style="margin-left: 10px;" title="发布"/>
+        <AddAndBackButton @submit="back" title="返回" :fill="fill" :disabled="list && list.length > 0"/>
+        <AddAndBackButton @submit="publish" style="margin-left: 10px;" title="发布" :disabled="list && list.length > 0"/>
       </div>
     </div>
     <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" id="scrollable_container" class="flex-row">
       <div style="flex: 1;height: 100%;">
         <div style="flex: 0 0 auto;padding: 20px 60px 0 60px;">
-          <input type="text" class="title" v-model="title">
+          <input type="text" class="title" v-model="title" placeholder="我的标题">
         </div>
         <froala :tag="'textarea'" :config="config" v-model="model"/>
       </div>
@@ -66,19 +67,21 @@ export default {
       model: '欢迎使用 Soul 任务管理系统！',
       mod: '',
       loaded: false,
-      ing: 0
+      ing: -1
     }
   },
   watch: {
     model() {
       let self = this;
       if (self.loaded) {
+        self.ing = 0;
         self.list.push(true);
       }
     },
     title() {
       let self = this;
       if (self.loaded) {
+        self.ing = 0;
         self.list.push(true);
       }
     }
@@ -88,15 +91,16 @@ export default {
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
     self.mod = self.$route.name;
-    if (self.mod === 'EditDraft') {
+    if (self.mod === 'EditPage') {
       self.draft = self.$route.params.draft;
       self.draft_get();
     } else if(self.mod === 'AddPage') {
       self.page = self.$route.params.page;
+      self.$parent.page = self.page;
       self.loaded = true;
     }
   },
-  updated: function () {
+  mounted() {
     let self = this;
     setInterval(function() {
       if (self.list.length > 0 && self.ing !== 1) {
@@ -108,13 +112,16 @@ export default {
           self.save();
         }
       }
-    }, 1000)
+    }, 3000)
+  },
+  updated: function () {
+    let self = this;
     self.loaded = true;
   },
   methods: {
     back: function () {
       let self = this;
-      if (self.mod === 'EditDraft') {
+      if (self.mod === 'EditPage') {
         router.push({ name:'Draft', params: { team: self.team, space: self.space, draft: self.draft } });
       } else if(self.mod === 'AddPage') {
         router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
@@ -153,6 +160,7 @@ export default {
         self.model = response.data.content;
         self.draft = response.data.uuid;
         self.page = response.data.page_uuid;
+        self.$parent.page = self.page;
       });
     }
   },

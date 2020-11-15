@@ -35,7 +35,9 @@ export default {
   methods: {
     add: function () {
       let self = this;
-      router.push({ name: 'AddPage', params: { team: self.team, space: self.space, page: self.page } });
+      if (self.$route.name !== 'AddPage') {
+        router.push({ name: 'AddPage', params: { team: self.team, space: self.space, page: self.page } });
+      }
     }
   },
   components: {

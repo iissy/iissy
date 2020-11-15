@@ -112,14 +112,14 @@ export default {
 </script>
 
 <style scoped>
-#catalog { flex: 0 0 300px;border-right: 1px solid #dedede; }
+#catalog { flex: 0 0 300px;border-right: 1px solid #dedede;width: 300px; }
 .tool { margin-top: 20px; }
 .tool .tool-header { color: #909090;margin-bottom: 5px; }
-.tool .tool-item { padding: 5px 0 5px 10px;cursor: pointer;border-radius: 3px; }
-.tool .tool-item a,.page-item a { display: block; }
+.tool .tool-item { padding: 0 0 0 10px;cursor: pointer;border-radius: 3px;line-height: 40px; }
+.tool .tool-item a,.page-item a { display: block;overflow: hidden;white-space: nowrap;min-width: 0;text-overflow: ellipsis; }
 .tool .tool-item:hover { background-color: #e9e9e9; }
 .tool .tool-item.active { background-color: rgba(51,143,229,0.1); }
-.page-item { flex: 0 0 auto;padding: 5px 10px;cursor: pointer; }
+.page-item { flex: 0 0 auto;padding: 0 10px;cursor: pointer;line-height: 30px; }
 .page-item.active,.page-item:hover { background-color: #e8e8e8;border-radius: 3px; }
 .page-item.active { font-weight: 600; }
 </style>
