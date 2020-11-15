@@ -2,7 +2,11 @@
   <div class="flex-column" style="flex: 1;min-width: 1280px;">
     <div style="flex: 0 0 40px;background-color: #f8f8f8;" class="flex-row align-items-center">
       <div style="flex: 1;" id="toolbarContainer"></div>
-      <div style="flex: 0 0 auto;margin-right: 20px;">
+      <div style="flex: 0 0 auto;margin-right: 20px;" class="flex-row align-items-center">
+        <div style="margin-right: 10px;">
+          <div v-if="ing === 1" style="color: #909090;">正在保存...</div>
+          <div v-else-if="ing === 2" style="color: #909090;">草稿已保存</div>
+        </div>
         <AddAndBackButton @submit="back" title="返回" :fill="fill"/>
         <AddAndBackButton @submit="publish" style="margin-left: 10px;" title="发布"/>
       </div>
@@ -61,7 +65,8 @@ export default {
       },
       model: 'Edit Your Content Here!',
       mod: '',
-      loaded: false
+      loaded: false,
+      ing: 0
     }
   },
   watch: {
@@ -95,6 +100,7 @@ export default {
     let self = this;
     setInterval(function() {
       if (self.list.length > 0) {
+        self.ing = 1;
         self.list.length = 0;
         if (self.draft.length === 8) {
           self.update();
@@ -111,7 +117,11 @@ export default {
   methods: {
     back: function () {
       let self = this;
-      router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
+      if (self.mod === 'EditDraft') {
+        router.push({ name:'Draft', params: { team: self.team, space: self.space, draft: self.draft } });
+      } else if(self.mod === 'AddPage') {
+        router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
+      }
     },
     save: function () {
       let self = this;
@@ -125,6 +135,7 @@ export default {
       let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: false, space_uuid: self.space }
       http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
         self.draft = response.data.draft_uuid;
+        self.ing = 2;
       });
     },
     publish: function () {

@@ -15,7 +15,8 @@ import Header from './component/common/header';
 import Menu from './component/common/menu';
 import overview from '@/views/component/workbench/overview';
 import dashboard from '@/views/component/workbench/dashboard';
-// import http from "@/scripts/http";
+import filters from '@/views/component/workbench/filters';
+import hours from '@/views/component/workbench/hours';
 
 export default {
   data: function () {
@@ -28,28 +29,24 @@ export default {
       this.shift();
     }
   },
-  mounted: function () {
+  created: function () {
     let self = this;
     self.shift();
   },
-  // created: function () {
-  //   let self = this;
-  //   let data = { name: 'soul', logo: '' };
-  //   http.post(self.urls.team_create, data).then(function (response) {
-  //     console.log(response.data.status)
-  //   });
-  // },
   methods: {
     shift: function () {
       let self = this;
       self.currentTabComponent = self.$route.params.type || self.currentTabComponent;
+      console.log(self.currentTabComponent);
     }
   },
   components: {
     Header,
     Menu,
     overview,
-    dashboard
+    dashboard,
+    filters,
+    hours
   }
 };
 </script>

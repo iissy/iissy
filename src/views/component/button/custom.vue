@@ -1,5 +1,5 @@
 <template>
-  <div style="display: inline-block;box-shadow: none;outline: none;">
+  <div style="box-shadow: none;outline: none;">
     <div  style="box-shadow: none;outline: none;" class="button" :class="{disabled: disabled, fill: fill}" v-on:click="onsubmit">{{title}}</div>
   </div>
 </template>

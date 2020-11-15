@@ -21,7 +21,7 @@ export default {
       items: [
         { uuid: 'overview', name: '概览' },
         { uuid: 'dashboard', name: '仪表盘' },
-        { uuid: 'filter', name: '筛选器' },
+        { uuid: 'filters', name: '筛选器' },
         { uuid: 'hours', name: '工时' }
       ]
     }

@@ -33,16 +33,12 @@ export default {
   },
   created () {
     let self = this;
-    self.space_list();
-  },
-  mounted() {
-    let self = this;
     self.team = self.$route.params.team;
+    self.space_list();
   },
   methods: {
     space_list: function () {
       let self = this;
-      self.team = self.$route.params.team;
       http.get(self.urls.space_list.format(self.team)).then(function (response) {
         self.spaces = response.data.spaces;
       });
