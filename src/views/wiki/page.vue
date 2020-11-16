@@ -55,7 +55,7 @@ export default {
   methods: {
     page_get: function () {
       let self = this;
-      http.get(self.urls.page_get.format(self.team, self.page)).then(function (response) {
+      http.get(self.urls.page_get.format(self.team, self.space, self.page)).then(function (response) {
         self.item = response.data;
         self.loaded = true;
       });

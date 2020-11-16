@@ -7,7 +7,10 @@
       </div>
       <div style="flex: 0 0 auto;" class="flex-row">
         <div style="flex: 0 0 auto;"><b-icon icon="pencil-square"/></div>
-        <div style="flex: 0 0 auto;margin-left: 5px;">编辑</div></div>
+        <div style="flex: 0 0 auto;margin-left: 5px;">
+          <router-link :to="{ name: 'EditPage', params: { team: team, space: space, page: item.uuid } }">编辑</router-link>
+        </div>
+      </div>
     </div>
     <div style="flex: 1;background-color: #ffffff;padding: 30px;" class="flex-column">
       <div style="font-size: 28px;font-weight: 800;">{{ item.title }}</div>
@@ -24,6 +27,7 @@ export default {
   data() {
     return {
       team: '',
+      space: '',
       user: {}
     }
   },
@@ -33,6 +37,7 @@ export default {
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
+    self.space = self.$route.params.space;
     self.user_get();
   },
   methods: {

@@ -91,13 +91,17 @@ export default {
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
     self.mod = self.$route.name;
-    if (self.mod === 'EditPage') {
+    if (self.mod === 'EditDraft') {
       self.draft = self.$route.params.draft;
       self.draft_get();
     } else if(self.mod === 'AddPage') {
       self.page = self.$route.params.page;
       self.$parent.page = self.page;
       self.loaded = true;
+    } else if(self.mod === 'EditPage') {
+      self.page = self.$route.params.page;
+      self.$parent.page = self.page;
+      self.page_get();
     }
   },
   mounted() {
@@ -121,9 +125,11 @@ export default {
   methods: {
     back: function () {
       let self = this;
-      if (self.mod === 'EditPage') {
+      if (self.mod === 'EditDraft') {
         router.push({ name:'Draft', params: { team: self.team, space: self.space, draft: self.draft } });
       } else if(self.mod === 'AddPage') {
+        router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
+      } else if(self.mod === 'EditPage') {
         router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.page } });
       }
     },
@@ -161,6 +167,13 @@ export default {
         self.draft = response.data.uuid;
         self.page = response.data.page_uuid;
         self.$parent.page = self.page;
+      });
+    },
+    page_get: function () {
+      let self = this;
+      http.get(self.urls.page_get.format(self.team, self.space, self.page)).then(function (response) {
+        self.title = response.data.title;
+        self.model = response.data.content;
       });
     }
   },

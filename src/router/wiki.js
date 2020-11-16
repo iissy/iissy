@@ -38,9 +38,14 @@ let wiki = [
         name: 'AddPage',
         component: AddPage
     }, {
-        path: '/main/team/:team/space/:space/draft/:draft/edit',
+        path: '/main/team/:team/space/:space/page/:page/edit',
         meta: { title: "编辑页面" },
         name: 'EditPage',
+        component: EditPage
+    }, {
+        path: '/main/team/:team/space/:space/draft/:draft/edit',
+        meta: { title: "编辑页面" },
+        name: 'EditDraft',
         component: EditPage
     }
 ]

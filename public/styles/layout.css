@@ -33,3 +33,5 @@ div input,div textarea { box-shadow: none!important; }
 
 #article table,#article th,#article td { border: 1px solid #e8e8e8; }
 #article td { line-height: 30px;padding: 0 5px; }
+#scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-element) { display: none; }
+#scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-view) { display: none; }
