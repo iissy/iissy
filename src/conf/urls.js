@@ -17,6 +17,7 @@ let urls = {
     page_draft_update: '/api/team/{0}/space/{1}/draft/{2}/update',
     drafts: '/api/team/{0}/space/{1}/drafts',
     draft_get: '/api/team/{0}/space/{1}/draft/{2}',
+    draft_delete: '/api/team/{0}/space/{1}/draft/{2}/delete',
 
     issue_type_get: '/api/team/{0}/issue_type/{1}/get',
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',

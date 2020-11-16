@@ -175,9 +175,14 @@ export default {
     page_get: function () {
       let self = this;
       http.get(self.urls.page_get.format(self.team, self.space, self.page)).then(function (response) {
-        self.title = response.data.title;
-        self.model = response.data.content;
-        self.version = response.data.version;
+        if (response.data && response.data.draft_uuid && response.data.draft_uuid.length === 8) {
+          self.draft = response.data.draft_uuid;
+          self.draft_get();
+        } else {
+          self.title = response.data.title;
+          self.model = response.data.content;
+          self.version = response.data.version;
+        }
       });
     }
   },

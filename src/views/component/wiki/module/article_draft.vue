@@ -6,16 +6,26 @@
         <div style="flex: 0 0 auto;margin-left: 5px;">主页</div>
       </div>
       <div style="flex: 0 0 auto;" class="flex-row align-items-center">
-        <div style="flex: 0 0 auto;">
-          <b-icon icon="pencil-square"/></div>
-        <div style="flex: 0 0 auto;margin-left: 5px;">
-          <router-link :to="{ name: 'EditDraft', params: { team: team, space: space, draft: item.uuid } }">编辑</router-link>
+        <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row align-items-center op-article" @click="edit">
+          <div style="flex: 0 0 auto;color:inherit;">
+            <b-icon icon="pencil-square"/></div>
+          <div style="flex: 0 0 auto;margin-left: 5px;color:inherit;">
+            编辑
+          </div>
         </div>
-        <PublishButton style="margin-left: 10px;" title="发布"/>
+        <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row align-items-center op-article" @click="del">
+          <div style="flex: 0 0 auto;color:inherit;">
+            <b-icon icon="x-octagon"/></div>
+          <div style="flex: 0 0 auto;margin-left: 5px;color:inherit;">
+            删除草稿
+          </div>
+        </div>
+        <PublishButton v-if="item.status === 1" style="margin-left: 10px;" title="发布" @submit="update"/>
+        <PublishButton v-if="item.status === 2" style="margin-left: 10px;" title="更新" @submit="update"/>
       </div>
     </div>
     <div style="flex: 1;background-color: #ffffff;padding: 30px;" class="flex-column">
-      <div style="font-size: 28px;font-weight: 800;">{{ item.title }}</div>
+      <div :class="{unnamed: !item.title}" style="font-size: 28px;font-weight: 800;">{{ item.title || '未命名' }}</div>
       <div style="color: #909090;margin-top: 5px;">最后编辑于 {{ item.updated_time | formatTime }}</div>
       <div style="margin-top: 20px;" v-html="item.content"></div>
     </div>
@@ -24,6 +34,8 @@
 
 <script>
 import PublishButton from '@/views/component/button/custom';
+import router from "@/router";
+import http from "@/scripts/http";
 
 export default {
   data() {
@@ -41,6 +53,27 @@ export default {
     self.space = self.$route.params.space;
   },
   methods: {
+    edit: function () {
+      let self = this;
+      let params = { team: self.team, space: self.space, draft: self.item.uuid }
+      router.push({ name:'EditDraft', params: params });
+    },
+    del: function () {
+      let self = this;
+      http.post(self.urls.draft_delete.format(self.team, self.space, self.item.uuid)).then(function (response) {
+        if (response.data.status === true) {
+          router.push({ name:'Space', params: { team: self.team, space: self.space } });
+        }
+      });
+    },
+    update: function () {
+      let self = this;
+      let data = { title: self.item.title, content: self.item.content, page_uuid: self.item.page_uuid, status: self.item.status, is_published: true, space_uuid: self.space, from_version: self.item.from_version };
+      http.post(self.urls.page_draft_update.format(self.team, self.space, self.item.uuid), data).then(function (response) {
+        let params = { team: self.team, space: self.space, page: response.data.page_uuid };
+        router.push({ name:'Page', params: params });
+      });
+    }
   },
   components: {
     PublishButton
@@ -50,4 +83,7 @@ export default {
 
 <style scoped>
 #article { height: 100%; }
+.op-article { cursor: pointer; }
+.op-article:hover { color: #17C4BB; }
+.unnamed { color: #dedede; }
 </style>
