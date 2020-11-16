@@ -26,8 +26,8 @@ import http from "@/scripts/http";
 export default {
   data() {
     return {
-      team: '',
-      space: '',
+      team: '-',
+      space: '-',
       user: {}
     }
   },
