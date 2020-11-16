@@ -67,7 +67,9 @@ export default {
       model: '欢迎使用 Soul 任务管理系统！',
       mod: '',
       loaded: false,
-      ing: -1
+      ing: -1,
+      status: 1,
+      version: 0
     }
   },
   watch: {
@@ -101,6 +103,7 @@ export default {
     } else if(self.mod === 'EditPage') {
       self.page = self.$route.params.page;
       self.$parent.page = self.page;
+      self.status = 2;
       self.page_get();
     }
   },
@@ -135,7 +138,7 @@ export default {
     },
     save: function () {
       let self = this;
-      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1 }
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: self.status, from_version: self.version }
       http.post(self.urls.page_draft_add.format(self.team, self.space), data).then(function (response) {
         self.draft = response.data.uuid;
         self.ing = 2;
@@ -143,7 +146,7 @@ export default {
     },
     update: function () {
       let self = this;
-      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: false, space_uuid: self.space }
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: self.status, is_published: false, space_uuid: self.space, from_version: self.version }
       http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
         if(response.data && response.data.draft_uuid) {
           self.draft = response.data.draft_uuid;
@@ -153,7 +156,7 @@ export default {
     },
     publish: function () {
       let self = this;
-      let data = { title: self.title, content: self.model, page_uuid: self.page, status: 1, is_published: true, space_uuid: self.space }
+      let data = { title: self.title, content: self.model, page_uuid: self.page, status: self.status, is_published: true, space_uuid: self.space, from_version: self.version }
       http.post(self.urls.page_draft_update.format(self.team, self.space, self.draft), data).then(function (response) {
         let params = { team: self.team, space: self.space, page: response.data.page_uuid };
         router.push({ name:'Page', params: params });
@@ -174,6 +177,7 @@ export default {
       http.get(self.urls.page_get.format(self.team, self.space, self.page)).then(function (response) {
         self.title = response.data.title;
         self.model = response.data.content;
+        self.version = response.data.version;
       });
     }
   },
