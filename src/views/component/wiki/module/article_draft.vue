@@ -15,7 +15,8 @@
         </div>
         <div style="flex: 0 0 auto;margin-left: 10px;" class="flex-row align-items-center op-article" @click="del">
           <div style="flex: 0 0 auto;color:inherit;">
-            <b-icon icon="x-octagon"/></div>
+            <b-icon icon="x" scale="1.5"/>
+          </div>
           <div style="flex: 0 0 auto;margin-left: 5px;color:inherit;">
             删除草稿
           </div>
@@ -58,13 +59,25 @@ export default {
       let params = { team: self.team, space: self.space, draft: self.item.uuid }
       router.push({ name:'EditDraft', params: params });
     },
-    del: function () {
+    del() {
       let self = this;
-      http.post(self.urls.draft_delete.format(self.team, self.space, self.item.uuid)).then(function (response) {
-        if (response.data.status === true) {
-          router.push({ name:'Space', params: { team: self.team, space: self.space } });
+      this.$bvModal.msgBoxConfirm('此操作不可撤销，是否确定？', {
+        title: '删除草稿',
+        okVariant: 'danger',
+        okTitle: '删除',
+        cancelTitle: '取消',
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
+      }).then(value => {
+        if (value) {
+          http.post(self.urls.draft_delete.format(self.team, self.space, self.item.uuid)).then(function (response) {
+            if (response.data.status === true) {
+              router.push({ name:'Space', params: { team: self.team, space: self.space } });
+            }
+          });
         }
-      });
+      }).catch(err => {console.log(err);})
     },
     update: function () {
       let self = this;
@@ -84,6 +97,6 @@ export default {
 <style scoped>
 #article { height: 100%; }
 .op-article { cursor: pointer; }
-.op-article:hover { color: #17C4BB; }
+.op-article:hover { color: #000000; }
 .unnamed { color: #dedede; }
 </style>
