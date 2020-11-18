@@ -15,8 +15,7 @@ export default {
   data: function () {
     return {
       team: '',
-      space: '',
-      pages: []
+      space: ''
     };
   },
   components: {
@@ -26,16 +25,13 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
-    self.page_list();
+    self.page_get();
   },
   methods: {
-    page_list: function () {
+    page_get: function () {
       let self = this;
-      http.get(self.urls.pages.format(self.team, self.space)).then(function (response) {
-        self.pages = response.data.pages;
-        if (self.pages && self.pages.length > 0) {
-          router.push({ name:'Page', params: { team: self.team, space: self.space, page: self.pages[0].uuid } });
-        }
+      http.get(self.urls.home_page_get.format(self.team, self.space)).then(function (response) {
+        router.push({ name:'Page', params: { team: self.team, space: self.space, page: response.data.uuid } });
       });
     }
   }

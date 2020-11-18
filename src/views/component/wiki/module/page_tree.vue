@@ -36,7 +36,6 @@ export default {
   name: 'PageTree',
   data() {
     return {
-      loaded: false
     }
   },
   props: {
