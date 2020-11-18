@@ -82,7 +82,7 @@ export default {
     self.space = self.$route.params.space;
     self.page = self.$route.params.page;
     self.draft_list();
-    // self.page_list();
+    self.page_list();
     self.space_list();
   },
   created() {

@@ -36,15 +36,18 @@ export default {
   name: 'PageTree',
   data() {
     return {
+      team: '-',
+      space: '-',
+      loaded: false
     }
   },
   props: {
-    team: String,
-    space: String,
     tree: Object,
     selected: {
       default: false
     }
+  },
+  created() {
   },
   methods: {
   },
