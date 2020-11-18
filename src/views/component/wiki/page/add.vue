@@ -64,7 +64,7 @@ export default {
         toolbarVisibleWithoutSelection: true,
         toolbarSticky: true
       },
-      model: '欢迎使用 Soul 任务管理系统！',
+      model: '',
       mod: '',
       loaded: false,
       ing: -1,

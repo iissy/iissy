@@ -25,7 +25,7 @@ Vue.use(Router);
 let Index = [
     {
         path: '/',
-        meta: { title: "爱斯园 - 任务文档管理系统" },
+        meta: { title: "爱斯园 - Soul 项目管理系统" },
         component: Master
     }, {
         path: '/main',
