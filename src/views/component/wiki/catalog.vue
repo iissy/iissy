@@ -4,7 +4,7 @@
       <div v-b-toggle.sidebar style="flex: 0 0 auto;margin-left: 20px;outline: none;cursor: pointer;">
         <b-icon icon="list" scale="1.5"/>
       </div>
-      <div style="flex: 1;margin-left: 10px;font-weight: bold;">新员工培训文档</div>
+      <div style="flex: 1;margin-left: 10px;font-weight: bold;">{{ spaceName }}</div>
       <div style="flex: 0 0 auto;margin-right: 20px;">
         <b-icon icon="gear-fill" scale="1.2"/>
       </div>
@@ -56,7 +56,8 @@ export default {
       tree: {},
       drafts: [],
       inside: false,
-      loaded: false
+      loaded: false,
+      spaceName: ''
     }
   },
   props: {
@@ -78,6 +79,12 @@ export default {
       let self = this;
       http.get(self.urls.space_list.format(self.team)).then(function (response) {
         self.spaces = response.data.spaces;
+        for (let i=0;i<self.spaces.length;i++) {
+          if(self.spaces[i].uuid === self.space) {
+            self.spaceName = self.spaces[i].title;
+            break;
+          }
+        }
       });
     },
     page_tree_get: function () {
