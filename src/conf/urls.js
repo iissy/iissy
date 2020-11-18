@@ -34,7 +34,7 @@ let urls = {
     project_status: '/api/team/{0}/setting/project/status',
     project_add: '/api/team/{0}/add/project',
     project_update: '/api/team/{0}/project/{1}/update',
-    project_first_component: '/api/team/{0}/project/{1}/component/first',
+    project_first_component: '/api/team/{0}/project/{1}/components/first',
     project_template: '/api/team/{0}/project/{1}/setting/template',
     project_get: '/api/team/{0}/project/{1}/get',
     status_data_list: '/api/team/{0}/project/{1}/status_data_list',
@@ -48,7 +48,7 @@ let urls = {
     project_issue_type_flow: '/api/team/{0}/project/{1}/issue_type/{2}/get_project_issue_type_flow',
     project_issue_type_flow_submit: '/api/team/{0}/project/{1}/issue_type/{2}/update_project_issue_type_flow',
 
-    component_get: '/api/team/{0}/project/{1}/component/get/{2}',
+    component_get: '/api/team/{0}/project/{1}/component/{2}',
     components: '/api/team/{0}/project/{1}/components',
 
     next_status_list: '/api/team/{0}/project/{1}/issue_type/{2}/next_status_list/{3}',
@@ -57,10 +57,10 @@ let urls = {
 
     task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task',
     task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
-    task_get: '/api/team/{0}/project/{1}/issue_type/{2}/get/task/{3}',
-    task_change_assign: '/api/team/{0}/project/{1}/change_assign/task/{2}',
-    task_change_status: '/api/team/{0}/project/{1}/change_status/task/{2}',
-    task_change_priority: '/api/team/{0}/project/{1}/change_priority/task/{2}',
+    task_get: '/api/team/{0}/project/{1}/issue_type/{2}/task/{3}',
+    task_change_assign: '/api/team/{0}/project/{1}/task/{2}/change_assign',
+    task_change_status: '/api/team/{0}/project/{1}/task/{2}/change_status',
+    task_change_priority: '/api/team/{0}/project/{1}/task/{2}/change_priority',
     task_list_by_assign: '/api/team/{0}/task_list_by_assign',
     task_list_by_owner: '/api/team/{0}/task_list_by_owner',
     task_list_by_watcher: '/api/team/{0}/task_list_by_watcher',
