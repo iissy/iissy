@@ -12,8 +12,8 @@ import CenterRobot from '../views/center/robot';
 import Logout from '../views/center/logout';
 import MainRedirect from '@/views/workbench/redirect';
 
-import ProjectComponent from './project.js';
-import IssueTypeComponent from './issue_type.js';
+import Project from './project.js';
+import IssueType from './issue_type.js';
 import Ex from './help.js';
 import Component from './component.js'
 import Wiki from './wiki.js'
@@ -22,7 +22,7 @@ import Team from './team.js'
 
 Vue.use(Router);
 
-const index = [
+let Index = [
     {
         path: '/',
         meta: { title: "爱斯园 - 任务文档管理系统" },
@@ -70,14 +70,7 @@ const index = [
     }
 ];
 
-let routes = index.concat(ProjectComponent)
-routes = routes.concat(IssueTypeComponent)
-routes = routes.concat(Ex)
-routes = routes.concat(Component)
-routes = routes.concat(Wiki)
-routes = routes.concat(Commit)
-routes = routes.concat(Team)
-
+let routes = Index.concat(Project, IssueType, Ex, Component, Wiki, Commit, Team);
 export default new Router({
     mode: 'history',
     routes: routes
