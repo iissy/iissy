@@ -110,9 +110,12 @@ export default {
           if (page.uuid === self.page) {
             tree.opened = true;
             self.inside = true;
-            break;
           } else {
             self.find_page(page);
+          }
+
+          if (self.inside) {
+            break;
           }
         }
       }
