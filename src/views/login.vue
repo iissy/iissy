@@ -22,6 +22,9 @@
           <div class="flex-row align-items-center">
             <input type="password" v-model="s_password" class="login-name" placeholder="Password" autocomplete="off"/>
           </div>
+          <div style="margin-top: 30px;color: #909090;" class="flex-row align-items-center justify-content-center">
+            演示版本，点击登录直接进入系统
+          </div>
         </div>
         <div style="flex: 0 0 48px;background-color: #f0f0f0;" class="flex-row align-items-center">
           <div style="flex: 1;background-color: #e0e0e0;height: 100%;padding-left: 20px;border-radius: 0 0 0 5px;" class="flex-row align-items-center">
