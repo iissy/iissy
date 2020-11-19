@@ -12,8 +12,7 @@
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-left: 10px;position: relative;" class="flex-row">
-<!--      <Space title="新员工培训文档" desc="最近页面更新于 8 小时前"/>-->
-<!--      <Space style="margin-left: 10px;" title="开发技术文档" desc="最近页面更新于 8 小时前"/>-->
+      <Dashboard/>
     </div>
 
     <div class="flex-row" style="border-bottom: 1px solid #dedede;padding: 0 20px 5px 0;margin: 20px 10px 10px 10px;">
@@ -36,9 +35,7 @@
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-left: 10px;position: relative;" class="flex-row">
-<!--      <Space title="国庆活动项目" desc="最近页面更新于 8 小时前"/>-->
-<!--      <Space style="margin-left: 10px;" title="卓灵科技" desc="最近页面更新于 8 小时前"/>-->
-<!--      <Space style="margin-left: 10px;" title="程序员网址导航" desc="最近页面更新于 8 小时前"/>-->
+      <Project v-for="p in projects" :project="p" :key="p.uuid"/>
     </div>
 
     <div class="flex-row" style="border-bottom: 1px solid #dedede;padding: 0 20px 5px 0;margin: 20px 10px 10px 10px;">
@@ -67,18 +64,22 @@
 </template>
 
 <script>
+import Dashboard from '@/views/component/workbench/dashboard_item';
+import Project from '@/views/component/project/module/project';
 import Space from '@/views/component/wiki/module/space';
 import http from "@/scripts/http";
 
 export default {
   data() {
     return {
+      projects: [],
       spaces: []
     }
   },
   created () {
     let self = this;
     self.team = self.$route.params.team;
+    self.project_list();
     self.space_list();
   },
   methods: {
@@ -87,9 +88,17 @@ export default {
       http.get(self.urls.space_list.format(self.team)).then(function (response) {
         self.spaces = response.data.spaces;
       });
+    },
+    project_list: function() {
+      let self = this;
+      http.post(self.urls.team_project_list.format(self.team)).then(function (response) {
+        self.projects = response.data;
+      });
     }
   },
   components: {
+    Dashboard,
+    Project,
     Space
   }
 }
