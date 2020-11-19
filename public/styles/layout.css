@@ -9,6 +9,8 @@
 .flex-column { display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }
 .align-items-center { -webkit-align-items: center;align-items: center; }
 .justify-content-center { justify-content: center;-webkit-justify-content: center; }
+.align-items-flex-end { -webkit-align-items: flex-end;align-items: flex-end; }
+.justify-content-flex-end { justify-content: flex-end;-webkit-justify-content: flex-end; }
 
 /*bootstrap 样式重写*/
 .rightMain .table-bordered { border: 1px solid #e7ecf1; }
