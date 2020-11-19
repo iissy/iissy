@@ -39,8 +39,7 @@ export default {
       list: [],
       draft: '',
       config: {
-        plugins: [
-        ],
+        placeholderText: '',
         toolbarButtons: {
           'moreText': {
             'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', '|',
