@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-.enter a { font-size: 30px;font-weight: 500;color: #333333;opacity: 0.3;letter-spacing: 2px;text-shadow: #000000 1px 1px 1px; }
-.enter-icon { color: #333333;opacity: 0.3;letter-spacing: 2px;text-shadow: #000000 1px 1px 1px; }
+.enter a { font-size: 30px;font-weight: 500;color: #333333;opacity: 0.5;letter-spacing: 2px;text-shadow: #000000 1px 1px 1px; }
+.enter-icon { color: #333333;opacity: 0.5;letter-spacing: 2px;text-shadow: #000000 1px 1px 1px; }
 .copyright div,.copyright a { color: #909090;font-size: 12px;opacity: 0.6; }
 </style>
