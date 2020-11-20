@@ -9,31 +9,13 @@
       </div>
       <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;">{{ ProjectName }}</div>
     </div>
-    <div style="margin-top: 20px;">
-      <div style="font-size: 16px;">查看项目</div>
-      <div style="color: #909090;">允许成员浏览当前项目，包括工作项，迭代，筛选器等信息</div>
-      <div class="table">
-        <div class="table-row-header">
-          <div class="th">以下成员域拥有此操作权限</div>
-        </div>
-        <div class="table-row">
-          <div class="td">项目管理员</div>
-          <div class="td last">
-            <svg t="1600646500002" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8350" width="12" height="12" data-spm-anchor-id="a313x.7781069.0.i15"><path d="M781.947 195.412L512.553 464.806 243.159 195.412c-12.887-12.887-33.78-12.887-46.667 0s-12.887 33.78 0 46.667l269.394 269.394-269.394 269.394c-12.887 12.887-12.887 33.78 0 46.667s33.78 12.887 46.667 0L512.553 558.14l269.394 269.394c12.887 12.887 33.78 12.887 46.667 0s12.887-33.78 0-46.667L559.22 511.473l269.394-269.394c12.887-12.887 12.887-33.78 0-46.667s-33.78-12.887-46.667 0z" p-id="8351"></path></svg>
-          </div>
-        </div>
-        <div class="table-row">
-          <div class="td" style="flex: 0 0 300px;">
-            <b-form-select v-model="read_project_perm" :options="options" @change="read_project_selected"></b-form-select>
-          </div>
-        </div>
-      </div>
-    </div>
+    <PermissionItem title="查看项目" desc="允许成员浏览当前项目，包括工作项，迭代，筛选器等信息"/>
   </div>
 </template>
 
 <script>
 import http from "@/scripts/http";
+import PermissionItem from '@/views/component/common/block/permission_item';
 
 export default {
   data: function () {
@@ -97,6 +79,9 @@ export default {
       let self = this;
       console.log(self.read_project_perm);
     }
+  },
+  components: {
+    PermissionItem
   }
 };
 </script>
