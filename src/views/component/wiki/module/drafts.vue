@@ -6,7 +6,7 @@
     <div style="padding: 0 20px;">
       <div class="page-item" v-for="d in drafts" :key="d.uuid" :class="{active: d.uuid === selected }">
         <router-link :class="{unnamed: !d.title}" :to="{ name: 'Draft', params: { team: team, space: space, draft: d.uuid } }" :title="d.status === 1 ? '未发布':''">
-          <div style="flex: 1;" class="flex-row align-items-center">
+          <div style="flex: 1;padding-left: 10px;" class="flex-row align-items-center">
             <div style="flex: 1;overflow: hidden;white-space: nowrap;min-width: 0;text-overflow: ellipsis;">
               {{ d.title || '未命名' }}
             </div>
