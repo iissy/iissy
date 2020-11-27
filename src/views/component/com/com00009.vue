@@ -250,6 +250,6 @@ export default {
 <style scoped>
 #com00009Line > div { position: relative;display: block; }
 .overview .left { flex: 0 0 26%;width: 26%;max-width: 400px;min-width: 260px; }
-.overview .middle { flex: 0 0 1%;max-width: 1%;width: 1%; }
+.overview .middle { flex: 0 0 1%;max-width: 10px;width: 1%; }
 .overview .right { flex: 1 1 73%;width: 73%;min-width: 73%; }
 </style>
