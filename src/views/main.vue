@@ -17,6 +17,7 @@ import overview from '@/views/component/workbench/overview';
 import dashboard from '@/views/component/workbench/dashboard';
 import filters from '@/views/component/workbench/filters';
 import hours from '@/views/component/workbench/hours';
+// import http from "@/scripts/http";
 
 export default {
   data: function () {
@@ -33,6 +34,13 @@ export default {
     let self = this;
     self.shift();
   },
+  // mounted: function () {
+  //   let self = this;
+  //   let data = { name: 'soul', logo: '/images/touxiang.jpg', team_name: '飞天团队', email: 'pinbor@iissy.com', password: 'S0se4r5t2', phone: '+18576769788', phone_code: '123456', team_role: 'admin' };
+  //   http.post(self.urls.team_create, data).then(function (response) {
+  //     console.log(response.data.status)
+  //   });
+  // },
   methods: {
     shift: function () {
       let self = this;

@@ -48,7 +48,7 @@ export default {
   data: function () {
     return {
       currentIndex: parseInt(this.tagIndex),
-      team: 'GASVXduN',
+      team: 'JZ98PYDE',
       isOpen: true
     };
   },
