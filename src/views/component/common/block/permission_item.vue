@@ -1,14 +1,14 @@
 <template>
   <div style="margin-top: 30px;">
-    <div style="font-size: 16px;">{{ title }}</div>
-    <div style="color: #909090;">{{ desc }}</div>
-    <div class="table" style="margin-top: 10px;">
+    <div style="font-size: 16px;">{{ group.title }}</div>
+    <div style="color: #909090;">{{ group.desc }}</div>
+    <div class="table" style="margin-top: 15px;">
       <div class="perm-row-header">
         <div class="th">以下成员域拥有此操作权限</div>
       </div>
-      <div class="perm-row">
-        <div class="td">项目管理员</div>
-        <div class="td" style="flex: 0 0 60px;">
+      <div v-for="g in exist" :key="g.uuid" class="perm-row">
+        <div class="td">{{ g.name }}</div>
+        <div v-if="!g.read_only" class="td" style="flex: 0 0 60px;">
           <b-icon icon="x" scale="1.5"></b-icon>
         </div>
       </div>
@@ -17,12 +17,12 @@
           <div ref="permBody" class="select" :class="{open: visible}">
             <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
             <div style="position: absolute;" ref="layer" class="group g-container">
-              <div v-for="item in items" :key="item.uuid">
+              <div v-for="item in group.items" :key="item.uuid">
                 <div style="color: #909090;" class="domain-group-header">
                   {{ item.title }}
                 </div>
                 <div style="background-color: #ffffff;">
-                  <div class="domain-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid)">
+                  <div class="domain-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid, g.type, group.code)">
                     <span>{{ g. name }}</span>
                     <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span></div>
                 </div>
@@ -43,31 +43,63 @@ export default {
     };
   },
   props: {
-    title: String,
-    desc: String,
-    items: Array
+    group: Object
   },
   methods: {
-    set: function (u) {
+    set: function (u, t, c) {
       console.log(u);
+      console.log(t);
+      console.log(c);
     },
     show () {
       let self = this;
       self.visible = true
       document.addEventListener('click', self.hidePanel, false)
     },
-
     hide () {
       let self = this;
       self.visible = false
       document.removeEventListener('click', self.hidePanel, false)
     },
-
     hidePanel (e) {
       let self = this;
       if (!self.$refs.permBody.contains(e.target)) {
         self.hide()
       }
+    }
+  },
+  computed: {
+    exist: function () {
+      let self = this;
+      let result = [];
+      for (let i=0;i<self.group.exist.length;i++) {
+        let domain = self.group.exist[i];
+        let ignore = false;
+        switch (domain.type) {
+          case 1:
+            domain.name = '成员xxx'
+            break;
+          case 3:
+            domain.name = '所有人'
+            break;
+          case 11:
+            domain.name = '项目成员'
+            break;
+          case 16:
+            domain.name = '项目负责人'
+            break;
+          default:
+            ignore = true;
+            break;
+        }
+
+        if (ignore) {
+          continue;
+        }
+        result.push(domain);
+      }
+
+      return result;
     }
   }
 };

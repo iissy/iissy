@@ -9,8 +9,8 @@
       </div>
       <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;">{{ ProjectName }}</div>
     </div>
-    <PermissionItem title="查看项目" desc="允许成员浏览当前项目，包括工作项，筛选器，报表等信息" :items="maps.read.items"/>
-    <PermissionItem title="管理项目" desc="允许管理当前项目并更新项目的配置信息" :items="maps.write.items"/>
+    <PermissionItem :group="maps.read"/>
+    <PermissionItem :group="maps.write"/>
   </div>
 </template>
 
@@ -26,24 +26,26 @@ export default {
       project: '',
       ProjectName: '',
       maps: {
-        read: { code: 1102, label: 'browse_project', items: [{uuid: 'aaaaaaaa', title: '角色', groups: [{uuid: 'dddddddd', name: '所有成员', desc: '当前团队所有成员'}, {uuid: 'tttttttt', name: '项目成员'}]},
-            {uuid: 'bbbbbbbb', title: '成员', isMember: true, groups:
-                  [{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'},
-                    {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}]}] },
-        write: { code: 1101, label: 'manage_project', items: [{uuid: 'aaaaaaaa', title: '角色', groups: [{uuid: 'dddddddd', name: '所有成员', desc: '当前团队所有成员'}, {uuid: 'tttttttt', name: '项目成员'}]},
-            {uuid: 'bbbbbbbb', title: '成员', isMember: true, groups:
-                  [{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'},
-                    {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}]}] }
+        read: { code: 1102, title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', label: 'browse_project', exist: [], roles:
+              {uuid: 'role', title: '角色', groups: [{uuid: 's3', type: 3, name: '所有成员', desc: '当前团队所有成员'}, {uuid: 's16', type: 16, name: '项目负责人'}]},
+            members: {uuid: 'member', title: '成员', groups:[{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'}, {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}], isMember: true}
+        },
+        write: { code: 1101, title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', label: 'browse_project', exist: [], roles:
+              {uuid: 'role', title: '角色', groups: [{uuid: 's3', type: 3, name: '所有成员', desc: '当前团队所有成员'}, {uuid: 's16', type: 16, name: '项目负责人'}]},
+          members: {uuid: 'member', title: '成员', groups:[{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'}, {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}], isMember: true}
+        }
       }
     };
   },
   mounted() {
+
   },
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
     self.project = this.$route.params.project;
-    this.GetProjectName();
+    self.GetProjectName();
+    self.GetUserDomainGroups();
   },
   methods: {
     GetProjectName: function() {
@@ -54,6 +56,55 @@ export default {
           self.ProjectName = response.data.name;
         });
       }
+    },
+    GetUserDomainGroups: function () {
+      let self = this;
+      let data = []
+      for(let key in self.maps) {
+        data.push(self.maps[key].code);
+      }
+      http.post(self.urls.project_user_domain_group.format(self.team, self.project), data).then(function (response) {
+        if(response.data && response.data.length > 0) {
+          for (let i=0;i<response.data.length;i++) {
+            let rule = response.data[i];
+            for(let key in self.maps) {
+              let item = self.maps[key];
+              if (rule.permission === item.code) {
+                let types = [];
+                for (let m=0;m<rule.groups.length;m++) {
+                  let domain = rule.groups[m];
+                  types.push(domain.type);
+                  for(let n=0;n<domain.params.length;n++) {
+                    let param = domain.params[n];
+                    let o = { uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only };
+                    item.exist.push(o)
+                  }
+
+                  let groups = []
+                  for (let x=0;x<item.roles.groups.length;x++) {
+                    let g = item.roles.groups[x];
+                    let include = false;
+                    for (let y=0;y<types.length;y++) {
+                      if (g.type === types[y]) {
+                        include = true;
+                        break;
+                      }
+                    }
+                    if (!include) {
+                      groups.push(g);
+                    }
+                  }
+                  item.roles.groups = groups;
+
+                  item.items = [];
+                  item.items.push(item.roles);
+                  item.items.push(item.members);
+                }
+              }
+            }
+          }
+        }
+      });
     }
   },
   components: {
