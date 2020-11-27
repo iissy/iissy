@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 20px;">
+  <div style="margin-top: 30px;">
     <div style="font-size: 16px;">{{ title }}</div>
     <div style="color: #909090;">{{ desc }}</div>
     <div class="table" style="margin-top: 10px;">
@@ -14,31 +14,17 @@
       </div>
       <div class="perm-row">
         <div class="content">
-          <div class="select" :class="{open: opened}">
-            <input @focus="opened=true" @blur="opened=false" type="text" placeholder="搜索角色、用户组、部门、成员">
+          <div ref="permBody" class="select" :class="{open: visible}">
+            <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
             <div style="position: absolute;" ref="layer" class="group g-container">
-              <div>
+              <div v-for="item in items" :key="item.uuid">
                 <div style="color: #909090;" class="domain-group-header">
-                  标题
+                  {{ item.title }}
                 </div>
                 <div style="background-color: #ffffff;">
-                  <div class="domain-item" @click="set('asf')" data-value="golang">golang</div>
-                  <div class="domain-item" data-value="html">html</div>
-                  <div class="domain-item" data-value="css">css</div>
-                  <div class="domain-item" data-value="jQuery">jQuery</div>
-                  <div class="domain-item" data-value="javascript">javascript</div>
-                </div>
-              </div>
-              <div>
-                <div style="color: #909090;" class="domain-group-header">
-                  另一波
-                </div>
-                <div style="background-color: #ffffff;">
-                  <div class="domain-item" data-value="golang">golang</div>
-                  <div class="domain-item" data-value="html">html</div>
-                  <div class="domain-item" data-value="css">css</div>
-                  <div class="domain-item" data-value="jQuery">jQuery</div>
-                  <div class="domain-item" data-value="javascript">javascript</div>
+                  <div class="domain-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid)">
+                    <span>{{ g. name }}</span>
+                    <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span></div>
                 </div>
               </div>
             </div>
@@ -53,16 +39,35 @@
 export default {
   data: function () {
     return {
-      opened: false
+      visible: false
     };
   },
   props: {
     title: String,
-    desc: String
+    desc: String,
+    items: Array
   },
   methods: {
     set: function (u) {
       console.log(u);
+    },
+    show () {
+      let self = this;
+      self.visible = true
+      document.addEventListener('click', self.hidePanel, false)
+    },
+
+    hide () {
+      let self = this;
+      self.visible = false
+      document.removeEventListener('click', self.hidePanel, false)
+    },
+
+    hidePanel (e) {
+      let self = this;
+      if (!self.$refs.permBody.contains(e.target)) {
+        self.hide()
+      }
     }
   }
 };
@@ -124,7 +129,7 @@ export default {
 /*下拉框展开时调用动画slide-down*/
 /*transform-origin设置缩放下拉框的基点位置*/
 .content .select.open .group {
-  max-height: 200px;
+  max-height: 170px;
   -webkit-animation: slide-down .3s ease-in;
   transition: max-height .3s ease-in;
   transform-origin: 50% 0;

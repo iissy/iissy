@@ -9,7 +9,8 @@
       </div>
       <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;">{{ ProjectName }}</div>
     </div>
-    <PermissionItem title="查看项目" desc="允许成员浏览当前项目，包括工作项，迭代，筛选器等信息"/>
+    <PermissionItem title="查看项目" desc="允许成员浏览当前项目，包括工作项，筛选器，报表等信息" :items="maps.read.items"/>
+    <PermissionItem title="管理项目" desc="允许管理当前项目并更新项目的配置信息" :items="maps.write.items"/>
   </div>
 </template>
 
@@ -23,27 +24,20 @@ export default {
       dropdownActive: false,
       team: '',
       project: '',
-      isLabel: true,
       ProjectName: '',
-      readerValue: '',
-      read_project_perm: null,
-      options: [
-        { value: null, text: 'Please select an option' },
-        { value: 'a', text: 'This is First option' },
-        { value: 'b', text: 'Selected Option' },
-        { value: { C: '3PO' }, text: 'This is an option with object value' },
-        { value: 'd', text: 'This one is disabled', disabled: true }
-      ]
+      maps: {
+        read: { code: 1102, label: 'browse_project', items: [{uuid: 'aaaaaaaa', title: '角色', groups: [{uuid: 'dddddddd', name: '所有成员', desc: '当前团队所有成员'}, {uuid: 'tttttttt', name: '项目成员'}]},
+            {uuid: 'bbbbbbbb', title: '成员', isMember: true, groups:
+                  [{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'},
+                    {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}]}] },
+        write: { code: 1101, label: 'manage_project', items: [{uuid: 'aaaaaaaa', title: '角色', groups: [{uuid: 'dddddddd', name: '所有成员', desc: '当前团队所有成员'}, {uuid: 'tttttttt', name: '项目成员'}]},
+            {uuid: 'bbbbbbbb', title: '成员', isMember: true, groups:
+                  [{uuid: 'rrrrrrrr', name: '刘德华', email: 'zhangzhangzhang@iissy.com'},
+                    {uuid: 'cccccccc', name: '何敏', email: 'tom@iissy.com'}]}] }
+      }
     };
   },
   mounted() {
-    document.addEventListener('click', (e) => {
-      if (this.$refs.reader) {
-        if (!this.$refs.reader.contains(e.target)) {
-          this.dropdownActive = false
-        }
-      }
-    })
   },
   created: function () {
     let self = this;
@@ -52,20 +46,6 @@ export default {
     this.GetProjectName();
   },
   methods: {
-    blurClick: function () {
-      if (this.readerValue) {
-        this.isLabel = false;
-      } else {
-        this.isLabel = true;
-      }
-    },
-    focusClick: function () {
-      this.isLabel = false;
-    },
-    dropdown: function()
-    {
-      this.dropdownActive = !this.dropdownActive;
-    },
     GetProjectName: function() {
       let self = this;
       self.ProjectName = self.$route.params.title
@@ -74,10 +54,6 @@ export default {
           self.ProjectName = response.data.name;
         });
       }
-    },
-    read_project_selected: function () {
-      let self = this;
-      console.log(self.read_project_perm);
     }
   },
   components: {
