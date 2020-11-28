@@ -17,7 +17,7 @@
           <div ref="permBody" class="select" :class="{open: visible}">
             <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
             <div style="position: absolute;" ref="layer" class="group g-container">
-              <div v-for="item in group.items" :key="item.uuid">
+              <div v-for="item in items" :key="item.uuid">
                 <div style="color: #909090;" class="domain-group-header">
                   {{ item.title }}
                 </div>
@@ -43,7 +43,8 @@ export default {
     };
   },
   props: {
-    group: Object
+    group: Object,
+    role_members: Array
   },
   methods: {
     set: function (u, t, c) {
@@ -72,8 +73,8 @@ export default {
     exist: function () {
       let self = this;
       let result = [];
-      for (let i=0;i<self.group.exist.length;i++) {
-        let domain = self.group.exist[i];
+      for (let i=0;i<self.group.roles.exist.length;i++) {
+        let domain = self.group.roles.exist[i];
         let ignore = false;
         switch (domain.type) {
           case 1:
@@ -99,6 +100,72 @@ export default {
         result.push(domain);
       }
 
+      return result;
+    },
+    items: function () {
+      let self = this;
+      let types = [];
+      let result = [];
+      let existRoles = [];
+      for (let m = 0; m < self.group.groups.length; m++) {
+        let domain = self.group.groups[m];
+        let type = domain.type;
+        let ignore = false;
+
+        switch (type) {
+          case 1:
+            for (let n = 0; n < domain.params.length; n++) {
+              let param = domain.params[n];
+              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
+              existRoles.push(o)
+            }
+            break;
+          case 3:
+          case 11:
+            for (let n = 0; n < domain.params.length; n++) {
+              let param = domain.params[n];
+              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
+              existRoles.push(o)
+            }
+            break;
+          case 16:
+            for (let n = 0; n < domain.params.length; n++) {
+              let param = domain.params[n];
+              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
+              existRoles.push(o)
+            }
+            break;
+          default:
+            ignore = true;
+            break;
+        }
+
+        if (ignore) {
+          continue;
+        }
+
+        types.push(type);
+      }
+      self.group.roles.exist = existRoles;
+
+      // 去掉已经添加的角色成员
+      let groups = []
+      for (let x = 0; x < self.group.roles.groups.length; x++) {
+        let g = self.group.roles.groups[x];
+        let include = false;
+        for (let y = 0; y < types.length; y++) {
+          if (g.type === types[y]) {
+            include = true;
+            break;
+          }
+        }
+        if (!include) {
+          groups.push(g);
+        }
+      }
+      self.group.roles.groups = groups;
+      result.push(self.group.roles);
+      result.push(self.group.members);
       return result;
     }
   }
