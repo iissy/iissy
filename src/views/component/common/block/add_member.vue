@@ -58,7 +58,8 @@ export default {
     };
   },
   props: {
-    curMember: Array
+    curMember: Array,
+    role: String
   },
   components: {
     AddProjectButton,
@@ -106,7 +107,7 @@ export default {
         }
       }
 
-      let data = { members: self.members, role_uuid: 'Gs53iKGo' }
+      let data = { members: self.members, role_uuid: self.role }
       http.post(self.urls.project_member_add.format(self.team, self.project), data).then(function (response) {
         if(response.data.status) {
           self.$parent.get_role_members();

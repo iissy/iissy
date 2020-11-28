@@ -6,13 +6,13 @@
         <Search placeholder="搜索成员" />
       </div>
       <div style="flex: 1;text-align: right;display: flex;">
-        <AddMember :curMember="items"></AddMember>
+        <AddMember :role="selectedRole" :curMember="items"></AddMember>
       </div>
     </div>
     <div class="flex-row members" style="flex:1;border-top: 1px solid #e8e8e8;">
       <div style="flex: 0 0 200px;border-right: 1px solid #e8e8e8;">
-        <div class="role active">
-          项目成员
+        <div v-for="r in roles" :key="r.uuid" class="role active" :class="{active: r.uuid === selectedRole}">
+          {{ r.name }}
         </div>
       </div>
       <div style="flex: 1;margin: -1px -1px 0 -1px;">
@@ -50,7 +50,9 @@ export default {
     return {
       team: '',
       project: '',
-      items: []
+      items: [],
+      roles: [],
+      selectedRole: ''
     };
   },
   components: {
@@ -67,8 +69,28 @@ export default {
   methods: {
     get_role_members: function() {
       let self = this;
+      self.roles = [];
       http.post(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
         self.items = response.data;
+        let roleUUIDs = []
+        for (let i=0;i<self.items.length;i++) {
+          let included = false;
+          let item = self.items[i];
+          for (let x=0;x<roleUUIDs.length;x++) {
+            if (roleUUIDs[x] === item.role_uuid) {
+              included = true;
+              break;
+            }
+          }
+          if (!included) {
+            let obj = { uuid: item.role_uuid, name: item.role_name };
+            self.roles.push(obj);
+          }
+          roleUUIDs.push(item.role_uuid);
+        }
+        if (self.roles.length > 0) {
+          self.selectedRole = self.roles[0].uuid;
+        }
       });
     }
   }
