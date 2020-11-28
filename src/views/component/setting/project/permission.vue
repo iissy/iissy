@@ -93,8 +93,8 @@ export default {
               item.roles.groups.push(role_member.role);
               for (let x=0;x<role_member.members.length;x++) {
                 let user = role_member.members[x];
-                let m = { uuid: user, type: 1, name: user };
-                item.members.groups.push(m);
+                user.type = 1;
+                item.members.groups.push(user);
               }
             }
           }
