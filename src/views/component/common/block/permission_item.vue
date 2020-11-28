@@ -6,7 +6,7 @@
       <div class="perm-row-header">
         <div class="th">以下成员域拥有此操作权限</div>
       </div>
-      <div v-for="g in exist" :key="g.uuid" class="perm-row">
+      <div v-for="g in template.roles.exist" :key="g.uuid" class="perm-row">
         <div class="td">{{ g.name }}</div>
         <div v-if="!g.read_only" class="td" style="flex: 0 0 60px;">
           <b-icon icon="x" scale="1.5"></b-icon>
@@ -22,7 +22,7 @@
                   {{ item.title }}
                 </div>
                 <div style="background-color: #ffffff;">
-                  <div class="domain-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid, g.type, group.code)">
+                  <div class="domain-item" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid, g.type, group.permission)">
                     <span>{{ g. name }}</span>
                     <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span>
                     <span v-if="!!g.desc" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.desc }})</span>
@@ -41,7 +41,13 @@
 export default {
   data: function () {
     return {
-      visible: false
+      visible: false,
+      everyone: {uuid: 's3', name: '所有成员', desc: '当前团队所有成员', type: 'everyone', param: ''},
+      project_assign: {uuid: 's16', name: '项目负责人', type: 'project_assign', param: ''},
+      template: {
+        roles: {uuid: 'role', title: '角色', groups: [], exist: [] },
+        members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true}
+      }
     };
   },
   props: {
@@ -72,38 +78,6 @@ export default {
     }
   },
   computed: {
-    exist: function () {
-      let self = this;
-      let result = [];
-      for (let i=0;i<self.group.roles.exist.length;i++) {
-        let domain = self.group.roles.exist[i];
-        let ignore = false;
-        switch (domain.type) {
-          case 1:
-            domain.name = '成员xxx'
-            break;
-          case 3:
-            domain.name = '所有人'
-            break;
-          case 11:
-            domain.name = '项目成员'
-            break;
-          case 16:
-            domain.name = '项目负责人'
-            break;
-          default:
-            ignore = true;
-            break;
-        }
-
-        if (ignore) {
-          continue;
-        }
-        result.push(domain);
-      }
-
-      return result;
-    },
     items: function () {
       let self = this;
       let types = [];
@@ -111,30 +85,47 @@ export default {
       let existRoles = [];
       for (let m = 0; m < self.group.groups.length; m++) {
         let domain = self.group.groups[m];
-        let type = domain.type;
+        let type = '';
         let ignore = false;
 
-        switch (type) {
+        switch (domain.type) {
           case 1:
+            type = 'single_user';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
-              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
+              let o = {uuid: param.uuid, name: '', param: param.param, type: type, read_only: param.read_only};
               existRoles.push(o)
             }
             break;
           case 3:
-          case 11:
+            type = 'everyone';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
-              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
-              existRoles.push(o)
+              self.everyone.read_only = param.read_only;
+              existRoles.push(self.everyone);
+            }
+            break;
+          case 11:
+            type = 'role';
+            for (let n = 0; n < domain.params.length; n++) {
+              let param = domain.params[n];
+              for (let x = 0; x < self.group.roles.length; x++) {
+                let role = self.group.roles[x];
+                if (role.uuid === param.param) {
+                  role.param = param.param;
+                  role.read_only = param.read_only;
+                  existRoles.push(role);
+                  break;
+                }
+              }
             }
             break;
           case 16:
+            type = 'project_assign';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
-              let o = {uuid: param.uuid, param: param.param, type: domain.type, read_only: param.read_only};
-              existRoles.push(o)
+              self.project_assign.read_only = param.read_only;
+              existRoles.push(self.project_assign);
             }
             break;
           default:
@@ -148,12 +139,22 @@ export default {
 
         types.push(type);
       }
-      self.group.roles.exist = existRoles;
+      self.template.roles.exist = existRoles;
+
+      // 添加角色
+      let roles = []
+      roles.push(self.everyone);
+      roles.push(self.project_assign);
+
+      for (let x = 0; x < self.group.roles.length; x++) {
+        let role = self.group.roles[x];
+        roles.push(role);
+      }
 
       // 去掉已经添加的角色成员
       let groups = []
-      for (let x = 0; x < self.group.roles.groups.length; x++) {
-        let g = self.group.roles.groups[x];
+      for (let x = 0; x < roles.length; x++) {
+        let g = roles[x];
         let include = false;
         for (let y = 0; y < types.length; y++) {
           if (g.type === types[y]) {
@@ -165,9 +166,10 @@ export default {
           groups.push(g);
         }
       }
-      self.group.roles.groups = groups;
-      result.push(self.group.roles);
-      result.push(self.group.members);
+      self.template.roles.groups = groups;
+      self.template.members.groups = self.group.members;
+      result.push(self.template.roles);
+      result.push(self.template.members);
       return result;
     }
   }
@@ -224,7 +226,7 @@ export default {
   transition: max-height .3s ease-out;
 }
 .content .select .group .domain-group-header { padding: 0 15px;line-height: 34px;background-color: #f0f0f0; }
-.content .select .group .domain-item { padding: 0 15px;line-height: 34px;cursor: pointer; }
+.content .select .group .domain-item { padding: 0 15px;line-height: 34px;cursor: pointer;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; }
 .content .select .domain-item:hover { background-color: rgba(51,143,229,0.1); }
 
 /*下拉框展开时调用动画slide-down*/

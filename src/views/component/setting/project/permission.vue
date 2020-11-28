@@ -26,16 +26,8 @@ export default {
       project: '',
       ProjectName: '',
       maps: {
-        read: { code: 1102, title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', label: 'browse_project',
-          roles: {uuid: 'role', title: '角色', groups: [{uuid: 's3', type: 3, name: '所有成员', desc: '当前团队所有成员'}, {uuid: 's16', type: 16, name: '项目负责人'}], exist: []},
-          members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true},
-          groups: []
-        },
-        write: { code: 1101, title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', label: 'browse_project',
-          roles: {uuid: 'role', title: '角色', groups: [{uuid: 's3', type: 3, name: '所有成员', desc: '当前团队所有成员'}, {uuid: 's16', type: 16, name: '项目负责人'}], exist: []},
-          members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true},
-          groups: []
-        }
+        read: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [] },
+        write: { code: 1101, permission: 'manage_project', title: '管理项目', desc: '管理当前项目并更新项目的配置信息', groups: [], roles: [], members: [] }
       },
       role_members: [],
       loaded: false
@@ -77,7 +69,6 @@ export default {
             }
           }
         }
-
         self.GetRoleMembers();
       });
     },
@@ -89,12 +80,12 @@ export default {
             let role_member = response.data.role_members[i];
             for (let key in self.maps) {
               let item = self.maps[key];
-              role_member.role.type = 11;
-              item.roles.groups.push(role_member.role);
+              role_member.role.type = 'role';
+              item.roles.push(role_member.role);
               for (let x=0;x<role_member.members.length;x++) {
                 let user = role_member.members[x];
-                user.type = 1;
-                item.members.groups.push(user);
+                user.type = 'single_user';
+                item.members.push(user);
               }
             }
           }
