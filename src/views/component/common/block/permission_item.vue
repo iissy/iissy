@@ -24,7 +24,9 @@
                 <div style="background-color: #ffffff;">
                   <div class="domain-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid, g.type, group.code)">
                     <span>{{ g. name }}</span>
-                    <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span></div>
+                    <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span>
+                    <span v-if="!!g.desc" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.desc }})</span>
+                  </div>
                 </div>
               </div>
             </div>
