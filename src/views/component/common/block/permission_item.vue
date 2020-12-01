@@ -100,6 +100,7 @@ export default {
       let self = this;
       let types = [];
       let result = [];
+      let memberUUIDS = [];
       self.exist = [];
       for (let m = 0; m < self.group.groups.length; m++) {
         let domain = self.group.groups[m];
@@ -111,8 +112,18 @@ export default {
             type = 'single_user';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
-              let o = {uuid: param.uuid, permission: param.uuid, name: '', param: param.param, type: type, read_only: param.read_only};
-              self.exist.push(o)
+              memberUUIDS.push(param.param);
+              // let o = {uuid: param.uuid, permission: param.uuid, name: param.name, param: param.uuid, type: type, read_only: param.read_only};
+              for (let x = 0; x < self.group.members.length; x++) {
+                let member = self.group.members[x];
+                if (member.uuid === param.param) {
+                  member.permission = param.uuid;
+                  // member.param = param.param;
+                  member.read_only = param.read_only;
+                  self.exist.push(member);
+                  break;
+                }
+              }
             }
             break;
           case 3:
@@ -132,7 +143,7 @@ export default {
                 let role = self.group.roles[x];
                 if (role.uuid === param.param) {
                   role.permission = param.uuid;
-                  role.param = param.param;
+                  // role.param = param.param;
                   role.read_only = param.read_only;
                   self.exist.push(role);
                   break;
@@ -166,15 +177,23 @@ export default {
       let roles = []
       roles.push(self.everyone);
       roles.push(self.project_assign);
-
       for (let x = 0; x < self.group.roles.length; x++) {
         let role = self.group.roles[x];
         role.param = role.uuid;
         roles.push(role);
       }
 
+      // 添加成员
+      let members = [];
+      for (let x = 0; x < self.group.members.length; x++) {
+        let member = self.group.members[x];
+        member.param = member.uuid;
+        members.push(member);
+      }
+
+      let template = self.template;
       // 去掉已经添加的角色成员
-      let groups = []
+      let role_groups = []
       for (let x = 0; x < roles.length; x++) {
         let g = roles[x];
         let include = false;
@@ -185,19 +204,28 @@ export default {
           }
         }
         if (!include) {
-          groups.push(g);
+          role_groups.push(g);
         }
       }
-      let template = self.template;
-      template.roles.groups = groups;
+      template.roles.groups = role_groups;
       result.push(template.roles);
 
-      let members = [];
-      for (let i=0;i<self.group.members.length;i++) {
-        let member = self.group.members[i];
-        members.push(member);
+      // 去掉已经添加的成员
+      let member_groups = [];
+      for (let i=0;i<members.length;i++) {
+        let member = members[i];
+        let include = false;
+        for (let y = 0; y < memberUUIDS.length; y++) {
+          if (member.uuid === memberUUIDS[y]) {
+            include = true;
+            break;
+          }
+        }
+        if (!include) {
+          member_groups.push(member);
+        }
       }
-      template.members.groups = members;
+      template.members.groups = member_groups;
       result.push(template.members);
       return result;
     }
