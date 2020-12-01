@@ -91,6 +91,8 @@ export default {
             let role_member = response.data.role_members[i];
             for (let key in self.maps) {
               let item = self.maps[key];
+              item.roles = [];
+              item.members = [];
               role_member.role.type = 'role';
               item.roles.push(role_member.role);
               for (let x=0;x<role_member.members.length;x++) {

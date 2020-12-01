@@ -6,9 +6,9 @@
       <div class="perm-row-header">
         <div class="th">以下成员域拥有此操作权限</div>
       </div>
-      <div v-for="g in template.roles.exist" :key="g.uuid" class="perm-row">
+      <div v-for="g in exist" :key="g.uuid" class="perm-row">
         <div class="td">{{ g.name }}</div>
-        <div v-if="!g.read_only" class="td" style="flex: 0 0 60px;">
+        <div v-if="!g.read_only" class="td" style="flex: 0 0 60px;cursor: pointer;" @click="del(g.permission)">
           <b-icon icon="x" scale="1.5"></b-icon>
         </div>
       </div>
@@ -18,7 +18,7 @@
             <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
             <div style="position: absolute;" ref="layer" class="group g-container">
               <div v-for="item in items" :key="item.uuid">
-                <div v-if="item.groups.length > 0" style="color: #909090;" class="domain-group-header">
+                <div v-if="item.groups && item.groups.length > 0" style="color: #909090;" class="domain-group-header">
                   {{ item.title }}
                 </div>
                 <div style="background-color: #ffffff;">
@@ -49,7 +49,8 @@ export default {
       template: {
         roles: {uuid: 'role', title: '角色', groups: [], exist: [] },
         members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true}
-      }
+      },
+      exist: []
     };
   },
   props: {
@@ -67,6 +68,13 @@ export default {
       self.data.permission_rule.user_domain_param = u;
 
       http.post(self.urls.permission_rules_add.format(self.team), self.data).then(function () {
+        self.$parent.GetUserDomainGroups();
+      });
+    },
+    del: function (p) {
+      let self = this;
+      self.team = self.$route.params.team;
+      http.get(self.urls.permission_rule_delete.format(self.team, p)).then(function () {
         self.$parent.GetUserDomainGroups();
       });
     },
@@ -92,7 +100,7 @@ export default {
       let self = this;
       let types = [];
       let result = [];
-      let existRoles = [];
+      self.exist = [];
       for (let m = 0; m < self.group.groups.length; m++) {
         let domain = self.group.groups[m];
         let type = '';
@@ -103,16 +111,17 @@ export default {
             type = 'single_user';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
-              let o = {uuid: param.uuid, name: '', param: param.param, type: type, read_only: param.read_only};
-              existRoles.push(o)
+              let o = {uuid: param.uuid, permission: param.uuid, name: '', param: param.param, type: type, read_only: param.read_only};
+              self.exist.push(o)
             }
             break;
           case 3:
             type = 'everyone';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
+              self.everyone.permission = param.uuid;
               self.everyone.read_only = param.read_only;
-              existRoles.push(self.everyone);
+              self.exist.push(self.everyone);
             }
             break;
           case 11:
@@ -122,9 +131,10 @@ export default {
               for (let x = 0; x < self.group.roles.length; x++) {
                 let role = self.group.roles[x];
                 if (role.uuid === param.param) {
+                  role.permission = param.uuid;
                   role.param = param.param;
                   role.read_only = param.read_only;
-                  existRoles.push(role);
+                  self.exist.push(role);
                   break;
                 }
               }
@@ -134,8 +144,9 @@ export default {
             type = 'project_assign';
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
+              self.project_assign.permission = param.uuid;
               self.project_assign.read_only = param.read_only;
-              existRoles.push(self.project_assign);
+              self.exist.push(self.project_assign);
             }
             break;
           default:
@@ -149,7 +160,7 @@ export default {
 
         types.push(type);
       }
-      self.template.roles.exist = existRoles;
+      // self.template.roles.exist = existRoles;
 
       // 添加角色
       let roles = []
@@ -158,6 +169,7 @@ export default {
 
       for (let x = 0; x < self.group.roles.length; x++) {
         let role = self.group.roles[x];
+        role.param = role.uuid;
         roles.push(role);
       }
 
@@ -176,10 +188,17 @@ export default {
           groups.push(g);
         }
       }
-      self.template.roles.groups = groups;
-      self.template.members.groups = self.group.members;
-      result.push(self.template.roles);
-      result.push(self.template.members);
+      let template = self.template;
+      template.roles.groups = groups;
+      result.push(template.roles);
+
+      let members = [];
+      for (let i=0;i<self.group.members.length;i++) {
+        let member = self.group.members[i];
+        members.push(member);
+      }
+      template.members.groups = members;
+      result.push(template.members);
       return result;
     }
   }
