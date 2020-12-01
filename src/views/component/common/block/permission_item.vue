@@ -113,14 +113,11 @@ export default {
             for (let n = 0; n < domain.params.length; n++) {
               let param = domain.params[n];
               memberUUIDS.push(param.param);
-              // let o = {uuid: param.uuid, permission: param.uuid, name: param.name, param: param.uuid, type: type, read_only: param.read_only};
               for (let x = 0; x < self.group.members.length; x++) {
                 let member = self.group.members[x];
                 if (member.uuid === param.param) {
-                  member.permission = param.uuid;
-                  // member.param = param.param;
-                  member.read_only = param.read_only;
-                  self.exist.push(member);
+                  let o = {uuid: param.uuid, permission: param.uuid, name: member.name, type: type, read_only: param.read_only};
+                  self.exist.push(o);
                   break;
                 }
               }
