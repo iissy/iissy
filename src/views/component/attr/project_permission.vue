@@ -21,8 +21,8 @@ export default {
       team: '',
       project: '',
       maps: {
-        browse: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [] },
-        reports: { code: 1104, permission: 'view_project_reports', title: '查看项目报表', desc: '允许成员查看当前项目的数据报表', groups: [], roles: [], members: [] }
+        browse: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
+        reports: { code: 1104, permission: 'view_project_reports', title: '查看项目报表', desc: '允许成员查看当前项目的数据报表', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] }
       },
       role_members: [],
       loaded: false

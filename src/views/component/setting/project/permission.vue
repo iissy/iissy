@@ -26,8 +26,8 @@ export default {
       project: '',
       ProjectName: '',
       maps: {
-        read: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [] },
-        write: { code: 1101, permission: 'manage_project', title: '管理项目', desc: '管理当前项目并更新项目的配置信息', groups: [], roles: [], members: [] }
+        read: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
+        write: { code: 1101, permission: 'manage_project', title: '管理项目', desc: '管理当前项目并更新项目的配置信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] }
       },
       role_members: [],
       loaded: false

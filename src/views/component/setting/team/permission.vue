@@ -21,8 +21,8 @@ export default {
       team: '',
       project: '',
       maps: {
-        browse: { code: 4, permission: 'invite_member', title: '邀请团队成员', desc: '允许用户邀请新的团队成员，并在顶栏显示邀请团队成员的快捷入口', groups: [], roles: [], members: [] },
-        reports: { code: 1, permission: 'administer_team', title: '团队管理员', desc: '超级管理员权限，可以更改团队信息和团队权限', groups: [], roles: [], members: [] }
+        browse: { code: 4, permission: 'invite_member', title: '邀请团队成员', desc: '允许用户邀请新的团队成员，并在顶栏显示邀请团队成员的快捷入口', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] },
+        reports: { code: 1, permission: 'administer_team', title: '团队管理员', desc: '超级管理员权限，可以更改团队信息和团队权限', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] }
       },
       role_members: [],
       loaded: false

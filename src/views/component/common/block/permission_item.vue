@@ -182,8 +182,10 @@ export default {
 
       // 添加角色
       let roles = []
-      roles.push(self.everyone);
-      roles.push(self.project_assign);
+      for (let i=0;i<self.group.in_roles.length;i++) {
+        let key = self.group.in_roles[i];
+        roles.push(self[key]);
+      }
       for (let x = 0; x < self.group.roles.length; x++) {
         let role = self.group.roles[x];
         role.param = role.uuid;
