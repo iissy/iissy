@@ -46,6 +46,7 @@ export default {
       visible: false,
       everyone: {uuid: 's3', name: '所有成员', desc: '当前团队所有成员', type: 'everyone', param: ''},
       project_assign: {uuid: 's16', name: '项目负责人', type: 'project_assign', param: ''},
+      team_owner: {uuid: 's10', name: '团队负责人', type: 'team_owner', param: ''},
       template: {
         roles: {uuid: 'role', title: '角色', groups: [], exist: [] },
         members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true}
@@ -130,6 +131,15 @@ export default {
               self.everyone.permission = param.uuid;
               self.everyone.read_only = param.read_only;
               self.exist.push(self.everyone);
+            }
+            break;
+          case 10:
+            type = 'team_owner';
+            for (let n = 0; n < domain.params.length; n++) {
+              let param = domain.params[n];
+              self.team_owner.permission = param.uuid;
+              self.team_owner.read_only = param.read_only;
+              self.exist.push(self.team_owner);
             }
             break;
           case 11:

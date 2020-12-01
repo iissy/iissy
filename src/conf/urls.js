@@ -72,6 +72,7 @@ let urls = {
 
     permission_rules_add: '/api/team/{0}/permission_rules/add',
     permission_rule_delete: '/api/team/{0}/permission_rule/{1}/delete',
+    team_permission_rules: '/api/team/{0}/team_permission_rules',
 
     logout: '/api/logout',
 };
