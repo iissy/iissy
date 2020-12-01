@@ -9,8 +9,8 @@
       </div>
       <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;">{{ ProjectName }}</div>
     </div>
-    <PermissionItem v-if="loaded" :role_members="role_members" :group="maps.read"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :group="maps.write"/>
+    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.read"/>
+    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.write"/>
   </div>
 </template>
 
@@ -32,6 +32,17 @@ export default {
       role_members: [],
       loaded: false
     };
+  },
+  mounted() {
+    let self = this;
+    self.data = {
+      permission_rule: {
+        context_type: "project",
+        context_param: {
+          project_uuid: self.project
+        }
+      }
+    }
   },
   created: function () {
     let self = this;

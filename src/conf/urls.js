@@ -70,6 +70,8 @@ let urls = {
     department_add: '/api/team/{0}/setting/department/add',
     department_tree: '/api/team/{0}/setting/department/tree',
 
+    permission_rules_add: '/api/team/{0}/permission_rules/add',
+
     logout: '/api/logout',
 };
 

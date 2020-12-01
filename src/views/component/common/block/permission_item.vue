@@ -18,11 +18,11 @@
             <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
             <div style="position: absolute;" ref="layer" class="group g-container">
               <div v-for="item in items" :key="item.uuid">
-                <div style="color: #909090;" class="domain-group-header">
+                <div v-if="item.groups.length > 0" style="color: #909090;" class="domain-group-header">
                   {{ item.title }}
                 </div>
                 <div style="background-color: #ffffff;">
-                  <div class="domain-item" v-for="g in item.groups" :key="g.uuid" @click="set(g.uuid, g.type, group.permission)">
+                  <div class="domain-item" v-for="g in item.groups" :key="g.uuid" @click="add(g.param, g.type, group.permission)">
                     <span>{{ g. name }}</span>
                     <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span>
                     <span v-if="!!g.desc" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.desc }})</span>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import http from "@/scripts/http";
+
 export default {
   data: function () {
     return {
@@ -52,13 +54,21 @@ export default {
   },
   props: {
     group: Object,
-    role_members: Array
+    role_members: Array,
+    data: Object,
   },
   methods: {
-    set: function (u, t, c) {
-      console.log(u);
-      console.log(t);
-      console.log(c);
+    add: function (u, t, p) {
+      let self = this;
+      self.visible = false;
+      self.team = self.$route.params.team;
+      self.data.permission_rule.permission = p;
+      self.data.permission_rule.user_domain_type = t;
+      self.data.permission_rule.user_domain_param = u;
+
+      http.post(self.urls.permission_rules_add.format(self.team), self.data).then(function () {
+        self.$parent.GetUserDomainGroups();
+      });
     },
     show () {
       let self = this;
