@@ -1,21 +1,23 @@
 <template>
   <div style="width: 100%;height: 100%;" class="flex-row align-items-center justify-content-center">
-    <div style="position: absolute;width: 800px;height: 600px;background-color: #f0f0f0;overflow: hidden;" class="flex-row align-items-center justify-content-center">
-      <div style="position: absolute;color: rgba(255, 206, 86, 0.3);margin:-420px 0 0 -200px;">
-        <b-icon icon="circle-fill" scale="10"/>
-      </div>
-      <div style="position: absolute;color: rgba(75, 192, 192, 0.3);margin:-230px 0 0 -460px;">
-        <b-icon icon="circle-fill" scale="20"/>
-      </div>
-      <div style="position: absolute;color: rgba(255, 99, 132, 0.3);margin:300px 0 0 500px;">
-        <b-icon icon="circle-fill" scale="32"/>
-      </div>
-      <div style="position: absolute;color: rgba(153, 102, 255, 0.3);margin:260px 0 0 -50px;">
-        <b-icon icon="circle-fill" scale="18"/>
+    <div style="position: relative;width: 800px;height: 600px;background-color: #f0f0f0;overflow: hidden;" class="flex-row align-items-center justify-content-center">
+      <div style="position: absolute;width: 800px;height: 600px;">
+        <div style="position: absolute;color: rgba(255, 206, 86, 0.3);top: 80px;left: 280px;">
+          <b-icon icon="circle-fill" scale="12"/>
+        </div>
+        <div style="position: absolute;color: rgba(75, 192, 192, 0.3);top: 155px;left: 140px;">
+          <b-icon icon="circle-fill" scale="20"/>
+        </div>
+        <div style="position: absolute;color: rgba(255, 99, 132, 0.3);top: 480px;left: 650px;">
+          <b-icon icon="circle-fill" scale="32"/>
+        </div>
+        <div style="position: absolute;color: rgba(153, 102, 255, 0.3);top: 450px;left: 430px;">
+          <b-icon icon="circle-fill" scale="18"/>
+        </div>
       </div>
       <div style="position: absolute;width: 600px;height: 400px;background-color: #ffffff;border-radius: 5px;" class="enter flex-column justify-content-center">
         <div style="flex: 1;padding: 60px 60px;" class="flex-column">
-          <div style="" class="flex-row align-items-center">登录 Soul 项目管理系统</div>
+          <div style="font-size: 18px;" class="flex-row align-items-center">登录 Soul 项目管理系统</div>
           <div class="flex-row align-items-center" style="padding: 30px 0;">
             <input type="text" v-model="s_email" class="login-name" placeholder="Email" autocomplete="off"/>
           </div>
@@ -23,7 +25,7 @@
             <input type="password" v-model="s_password" class="login-name" placeholder="Password" autocomplete="off"/>
           </div>
           <div style="margin-top: 30px;color: #909090;" class="flex-row align-items-center justify-content-center">
-            演示版本，点击登录直接进入系统
+            演示版本，点击登录进入系统，只可浏览无法操作
           </div>
         </div>
         <div style="flex: 0 0 48px;background-color: #f0f0f0;" class="flex-row align-items-center">
