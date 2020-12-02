@@ -5,8 +5,24 @@
         <b-icon icon="list" scale="1.5"/>
       </div>
       <div style="flex: 1;margin-left: 10px;font-weight: bold;">{{ spaceName }}</div>
-      <div style="flex: 0 0 auto;margin-right: 20px;">
+      <div id="popover-space-settings" style="flex: 0 0 auto;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
         <b-icon icon="gear-fill" scale="1.2"/>
+        <b-popover
+            target="popover-space-settings"
+            placement="bottom"
+            triggers="focus">
+          <div class="flex-column" id="center">
+            <div class="menu-item">
+              <router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'info' }}">页面组信息</router-link>
+            </div>
+            <div class="menu-item">
+              <router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'permissions' }}">页面组权限</router-link>
+            </div>
+            <div class="menu-item">
+              <router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'recycle' }}">回收站</router-link>
+            </div>
+          </div>
+        </b-popover>
       </div>
     </div>
     <div style="overflow-y: auto;padding: 20px 0;">
@@ -71,8 +87,6 @@ export default {
     self.draft_list();
     self.page_tree_get();
     self.space_list();
-  },
-  created() {
   },
   methods: {
     space_list: function () {
@@ -155,4 +169,9 @@ export default {
 .tool .tool-item a,.page-item a { display: block;overflow: hidden;white-space: nowrap;min-width: 0;text-overflow: ellipsis; }
 .tool .tool-item:hover { background-color: #e9e9e9; }
 .tool .tool-item.active { background-color: rgba(51,143,229,0.1); }
+
+.menu-item { flex: 1;padding: 5px 10px;cursor: pointer;letter-spacing: 3px; }
+.menu-item a { display: block;text-decoration: none; }
+.menu-item:hover { background-color: #eff6fd;border-radius: 0.3rem; }
+.menu-item:hover a { color: inherit; }
 </style>

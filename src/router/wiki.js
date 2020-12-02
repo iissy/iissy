@@ -1,5 +1,6 @@
 import Wiki from "@/views/wiki/spaces";
 import WikiSetting from "@/views/setting/wiki_setting";
+import Settings from "@/views/wiki/settings";
 import Space from "@/views/wiki/space";
 import Page from "@/views/wiki/page";
 import Draft from "@/views/wiki/draft";
@@ -47,6 +48,11 @@ let wiki = [
         meta: { title: "编辑页面" },
         name: 'EditDraft',
         component: EditPage
+    }, {
+        path: '/main/team/:team/space/:space/settings/:type',
+        meta: { title: "页面组设置" },
+        name: 'SpaceSettings',
+        component: Settings
     }
 ]
 

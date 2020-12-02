@@ -22,7 +22,7 @@
           <b-button variant="outline-secondary" :to="{name:'Space', params: { team: team, space: item.uuid }}">查看页面组</b-button>
         </div>
         <div style="flex: 0 0 auto;margin-left: 20px;">
-          <b-button :active-class="style" variant="outline-secondary" :to="{name:'Space', params: { team: team, space: item.uuid }}">配置页面组权限</b-button>
+          <b-button :active-class="style" variant="outline-secondary" :to="{name:'SpaceSettings', params: { team: team, space: item.uuid, type: 'info' }}">配置页面组权限</b-button>
         </div>
       </div>
     </div>
