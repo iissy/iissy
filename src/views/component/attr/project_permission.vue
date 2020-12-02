@@ -55,10 +55,14 @@ export default {
         data.push(self.maps[key].code);
       }
       http.post(self.urls.project_user_domain_group.format(self.team, self.project), data).then(function (response) {
+        for (let key in self.maps) {
+          let item = self.maps[key];
+          item.groups = [];
+        }
+
         if(response.data && response.data.length > 0) {
           for (let key in self.maps) {
             let item = self.maps[key];
-            item.groups = [];
             for (let i = 0; i < response.data.length; i++) {
               let rules = response.data[i];
               if (rules.permission === item.code) {
