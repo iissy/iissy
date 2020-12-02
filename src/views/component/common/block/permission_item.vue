@@ -150,7 +150,6 @@ export default {
                 let role = self.group.roles[x];
                 if (role.uuid === param.param) {
                   role.permission = param.uuid;
-                  // role.param = param.param;
                   role.read_only = param.read_only;
                   self.exist.push(role);
                   break;
@@ -236,6 +235,7 @@ export default {
       }
       template.members.groups = member_groups;
       result.push(template.members);
+
       return result;
     }
   }

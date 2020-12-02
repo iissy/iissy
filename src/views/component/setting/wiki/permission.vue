@@ -52,6 +52,7 @@ export default {
             let rules = response.data[i];
             for (let key in self.maps) {
               let item = self.maps[key];
+              item.groups = [];
               if (rules.permission === item.code) {
                 item.groups = rules.groups;
                 break;
