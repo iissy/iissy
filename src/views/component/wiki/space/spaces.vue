@@ -10,7 +10,7 @@
         <div style="margin: 0 20px 0 5px;">Wiki 配置中心</div>
       </div>
     </div>
-    <div style="flex: 1;flex-direction: row;margin-top: 10px;position: relative;" class="flex-row">
+    <div style="flex: 1;flex-direction: row;position: relative;" class="flex-row flex-wrap">
       <Space v-for="space in spaces" :key="space.uuid" :space="space" desc="最近页面更新于 8 小时前"/>
     </div>
     <AddSpace/>

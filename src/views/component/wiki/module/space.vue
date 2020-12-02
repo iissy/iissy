@@ -1,5 +1,5 @@
 <template>
-  <div @click="goto" style="width: 250px;height: 175px;padding: 15px 20px 10px 20px;cursor: pointer;margin-right: 10px;" class="g-container flex-column">
+  <div @click="goto" style="width: 250px;height: 175px;padding: 15px 20px 10px 20px;cursor: pointer;margin-right: 10px;margin-top: 10px;" class="g-container flex-column">
     <div style="flex: 1;">
       <div style="flex: 0 0 auto;font-size: 16px;color: #333333;">{{ space.title }}</div>
       <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">{{ desc }}</div>
