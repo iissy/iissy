@@ -5,6 +5,7 @@
     </div>
     <Summary :desc="desc"/>
     <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
+    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
     <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
       project: '',
       maps: {
         browse: { code: 1102, permission: 'browse_project', title: '查看项目', desc: '允许成员浏览当前项目，包括工作项，筛选器，报表等信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
+        manage: { code: 1101, permission: 'manage_project', title: '管理项目', desc: '管理当前项目并更新项目的配置信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
         reports: { code: 1104, permission: 'view_project_reports', title: '查看项目报表', desc: '允许成员查看当前项目的数据报表', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] }
       },
       role_members: [],
