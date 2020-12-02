@@ -1,8 +1,8 @@
 <template>
   <div class="app-column">
-    <Header ref="Header"/>
+    <Header ref="Header" :page="page"/>
     <div class="flex-row rightMain">
-      <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 0 0 20px;">
+      <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 20px 0 20px;">
         <div class="flex-row align-items-center" style="flex: 0;width: 100%;margin-bottom: 10px;cursor: pointer;" @click="toSpace">
           <div style="color: #444444;">
             <b-icon icon="arrow-left-circle-fill" scale="1.5"/>
@@ -36,6 +36,7 @@ export default {
     return {
       team: '',
       space: '',
+      page: '',
       currentTabComponent: info,
       tagIndex: 1
     };
@@ -58,7 +59,7 @@ export default {
     self.space = self.$route.params.space;
     let type = this.$route.params.type;
     self.tag_switch(type);
-    // self.page_get();
+    self.page_get();
   },
   methods: {
     tag_switch: function (type) {
@@ -81,7 +82,7 @@ export default {
     page_get: function () {
       let self = this;
       http.get(self.urls.home_page_get.format(self.team, self.space)).then(function (response) {
-        router.push({ name:'Page', params: { team: self.team, space: self.space, page: response.data.uuid } });
+        self.page = response.data.uuid;
       });
     },
     toSpace: function () {
@@ -95,7 +96,7 @@ export default {
 <style scoped>
 .space-group-setting {  }
 .space-group-setting > div { padding: 5px 0 5px 10px; }
-.space-group-setting > div.active { flex: 0;width: 100%;background-color: #e8e8e8;color: #338fe5; }
+.space-group-setting > div.active { flex: 0;width: 100%;background-color: #e8e8e8;color: #338fe5;border-radius: 3px; }
 .space-group-setting div a { display: block; }
 .space-group-setting > div.active a { color: #338fe5; }
 </style>

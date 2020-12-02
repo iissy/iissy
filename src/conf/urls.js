@@ -10,6 +10,8 @@ let urls = {
     commit_overview: '/api/team/{0}/commit/overview',
 
     space_add: '/api/team/{0}/space_add',
+    space_get: '/api/team/{0}/space/{1}',
+    space_update: '/api/team/{0}/space/{1}/update',
     space_list: '/api/team/{0}/space_list',
     pages: '/api/team/{0}/space/{1}/pages',
     page_tree_get: '/api/team/{0}/space/{1}/page_tree_get',
