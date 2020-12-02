@@ -12,6 +12,9 @@
           <b-icon icon="x" scale="1.5"></b-icon>
         </div>
       </div>
+      <div class="perm-row flex-row" v-if="!exist || exist.length === 0">
+        <div class="td justify-content-center align-items-center" style="text-align: center;padding-left: 0;">暂未添加成员</div>
+      </div>
       <div class="perm-row">
         <div class="content">
           <div ref="permBody" class="select" :class="{open: visible}">
