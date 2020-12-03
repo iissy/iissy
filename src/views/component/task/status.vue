@@ -27,12 +27,12 @@ export default {
   data() {
     return {
       team: '',
-      project: '',
       statuses: []
     }
   },
   props: {
     status: Object,
+    project: String,
     issue_type: String,
     task_uuid: String
   },
@@ -46,7 +46,6 @@ export default {
   created() {
     let self = this;
     self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
     self.next_status_list();
   },
   methods: {

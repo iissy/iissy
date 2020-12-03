@@ -133,7 +133,7 @@ export default {
     },
     task_get: function (uuid) {
       let self = this;
-      let url = self.urls.task_get.format(self.team, 'none', 'none', uuid);
+      let url = self.urls.task_get.format(self.team, uuid);
       http.get(url).then(function (response) {
         self.task = response.data;
         self.task_completed = true;

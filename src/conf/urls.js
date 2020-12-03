@@ -62,7 +62,7 @@ let urls = {
 
     task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task',
     task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
-    task_get: '/api/team/{0}/project/{1}/issue_type/{2}/task/{3}',
+    task_get: '/api/team/{0}/task/{1}',
     task_change_assign: '/api/team/{0}/project/{1}/task/{2}/change_assign',
     task_change_status: '/api/team/{0}/project/{1}/task/{2}/change_status',
     task_change_priority: '/api/team/{0}/project/{1}/task/{2}/change_priority',

@@ -30,6 +30,7 @@ import Alert from '@/views/component/common/block/alert';
 export default {
   data() {
     return {
+      team: '',
       users: [],
       hasEmail: true
     }
@@ -37,7 +38,6 @@ export default {
   created() {
     let self = this;
     self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
     self.users_list();
   },
   methods: {
@@ -65,6 +65,7 @@ export default {
   },
   props: {
     user: Object,
+    project: String,
     task: String
   },
   components: {

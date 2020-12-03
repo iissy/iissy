@@ -35,18 +35,17 @@ export default {
   data() {
     return {
       team: '',
-      project: '',
       options: []
     }
   },
   props: {
+    project: String,
     priority: Object,
     task_uuid: String
   },
   created() {
     let self = this;
     self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
     self.priority_options_get();
   },
   methods: {

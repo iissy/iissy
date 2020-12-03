@@ -19,13 +19,13 @@
       <div class="field-block">
         <div class="flex-row" style="width: 100%;padding: 0 10px 10px 10px;justify-content: space-between;">
           <div style="flex: 1;text-align: center;">
-            <Assign :user="task.assign" :task="task.uuid"/>
+            <Assign :user="task.assign" :project="task.project.uuid" :task="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
-            <TaskStatus :status="task.task_status" :issue_type="task.issue_type.uuid" :task_uuid="task.uuid"/>
+            <TaskStatus :status="task.task_status" :project="task.project.uuid" :issue_type="task.issue_type.uuid" :task_uuid="task.uuid"/>
           </div>
           <div style="flex: 1;text-align: center;">
-            <TaskPriority :priority="task.priority" :task_uuid="task.uuid"/>
+            <TaskPriority :project="task.project.uuid" :priority="task.priority" :task_uuid="task.uuid"/>
           </div>
         </div>
       </div>
@@ -157,22 +157,11 @@ import TaskPriority from '@/views/component/task/priority';
 export default {
   data() {
     return {
-      hasEmail: false,
-      team: '',
-      issue_type: '',
-      com: ''
+      hasEmail: false
     }
   },
   props: {
     task: Object
-  },
-  created() {
-    let self = this;
-    self.team = self.$route.params.team;
-    self.issue_type = self.$parent.issue_type;
-    self.com = self.$route.params.com;
-  },
-  methods: {
   },
   components: {
     User,
