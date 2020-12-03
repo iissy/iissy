@@ -4,7 +4,7 @@
     <div style="font-size: 12px;color: #909090;">共 29 个工作项</div>
     <div id="task-list" style="overflow: auto;margin-top: 10px;flex: 0 0 auto;" class="flex-column">
       <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item">
-        <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0;">
+        <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0;cursor: pointer;" @click="task_get(t.uuid)">
           <div style="flex: 0 0 auto;" class="flex-row">
             <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"/>
             <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;height: 20px;">{{t.owner.name}}</div>
@@ -22,6 +22,7 @@
 <script>
 import Priority from "@/views/component/common/block/priority";
 import Status from '@/views/component/common/block/status';
+import router from "@/router";
 
 export default {
   data() {
@@ -31,6 +32,14 @@ export default {
   props: {
     title: String,
     tasks: Array
+  },
+  methods: {
+    task_get: function (taskUUID) {
+      let self = this;
+      self.team = self.$route.params.team;
+      let path = { name: 'TaskInTeam', params: { team: self.team, type: 'filters', task: taskUUID } };
+      router.push(path);
+    }
   },
   components: {
     Priority,
