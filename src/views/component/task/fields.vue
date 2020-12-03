@@ -144,7 +144,19 @@
       <div style="margin-top: 30px;">评论</div>
       <div style="color: #999999;margin-top: 10px;margin-bottom: 20px;">暂无评论</div>
     </div>
-    <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;">关注我</div>
+    <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;" class="flex-row align-items-center">
+      <div class="watchers" style="flex: 1;">
+        关注我
+      </div>
+      <div style="flex: 0 0 auto;cursor: pointer;" class="flex-row align-items-center watch" @click="watchers_add">
+        <div style="flex: 0 0 auto;color: inherit;">
+          <b-icon icon="binoculars-fill"/>
+        </div>
+        <div style="flex: 0 0 auto;margin-left: 5px;color: inherit;">
+          关注
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -153,6 +165,7 @@ import User from '@/views/component/common/block/user';
 import Assign from '@/views/component/task/assign';
 import TaskStatus from '@/views/component/task/status';
 import TaskPriority from '@/views/component/task/priority';
+import http from "@/scripts/http";
 
 export default {
   data() {
@@ -168,6 +181,17 @@ export default {
     Assign,
     TaskStatus,
     TaskPriority
+  },
+  methods: {
+    watchers_add: function () {
+      let self = this;
+      self.team = self.$route.params.team;
+      http.post(self.urls.watchers_add.format(self.team, self.task.uuid), {}).then(function (response) {
+        if (response.data.status) {
+          self.$parent.task_get(self.task.uuid);
+        }
+      });
+    }
   }
 }
 </script>
@@ -176,4 +200,5 @@ export default {
 .field-block { margin-top: 10px; }
 .field-type-group { margin-top: 30px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
 .field-row { margin-top: 10px; }
+.watch:hover { color: #17C4BB; }
 </style>
