@@ -35,7 +35,7 @@
             描述
           </div>
           <div style="padding: 0 5px 0 0;flex: 0 0 auto;">
-            <router-link style="color: #36c6d3;" :to="{ name: 'Task', params: { team: team, project: project, com: com, task: task.uuid } }">全屏查看</router-link>
+            全屏查看
           </div>
         </div>
       </div>
@@ -159,7 +159,6 @@ export default {
     return {
       hasEmail: false,
       team: '',
-      project: '',
       issue_type: '',
       com: ''
     }
@@ -170,7 +169,6 @@ export default {
   created() {
     let self = this;
     self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
     self.issue_type = self.$parent.issue_type;
     self.com = self.$route.params.com;
   },

@@ -109,7 +109,7 @@ export default {
     self.task_list();
   },
   methods: {
-    task_list: function() {
+    task_list: function(taskUUID) {
       let self = this;
       let url = self.urls.project_task_list.format(self.team, self.project);
       http.post(url).then(function (response) {
@@ -117,12 +117,12 @@ export default {
         self.tasks_completed = true;
         if(self.tasks && self.tasks.length > 0) {
           if (self.$route.name === 'Task') {
-            self.selectedUUID = self.$route.params.task;
-            self.task_get(self.$route.params.task);
+            self.selectedUUID = taskUUID || self.$route.params.task;
+            self.task_get(self.selectedUUID);
           } else {
-            self.selectedUUID = self.tasks[0].uuid;
-            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: self.tasks[0].uuid } });
-            self.task_get(self.$route.params.task);
+            self.selectedUUID = taskUUID || self.tasks[0].uuid;
+            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: self.selectedUUID } });
+            self.task_get(self.selectedUUID);
           }
         }
       });

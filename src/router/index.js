@@ -15,10 +15,11 @@ import MainRedirect from '@/views/workbench/redirect';
 import Project from './project.js';
 import IssueType from './issue_type.js';
 import Ex from './help.js';
-import Component from './component.js'
-import Wiki from './wiki.js'
-import Commit from './commit.js'
-import Team from './team.js'
+import Component from './component.js';
+import Wiki from './wiki.js';
+import Commit from './commit.js';
+import Team from './team.js';
+import Task from './task.js';
 
 Vue.use(Router);
 
@@ -70,7 +71,7 @@ let Index = [
     }
 ];
 
-let routes = Index.concat(Project, IssueType, Ex, Component, Wiki, Commit, Team);
+let routes = Index.concat(Project, IssueType, Ex, Component, Wiki, Commit, Team, Task);
 export default new Router({
     mode: 'history',
     routes: routes

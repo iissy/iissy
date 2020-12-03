@@ -3,6 +3,7 @@ let urls = {
     team_member_list: '/api/team/{0}/get_team_member_list',
     team_member_add: '/api/team/{0}/member/add',
     team_project_list: '/api/team/{0}/list/project',
+    team_task_list: '/api/team/{0}/list/task',
     user_get: '/api/team/{0}/user/{1}',
 
     priority_options_get: '/api/team/{0}/priority_options_get',

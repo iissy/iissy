@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="AddTask">
     <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
-      <AddTaskButton :title="title" v-b-modal.modal-prevent-closing></AddTaskButton>
+      <AddTaskButton :title="title" v-b-modal.modal-add-task></AddTaskButton>
     </div>
-    <b-modal size="lg" id="modal-prevent-closing" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+    <b-modal size="lg" id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
@@ -51,9 +51,7 @@
 <script>
 import AddTaskButton from '../common/form/button';
 import User from '@/views/component/common/block/user';
-
 import http from "@/scripts/http";
-import router from "@/router";
 
 export default {
   data: function () {
@@ -78,15 +76,22 @@ export default {
     title: String,
     issue_type: String
   },
+  watch: {
+    projectSelect(n) {
+      let self = this;
+      self.users_list(n);
+      self.issue_type_list(n);
+      self.priority_list();
+    }
+  },
   mounted() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
-    self.users_list();
-    self.project_list();
-    self.issue_type_list();
-    self.priority_list();
+    self.$root.$on('bv::modal::show', () => {
+      self.project_list();
+    });
   },
   methods: {
     checkFormValidity() {
@@ -105,7 +110,7 @@ export default {
       }
       this.add();
       this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing')
+        this.$bvModal.hide('modal-add-task')
       })
     },
     add: function () {
@@ -119,15 +124,14 @@ export default {
         issue_type: self.issueTypeSelect
       }
       http.post(self.urls.task_add.format(self.team, self.project, self.issueTypeSelect), data).then(function (response) {
-        if (response.data.status === true) {
-          router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: response.data.payload.uuid } });
-          self.$parent.task_list();
+        if (response.data.status) {
+          self.$parent.task_list(response.data.payload.uuid);
         }
       });
     },
-    users_list: function () {
+    users_list: function (p) {
       let self = this;
-      http.post(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
+      http.post(self.urls.project_role_members.format(self.team, p)).then(function (response) {
         self.assigns = response.data;
         self.assignSelect = self.assigns[0].uuid;
       });
@@ -144,12 +148,16 @@ export default {
             }
             self.projects.push({ value: dataset[i].uuid, text: dataset[i].name });
           }
+
+          if (!self.projectSelect) {
+            self.projectSelect = self.projects[0].value;
+          }
         }
       });
     },
-    issue_type_list: function() {
+    issue_type_list: function(p) {
       let self = this;
-      http.get(this.urls.project_template.format(self.team, self.project)).then(function (response) {
+      http.get(this.urls.project_template.format(self.team, p)).then(function (response) {
         let dataset = response.data;
         if (dataset && dataset.length > 0) {
           for (let i=0;i<dataset.length;i++) {
@@ -157,6 +165,10 @@ export default {
               self.issueTypeSelect = self.issue_type;
             }
             self.issue_types.push({ value: dataset[i].uuid, text: dataset[i].name });
+          }
+
+          if (!self.issueTypeSelect) {
+            self.issueTypeSelect = self.issue_types[0].value;
           }
         }
       });
