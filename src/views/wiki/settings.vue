@@ -15,7 +15,7 @@
         <div :class="{active: (tagIndex === 2)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'permissions' }}">页面组权限</router-link></div>
         <div :class="{active: (tagIndex === 3)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'recycle' }}">回收站</router-link></div>
       </div>
-      <div class="flex-column" style="flex: 1;height: 100%;">
+      <div class="flex-column" style="flex: 1;min-height: 100%;">
         <component v-bind:is="currentTabComponent"></component>
       </div>
     </div>
