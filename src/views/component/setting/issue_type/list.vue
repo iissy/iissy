@@ -7,17 +7,17 @@
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;overflow-x: auto;">
         <div class="table">
           <div class="table-row-header">
-            <div class="th">工作项类型</div>
+            <div style="flex: 1 1 260px;" class="th">工作项类型</div>
             <div class="th">类型</div>
             <div class="th">使用到的项目</div>
             <div class="th op-big">操作</div>
           </div>
           <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
-            <div class="td flex-row">
-              <IBIcon :icon="item.icon.toString()"/>
-              <div class="flex-column" style="margin-left: 10px;">
+            <div style="flex: 1 1 260px;" class="td flex-row">
+              <IBIcon :icon="item.icon.toString()" scale="1.2"/>
+              <div class="flex-column" style="margin-left: 15px;">
                 <div class="flex-row">
-                  <div>{{ item.name }}</div>
+                  <div style="color:#17C4BB;">{{ item.name }}</div>
                   <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">
                     <div style="border-radius: 20px!important;color: #cecece;padding: 0 6px 0 6px;border: solid 1px #cecece;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex;" v-if="item.built_in">系统</div>
                   </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="td flex-row align-items-center">3个项目</div>
             <div class="td flex-row align-items-center op-big">
-              <span v-b-modal.modal-prevent-closing>重命名</span>
+              <span v-if="!item.built_in" v-b-modal.modal-prevent-closing>重命名</span>
               <router-link :to="{name:'IssueTypeSetting', params: { team: team, issue_type: item.uuid, title: item.name, type: 'config' }}">
                 编辑
               </router-link>

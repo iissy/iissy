@@ -15,15 +15,15 @@ body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 .rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #fbfcfd; }
 .rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #ffffff; }
 
-div.table { flex: 1;display: flex;flex-direction: column;border-left: 1px solid #e8e8e8;border-right: 1px solid #e8e8e8; }
-div.table-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f8f8f8;font-weight: bolder; }
+div.table { flex: 1;display: flex;flex-direction: column;border-left: 1px solid #e8e8e8;border-right: 1px solid #e8e8e8;border-radius: 3px; }
+div.table-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f8f8f8;border-radius: 3px;font-weight: bolder; }
 div.table-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #e8e8e8; }
 div.table-row:hover { background-color: #f8f8f8; }
 div.table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1 auto; }
 div.table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 div.table .op { flex: 0 0 100px; }
 div.table .op-big { flex: 0 0 120px; }
-div.table .op-big a, .table .op-big span { color: #337ab7;padding-right: 10px;outline: none;text-decoration: none; }
+div.table .op-big a, .table .op-big span { color: #17C4BB;padding-right: 10px;outline: none;text-decoration: none; }
 
 a { color: #4F4F4F;text-decoration: none!important; }
 a:link { color: #4F4F4F;text-decoration: none!important; }
