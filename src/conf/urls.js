@@ -24,7 +24,7 @@ let urls = {
     draft_get: '/api/team/{0}/space/{1}/draft/{2}',
     draft_delete: '/api/team/{0}/space/{1}/draft/{2}/delete',
 
-    issue_type_get: '/api/team/{0}/issue_type/{1}/get',
+    issue_type_get: '/api/team/{0}/issue_type/{1}',
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',
     issue_type_field_list: '/api/team/{0}/setting/issue_type/field',
     issue_type_list: '/api/team/{0}/setting/issue_type/list',
