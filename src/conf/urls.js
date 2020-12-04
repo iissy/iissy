@@ -4,6 +4,7 @@ let urls = {
     team_member_add: '/api/team/{0}/member/add',
     team_project_list: '/api/team/{0}/list/project',
     team_task_list: '/api/team/{0}/list/task',
+    team_roles_members: '/api/team/{0}/team_roles_members',
     user_get: '/api/team/{0}/user/{1}',
 
     priority_options_get: '/api/team/{0}/priority_options_get',
@@ -77,6 +78,8 @@ let urls = {
     permission_rules_add: '/api/team/{0}/permission_rules/add',
     permission_rule_delete: '/api/team/{0}/permission_rule/{1}/delete',
     team_permission_rules: '/api/team/{0}/team_permission_rules',
+    issue_type_permission_rules_add: '/api/team/{0}/issue_type/{1}/permission_rules/add',
+    issue_type_permission_rule_delete: '/api/team/{0}/issue_type/{1}/permission_rule/{2}/delete',
 
     logout: '/api/logout',
 };

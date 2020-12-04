@@ -86,7 +86,7 @@ export default {
         }
         self.loaded = true;
       });
-    },
+    }
   },
   components: {
     Summary,
