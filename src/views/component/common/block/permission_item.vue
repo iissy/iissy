@@ -59,7 +59,6 @@ export default {
   },
   props: {
     group: Object,
-    role_members: Array,
     data: Object,
   },
   methods: {

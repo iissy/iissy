@@ -82,6 +82,7 @@ let urls = {
     team_permission_rules: '/api/team/{0}/team_permission_rules',
     issue_type_permission_rules_add: '/api/team/{0}/issue_type/{1}/permission_rules/add',
     issue_type_permission_rule_delete: '/api/team/{0}/issue_type/{1}/permission_rule/{2}/delete',
+    issue_type_user_domain_group: '/api/team/{0}/project/{1}/issue_type/{2}/issue_type_user_domain_group',
 
     logout: '/api/logout',
 };

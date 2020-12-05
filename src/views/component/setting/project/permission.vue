@@ -41,6 +41,13 @@ export default {
   },
   mounted() {
     let self = this;
+    self.team = self.$route.params.team;
+    self.project = this.$route.params.project;
+    self.GetProjectName();
+    self.GetUserDomainGroups();
+  },
+  created: function () {
+    let self = this;
     self.data = {
       permission_rule: {
         context_type: "project",
@@ -49,13 +56,6 @@ export default {
         }
       }
     }
-  },
-  created: function () {
-    let self = this;
-    self.team = self.$route.params.team;
-    self.project = this.$route.params.project;
-    self.GetProjectName();
-    self.GetUserDomainGroups();
   },
   methods: {
     GetProjectName: function() {
@@ -115,9 +115,10 @@ export default {
             }
           }
         }
+
         self.loaded = true;
       });
-    },
+    }
   },
   components: {
     PermissionItem
