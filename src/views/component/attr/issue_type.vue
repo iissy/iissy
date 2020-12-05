@@ -13,8 +13,8 @@
         </div>
         <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
           <div style="flex: 1;" class="td flex-row">
-            <IBIcon :icon="item.icon.toString()"/>
-            <div class="flex-column" style="margin-left: 10px;">
+            <IBIcon :icon="item.icon.toString()" scale="1.2"/>
+            <div class="flex-column" style="margin-left: 15px;">
               <div>{{ item.name }}</div>
               <div style="color: #999999;">{{ item.field_count }} 工作项属性<span style="margin: 0 10px;color: #999999;"> | </span>{{ item.status_count }} 工作项状态</div>
             </div>
