@@ -152,9 +152,8 @@ export default {
               for (let x = 0; x < self.group.roles.length; x++) {
                 let role = self.group.roles[x];
                 if (role.uuid === param.param) {
-                  role.permission = param.uuid;
-                  role.read_only = param.read_only;
-                  self.exist.push(role);
+                  let newRole = { name: role.name, name_pinyin: role.name_pinyin, uuid: role.uuid, permission: param.uuid, read_only: param.read_only };
+                  self.exist.push(newRole);
                   break;
                 }
               }
