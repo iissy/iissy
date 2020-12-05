@@ -1,6 +1,7 @@
 <template>
-  <div style="max-width:1200px;flex: 1;padding: 20px;min-height: 100%;" class="g-container">
-    <div style="font-size: 18px;">团队信息</div>
+  <div style="max-width:1200px;flex: 1;min-height: 100%;" class="g-container">
+    <ProjectMangeHeader title="团队信息" desc=""/>
+    <div style="padding: 0 20px 20px 20px;">
     <b-container style="margin-top: 40px;" fluid>
       <b-row>
         <b-col sm="1">
@@ -41,33 +42,56 @@
     </b-container>
     <Alert ref="alert"></Alert>
   </div>
+  </div>
 </template>
 
 <script>
 import AddProjectButton from '../../button/common';
+import ProjectMangeHeader from '@/views/component/common/permission/header';
 import Alert from '@/views/component/common/block/alert';
+import http from "@/scripts/http";
 
 export default {
   data: function () {
     return {
+      team: '',
       name: '',
       avatar: '',
       disabled: true
     };
   },
+  mounted() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.team_get();
+  },
   methods: {
+    team_get: function () {
+      let self = this;
+      http.get(self.urls.team_get.format(self.team)).then(function (response) {
+        self.name = response.data.name;
+      });
+    },
     name_change: function () {
       let self = this;
       self.disabled = false;
     },
     update: function () {
       let self = this;
-      self.$refs.alert.success();
-    }
+      http.post(self.urls.team_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
+        if (response.data.status === true) {
+          self.$refs.alert.success('更新成功');
+          self.disabled = true;
+        } else {
+          self.$refs.alert.danger('更新失败');
+        }
+      });
+    },
   },
   components: {
     AddProjectButton,
-    Alert
+    Alert,
+    ProjectMangeHeader
   }
 }
 </script>
