@@ -1,7 +1,7 @@
 <template>
   <div style="width: 960px;flex: 1;margin: 20px 0;" class="g-container">
-    <div style="flex: 0 0 auto;font-size: 18px;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;">页面组权限</div>
-    <div style="padding: 0 20px;">
+    <PermissionHeader title="页面组权限"/>
+    <div style="padding: 0 20px 20px 20px;">
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.view"/>
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.create"/>
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import PermissionHeader from '@/views/component/common/permission/header';
 import PermissionItem from '@/views/component/common/block/permission_item';
 import http from "@/scripts/http";
 
@@ -96,6 +97,7 @@ export default {
     },
   },
   components: {
+    PermissionHeader,
     PermissionItem
   }
 }

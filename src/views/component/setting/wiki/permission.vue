@@ -1,22 +1,20 @@
 <template>
   <div class="wiki g-container">
-    <div style="display: flex;flex-direction: row;align-items: center;">
-      <div style="flex: 0 0 auto;font-size: 18px;">权限配置</div>
+    <PermissionHeader title="权限配置" desc="允许创建页面组。"/>
+    <div style="padding: 0 20px 20px 20px;">
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
     </div>
-    <Summary :desc="desc"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
   </div>
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
+import PermissionHeader from '@/views/component/common/permission/header';
 import PermissionItem from '@/views/component/common/block/permission_item';
 import http from "@/scripts/http";
 
 export default {
   data() {
     return {
-      desc: '文档权限可以用于管理项目文档组。',
       team: '',
       project: '',
       maps: {
@@ -89,12 +87,12 @@ export default {
     }
   },
   components: {
-    Summary,
+    PermissionHeader,
     PermissionItem
   }
 }
 </script>
 
 <style scoped>
-.wiki { max-width:1200px;flex: 1 1 auto;padding: 20px;min-height: 100%; }
+.wiki { max-width:1200px;flex: 1 1 auto;min-height: 100%; }
 </style>

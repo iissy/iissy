@@ -16,7 +16,6 @@ import http from "@/scripts/http";
 export default {
   data() {
     return {
-      desc: '团队权限可以用于管理团队成员。',
       team: '',
       project: '',
       maps: {
