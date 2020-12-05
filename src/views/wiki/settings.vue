@@ -1,7 +1,7 @@
 <template>
   <div class="app-column">
     <Header ref="Header" :page="page"/>
-    <div class="flex-row rightMain">
+    <div class="flex-row rightMain" style="overflow: hidden;">
       <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 20px 0 20px;">
         <div class="flex-row align-items-center" style="flex: 0;width: 100%;margin-bottom: 10px;cursor: pointer;" @click="toSpace">
           <div style="color: #444444;">
@@ -15,7 +15,7 @@
         <div :class="{active: (tagIndex === 2)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'permissions' }}">页面组权限</router-link></div>
         <div :class="{active: (tagIndex === 3)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'recycle' }}">回收站</router-link></div>
       </div>
-      <div class="flex-column" style="flex: 1;min-height: 100%;">
+      <div class="flex-column" style="overflow-y: auto;min-height: 100%;flex: 1;padding-left: 2px;">
         <component v-bind:is="currentTabComponent"></component>
       </div>
     </div>

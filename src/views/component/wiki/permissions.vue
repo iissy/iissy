@@ -1,7 +1,7 @@
 <template>
   <div style="width: 960px;flex: 1;margin: 20px 0;" class="g-container">
     <PermissionHeader title="页面组权限"/>
-    <div style="padding: 0 20px 20px 20px;">
+    <div style="padding: 0 20px 20px 20px;flex: 1;" class="flex-column">
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.view"/>
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.create"/>
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
