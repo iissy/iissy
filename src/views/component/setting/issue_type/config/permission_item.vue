@@ -115,7 +115,7 @@ export default {
 
           switch (domain.type) {
             case 'single_user':
-              memberUUIDS.push(domain.uuid);
+              memberUUIDS.push(domain.param);
               for (let x = 0; x < self.group.members.length; x++) {
                 let member = self.group.members[x];
                 if (member.uuid === domain.param) {
