@@ -1,35 +1,39 @@
 <template>
-  <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%;" class="g-container">
-    <div style="padding-bottom: 10px;" class="flex-row align-items-center">
-      <div style="flex: 0 0 auto;display: flex;">
-        <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">
-          <span style="font-size: 18px;">工作项类型</span>
-        </router-link>
+  <div style="max-width:1200px;flex: 1 1 auto;height: 100%;" class="g-container">
+    <div style="flex: 0 0 auto;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;" class="flex-row align-items-center">
+      <div style="flex: 1;" class="flex-row align-items-center">
+        <div style="flex: 0 0 auto;display: flex;">
+          <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">
+            <span style="font-size: 18px;">工作项类型</span>
+          </router-link>
+        </div>
+        <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
+          <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
+        </div>
+        <div style="display: flex;">
+          <router-link :to="{ name: 'IssueTypeSetting', params: { team: team, issue_type: issue_type, type: 'config', title: title } }">
+            <span style="font-size: 18px;">{{ title }}</span>
+          </router-link>
+        </div>
+        <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
+          <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
+        </div>
+        <div style="flex: 0 0 auto;display: flex;">
+          <span style="font-size: 18px;color: #909090;">工作项权限</span>
+        </div>
       </div>
-      <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
-        <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
-      </div>
-      <div style="display: flex;">
-        <router-link :to="{ name: 'IssueTypeSetting', params: { team: team, issue_type: issue_type, type: 'config', title: title } }">
-          <span style="font-size: 18px;">{{ title }}</span>
-        </router-link>
-      </div>
-      <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
-        <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
-      </div>
-      <div style="flex: 0 0 auto;display: flex;">
-        <span style="font-size: 18px;color: #909090;">工作项权限</span>
+      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
+        <b-icon icon="exclamation-diamond"/>
+        配置中心下，工作项权限修改，不会同步到已经应用的项目中。
       </div>
     </div>
-    <Summary :desc="desc"/>
-    <div v-if="loaded">
+    <div style="padding: 0 20px 20px 20px;" v-if="loaded">
       <PermissionItem v-for="(v,k) in maps" :role_members="role_members" :data="data" :group="v" :issue_type_name="title" :issue_type="issue_type" :key="k"/>
     </div>
   </div>
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
 import PermissionItem from '@/views/component/setting/issue_type/config/permission_item';
 import http from "@/scripts/http";
 
@@ -39,7 +43,6 @@ export default {
       team: '',
       issue_type: '',
       title: '',
-      desc: '配置中心下，工作项权限修改，不会同步到已经应用的项目中。',
       maps: {
         create: { permission: 'create_tasks', title: '创建#', desc: '允许成员创建#', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
         view: { permission: 'view_tasks', title: '查看#', desc: '允许成员查看#', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] },
@@ -117,7 +120,6 @@ export default {
     }
   },
   components: {
-    Summary,
     PermissionItem
   }
 }

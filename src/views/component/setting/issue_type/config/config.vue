@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;height: 100%;" class="g-container">
+  <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;min-height: 100%;" class="g-container">
     <div style="padding-bottom: 10px;" class="flex-row align-items-center">
       <div style="flex: 0 0 auto;">
         <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">

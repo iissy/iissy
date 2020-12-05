@@ -1,16 +1,15 @@
 <template>
-  <div style="max-width:1200px;flex: 1 1 auto;padding: 20px;min-height: 100%;" class="g-container">
-    <div style="display: flex;flex-direction: row;align-items: center;">
-      <div style="flex: 0 0 auto;font-size: 18px;">团队权限</div>
+  <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="g-container">
+    <PermissionHeader title="团队权限" desc="团队权限可以用于管理团队成员。"/>
+    <div style="padding: 0 20px 20px 20px;">
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
     </div>
-    <Summary :desc="desc"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
   </div>
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
+import PermissionHeader from '@/views/component/common/permission/header';
 import PermissionItem from '@/views/component/common/block/permission_item';
 import http from "@/scripts/http";
 
@@ -91,7 +90,7 @@ export default {
     },
   },
   components: {
-    Summary,
+    PermissionHeader,
     PermissionItem
   }
 }

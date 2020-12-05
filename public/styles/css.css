@@ -23,7 +23,7 @@ div.table .th { width: 100px;padding: 10px 0 10px 20px;font-size: 12px;flex: 1 1
 div.table .td { width: 100px;padding: 10px 0 10px 20px;flex: 1 1 auto; }
 div.table .op { flex: 0 0 100px; }
 div.table .op-big { flex: 0 0 120px; }
-div.table .op-big a, .table .op-big span { color: #17C4BB;padding-right: 10px;outline: none;text-decoration: none; }
+div.table .op-big a, .table .op-big span { padding-right: 10px;outline: none;text-decoration: none; }
 
 a { color: #4F4F4F;text-decoration: none!important; }
 a:link { color: #4F4F4F;text-decoration: none!important; }

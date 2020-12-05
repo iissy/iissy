@@ -1,24 +1,22 @@
 <template>
-  <div class="app-main-content" style="padding: 20px;">
-    <div style="display: flex;flex-direction: row;align-items: center;">
-      <div style="flex: 0 0 auto;font-size: 18px;">项目权限</div>
+  <div class="app-main-content">
+    <PermissionHeader title="项目权限" desc="项目权限可以用于定制项目的操作权限控制。"/>
+    <div style="padding: 0 20px 20px 20px;">
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
     </div>
-    <Summary :desc="desc"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>
-    <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
   </div>
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
+import PermissionHeader from '@/views/component/common/permission/header';
 import PermissionItem from '@/views/component/common/block/permission_item';
 import http from "@/scripts/http";
 
 export default {
   data() {
     return {
-      desc: '项目权限可以用于定制项目的操作权限控制。',
       team: '',
       project: '',
       maps: {
@@ -101,7 +99,7 @@ export default {
     },
   },
   components: {
-    Summary,
+    PermissionHeader,
     PermissionItem
   }
 }
