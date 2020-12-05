@@ -41,8 +41,6 @@ export default {
       router.push({ name: 'Space', params: { team: self.team, space: self.space.uuid } });
     },
     setPin: function (event) {
-      let self = this;
-      console.log(self.space.uuid);
       event.stopPropagation();
     }
   },

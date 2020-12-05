@@ -36,14 +36,13 @@ export default {
   methods: {
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity()
-      this.titleState = valid
-      console.log(valid);
-      return valid
+      this.titleState = valid;
+      return valid;
     },
     resetModal() {
       this.title = '';
       this.description = '';
-      this.titleState = null
+      this.titleState = null;
     },
     add(bvModalEvt) {
       bvModalEvt.preventDefault()
