@@ -91,7 +91,7 @@ export default {
   methods: {
     space_list: function () {
       let self = this;
-      http.get(self.urls.space_list.format(self.team)).then(function (response) {
+      http.get(self.urls.spaces.format(self.team)).then(function (response) {
         self.spaces = response.data.spaces;
         for (let i=0;i<self.spaces.length;i++) {
           if(self.spaces[i].uuid === self.space) {

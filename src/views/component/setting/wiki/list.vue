@@ -48,7 +48,7 @@ export default {
   methods: {
     space_list: function() {
       let self = this;
-      http.get(self.urls.space_list.format(self.team)).then(function (response) {
+      http.get(self.urls.spaces.format(self.team)).then(function (response) {
         self.items = response.data.spaces;
       });
     }
