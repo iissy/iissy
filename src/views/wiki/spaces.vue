@@ -2,7 +2,7 @@
   <div class="app-row">
     <Menu tagIndex="23" ref="Menu"></Menu>
     <div class="rightMain">
-      <Header title="项目文档" ref="Header"></Header>
+      <Header title="文档中心" ref="Header"></Header>
       <Spaces/>
     </div>
   </div>

@@ -27,7 +27,7 @@
         <li><span></span></li>
         <li :class="{active: (currentIndex === 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
         <li :class="{active: (currentIndex === 22)}"><Link name="代码提交" icon="Commit" :to="{ name: 'Commit', params: { team: team } }" /></li>
-        <li :class="{active: (currentIndex === 23)}"><Link name="项目文档" icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" /></li>
+        <li :class="{active: (currentIndex === 23)}"><Link name="文档中心" icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" /></li>
 
         <li><span></span></li>
         <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info' } }" /></li>

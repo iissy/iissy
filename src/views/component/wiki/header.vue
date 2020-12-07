@@ -10,7 +10,9 @@
         </div>
       </div>
     </router-link>
-    <div class="name" style="margin-left: 20px;">文档中心</div>
+    <div class="name" style="margin-left: 20px;">
+      <router-link icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" >文档中心</router-link>
+    </div>
     <div style="flex: 0 0 auto;margin-left: 20px;" @click="add">
       <AddButton title="新建页面"></AddButton>
     </div>
@@ -27,17 +29,16 @@ import router from "@/router";
 export default {
   data() {
     return {
+      team: ''
     }
   },
   props: {
     page: String
   },
-  mounted() {
+  created() {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
-  },
-  created() {
   },
   methods: {
     add: function () {
@@ -56,5 +57,5 @@ export default {
 
 <style scoped>
 #header { flex: 0 0 48px;background-color: #373a3d; }
-#header .name { color: #ffffff;flex: 0 0 auto;font-size: 16px;margin: 0 0 0 10px;letter-spacing: 3px;font-family: 'museo-1', 'museo-2', Verdana; }
+#header .name a { color: #ffffff;flex: 0 0 auto;font-size: 16px;letter-spacing: 3px;font-family: 'museo-1', 'museo-2', Verdana; }
 </style>

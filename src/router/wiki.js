@@ -10,7 +10,7 @@ import EditPage from "@/views/wiki/edit_page";
 let wiki = [
     {
         path: '/main/team/:team/wiki',
-        meta: { title: "项目文档" },
+        meta: { title: "文档中心" },
         name: 'Wiki',
         component: Wiki
     }, {
