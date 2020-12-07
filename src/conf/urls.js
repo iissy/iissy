@@ -11,7 +11,7 @@ let urls = {
 
     priority_options_get: '/api/team/{0}/priority_options_get',
 
-    commit_overview: '/api/team/{0}/commit/overview',
+    commit_overview: '/api/team/{0}/commits/overview',
 
     space_add: '/api/team/{0}/spaces/add',
     space_get: '/api/team/{0}/space/{1}',
