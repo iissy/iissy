@@ -46,7 +46,7 @@ let urls = {
     status_data_list: '/api/team/{0}/project/{1}/status_data_list',
     project_change_assign: '/api/team/{0}/project/{1}/change_assign',
     project_role_members: '/api/team/{0}/project/{1}/project_role_members',
-    project_member_add: '/api/team/{0}/project/{1}/project_member_add',
+    project_member_add: '/api/team/{0}/project/{1}/members/add',
     project_task_list: '/api/team/{0}/project/{1}/tasks',
     project_change_status: '/api/team/{0}/project/{1}/project_change_status',
     project_user_domain_group: '/api/team/{0}/project/{1}/project_user_domain_group',
@@ -63,8 +63,8 @@ let urls = {
 
     certificate_add: '/api/ding/login_certificate/add',
 
-    task_add: '/api/team/{0}/project/{1}/issue_type/{2}/add/task',
-    task_list: '/api/team/{0}/project/{1}/issue_type/{2}/list/task',
+    task_add: '/api/team/{0}/project/{1}/issue_type/{2}/tasks/add',
+    task_list: '/api/team/{0}/project/{1}/issue_type/{2}/tasks',
     task_get: '/api/team/{0}/task/{1}',
     task_change_assign: '/api/team/{0}/task/{1}/change_assign',
     task_change_status: '/api/team/{0}/task/{1}/change_status',
