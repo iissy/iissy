@@ -43,7 +43,7 @@
             Copyright ©2020 <a href="/">爱斯园</a>
           </div>
           <div style="margin-left: 5px;">
-            <a href="http://www.miibeian.gov.cn" target="_blank">粤ICP备2020117325号</a>
+            <a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2020117325号</a>
           </div>
         </div>
       </div>
