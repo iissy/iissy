@@ -16,6 +16,7 @@ let urls = {
     space_add: '/api/team/{0}/spaces/add',
     space_get: '/api/team/{0}/space/{1}',
     space_update: '/api/team/{0}/space/{1}/update',
+    space_user_domain_group: '/api/team/{0}/space/{1}/space_user_domain_group',
     spaces: '/api/team/{0}/spaces',
     pages: '/api/team/{0}/space/{1}/pages',
     page_tree_get: '/api/team/{0}/space/{1}/page_tree_get',

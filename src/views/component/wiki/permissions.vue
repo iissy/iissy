@@ -17,7 +17,6 @@ import http from "@/scripts/http";
 export default {
   data() {
     return {
-      desc: '团队权限可以用于管理团队成员。',
       team: '',
       space: '',
       project: '',
@@ -32,7 +31,6 @@ export default {
   },
   mounted() {
     let self = this;
-    self.space = self.$route.params.space;
     self.data = {
       permission_rule: {
         context_type: 'space',
@@ -44,6 +42,7 @@ export default {
   },
   created: function () {
     let self = this;
+    self.space = self.$route.params.space;
     self.team = self.$route.params.team;
     self.GetUserDomainGroups();
   },
@@ -54,7 +53,7 @@ export default {
       for(let key in self.maps) {
         data.push(self.maps[key].code);
       }
-      http.post(self.urls.team_permission_rules.format(self.team), data).then(function (response) {
+      http.post(self.urls.space_user_domain_group.format(self.team, self.space), data).then(function (response) {
         for (let key in self.maps) {
           let item = self.maps[key];
           item.groups = [];
