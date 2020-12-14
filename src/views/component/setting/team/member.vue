@@ -2,32 +2,8 @@
   <div class="teamDepartmentTree">
     <div class="left-team-tree">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
-      <div style="flex: 1;padding: 0 0 0 5px;">
-        <div class="tree-item flex-row" :class="{active: (selectedDepartment === '')}" @click="select_department('')" style="padding-left: 15px;">
-          <div style="flex: 0 0 auto;">
-            <svg t="1602608704285" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="44493" width="8" height="8"><path d="M219.904 895.552l419.136-383.232L214.4 124.096a70.144 70.144 0 0 1-22.4-50.816c0-40.384 35.84-73.152 80.064-73.152 21.568 0 41.088 7.808 55.488 20.48l480.064 438.848h-0.064c15.104 13.312 24.448 32.064 24.448 52.672v0.256c0 20.8-9.344 39.424-24.448 52.608h0.064l-480.064 438.976-0.192-0.192a83.648 83.648 0 0 1-55.296 20.352c-44.224 0-80.064-32.704-80.064-73.152 0-22.144 10.88-41.984 27.904-55.424z" p-id="44494" fill="#8a8a8a"></path></svg>
-          </div>
-          <div style="flex: 0 0 auto;margin-left: 5px;">
-            <svg t="1602580577253" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37322" width="20" height="20"><path d="M455.224889 171.406222c12.572444 33.223111 48.014222 56.092444 84.935111 57.571556H910.222222c31.004444 0 56.888889 26.567111 56.888889 57.628444v515.470222a58.026667 58.026667 0 0 1-56.888889 57.628445H114.062222c-31.061333 0-56.888889-26.624-56.888889-57.628445V171.406222a58.026667 58.026667 0 0 1 56.888889-57.628444h284.330667m0 0.739555c27.306667 1.479111 49.493333 34.702222 56.888889 57.628445" fill="#cdcdcd" p-id="37323"></path></svg>
-          </div>
-          <div style="flex: 1;margin-left: 5px;">{{departmentTree.name}}</div>
-        </div>
-        <div v-for="c in departmentTree.children" v-bind:key="c.id">
-          <div class="tree-item flex-row" @click="select_department(c.uuid)" :class="{active: (selectedDepartment === c.uuid)}" style="padding-left: 30px;">
-            <div style="flex: 0 0 auto;">
-              <svg t="1602608704285" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="44493" width="8" height="8"><path d="M219.904 895.552l419.136-383.232L214.4 124.096a70.144 70.144 0 0 1-22.4-50.816c0-40.384 35.84-73.152 80.064-73.152 21.568 0 41.088 7.808 55.488 20.48l480.064 438.848h-0.064c15.104 13.312 24.448 32.064 24.448 52.672v0.256c0 20.8-9.344 39.424-24.448 52.608h0.064l-480.064 438.976-0.192-0.192a83.648 83.648 0 0 1-55.296 20.352c-44.224 0-80.064-32.704-80.064-73.152 0-22.144 10.88-41.984 27.904-55.424z" p-id="44494" fill="#8a8a8a"></path></svg>
-            </div>
-            <div style="flex: 0 0 auto;margin-left: 5px;">
-              <svg t="1602580577253" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37322" width="20" height="20"><path d="M455.224889 171.406222c12.572444 33.223111 48.014222 56.092444 84.935111 57.571556H910.222222c31.004444 0 56.888889 26.567111 56.888889 57.628444v515.470222a58.026667 58.026667 0 0 1-56.888889 57.628445H114.062222c-31.061333 0-56.888889-26.624-56.888889-57.628445V171.406222a58.026667 58.026667 0 0 1 56.888889-57.628444h284.330667m0 0.739555c27.306667 1.479111 49.493333 34.702222 56.888889 57.628445" fill="#cdcdcd" p-id="37323"></path></svg>
-            </div>
-            <div style="flex: 1;margin-left: 5px;">{{c.name}}</div>
-          </div>
-        </div>
-      </div>
-      <div style="flex: 0 0 30px;border-top: 1px solid #dee2e6;justify-content: center;" title="添加部门" class="flex-column align-items-center">
-        <div style="display: flex;flex: 0 0 auto;outline: none;" v-b-modal.modal-prevent-closing>
-          <svg t="1602509602356" class="icon" viewBox="0 0 1027 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34147" width="20" height="20"><path d="M984.191664 461.608438h-428.184484v-415.402859c0-19.17244-19.17244-44.735692-44.735693-44.735692-25.563253 0-44.735692 25.563253-44.735692 51.126506v415.402858H51.132936c-25.563253-6.390813-51.126506 19.17244-51.126505 44.735693s25.563253 44.735692 44.735692 44.735692h415.402859v415.402858c6.390813 25.563253 25.563253 51.126506 51.126505 51.126506s44.735692-25.563253 44.735693-44.735692v-421.793672h421.793671c25.563253 0 44.735692-25.563253 44.735693-44.735692s-12.781626-51.126506-38.34488-51.126506z" fill="#515151" p-id="34148"></path></svg>
-        </div>
+      <div style="padding-right: 10px;">
+        <DepartmentTree :tree="departmentTree" :selected="selected" :team="team"/>
       </div>
     </div>
     <div class="right-member-list">
@@ -113,6 +89,7 @@ import http from '@/scripts/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
 import User from '@/views/component/common/block/user';
+import DepartmentTree from "@/views/component/setting/team/department_tree";
 
 export default {
   data: function () {
@@ -136,17 +113,29 @@ export default {
       email: '',
       show_sidebar: false,
       modifyMember: {},
-      modify_title: ''
+      modify_title: '',
+      selected: ''
     };
   },
   components: {
     Search,
     InviterUser,
-    User
+    User,
+    DepartmentTree
+  },
+  watch: {
+    '$route' () {
+      let self = this;
+      if (self.selected !== self.$route.params.department) {
+        self.selected = self.$route.params.department;
+        self.get_department_tree();
+      }
+    }
   },
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
+    self.selected = self.$route.params.department;
     self.get_department_tree();
     self.get_team_members();
   },
@@ -154,8 +143,19 @@ export default {
     get_department_tree: function () {
       let self = this;
       http.get(self.urls.department_tree.format(self.team)).then(function (response) {
+        self.set_opened_attr(response.data);
+        response.data.opened = true;
         self.departmentTree = response.data;
       });
+    },
+    set_opened_attr: function (t) {
+      let self = this;
+      t.opened = false;
+      if (t.children && t.children.length > 0) {
+        for (let i=0;i<t.children.length;i++) {
+          self.set_opened_attr(t.children[i]);
+        }
+      }
     },
     get_team_members: function() {
       let self = this;
@@ -191,14 +191,12 @@ export default {
     add_department: function () {
       let self = this;
       self.team = self.$route.params.team;
-      let data = { name: self.name, parent_uuid: self.departmentOption }
+      let parentUUID = self.$route.params.department;
+      let data = { name: self.name, parent_uuid: parentUUID }
       http.post(self.urls.department_add.format(self.team), data).then(function (response) {
         self.items = response.data;
         self.get_department_tree();
       });
-    },
-    select_department: function (uuid) {
-      this.selectedDepartment = uuid;
     },
     onOpen: function (item) {
       let self = this;

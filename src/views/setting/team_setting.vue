@@ -57,10 +57,6 @@ export default {
           self.tagIndex = 1;
           self.currentTabComponent = Info;
           break;
-        case "member":
-          self.tagIndex = 11;
-          self.currentTabComponent = Member;
-          break;
         case "permission":
           self.tagIndex = 21;
           self.currentTabComponent = Permission;

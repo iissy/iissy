@@ -36,6 +36,12 @@ a:hover { color: #4F4F4F;text-decoration: none!important; }
 .page-item.active { font-weight: 600; }
 .page-item a.unnamed div { color: #909090; }
 
+.department-item { flex: 0 0 auto;padding: 0 10px 0 0;cursor: pointer;line-height: 30px; }
+.department-item:hover { background-color: #e8e8e8;border-radius: 3px; }
+.department-item.active { background-color: rgba(51,143,229,0.1);border-radius: 3px; }
+.department-item.active { font-weight: 600; }
+.department-item a.unnamed div { color: #909090; }
+
 input::-webkit-input-placeholder{ color:#b0b0b0; }
 input::-moz-placeholder{ color:#b0b0b0; }
 input:-moz-placeholder{ color:#b0b0b0; }
