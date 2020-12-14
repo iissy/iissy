@@ -1,5 +1,5 @@
 <template>
-  <div v-if="drafts && drafts.length > 0">
+  <div style="padding: 20px 0 0 0;" v-if="drafts && drafts.length > 0">
     <div style="flex: 0 0 auto;padding: 0 20px 10px 20px;" class="flex-row">
       <div style="flex: 1;color: #909090;">草稿箱</div>
     </div>

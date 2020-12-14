@@ -20,7 +20,7 @@ let urls = {
     spaces: '/api/team/{0}/spaces',
     pages: '/api/team/{0}/space/{1}/pages',
     page_tree_get: '/api/team/{0}/space/{1}/page_tree_get',
-    home_page_get: '/api/team/{0}/space/{1}/home_page_get',
+    default_main_page: '/api/team/{0}/space/{1}/default_main_page',
     page_get: '/api/team/{0}/space/{1}/page/{2}',
     page_draft_add: '/api/team/{0}/space/{1}/page_draft_add',
     page_draft_update: '/api/team/{0}/space/{1}/draft/{2}/update',

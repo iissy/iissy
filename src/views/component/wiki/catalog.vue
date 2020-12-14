@@ -25,7 +25,7 @@
         </b-popover>
       </div>
     </div>
-    <div style="overflow-y: auto;padding: 20px 0;">
+    <div style="overflow-y: auto;">
       <Drafts :drafts="drafts" :selected="selected" :team="team" :space="space"/>
 
       <div style="padding: 0 20px;">

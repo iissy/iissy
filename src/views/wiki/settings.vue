@@ -81,7 +81,7 @@ export default {
     },
     page_get: function () {
       let self = this;
-      http.get(self.urls.home_page_get.format(self.team, self.space)).then(function (response) {
+      http.get(self.urls.default_main_page.format(self.team, self.space)).then(function (response) {
         self.page = response.data.uuid;
       });
     },
