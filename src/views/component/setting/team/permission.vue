@@ -2,8 +2,10 @@
   <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="g-container">
     <PermissionHeader title="团队权限" desc="团队权限可以用于管理团队成员。"/>
     <div style="padding: 0 20px 20px 20px;">
-      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>
-      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.reports"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.invite"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.team"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.do"/>
+      <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.wiki"/>
     </div>
   </div>
 </template>
@@ -19,8 +21,10 @@ export default {
       team: '',
       project: '',
       maps: {
-        browse: { code: 4, permission: 'invite_member', title: '邀请团队成员', desc: '允许用户邀请新的团队成员，并在顶栏显示邀请团队成员的快捷入口', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] },
-        reports: { code: 1, permission: 'administer_team', title: '团队管理员', desc: '超级管理员权限，可以更改团队信息和团队权限', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] }
+        invite: { code: 4, permission: 'invite_member', title: '邀请团队成员', desc: '允许用户邀请新的团队成员，并在顶栏显示邀请团队成员的快捷入口', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] },
+        team: { code: 1, permission: 'administer_team', title: '团队管理员', desc: '超级管理员权限，可以更改团队信息和团队权限', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] },
+        do: { code: 2, permission: 'administer_do', title: '「项目配置中心」管理员', desc: '针对项目管理，可以对项目进行全局配置', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] },
+        wiki: { code: 3, permission: 'administer_wiki', title: '「文档配置中心」管理员', desc: '针对文档中心，可以对文档进行全局配置', groups: [], roles: [], members: [], in_roles: ['everyone', 'team_owner'] }
       },
       role_members: [],
       loaded: false
