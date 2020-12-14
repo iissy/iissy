@@ -41,13 +41,13 @@ export default {
   },
   mounted() {
     let self = this;
-    self.team = self.$route.params.team;
-    self.project = this.$route.params.project;
     self.GetProjectName();
     self.GetUserDomainGroups();
   },
   created: function () {
     let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
     self.data = {
       permission_rule: {
         context_type: "project",

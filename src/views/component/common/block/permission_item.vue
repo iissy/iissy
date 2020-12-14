@@ -93,8 +93,12 @@ export default {
     },
     hidePanel (e) {
       let self = this;
-      if (!self.$refs.permBody.contains(e.target)) {
-        self.hide()
+      if(self.$refs.permBody) {
+        if (!self.$refs.permBody.contains(e.target)) {
+          self.hide();
+        }
+      } else {
+        self.hide();
       }
     }
   },
