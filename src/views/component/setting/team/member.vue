@@ -3,7 +3,7 @@
     <div class="left-team-tree">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
       <div style="padding-right: 10px;">
-        <DepartmentTree :tree="departmentTree" :selected="selected" :team="team"/>
+        <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" @open="fn_show"/>
       </div>
     </div>
     <div class="right-member-list">
@@ -11,15 +11,16 @@
         <div style="font-size: 18px;margin-bottom: 20px;">成员列表</div>
       </div>
       <div style="flex: 0 0 auto;margin-bottom: 20px;" class="flex-row">
-        <div style="flex: 0 0 auto;">
+        <div style="flex: 1;">
           <Search placeholder="输入用户名，邮箱查找成员" />
         </div>
+        <AddDepartMember v-if="departmentUUID !== 'all'" :members="items" :curMember="departMembers" :department="departmentUUID"></AddDepartMember>
         <InviterUser></InviterUser>
       </div>
       <div class="member-left">
         <div class="memberList">
           <div class="ui-table">
-            <b-table :fields="fields" :items="items" striped>
+            <b-table :fields="fields" :items="members" striped>
               <template v-slot:cell(name)="data">
                 <User :user="data.item"/>
               </template>
@@ -39,7 +40,7 @@
                 <div style="min-width: 120px;">{{ data.value | formatDate }}</div>
               </template>
               <template v-slot:cell(op)="data">
-                <div style="cursor: pointer;" @click="onOpen(data.item)">
+                <div style="cursor: pointer;box-shadow: none;outline: none;"  v-b-toggle.member-sidebar @click="setValue(data.item)">
                   <b-icon icon="pencil"/>
                 </div>
               </template>
@@ -48,39 +49,7 @@
         </div>
       </div>
     </div>
-
-    <b-modal size="lg" id="modal-prevent-closing" ref="modal" title="添加新部门" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <div style="height: 40px;margin-bottom: 10px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;border-right: 1px solid #e8e8e8;">
-          <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
-            <div style="flex: 0 0 auto;">
-              可以将新的部门添加到任何的一个部门下面作为子部门，或者添加到团队下面作为一级部门。
-            </div>
-          </div>
-        </div>
-        <div style="flex: 1;" class="flex-row">
-          <div style="flex: 1;">
-            <b-form-group label="部门名称" label-for="name-input">
-              <b-form-input id="name-input" v-model="name" required></b-form-input>
-            </b-form-group>
-          </div>
-          <div style="flex: 0 0 50px;"></div>
-          <div style="flex: 1;">
-            <b-form-group label="选择所属部门" label-for="dep-select">
-              <b-form-select id="dep-select" v-model="departmentOption">
-                <b-form-select-option value="">Soul</b-form-select-option>
-              </b-form-select>
-            </b-form-group>
-          </div>
-        </div>
-      </form>
-    </b-modal>
-
-    <b-sidebar v-model="show_sidebar" header-class="modify" id="sidebar" :title="modify_title" width="600px" backdrop right shadow>
-      <div class="px-3 py-2">
-        <b-input v-model="modifyMember.name"/>
-      </div>
-    </b-sidebar>
+    <SmallControl ref="SmallControl" :modifyMember="modifyMember" :title="modify_title"/>
   </div>
 </template>
 
@@ -90,6 +59,9 @@ import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
 import User from '@/views/component/common/block/user';
 import DepartmentTree from "@/views/component/setting/team/department_tree";
+import SmallControl from "@/views/component/setting/team/small_control";
+import AddDepartMember from "@/views/component/setting/team/add_department_member";
+
 
 export default {
   data: function () {
@@ -107,43 +79,55 @@ export default {
         { key: 'op', label: '操作' }
       ],
       items: [],
-      name: '',
       nameState: null,
       selectedDepartment: '',
       email: '',
-      show_sidebar: false,
+      show: false,
       modifyMember: {},
       modify_title: '',
-      selected: ''
+      departmentUUID: '',
+      inside: false,
+      departMembers: []
     };
   },
   components: {
     Search,
     InviterUser,
     User,
-    DepartmentTree
+    DepartmentTree,
+    SmallControl,
+    AddDepartMember
   },
   watch: {
     '$route' () {
       let self = this;
-      if (self.selected !== self.$route.params.department) {
-        self.selected = self.$route.params.department;
-        self.get_department_tree();
+      if (self.departmentUUID !== self.$route.params.department) {
+        self.departmentUUID = self.$route.params.department;
+        if (self.departmentUUID === 'all') {
+          self.get_team_members();
+        } else {
+          self.get_depart_members();
+        }
       }
     }
   },
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
-    self.selected = self.$route.params.department;
-    self.get_department_tree();
+    self.departmentUUID = self.$route.params.department;
+    if (self.departmentUUID !== 'all') {
+      self.get_depart_members();
+    }
+
     self.get_team_members();
+    self.get_department_tree();
   },
   methods: {
     get_department_tree: function () {
       let self = this;
       http.get(self.urls.department_tree.format(self.team)).then(function (response) {
         self.set_opened_attr(response.data);
+        self.find_department(response.data);
         response.data.opened = true;
         self.departmentTree = response.data;
       });
@@ -157,52 +141,64 @@ export default {
         }
       }
     },
+    find_department: function (tree) {
+      let self = this;
+      if (tree.children && tree.children.length > 0) {
+        for (let i=0;i<tree.children.length;i++) {
+          let depart = tree.children[i];
+          if (depart.uuid === self.departmentUUID) {
+            tree.opened = true;
+            self.inside = true;
+          } else {
+            self.find_department(depart);
+          }
+
+          if (self.inside) {
+            break;
+          }
+        }
+      }
+
+      if (self.inside) {
+        tree.opened = true;
+      }
+    },
     get_team_members: function() {
       let self = this;
       http.get(self.urls.team_member_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
     },
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity()
-      this.nameState = valid
-      return valid
-    },
-    resetModal() {
-      this.name = ''
-      this.nameState = null
-    },
-    handleOk(bvModalEvt) {
-      // Prevent modal from closing
-      bvModalEvt.preventDefault()
-      // Trigger submit handler
-      this.handleSubmit()
-    },
-    handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return
-      }
-      this.add_department();
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing')
-      })
-    },
-    add_department: function () {
+    get_depart_members: function() {
       let self = this;
-      self.team = self.$route.params.team;
-      let parentUUID = self.$route.params.department;
-      let data = { name: self.name, parent_uuid: parentUUID }
-      http.post(self.urls.department_add.format(self.team), data).then(function (response) {
-        self.items = response.data;
-        self.get_department_tree();
+      http.get(self.urls.department_member_list.format(self.team, self.departmentUUID)).then(function (response) {
+        self.departMembers = response.data;
+        // if(self.departMembers) {
+        //   for(let i = 0;i < self.departMembers.length;i++) {
+        //     self.departMembers[i].sel = false;
+        //   }
+        // }
       });
     },
-    onOpen: function (item) {
+    setValue: function (item) {
       let self = this;
-      self.show_sidebar = true;
       self.modifyMember = item;
       self.modify_title = '{0} | 编辑状态'.format(item.name)
+    },
+    fn_show: function () {
+      let self = this;
+      self.show = true;
+      console.log(self.show);
+    }
+  },
+  computed: {
+    members: function () {
+      let self = this;
+      if (self.departmentUUID === 'all') {
+        return self.items;
+      } else {
+        return self.departMembers;
+      }
     }
   }
 };

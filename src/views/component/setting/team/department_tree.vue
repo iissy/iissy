@@ -1,22 +1,22 @@
 <template>
   <div style="padding: 0 0 0 10px;">
     <div class="department-item flex-row align-items-center" :class="{active: tree.uuid === selected }">
-      <div class="arrow flex-row align-items-center" v-if="!tree.parent_uuid && tree.children && tree.children.length > 0">
+      <div class="arrow flex-row align-items-center" v-if="tree.children && tree.children.length > 0">
         <div class="down" v-if="tree.opened" @click="tree.opened=false"></div>
         <div class="right" v-else @click="tree.opened=true"></div>
       </div>
-      <div v-else-if="!tree.children || tree.children.length === 0" style="color: #c0c0c0;padding-left: 10px;">
+      <div v-else style="color: #c0c0c0;padding-left: 10px;">
         <b-icon icon="dot" scale="2"/>
       </div>
-      <div v-else style="padding-left: 10px;">
-        <svg t="1605661940824" class="icon" viewBox="0 0 1152 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="177974" width="16" height="16"><path d="M1152 896a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128V128a128 128 0 0 1 128-128h279.936a128 128 0 0 1 120.576 84.992l9.728 27.456H1024a128 128 0 0 1 127.68 118.528l0.32 9.536zM407.936 128H128v768h896V494.72H629.056a128 128 0 0 1-116.8-75.52l-3.84-9.408L408 128z m176 112.448l45.12 126.336L1024 366.72V240.512l-440.064-0.064z" p-id="177975" fill="#515151"></path></svg>
-      </div>
-      <div style="flex: 1;width: 0;" @click="tree.opened=true">
+      <div style="flex: 1;width: 0;">
         <router-link :to="{ name: 'Department', params: { team: team, department: tree.uuid } }">
           <div class="flex-row align-items-center" @mouseover="overUUID=tree.uuid;" @mouseleave="overUUID='';">
-            <div style="overflow: hidden;white-space: nowrap;min-width: 0;text-overflow: ellipsis;margin-left: 5px;flex: 1;">{{ tree.name }}</div>
-            <div style="flex: 0 0 auto;box-shadow: none;outline: none;" v-b-modal.modal-prevent-closing v-if="overUUID===tree.uuid">
-              <b-icon icon="plus"/>
+            <div style="padding-left: 5px;">
+              <svg data-v-e9f5f316="" t="1602580577253" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37322" width="20" height="20" class="icon"><path data-v-e9f5f316="" d="M455.224889 171.406222c12.572444 33.223111 48.014222 56.092444 84.935111 57.571556H910.222222c31.004444 0 56.888889 26.567111 56.888889 57.628444v515.470222a58.026667 58.026667 0 0 1-56.888889 57.628445H114.062222c-31.061333 0-56.888889-26.624-56.888889-57.628445V171.406222a58.026667 58.026667 0 0 1 56.888889-57.628444h284.330667m0 0.739555c27.306667 1.479111 49.493333 34.702222 56.888889 57.628445" fill="#cdcdcd" p-id="37323"></path></svg>
+            </div>
+            <div class="name" style="overflow: hidden;white-space: nowrap;min-width: 0;text-overflow: ellipsis;margin-left: 5px;flex: 1;">{{ tree.name }}</div>
+            <div style="flex: 0 0 auto;box-shadow: none;outline: none;" v-b-modal.modal-prevent-closing v-if="overUUID===tree.uuid" class="tree-plus">
+              <b-icon icon="plus" scale="1.5"/>
             </div>
           </div>
         </router-link>
@@ -64,8 +64,8 @@ export default {
   display: block;
   width: 6px;
   height: 6px;
-  border-left: 2px #666666 solid;
-  border-bottom: 2px #666666 solid;
+  border-left: 1px #666666 solid;
+  border-bottom: 1px #666666 solid;
   transform: translateY(-2px) rotate(-45deg);
   /*transform:translateY(-1px);*/
 }
@@ -74,8 +74,9 @@ export default {
   display: block;
   width: 6px;
   height: 6px;
-  border-left: 2px #666666 solid;
-  border-bottom: 2px #666666 solid;
+  border-left: 1px #666666 solid;
+  border-bottom: 1px #666666 solid;
   transform: rotate(-135deg);
 }
+.tree-plus:hover { color: #338fe5; }
 </style>

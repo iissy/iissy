@@ -9,6 +9,9 @@ let urls = {
     team_roles_members: '/api/team/{0}/team_roles_members',
     user_get: '/api/team/{0}/user/{1}',
 
+    department_member_list: '/api/team/{0}/department/{1}/list',
+    department_member_add: '/api/team/{0}/department/{1}/add_members',
+
     priority_options_get: '/api/team/{0}/priority_options_get',
 
     commit_overview: '/api/team/{0}/commits/overview',
