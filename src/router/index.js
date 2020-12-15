@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Master from '../views/master';
+import Reg from '../views/reg';
 import Main from '../views/main';
 
 import Robot from '../views/ding/robot';
@@ -26,8 +27,14 @@ Vue.use(Router);
 let Index = [
     {
         path: '/',
-        meta: { title: "爱斯园 - Soul 项目管理系统" },
+        meta: { title: "Soul 项目管理系统" },
+        name: 'Master',
         component: Master
+    }, {
+        path: '/reg',
+        meta: { title: "注册 - Soul 项目管理系统" },
+        name: 'Reg',
+        component: Reg
     }, {
         path: '/main',
         meta: { title: "我的工作台" },

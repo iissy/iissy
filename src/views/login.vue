@@ -29,8 +29,8 @@
           </div>
         </div>
         <div style="flex: 0 0 48px;background-color: #f0f0f0;" class="flex-row align-items-center">
-          <div style="flex: 1;background-color: #e0e0e0;height: 100%;padding-left: 20px;border-radius: 0 0 0 5px;" class="flex-row align-items-center">
-            注册
+          <div style="flex: 1;background-color: #e0e0e0;height: 100%;padding-left: 20px;border-radius: 0 0 0 5px;" class="flex-row align-items-center reg">
+            <router-link :to="{ name: 'Reg' }">注册</router-link>
           </div>
           <div style="flex: 1;background-color: #364150;height: 100%;padding-right: 20px;border-radius: 0 0 5px 0;" class="justify-content-flex-end flex-row align-items-center">
             <router-link :to="{ name: 'MainRedirect' }">登录</router-link>
@@ -40,7 +40,7 @@
       <div style="position: absolute;bottom: 10px;">
         <div style="flex: 0 0 60px;" class="flex-row align-items-center justify-content-center copyright">
           <div>
-            Copyright ©2020 <a href="/">爱斯园</a>
+            Copyright ©2020 <a href="/">Soul</a>
           </div>
           <div style="margin-left: 5px;">
             <a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2020117325号</a>
@@ -69,6 +69,7 @@ export default {
 
 <style scoped>
 .enter a { color: #cccccc;letter-spacing: 2px; }
+.reg a { color: #333333; }
 .copyright div,.copyright a { color: #909090;font-size: 12px;opacity: 0.6; }
 .login-name { border: none;border-bottom: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;line-height: 30px; }
 </style>
