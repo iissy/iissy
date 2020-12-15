@@ -18,18 +18,23 @@
             <div style="flex: 0 0 auto;box-shadow: none;outline: none;" v-b-modal.modal-prevent-closing v-if="overUUID===tree.uuid" class="tree-plus">
               <b-icon icon="plus" scale="1.5"/>
             </div>
+            <div style="flex: 0 0 auto;margin-left: 5px;" v-if="overUUID===tree.uuid && overUUID !== 'all'" class="tree-plus" @click="del">
+              <b-icon icon="x" scale="1.5"/>
+            </div>
           </div>
         </router-link>
       </div>
     </div>
     <div v-show="tree.opened">
-      <DepartmentTree v-for="c in tree.children" :key="c.uuid" :tree="c" :selected="selected" :team="team" :space="space"/>
+      <DepartmentTree v-for="c in tree.children" :key="c.uuid" :tree="c" :selected="selected" :team="team"/>
     </div>
   </div>
 </template>
 
 <script>
 import DepartmentTree from "@/views/component/setting/team/department_tree";
+import http from "@/scripts/http";
+import router from "@/router";
 
 export default {
   name: 'DepartmentTree',
@@ -41,10 +46,29 @@ export default {
   props: {
     tree: Object,
     team: String,
-    space: String,
     selected: String
   },
   methods: {
+    del() {
+      let self = this;
+      this.$bvModal.msgBoxConfirm('此操作不可撤销，是否确定？', {
+        title: '删除部门',
+        okVariant: 'danger',
+        okTitle: '删除',
+        cancelTitle: '取消',
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
+      }).then(value => {
+        if (value) {
+          http.post(self.urls.department_delete.format(self.team, self.selected)).then(function (response) {
+            if (response.data.status === true) {
+              router.push({ name:'Department', params: { team: self.team, department: 'all' } });
+            }
+          });
+        }
+      }).catch(err => {console.log(err);})
+    },
   },
   components: {
     DepartmentTree

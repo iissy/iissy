@@ -3,7 +3,7 @@
     <div class="left-team-tree">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
       <div style="padding-right: 10px;">
-        <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" @open="fn_show"/>
+        <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" @open="fn_show" v-if="departmentTree && departmentTree.opened"/>
       </div>
     </div>
     <div class="right-member-list">
@@ -105,6 +105,7 @@ export default {
         self.departmentUUID = self.$route.params.department;
         if (self.departmentUUID === 'all') {
           self.get_team_members();
+          self.get_department_tree();
         } else {
           self.get_depart_members();
         }
@@ -173,11 +174,6 @@ export default {
       let self = this;
       http.get(self.urls.department_member_list.format(self.team, self.departmentUUID)).then(function (response) {
         self.departMembers = response.data;
-        // if(self.departMembers) {
-        //   for(let i = 0;i < self.departMembers.length;i++) {
-        //     self.departMembers[i].sel = false;
-        //   }
-        // }
       });
     },
     setValue: function (item) {

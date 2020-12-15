@@ -11,6 +11,7 @@ let urls = {
 
     department_member_list: '/api/team/{0}/department/{1}/list',
     department_member_add: '/api/team/{0}/department/{1}/add_members',
+    department_delete: '/api/team/{0}/department/{1}/delete',
 
     priority_options_get: '/api/team/{0}/priority_options_get',
 
