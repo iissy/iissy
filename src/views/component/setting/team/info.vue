@@ -36,7 +36,7 @@
       <b-row>
         <b-col sm="1"></b-col>
         <b-col>
-          <AddProjectButton :disabled="disabled" title="更新信息" @submit="update"></AddProjectButton>
+          <UpdateButton :disabled="disabled" title="更新信息" @submit="update"></UpdateButton>
         </b-col>
       </b-row>
     </b-container>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../../button/common';
+import UpdateButton from '../../button/common';
 import ProjectMangeHeader from '@/views/component/common/permission/header';
 import Alert from '@/views/component/common/block/alert';
 import http from "@/scripts/http";
@@ -89,7 +89,7 @@ export default {
     },
   },
   components: {
-    AddProjectButton,
+    UpdateButton,
     Alert,
     ProjectMangeHeader
   }

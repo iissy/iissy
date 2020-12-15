@@ -18,35 +18,61 @@
         </div>
       </form>
     </b-modal>
+    <b-sidebar v-model="member_sidebar_show" header-class="modify" id="member-sidebar" title="编辑状态" width="500px" backdrop right shadow>
+      <div class="px-3 py-2" style="border-top: 1px solid #e8e8e8;">
+        <div style="margin-top: 20px;">
+          <b-form-group label-cols="4" label-cols-lg="2" label="名字" label-for="input-sm">
+            <b-form-input id="input-sm" v-model="memberName"></b-form-input>
+          </b-form-group>
 
-    <b-sidebar header-class="modify" id="member-sidebar" :title="title" width="600px" backdrop right shadow>
-      <div class="px-3 py-2">
-        <b-input v-model="memberName"/>
+          <b-form-group label-cols="4" label-cols-lg="2" label="E-mail:" label-for="input-default">
+            <b-form-input id="input-default" v-model="memberEmail"></b-form-input>
+          </b-form-group>
+
+          <b-form-group label-cols="4" label-cols-lg="2" label="状态">
+            <b-form-select :options="options" v-model="verify_status"></b-form-select>
+          </b-form-group>
+
+          <b-form-group label-cols="4" label-cols-lg="2">
+            <UpdateButton title="更新信息" @submit="save"></UpdateButton>
+          </b-form-group>
+        </div>
       </div>
     </b-sidebar>
-
-
   </div>
 </template>
 
 <script>
 import http from "@/scripts/http";
+import UpdateButton from '../../button/common';
 
 export default {
   data() {
     return {
       name: '',
       member_show: false,
-      memberName: ''
+      memberUUID: '',
+      memberName: '',
+      memberEmail: '',
+      verify_status: '',
+      member_sidebar_show: false,
+      options: [
+        { value: 1, text: '通过' },
+        { value: 2, text: '待通过' }
+      ]
     }
   },
   props: {
-    title: String,
     modifyMember: Object
   },
-  mounted() {
-    let self = this;
-    self.memberName = self.modifyMember.name;
+  watch: {
+    modifyMember(newValue) {
+      let self = this;
+      self.memberUUID = newValue.uuid;
+      self.memberName = newValue.name;
+      self.memberEmail = newValue.email;
+      self.verify_status = newValue.verify_status;
+    }
   },
   methods: {
     checkFormValidity() {
@@ -86,7 +112,20 @@ export default {
         self.items = response.data;
         self.$parent.get_department_tree();
       });
+    },
+    save: function () {
+      let self = this;
+      self.member_sidebar_show = false;
+      let departmentUUID = self.$route.params.department;
+      if (departmentUUID === 'all') {
+        self.$parent.get_team_members();
+      } else {
+        self.$parent.get_depart_members();
+      }
     }
+  },
+  components: {
+    UpdateButton
   }
 }
 </script>

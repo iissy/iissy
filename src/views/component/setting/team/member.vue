@@ -40,7 +40,7 @@
                 <div style="min-width: 120px;">{{ data.value | formatDate }}</div>
               </template>
               <template v-slot:cell(op)="data">
-                <div style="cursor: pointer;box-shadow: none;outline: none;"  v-b-toggle.member-sidebar @click="setValue(data.item)">
+                <div style="cursor: pointer;box-shadow: none;outline: none;" v-b-toggle.member-sidebar @click="setValue(data.item)">
                   <b-icon icon="pencil"/>
                 </div>
               </template>
@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <SmallControl ref="SmallControl" :modifyMember="modifyMember" :title="modify_title"/>
+    <SmallControl ref="SmallControl" :modifyMember="modifyMember"/>
   </div>
 </template>
 
@@ -179,7 +179,6 @@ export default {
     setValue: function (item) {
       let self = this;
       self.modifyMember = item;
-      self.modify_title = '{0} | 编辑状态'.format(item.name)
     },
     fn_show: function () {
       let self = this;
