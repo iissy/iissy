@@ -19,8 +19,8 @@
       </form>
     </b-modal>
     <b-sidebar v-model="member_sidebar_show" header-class="modify" id="member-sidebar" title="编辑状态" width="500px" backdrop right shadow>
-      <div class="px-3 py-2" style="border-top: 1px solid #e8e8e8;">
-        <div style="margin-top: 20px;">
+      <div class="px-3 py-2 flex-column" style="border-top: 1px solid #e8e8e8;height: 100%;">
+        <div style="margin-top: 20px;flex: 1;">
           <b-form-group label-cols="4" label-cols-lg="2" label="名字" label-for="input-sm">
             <b-form-input id="input-sm" v-model="memberName"></b-form-input>
           </b-form-group>
@@ -34,8 +34,15 @@
           </b-form-group>
 
           <b-form-group label-cols="4" label-cols-lg="2">
-            <UpdateButton title="更新信息" @submit="save"></UpdateButton>
+            <div class="flex-row align-items-center">
+              <div style="flex: 1;">
+                <UpdateButton title="更新信息" @submit="save"></UpdateButton>
+              </div>
+            </div>
           </b-form-group>
+        </div>
+        <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;text-align: right;padding: 10px 0 0 0;">
+          <b-button @click="del" variant="danger">删除成员</b-button>
         </div>
       </div>
     </b-sidebar>
@@ -122,6 +129,31 @@ export default {
       } else {
         self.$parent.get_depart_members();
       }
+    },
+    del: function () {
+      let self = this;
+      this.$bvModal.msgBoxConfirm('仅仅将成员从部门删除，是否确定？', {
+        title: '删除成员',
+        okVariant: 'danger',
+        okTitle: '删除',
+        cancelTitle: '取消',
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
+      }).then(value => {
+        if (value) {
+          http.post(self.urls.member_delete.format(self.team, self.selected)).then(function (response) {
+            if (response.data.status === true) {
+              let departmentUUID = self.$route.params.department;
+              if (departmentUUID === 'all') {
+                self.$parent.get_team_members();
+              } else {
+                self.$parent.get_depart_members();
+              }
+            }
+          });
+        }
+      }).catch(err => {console.log(err);})
     }
   },
   components: {

@@ -41,7 +41,7 @@
               </template>
               <template v-slot:cell(op)="data">
                 <div style="cursor: pointer;box-shadow: none;outline: none;" v-b-toggle.member-sidebar @click="setValue(data.item)">
-                  <b-icon icon="pencil"/>
+                  <b-icon icon="pencil-square"/>
                 </div>
               </template>
             </b-table>
