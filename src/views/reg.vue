@@ -25,24 +25,24 @@
         <div style="position: absolute;width: 900px;height: 500px;background-color: #ffffff;border-radius: 5px;padding: 30px;" class="flex-column">
           <div class="flex-row" style="height: 100%;">
             <div style="flex: 1 1 50%;padding: 0 30px 0 0;" class="flex-column">
-              <div style="font-size: 18px;font-weight: 600;" class="flex-row">请完善你的信息，免费创建试用团队</div>
-              <div v-if="first_part">
+              <div style="font-size: 18px;font-weight: 600;flex: 0 0 auto;" class="flex-row">请完善你的信息，免费创建试用团队</div>
+              <div v-if="first_part" style="flex: 1;">
                 <div class="flex-row align-items-center" style="padding: 30px 0;">
                   <div style="flex: 1 1 70%;">
-                    <input type="text" v-model="s_mobile" class="reg-input" placeholder="输入手机号码" autocomplete="off"/>
+                    <input type="text" v-model="s_mobile" class="reg-input" placeholder="请输入手机号码" autocomplete="off"/>
                   </div>
                   <div style="flex: 1 1 30%;text-align: right;">
                     <b-button variant="outline-primary" style="height: 40px;outline: none;box-shadow: none;">发送验证码</b-button>
                   </div>
                 </div>
                 <div class="flex-row align-items-center">
-                  <input type="text" v-model="s_code" class="reg-input" placeholder="输入手机验证码" autocomplete="off"/>
+                  <input type="text" v-model="s_code" class="reg-input" placeholder="请输入 6 位数字验证码" autocomplete="off"/>
                 </div>
                 <div style="margin-top: 60px;color: #909090;" class="flex-row align-items-center justify-content-center">
                   <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="reg_next">提交验证</b-button>
                 </div>
               </div>
-              <div v-if="second_part">
+              <div v-if="second_part" style="flex: 1;">
                 <div class="flex-row align-items-center" style="padding: 15px 0;">
                   <input type="text" v-model="s_email" class="reg-input" placeholder="请输入您的邮箱" autocomplete="off"/>
                 </div>
@@ -55,6 +55,9 @@
                 <div style="margin-top: 60px;color: #909090;" class="flex-row align-items-center justify-content-center">
                   <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="create_team">创建团队</b-button>
                 </div>
+              </div>
+              <div style="color: #909090;flex: 0 0 80px;">
+                演示版，请输入合法的手机号码，邮箱等即可通过注册
               </div>
             </div>
             <div style="flex: 1 1 50%;border-left: 1px solid #e8e8e8;" class="flex-column justify-content-center">
@@ -78,8 +81,8 @@
                 <img src="/images/team.jpg" width="400" height="200"/>
               </div>
               <div style="flex: 1;" class="flex-column">
-                <div style="flex: 0 0 auto;font-size: 16px;font-weight: 600;text-align: left;padding-left: 20px;padding-top: 10px;color: #333333;">
-                  您将试用 Soul 全线产品的功能
+                <div style="flex: 0 0 auto;font-size: 16px;font-weight: 600;text-align: left;padding-left: 20px;padding-top: 10px;color: #333333;margin: 10px 0;">
+                  您可以尝试 Soul 全线产品的功能
                 </div>
                 <div v-for="item in items" :key="item.uuid" style="padding: 5px 0 5px 0;margin-left: 20px;border-bottom: 1px solid #e8e8e8;" class="flex-row align-items-center">
                   <div style="flex: 1;text-align: left;">
