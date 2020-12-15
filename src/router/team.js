@@ -1,4 +1,4 @@
-import Department from '../views/component/setting/team/department';
+import Department from '../views/setting/department';
 import TeamSetting from '../views/setting/team_setting';
 
 let team = [

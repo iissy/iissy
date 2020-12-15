@@ -104,8 +104,8 @@ export default {
       if (self.departmentUUID !== self.$route.params.department) {
         self.departmentUUID = self.$route.params.department;
         if (self.departmentUUID === 'all') {
-          self.get_team_members();
           self.get_department_tree();
+          self.get_team_members();
         } else {
           self.get_depart_members();
         }
@@ -116,12 +116,11 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.departmentUUID = self.$route.params.department;
+    self.get_department_tree();
+    self.get_team_members();
     if (self.departmentUUID !== 'all') {
       self.get_depart_members();
     }
-
-    self.get_team_members();
-    self.get_department_tree();
   },
   methods: {
     get_department_tree: function () {
