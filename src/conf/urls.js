@@ -1,5 +1,6 @@
 let urls = {
     team_create: '/api/team',
+    login_url: '/api/login',
     team_get: '/api/team/{0}',
     team_update: '/api/team/{0}/update',
     team_member_list: '/api/team/{0}/get_team_member_list',

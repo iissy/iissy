@@ -32,8 +32,8 @@
           <div style="flex: 1;background-color: #e0e0e0;height: 100%;padding-left: 20px;border-radius: 0 0 0 5px;" class="flex-row align-items-center reg">
             <router-link :to="{ name: 'Reg' }">注册</router-link>
           </div>
-          <div style="flex: 1;background-color: #364150;height: 100%;padding-right: 20px;border-radius: 0 0 5px 0;" class="justify-content-flex-end flex-row align-items-center">
-            <router-link :to="{ name: 'MainRedirect' }">登录</router-link>
+          <div class="login justify-content-flex-end flex-row align-items-center" @click="login">
+            登录
           </div>
         </div>
       </div>
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import http from "@/scripts/http";
+import router from "@/router";
 
 export default {
   data: function () {
@@ -61,6 +63,15 @@ export default {
     };
   },
   methods: {
+    login: function () {
+      let self = this;
+      let data = { email: self.s_email, password: self.s_password };
+      http.post(self.urls.login_url, data).then(function (response) {
+        if (response.data.teams && response.data.teams.length > 0) {
+          router.push({ name:'Workbench', params: { team: response.data.teams[0].uuid, type: 'overview' } });
+        }
+      });
+    }
   },
   computed: {
   }
@@ -71,5 +82,6 @@ export default {
 .enter a { color: #cccccc;letter-spacing: 2px; }
 .reg a { color: #333333; }
 .copyright div,.copyright a { color: #909090;font-size: 12px;opacity: 0.6; }
+.login { flex: 1;background-color: #364150;height: 100%;padding-right: 20px;border-radius: 0 0 5px 0;color: #cccccc;cursor: pointer; }
 .login-name { border: none;border-bottom: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;line-height: 30px; }
 </style>
