@@ -58,8 +58,8 @@ import router from "@/router";
 export default {
   data: function () {
     return {
-      s_email: '',
-      s_password: ''
+      s_email: 'soul@iissy.com',
+      s_password: 'soul1234'
     };
   },
   methods: {
@@ -67,8 +67,8 @@ export default {
       let self = this;
       let data = { email: self.s_email, password: self.s_password };
       http.post(self.urls.login_url, data).then(function (response) {
-        if (response.data.teams && response.data.teams.length > 0) {
-          router.push({ name:'Workbench', params: { team: response.data.teams[0].uuid, type: 'overview' } });
+        if (response.data.result && response.data.result.teams && response.data.result.teams.length > 0) {
+          router.push({ name:'Workbench', params: { team: response.data.result.teams[0].uuid, type: 'overview' } });
         }
       });
     }
