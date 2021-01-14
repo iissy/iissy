@@ -106,41 +106,6 @@
         </div>
       </div>
 
-      <div class="field-type-group">
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">预估工时</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">已登记工时</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">剩余工时</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">工时进度</div>
-          <div style="flex: 1;">30%</div>
-        </div>
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">预估偏差</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-      </div>
-
-      <div class="field-type-group">
-        <div class="flex-row">
-          <div style="flex: 1;">工时</div>
-          <div style="flex: 0 0 auto;color: #000000;cursor: pointer;">
-            <b-icon icon="plus" scale="1.8"></b-icon>
-          </div>
-        </div>
-        <div style="color: #999999;margin-top: 10px;">
-          暂无工时记录
-        </div>
-      </div>
-
       <div style="margin-top: 30px;">评论</div>
       <div style="color: #999999;margin-top: 10px;margin-bottom: 20px;">暂无评论</div>
     </div>

@@ -16,7 +16,6 @@ import Menu from './component/common/menu';
 import overview from '@/views/component/workbench/overview';
 import dashboard from '@/views/component/workbench/dashboard';
 import filters from '@/views/component/workbench/filters';
-import hours from '@/views/component/workbench/hours';
 // import http from "@/scripts/http";
 
 export default {
@@ -52,8 +51,7 @@ export default {
     Menu,
     overview,
     dashboard,
-    filters,
-    hours
+    filters
   }
 };
 </script>
