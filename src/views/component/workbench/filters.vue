@@ -57,12 +57,6 @@
               <Fields :task="task" v-if="task_completed"/>
             </div>
             <div v-else style="flex: 1;display: flex;padding: 10px;">
-              <div v-if="!tasks_completed" class="flex-row" style="flex: 1;">
-                <b-skeleton-table
-                    :rows="3"
-                    :columns="6"
-                    :table-props="{ bordered: true, striped: true }"></b-skeleton-table>
-              </div>
               <div v-if="tasks_completed && !has" style="display: flex;flex: 1;" class="align-items-center justify-content-center">
                 暂无工作项
               </div>

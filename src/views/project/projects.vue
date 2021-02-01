@@ -58,13 +58,6 @@
                 </template>
               </b-table>
             </div>
-
-            <div v-if="!tasks_completed" class="flex-row" style="flex: 1;margin: 10px;">
-              <b-skeleton-table
-                  :rows="3"
-                  :columns="6"
-                  :table-props="{ bordered: true, striped: true }"></b-skeleton-table>
-            </div>
             <div v-if="tasks_completed && !has" style="display: flex;flex: 1;border-top: 1px solid #e8e8e8;margin-top: 10px;" class="align-items-center justify-content-center">
               暂无项目
             </div>
