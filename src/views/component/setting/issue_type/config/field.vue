@@ -71,8 +71,8 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import Search from "@/views/component/common/form/search";
+import http from "../../../../../scripts/http";
+import Search from "../../../common/form/search";
 
 export default {
   data: function () {

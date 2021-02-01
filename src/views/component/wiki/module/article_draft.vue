@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import PublishButton from '@/views/component/button/custom';
-import router from "@/router";
-import http from "@/scripts/http";
+import PublishButton from '../../button/custom';
+import router from "../../../../router";
+import http from "../../../../scripts/http";
 
 export default {
   data() {

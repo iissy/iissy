@@ -21,14 +21,14 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project/project_control';
-import ProjectList from "@/views/component/setting/project/list";
-import ProjectField from "@/views/component/setting/project/field";
-import ProjectStatus from "@/views/component/setting/project/status";
+import ProjectList from "../component/setting/project/list";
+import ProjectField from "../component/setting/project/field";
+import ProjectStatus from "../component/setting/project/status";
 
-import IssueTypeList from "@/views/component/setting/issue_type/list";
-import IssueTypeField from "@/views/component/setting/issue_type/field";
-import IssueTypeStatus from "@/views/component/setting/issue_type/status";
-import IssueTypePriority from "@/views/component/setting/issue_type/priority";
+import IssueTypeList from "../component/setting/issue_type/list";
+import IssueTypeField from "../component/setting/issue_type/field";
+import IssueTypeStatus from "../component/setting/issue_type/status";
+import IssueTypePriority from "../component/setting/issue_type/priority";
 
 export default {
   data: function () {

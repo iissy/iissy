@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import http from '@/scripts/http';
-import ColorStatus from "@/views/component/common/block/color-status";
+import http from '../../../../../scripts/http';
+import ColorStatus from "../../../common/block/color-status";
 
 export default {
   data: function () {

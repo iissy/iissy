@@ -13,7 +13,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import http from "@/scripts/http";
+import http from "../../scripts/http";
 import Designer from '../component/com/designer';
 
 export default {

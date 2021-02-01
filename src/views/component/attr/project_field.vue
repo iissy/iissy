@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import Search from '@/views/component/common/form/search';
-import Summary from "@/views/component/common/block/summary";
+import http from "../../../scripts/http";
+import Search from '../common/form/search';
+import Summary from "../common/block/summary";
 
 export default {
   data: function () {

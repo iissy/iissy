@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import PermissionItem from '@/views/component/setting/issue_type/config/permission_item';
-import http from "@/scripts/http";
+import PermissionItem from './permission_item';
+import http from "../../../../../scripts/http";
 
 export default {
   data() {

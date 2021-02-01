@@ -112,8 +112,8 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import router from "@/router";
+import http from "../scripts/http";
+import router from "../router";
 
 export default {
   data: function () {

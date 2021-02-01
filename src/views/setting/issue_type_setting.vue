@@ -20,10 +20,10 @@ import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project/project_control';
 
-import config from "@/views/component/setting/issue_type/config/config";
-import field from "@/views/component/setting/issue_type/config/field";
-import flow from "@/views/component/setting/issue_type/config/flow";
-import permission from "@/views/component/setting/issue_type/config/permission";
+import config from "../component/setting/issue_type/config/config";
+import field from "../component/setting/issue_type/config/field";
+import flow from "../component/setting/issue_type/config/flow";
+import permission from "../component/setting/issue_type/config/permission";
 
 export default {
   data: function () {

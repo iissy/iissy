@@ -14,10 +14,10 @@
 
 <script>
 
-import http from "@/scripts/http";
+import http from "../../scripts/http";
 import router from '../../router';
-import Header from "@/views/component/common/header";
-import Menu from "@/views/component/common/menu";
+import Header from "../component/common/header";
+import Menu from "../component/common/menu";
 
 export default {
   data() {

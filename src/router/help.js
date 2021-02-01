@@ -1,5 +1,5 @@
-import Help from "@/views/help/help";
-import Hello from "@/views/help/hello";
+import Help from "../views/help/help";
+import Hello from "../views/help/hello";
 
 let help = [
     {

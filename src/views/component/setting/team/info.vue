@@ -47,9 +47,9 @@
 
 <script>
 import UpdateButton from '../../button/common';
-import ProjectMangeHeader from '@/views/component/common/permission/header';
-import Alert from '@/views/component/common/block/alert';
-import http from "@/scripts/http";
+import ProjectMangeHeader from '../../common/permission/header';
+import Alert from '../../common/block/alert';
+import http from "../../../../scripts/http";
 
 export default {
   data: function () {

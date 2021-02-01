@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Header from '@/views/component/wiki/header';
-import http from "@/scripts/http";
-import router from "@/router";
+import Header from '../component/wiki/header';
+import http from "../../scripts/http";
+import router from "../../router";
 
 export default {
   data: function () {

@@ -1,8 +1,8 @@
-import ProjectSetting from "@/views/setting/project_setting";
+import ProjectSetting from "../views/setting/project_setting";
 import Projects from '../views/project/projects';
 import AddProject from '../views/project/add';
 import ProjectPermissionSetting from '../views/setting/permission';
-import Project from "@/views/project/project";
+import Project from "../views/project/project";
 
 let project = [
     {

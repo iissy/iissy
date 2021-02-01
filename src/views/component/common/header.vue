@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import ProjectHeader from '@/views/component/project/project_header';
-import UserCenterAvatar from '@/views/component/common/block/avatar';
-import Workbench from '@/views/component/workbench/control';
+import ProjectHeader from '../project/project_header';
+import UserCenterAvatar from '../common/block/avatar';
+import Workbench from '../workbench/control';
 
 export default {
   data() {

@@ -58,10 +58,10 @@
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
-import IBIcon from '@/views/component/common/block/i_b_icon';
-import Search from "@/views/component/common/form/search";
-import http from "@/scripts/http";
+import Summary from '../common/block/summary';
+import IBIcon from '../common/block/i_b_icon';
+import Search from "../common/form/search";
+import http from "../../../scripts/http";
 
 export default {
   data() {

@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import PageTree from "@/views/component/wiki/module/page_tree";
-import Drafts from "@/views/component/wiki/module/drafts";
+import http from "../../../scripts/http";
+import PageTree from "./module/page_tree";
+import Drafts from "./module/drafts";
 
 export default {
   data() {

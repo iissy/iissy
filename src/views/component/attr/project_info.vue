@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import Creator from '@/views/component/task/creator';
-import AddProjectButton from '@/views/component/button/common';
-import Alert from '@/views/component/common/block/alert';
-import http from "@/scripts/http";
+import Creator from '../task/creator';
+import AddProjectButton from '../button/common';
+import Alert from '../common/block/alert';
+import http from "../../../scripts/http";
 
 export default {
   data() {

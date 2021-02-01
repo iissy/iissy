@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import Member from "@/views/component/setting/team/member";
-import Control from '@/views/component/setting/team/team_control';
-import Header from '@/views/component/common/header';
-import Menu from '@/views/component/common/menu';
+import Member from "../component/setting/team/member";
+import Control from '../component/setting/team/team_control';
+import Header from '../component/common/header';
+import Menu from '../component/common/menu';
 
 export default {
   data() {

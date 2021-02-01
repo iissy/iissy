@@ -19,9 +19,9 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/team/team_control';
-import Info from "@/views/component/setting/team/info";
-import Member from "@/views/component/setting/team/member";
-import Permission from "@/views/component/setting/team/permission";
+import Info from "../component/setting/team/info";
+import Member from "../component/setting/team/member";
+import Permission from "../component/setting/team/permission";
 
 export default {
   data: function () {

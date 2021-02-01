@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Header from '@/views/component/wiki/header';
-import AddPage from '@/views/component/wiki/page/add';
+import Header from '../component/wiki/header';
+import AddPage from '../component/wiki/page/add';
 
 export default {
   data: function () {

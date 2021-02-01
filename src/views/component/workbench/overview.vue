@@ -64,10 +64,10 @@
 </template>
 
 <script>
-import Dashboard from '@/views/component/workbench/dashboard_item';
-import Project from '@/views/component/project/module/project';
-import Space from '@/views/component/wiki/module/space';
-import http from "@/scripts/http";
+import Dashboard from '../workbench/dashboard_item';
+import Project from '../project/module/project';
+import Space from '../wiki/module/space';
+import http from "../../../scripts/http";
 
 export default {
   data() {

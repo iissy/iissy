@@ -54,14 +54,13 @@
 </template>
 
 <script>
-import http from '@/scripts/http';
+import http from '../../../../scripts/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
-import User from '@/views/component/common/block/user';
-import DepartmentTree from "@/views/component/setting/team/department_tree";
-import SmallControl from "@/views/component/setting/team/small_control";
-import AddDepartMember from "@/views/component/setting/team/add_department_member";
-
+import User from '../../common/block/user';
+import DepartmentTree from "./department_tree";
+import SmallControl from "./small_control";
+import AddDepartMember from "./add_department_member";
 
 export default {
   data: function () {

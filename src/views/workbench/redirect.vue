@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import router from '@/router';
-import Header from "@/views/component/common/header";
-import Menu from "@/views/component/common/menu";
+import router from '../../router';
+import Header from "../component/common/header";
+import Menu from "../component/common/menu";
 
 export default {
   data() {

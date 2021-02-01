@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import Alert from '@/views/component/common/block/alert';
-import SaveButton from '@/views/component/button/common';
-import http from "@/scripts/http";
+import Alert from '../common/block/alert';
+import SaveButton from '../button/common';
+import http from "../../../scripts/http";
 
 export default {
   data() {

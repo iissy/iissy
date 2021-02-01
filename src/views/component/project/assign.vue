@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import User from '@/views/component/common/block/user';
-import Search from '@/views/component/common/form/search';
-import Alert from '@/views/component/common/block/alert';
+import http from "../../../scripts/http";
+import User from '../common/block/user';
+import Search from '../common/form/search';
+import Alert from '../common/block/alert';
 
 export default {
   data() {

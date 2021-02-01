@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import DepartmentTree from "@/views/component/setting/team/department_tree";
-import http from "@/scripts/http";
-import router from "@/router";
+import DepartmentTree from "./department_tree";
+import http from "../../../../scripts/http";
+import router from "../../../../router";
 
 export default {
   name: 'DepartmentTree',

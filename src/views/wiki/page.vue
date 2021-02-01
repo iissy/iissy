@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Header from '@/views/component/wiki/header';
-import Catalog from '@/views/component/wiki/catalog';
-import Dynamic from '@/views/component/wiki/dynamic';
-import Article from "@/views/component/wiki/module/article";
-import http from "@/scripts/http";
+import Header from '../component/wiki/header';
+import Catalog from '../component/wiki/catalog';
+import Dynamic from '../component/wiki/dynamic';
+import Article from "../component/wiki/module/article";
+import http from "../../scripts/http";
 
 export default {
   data: function () {

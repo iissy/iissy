@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import PageTree from "@/views/component/wiki/module/page_tree";
+import PageTree from "./page_tree";
 
 export default {
   name: 'PageTree',

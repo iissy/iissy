@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import Header from "@/views/component/common/header";
-import Menu from "@/views/component/common/menu";
-import Fields from '@/views/component/task/fields';
-import http from "@/scripts/http";
+import Header from "../component/common/header";
+import Menu from "../component/common/menu";
+import Fields from '../component/task/fields';
+import http from "../../scripts/http";
 
 export default {
   data() {

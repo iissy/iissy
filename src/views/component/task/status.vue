@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import Alert from '@/views/component/common/block/alert';
+import http from "../../../scripts/http";
+import Alert from '../common/block/alert';
 
 export default {
   data() {

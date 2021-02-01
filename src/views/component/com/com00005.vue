@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import Search from '@/views/component/common/form/search';
+import Search from '../common/form/search';
 
 export default {
   data() {

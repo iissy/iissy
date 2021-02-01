@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import Priority from "@/views/component/common/block/priority";
-import Status from '@/views/component/common/block/status';
-import router from "@/router";
+import Priority from "../common/block/priority";
+import Status from '../common/block/status';
+import router from "../../../router";
 
 export default {
   data() {

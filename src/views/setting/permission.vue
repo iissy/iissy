@@ -19,7 +19,7 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/project/project_control';
-import ProjectPermission from "@/views/component/setting/project/permission";
+import ProjectPermission from "../component/setting/project/permission";
 
 export default {
   data: function () {

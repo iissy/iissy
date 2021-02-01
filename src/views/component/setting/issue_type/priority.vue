@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import Priority from "@/views/component/common/block/priority";
-import ProjectMangeHeader from '@/views/component/common/permission/header';
-import Search from "@/views/component/common/form/search";
+import http from "../../../../scripts/http";
+import Priority from "../../common/block/priority";
+import ProjectMangeHeader from '../../common/permission/header';
+import Search from "../../common/form/search";
 
 export default {
   data: function () {

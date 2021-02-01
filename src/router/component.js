@@ -1,4 +1,4 @@
-import Component from "@/views/project/component";
+import Component from "../views/project/component";
 
 let component = [
     {

@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import http from '@/scripts/http';
-import Search from '@/views/component/common/form/search';
-import AddMember from '@/views/component/common/block/add_member';
-import User from '@/views/component/common/block/user';
+import http from '../../../scripts/http';
+import Search from '../common/form/search';
+import AddMember from '../common/block/add_member';
+import User from '../common/block/user';
 
 export default {
   data: function () {

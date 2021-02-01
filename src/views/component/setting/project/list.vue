@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import ProjectMangeHeader from '@/views/component/common/permission/header';
-import Search from "@/views/component/common/form/search";
-import http from "@/scripts/http";
+import ProjectMangeHeader from '../../common/permission/header';
+import Search from "../../common/form/search";
+import http from "../../../../scripts/http";
 
 export default {
   data: function () {

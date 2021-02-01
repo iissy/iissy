@@ -60,10 +60,10 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
-import ProjectMangeHeader from '@/views/component/common/permission/header';
-import Search from "@/views/component/common/form/search";
-import IBIcon from '@/views/component/common/block/i_b_icon';
+import http from "../../../../scripts/http";
+import ProjectMangeHeader from '../../common/permission/header';
+import Search from "../../common/form/search";
+import IBIcon from '../../common/block/i_b_icon';
 
 export default {
   data: function () {

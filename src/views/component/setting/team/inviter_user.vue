@@ -24,7 +24,7 @@
 
 <script>
 import AddProjectButton from '../../button/common';
-import http from "@/scripts/http";
+import http from "../../../../scripts/http";
 
 export default {
   data: function () {

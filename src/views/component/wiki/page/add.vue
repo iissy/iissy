@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import AddAndBackButton from '@/views/component/button/custom';
-import router from "@/router";
-import http from "@/scripts/http";
+import AddAndBackButton from '../../button/custom';
+import router from "../../../../router";
+import http from "../../../../scripts/http";
 
 export default {
   data() {

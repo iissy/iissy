@@ -112,8 +112,8 @@
 </template>
 
 <script>
-import Summary from '@/views/component/common/block/summary';
-import Search from "@/views/component/common/form/search";
+import Summary from '../common/block/summary';
+import Search from "../common/form/search";
 
 export default {
   data() {

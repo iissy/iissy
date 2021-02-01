@@ -1,11 +1,11 @@
-import Wiki from "@/views/wiki/spaces";
-import WikiSetting from "@/views/setting/wiki_setting";
-import Settings from "@/views/wiki/settings";
-import Space from "@/views/wiki/space";
-import Page from "@/views/wiki/page";
-import Draft from "@/views/wiki/draft";
-import AddPage from "@/views/wiki/add_page";
-import EditPage from "@/views/wiki/edit_page";
+import Wiki from "../views/wiki/spaces";
+import WikiSetting from "../views/setting/wiki_setting";
+import Settings from "../views/wiki/settings";
+import Space from "../views/wiki/space";
+import Page from "../views/wiki/page";
+import Draft from "../views/wiki/draft";
+import AddPage from "../views/wiki/add_page";
+import EditPage from "../views/wiki/edit_page";
 
 let wiki = [
     {

@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import Header from '@/views/component/wiki/header';
-import http from "@/scripts/http";
-import router from "@/router";
+import Header from '../component/wiki/header';
+import http from "../../scripts/http";
+import router from "../../router";
 
-import info from "@/views/component/wiki/info";
-import permissions from "@/views/component/wiki/permissions";
-import recycle from "@/views/component/wiki/recycle";
+import info from "../component/wiki/info";
+import permissions from "../component/wiki/permissions";
+import recycle from "../component/wiki/recycle";
 
 export default {
   data: function () {

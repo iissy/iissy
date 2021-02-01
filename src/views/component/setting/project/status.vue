@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import Status from '@/views/component/common/block/status';
-import ProjectMangeHeader from '@/views/component/common/permission/header';
+import Status from '../../common/block/status';
+import ProjectMangeHeader from '../../common/permission/header';
 import Search from '../../common/form/search';
-import http from "@/scripts/http";
+import http from "../../../../scripts/http";
 
 export default {
   data: function () {

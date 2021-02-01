@@ -124,11 +124,11 @@
 </template>
 
 <script>
-import ProjectAssign from "@/views/component/project/assign";
-import Line1 from '@/chart/line'
-import Bar from '@/chart/bar';
-import http from "@/scripts/http";
-import ChangeStatus from "@/views/component/project/change_status";
+import ProjectAssign from "../project/assign";
+import Line1 from '../../../chart/line'
+import Bar from '../../../chart/bar';
+import http from "../../../scripts/http";
+import ChangeStatus from "../project/change_status";
 
 export default {
   data() {

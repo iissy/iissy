@@ -1,5 +1,5 @@
-import IssueTypeSetting from "@/views/setting/issue_type_setting";
-import ProjectSetting from "@/views/setting/project_setting";
+import IssueTypeSetting from "../views/setting/issue_type_setting";
+import ProjectSetting from "../views/setting/project_setting";
 
 let issue_type = [
     {

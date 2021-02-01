@@ -11,7 +11,7 @@ import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import CenterRobot from '../views/center/robot';
 import Logout from '../views/center/logout';
-import MainRedirect from '@/views/workbench/redirect';
+import MainRedirect from '../views/workbench/redirect';
 
 import Project from './project.js';
 import IssueType from './issue_type.js';

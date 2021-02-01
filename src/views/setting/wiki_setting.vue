@@ -19,8 +19,8 @@
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
 import Control from '../component/setting/wiki/wiki_control';
-import List from "@/views/component/setting/wiki/list";
-import Permission from "@/views/component/setting/wiki/permission";
+import List from "../component/setting/wiki/list";
+import Permission from "../component/setting/wiki/permission";
 
 export default {
   data: function () {

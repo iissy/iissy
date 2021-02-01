@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import http from "@/scripts/http";
+import http from "../../../../scripts/http";
 import UpdateButton from '../../button/common';
 
 export default {

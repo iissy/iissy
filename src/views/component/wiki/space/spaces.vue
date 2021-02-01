@@ -19,9 +19,9 @@
 
 <script>
 import AddButton from '../../common/form/button';
-import Space from '@/views/component/wiki/module/space';
-import AddSpace from '@/views/component/wiki/space/add';
-import http from "@/scripts/http";
+import Space from '../module/space';
+import AddSpace from './add';
+import http from "../../../../scripts/http";
 
 export default {
   data() {
