@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;padding: 15px;margin: 10px;">
+  <div class="flex-column" style="margin: 10px;flex: 1;">
+    <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 0 0 auto;padding: 15px;">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="font-size: 18px;">仪表盘</div>
       </div>
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-row" style="padding: 0 10px;">
+    <div class="flex-row" style="padding: 10px 0 0 0;flex: 1;height: 0;">
       <Tasks :tasks="tasks_assign" title="我负责的工作项"/>
       <Tasks style="margin-left: 10px;" :tasks="tasks_owner" title="我提交的工作项"/>
       <Tasks style="margin-left: 10px;" :tasks="tasks_watcher" title="我关注的工作项"/>

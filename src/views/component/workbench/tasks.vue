@@ -1,8 +1,8 @@
 <template>
-  <div style="flex: 1;padding: 20px;" class="g-container">
-    <div>{{ title }}</div>
-    <div style="font-size: 12px;color: #909090;">共 29 个工作项</div>
-    <div id="task-list" style="overflow: auto;margin-top: 10px;flex: 0 0 auto;" class="flex-column">
+  <div style="flex: 1;" class="g-container flex-column">
+    <div style="flex: 0 0 auto;padding: 20px 20px 0 20px;">{{ title }}</div>
+    <div style="font-size: 12px;color: #909090;flex: 0 0 auto;padding: 0 20px;">共 29 个工作项</div>
+    <div id="task-list" style="margin-top: 10px;flex: 1;padding: 0 20px;overflow: auto;" class="flex-column">
       <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item">
         <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0;cursor: pointer;" @click="task_get(t.uuid)">
           <div style="flex: 0 0 auto;" class="flex-row">
