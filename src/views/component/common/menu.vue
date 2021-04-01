@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="leftBar" v-if="isOpen">
-      <div class="left-header">
+      <div class="left-header" style="flex: 0 0 auto;">
         <div style="margin:0 auto 0 auto;text-align:left;height:40px;">
           <div style="overflow:hidden;">
             <div style="margin-left:30px;margin-top: 10px;float:left;">
@@ -22,21 +22,24 @@
           </div>
         </div>
       </div>
-      <ul>
-        <li :class="{active: (currentIndex === 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Workbench', params: { team: team, type: 'overview' } }" /></li>
-        <li><span></span></li>
-        <li :class="{active: (currentIndex === 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
-        <li :class="{active: (currentIndex === 22)}"><Link name="代码提交" icon="Commit" :to="{ name: 'Commit', params: { team: team } }" /></li>
-        <li :class="{active: (currentIndex === 23)}"><Link name="文档中心" icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" /></li>
+      <div style="flex: 1;">
+        <ul>
+          <li :class="{active: (currentIndex === 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Workbench', params: { team: team, type: 'overview' } }" /></li>
+          <li><span></span></li>
+          <li :class="{active: (currentIndex === 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
+          <li :class="{active: (currentIndex === 23)}"><Link name="文档中心" icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" /></li>
+          <li :class="{active: (currentIndex === 26)}"><Link name="组织架构" icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info' } }" /></li>
 
-        <li><span></span></li>
-        <li :class="{active: (currentIndex === 81)}"><Link name="团队配置中心" icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info' } }" /></li>
-        <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list' } }" /></li>
-        <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list' } }" /></li>
-
-        <li><span></span></li>
-        <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>
-      </ul>
+          <li><span></span></li>
+          <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list' } }" /></li>
+          <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list' } }" /></li>
+        </ul>
+      </div>
+      <div style="flex: 0 0 auto;margin: 5px 0;">
+        <ul>
+          <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>
+        </ul>
+      </div>
     </div>
   </transition>
 </template>

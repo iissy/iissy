@@ -1,6 +1,6 @@
 <template>
   <div class="app-row">
-    <Menu tagIndex="81" ref="Menu"></Menu>
+    <Menu tagIndex="26" ref="Menu"></Menu>
     <div class="rightMain">
       <Header title="团队配置中心" ref="Header"></Header>
       <div class="app-main-container">
