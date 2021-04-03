@@ -13,7 +13,7 @@
         <div class="ibox padding20 left">
           <div>
             <div style="line-height: 25px;">
-              <div>
+              <div style="font-size: 16px;">
                 项目简介：
               </div>
               <div style="color: #98a6ad;">
@@ -50,7 +50,7 @@
               </div>
             </div>
             <div style="margin-top: 50px;">
-              <div>项目成员：</div>
+              <div style="font-size: 16px;">项目成员：</div>
               <div class="flex-row" style="padding: 5px 0 0 0;">
                 <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
               </div>
@@ -98,9 +98,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div style="position: relative;flex: 1;margin-top: 20px;padding: 15px;" class="ibox padding20">
-            <div style="font-size: 15px;">工作项类型统计</div>
+            <div style="font-size: 16px;margin-top: 50px;">工作项类型统计</div>
             <div style="position: relative;flex: 1;">
               <bar :chartData="chartData" :options="options" :height="canvasHeight" />
             </div>
