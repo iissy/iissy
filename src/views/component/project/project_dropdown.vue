@@ -8,7 +8,7 @@
       </div>
       <b-popover ref="popover" target="popover-project" triggers="focus" placement="bottom" @show="project_list">
         <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;">
-          <div style="padding: 5px 10px;border-bottom: 1px solid #e8e8e8;color: #909090;">进行中的项目</div>
+          <div style="padding: 5px 10px;color: #909090;" class="b-line">进行中的项目</div>
           <div style="padding: 5px 10px;" v-for="p in projects" :key="p.uuid" class="status-item">
             <router-link :to="{ name:'Project', params: { team: team, project: p.uuid } }">{{ p.name }}</router-link>
           </div>

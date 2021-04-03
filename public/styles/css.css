@@ -6,10 +6,14 @@ body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 
 .ibox { box-shadow: 0 0 2px 0 rgba(154,161,171,0.15);border-radius: 3px;background-color: #fff; }
 .padding20 { padding: 20px; }
+.b-line { border-bottom: 1px solid #eef2f7; }
 .status { border-radius: 20px!important;padding: 0 8px 0 8px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
 .to_do { color: #f0a100;border: solid 1px #f0a100; }
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
+
+.project-top-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;border-bottom: 1px solid #eef2f7;margin-top: 10px;width: 100%; }
+.project-top-row div { text-align: left; }
 
 .rightMain .table th div{ text-align: left;font-size: 12px; }
 .rightMain .table thead th { border-bottom: 0; }

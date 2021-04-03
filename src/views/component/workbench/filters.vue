@@ -2,7 +2,7 @@
   <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
     <div style="overflow:hidden;flex: 1;padding: 20px;flex-direction: row;height: 100%;display: flex;width: 100%;">
       <div class="right-container-inner ibox">
-        <div id="project-top-row">
+        <div class="project-top-row">
           <div style="flex: 0 1 auto;">
             <div class="tab-title">
               <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
@@ -150,8 +150,6 @@ export default {
 </script>
 
 <style scoped>
-#project-top-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;border-bottom: 1px solid #e8e8e8;margin-top: 10px;width: 100%; }
-#project-top-row div { text-align: left; }
 .tab-title{ width: 100%;background-color: #ffffff;padding: 0 0 0 20px;flex: 0 0 auto;flex-direction: row;display: flex; }
 .tab-title .active{ border-bottom: 2px solid #1890ff;color: #1890ff; }
 

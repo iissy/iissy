@@ -6,7 +6,7 @@
     </div>
     <b-popover ref="popover" target="popover-project-status" triggers="focus" placement="bottom">
       <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;">
-        <div style="padding: 5px 10px;font-size: 15px;border-bottom: 1px solid #e8e8e8;">更改项目状态</div>
+        <div style="padding: 5px 10px;font-size: 15px;" class="b-line">更改项目状态</div>
         <div v-for="s in statuses" :key="s.uuid">
           <div @click="change_status(s.uuid)" class="status-item flex-row align-items-center" :class="{selected: curColor === s.uuid}">
             <div style="flex: 0 0 auto;">{{ s.name }}</div>

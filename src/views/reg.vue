@@ -84,7 +84,7 @@
                 <div style="flex: 0 0 auto;font-size: 16px;font-weight: 600;text-align: left;padding-left: 20px;padding-top: 10px;color: #333333;margin: 10px 0;">
                   您可以尝试 Soul 全线产品的功能
                 </div>
-                <div v-for="item in items" :key="item.uuid" style="padding: 5px 0 5px 0;margin-left: 20px;border-bottom: 1px solid #e8e8e8;" class="flex-row align-items-center">
+                <div v-for="item in items" :key="item.uuid" style="padding: 5px 0 5px 0;margin-left: 20px;" class="flex-row b-line align-items-center">
                   <div style="flex: 1;text-align: left;">
                     {{ item.name }}
                   </div>

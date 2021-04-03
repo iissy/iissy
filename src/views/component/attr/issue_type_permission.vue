@@ -1,6 +1,6 @@
 <template>
   <div class="app-main-content ibox">
-    <div style="flex: 0 0 auto;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;" class="flex-row align-items-center">
+    <div style="flex: 0 0 auto;padding: 20px 0 10px 20px;" class="flex-row b-line align-items-center">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;display: flex;">
           <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">

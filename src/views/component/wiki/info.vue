@@ -1,6 +1,6 @@
 <template>
   <div style="width: 960px;flex: 1;margin: 20px 0;" class="ibox">
-    <div style="flex: 0 0 auto;font-size: 18px;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;">页面组管理</div>
+    <div style="flex: 0 0 auto;font-size: 18px;padding: 20px 0 10px 20px;" class="b-line">页面组管理</div>
     <div style="padding: 20px 30px 0 30px;">
       <div style="margin-top: 6px;width: 300px;">
         <b-form-group

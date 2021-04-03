@@ -158,7 +158,7 @@ export default {
 .com-line-header { position: relative;margin: 35px -20px 0 -20px;padding: 0 20px;border-top: 1px solid #e8e8e8; }
 .com-line-header-title { font-size: 15px;font-weight: 500;border: 1px solid #e8e8e8;width: 95px;height: 30px;line-height: 30px;border-radius: 15px;position: absolute;top: -15px;left: 50%;margin-left: -47px;text-align: center;background-color: #ffffff; }
 
-.tab-title { width: 100%;border-bottom: 1px solid #e8e8e8;background-color: #ffffff;flex: 0 0 auto; }
+.tab-title { width: 100%;border-bottom: 1px solid #eef2f7;background-color: #ffffff;flex: 0 0 auto; }
 .tab-title > div { flex: 0 0 auto;text-align: center;cursor: pointer;padding: 10px;font-size: 15px;margin-right: 10px; }
 .tab-title .active{ border-bottom: 3px solid #17C4BB;color: #17C4BB; }
 .tab-content { flex: 1 0 auto; }
