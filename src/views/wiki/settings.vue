@@ -2,7 +2,7 @@
   <div class="app-column">
     <Header ref="Header" :page="page"/>
     <div class="flex-row rightMain" style="overflow: hidden;">
-      <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 20px 0 20px;">
+      <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 0 0 20px;">
         <div class="flex-row align-items-center" style="flex: 0;width: 100%;margin-bottom: 10px;cursor: pointer;" @click="toSpace">
           <div style="color: #444444;">
             <b-icon icon="arrow-left-circle-fill" scale="1.5"/>

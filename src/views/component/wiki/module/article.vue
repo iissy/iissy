@@ -1,6 +1,6 @@
 <template>
   <div id="article" class="flex-column">
-    <div style="flex: 0 0 40px;border-bottom: 1px solid #dedede;padding: 0 20px;" class="flex-row align-items-center">
+    <div style="flex: 0 0 40px;padding: 0 20px;" class="flex-row align-items-center b-line">
       <div style="flex: 1;" class="flex-row">
         <div style="flex: 0 0 auto;"><b-icon icon="house-door-fill" scale="1"/></div>
         <div style="flex: 0 0 auto;margin-left: 5px;">主页</div>

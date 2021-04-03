@@ -1,12 +1,12 @@
 <template>
   <div class="teamDepartmentTree">
-    <div class="left-team-tree">
+    <div class="left-team-tree ibox">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
       <div style="padding-right: 10px;">
         <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" @open="fn_show" v-if="departmentTree && departmentTree.opened"/>
       </div>
     </div>
-    <div class="right-member-list">
+    <div class="right-member-list ibox">
       <div style="flex: 0 0 auto;">
         <div style="font-size: 18px;margin-bottom: 20px;">成员列表</div>
       </div>

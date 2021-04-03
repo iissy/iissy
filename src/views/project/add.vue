@@ -4,12 +4,12 @@
     <div class="rightMain">
       <Header title="项目配置中心" ref="Header"></Header>
       <div class="app-main-container">
-        <div class="app-main-center">
+        <div class="app-main-center ibox">
           <div style="display: flex;flex-direction: column;height: 100%;">
-            <div style="flex: 0 0 auto;padding: 20px;">
+            <div style="flex: 0 0 auto;padding: 20px;font-size: 18px;">
               新建项目
             </div>
-            <div class="form-horizontal mg0" style="flex: 1;border-top: 1px solid #e8e8e8;padding: 20px;">
+            <div class="form-horizontal mg0 t-line" style="flex: 1;padding: 20px;">
               <div style="">
                 <label class="col-md-8">项目名字<span style="color: #ff0000;">*</span></label>
               </div>
@@ -19,7 +19,7 @@
                 </div>
               </div>
             </div>
-            <div style="flex: 0 0 auto;padding: 20px;border-top: 1px solid #e8e8e8;background-color: #f8f8f8;text-align: right;">
+            <div style="flex: 0 0 auto;text-align: right;" class="t-line padding20">
               <AddProjectButton title="确定提交" @submit="add"></AddProjectButton>
             </div>
           </div>

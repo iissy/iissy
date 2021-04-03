@@ -1,6 +1,6 @@
 <template>
   <div class="wiki ibox">
-    <div style="flex: 0 0 auto;font-size: 18px;padding: 20px 0 10px 20px;font-weight: 600;" class="b-line">页面组管理</div>
+    <div style="flex: 0 0 auto;font-size: 18px;font-weight: 600;" class="b-line padding20">页面组管理</div>
     <div style="padding: 20px;width: 100%;" class="flex-column">
       <div style="padding: 20px 0;width: 100%;" class="flex-row pages b-line" v-for="item in items" v-bind:key="item.uuid">
         <div style="flex: 1;">

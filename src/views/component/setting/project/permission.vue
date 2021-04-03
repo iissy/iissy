@@ -1,6 +1,6 @@
 <template>
   <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="ibox">
-    <div style="flex: 0 0 auto;padding: 20px 0 10px 20px;" class="flex-row b-line align-items-center">
+    <div style="flex: 0 0 auto;" class="flex-row b-line align-items-center padding20">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="font-size: 18px;flex: 0 0 auto;">项目管理</div>
         <div style="margin-left: 10px;flex: 0 0 auto;">

@@ -1,6 +1,6 @@
 <template>
   <div style="max-width:1200px;flex: 1 1 auto;height: 100%;" class="ibox">
-    <div style="flex: 0 0 auto;padding: 20px 0 10px 20px;" class="flex-row align-items-center b-line">
+    <div style="flex: 0 0 auto;" class="flex-row align-items-center b-line padding20">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;display: flex;">
           <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">

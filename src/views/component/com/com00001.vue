@@ -28,7 +28,7 @@
           </div>
         </div>
         <div id="project-main" style="overflow:hidden;">
-          <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;border-top: 1px solid #e8e8e8;">
+          <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;" class="t-line">
             <div v-if="tasks && tasks.length > 0" class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;width: 0;">
               <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
                 <div id="task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">

@@ -1,13 +1,13 @@
 <template>
-  <div id="dynamic" class="flex-column">
-    <div style="flex: 0 0 40px;border-bottom: 1px solid #dedede;" class="flex-row align-items-center">
+  <div id="dynamic" class="flex-column l-line">
+    <div style="flex: 0 0 40px;" class="flex-row align-items-center b-line">
       <div style="flex: 0 0 auto;margin-left: 20px;cursor: pointer;">动态</div>
       <div style="flex: 1;">&nbsp;</div>
       <div style="flex: 0 0 auto;margin-right: 20px;">
         <b-icon icon="x" scale="1.6"/>
       </div>
     </div>
-    <div class="tab-title flex-row align-items-center" style="margin-top: 10px;justify-content: space-between;">
+    <div class="tab-title flex-row align-items-center b-line" style="margin-top: 10px;justify-content: space-between;">
       <div style="flex: 1;"></div>
       <div v-for="(title,index) in tabs" @click="cur=index" :class="{active:cur===index}" :key="index">{{title}}</div>
       <div style="flex: 1;"></div>
@@ -34,8 +34,8 @@ export default {
 </script>
 
 <style scoped>
-#dynamic { flex: 0 0 300px;border-left: 1px solid #dedede; }
-.tab-title { border-bottom: 1px solid #e8e8e8;flex: 0 0 auto;margin: 0 10px; }
+#dynamic { flex: 0 0 300px; }
+.tab-title { flex: 0 0 auto;margin: 0 10px; }
 .tab-title > div { flex: 0 0 auto;text-align: center;cursor: pointer;padding: 10px; }
 .tab-title .active{ border-bottom: 3px solid #17C4BB;color: #17C4BB;padding: 10px 10px 7px 10px; }
 </style>

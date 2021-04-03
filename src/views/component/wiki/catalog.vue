@@ -1,6 +1,6 @@
 <template>
-  <div id="catalog" class="flex-column">
-    <div style="flex: 0 0 40px;border-bottom: 1px solid #dedede;" class="flex-row align-items-center">
+  <div id="catalog" class="flex-column r-line">
+    <div style="flex: 0 0 40px;" class="flex-row align-items-center b-line">
       <div v-b-toggle.sidebar style="flex: 0 0 auto;margin-left: 20px;outline: none;cursor: pointer;">
         <b-icon icon="list" scale="1.5"/>
       </div>
@@ -162,7 +162,7 @@ export default {
 </script>
 
 <style scoped>
-#catalog { flex: 0 0 300px;border-right: 1px solid #dedede;width: 300px; }
+#catalog { flex: 0 0 300px;width: 300px; }
 .tool { margin-top: 20px; }
 .tool .tool-header { color: #909090;margin-bottom: 5px; }
 .tool .tool-item { padding: 0 0 0 10px;cursor: pointer;border-radius: 3px;line-height: 40px; }
