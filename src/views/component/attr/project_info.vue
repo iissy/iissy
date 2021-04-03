@@ -1,6 +1,6 @@
 <template>
   <div class="app-main-content ibox">
-    <div style="font-size: 18px;margin-bottom: 20px;padding: 20px 0 10px 20px;" class="b-line">项目信息</div>
+    <div style="font-size: 18px;margin-bottom: 20px;" class="b-line padding20">项目信息</div>
     <div style="padding: 0 10px;">
       <b-container fluid>
         <b-row style="margin-bottom: 20px;">
