@@ -70,7 +70,7 @@ export default {
 <style scoped>
 .com-outline { background-color: #ffffff;height:48px;display: flex;flex-direction: row;width: 100%;flex: 1; }
 .com-outline a.com { flex:1;vertical-align: middle;height: 100%;display: flex;padding: 0 20px 0 20px;cursor: pointer;text-decoration: none; }
-.com-outline a.active { border-top: 3px solid #17C4BB;background-color: #f8f8f8;border-bottom: 3px solid #f8f8f8; }
+.com-outline a.active { border-top: 3px solid #17C4BB;background-color: #fafbfe; }
 .com-outline a.active  div { color: #17C4BB!important; }
 
 .nav-pills .nav-link { display: inline;padding:0; }

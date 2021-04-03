@@ -7,7 +7,7 @@
         <div class="app-main-no-border flex-column">
           <div style="height: 100%;flex: 1;" class="flex-row">
             <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
-            <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="g-container">
+            <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="ibox">
               <component v-bind:is="currentTabComponent"></component>
             </div>
           </div>

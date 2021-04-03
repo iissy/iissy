@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content" style="padding: 20px;">
+  <div class="app-main-content padding20 ibox">
     <div style="font-size: 18px;margin-bottom: 20px;">工作项类型</div>
     <Summary desc="工作项类型用于在同一个项目下使用不同类型的工作项，不同的工作项类型可以定义不同的属性字段、权限和工作流等。项目下的工作项类型配置的修改不会同步到配置中心下的工作项类型中。“项目组件”中增加的工作项类型组件会同时增加到这里。"/>
     <div style="margin: 20px 0 0 0;">

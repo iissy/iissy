@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width:1200px;flex: 1;min-height: 100%;" class="g-container">
+  <div style="max-width:1200px;flex: 1;min-height: 100%;" class="ibox">
     <ProjectMangeHeader title="团队信息" desc=""/>
     <div style="padding: 0 20px 20px 20px;">
     <b-container style="margin-top: 40px;" fluid>

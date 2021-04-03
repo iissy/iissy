@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content">
+  <div class="app-main-content ibox">
     <div style="font-size: 18px;margin-bottom: 20px;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;">项目信息</div>
     <div style="padding: 0 10px;">
       <b-container fluid>

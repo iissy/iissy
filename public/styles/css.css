@@ -1,9 +1,11 @@
 * { box-sizing: border-box; }
 html, body { background-color: #eeeeee;color: #4F4F4F;width: 100%;height: 100%;overflow: hidden; }
-html, body, div, h3, td, p, span, img, a { font-size: 14px;font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;margin: 0;padding: 0;color: #4F4F4F; }
-body p { font-size: 14px;font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;margin: 0;padding: 0;color: #4F4F4F; }
+html, body, div, h3, td, p, span, img, a { font-size: 14px;font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;margin: 0;padding: 0;color: #6c757d; }
+body p { font-size: 14px;font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;margin: 0;padding: 0;color: #6c757d; }
 body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 
+.ibox { box-shadow: 0 0 2px 0 rgba(154,161,171,0.15);border-radius: 3px;background-color: #fff; }
+.padding20 { padding: 20px; }
 .status { border-radius: 20px!important;padding: 0 8px 0 8px;font-size: 12px;height: 20px;flex: 0 0 auto;align-items: center;display: flex; }
 .to_do { color: #f0a100;border: solid 1px #f0a100; }
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
@@ -107,13 +109,11 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 }
 
 .app-main-content {
-    margin: 10px;
+    margin: 20px;
     -webkit-flex: 1 0 auto;
     flex: 1 0 auto;
     min-width: 666px;
-    box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
     box-sizing: border-box;
-    /*padding: 20px;*/
     border-radius: 3px;
     background: #fff;
 }
@@ -163,7 +163,6 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
-    box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
     border-radius: 3px;
     height: 100%;
 }
@@ -171,7 +170,6 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 .right-member-list {
     -webkit-flex: 1;
     flex: 1;
-    box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);
     box-sizing: border-box;
     border-radius: 3px;
     overflow: hidden;
@@ -221,4 +219,6 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
     z-index: 0;
 }
 .memberList .ui-table table { border-bottom: 1px solid #dee2e6;border-top: none; }
-.app-main-center { margin: 20px;-webkit-flex: 1 0 auto;flex: 1 0 auto;max-width: 100%;box-sizing: border-box;width: 1000px;background-color: #ffffff;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2); }
+.app-main-center { margin: 20px;-webkit-flex: 1 0 auto;flex: 1 0 auto;max-width: 100%;box-sizing: border-box;width: 1000px;
+    background-color: #ffffff;
+}

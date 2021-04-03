@@ -19,11 +19,8 @@ import com00002 from '../component/com/com00001';
 import com00003 from '../component/com/com00001';
 import com00004 from '../component/com/com00004';
 import com00005 from '../component/com/com00005';
-import com00006 from '../component/com/com00006';
-import com00007 from '../component/com/com00007';
 import com00008 from '../component/com/com00008';
 import com00009 from '../component/com/com00009';
-import com00010 from '../component/com/com00010';
 import designer from '../component/com/designer';
 
 export default {
@@ -49,11 +46,8 @@ export default {
     com00003,
     com00004,
     com00005,
-    com00006,
-    com00007,
     com00008,
     com00009,
-    com00010,
     designer
   },
   mounted() {

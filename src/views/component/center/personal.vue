@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-#personal { flex: 0 0 auto;width: 218px;height: 100%;padding: 0 20px 0 0;flex-direction: column; }
+#personal { flex: 0 0 auto;width: 218px;height: 100%;padding: 0;flex-direction: column; }
 #personal > div { flex: 0;padding: 5px 0 5px 40px;width: 100%; }
 #personal > div.active { border-left: 5px solid #ff0000;background-color: #e8e8e8;padding: 5px 0 5px 35px; }
 #personal div a { display: block; }

@@ -1,5 +1,5 @@
 <template>
-  <div class="wiki g-container">
+  <div class="wiki ibox">
     <div style="flex: 0 0 auto;font-size: 18px;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;font-weight: 600;">页面组管理</div>
     <div style="padding: 20px;width: 100%;" class="flex-column">
       <div style="padding: 20px 0;width: 100%;border-bottom: 1px solid #e8e8e8;" class="flex-row pages" v-for="item in items" v-bind:key="item.uuid">

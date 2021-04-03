@@ -4,7 +4,7 @@
     <div class="rightMain">
       <Header title="项目管理" ref="Header"></Header>
       <div class="app-main-container">
-        <div class="app-main-content flex-column">
+        <div class="app-main-content ibox flex-column">
           <div id="project-top-row">
             <div style="flex: 0 1 auto;">
               <div class="tab-title">

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content">
+  <div class="app-main-content ibox">
     <div class="flex-row align-items-center" style="margin: 0 20px;border-bottom: 1px solid #e8e8e8;padding: 10px 0;">
       <div style="flex: 1;">
         <div style="font-size: 18px;">项目信息</div>

@@ -5,7 +5,7 @@
       <div class="rightMain">
         <Header title="群机器人" ref="Header"></Header>
         <div class="app-main-container">
-          <div class="app-main-content">
+          <div class="app-main-content ibox">
             <div>
               <div>
                 <div style="float: left;">服务器出口IP：</div><div style="margin-left: 30px;float:left;">47.244.143.251</div>

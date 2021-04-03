@@ -5,7 +5,7 @@
       <div class="rightMain">
         <Header title="代码提交" ref="Header"></Header>
         <div class="app-main-container">
-          <div class="app-main-content flex-column" style="padding: 10px 20px;">
+          <div class="app-main-content ibox flex-column" style="padding: 10px 20px;">
             <div style="flex: 0 0 auto;" class="flex-row">
               <div style="flex: 1;width: 80%">控制区</div>
               <div style="flex:0 0 auto;text-align: right;">团队配置</div>

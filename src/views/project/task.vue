@@ -6,7 +6,7 @@
       <div class="project-main-container">
         <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
           <div style="overflow:hidden;flex: 1;padding: 10px;flex-direction: row;height: 100%;display: flex;width: 100%;">
-            <div class="right-container-inner">
+            <div class="right-container-inner ibox">
               <div id="project-main" style="overflow:hidden;">
                 <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
                   <div class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;">

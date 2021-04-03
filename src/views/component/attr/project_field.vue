@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content" style="padding: 20px;">
+  <div class="app-main-content padding20 ibox">
     <div style="font-size: 18px;margin-bottom: 20px;">项目属性</div>
     <Summary :desc="desc"/>
     <Search style="margin: 20px 0;" placeholder="搜索项目属性" />

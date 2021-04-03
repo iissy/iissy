@@ -19,7 +19,7 @@
         <div class="content">
           <div ref="permBody" class="select" :class="{open: visible}">
             <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
-            <div style="position: absolute;" ref="layer" class="group g-container">
+            <div style="position: absolute;" ref="layer" class="group ibox">
               <div v-for="item in items" :key="item.uuid">
                 <div v-if="item.groups && item.groups.length > 0" style="color: #909090;" class="domain-group-header">
                   {{ item.title }}

@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="g-container">
+  <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="ibox">
     <PermissionHeader title="团队权限" desc="团队权限可以用于管理团队成员。"/>
     <div style="padding: 0 20px 20px 20px;">
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.invite"/>

@@ -1,7 +1,7 @@
 <template>
   <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
-    <div style="overflow:hidden;flex: 1;padding: 10px;flex-direction: row;height: 100%;display: flex;width: 100%;">
-      <div class="right-container-inner">
+    <div style="overflow:hidden;flex: 1;padding: 20px;flex-direction: row;height: 100%;display: flex;width: 100%;">
+      <div class="right-container-inner ibox">
         <div id="project-top-row">
           <div style="flex: 0 1 auto;">
             <div class="tab-title">

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content" style="padding: 20px;">
+  <div class="app-main-content ibox padding20">
     <div style="margin-bottom: 20px;background-color: #f0f0f0;padding: 10px;border-radius: 3px;" class="flex-row align-items-center">
       <div style="flex: 0 0 auto;display: flex;">
         <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">

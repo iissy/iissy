@@ -1,5 +1,5 @@
 <template>
-  <div style="flex: 1;" class="g-container flex-column">
+  <div style="flex: 1;" class="ibox flex-column">
     <div style="flex: 0 0 auto;padding: 20px 20px 0 20px;">{{ title }}</div>
     <div style="font-size: 12px;color: #909090;flex: 0 0 auto;padding: 0 20px;">共 29 个工作项</div>
     <div id="task-list" style="margin-top: 10px;flex: 1;padding: 0 20px;overflow: auto;" class="flex-column">

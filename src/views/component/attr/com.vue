@@ -1,7 +1,7 @@
 <template>
-  <div style="padding: 10px;width: 100%;height: 100%;">
+  <div style="padding: 20px;width: 100%;height: 100%;">
     <div style="flex-direction: row;display: flex;height: 100%;">
-      <div style="flex: 0 0 280px;display: flex;padding: 10px 20px 10px 20px;" class="shadow flex-column">
+      <div style="flex: 0 0 280px;display: flex;padding: 10px 20px 10px 20px;" class="ibox flex-column">
         <div style="flex: 1;width: 100%;">
           <div style="font-size: 18px;margin-bottom: 20px;">组件库</div>
           <Search placeholder="搜索组建" />
@@ -46,8 +46,7 @@
           </div>
         </div>
       </div>
-      <div style="flex: 0 0 10px;"></div>
-      <div style="flex: 1;padding: 10px 20px 10px 20px;" class="shadow">
+      <div style="flex: 1;padding: 10px 20px 10px 20px;margin-left: 10px;" class="ibox">
         <div style="font-size: 18px;">组建配置</div>
         <Summary desc="你可以通过拖放组件库中的组件来自定义界面的导航栏。你也可以设置每一个组件，使其拥有个性化的配置。"/>
         <div class="com-line-header">

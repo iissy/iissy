@@ -1,5 +1,5 @@
 <template>
-  <div class="wiki g-container">
+  <div class="wiki ibox">
     <PermissionHeader title="权限配置" desc="允许创建页面组。"/>
     <div style="padding: 0 20px 20px 20px;">
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.manage"/>

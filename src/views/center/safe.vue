@@ -8,7 +8,7 @@
           <div class="app-main-no-border">
             <div style="display: flex;flex-direction: row;height: 100%;">
               <personal tagIndex="2"></personal>
-              <div style="max-width:1200px;background-color: #ffffff;flex: 1 1 auto;padding: 20px;height: 100%;box-shadow: 0 4px 6px 0 rgba(31,31,31,0.05), 0 0 2px 0 rgba(31,31,31,0.2);">
+              <div style="max-width:1200px;background-color: #ffffff;flex: 1 1 auto;height: 100%;" class="ibox padding20">
                 <div style="font-size: 18px;">安全设置</div>
                 <div style="border: 1px solid #dedede;margin-top: 20px;">
                   <div style="display: flex;flex-direction: row;padding: 20px;">

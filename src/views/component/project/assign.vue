@@ -75,7 +75,7 @@ export default {
 
 <style scoped>
 #popover-assign { box-shadow: none;outline: none; }
-#popover-assign.assign { border-radius: 30px;cursor: pointer;padding: 5px 20px 5px 5px; }
+#popover-assign.assign { border-radius: 30px;cursor: pointer;padding: 0; }
 #popover-assign.assign:hover { background-color: #F0F8FF; }
 .status-item { padding: 5px 10px 5px 10px;border-radius: 0.3rem;cursor: pointer; }
 .status-item:hover { background-color: #F0F8FF; }

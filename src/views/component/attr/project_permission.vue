@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content">
+  <div class="app-main-content ibox">
     <PermissionHeader title="项目权限" desc="项目权限可以用于定制项目的操作权限控制。"/>
     <div style="padding: 0 20px 20px 20px;">
       <PermissionItem v-if="loaded" :role_members="role_members" :data="data" :group="maps.browse"/>

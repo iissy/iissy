@@ -1,21 +1,14 @@
 <template>
-  <div class="flex-column" style="margin: 10px;flex: 1;">
-    <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 0 0 auto;padding: 15px;">
+  <div class="flex-column" style="margin: 20px;flex: 1;">
+    <div class="flex-row" style="flex: 0 0 auto;padding: 0;">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="font-size: 18px;">仪表盘</div>
       </div>
-      <div style="flex: 0 0 auto;" class="flex-row">
-        <div style="flex: 1;"></div>
-        <div style="flex: 0 0 auto;border: 1px solid #d9d9d9;padding: 3px 10px;border-radius: 3px;cursor: pointer;" class="flex-row">
-          <div><b-icon icon="arrows-fullscreen"/></div>
-          <div style="margin-left: 5px;">全屏模式</div>
-        </div>
-      </div>
     </div>
-    <div class="flex-row" style="padding: 10px 0 0 0;flex: 1;height: 0;">
+    <div class="flex-row" style="padding: 20px 0 0 0;flex: 1;height: 0;">
       <Tasks :tasks="tasks_assign" title="我负责的工作项"/>
-      <Tasks style="margin-left: 10px;" :tasks="tasks_owner" title="我提交的工作项"/>
-      <Tasks style="margin-left: 10px;" :tasks="tasks_watcher" title="我关注的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_owner" title="我提交的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_watcher" title="我关注的工作项"/>
     </div>
   </div>
 </template>

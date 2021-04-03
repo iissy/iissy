@@ -1,5 +1,5 @@
 <template>
-  <div style="flex: 0 0 auto;box-shadow: 0 2px 4px 0 #d3d3d3;" class="flex-column">
+  <div style="flex: 0 0 auto;" class="flex-column ibox">
     <div class="app-header">
       <div class="flex-row align-items-center" style="width: 100%;">
         <div style="background-color: #ffffff;height:48px;padding:10px;display: flex;flex-direction: row;flex: 0 0 auto;">
@@ -17,7 +17,7 @@
         <UserCenterAvatar/>
       </div>
     </div>
-    <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;" class="flex-row justify-content-center">
+    <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;background-color: #fafbfe;box-shadow: rgb(211 211 211) 0px 2px 4px 0px;" class="flex-row justify-content-center">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
         <router-link :class="{active: isActive(a, attr)}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
       </div>

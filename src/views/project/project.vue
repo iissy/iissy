@@ -4,7 +4,7 @@
     <div class="rightMain">
       <Header title="项目管理" ref="Header"></Header>
       <div class="app-main-container">
-        <div class="app-main-content">
+        <div class="app-main-content ibox">
           &nbsp;
         </div>
       </div>

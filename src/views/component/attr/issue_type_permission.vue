@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-content">
+  <div class="app-main-content ibox">
     <div style="flex: 0 0 auto;border-bottom: 1px solid #e8e8e8;padding: 20px 0 10px 20px;" class="flex-row align-items-center">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;display: flex;">
