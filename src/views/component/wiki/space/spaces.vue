@@ -1,6 +1,6 @@
 <template>
-  <div class="overview" style="overflow:auto;flex: 1 0 auto;padding: 10px;width: 100%;position: relative;">
-    <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;padding: 10px;margin-bottom: 10px;">
+  <div class="overview padding20" style="overflow:auto;flex: 1 0 auto;width: 100%;position: relative;">
+    <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;margin-bottom: 20px;">
       <div style="flex: 0 0 auto;">
         <AddButton title="新建页面组" v-b-modal.modal-wiki-add></AddButton>
       </div>
