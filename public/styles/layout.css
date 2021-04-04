@@ -2,6 +2,7 @@
 .right-container-inner { flex-direction: column;display: flex;min-height: 100%;width: 100%; }
 
 .border { border: 1px solid #e8e8e8; }
+.i-table .bbox { border: 1px solid #eef2f7 !important; }
 .flex { display: -webkit-flex;display: flex; }
 .flex-row { display: -webkit-flex;display: flex;-webkit-flex-direction: row;flex-direction: row; }
 .flex-column { display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column; }

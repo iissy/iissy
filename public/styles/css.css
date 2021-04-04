@@ -20,7 +20,7 @@ body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 
 .rightMain .table th div{ text-align: left;font-size: 12px; }
 .rightMain .table thead th { border-bottom: 0; }
-.rightMain .table th,.rightMain .table td { padding: 0 10px 0 10px;height: 34px;vertical-align: middle;white-space: nowrap; }
+.rightMain .table th,.rightMain .table td { vertical-align: middle;white-space: nowrap;border-top: 1px solid #eef2f7;height: 33px;line-height: 33px;padding: 5px 5px 5px 20px; }
 .rightMain .table-striped tbody tr:nth-of-type(odd) { background-color: #fbfcfd; }
 .rightMain .table-striped tbody tr:nth-of-type(even) { background-color: #ffffff; }
 
@@ -128,6 +128,8 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 .app-main-no-border { -webkit-flex: 1 0 auto;flex: 1 0 auto;min-width: 666px;box-sizing: border-box;padding: 20px 20px 20px 0;min-height: 100%; }
 .app-row { display: -webkit-flex;display: flex;-webkit-flex-direction: row;flex-direction: row;height: 100%;min-width: 1024px;min-height: 300px; }
 .app-column { display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;height: 100%;width: 100%; }
+
+.project-new-row { flex: 0 1 auto;width: 100%;align-items: center;padding: 10px 20px; }
 
 .table td a { display: block;height: 33px;line-height: 33px; }
 .rightMain { background: #fafbfe;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;height: 100%;-webkit-flex: 1 1 auto;flex: 1 1 auto;position: relative;min-width: 1024px; }

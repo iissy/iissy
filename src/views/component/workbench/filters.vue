@@ -9,19 +9,13 @@
             </div>
           </div>
           <div style="flex: 1;">&nbsp;</div>
-          <div style="flex: 0 0 auto;align-items: normal;" class="flex-row">
-            <div style="flex: 0 0 auto;">
-              <b-icon icon="gear-fill"/>
-            </div>
-            <div style="margin-right: 20px;margin-left: 5px;">视图管理</div>
-          </div>
         </div>
-        <div id="project-new-row">
+        <div class="project-new-row flex-row">
           <AddTask title="工作项"/>
-          <div style="flex: 1;display: inline-block;padding-right: 20px;"></div>
+          <div style="flex: 1;display: inline-block;"></div>
           <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
             <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
-              <div style="padding-right: 20px;" class="flex-row align-items-center">
+              <div class="flex-row align-items-center">
                 <div class="flex-row align-items-center filter">
                   <div style="flex: 0 0 auto;">筛选</div>
                   <div style="flex: 0 0 auto;margin-left: 5px;">
@@ -153,7 +147,6 @@ export default {
 .tab-title{ width: 100%;background-color: #ffffff;padding: 0 0 0 20px;flex: 0 0 auto;flex-direction: row;display: flex; }
 .tab-title .active{ border-bottom: 2px solid #1890ff;color: #1890ff; }
 
-#project-new-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;margin: 10px 0 10px 0;width: 100%;align-items: center; }
 #project-main { flex: 1;display: flex; }
 
 #task-list .task-item { cursor: pointer;padding-left: 3px; }

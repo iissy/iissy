@@ -1,6 +1,6 @@
 <template>
   <div id="AddTask">
-    <div style="flex: 0 0 auto;flex-direction: row;margin-left: 20px;text-align: left;">
+    <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
       <AddTaskButton :title="title" v-b-modal.modal-add-task></AddTaskButton>
     </div>
     <b-modal size="lg" id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
