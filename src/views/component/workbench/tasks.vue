@@ -18,7 +18,7 @@
                 </div>
               </div>
             </div>
-            <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-weight: 600;margin: 15px 0;cursor: pointer;max-width: 328px;" @click="task_get(t.uuid)">{{t.summary}}啊撒旦发射点发射点法爱上对方爱死</div>
+            <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-weight: 600;margin: 15px 0;cursor: pointer;max-width: 328px;" @click="task_get(t.uuid)">{{t.summary}}</div>
             <div class="flex-row" style="margin-top: 15px;">
               <div style="flex: 1;">
                 <User :user="t.owner"/>
