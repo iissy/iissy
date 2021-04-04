@@ -1,17 +1,32 @@
 <template>
-  <div style="flex: 1;" class="ibox flex-column">
-    <div style="flex: 0 0 auto;padding: 20px 20px 0 20px;">{{ title }}</div>
-    <div style="font-size: 12px;color: #909090;flex: 0 0 auto;padding: 0 20px;">共 29 个工作项</div>
-    <div id="task-list" style="margin-top: 10px;flex: 1;padding: 0 20px;overflow: auto;" class="flex-column">
-      <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item">
-        <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0;cursor: pointer;" @click="task_get(t.uuid)">
-          <div style="flex: 0 0 auto;" class="flex-row">
-            <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"/>
-            <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;height: 20px;">{{t.owner.name}}</div>
-          </div>
-          <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 0px;">{{t.summary}}</div>
-          <div style="flex: 0 0 auto;">
-            <Status :name="t.task_status.name" :color="t.task_status.category.toString()"/>
+  <div style="flex: 0 0 400px;">
+    <div class="flex-column" style="border: 1px solid #eef2f7;border-radius: 3px;">
+      <div style="flex: 0 0 auto;padding: 15px 20px;font-weight: 700;background-color: #f1f3fa;border-radius: 3px 3px 0 0;">{{ title }} ({{ count }})</div>
+      <div id="task-list" style="flex: 0 0 auto;padding: 0 15px 20px 15px;overflow: auto;background-color: #fafbfe;" class="flex-column">
+        <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item">
+          <div style="border: 1px solid #f8f8f8;background-color: #ffffff;flex: 1;padding: 20px;margin-top: 20px;border-radius: 5px;">
+            <div class="flex-row">
+              <div style="flex: 0 0 auto;">
+                <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"/>
+              </div>
+              <div style="flex: 1;" class="flex-row">
+                <div style="flex: 1;">
+                  &nbsp;
+                </div>
+                <div style="flex: 0 0 auto;">
+                  <div style="color: #98a6ad;font-size: 12px;">{{t.create_time | formatDay}}</div>
+                </div>
+              </div>
+            </div>
+            <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-weight: 600;margin: 15px 0;cursor: pointer;max-width: 328px;" @click="task_get(t.uuid)">{{t.summary}}啊撒旦发射点发射点法爱上对方爱死</div>
+            <div class="flex-row" style="margin-top: 15px;">
+              <div style="flex: 1;">
+                <User :user="t.owner"/>
+              </div>
+              <div style="flex: 0 0 auto;">
+                <Status :name="t.task_status.name" :color="t.task_status.category.toString()"/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -23,6 +38,7 @@
 import Priority from "../common/block/priority";
 import Status from '../common/block/status';
 import router from "../../../router";
+import User from "../common/block/suser";
 
 export default {
   data() {
@@ -31,7 +47,9 @@ export default {
   },
   props: {
     title: String,
-    tasks: Array
+    tasks: Array,
+    hasEmail: Boolean,
+    count: Number
   },
   methods: {
     task_get: function (taskUUID) {
@@ -43,7 +61,8 @@ export default {
   },
   components: {
     Priority,
-    Status
+    Status,
+    User
   }
 }
 </script>

@@ -1,4 +1,29 @@
-﻿const formatDate = function(time) {
+﻿const formatDay = function(time) {
+    if (!time) {
+        return '-'
+    }
+    if (Number.isNaN(time)) {
+        return '0000-00-00';
+    }
+    if (time == null) {
+        return '-';
+    }
+    if (time === 0) {
+        return '-';
+    }
+
+    let date = new Date(time);
+
+    let year = date.getFullYear(),
+        month = date.getMonth() + 1,
+        day = date.getDate();
+    let newTime = year + '-' +
+        (month < 10 ? ('0' + month) : month) + '-' +
+        (day < 10 ? ('0' + day) : day);
+    return newTime;
+}
+
+const formatDate = function(time) {
     if (!time) {
         return '-'
     }
@@ -59,6 +84,7 @@ const formatTime = function (time) {
     return newTime;
 }
 export {
+    formatDay,
     formatDate,
     formatTime
 }
