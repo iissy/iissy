@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-          <div id="project-main">
+          <div class="flex1">
             <div v-if="tasks_completed && has" style="-webkit-flex: 1;flex: 1;overflow-x: auto;padding: 0 20px" class="i-table">
               <b-table :fields="fields" :items="items" outlined table-class="bbox">
                 <template v-slot:cell(nameuuid)="data">
@@ -134,6 +134,4 @@ export default {
 <style scoped>
 .tab-title{ width: 100%;background-color: #ffffff;padding: 0 0 0 20px;flex: 0 0 auto;flex-direction: row;display: flex; }
 .tab-title .active{ border-bottom: 2px solid #1890ff;color: #1890ff; }
-
-#project-main { flex: 1;display: flex; }
 </style>
