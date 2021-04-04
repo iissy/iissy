@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div id="project-main" style="overflow:hidden;">
+        <div class="flex1" style="overflow:hidden;">
           <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;" class="t-line">
             <div v-if="tasks && tasks.length > 0" class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;width: 0;">
               <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
@@ -148,8 +148,6 @@ export default {
 <style scoped>
 .tab-title{ width: 100%;background-color: #ffffff;padding: 0 0 0 20px;flex: 0 0 auto;flex-direction: row;display: flex; }
 .tab-title .active{ border-bottom: 2px solid #1890ff;color: #1890ff; }
-
-#project-main { flex: 1;display: flex; }
 
 #task-list .task-item { cursor: pointer;padding-left: 3px; }
 #task-list .active { background-color: #f9f9f9;border-left: 3px solid #17C4BB;padding-left: 0; }
