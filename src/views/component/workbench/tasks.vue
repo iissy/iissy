@@ -2,9 +2,9 @@
   <div style="flex: 0 0 400px;">
     <div class="flex-column" style="border: 1px solid #eef2f7;border-radius: 3px;">
       <div style="flex: 0 0 auto;padding: 15px 20px;font-weight: 700;background-color: #f1f3fa;border-radius: 3px 3px 0 0;">{{ title }} ({{ count }})</div>
-      <div id="task-list" style="flex: 0 0 auto;padding: 0 15px 20px 15px;overflow: auto;background-color: #fafbfe;" class="flex-column">
+      <div id="task-list" style="flex: 0 0 auto;padding: 0 15px 15px 15px;overflow: auto;background-color: #fafbfe;" class="flex-column">
         <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item">
-          <div style="border: 1px solid #f8f8f8;background-color: #ffffff;flex: 1;padding: 20px;margin-top: 20px;border-radius: 5px;">
+          <div style="border: none;background-color: #ffffff;flex: 1;padding: 20px;margin-top: 15px;border-radius: 5px;box-shadow: 0 0 35px 0 rgba(154,161,171, 0.15);">
             <div class="flex-row">
               <div style="flex: 0 0 auto;">
                 <Priority :color="t.priority.color" :name="t.priority.value" :bgColor="t.priority.background_color"/>
