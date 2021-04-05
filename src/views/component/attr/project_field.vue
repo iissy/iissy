@@ -1,9 +1,8 @@
 <template>
-  <div class="app-main-content padding20 ibox">
-    <div style="font-size: 18px;margin-bottom: 20px;">项目属性</div>
-    <Summary :desc="desc"/>
-    <Search style="margin: 20px 0;" placeholder="搜索项目属性" />
-    <div id="project-main">
+  <div class="app-main-content ibox">
+    <PermissionHeader title="项目属性" :desc="desc"/>
+    <Search style="margin: 15px 20px;" placeholder="搜索项目属性" />
+    <div style="margin: 0 20px;">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
@@ -37,7 +36,7 @@
 <script>
 import http from "../../../scripts/http";
 import Search from '../common/form/search';
-import Summary from "../common/block/summary";
+import PermissionHeader from '../common/permission/header';
 
 export default {
   data: function () {
@@ -62,7 +61,7 @@ export default {
     }
   },
   components: {
-    Summary,
+    PermissionHeader,
     Search
   }
 }

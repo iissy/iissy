@@ -19,7 +19,8 @@
 .popover .popover-body { padding: 0; }
 .b-sidebar-header strong { font-size: 1rem;font-weight: bold; }
 
-div input,div textarea { box-shadow: none!important; }
+#app div input,#app div textarea,.modal-dialog div input,.modal-dialog div textarea { box-shadow: none!important;border: 1px #dee2e6 solid;height: 38px; }
+.modal-dialog
 .form-group label { font-size: 15px; }
 .form-group.required label:after { content: "*";color: #ff0000; }
 

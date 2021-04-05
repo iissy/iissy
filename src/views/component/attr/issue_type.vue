@@ -1,11 +1,10 @@
 <template>
-  <div class="app-main-content padding20 ibox">
-    <div style="font-size: 18px;margin-bottom: 20px;">工作项类型</div>
-    <Summary desc="工作项类型用于在同一个项目下使用不同类型的工作项，不同的工作项类型可以定义不同的属性字段、权限和工作流等。项目下的工作项类型配置的修改不会同步到配置中心下的工作项类型中。“项目组件”中增加的工作项类型组件会同时增加到这里。"/>
-    <div style="margin: 20px 0 0 0;">
+  <div class="app-main-content ibox">
+    <PermissionHeader title="工作项类型" desc="工作项类型用于在同一个项目下使用不同类型的工作项，不同的工作项类型可以定义不同的属性字段、权限和工作流等。项目下的工作项类型配置的修改不会同步到配置中心下的工作项类型中。"/>
+    <div style="margin: 15px 20px;">
       <Search placeholder="搜索工作项类型" />
     </div>
-    <div style="margin-top: 20px;">
+    <div style="margin: 0 20px;">
       <div class="table">
         <div class="table-row-header">
           <div class="th">以下为当前项目使用的工作项类型</div>
@@ -58,7 +57,7 @@
 </template>
 
 <script>
-import Summary from '../common/block/summary';
+import PermissionHeader from '../common/permission/header';
 import IBIcon from '../common/block/i_b_icon';
 import Search from "../common/form/search";
 import http from "../../../scripts/http";
@@ -86,7 +85,7 @@ export default {
     }
   },
   components: {
-    Summary,
+    PermissionHeader,
     Search,
     IBIcon
   }

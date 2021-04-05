@@ -9,8 +9,8 @@
         <Search placeholder="搜索报表" />
       </div>
     </div>
-    <div class="flex-row report" style="flex:1;border-top: 1px solid #e8e8e8;">
-      <div style="flex: 0 0 200px;border-right: 1px solid #e8e8e8;">
+    <div class="flex-row report t-line">
+      <div style="flex: 0 0 200px;" class="r-line">
         <div class="report-menu active">
           常用报表
         </div>
@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 .report .report-title { font-size: 16px; }
-.report .report-menu { border-bottom: 1px solid #e8e8e8;line-height: 48px;padding-left: 20px; }
+.report .report-menu { border-bottom: 1px solid #eef2f7;line-height: 48px;padding-left: 20px; }
 .report .report-menu.active { border-left: 3px solid #17C4BB;padding-left: 17px; }
-.report-item { border-bottom: 1px solid #e8e8e8;padding: 10px 0; }
+.report-item { border-bottom: 1px solid #eef2f7;padding: 10px 0; }
 </style>

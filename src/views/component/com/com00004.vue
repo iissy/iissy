@@ -9,31 +9,26 @@
         <AddMember :role="selectedRole" :curMember="items"></AddMember>
       </div>
     </div>
-    <div class="flex-row members" style="flex:1;border-top: 1px solid #e8e8e8;">
-      <div style="flex: 0 0 200px;border-right: 1px solid #e8e8e8;">
+    <div class="flex-row members t-line i-table" style="flex: 1;">
+      <div style="flex: 0 0 200px;" class="r-line">
         <div v-for="r in roles" :key="r.uuid" class="role active" :class="{active: r.uuid === selectedRole}">
           {{ r.name }}
         </div>
       </div>
       <div style="flex: 1;margin: -1px -1px 0 -1px;">
-        <div class="table">
-          <div class="table-row-header">
-            <div class="th">用户名</div>
-            <div class="th">邮箱</div>
-            <div class="th">角色</div>
-            <div class="th" style="flex: 0 0 80px;">操作</div>
-          </div>
-          <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
-            <div class="td">
-              <User :user="item"/>
-            </div>
-            <div class="td">{{ item.email }}</div>
-            <div class="td">无</div>
-            <div class="td" style="flex: 0 0 80px;">
-              <b-icon icon="x" scale="1.8"></b-icon>
-            </div>
-          </div>
-        </div>
+        <b-table :fields="fields" :items="items" outlined table-class="bbox">
+          <template #table-colgroup="scope">
+            <col v-for="field in scope.fields"
+                :key="field.key"
+                :style="{ width: field.w ? field.w : '*' }">
+          </template>
+          <template v-slot:cell(user)="data">
+            <User :user="data.item"/>
+          </template>
+          <template v-slot:cell(op)>
+            <div><b-icon icon="x" scale="1.8"></b-icon></div>
+          </template>
+        </b-table>
       </div>
     </div>
   </div>
@@ -43,7 +38,7 @@
 import http from '../../../scripts/http';
 import Search from '../common/form/search';
 import AddMember from '../common/block/add_member';
-import User from '../common/block/user';
+import User from '../common/block/suser';
 
 export default {
   data: function () {
@@ -52,6 +47,12 @@ export default {
       project: '',
       items: [],
       roles: [],
+      fields: [
+        { key: 'user', label: '用户名' },
+        { key: 'email', label: '邮箱' },
+        { key: 'role', label: '角色' },
+        { key: 'op', label: '操作', w: "80px" }
+      ],
       selectedRole: ''
     };
   },
@@ -98,6 +99,6 @@ export default {
 </script>
 
 <style scoped>
-.members .role { border-bottom: 1px solid #e8e8e8;line-height: 48px;padding-left: 20px; }
+.members .role { border-bottom: 1px solid #eef2f7;line-height: 48px;padding-left: 20px; }
 .members .active { border-left: 3px solid #17C4BB;padding-left: 17px; }
 </style>

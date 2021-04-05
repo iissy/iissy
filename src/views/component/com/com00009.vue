@@ -9,7 +9,6 @@
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-top: 20px;position: relative;" class="flex-row">
-<!--      <div style="flex: 1;position: relative;" class="flex-row">-->
         <div class="ibox padding20 left">
           <div>
             <div style="line-height: 25px;">
@@ -104,7 +103,6 @@
             </div>
           </div>
         </div>
-<!--      </div>-->
     </div>
   </div>
 </template>

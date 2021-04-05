@@ -66,7 +66,7 @@
         <div class="flex-row field-row">
           <div style="flex: 0 0 200px;color: #303030;">创建者</div>
           <div style="flex: 1;">
-            <User :user="task.owner" :hasEmail="hasEmail"/>
+            <User :user="task.owner"/>
           </div>
         </div>
         <div class="flex-row field-row">
@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import User from '../common/block/user';
+import User from '../common/block/suser';
 import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';

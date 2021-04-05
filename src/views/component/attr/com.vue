@@ -46,10 +46,9 @@
           </div>
         </div>
       </div>
-      <div style="flex: 1;padding: 10px 20px 10px 20px;margin-left: 10px;" class="ibox">
-        <div style="font-size: 18px;">组建配置</div>
-        <Summary desc="你可以通过拖放组件库中的组件来自定义界面的导航栏。你也可以设置每一个组件，使其拥有个性化的配置。"/>
-        <div class="com-line-header">
+      <div style="flex: 1;" class="ibox">
+        <PermissionHeader title="组建配置" desc="你可以通过拖放组件库中的组件来自定义界面的导航栏。你也可以设置每一个组件，使其拥有个性化的配置。"/>
+        <div class="com-line-header t-line">
           <div class="com-line-header-title">导航自定义</div>
         </div>
         <div class="flex-row com" style="margin-top: 30px;background-color: #f8f8f8;padding: 11px 11px 1px 11px;flex-wrap: wrap;">
@@ -60,11 +59,11 @@
             <div class="com-name">{{ i.name }}</div>
           </div>
         </div>
-        <div class="com-line-header">
+        <div class="com-line-header t-line">
           <div class="com-line-header-title">组件详情</div>
         </div>
 
-        <div class="tab-title flex-row" style="margin-top: 30px;">
+        <div class="tab-title flex-row b-line" style="margin-top: 30px;">
           <div v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur===index}" :key="index">{{title}}</div>
         </div>
         <div class="tab-content" style="margin-top: 20px;">
@@ -111,7 +110,7 @@
 </template>
 
 <script>
-import Summary from '../common/block/summary';
+import PermissionHeader from '../common/permission/header';
 import Search from "../common/form/search";
 
 export default {
@@ -142,7 +141,7 @@ export default {
     }
   },
   components: {
-    Summary,
+    PermissionHeader,
     Search
   }
 }
@@ -155,10 +154,10 @@ export default {
 .com-box-border:hover svg > path,.com-box-border.active svg > path  { fill: #17C4BB; }
 .com-box-border .com-name { margin-left: 10px;flex: 1;color: inherit;white-space: nowrap;text-overflow: ellipsis;overflow: hidden; }
 
-.com-line-header { position: relative;margin: 35px -20px 0 -20px;padding: 0 20px;border-top: 1px solid #e8e8e8; }
+.com-line-header { position: relative;margin: 35px 0 0 0;padding: 0 20px; }
 .com-line-header-title { font-size: 15px;font-weight: 500;border: 1px solid #e8e8e8;width: 95px;height: 30px;line-height: 30px;border-radius: 15px;position: absolute;top: -15px;left: 50%;margin-left: -47px;text-align: center;background-color: #ffffff; }
 
-.tab-title { width: 100%;border-bottom: 1px solid #eef2f7;background-color: #ffffff;flex: 0 0 auto; }
+.tab-title { width: 100%;background-color: #ffffff;flex: 0 0 auto; }
 .tab-title > div { flex: 0 0 auto;text-align: center;cursor: pointer;padding: 10px;font-size: 15px;margin-right: 10px; }
 .tab-title .active{ border-bottom: 3px solid #17C4BB;color: #17C4BB; }
 .tab-content { flex: 1 0 auto; }

@@ -52,7 +52,7 @@
                 </template>
               </b-table>
             </div>
-            <div v-if="tasks_completed && !has" style="display: flex;flex: 1;margin-top: 10px;" class="align-items-center justify-content-center t-line">
+            <div v-if="tasks_completed && !has" style="display: flex;flex: 1;" class="align-items-center justify-content-center t-line">
               暂无项目
             </div>
           </div>

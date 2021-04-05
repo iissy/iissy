@@ -1,9 +1,8 @@
 <template>
-  <div class="app-main-content ibox padding20">
-    <div style="font-size: 18px;margin-bottom: 20px;">项目状态</div>
-    <Summary :desc="desc"/>
-    <Search style="margin: 20px 0;" placeholder="搜索项目状态" />
-    <div id="project-main">
+  <div class="app-main-content ibox">
+    <PermissionHeader title="项目状态" :desc="desc"/>
+    <Search style="margin: 15px 20px;" placeholder="搜索项目状态" />
+    <div style="margin: 0 20px;">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">
         <div class="table">
           <div class="table-row-header">
@@ -37,7 +36,7 @@
 import http from '../../../scripts/http';
 import Status from '../common/block/status';
 import Search from '../common/form/search';
-import Summary from "../common/block/summary";
+import PermissionHeader from '../common/permission/header';
 
 export default {
   data: function () {
@@ -63,10 +62,7 @@ export default {
   components: {
     Status,
     Search,
-    Summary
+    PermissionHeader
   }
 };
 </script>
-
-<style scoped>
-</style>

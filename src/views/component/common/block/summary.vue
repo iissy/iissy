@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style scoped>
-.summary { flex: 1;border: 1px solid #e8e8e8;border-radius: 3px;padding: 10px;min-height: 40px; }
+.summary { flex: 1;border: 1px solid #eef2f7;border-radius: 3px;padding: 10px;min-height: 40px; }
 </style>
