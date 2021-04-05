@@ -25,6 +25,9 @@
           <template v-slot:cell(user)="data">
             <User :user="data.item"/>
           </template>
+          <template v-slot:cell(role)>
+            <div>无</div>
+          </template>
           <template v-slot:cell(op)>
             <div><b-icon icon="x" scale="1.8"></b-icon></div>
           </template>
