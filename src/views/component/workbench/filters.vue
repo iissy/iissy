@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div class="flex1" style="overflow:hidden;">
+        <div class="h-flex">
           <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;" class="t-line">
             <div v-if="tasks && tasks.length > 0" class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;width: 0;">
               <div style="overflow: auto;flex: 1;display: flex;height: 100%;">

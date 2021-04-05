@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-          <div class="flex1">
+          <div class="h-flex">
             <div v-if="tasks_completed && has" style="-webkit-flex: 1;flex: 1;overflow-x: auto;padding: 0 20px" class="i-table">
               <b-table :fields="fields" :items="items" outlined table-class="bbox">
                 <template v-slot:cell(nameuuid)="data">
