@@ -279,8 +279,6 @@ export default {
   cursor: pointer;
   outline: none;
   width: 100%;
-  height: 100%;
-  border: 1px #ccc solid;
   color:#b0b0b0;
   padding-left: 5px;
 }
