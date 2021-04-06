@@ -25,6 +25,9 @@
             <div style="margin-top: 50px;">
               <div class="flex-row">
                 <div style="flex: 1;">
+                  <ProjectAssign :user="item.assign"></ProjectAssign>
+                </div>
+                <div style="flex: 1;">
                   <div>开始时间</div>
                   <div>~</div>
                 </div>
@@ -53,9 +56,6 @@
               <div class="flex-row" style="padding: 5px 0 0 0;">
                 <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
               </div>
-            </div>
-            <div style="margin-top: 50px;">
-              <ProjectAssign :user="item.assign"></ProjectAssign>
             </div>
           </div>
         </div>
