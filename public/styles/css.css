@@ -4,6 +4,7 @@ html, body, div, h3, td, p, span, img, a { font-size: 14px;font-family: "Microso
 body p { font-size: 14px;font-family: "Microsoft YaHei", "宋体", arial, verdana, sans-serif;margin: 0;padding: 0;color: #6c757d; }
 body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 
+.sh-box { box-shadow: 0 0 35px 0 rgba(154,161,171, 0.15);border-radius: 3px;background-color: #fff; }
 .ibox { box-shadow: 0 0 2px 0 rgba(154,161,171,0.15);border-radius: 3px;background-color: #fff; }
 .padding20 { padding: 20px; }
 .b-line { border-bottom: 1px solid #eef2f7; }
