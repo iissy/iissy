@@ -190,8 +190,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-#toolbarContainer { position: relative;min-height: 0; }
-input.title { border: 0;border-bottom: 2px solid #e8e8e8;box-shadow: none;outline: none;display: block;width: 100%;max-margin: 100%;padding: 5px 0;font-size: 30px; }
-</style>

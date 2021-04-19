@@ -16,6 +16,9 @@ body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
 
+#app #scrollable_container { position: relative;min-height: 0; }
+#app #scrollable_container input.title { border: 0;border-bottom: 2px solid #e8e8e8;box-shadow: none;outline: none;display: block;width: 100%;max-margin: 100%;padding: 5px 0;font-size: 35px;height: 60px; }
+
 .project-top-row { display: flex;flex-direction: row;-webkit-flex: 0 1 auto;flex: 0 1 auto;-webkit-flex-direction: row;border-bottom: 1px solid #eef2f7;margin-top: 10px;width: 100%; }
 .project-top-row div { text-align: left; }
 
