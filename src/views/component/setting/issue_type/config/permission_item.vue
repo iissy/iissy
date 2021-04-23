@@ -233,7 +233,7 @@ export default {
 }
 .content .select {
   width: 300px;
-  height: 30px;
+  height: 38px;
   margin: 0 auto;
   background-color: #fff;
   position: relative;

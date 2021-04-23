@@ -24,20 +24,20 @@
       </div>
       <div style="flex: 1;">
         <ul>
-          <li :class="{active: (currentIndex === 1)}"><Link name="我的工作台" icon="Main" :to="{ name: 'Workbench', params: { team: team, type: 'overview' } }" /></li>
+          <li :class="{active: (currentIndex === 1)}"><Link icon="Main" :to="{ name: 'Workbench', params: { team: team, type: 'overview', title: '我的工作台' } }" /></li>
           <li><span></span></li>
-          <li :class="{active: (currentIndex === 21)}"><Link name="项目管理" icon="Projects" :to="{ name: 'Projects', params: { team: team } }" /></li>
-          <li :class="{active: (currentIndex === 23)}"><Link name="文档中心" icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" /></li>
-          <li :class="{active: (currentIndex === 26)}"><Link name="组织架构" icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info' } }" /></li>
+          <li :class="{active: (currentIndex === 21)}"><Link icon="Projects" :to="{ name: 'Projects', params: { team: team, title: '项目管理' } }" /></li>
+          <li :class="{active: (currentIndex === 23)}"><Link icon="Wiki" :to="{ name:'Wiki', params: { team: team, title: '文档中心' } }" /></li>
+          <li :class="{active: (currentIndex === 26)}"><Link icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info', title: '组织架构' } }" /></li>
 
           <li><span></span></li>
-          <li :class="{active: (currentIndex === 82)}"><Link name="项目配置中心" icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list' } }" /></li>
-          <li :class="{active: (currentIndex === 83)}"><Link name="文档配置中心" icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list' } }" /></li>
+          <li :class="{active: (currentIndex === 82)}"><Link icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list', title: '项目配置中心' } }" /></li>
+          <li :class="{active: (currentIndex === 83)}"><Link icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list', title: '文档配置中心' } }" /></li>
         </ul>
       </div>
       <div style="flex: 0 0 auto;margin: 5px 0;">
         <ul>
-          <li><Link name="帮助中心" icon="Help" :to="{ name:'Help' }" /></li>
+          <li><Link icon="Help" :to="{ name:'Help', params: { title: '帮助中心' } }" /></li>
         </ul>
       </div>
     </div>
@@ -50,15 +50,21 @@ import Link from '../../../views/component/common/block/link';
 export default {
   data: function () {
     return {
-      currentIndex: parseInt(this.tagIndex),
+      currentIndex: 1,
       team: '',
       isOpen: true
     };
   },
-  props: ['tagIndex'],
   created() {
     let self = this;
     self.team = self.$route.params.team;
+    self.currentIndex = self.$route.meta.tagIndex;
+  },
+  watch: {
+    '$route'() {
+      let self = this;
+      self.currentIndex = self.$route.meta.tagIndex;
+    }
   },
   methods: {
     close: function () {

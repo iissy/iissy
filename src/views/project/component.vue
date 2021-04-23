@@ -55,7 +55,8 @@ export default {
     self.project_get();
   },
   created: function () {
-    this.shift();
+    let self = this;
+    self.shift();
   },
   watch: {
     '$route' () {

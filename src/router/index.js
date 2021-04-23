@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Layout from '../layout'
-import WikiLayout from '../layout/wiki'
+import Layout from '../layout';
+import WikiLayout from '../layout/wiki';
+import ProjectLayout from "../layout/project";
+import WorkbenchLayout from "../layout/workbench";
 
 import Master from '../views/master';
 import Reg from '../views/reg';
@@ -31,6 +33,7 @@ import EditPage from "../views/wiki/edit_page";
 import Settings from "../views/wiki/settings";
 import TeamSetting from "../views/setting/team_setting";
 import Department from "../views/setting/department";
+import IssueTypeSetting from "../views/setting/issue_type_setting";
 
 // import Project from './project.js';
 // import IssueType from './issue_type.js';
@@ -64,73 +67,58 @@ const routes = [
         component: Layout,
         children: [
             {
-                path: '',
-                component: () => import('../views/workbench/redirect'),
-                name: 'MainRedirect',
-                meta: { title: '我的工作台' }
-            }, {
-                path: ':team/workbench/:type',
-                meta: { title: "我的工作台" },
-                name: 'Workbench',
-                component: Workbench
-            }, {
-                path: ':team/projects',
-                meta: { title: "项目管理" },
-                name: 'Projects',
-                component: Projects
-            }, {
-                path: ':team/project_add',
-                meta: { title: "新建项目" },
-                name: 'AddProject',
-                component: AddProject
-            }, {
-                path: ':team/project/:project',
-                meta: { title: "正在跳转中..." },
-                name: 'Project',
-                component: Project
-            }, {
                 path: ':team/setting/project/:type',
-                meta: { title: "项目管理" },
+                meta: { title: "项目配置中心", tagIndex: 82 },
                 name: 'ProjectSetting',
                 component: ProjectSetting
             }, {
                 path: ':team/setting/project/:project/manager/permission',
-                meta: { title: "项目权限设置" },
+                meta: { title: "项目配置中心", tagIndex: 82 },
                 name: 'ProjectPermissionSetting',
                 component: ProjectPermissionSetting
             }, {
-                path: ':team/project/:project/component/:com',
-                meta: { title: "项目管理" },
-                name: 'Component',
-                component: Component
+                path: ':team/setting/issue_type/:type',
+                meta: { title: "项目配置中心", tagIndex: 82 },
+                name: 'TeamIssueTypeSetting',
+                component: ProjectSetting
             }, {
-                path: ':team/project/:project/component/:com/:attr',
-                meta: { title: "项目设置" },
-                name: 'ComponentDesigner',
-                component: Component
+                path: ':team/setting/issue_type/:issue_type/:type',
+                meta: { title: "项目配置中心", tagIndex: 82 },
+                name: 'IssueTypeSetting',
+                component: IssueTypeSetting
             }, {
-                path: ':team/project/:project/component/:com/issue_type/:issue_type/:attr',
-                meta: { title: "工作项类型设置" },
-                name: 'ComponentIssueTypeDesigner',
-                component: Component
+                path: ':team/projects',
+                meta: { title: "项目管理", tagIndex: 21 },
+                name: 'Projects',
+                component: Projects
+            }, {
+                path: ':team/project_add',
+                meta: { title: "项目管理", tagIndex: 21 },
+                name: 'AddProject',
+                component: AddProject
+            }, {
+                path: ':team/project/:project',
+                meta: { title: "正在跳转中...", tagIndex: 21 },
+                name: 'Project',
+                component: Project
             }, {
                 path: ':team/wiki',
-                meta: { title: "文档中心" },
+                meta: { title: "文档中心", tagIndex: 23 },
                 name: 'Wiki',
                 component: Wiki
             }, {
                 path: ':team/setting/wiki/:type',
-                meta: { title: "文档配置中心" },
+                meta: { title: "文档配置中心", tagIndex: 83 },
                 name: 'WikiSetting',
                 component: WikiSetting
             }, {
                 path: ':team/setting/:type',
-                meta: { title: "团队配置中心" },
+                meta: { title: "团队配置中心", tagIndex: 26 },
                 name: 'TeamSetting',
                 component: TeamSetting
             }, {
                 path: ':team/setting/department/:department',
-                meta: { title: "团队配置中心" },
+                meta: { title: "团队配置中心", tagIndex: 26 },
                 name: 'Department',
                 component: Department
             }, {
@@ -153,6 +141,47 @@ const routes = [
                 meta: { title: "退出登录" },
                 name: 'Logout',
                 component: Logout
+            }
+        ]
+    }, {
+        path: '/workbench',
+        meta: { title: "我的工作台" },
+        name: 'WorkbenchLayout',
+        component: WorkbenchLayout,
+        children: [
+            {
+                path: '',
+                component: () => import('../views/workbench/redirect'),
+                name: 'MainRedirect',
+                meta: { title: '我的工作台', tagIndex: 1 }
+            }, {
+                path: 'team/:team/:type',
+                meta: { title: "我的工作台", tagIndex: 1 },
+                name: 'Workbench',
+                component: Workbench
+            }
+        ]
+    }, {
+        path: '/project',
+        meta: { title: "我的工作台" },
+        name: 'ProjectLayout',
+        component: ProjectLayout,
+        children: [
+            {
+                path: ':team/project/:project/component/:com',
+                meta: { title: "项目管理", tagIndex: 21 },
+                name: 'Component',
+                component: Component
+            }, {
+                path: ':team/project/:project/component/:com/:attr',
+                meta: { title: "项目管理", tagIndex: 21 },
+                name: 'ComponentDesigner',
+                component: Component
+            }, {
+                path: ':team/project/:project/component/:com/issue_type/:issue_type/:attr',
+                meta: { title: "项目管理", tagIndex: 21 },
+                name: 'ComponentIssueTypeDesigner',
+                component: Component
             }
         ]
     }, {
@@ -193,7 +222,7 @@ const routes = [
                 component: EditPage
             }, {
                 path: ':team/space/:space/settings/:type',
-                meta: { title: "页面组设置" },
+                meta: { title: "页面组设置", tagIndex: 83 },
                 name: 'SpaceSettings',
                 component: Settings
             }

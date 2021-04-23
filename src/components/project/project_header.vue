@@ -2,7 +2,7 @@
   <div style="flex: 1;">
     <div id="com" class="com-outline" v-if="items && items.length > 0">
       <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
-        <ProjectDropdown :team="team" :name="projectName"/>
+        <DropDown :team="team" :name="projectName"/>
       </div>
       <div v-for="item in items" :key="item.com">
         <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import ProjectDropdown from "../../views/component/project/project_dropdown";
+import DropDown from "../../views/component/project/project_dropdown";
+import http from "../../utils/http";
 
 export default {
   data() {
@@ -36,33 +37,76 @@ export default {
       team: '',
       project: '',
       selectedCom: '',
-      projects: []
+      projects: [],
+      currentTabComponent: '',
+      items: [],
+      projectName: ''
     }
   },
   props: {
     title: String,
-    items: Array,
-    projectName: String,
     designer: Boolean
   },
   mounted() {
-  },
-  watch: {
-    '$route' () {
-      let self = this;
-      self.selectedCom = self.$route.params.com;
-    }
-  },
-  created() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.com = self.$route.params.com;
     self.selectedCom = self.$route.params.com;
+    self.components_get();
+    self.project_get();
+  },
+  created: function () {
+    let self = this;
+    self.shift();
   },
   methods: {
+    components_get: function () {
+      let self = this;
+      http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
+        self.items = response.data;
+        self.$store.state.items = self.items;
+      });
+    },
+    project_get: function () {
+      let self = this;
+      http.get(self.urls.project_get.format(self.team, self.project)).then(function (response) {
+        self.projectName = response.data.name;
+      });
+    },
+    shift: function () {
+      let self = this;
+      self.team = self.$route.params.team;
+      self.project = self.$route.params.project;
+      self.com = self.$route.params.com;
+
+      if (self.com === 'designer') {
+        self.currentTabComponent = 'designer'
+        return;
+      }
+
+      http.get(self.urls.component_get.format(self.team, self.project, self.com)).then(function (response) {
+        self.currentTabComponent = response.data.template_uuid;
+        self.comName = response.data.name;
+
+        if (response.data.objects.length > 0) {
+          self.issue_type = response.data.objects[0].uuid;
+        }
+      });
+    }
+  },
+  watch: {
+    '$route'() {
+      let self = this;
+      self.selectedCom = self.$route.params.com;
+      console.log(self.selectedCom);
+      if (self.com !== self.$route.params.com) {
+        self.shift();
+      }
+    }
   },
   components: {
-    ProjectDropdown
+    DropDown
   }
 }
 </script>

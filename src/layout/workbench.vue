@@ -2,7 +2,7 @@
   <div class="app-row">
     <Sidebar ref="Sidebar"/>
     <div class="rightMain">
-      <Header ref="Header"/>
+      <Header ref="Header" isWorkbench="true"/>
       <div class="app-main-container">
         <Main/>
       </div>

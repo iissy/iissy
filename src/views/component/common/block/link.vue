@@ -30,7 +30,7 @@
       <div class="flex-column">
         <div style="flex: 1;display: flex;width: 100%;">
           <div style="flex: 1;width: 100%;">
-            <router-link :to="to">{{ name }}</router-link>
+            <router-link :to="to">{{ to.params.title }}</router-link>
           </div>
         </div>
       </div>
@@ -44,10 +44,6 @@ export default {
     return {
     };
   },
-  props: ['to', 'name', 'icon']
+  props: ['to', 'icon']
 };
 </script>
-
-<style scoped>
-
-</style>
