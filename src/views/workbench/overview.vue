@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import Dashboard from '../workbench/dashboard_item';
-import Project from '../project/module/project';
-import Space from '../wiki/module/space';
-import http from "../../../utils/http";
+import Dashboard from '../../components/workbench/dashboard_item';
+import Project from '../component/project/module/project';
+import Space from '../component/wiki/module/space';
+import http from "../../utils/http";
 
 export default {
   data() {

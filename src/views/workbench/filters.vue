@@ -63,13 +63,13 @@
 </template>
 
 <script>
-import Priority from "../common/block/priority";
-import Status from '../common/block/status';
-import Fields from '../task/fields';
-import AddTask from '../task/add';
+import Priority from "../component/common/block/priority";
+import Status from '../component/common/block/status';
+import Fields from '../component/task/fields';
+import AddTask from '../component/task/add';
 
-import http from "../../../utils/http";
-import router from "../../../router";
+import http from "../../utils/http";
+import router from "../../router";
 
 export default {
   data: function () {
@@ -107,7 +107,7 @@ export default {
             self.task_get(self.selectedUUID);
           } else {
             self.selectedUUID = taskUUID || self.tasks[0].uuid;
-            router.push({ name: 'TaskInTeam', params: { team: self.team, type: self.type, task: self.selectedUUID } });
+            //router.push({ name: 'TaskInTeam', params: { team: self.team, type: self.type, task: self.selectedUUID } });
             self.task_get(self.selectedUUID);
           }
         }

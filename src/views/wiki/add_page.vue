@@ -1,14 +1,8 @@
 <template>
-  <div class="app-column">
-    <Header ref="Header" :page="page"/>
-    <div class="rightMain flex-row" style="height: 0;">
-      <AddPage/>
-    </div>
-  </div>
+  <AddPage/>
 </template>
 
 <script>
-import Header from '../component/wiki/header';
 import AddPage from '../component/wiki/page/add';
 
 export default {
@@ -24,7 +18,6 @@ export default {
     };
   },
   components: {
-    Header,
     AddPage
   },
   mounted() {

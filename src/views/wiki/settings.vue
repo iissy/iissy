@@ -1,29 +1,25 @@
 <template>
-  <div class="app-column">
-    <Header ref="Header" :page="page"/>
-    <div class="flex-row rightMain" style="overflow: hidden;">
-      <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 0 0 20px;">
-        <div class="flex-row align-items-center" style="flex: 0;width: 100%;margin-bottom: 10px;cursor: pointer;" @click="toSpace">
-          <div style="color: #444444;">
-            <b-icon icon="arrow-left-circle-fill" scale="1.5"/>
-          </div>
-          <div style="margin-left: 10px;font-size: 18px;">
-            文档配置中心
-          </div>
+  <div class="flex-row" style="flex: 1;">
+    <div class="space-group-setting" style="flex: 0 0 300px;padding: 20px 0 0 20px;">
+      <div class="flex-row align-items-center" style="flex: 0;width: 100%;margin-bottom: 10px;cursor: pointer;" @click="toSpace">
+        <div style="color: #444444;">
+          <b-icon icon="arrow-left-circle-fill" scale="1.5"/>
         </div>
-        <div :class="{active: (tagIndex === 1)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'info' }}">页面组信息</router-link></div>
-        <div :class="{active: (tagIndex === 2)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'permissions' }}">页面组权限</router-link></div>
-        <div :class="{active: (tagIndex === 3)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'recycle' }}">回收站</router-link></div>
+        <div style="margin-left: 10px;font-size: 18px;">
+          文档配置中心
+        </div>
       </div>
-      <div class="flex-column" style="overflow-y: auto;min-height: 100%;flex: 1;padding-left: 2px;">
-        <component v-bind:is="currentTabComponent"></component>
-      </div>
+      <div :class="{active: (tagIndex === 1)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'info' }}">页面组信息</router-link></div>
+      <div :class="{active: (tagIndex === 2)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'permissions' }}">页面组权限</router-link></div>
+      <div :class="{active: (tagIndex === 3)}"><router-link :to="{name:'SpaceSettings', params: { team: team, space: space, type: 'recycle' }}">回收站</router-link></div>
+    </div>
+    <div class="flex-column" style="overflow-y: auto;min-height: 100%;flex: 1;padding-left: 2px;">
+      <component v-bind:is="currentTabComponent"></component>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '../component/wiki/header';
 import http from "../../utils/http";
 import router from "../../router";
 
@@ -48,7 +44,6 @@ export default {
     }
   },
   components: {
-    Header,
     info,
     permissions,
     recycle

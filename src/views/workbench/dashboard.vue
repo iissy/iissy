@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import http from "../../../utils/http";
-import Tasks from "./tasks";
+import http from "../../utils/http";
+import Tasks from "../../components/workbench/tasks";
 
 export default {
   data() {

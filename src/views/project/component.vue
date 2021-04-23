@@ -1,18 +1,15 @@
 <template>
-  <div class="app-row">
-    <Menu tagIndex="21" ref="Menu"></Menu>
-    <div class="rightMain">
-      <Header :items="items" title="项目管理" :projectName="projectName" :designer="currentTabComponent==='designer'" ref="Header"></Header>
-      <div class="project-main-container">
-        <component v-bind:is="currentTabComponent" :comName="comName" :items="items" :issue_type="issue_type"></component>
-      </div>
-    </div>
+<!--  <div class="rightMain">-->
+<!--    <Header :items="items" title="项目管理" :projectName="projectName" :designer="currentTabComponent==='designer'" ref="Header"></Header>-->
+<!--    -->
+<!--  </div>-->
+  <div class="project-main-container">
+    <component v-bind:is="currentTabComponent" :comName="comName" :items="items" :issue_type="issue_type"></component>
   </div>
 </template>
 
 <script>
-import Header from '../component/common/header';
-import Menu from '../component/common/menu';
+// import Header from '../component/common/header';
 import http from "../../utils/http";
 import com00001 from '../component/com/com00001';
 import com00002 from '../component/com/com00001';
@@ -39,8 +36,7 @@ export default {
     };
   },
   components: {
-    Header,
-    Menu,
+    // Header,
     com00001,
     com00002,
     com00003,

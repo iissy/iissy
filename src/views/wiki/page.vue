@@ -1,18 +1,14 @@
 <template>
-  <div class="app-column">
-    <Header ref="Header" :page="page"/>
-    <div class="rightMain flex-row" style="height: 0;">
-      <Catalog ref="Catalog" :selected="page"/>
-      <div class="app-main-container" style="flex: 1;">
-        <Article v-if="loaded" ref="Article" :item="item"/>
-      </div>
-      <Dynamic ref="dynamic"/>
+  <div class="flex-row" style="flex: 1;">
+    <Catalog ref="Catalog" :selected="page"/>
+    <div class="app-main-container" style="flex: 1;">
+      <Article v-if="loaded" ref="Article" :item="item"/>
     </div>
+    <Dynamic ref="dynamic"/>
   </div>
 </template>
 
 <script>
-import Header from '../component/wiki/header';
 import Catalog from '../component/wiki/catalog';
 import Dynamic from '../component/wiki/dynamic';
 import Article from "../component/wiki/module/article";
@@ -30,7 +26,6 @@ export default {
   },
   components: {
     Article,
-    Header,
     Catalog,
     Dynamic
   },

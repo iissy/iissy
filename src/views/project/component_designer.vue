@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <div class="app-row">
-      <Menu tagIndex="21" ref="Menu"></Menu>
-      <div class="rightMain">
-        <Header :items="items" title="项目管理" :projectName="projectName" :designer="designer" ref="Header"></Header>
-        <Designer :items="items"></Designer>
-      </div>
-    </div>
+  <div class="rightMain">
+    <Header :items="items" title="项目管理" :projectName="projectName" :designer="designer" ref="Header"></Header>
+    <Designer :items="items"></Designer>
   </div>
 </template>
 
 <script>
-import Header from '../component/common/header';
-import Menu from '../component/common/menu';
 import http from "../../utils/http";
 import Designer from '../component/com/designer';
 
@@ -28,8 +21,6 @@ export default {
     };
   },
   components: {
-    Header,
-    Menu,
     Designer,
   },
   mounted() {

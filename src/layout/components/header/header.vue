@@ -12,8 +12,7 @@
             </div>
           </div>
         </div>
-        <Workbench v-if="workbench"/>
-        <ProjectHeader :items="items" :designer="designer" :projectName="projectName"></ProjectHeader>
+        <component v-bind:is="currentTabComponent"/>
         <UserCenterAvatar/>
       </div>
     </div>
@@ -27,8 +26,8 @@
 
 <script>
 import ProjectHeader from '../../../components/project/project_header';
-import UserCenterAvatar from '../../../layout/components/header/avatar';
-import Workbench from '../../../components/workbench/header';
+import WorkbenchHeader from '../../../components/workbench/header';
+import UserCenterAvatar from './avatar';
 
 export default {
   data() {
@@ -44,7 +43,8 @@ export default {
         { uuid: 'more', name:'更多' }
       ],
       team: '',
-      project: ''
+      project: '',
+      currentTabComponent: WorkbenchHeader
     }
   },
   props: {
@@ -52,7 +52,10 @@ export default {
     items: Array,
     projectName: String,
     designer: Boolean,
-    workbench: {
+    isWorkbench: {
+      default: false
+    },
+    isProject: {
       default: false
     }
   },
@@ -65,6 +68,14 @@ export default {
       let self = this;
       self.$parent.$refs.Menu.isOpen = true;
       self.hidden = false;
+    },
+    shift: function () {
+      let self = this;
+      if (self.isWorkbench) {
+        self.currentTabComponent = WorkbenchHeader;
+      } else if (self.isProject) {
+        self.currentTabComponent = ProjectHeader;
+      }
     },
     initData: function () {
       let self = this;
@@ -95,8 +106,8 @@ export default {
   },
   components: {
     ProjectHeader,
-    UserCenterAvatar,
-    Workbench
+    WorkbenchHeader,
+    UserCenterAvatar
   }
 }
 </script>

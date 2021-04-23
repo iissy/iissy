@@ -13,9 +13,9 @@
 <script>
 import Header from './component/common/header';
 import Menu from './component/common/menu';
-import overview from './component/workbench/overview';
-import dashboard from './component/workbench/dashboard';
-import filters from './component/workbench/filters';
+import overview from './workbench/overview';
+import dashboard from './workbench/dashboard';
+import filters from './workbench/filters';
 // import http from "@/scripts/http";
 
 export default {

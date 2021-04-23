@@ -1,32 +1,15 @@
 <template>
-  <div class="app-row">
-    <Menu tagIndex="21" ref="Menu"></Menu>
-    <div class="rightMain">
-      <Header title="项目管理" ref="Header"></Header>
-      <div class="app-main-container">
-        <div class="app-main-content ibox">
-          &nbsp;
-        </div>
-      </div>
-    </div>
-  </div>
+  <div/>
 </template>
 
 <script>
-
 import http from "../../utils/http";
 import router from '../../router';
-import Header from "../component/common/header";
-import Menu from "../component/common/menu";
 
 export default {
   data() {
     return {
     }
-  },
-  components: {
-    Header,
-    Menu
   },
   mounted() {
     let self = this;
@@ -38,7 +21,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.app-header .wrapper { display: flex; justify-content: center; flex: 0;height: 100%;margin-right: 10px; }
-</style>

@@ -23,7 +23,7 @@
 
 <script>
 import AddButton from '../common/form/button';
-import UserCenterAvatar from '../common/block/avatar';
+import UserCenterAvatar from '../../../layout/components/header/avatar';
 import router from "../../../router";
 
 export default {

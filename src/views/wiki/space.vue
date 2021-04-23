@@ -1,13 +1,8 @@
 <template>
-  <div class="app-column">
-    <Header ref="Header"/>
-    <div class="rightMain flex-row">
-    </div>
-  </div>
+  <div/>
 </template>
 
 <script>
-import Header from '../component/wiki/header';
 import http from "../../utils/http";
 import router from "../../router";
 
@@ -17,9 +12,6 @@ export default {
       team: '',
       space: ''
     };
-  },
-  components: {
-    Header
   },
   created: function () {
     let self = this;

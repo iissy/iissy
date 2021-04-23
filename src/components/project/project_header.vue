@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ProjectDropdown from "./project_dropdown";
+import ProjectDropdown from "../../views/component/project/project_dropdown";
 
 export default {
   data() {
