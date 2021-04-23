@@ -249,7 +249,7 @@ export default {
   border-bottom: 2px #ccc solid;
   position: absolute;
   bottom: initial;
-  top: 10px;
+  top: 14px;
   right: 10px;
   transform: rotate(-45deg);
   /*transition: transform .3 ease-out,top .3s ease-out;*/
@@ -259,8 +259,6 @@ export default {
   cursor: pointer;
   outline: none;
   width: 100%;
-  height: 100%;
-  border: 1px #ccc solid;
   color:#b0b0b0;
   padding-left: 5px;
 }
@@ -268,7 +266,7 @@ export default {
 .content .select .group {
   overflow-y: auto;
   width: 100%;
-  top: 35px;
+  top: 40px;
   left: 0;
   max-height: 0;
   margin: 0;
@@ -292,7 +290,7 @@ export default {
 .content .select.open:after {
   transform: rotate(-225deg);
   top: initial;
-  bottom: 10px;
+  bottom: 14px;
   transition: all .3s ease-in-out;
 }
 /*为下拉框展开时添加名称为slide-down的关键帧动画*/
@@ -300,6 +298,6 @@ export default {
   100%{transform: scale(1,1);}
 }
 
-div.perm-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;background-color: #f8f8f8;font-weight: bolder; }
-div.perm-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #e8e8e8; }
+div.perm-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #eef2f7;border-top: 1px solid #eef2f7;background-color: #f8f8f8;font-weight: bolder; }
+div.perm-row { flex: 0 1 auto;display: flex;border-bottom: 1px solid #eef2f7; }
 </style>
