@@ -40,7 +40,7 @@
 <script>
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from '../../common/form/search';
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 
 export default {
   data: function () {

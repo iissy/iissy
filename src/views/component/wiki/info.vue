@@ -34,7 +34,7 @@
 <script>
 import Alert from '../common/block/alert';
 import SaveButton from '../button/common';
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 
 export default {
   data() {

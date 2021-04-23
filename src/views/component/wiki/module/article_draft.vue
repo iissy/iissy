@@ -36,7 +36,7 @@
 <script>
 import PublishButton from '../../button/custom';
 import router from "../../../../router";
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 
 export default {
   data() {

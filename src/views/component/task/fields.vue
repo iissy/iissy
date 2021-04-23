@@ -130,7 +130,7 @@ import User from '../common/block/suser';
 import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 
 export default {
   data() {

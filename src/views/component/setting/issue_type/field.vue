@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
 

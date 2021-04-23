@@ -27,7 +27,7 @@
 import Dashboard from '../workbench/dashboard_item';
 import Project from '../project/module/project';
 import Space from '../wiki/module/space';
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 
 export default {
   data() {

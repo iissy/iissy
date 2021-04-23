@@ -14,7 +14,7 @@
 import Header from '../component/wiki/header';
 import Catalog from '../component/wiki/catalog';
 import Article from "../component/wiki/module/article_draft";
-import http from "../../scripts/http";
+import http from "../../utils/http";
 
 export default {
   data: function () {

@@ -49,7 +49,7 @@
 import UpdateButton from '../../button/common';
 import ProjectMangeHeader from '../../common/permission/header';
 import Alert from '../../common/block/alert';
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 
 export default {
   data: function () {

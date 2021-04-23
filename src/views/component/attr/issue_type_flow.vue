@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import http from '../../../scripts/http';
+import http from '../../../utils/http';
 import Summary from "../common/block/summary";
 import ColorStatus from "../common/block/color-status";
 

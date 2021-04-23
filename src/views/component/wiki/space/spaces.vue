@@ -16,7 +16,7 @@
 import AddButton from '../../common/form/button';
 import Space from '../module/space';
 import AddSpace from './add';
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 
 export default {
   data() {

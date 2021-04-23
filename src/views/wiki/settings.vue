@@ -24,7 +24,7 @@
 
 <script>
 import Header from '../component/wiki/header';
-import http from "../../scripts/http";
+import http from "../../utils/http";
 import router from "../../router";
 
 import info from "../component/wiki/info";

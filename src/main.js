@@ -6,12 +6,13 @@ import router from './router';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import './scripts/string';
+import './utils/string';
 import urls from './conf/urls';
-import  * as fields from './scripts/field';
-Object.keys(fields).forEach(item => Vue.filter(item,fields[item]));
-import  * as date from './scripts/date';
-Object.keys(date).forEach(item => Vue.filter(item,date[item]));
+
+import * as filters from './filters'
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+});
 
 Vue.use(Vuex);
 Vue.use(BootstrapVue);
@@ -19,7 +20,6 @@ Vue.use(BootstrapVueIcons);
 Vue.prototype.urls = urls;
 Vue.config.productionTip = false;
 
-// Require Froala Editor js file.
 import  'froala-editor/js/froala_editor.pkgd.min.js';
 import  'froala-editor/js/plugins/image.min.js';
 import  'froala-editor/js/plugins/align.min.js';

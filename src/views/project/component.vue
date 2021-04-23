@@ -13,7 +13,7 @@
 <script>
 import Header from '../component/common/header';
 import Menu from '../component/common/menu';
-import http from "../../scripts/http";
+import http from "../../utils/http";
 import com00001 from '../component/com/com00001';
 import com00002 from '../component/com/com00001';
 import com00003 from '../component/com/com00001';

@@ -1,4 +1,4 @@
-﻿const formatDay = function(time) {
+﻿export function formatDay(time) {
     if (!time) {
         return '-'
     }
@@ -23,7 +23,7 @@
     return newTime;
 }
 
-const formatDate = function(time) {
+export function formatDate(time) {
     if (!time) {
         return '-'
     }
@@ -54,7 +54,7 @@ const formatDate = function(time) {
     return newTime;
 }
 
-const formatTime = function (time) {
+export function formatTime(time) {
     if (!time) {
         return '-'
     }
@@ -82,9 +82,4 @@ const formatTime = function (time) {
         (hour < 10 ? ('0' + hour) : hour) + '点' +
         (min < 10 ? ('0' + min) : min) + '分'
     return newTime;
-}
-export {
-    formatDay,
-    formatDate,
-    formatTime
 }

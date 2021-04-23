@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import http from '../../../../scripts/http';
+import http from '../../../../utils/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
 import User from '../../common/block/user';

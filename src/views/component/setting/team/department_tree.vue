@@ -33,7 +33,7 @@
 
 <script>
 import DepartmentTree from "./department_tree";
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 import router from "../../../../router";
 
 export default {

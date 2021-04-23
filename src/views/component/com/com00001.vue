@@ -61,7 +61,7 @@ import Status from '../common/block/status';
 import Fields from '../task/fields';
 import AddTask from '../task/add';
 
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 import router from "../../../router";
 
 export default {

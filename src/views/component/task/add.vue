@@ -51,7 +51,7 @@
 <script>
 import AddTaskButton from '../common/form/button';
 import User from '../common/block/user';
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 
 export default {
   data: function () {

@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 import PageTree from "./module/page_tree";
 import Drafts from "./module/drafts";
 

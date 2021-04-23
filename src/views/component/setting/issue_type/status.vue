@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import http from "../../../../scripts/http";
+import http from "../../../../utils/http";
 import Status from '../../common/block/status';
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import http from "../../../scripts/http";
+import http from "../../../utils/http";
 import Alert from '../common/block/alert';
 
 export default {
