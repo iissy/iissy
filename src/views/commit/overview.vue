@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Header from '../component/common/header';
-import Menu from '../component/common/menu';
+import Header from '../../components/common/header';
+import Menu from '../../components/common/menu';
 import Bar from '../../chart/horizontalBar';
 import http from "../../utils/http";
 

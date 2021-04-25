@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Spaces from '../component/wiki/space/spaces';
+import Spaces from '../../components/wiki/space/spaces';
 
 export default {
   data: function () {

@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Control from '../component/setting/project/project_control';
+import Control from '../../components/setting/project/project_control';
 
-import config from "../component/setting/issue_type/config/config";
-import field from "../component/setting/issue_type/config/field";
-import flow from "../component/setting/issue_type/config/flow";
-import permission from "../component/setting/issue_type/config/permission";
+import config from "../../components/setting/issue_type/config/config";
+import field from "../../components/setting/issue_type/config/field";
+import flow from "../../components/setting/issue_type/config/flow";
+import permission from "../../components/setting/issue_type/config/permission";
 
 export default {
   data: function () {

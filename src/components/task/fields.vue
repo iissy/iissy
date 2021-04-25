@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import User from '../../views/component/common/block/suser';
+import User from '../common/block/suser';
 import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';

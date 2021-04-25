@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AddPage from '../component/wiki/page/add';
+import AddPage from '../../components/wiki/page/add';
 
 export default {
   data: function () {

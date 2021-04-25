@@ -55,10 +55,10 @@
 </template>
 
 <script>
-import AddProjectButton from '../component/common/form/button';
-import Status from '../component/common/block/status';
-import Search from '../component/common/form/search';
-import User from '../component/common/block/user';
+import AddProjectButton from '../../components/common/form/button';
+import Status from '../../components/common/block/status';
+import Search from '../../components/common/form/search';
+import User from '../../components/common/block/user';
 
 import router from '../../router';
 import http from "../../utils/http";

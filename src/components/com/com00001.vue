@@ -55,9 +55,9 @@
 </template>
 
 <script>
-import Search from "../../views/component/common/form/search";
-import Priority from "../../views/component/common/block/priority";
-import Status from '../../views/component/common/block/status';
+import Search from "../common/form/search";
+import Priority from "../common/block/priority";
+import Status from '../common/block/status';
 import Fields from '../task/fields';
 import AddTask from '../task/add';
 

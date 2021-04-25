@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Catalog from '../component/wiki/catalog';
-import Article from "../component/wiki/module/article_draft";
+import Catalog from '../../components/wiki/catalog';
+import Article from "../../components/wiki/module/article_draft";
 import http from "../../utils/http";
 
 export default {

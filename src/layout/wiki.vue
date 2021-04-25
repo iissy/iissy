@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from '../views/component/wiki/header';
+import Header from '../components/wiki/header';
 import Main from './components/wiki/main';
 
 export default {

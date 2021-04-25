@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import Priority from "../../views/component/common/block/priority";
-import Status from '../../views/component/common/block/status';
+import Priority from "../common/block/priority";
+import Status from '../common/block/status';
 import Fields from '../task/fields';
 import AddTask from '../task/add';
 

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Header from '../component/common/header';
-import Menu from '../component/common/menu';
+import Header from '../../components/common/header';
+import Menu from '../../components/common/menu';
 
 export default {
   data: function () {

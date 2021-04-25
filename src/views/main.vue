@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Header from './component/common/header';
-import Menu from './component/common/menu';
+import Header from '../components/common/header';
+import Menu from '../components/common/menu';
 import overview from './workbench/overview';
 import dashboard from './workbench/dashboard';
 import filters from './workbench/filters';

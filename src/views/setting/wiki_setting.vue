@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Control from '../component/setting/wiki/wiki_control';
-import List from "../component/setting/wiki/list";
-import Permission from "../component/setting/wiki/permission";
+import Control from '../../components/setting/wiki/wiki_control';
+import List from "../../components/setting/wiki/list";
+import Permission from "../../components/setting/wiki/permission";
 
 export default {
   data: function () {

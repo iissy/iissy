@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Control from '../component/setting/project/project_control';
-import ProjectPermission from "../component/setting/project/permission";
+import Control from '../../components/setting/project/project_control';
+import ProjectPermission from "../../components/setting/project/permission";
 
 export default {
   data: function () {

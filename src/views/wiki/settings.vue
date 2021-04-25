@@ -23,9 +23,9 @@
 import http from "../../utils/http";
 import router from "../../router";
 
-import info from "../component/wiki/info";
-import permissions from "../component/wiki/permissions";
-import recycle from "../component/wiki/recycle";
+import info from "../../components/wiki/info";
+import permissions from "../../components/wiki/permissions";
+import recycle from "../../components/wiki/recycle";
 
 export default {
   data: function () {

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Control from '../component/setting/team/team_control';
-import Info from "../component/setting/team/info";
-import Member from "../component/setting/team/member";
-import Permission from "../component/setting/team/permission";
+import Control from '../../components/setting/team/team_control';
+import Info from "../../components/setting/team/info";
+import Member from "../../components/setting/team/member";
+import Permission from "../../components/setting/team/permission";
 
 export default {
   data: function () {

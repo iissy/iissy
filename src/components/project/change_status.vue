@@ -26,7 +26,7 @@
 
 <script>
 import http from "../../utils/http";
-import Alert from '../../views/component/common/block/alert';
+import Alert from '../common/block/alert';
 
 export default {
   data() {

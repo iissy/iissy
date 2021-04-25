@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import PermissionHeader from '../../views/component/common/permission/header';
-import PermissionItem from '../../views/component/common/block/permission_item';
+import PermissionHeader from '../common/permission/header';
+import PermissionItem from '../common/block/permission_item';
 import http from "../../utils/http";
 
 export default {

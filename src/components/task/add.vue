@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import AddTaskButton from '../../views/component/common/form/button';
-import User from '../../views/component/common/block/user';
+import AddTaskButton from '../common/form/button';
+import User from '../common/block/user';
 import http from "../../utils/http";
 
 export default {

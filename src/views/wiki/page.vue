@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Catalog from '../component/wiki/catalog';
-import Dynamic from '../component/wiki/dynamic';
-import Article from "../component/wiki/module/article";
+import Catalog from '../../components/wiki/catalog';
+import Dynamic from '../../components/wiki/dynamic';
+import Article from "../../components/wiki/module/article";
 import http from "../../utils/http";
 
 export default {

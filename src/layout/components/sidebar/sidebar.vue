@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Link from '../../../views/component/common/block/link';
+import Link from '../../../components/common/block/link';
 
 export default {
   data: function () {

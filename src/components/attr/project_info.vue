@@ -44,7 +44,7 @@
 <script>
 import Creator from '../task/creator';
 import AddProjectButton from '../button/common';
-import Alert from '../../views/component/common/block/alert';
+import Alert from '../common/block/alert';
 import http from "../../utils/http";
 
 export default {

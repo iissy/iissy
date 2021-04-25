@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import PermissionHeader from '../../views/component/common/permission/header';
-import IBIcon from '../../views/component/common/block/i_b_icon';
-import Search from "../../views/component/common/form/search";
+import PermissionHeader from '../common/permission/header';
+import IBIcon from '../common/block/i_b_icon';
+import Search from "../common/form/search";
 import http from "../../utils/http";
 
 export default {
