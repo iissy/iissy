@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import http from '../../../utils/http';
-import Status from '../common/block/status';
-import Search from '../common/form/search';
-import PermissionHeader from '../common/permission/header';
+import http from '../../utils/http';
+import Status from '../../views/component/common/block/status';
+import Search from '../../views/component/common/form/search';
+import PermissionHeader from '../../views/component/common/permission/header';
 
 export default {
   data: function () {

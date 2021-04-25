@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import AddAndBackButton from '../../button/custom';
+import AddAndBackButton from '../../../../components/button/custom';
 import router from "../../../../router";
 import http from "../../../../utils/http";
 

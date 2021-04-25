@@ -11,14 +11,14 @@
 <script>
 // import Header from '../component/common/header';
 import http from "../../utils/http";
-import com00001 from '../component/com/com00001';
-import com00002 from '../component/com/com00001';
-import com00003 from '../component/com/com00001';
-import com00004 from '../component/com/com00004';
-import com00005 from '../component/com/com00005';
-import com00008 from '../component/com/com00008';
-import com00009 from '../component/com/com00009';
-import designer from '../component/com/designer';
+import com00001 from '../../components/com/com00001';
+import com00002 from '../../components/com/com00001';
+import com00003 from '../../components/com/com00001';
+import com00004 from '../../components/com/com00004';
+import com00005 from '../../components/com/com00005';
+import com00008 from '../../components/com/com00008';
+import com00009 from '../../components/com/com00009';
+import designer from '../../components/com/designer';
 
 export default {
   data: function () {

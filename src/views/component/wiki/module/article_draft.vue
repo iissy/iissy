@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import PublishButton from '../../button/custom';
+import PublishButton from '../../../../components/button/custom';
 import router from "../../../../router";
 import http from "../../../../utils/http";
 

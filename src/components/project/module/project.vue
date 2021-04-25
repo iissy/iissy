@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import router from "../../../../router";
-import Pie from '../../../../chart/pie';
+import router from "../../../router";
+import Pie from '../../../chart/pie';
 
 export default {
   data() {

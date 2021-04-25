@@ -110,8 +110,8 @@
 </template>
 
 <script>
-import PermissionHeader from '../common/permission/header';
-import Search from "../common/form/search";
+import PermissionHeader from '../../views/component/common/permission/header';
+import Search from "../../views/component/common/form/search";
 
 export default {
   data() {

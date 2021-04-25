@@ -51,7 +51,7 @@
 
 <script>
 import http from "../../../../utils/http";
-import UpdateButton from '../../button/common';
+import UpdateButton from '../../../../components/button/common';
 
 export default {
   data() {

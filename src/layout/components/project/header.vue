@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import DropDown from "../../../views/component/project/project_dropdown";
+import DropDown from "../../../components/project/project_dropdown";
 import UserCenterAvatar from '../header/avatar';
 import http from "../../../utils/http";
 

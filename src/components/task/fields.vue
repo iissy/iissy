@@ -126,11 +126,11 @@
 </template>
 
 <script>
-import User from '../common/block/suser';
+import User from '../../views/component/common/block/suser';
 import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';
-import http from "../../../utils/http";
+import http from "../../utils/http";
 
 export default {
   data() {

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../component/button/common';
+import AddProjectButton from '../../components/button/common';
 import http from "../../utils/http";
 import router from '../../router';
 

@@ -109,8 +109,8 @@
 
 <script>
 import ProjectAssign from "../project/assign";
-import Bar from '../../../chart/bar';
-import http from "../../../utils/http";
+import Bar from '../../chart/bar';
+import http from "../../utils/http";
 import ChangeStatus from "../project/change_status";
 import Avatar from "../project/avatar.vue";
 

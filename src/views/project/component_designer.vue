@@ -7,7 +7,7 @@
 
 <script>
 import http from "../../utils/http";
-import Designer from '../component/com/designer';
+import Designer from '../../components/com/designer';
 
 export default {
   data: function () {

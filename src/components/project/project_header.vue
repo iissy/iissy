@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import DropDown from "../../views/component/project/project_dropdown";
+import DropDown from "./project_dropdown";
 import http from "../../utils/http";
 
 export default {

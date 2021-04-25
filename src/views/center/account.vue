@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Personal from '../component/center/personal';
+import Personal from '../../components/center/personal';
 
 export default {
   data: function () {

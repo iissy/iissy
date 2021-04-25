@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import http from '../../../utils/http';
-import Search from '../common/form/search';
-import AddMember from '../common/block/add_member';
-import User from '../common/block/suser';
+import http from '../../utils/http';
+import Search from '../../views/component/common/form/search';
+import AddMember from '../../views/component/common/block/add_member';
+import User from '../../views/component/common/block/suser';
 
 export default {
   data: function () {

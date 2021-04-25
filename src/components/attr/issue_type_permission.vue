@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import PermissionItem from '../common/block/permission_item';
-import http from "../../../utils/http";
+import PermissionItem from '../../views/component/common/block/permission_item';
+import http from "../../utils/http";
 
 export default {
   data() {

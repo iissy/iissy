@@ -65,8 +65,8 @@
 <script>
 import Priority from "../component/common/block/priority";
 import Status from '../component/common/block/status';
-import Fields from '../component/task/fields';
-import AddTask from '../component/task/add';
+import Fields from '../../components/task/fields';
+import AddTask from '../../components/task/add';
 
 import http from "../../utils/http";
 import router from "../../router";
