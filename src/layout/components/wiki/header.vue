@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import AddButton from '../common/form/button';
-import UserCenterAvatar from '../../layout/components/header/avatar';
-import router from "../../router";
+import AddButton from '../../../components/common/form/button';
+import UserCenterAvatar from '../header/avatar';
+import router from "../../../router";
 
 export default {
   data() {
