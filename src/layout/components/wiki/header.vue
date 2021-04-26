@@ -25,27 +25,42 @@
 import AddButton from '../../../components/common/form/button';
 import UserCenterAvatar from '../header/avatar';
 import router from "../../../router";
+import http from "../../../utils/http";
 
 export default {
   data() {
     return {
-      team: ''
+      team: '',
+      space: '',
+      page: ''
     }
-  },
-  props: {
-    page: String
   },
   created() {
     let self = this;
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
   },
+  watch: {
+    '$route'() {
+      let self = this;
+      self.page = self.$route.params.page;
+      if (!self.page) {
+        self.get_default_main_page();
+      }
+    }
+  },
   methods: {
     add: function () {
       let self = this;
-      if (self.$route.name !== 'AddPage') {
+      if (self.page && self.$route.name !== 'AddPage') {
         router.push({ name: 'AddPage', params: { team: self.team, space: self.space, page: self.page } });
       }
+    },
+    get_default_main_page: function () {
+      let self = this;
+      http.get(self.urls.default_main_page.format(self.team, self.space)).then(function (response) {
+        self.page = response.data.uuid;
+      });
     }
   },
   components: {
