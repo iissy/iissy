@@ -71,6 +71,6 @@ export default {
 </script>
 
 <style scoped>
-#header { flex: 0 0 48px;background-color: #373a3d; }
+#header { flex: 0 0 48px;background-color: #313a46; }
 #header .name a { color: #ffffff;flex: 0 0 auto;font-size: 16px;letter-spacing: 3px;font-family: 'museo-1', 'museo-2', Verdana; }
 </style>

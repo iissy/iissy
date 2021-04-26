@@ -5,7 +5,7 @@
         <b-icon icon="person-plus" scale="1.5"/>
       </div>
     </div>
-    <div id="popover-user-center" style="flex: 1;align-items: center;display: flex;border-left: 1px solid #f1f3fa;padding-left: 20px;overflow: hidden;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
+    <div id="popover-user-center" style="flex: 1;align-items: center;display: flex;padding-left: 20px;overflow: hidden;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
       <div class="flex-row">
         <div style="flex: 0;" class="align-items-center flex-row">
           <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">

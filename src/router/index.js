@@ -111,17 +111,17 @@ const routes = [
                 name: 'Department',
                 component: Department
             }, {
-                path: 'center/account',
+                path: ':team/center/account',
                 meta: { title: "个人中心" },
                 name: 'CenterAccount',
                 component: CenterAccount
             }, {
-                path: 'center/safe',
+                path: ':team/center/safe',
                 meta: { title: "个人中心" },
                 name: 'CenterSafe',
                 component: CenterSafe
             }, {
-                path: 'center/certificate',
+                path: ':team/center/certificate',
                 meta: { title: "个人中心" },
                 name: 'CenterCertificate',
                 component: CenterCertificate
