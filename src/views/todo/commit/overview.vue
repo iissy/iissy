@@ -23,8 +23,8 @@
 <script>
 import Header from '../../components/common/header';
 import Menu from '../../components/common/menu';
-import Bar from '../../chart/horizontalBar';
-import http from "../../utils/http";
+import Bar from '../../../chart/horizontalBar';
+import http from "../../../utils/http";
 
 export default {
   data: function () {

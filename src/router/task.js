@@ -1,5 +1,5 @@
 import Component from "../views/project/component";
-import Main from "../views/main";
+import Main from "../views/todo/main";
 
 let task = [
     {

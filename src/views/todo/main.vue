@@ -1,21 +1,15 @@
 <template>
-  <div class="app-row">
-    <Menu tagIndex="1" ref="Menu"></Menu>
-    <div class="rightMain">
-      <Header title="我的工作台" ref="Header" workbench="true"></Header>
-      <div class="app-main-container">
-        <component v-bind:is="currentTabComponent"/>
-      </div>
-    </div>
+  <div class="app-main-container">
+    <component v-bind:is="currentTabComponent"/>
   </div>
 </template>
 
 <script>
-import Header from '../components/common/header';
-import Menu from '../components/common/menu';
-import overview from './workbench/overview';
-import dashboard from './workbench/dashboard';
-import filters from './workbench/filters';
+// import Header from '../components/common/header';
+// import Menu from '../components/common/menu';
+import overview from '../workbench/overview';
+import dashboard from '../workbench/dashboard';
+import filters from '../workbench/filters';
 // import http from "@/scripts/http";
 
 export default {
@@ -47,8 +41,8 @@ export default {
     }
   },
   components: {
-    Header,
-    Menu,
+    // Header,
+    // Menu,
     overview,
     dashboard,
     filters

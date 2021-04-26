@@ -1,4 +1,4 @@
-import Commit from "../views/commit/overview";
+import Commit from "../views/todo/commit/overview";
 
 let commit = [
     {
