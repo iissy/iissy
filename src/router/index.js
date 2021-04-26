@@ -8,13 +8,12 @@ import WorkbenchLayout from "../layout/workbench";
 
 import Master from '../views/master';
 import Reg from '../views/reg';
-// import Main from '../views/main';
 
 import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import Logout from '../views/center/logout';
-// import MainRedirect from '../views/workbench/redirect';
+// import WorkbenchRedirect from '../views/workbench/redirect';
 
 import Workbench from '../views/workbench/index';
 import Projects from "../views/project/projects";
@@ -35,17 +34,7 @@ import TeamSetting from "../views/setting/team_setting";
 import Department from "../views/setting/department";
 import IssueTypeSetting from "../views/setting/issue_type_setting";
 
-// import Project from './project.js';
-// import IssueType from './issue_type.js';
-// import Ex from './help.js';
-// import Component from './component.js';
-// import Wiki from './wiki.js';
-// import Commit from './commit.js';
-// import Team from './team.js';
-// import Task from './task.js';
-
 Vue.use(Router);
-
 const routes = [
     {
         path: '/',
@@ -150,11 +139,6 @@ const routes = [
         component: WorkbenchLayout,
         children: [
             {
-                path: '',
-                component: () => import('../views/workbench/redirect'),
-                name: 'MainRedirect',
-                meta: { title: '我的工作台', tagIndex: 1 }
-            }, {
                 path: 'team/:team/:type',
                 meta: { title: "我的工作台", tagIndex: 1 },
                 name: 'Workbench',
@@ -181,6 +165,11 @@ const routes = [
                 path: ':team/project/:project/component/:com/issue_type/:issue_type/:attr',
                 meta: { title: "项目管理", tagIndex: 21 },
                 name: 'ComponentIssueTypeDesigner',
+                component: Component
+            }, {
+                path: ':team/project/:project/component/:com/task/:task',
+                meta: { title: "查看任务" },
+                name: 'Task',
                 component: Component
             }
         ]
