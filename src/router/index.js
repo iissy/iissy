@@ -6,7 +6,7 @@ import WikiLayout from '../layout/wiki';
 import ProjectLayout from "../layout/project";
 import WorkbenchLayout from "../layout/workbench";
 
-import Master from '../views/master';
+import Main from '../views/main';
 import Reg from '../views/reg';
 
 import CenterAccount from '../views/center/account';
@@ -39,8 +39,8 @@ const routes = [
     {
         path: '/',
         meta: { title: "Soul 项目管理系统" },
-        name: 'Master',
-        component: Master,
+        name: 'Main',
+        component: Main,
         children: [
             {
                 path: 'reg',
