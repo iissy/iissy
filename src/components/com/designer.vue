@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import http from "../../utils/http";
 import com from '../attr/com';
 import issue_type from '../attr/issue_type';
 import more from '../attr/more';
@@ -19,11 +20,9 @@ import issue_type_flow from '../attr/issue_type_flow';
 export default {
   data() {
     return {
-      currentTabComponent: 'com'
+      currentTabComponent: 'com',
+      items: []
     }
-  },
-  props: {
-    items: Array
   },
   watch: {
     '$route' () {
@@ -31,9 +30,19 @@ export default {
     }
   },
   mounted() {
-    this.shift();
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.shift();
+    self.components_get();
   },
   methods: {
+    components_get: function () {
+      let self = this;
+      http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
+        self.items = response.data;
+      });
+    },
     shift: function () {
       let self = this;
       self.currentTabComponent = self.attr;
@@ -59,7 +68,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -72,7 +72,6 @@ export default {
       project: '',
       com: '',
       tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
-      items: [],
       task: {},
       tasks: [],
       selectedUUID: '',
@@ -83,8 +82,6 @@ export default {
   props: {
     comName: String,
     issue_type: String
-  },
-  mounted() {
   },
   created() {
     let self = this;
