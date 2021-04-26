@@ -11,7 +11,7 @@
       </div>
     </router-link>
     <div class="name" style="margin-left: 20px;">
-      <router-link icon="Wiki" :to="{ name:'Wiki', params: { team: team } }" >文档中心</router-link>
+      <router-link icon="Wiki" :to="{ name:'Spaces', params: { team: team } }" >文档中心</router-link>
     </div>
     <div style="flex: 0 0 auto;margin-left: 20px;" @click="add">
       <AddButton title="新建页面"></AddButton>

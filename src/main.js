@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex'
 import App from './views/app.vue';
+import store from './store'
 import router from './router';
 
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
@@ -36,12 +37,6 @@ import  'froala-editor/css/froala_style.min.css';
 import Froala from 'vue-froala-wysiwyg';
 Vue.use(Froala);
 
-const store = new Vuex.Store({
-  state: {
-    items: []
-  }
-})
-
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
@@ -56,6 +51,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   render: h => h(App),
-  store,
   router,
+  store
 }).$mount('#app');

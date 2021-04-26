@@ -13,7 +13,6 @@ import CenterAccount from '../views/center/account';
 import CenterSafe from '../views/center/safe';
 import CenterCertificate from '../views/center/certificate';
 import Logout from '../views/center/logout';
-// import WorkbenchRedirect from '../views/workbench/redirect';
 
 import Workbench from '../views/workbench/index';
 import Projects from "../views/project/projects";
@@ -22,7 +21,7 @@ import Project from "../views/project/project";
 import ProjectSetting from "../views/setting/project_setting";
 import ProjectPermissionSetting from "../views/setting/permission";
 import Component from "../views/project/component";
-import Wiki from "../views/wiki/spaces";
+import Spaces from "../views/wiki/spaces";
 import WikiSetting from "../views/setting/wiki_setting";
 import Space from "../views/wiki/space";
 import Page from "../views/wiki/page";
@@ -33,6 +32,7 @@ import Settings from "../views/wiki/settings";
 import TeamSetting from "../views/setting/team_setting";
 import Department from "../views/setting/department";
 import IssueTypeSetting from "../views/setting/issue_type_setting";
+import Help from "../views/help/help";
 
 Vue.use(Router);
 const routes = [
@@ -91,10 +91,10 @@ const routes = [
                 name: 'Project',
                 component: Project
             }, {
-                path: ':team/wiki',
+                path: ':team/spaces',
                 meta: { title: "文档中心", tagIndex: 23 },
-                name: 'Wiki',
-                component: Wiki
+                name: 'Spaces',
+                component: Spaces
             }, {
                 path: ':team/setting/wiki/:type',
                 meta: { title: "文档配置中心", tagIndex: 83 },
@@ -216,6 +216,11 @@ const routes = [
                 component: Settings
             }
         ]
+    }, {
+        path: '/help',
+        meta: { title: "帮助文档中心" },
+        name: 'Help',
+        component: Help
     }
 ];
 

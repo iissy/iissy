@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="leftBar" v-if="isOpen">
+    <div class="leftBar" v-if="sidebar.opened">
       <div class="left-header" style="flex: 0 0 auto;">
         <div style="margin:0 auto 0 auto;text-align:left;height:40px;">
           <div style="overflow:hidden;">
@@ -27,7 +27,7 @@
           <li :class="{active: (currentIndex === 1)}"><Link icon="Main" :to="{ name: 'Workbench', params: { team: team, type: 'overview', title: '我的工作台' } }" /></li>
           <li><span></span></li>
           <li :class="{active: (currentIndex === 21)}"><Link icon="Projects" :to="{ name: 'Projects', params: { team: team, title: '项目管理' } }" /></li>
-          <li :class="{active: (currentIndex === 23)}"><Link icon="Wiki" :to="{ name:'Wiki', params: { team: team, title: '文档中心' } }" /></li>
+          <li :class="{active: (currentIndex === 23)}"><Link icon="Wiki" :to="{ name:'Spaces', params: { team: team, title: '文档中心' } }" /></li>
           <li :class="{active: (currentIndex === 26)}"><Link icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info', title: '组织架构' } }" /></li>
 
           <li><span></span></li>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Link from '../../../components/common/block/link';
 
 export default {
@@ -68,13 +69,16 @@ export default {
   },
   methods: {
     close: function () {
-      let self = this;
-      self.isOpen = false;
-      self.$parent.$refs.Header.hidden = true;
+      this.$store.dispatch('app/toggleSideBar')
     }
   },
   components: {
     Link
+  },
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ])
   }
 };
 </script>
