@@ -168,7 +168,7 @@ const routes = [
                 component: Component
             }, {
                 path: ':team/project/:project/component/:com/task/:task',
-                meta: { title: "查看任务" },
+                meta: { title: "项目管理", tagIndex: 21 },
                 name: 'Task',
                 component: Component
             }
