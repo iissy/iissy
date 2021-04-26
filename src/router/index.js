@@ -91,7 +91,7 @@ const routes = [
                 name: 'Project',
                 component: Project
             }, {
-                path: ':team/spaces',
+                path: ':team/wiki',
                 meta: { title: "文档中心", tagIndex: 23 },
                 name: 'Spaces',
                 component: Spaces
