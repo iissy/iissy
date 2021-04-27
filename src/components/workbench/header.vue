@@ -20,8 +20,7 @@ export default {
       selectedCom: 'overview',
       items: [
         { uuid: 'overview', name: '概览' },
-        { uuid: 'dashboard', name: '仪表盘' },
-        { uuid: 'filters', name: '筛选器' }
+        { uuid: 'dashboard', name: '仪表盘' }
       ]
     }
   },

@@ -2,14 +2,11 @@
   <div class="app-main-content ibox flex-column">
     <div style="flex: 0 0 auto;font-size: 18px;padding: 20px 0 10px 20px;" class="b-line">报表</div>
     <div class="flex-row align-items-center" style="flex: 0 0 auto;margin: 10px 20px;">
-      <div style="flex: 1;">
-        <AddMember :curMember="items"></AddMember>
-      </div>
       <div style="flex: 0 0 300px;text-align: right;display: flex;">
         <Search placeholder="搜索报表" />
       </div>
     </div>
-    <div class="flex-row report t-line">
+    <div class="flex-row report t-line" style="flex: 1;">
       <div style="flex: 0 0 200px;" class="r-line">
         <div class="report-menu active">
           常用报表

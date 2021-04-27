@@ -4,14 +4,24 @@
   </div>
 </template>
 
-<script>
+<!--<script>-->
+<!--import http from "../../utils/http";-->
 
-export default {
-  name: 'App',
-  components: {
-  }
-}
-</script>
+<!--export default {-->
+<!--  data() {-->
+<!--    return {-->
+<!--      team: ''-->
+<!--    }-->
+<!--  },-->
+<!--  mounted: function () {-->
+<!--    let self = this;-->
+<!--    let data = { name: 'soul', logo: '/images/touxiang.jpg', team_name: '卓灵科技', email: 'pinbor@iissy.com', password: 'S0se4r5t2', phone: '+18576769722', phone_code: '123456', team_role: 'admin' };-->
+<!--    http.post(self.urls.team_create, data).then(function (response) {-->
+<!--      console.log(response.data.status)-->
+<!--    });-->
+<!--  }-->
+<!--}-->
+<!--</script>-->
 
 <style>
 #master {

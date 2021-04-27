@@ -9,7 +9,6 @@ import com00002 from '../../components/com/com00002';
 import com00003 from '../../components/com/com00003';
 import com00004 from '../../components/com/com00004';
 import com00005 from '../../components/com/com00005';
-import com00008 from '../../components/com/com00008';
 import com00009 from '../../components/com/com00009';
 import designer from '../../components/com/designer';
 
@@ -30,7 +29,6 @@ export default {
     com00003,
     com00004,
     com00005,
-    com00008,
     com00009,
     designer
   },

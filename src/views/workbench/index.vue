@@ -5,7 +5,6 @@
 <script>
 import Overview from './overview';
 import Dashboard from './dashboard';
-import Filters from './filters';
 
 
 export default {
@@ -31,8 +30,7 @@ export default {
   },
   components: {
     Overview,
-    Dashboard,
-    Filters
+    Dashboard
   }
 }
 </script>
