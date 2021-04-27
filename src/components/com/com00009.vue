@@ -8,61 +8,46 @@
         </div>
       </div>
     </div>
-    <div style="flex: 1;flex-direction: row;margin-top: 20px;position: relative;" class="flex-row">
+    <div style="flex: 1;margin-top: 20px;position: relative;" class="flex-row">
         <div class="ibox padding20 left">
-          <div>
-            <div style="line-height: 25px;">
-              <div style="font-size: 16px;">
-                项目简介：
+          <div style="line-height: 30px;">
+            <div style="font-size: 16px;">
+              项目简介：
+            </div>
+            <div style="color: #98a6ad;">
+              在下面加上辅助文字可以很自然地引入其他主题，因此事前必做之事。 Voluptates，Illo，Ist itaque Voluptas腐败，按比例还原吗？ tempore，妖精的天体，volerotas quod perferendis！ 变质了，你好吧，鲁鲁姆？ Lorem ipsum dolor坐在amet。
+              <br/>
+              <br/>
+              Voluptates，Illo，Ist itaque Voluptas腐败，按比例还原吗？ tempore，妖精的天体，volerotas quod perferendis！ 变质了，你好吧，鲁鲁姆？ Lorem ipsum dolor坐在amet。 在下面加上辅助文字可以很自然地引入其他主题，因此事前必做之事。
+            </div>
+          </div>
+          <div style="margin-top: 50px;">
+            <div class="flex-row">
+              <div style="flex: 1;">
+                <ProjectAssign :user="item.assign"></ProjectAssign>
               </div>
-              <div style="color: #98a6ad;">
-                在下面加上辅助文字可以很自然地引入其他主题，因此事前必做之事。 Voluptates，Illo，Ist itaque Voluptas腐败，按比例还原吗？ tempore，妖精的天体，volerotas quod perferendis！ 变质了，你好吧，鲁鲁姆？ Lorem ipsum dolor坐在amet。
-                <br/>
-                <br/>
-                Voluptates，Illo，Ist itaque Voluptas腐败，按比例还原吗？ tempore，妖精的天体，volerotas quod perferendis！ 变质了，你好吧，鲁鲁姆？ Lorem ipsum dolor坐在amet。 在下面加上辅助文字可以很自然地引入其他主题，因此事前必做之事。
+              <div style="flex: 1;">
+                <div>开始时间</div>
+                <div>~</div>
+              </div>
+              <div style="flex: 1;">
+                <div>结束时间</div>
+                <div>~</div>
               </div>
             </div>
-            <div style="margin-top: 50px;">
-              <div class="flex-row">
-                <div style="flex: 1;">
-                  <ProjectAssign :user="item.assign"></ProjectAssign>
-                </div>
-                <div style="flex: 1;">
-                  <div>开始时间</div>
-                  <div>~</div>
-                </div>
-                <div style="flex: 1;">
-                  <div>结束时间</div>
-                  <div>~</div>
-                </div>
-                <div style="flex: 1;height: 100%;display: flex;-ms-flex-direction: row;">
-                  <div style="flex: 0 0 auto;">
-                    <svg t="1602158437574" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26855" width="20" height="20"><path d="M862.315789 916.210526h26.947369v80.842106H134.736842v-80.842106h26.947369c0-154.543158 99.705263-336.842105 239.831578-404.210526C261.389474 444.631579 161.684211 262.305684 161.684211 107.789474H134.736842V26.947368h754.526316v80.842106h-26.947369c0 154.516211-99.705263 336.842105-239.831578 404.210526 140.126316 67.368421 239.831579 249.667368 239.831578 404.210526zM808.421053 161.684211V107.789474H242.526316v53.894737h565.894737zM512 538.947368c-164.378947 0-296.421053 213.557895-296.421053 377.263158h592.842106c0-163.705263-132.042105-377.263158-296.421053-377.263158z" p-id="26856" fill="#515151"></path></svg>
-                  </div>
-                  <div style="flex: 1;margin-left: 10px;align-items: normal;" class="flex-column">
-                    <div style="text-align: left;padding: 3px 0 3px 0;">
-                      <b-progress :value="progressRate" variant="success" striped animate></b-progress>
-                    </div>
-                    <div style="text-align: left;color: #999999;font-size: 12px;">项目进度</div>
-                  </div>
-                  <div style="flex: 0 0 100px;margin-left: 10px;align-items: normal;justify-content: center;height: 100%;display: flex;" class="flex-column">
-                    <div style="flex: 1;height: 100%;text-align: left;">{{ progressRate }}%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style="margin-top: 50px;">
-              <div style="font-size: 16px;">项目成员：</div>
-              <div class="flex-row" style="padding: 5px 0 0 0;">
-                <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
-              </div>
+          </div>
+          <div style="margin-top: 50px;">
+            <div style="font-size: 16px;">项目成员：</div>
+            <div class="flex-row" style="padding: 5px 0 0 0;">
+              <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
             </div>
           </div>
         </div>
         <div class="middle"></div>
         <div style="position: relative;" class="right">
           <div class="ibox padding20">
-            <div class="flex-row" style="width: 100%;justify-content: space-between;">
+            <div style="font-size: 16px;">工作项类型进展</div>
+            <div class="flex-row" style="width: 100%;justify-content: space-between;margin-top: 20px;">
               <div style="flex: 0 0 auto;text-align: center;">
                 <div class="flex-row">
                   <div style="flex: 0 0 auto;margin-top: 5px;">
@@ -98,8 +83,25 @@
               </div>
             </div>
             <div style="font-size: 16px;margin-top: 50px;">工作项类型统计</div>
-            <div style="position: relative;flex: 1;">
+            <div style="position: relative;flex: 1;margin-top: 20px;">
               <bar :chartData="chartData" :options="options" :height="canvasHeight" />
+            </div>
+          </div>
+          <div class="ibox padding20" style="margin-top: 20px;">
+            <div style="font-size: 16px;">项目进度统计</div>
+            <div style="flex: 1;height: 100%;margin-top: 20px;" class="flex-row">
+              <div style="flex: 0 0 auto;">
+                <svg t="1602158437574" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26855" width="20" height="20"><path d="M862.315789 916.210526h26.947369v80.842106H134.736842v-80.842106h26.947369c0-154.543158 99.705263-336.842105 239.831578-404.210526C261.389474 444.631579 161.684211 262.305684 161.684211 107.789474H134.736842V26.947368h754.526316v80.842106h-26.947369c0 154.516211-99.705263 336.842105-239.831578 404.210526 140.126316 67.368421 239.831579 249.667368 239.831578 404.210526zM808.421053 161.684211V107.789474H242.526316v53.894737h565.894737zM512 538.947368c-164.378947 0-296.421053 213.557895-296.421053 377.263158h592.842106c0-163.705263-132.042105-377.263158-296.421053-377.263158z" p-id="26856" fill="#515151"></path></svg>
+              </div>
+              <div style="flex: 1;margin-left: 10px;align-items: normal;" class="flex-column">
+                <div style="text-align: left;padding: 3px 0 3px 0;">
+                  <b-progress :value="progressRate" variant="success" striped animate sm></b-progress>
+                </div>
+                <div style="text-align: left;color: #999999;font-size: 12px;">项目进度</div>
+              </div>
+              <div style="flex: 0 0 100px;margin-left: 10px;align-items: normal;justify-content: center;height: 100%;display: flex;" class="flex-column">
+                <div style="flex: 1;height: 100%;text-align: left;">{{ progressRate }}%</div>
+              </div>
             </div>
           </div>
         </div>
