@@ -43,16 +43,7 @@
         {{ task.desc }}
       </div>
 
-      <div class="field-type-group">
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">需求来源</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">截止日期</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
-        </div>
-      </div>
+      <slot name="workField"></slot>
 
       <div class="field-type-group">
         <div class="flex-row field-row">
