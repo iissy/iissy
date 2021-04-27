@@ -58,8 +58,8 @@ import router from "../router";
 export default {
   data: function () {
     return {
-      s_email: 'soul@iissy.com',
-      s_password: 'soul1234'
+      s_email: 'pinbor@iissy.com',
+      s_password: 'S0se4r5t2'
     };
   },
   methods: {
