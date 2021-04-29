@@ -19,7 +19,6 @@
 .popover .popover-body { padding: 0; }
 .b-sidebar-header strong { font-size: 1rem;font-weight: bold; }
 
-#app div input,#app div select,.modal-dialog div input,.modal-dialog div select { height: 38px; }
 #app div input,#app div select,#app div textarea,
 .modal-dialog div input,.modal-dialog div select, .modal-dialog div textarea { box-shadow: none!important;border: 1px #dee2e6 solid; }
 .modal-dialog

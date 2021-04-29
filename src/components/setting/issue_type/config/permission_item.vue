@@ -261,6 +261,7 @@ export default {
   width: 100%;
   color:#b0b0b0;
   padding-left: 5px;
+  height: 100%;
 }
 /*设置下拉框收起时的高度过渡动画*/
 .content .select .group {

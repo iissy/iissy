@@ -2,40 +2,40 @@
   <div class="app-main-content ibox">
     <div style="font-size: 18px;margin-bottom: 20px;" class="b-line padding20">项目信息</div>
     <div style="padding: 0 10px;">
-      <b-container fluid>
-        <b-row style="margin-bottom: 20px;">
-          <b-col sm="1">
+      <div>
+        <div style="margin-bottom: 20px;" class="flex-row">
+          <div style="flex: 0 0 120px;">
             <label>创建者</label>
-          </b-col>
-          <b-col sm="4">
+          </div>
+          <div style="flex: 0 0 300px;">
             <Creator :user="creator"/>
-          </b-col>
-        </b-row>
-        <b-row style="margin-bottom: 20px;">
-          <b-col sm="1">
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;" class="flex-row">
+          <div style="flex: 0 0 120px;">
             <label>创建时间</label>
-          </b-col>
-          <b-col sm="4">
+          </div>
+          <div style="flex: 0 0 300px;">
             2019-01-01 12:12:12
-          </b-col>
-        </b-row>
-        <b-row style="margin-bottom: 20px;">
-          <b-col sm="1">
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;" class="flex-row">
+          <div style="flex: 0 0 120px;">
             <label>项目名称</label>
-          </b-col>
-          <b-col sm="4">
+          </div>
+          <div style="flex: 0 0 300px;">
             <b-form-input @change="name_change" @keydown="name_change" v-model="name"></b-form-input>
-          </b-col>
-        </b-row>
-        <b-row style="margin-bottom: 20px;">
-          <b-col sm="1">
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;" class="flex-row">
+          <div style="flex: 0 0 120px;">
             <label></label>
-          </b-col>
-          <b-col sm="4">
+          </div>
+          <div style="flex: 0 0 300px;">
             <AddProjectButton :disabled="disabled" title="更新信息" @submit="update"></AddProjectButton>
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </div>
     </div>
     <Alert ref="alert"></Alert>
   </div>
@@ -73,7 +73,6 @@ export default {
       http.post(self.urls.project_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
         if (response.data.status === true) {
           self.$refs.alert.success('更新成功');
-          self.$parent.$parent.project_get();
           self.disabled = true;
         } else {
           self.$refs.alert.danger('更新失败');
