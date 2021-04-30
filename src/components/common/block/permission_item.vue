@@ -1,47 +1,10 @@
 <template>
-  <div style="margin-top: 30px;">
-    <div style="font-size: 16px;">{{ group.title }}</div>
-    <div style="color: #909090;">{{ group.desc }}</div>
-    <div class="table" style="margin-top: 15px;">
-      <div class="perm-row-header">
-        <div class="th">以下成员域拥有此操作权限</div>
-      </div>
-      <div v-for="g in exist" :key="g.uuid" class="perm-row">
-        <div class="td">{{ g.name }}</div>
-        <div v-if="!g.read_only" class="td" style="flex: 0 0 60px;cursor: pointer;" @click="del(g.permission)">
-          <b-icon icon="x" scale="1.5"></b-icon>
-        </div>
-      </div>
-      <div class="perm-row flex-row" v-if="!exist || exist.length === 0">
-        <div class="td justify-content-center align-items-center" style="text-align: center;padding-left: 0;">暂未添加成员</div>
-      </div>
-      <div class="perm-row">
-        <div class="content">
-          <div ref="permBody" class="select" :class="{open: visible}">
-            <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
-            <div style="position: absolute;" ref="layer" class="group ibox">
-              <div v-for="item in items" :key="item.uuid">
-                <div v-if="item.groups && item.groups.length > 0" style="color: #909090;" class="domain-group-header">
-                  {{ item.title }}
-                </div>
-                <div style="background-color: #ffffff;">
-                  <div class="domain-item" v-for="g in item.groups" :key="g.uuid" @click="add(g.param, g.type, group.permission)">
-                    <span>{{ g. name }}</span>
-                    <span v-if="item.isMember" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.email }})</span>
-                    <span v-if="!!g.desc" style="margin-left: 5px;color: #909090;font-size: 12px;">({{ g.desc }})</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <PermissionItem :exist="exist" :items="items" :title="title" :desc="desc" @add="add" @del="del"/>
 </template>
 
 <script>
 import http from "../../../utils/http";
+import PermissionItem from "../permission/permission_item";
 
 export default {
   data: function () {
@@ -54,19 +17,30 @@ export default {
         roles: {uuid: 'role', title: '角色', groups: [], exist: [] },
         members: {uuid: 'member', title: '成员', groups:[], exist: [], isMember: true}
       },
-      exist: []
+      exist: [],
+      title: "",
+      desc: "",
+      permission: ""
     };
   },
   props: {
     group: Object,
     data: Object,
   },
+  components: {
+    PermissionItem
+  },
+  created() {
+    let self = this;
+    self.title = self.group.title;
+    self.desc = self.group.desc;
+    self.permission = self.group.permission;
+  },
   methods: {
-    add: function (u, t, p) {
+    add: function (u, t) {
       let self = this;
-      self.visible = false;
       self.team = self.$route.params.team;
-      self.data.permission_rule.permission = p;
+      self.data.permission_rule.permission = self.permission;
       self.data.permission_rule.user_domain_type = t;
       self.data.permission_rule.user_domain_param = u;
 
@@ -80,26 +54,6 @@ export default {
       http.get(self.urls.permission_rule_delete.format(self.team, p)).then(function () {
         self.$parent.GetUserDomainGroups();
       });
-    },
-    show () {
-      let self = this;
-      self.visible = true
-      document.addEventListener('click', self.hidePanel, false)
-    },
-    hide () {
-      let self = this;
-      self.visible = false
-      document.removeEventListener('click', self.hidePanel, false)
-    },
-    hidePanel (e) {
-      let self = this;
-      if(self.$refs.permBody) {
-        if (!self.$refs.permBody.contains(e.target)) {
-          self.hide();
-        }
-      } else {
-        self.hide();
-      }
     }
   },
   computed: {
