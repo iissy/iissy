@@ -11,7 +11,7 @@
 
 <script>
 import PermissionHeader from '../common/permission/header';
-import PermissionItem from '../common/block/permission_item';
+import PermissionItem from '../common/permission/permission_item';
 import http from "../../utils/http";
 
 export default {

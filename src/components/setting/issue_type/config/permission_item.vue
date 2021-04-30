@@ -4,7 +4,7 @@
 
 <script>
 import http from "../../../../utils/http";
-import PermissionItem from "../../../common/permission/permission_item";
+import PermissionItem from "../../../common/permission/permission_item_view";
 
 export default {
   data: function () {
