@@ -54,9 +54,9 @@
                   <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
                 </div>
               </div>
-              <div class="td align-items-center" style="display: flex;flex: 0 0 80px;">
-                <div style="font-weight: bolder;text-align: center;width: 30px;" v-if="item.can_delete">
-                  <b-icon icon="x" scale="2"></b-icon>
+              <div class="td align-items-center iop" style="display: flex;flex: 0 0 80px;">
+                <div style="font-weight: bolder;text-align: center;width: 30px;" class="del" v-if="item.can_delete">
+                  <svg t="1619925824323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24636" width="12" height="12"><path d="M647.168 512L1024 888.832 888.832 1024 512 647.168 135.168 1024 0 888.832 376.832 512 0 135.168 135.168 0 512 376.832 888.832 0 1024 135.168 647.168 512z" p-id="24637" fill="#2c2c2c"></path></svg>
                 </div>
                 <div style="width: 30px;height: 2px;" v-else>
                   <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
