@@ -26,7 +26,7 @@
                   <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
                 </div>
                 <div style="font-weight: bolder;" v-else class="flex-row iop">
-                  <div style="flex: 0 0 25px;" class="edit" v-b-modal.modal-edit-field>
+                  <div style="flex: 0 0 25px;" class="edit"  @click="showModal(item.uuid)">
                     <svg t="1619926041971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33589" width="12" height="12"><path d="M522.24 196.9152L157.4912 571.0848 0 1024l452.9152-147.6608L817.2544 512z m462.7456-29.4912L856.576 39.424a119.3984 119.3984 0 0 0-177.2544 0L571.0848 147.6608l295.424 305.2544 118.0672-118.1696A124.8256 124.8256 0 0 0 1024 245.76a121.5488 121.5488 0 0 0-39.424-78.336z" fill="#2c2c2c" p-id="33590"></path></svg>
                   </div>
                   <div style="flex: 0 0 25px;margin-left: 10px;" class="del">
@@ -50,6 +50,20 @@
                     </div>
                   </div>
                 </b-form-group>
+                <div v-for="option in options" :key="option.uuid" class="iop">
+                  <div class="flex-row" style="border-bottom: 1px solid #e8e8e8;padding: 5px 0;">
+                    <div style="flex: 0 0 20px;margin-left: 5px;">
+                      <b-icon icon="grip-horizontal"/>
+                    </div>
+                    <div style="flex: 1;">{{option.value}}</div>
+                    <div style="flex: 0 0 25px;" class="edit">
+                      <svg t="1619926041971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33589" width="12" height="12"><path d="M522.24 196.9152L157.4912 571.0848 0 1024l452.9152-147.6608L817.2544 512z m462.7456-29.4912L856.576 39.424a119.3984 119.3984 0 0 0-177.2544 0L571.0848 147.6608l295.424 305.2544 118.0672-118.1696A124.8256 124.8256 0 0 0 1024 245.76a121.5488 121.5488 0 0 0-39.424-78.336z" fill="#2c2c2c" p-id="33590"></path></svg>
+                    </div>
+                    <div style="flex: 0 0 25px;margin-left: 10px" class="del">
+                      <svg t="1619925824323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24636" width="12" height="12"><path d="M647.168 512L1024 888.832 888.832 1024 512 647.168 135.168 1024 0 888.832 376.832 512 0 135.168 135.168 0 512 376.832 888.832 0 1024 135.168 647.168 512z" p-id="24637" fill="#2c2c2c"></path></svg>
+                    </div>
+                  </div>
+                </div>
               </form>
             </b-modal>
           </div>
@@ -74,7 +88,8 @@ export default {
       nameState: null,
       option: '',
       optionState: null,
-      disabled: false
+      disabled: false,
+      options: []
     };
   },
   created: function () {
@@ -88,6 +103,17 @@ export default {
       http.post(this.urls.issue_type_field_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
+    },
+    list_team_field_option: function(fieldUUID) {
+      let self = this;
+      http.get(this.urls.issue_type_field_option_list.format(self.team, fieldUUID)).then(function (response) {
+        self.options = response.data;
+      });
+    },
+    showModal: function (fieldUUID) {
+      let self = this;
+      self.$bvModal.show('modal-edit-field');
+      self.list_team_field_option(fieldUUID);
     },
     checkFormValidity() {
       let valid = this.$refs.form.checkValidity()

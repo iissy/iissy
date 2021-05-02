@@ -21,7 +21,7 @@
             <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-weight: 600;margin: 15px 0;cursor: pointer;max-width: 268px;">{{t.summary}}</div>
             <div class="flex-row">
               <div style="flex: 0 0 30px;">
-                <b-icon icon="grid" scale="1.2"/>
+                <b-icon icon="diagram3-fill" scale="1.2"/>
               </div>
               <div style="flex: 1;">
                 <router-link :to="{ name:'Project', params: { team: team, project: t.project.uuid } }">{{t.project.name}}</router-link>
