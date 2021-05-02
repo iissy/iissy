@@ -14,7 +14,7 @@ body h1 { font-size: 26px;font-weight: 700;margin: 10px 0;line-height: 1.8; }
 .to_do { color: #f0a100;border: solid 1px #f0a100; }
 .in_progress { color: #338fe5;border: solid 1px #338fe5; }
 .done { color: #24b47e;border: solid 1px #24b47e; }
-.iop .edit, .iop .del { cursor: pointer;opacity: 0.8; }
+.iop .edit, .iop .del { cursor: pointer;opacity: 0.8;outline: none;box-shadow: none; }
 
 #app #scrollable_container { position: relative;min-height: 0; }
 #app #scrollable_container input.title { border: 0;border-bottom: 2px solid #e8e8e8;box-shadow: none;outline: none;display: block;width: 100%;max-margin: 100%;padding: 5px 0;font-size: 35px;height: 60px; }

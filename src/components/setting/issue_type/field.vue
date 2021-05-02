@@ -26,15 +26,32 @@
                   <div style="width: 100%;height: 100%;background-color: #e0e0e0;"></div>
                 </div>
                 <div style="font-weight: bolder;" v-else class="flex-row iop">
-                  <div style="flex: 0 0 25px;" class="edit">
-                    <svg t="1619924166378" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4971" width="14" height="14"><path d="M791.672471 90.352941l144.865882 144.926118a120.470588 120.470588 0 0 1 0 170.345412l-61.379765 61.379764a60.235294 60.235294 0 0 1-85.172706 0l-230.098823-230.098823a60.235294 60.235294 0 0 1 0-85.172706l61.44-61.31953a120.470588 120.470588 0 0 1 170.345412 0zM15.058824 951.597176V769.204706a30.117647 30.117647 0 0 1 51.440941-21.263059l212.449882 212.389647a30.117647 30.117647 0 0 1-21.323294 51.440941H75.354353a60.235294 60.235294 0 0 1-60.235294-60.235294z" fill="#4A4A4A" p-id="4972"></path><path d="M485.821971 225.847946m42.592785 42.592785l230.043631 230.043632q42.592785 42.592785 0 85.18557l-293.080953 293.080953q-42.592785 42.592785-85.18557 0l-230.043631-230.043632q-42.592785-42.592785 0-85.18557l293.080953-293.080953q42.592785-42.592785 85.18557 0Z" fill="#4A4A4A" p-id="4973"></path><path d="M548.901885 793.226434l-146.561773 146.561773a60.235294 60.235294 0 0 1-64.826218 13.45932A133.722353 133.722353 0 0 1 548.859293 793.183842zM87.110911 624.559006l146.51918-146.51918a133.722353 133.722353 0 0 1-159.850722 211.302806A60.054588 60.054588 0 0 1 87.110911 624.559006l146.51918-146.51918z" fill="#4A4A4A" p-id="4974"></path><path d="M296.710006 730.231706m-94.555983-94.555983a133.722353 133.722353 0 1 0 189.111965 189.111965 133.722353 133.722353 0 1 0-189.111965-189.111965Z" fill="#4A4A4A" p-id="4975"></path></svg>
+                  <div style="flex: 0 0 25px;" class="edit" v-b-modal.modal-edit-field>
+                    <svg t="1619926041971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33589" width="12" height="12"><path d="M522.24 196.9152L157.4912 571.0848 0 1024l452.9152-147.6608L817.2544 512z m462.7456-29.4912L856.576 39.424a119.3984 119.3984 0 0 0-177.2544 0L571.0848 147.6608l295.424 305.2544 118.0672-118.1696A124.8256 124.8256 0 0 0 1024 245.76a121.5488 121.5488 0 0 0-39.424-78.336z" fill="#2c2c2c" p-id="33590"></path></svg>
                   </div>
                   <div style="flex: 0 0 25px;margin-left: 10px;" class="del">
-                    <svg t="1619924410274" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7191" width="14" height="14"><path d="M799.232 874.402909c0 34.397091-27.973818 62.370909-62.370909 62.370909H287.232c-34.443636 0-62.370909-27.927273-62.370909-62.370909V212.014545h574.370909v662.341819zM349.602909 99.979636c0-7.168 5.632-12.8 12.846546-12.8h299.985454a12.567273 12.567273 0 0 1 12.8 12.8v37.608728H349.602909v-37.608728z m636.834909 37.608728h-236.776727v-37.608728A87.412364 87.412364 0 0 0 662.388364 12.8H362.449455a87.412364 87.412364 0 0 0-87.179637 87.179636v37.608728H37.608727a37.562182 37.562182 0 1 0 0 75.217454h111.988364v661.597091a137.588364 137.588364 0 0 0 137.588364 137.588364h449.62909a137.588364 137.588364 0 0 0 137.588364-137.588364V212.014545h111.988364c20.805818 0 37.608727-16.802909 37.608727-37.608727 0-20.805818-16.756364-36.770909-37.608727-36.770909zM512.046545 823.994182c20.805818 0 37.608727-16.756364 37.608728-37.608727V386.420364a37.562182 37.562182 0 1 0-75.217455 0v399.965091c0 20.805818 16.802909 37.608727 37.608727 37.608727m-175.19709 0c20.805818 0 37.608727-16.756364 37.608727-37.608727V386.420364a37.562182 37.562182 0 1 0-75.217455 0v399.965091c0.791273 20.805818 17.594182 37.608727 37.608728 37.608727m350.394181 0c20.805818 0 37.655273-16.756364 37.655273-37.608727V386.420364a37.562182 37.562182 0 1 0-75.264 0v399.965091c0 20.805818 16.802909 37.608727 37.608727 37.608727" fill="#515151" p-id="7192"></path></svg>
+                    <svg t="1619925824323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24636" width="12" height="12"><path d="M647.168 512L1024 888.832 888.832 1024 512 647.168 135.168 1024 0 888.832 376.832 512 0 135.168 135.168 0 512 376.832 888.832 0 1024 135.168 647.168 512z" p-id="24637" fill="#2c2c2c"></path></svg>
                   </div>
                 </div>
               </div>
             </div>
+            <b-modal id="modal-edit-field" title="编辑工作项属性" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+              <form ref="form" @submit.stop.prevent="handleSubmit">
+                <b-form-group :state="nameState" label="属性名称" label-for="name-input" invalid-feedback="Name is required">
+                  <b-form-input id="name-input" v-model="name" :state="nameState" required></b-form-input>
+                </b-form-group>
+                <b-form-group :state="nameState" label="选项值" label-for="option-input" invalid-feedback="Name is required">
+                  <div class="flex-row">
+                    <div style="flex: 1;">
+                      <b-form-input id="name-input" v-model="option" :state="optionState" required></b-form-input>
+                    </div>
+                    <div style="flex: 0 0 60px;margin-left: 5px;" class="flex-column align-items-center justify-content-center">
+                      <AddButton :disabled="disabled" title="添加" @submit="add"></AddButton>
+                    </div>
+                  </div>
+                </b-form-group>
+              </form>
+            </b-modal>
           </div>
         </div>
       </div>
@@ -46,13 +63,18 @@
 import http from "../../../utils/http";
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
+import AddButton from '../../button/fullFill';
 
 export default {
   data: function () {
     return {
       name: '',
       team: '',
-      items: []
+      items: [],
+      nameState: null,
+      option: '',
+      optionState: null,
+      disabled: false
     };
   },
   created: function () {
@@ -66,11 +88,52 @@ export default {
       http.post(this.urls.issue_type_field_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
+    },
+    checkFormValidity() {
+      let valid = this.$refs.form.checkValidity()
+      return valid
+    },
+    resetModal() {
+      this.name = ''
+      this.nameState = null
+    },
+    handleOk(bvModalEvt) {
+      bvModalEvt.preventDefault()
+      this.handleSubmit();
+    },
+    handleSubmit() {
+      if (!this.checkFormValidity()) {
+        return
+      }
+      this.submit();
+      this.$nextTick(() => {
+        this.$bvModal.hide('modal-edit-field')
+      })
+    },
+    add: function () {
+      // let self = this;
+    },
+    submit: function () {
+      let self = this;
+      let data = {
+        summary: self.name,
+        desc: self.desc,
+        priority: self.prioritySelect,
+        assign: self.assignSelect,
+        project: self.projectSelect,
+        issue_type: self.issueTypeSelect
+      }
+      http.post(self.urls.task_add.format(self.team, self.project, self.issueTypeSelect), data).then(function (response) {
+        if (response.data.status) {
+          self.$parent.task_list(response.data.payload.uuid);
+        }
+      });
     }
   },
   components: {
     Search,
-    ProjectMangeHeader
+    ProjectMangeHeader,
+    AddButton
   }
 };
 </script>
