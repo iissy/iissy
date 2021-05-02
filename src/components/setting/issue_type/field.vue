@@ -96,7 +96,11 @@ export default {
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
+  },
+  mounted() {
+    let self = this;
     self.project_list();
+
   },
   methods: {
     project_list: function() {
@@ -114,6 +118,7 @@ export default {
     showModal: function (fieldUUID, fieldName) {
       let self = this;
       self.$bvModal.show('modal-edit-field');
+      self.options = [];
       self.uuid = fieldUUID;
       self.name = fieldName;
       self.list_team_field_option();
