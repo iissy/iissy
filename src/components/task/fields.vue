@@ -47,41 +47,41 @@
 
       <div class="field-type-group">
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">所属项目</div>
-          <div style="flex: 1;">{{ task.project.name }}</div>
+          <div class="field-cell">所属项目</div>
+          <div class="field-cell-value header">{{ task.project.name }}</div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">工作项类型</div>
-          <div style="flex: 1;">{{ task.issue_type.name }}</div>
+          <div class="field-cell">工作项类型</div>
+          <div class="field-cell-value header">{{ task.issue_type.name }}</div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">创建者</div>
-          <div style="flex: 1;">
+          <div class="field-cell">创建者</div>
+          <div class="field-cell-value header">
             <User :user="task.owner"/>
           </div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">创建时间</div>
-          <div style="flex: 1;">{{ task.create_time | formatDate }}</div>
+          <div class="field-cell">创建时间</div>
+          <div class="field-cell-value header">{{ task.create_time | formatDate }}</div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">更新时间</div>
-          <div style="flex: 1;">{{ task.server_update_stamp / 1000 | formatDate }}</div>
+          <div class="field-cell">更新时间</div>
+          <div class="field-cell-value header">{{ task.server_update_stamp / 1000 | formatDate }}</div>
         </div>
       </div>
 
       <div class="field-type-group">
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">计划开始日期</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
+          <div class="field-cell">计划开始日期</div>
+          <div class="field-cell-value header">未设置</div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">计划完成日期</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
+          <div class="field-cell">计划完成日期</div>
+          <div class="field-cell-value header">未设置</div>
         </div>
         <div class="flex-row field-row">
-          <div style="flex: 0 0 200px;color: #303030;">进度</div>
-          <div style="flex: 1;color: #999999;">未设置</div>
+          <div class="field-cell">进度</div>
+          <div class="field-cell-value header">未设置</div>
         </div>
       </div>
 
@@ -154,7 +154,6 @@ export default {
 
 <style scoped>
 .field-block { margin-top: 10px; }
-.field-type-group { margin-top: 30px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
-.field-row { margin-top: 10px; }
+.field-type-group { margin-top: 20px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
 .watch:hover { color: #17C4BB; }
 </style>

@@ -92,6 +92,8 @@ let urls = {
     issue_type_permission_rule_delete: '/api/team/{0}/issue_type/{1}/permission_rule/{2}/delete',
     issue_type_user_domain_group: '/api/team/{0}/project/{1}/issue_type/{2}/issue_type_user_domain_group',
 
+    field_option_value_list: '/api/team/{0}/project/{1}/issue_type/{2}/field/{3}',
+
     logout: '/api/logout',
 };
 
