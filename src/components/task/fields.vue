@@ -43,7 +43,27 @@
         {{ task.desc }}
       </div>
 
-      <slot name="workField"></slot>
+      <div class="field-type-group option" ref="permBody">
+        <div class="flex-row field-row" v-for="c in task.field_values" :key="c.uuid">
+          <div class="field-cell">{{c.name}}</div>
+          <div class="field-cell-value header" :class="{active: visible && selectField === c.uuid}">
+            <div @click="dropOptionValues(c.uuid)">
+              未设置
+            </div>
+            <div style="position: absolute;" class="edit ibox" :class="{open: visible && selectField === c.uuid}">
+              <div v-for="option in options" class="option-item" :key="option.uuid">
+                <div style="color: #909090;">
+                  {{ option.value }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row field-row">
+          <div class="field-cell">截止日期</div>
+          <div class="field-cell-value">未设置</div>
+        </div>
+      </div>
 
       <div class="field-type-group">
         <div class="flex-row field-row">
@@ -126,17 +146,29 @@ import http from "../../utils/http";
 export default {
   data() {
     return {
+      team: '',
+      project: '',
+      visible: false,
+      optionValue: '',
+      options: [],
+      selectField: '',
       hasEmail: false
     }
   },
   props: {
-    task: Object
+    task: Object,
+    issue_type: String
   },
   components: {
     User,
     Assign,
     TaskStatus,
     TaskPriority
+  },
+  created() {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
   },
   methods: {
     watchers_add: function () {
@@ -147,6 +179,32 @@ export default {
           self.$parent.task_get(self.task.uuid);
         }
       });
+    },
+    dropOptionValues: function (fieldUUID) {
+      let self = this;
+      self.option = [];
+      self.visible = true;
+      self.selectField = fieldUUID;
+      document.addEventListener('click', self.hidePanel, false)
+
+      http.get(self.urls.field_option_value_list.format(self.team, self.project, self.issue_type, fieldUUID), {}).then(function (response) {
+        self.options = response.data;
+      });
+    },
+    hide () {
+      let self = this;
+      self.visible = false
+      document.removeEventListener('click', self.hidePanel, false)
+    },
+    hidePanel (e) {
+      let self = this;
+      if(self.$refs.permBody) {
+        if (!self.$refs.permBody.contains(e.target)) {
+          self.hide();
+        }
+      } else {
+        self.hide();
+      }
     }
   }
 }
@@ -156,4 +214,29 @@ export default {
 .field-block { margin-top: 10px; }
 .field-type-group { margin-top: 20px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
 .watch:hover { color: #17C4BB; }
+.option .header {
+  position: relative;
+}
+.option .header.active { border: 1px solid #17C4BB; }
+.option .header .edit {
+  overflow-y: auto;
+  width: 100%;
+  top: 30px;
+  left: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  transition: max-height .3s ease-out;
+}
+.option .open.edit {
+  max-height: 170px;
+  -webkit-animation: slide-down .3s ease-in;
+  transition: max-height .3s ease-in;
+  transform-origin: 50% 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+.option-item { padding: 5px; }
+.option-item:hover { background-color: #eff6fd; }
 </style>
