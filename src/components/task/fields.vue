@@ -43,10 +43,10 @@
         {{ task.desc }}
       </div>
 
-      <div class="field-type-group option" ref="permBody">
+      <div class="field-type-group option">
         <div class="flex-row field-row" v-for="c in task.field_values" :key="c.uuid">
           <div class="field-cell">{{c.name}}</div>
-          <div class="field-cell-value header" :class="{active: visible && selectField === c.uuid}">
+          <div :ref="'permBody' + c.uuid" class="field-cell-value header" :class="{active: visible && selectField === c.uuid}">
             <div @click="dropOptionValues(c.uuid)">
               未设置
             </div>
@@ -170,6 +170,12 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
   },
+  computed: {
+    permBody: function () {
+      let self = this;
+      return "permBody" + self.selectField;
+    }
+  },
   methods: {
     watchers_add: function () {
       let self = this;
@@ -182,9 +188,9 @@ export default {
     },
     dropOptionValues: function (fieldUUID) {
       let self = this;
-      self.option = [];
-      self.visible = true;
+      self.options = [];
       self.selectField = fieldUUID;
+      self.visible = true;
       document.addEventListener('click', self.hidePanel, false)
 
       http.get(self.urls.field_option_value_list.format(self.team, self.project, self.issue_type, fieldUUID), {}).then(function (response) {
@@ -198,8 +204,8 @@ export default {
     },
     hidePanel (e) {
       let self = this;
-      if(self.$refs.permBody) {
-        if (!self.$refs.permBody.contains(e.target)) {
+      if(self.$refs[self.permBody]) {
+        if (!self.$refs[self.permBody][0].contains(e.target)) {
           self.hide();
         }
       } else {
