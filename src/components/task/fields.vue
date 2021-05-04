@@ -46,7 +46,7 @@
       <div class="field-type-group option">
         <div class="flex-row field-row" v-for="c in task.field_values" :key="c.uuid">
           <div class="field-cell">{{c.name}}</div>
-          <div :ref="'permBody' + c.uuid" class="field-cell-value header" :class="{active: visible && selectField === c.uuid}">
+          <div :ref="'permBody' + c.uuid" class="field-cell-value header edit" :class="{active: visible && selectField === c.uuid}">
             <div @click="dropOptionValues(c.uuid)">
               未设置
             </div>
@@ -61,11 +61,11 @@
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">截止日期</div>
-          <div class="field-cell-value">未设置</div>
+          <div class="field-cell-value edit">未设置</div>
         </div>
       </div>
 
-      <div class="field-type-group">
+      <div class="field-type-group option">
         <div class="flex-row field-row">
           <div class="field-cell">所属项目</div>
           <div class="field-cell-value header">{{ task.project.name }}</div>
@@ -90,18 +90,18 @@
         </div>
       </div>
 
-      <div class="field-type-group">
+      <div class="field-type-group option">
         <div class="flex-row field-row">
           <div class="field-cell">计划开始日期</div>
-          <div class="field-cell-value header">未设置</div>
+          <div class="field-cell-value header edit">未设置</div>
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">计划完成日期</div>
-          <div class="field-cell-value header">未设置</div>
+          <div class="field-cell-value header edit">未设置</div>
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">进度</div>
-          <div class="field-cell-value header">未设置</div>
+          <div class="field-cell-value header edit">未设置</div>
         </div>
       </div>
 
