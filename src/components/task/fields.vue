@@ -51,7 +51,7 @@
               未设置
             </div>
             <div style="position: absolute;" class="edit ibox" :class="{open: visible && selectField === c.uuid}">
-              <div v-for="option in options" class="option-item" :key="option.uuid">
+              <div v-for="option in options" class="option-item" :key="option.uuid" @click="updateOption(c.uuid, option.uuid)">
                 <div style="color: #909090;">
                   {{ option.value }}
                 </div>
@@ -87,21 +87,6 @@
         <div class="flex-row field-row">
           <div class="field-cell">更新时间</div>
           <div class="field-cell-value header">{{ task.server_update_stamp / 1000 | formatDate }}</div>
-        </div>
-      </div>
-
-      <div class="field-type-group option">
-        <div class="flex-row field-row">
-          <div class="field-cell">计划开始日期</div>
-          <div class="field-cell-value header edit">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div class="field-cell">计划完成日期</div>
-          <div class="field-cell-value header edit">未设置</div>
-        </div>
-        <div class="flex-row field-row">
-          <div class="field-cell">进度</div>
-          <div class="field-cell-value header edit">未设置</div>
         </div>
       </div>
 
@@ -211,6 +196,15 @@ export default {
       } else {
         self.hide();
       }
+    },
+    updateOption: function (field, option) {
+      let self = this;
+      let data = { task: self.task.uuid, field: field, option: option };
+      http.post(self.urls.field_option_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+        if (response.status) {
+          self.visible = false;
+        }
+      });
     }
   }
 }
