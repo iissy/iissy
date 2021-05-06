@@ -233,12 +233,12 @@ export default {
   margin: 0;
   padding: 0;
   background-color: #fff;
-  transition: max-height .3s ease-out;
+  /*transition: max-height .3s ease-out;*/
 }
 .option .open.edit {
   max-height: 170px;
-  -webkit-animation: slide-down .3s ease-in;
-  transition: max-height .3s ease-in;
+  /*-webkit-animation: slide-down .3s ease-in;*/
+  /*transition: max-height .3s ease-in;*/
   transform-origin: 50% 0;
   box-shadow: 0 1px 6px rgba(0,0,0,0.2);
   z-index: 9999;

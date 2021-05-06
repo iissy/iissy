@@ -80,4 +80,5 @@ export default {
 .status-item { padding: 5px 10px 5px 10px;border-radius: 0.3rem;cursor: pointer; }
 .status-item:hover { background-color: #F0F8FF; }
 .selected div { color: #17C4BB; }
+.assign:hover { background-color: #F0F8FF; }
 </style>

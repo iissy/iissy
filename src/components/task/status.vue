@@ -79,4 +79,5 @@ export default {
 .assign { border-radius: 30px;cursor: pointer;padding: 5px 20px 5px 5px;box-shadow: none;outline: none; }
 .status-item { padding: 5px 10px 5px 10px;border-radius: 0.3rem;cursor: pointer; }
 .status-item:hover { background-color: #F0F8FF; }
+.assign:hover { background-color: #F0F8FF; }
 </style>
