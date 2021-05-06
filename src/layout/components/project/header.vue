@@ -83,6 +83,9 @@ export default {
     self.shift();
     self.initData();
     self.title = self.$route.meta.title;
+    self.bus.$on('updateProjectInfo', function() {
+      self.project_get();
+    });
   },
   methods: {
     components_get: function () {

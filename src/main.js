@@ -21,6 +21,8 @@ Vue.use(BootstrapVueIcons);
 Vue.prototype.urls = urls;
 Vue.config.productionTip = false;
 
+Vue.prototype.bus = new Vue();
+
 import  'froala-editor/js/froala_editor.pkgd.min.js';
 import  'froala-editor/js/plugins/image.min.js';
 import  'froala-editor/js/plugins/align.min.js';
