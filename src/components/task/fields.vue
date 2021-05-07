@@ -50,7 +50,7 @@
             <div @click="dropOptionValues(c.uuid)" class="flex-row align-items-center" style="flex: 1;">
               <div v-if="c.value">{{c.value}}</div>
               <div v-else-if="c.number_value">{{c.number_value}}</div>
-              <div v-else>未设置</div>
+              <div class="none" v-else>未设置</div>
             </div>
             <div style="position: absolute;" class="edit ibox" :class="{open: visible && selectField === c.uuid}">
               <div v-for="option in options" class="option-item" :key="option.uuid" @click="updateOption(c.uuid, option.uuid)">
@@ -63,7 +63,10 @@
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">截止日期</div>
-          <div class="field-cell-value edit">未设置</div>
+          <div class="field-cell-value edit">
+            <div v-if="task.deadline">{{task.deadline | formatDate}}</div>
+            <div class="none" v-else>未设置</div>
+          </div>
         </div>
       </div>
 
