@@ -69,7 +69,7 @@
                 size="sm"
                 :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
                 v-model="deadline"
-                no-flip="true"
+                :no-flip="noFlip"
                 @context="onContext"
                 placeholder="未设置" locale="en">
             </b-form-datepicker>
@@ -151,7 +151,8 @@ export default {
       selectField: '',
       hasEmail: false,
       hasNotTimer: true,
-      deadline: ''
+      deadline: '',
+      noFlip: true
     }
   },
   props: {
