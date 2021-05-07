@@ -46,7 +46,7 @@
         <div class="middle"></div>
         <div style="position: relative;" class="right">
           <div class="ibox padding20">
-            <div style="font-size: 16px;">工作项类型进展</div>
+            <div style="font-size: 16px;">工作项类型统计</div>
             <div class="flex-row" style="width: 100%;justify-content: space-between;margin-top: 20px;">
               <div style="flex: 0 0 auto;text-align: center;">
                 <div class="flex-row">
@@ -82,8 +82,7 @@
                 </div>
               </div>
             </div>
-            <div style="font-size: 16px;margin-top: 50px;">工作项类型统计</div>
-            <div style="position: relative;flex: 1;margin-top: 20px;">
+            <div style="position: relative;flex: 1;margin-top: 50px;">
               <bar :chartData="chartData" :options="options" :height="canvasHeight" />
             </div>
           </div>
