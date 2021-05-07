@@ -63,9 +63,16 @@
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">截止日期</div>
-          <div class="field-cell-value edit">
-            <div v-if="task.deadline">{{task.deadline | formatDate}}</div>
-            <div class="none" v-else>未设置</div>
+          <div class="field-cell-time header edit" :class="{none: hasNotTimer}">
+            <b-form-datepicker
+                :hide-header="true"
+                size="sm"
+                :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
+                v-model="deadline"
+                no-flip="true"
+                @context="onContext"
+                placeholder="未设置" locale="en">
+            </b-form-datepicker>
           </div>
         </div>
       </div>
@@ -142,7 +149,9 @@ export default {
       optionValue: '',
       options: [],
       selectField: '',
-      hasEmail: false
+      hasEmail: false,
+      hasNotTimer: true,
+      deadline: ''
     }
   },
   props: {
@@ -159,6 +168,13 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.formatDeadline();
+  },
+  watch: {
+    task() {
+      let self = this;
+      self.formatDeadline();
+    }
   },
   computed: {
     permBody: function () {
@@ -167,6 +183,17 @@ export default {
     }
   },
   methods: {
+    formatDeadline: function () {
+      let self = this;
+      if (self.task.deadline) {
+        self.hasNotTimer = false;
+        self.deadline = new Date(self.task.deadline);
+      } else {
+        self.hasNotTimer = true;
+        self.deadline = null;
+        return null;
+      }
+    },
     watchers_add: function () {
       let self = this;
       self.team = self.$route.params.team;
@@ -211,6 +238,19 @@ export default {
           self.$parent.task_get(self.task.uuid);
         }
       });
+    },
+    onContext: function (ctx) {
+      let self = this;
+      if (ctx.selectedYMD) {
+        self.hasNotTimer = false;
+        let dt = new Date(ctx.selectedYMD);
+        let data = { uuid: self.task.uuid, deadline: dt.getTime() };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+          if (response.status) {
+            self.$parent.task_get(self.task.uuid);
+          }
+        });
+      }
     }
   }
 }

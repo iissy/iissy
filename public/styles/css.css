@@ -62,7 +62,10 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 .field-cell { padding: 3px 5px 3px 0;flex: 0 0 180px;color: #303030; }
 .option .field-cell-value { border: 1px solid #fff;padding: 3px 5px 3px 5px;flex: 1; }
 .option .field-cell-value.edit:hover { border: 1px solid #17C4BB;border-radius: 3px;cursor: pointer; }
-.option .field-cell-value .none { color: #cccccc; }
+.option .field-cell-time label.text-break { font-size: 14px; }
+.option .field-cell-value .none, .option .field-cell-time.none label.text-break { color: #cccccc !important; }
+.option .field-cell-time { border: 1px solid #fff;padding: 0;flex: 1; }
+.option .field-cell-time.edit:hover { border: 1px solid #17C4BB;border-radius: 3px;cursor: pointer; }
 
 #app, #app > div {
     margin: 0 auto 0 auto;
