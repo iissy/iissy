@@ -130,8 +130,8 @@
       <div style="color: #999999;margin-top: 10px;margin-bottom: 20px;">暂无评论</div>
     </div>
     <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;" class="flex-row align-items-center">
-      <div class="watchers" style="flex: 1;">
-        关注我
+      <div class="watchers flex-row" style="flex: 1;">
+        <User v-for="u in task.watchers" :user="u" :key="u.uuid" :includeName="false"/>
       </div>
       <div style="flex: 0 0 auto;cursor: pointer;" class="flex-row align-items-center watch" @click="watchers_add">
         <div style="flex: 0 0 auto;color: inherit;">

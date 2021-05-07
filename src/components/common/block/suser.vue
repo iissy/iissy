@@ -1,9 +1,9 @@
 <template>
   <div class="flex-row align-items-center">
     <div style="flex: 0 0 auto;display: flex;align-items: center;">
-      <b-img left src="/images/touxiang.jpg" style="height: 20px;" rounded="circle"></b-img>
+      <b-img left :src="user.avatar" style="height: 20px;" rounded="circle" :title="user.name"/>
     </div>
-    <div style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
+    <div v-if="includeName" style="flex: 0 0 auto;display: flex;align-items: center; margin-left: 5px;">
       {{ user.name }}
     </div>
   </div>
@@ -16,7 +16,10 @@ export default {
     }
   },
   props: {
-    user: Object
+    user: Object,
+    includeName: {
+      default: true
+    }
   }
 }
 </script>
