@@ -65,13 +65,14 @@
           <div class="field-cell">截止日期</div>
           <div class="field-cell-time header edit" :class="{none: hasNotTimer}">
             <b-form-datepicker
-                :hide-header="true"
                 size="sm"
-                :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
                 v-model="deadline"
+                v-bind="zh"
+                :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
                 :no-flip="noFlip"
+                :hide-header="true"
                 @context="onContext"
-                placeholder="未设置" locale="en">
+                placeholder="未设置">
             </b-form-datepicker>
           </div>
         </div>
@@ -152,7 +153,23 @@ export default {
       hasEmail: false,
       hasNotTimer: true,
       deadline: '',
-      noFlip: true
+      noFlip: true,
+      zh: {
+        weekdayHeaderFormat: 'narrow',
+        labelPrevDecade: '过去十年',
+        labelPrevYear: '上一年',
+        labelPrevMonth: '上个月',
+        labelCurrentMonth: '当前月份',
+        labelNextMonth: '下个月',
+        labelNextYear: '明年',
+        labelNextDecade: '下一个十年',
+        labelToday: '今天',
+        labelSelected: '选定日期',
+        labelNoDateSelected: '未选择日期',
+        labelCalendar: '日历',
+        labelNav: '日历导航',
+        labelHelp: '使用光标键浏览日期'
+      }
     }
   },
   props: {
