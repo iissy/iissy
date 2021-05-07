@@ -11,7 +11,10 @@
       </div>
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
-          <div style="flex: 1;width: 0;height: 30px;line-height: 30px;flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+          <div v-if="summaryEditing" style="flex: 1;">
+            <b-form-input v-model="task.summary" @blur="updateSummary"/>
+          </div>
+          <div v-else class="summary" @click="editSummary">
             {{ task.summary }}
           </div>
         </div>
@@ -34,13 +37,21 @@
           <div style="flex: 1;padding: 0 5px 0 0;">
             描述
           </div>
-          <div style="padding: 0 5px 0 0;flex: 0 0 auto;">
-            全屏查看
+          <div v-if="descEditing" style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;" @click="updateDesc">
+            保存描述
+          </div>
+          <div v-else style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;" @click="editDesc">
+            编辑描述
           </div>
         </div>
       </div>
-      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;padding: 10px;margin-top: 5px;">
-        {{ task.desc }}
+      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;">
+        <div v-if="descEditing" style="flex: 1;height: 100%;width: 100%;">
+          <b-form-textarea style="height: 100%;width: 100%;" v-model="task.desc"/>
+        </div>
+        <div v-else style="padding: 10px;">
+          {{ task.desc }}
+        </div>
       </div>
 
       <div class="field-type-group option">
@@ -169,7 +180,9 @@ export default {
         labelCalendar: '日历',
         labelNav: '日历导航',
         labelHelp: '使用光标键浏览日期'
-      }
+      },
+      summaryEditing: false,
+      descEditing: false
     }
   },
   props: {
@@ -191,6 +204,7 @@ export default {
   watch: {
     task() {
       let self = this;
+      self.summaryEditing = false;
       self.formatDeadline();
     }
   },
@@ -262,7 +276,40 @@ export default {
       if (ctx.selectedYMD) {
         self.hasNotTimer = false;
         let dt = new Date(ctx.selectedYMD);
-        let data = { uuid: self.task.uuid, deadline: dt.getTime() };
+        let data = { uuid: self.task.uuid, deadline: dt.getTime(), which_field: 'deadline' };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+          if (response.status) {
+            self.$parent.task_get(self.task.uuid);
+          }
+        });
+      }
+    },
+    editSummary: function () {
+      let self = this;
+      self.summaryEditing = true;
+    },
+    updateSummary: function () {
+      let self = this;
+      if (self.task.summary) {
+        self.summaryEditing = false;
+        let data = { uuid: self.task.uuid, summary: self.task.summary, which_field: 'summary' };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+          if (response.status) {
+            self.$parent.task_list(self.task.uuid);
+          }
+        });
+      }
+    },
+    editDesc: function () {
+      let self = this;
+      self.descEditing = true;
+    },
+    updateDesc: function () {
+      let self = this;
+      console.log(self.task.desc);
+      if (self.task.desc) {
+        self.descEditing = false;
+        let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
           if (response.status) {
             self.$parent.task_get(self.task.uuid);
@@ -275,6 +322,7 @@ export default {
 </script>
 
 <style scoped>
+.summary { flex: 1;width: 0;height: 30px;line-height: 30px;flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; }
 .field-block { margin-top: 10px; }
 .field-type-group { margin-top: 20px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
 .watch:hover { color: #17C4BB; }
