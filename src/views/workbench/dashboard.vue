@@ -6,9 +6,10 @@
       </div>
     </div>
     <div class="flex-row" style="padding: 20px 0 0 0;flex: 1;">
-      <Tasks :tasks="tasks_assign" :count="tasks_assign_size" v-if="tasks_assign_size > 0" title="我负责的工作项"/>
-      <Tasks style="margin-left: 20px;" :tasks="tasks_owner" :count="tasks_owner_size" v-if="tasks_owner_size > 0" title="我提交的工作项"/>
-      <Tasks style="margin-left: 20px;" :tasks="tasks_watcher" :count="tasks_watcher_size" v-if="tasks_watcher_size > 0" title="我关注的工作项"/>
+      <Tasks :tasks="tasks_assign" :count="tasks_assign.length" v-if="tasks_assign.length > 0" title="我负责的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_owner" :count="tasks_owner.length" v-if="tasks_owner.length > 0" title="我提交的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_watcher" :count="tasks_watcher.length" v-if="tasks_watcher.length > 0" title="我关注的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_done" :count="tasks_done.length" v-if="tasks_done.length > 0" title="完成的工作项"/>
     </div>
   </div>
 </template>
@@ -23,9 +24,7 @@ export default {
       tasks_assign: [],
       tasks_owner: [],
       tasks_watcher: [],
-      tasks_assign_size: 0,
-      tasks_owner_size: 0,
-      tasks_watcher_size: 0
+      tasks_done: []
     }
   },
   mounted() {
@@ -39,23 +38,65 @@ export default {
     task_list: function () {
       let self = this;
       http.post(self.urls.task_list_by_assign.format(self.team)).then(function (response) {
-        self.tasks_assign = response.data;
-        if (self.tasks_assign && self.tasks_assign.length > 0) {
-          self.tasks_assign_size = self.tasks_assign.length
+        if (response.data && response.data.length > 0) {
+          for (let i=0;i<response.data.length;i++) {
+            if (response.data[i].category === 3) {
+              let none = true;
+              for (let j=0;j<self.tasks_done.length;j++) {
+                if (self.tasks_done[j].uuid === response.data[i].uuid) {
+                  none = false;
+                  break;
+                }
+              }
+              if (none) {
+                self.tasks_done.push(response.data[i]);
+              }
+            } else {
+              self.tasks_assign.push(response.data[i]);
+            }
+          }
         }
       });
 
       http.post(self.urls.task_list_by_owner.format(self.team)).then(function (response) {
-        self.tasks_owner = response.data;
-        if (self.tasks_owner && self.tasks_owner.length > 0) {
-          self.tasks_owner_size = self.tasks_owner.length
+        if (response.data && response.data.length > 0) {
+          for (let i=0;i<response.data.length;i++) {
+            if (response.data[i].category === 3) {
+              let none = true;
+              for (let j=0;j<self.tasks_done.length;j++) {
+                if (self.tasks_done[j].uuid === response.data[i].uuid) {
+                  none = false;
+                  break;
+                }
+              }
+              if (none) {
+                self.tasks_done.push(response.data[i]);
+              }
+            } else {
+              self.tasks_owner.push(response.data[i]);
+            }
+          }
         }
       });
 
       http.post(self.urls.task_list_by_watcher.format(self.team)).then(function (response) {
-        self.tasks_watcher = response.data;
-        if (self.tasks_watcher && self.tasks_watcher.length > 0) {
-          self.tasks_watcher_size = self.tasks_watcher.length
+        if (response.data && response.data.length > 0) {
+          for (let i=0;i<response.data.length;i++) {
+            if (response.data[i].category === 3) {
+              let none = true;
+              for (let j=0;j<self.tasks_done.length;j++) {
+                if (self.tasks_done[j].uuid === response.data[i].uuid) {
+                  none = false;
+                  break;
+                }
+              }
+              if (none) {
+                self.tasks_done.push(response.data[i]);
+              }
+            } else {
+              self.tasks_watcher.push(response.data[i]);
+            }
+          }
         }
       });
     }
