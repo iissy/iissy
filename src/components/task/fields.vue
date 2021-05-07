@@ -47,8 +47,10 @@
         <div class="flex-row field-row" v-for="c in task.field_values" :key="c.uuid">
           <div class="field-cell">{{c.name}}</div>
           <div :ref="'permBody' + c.uuid" class="field-cell-value header edit" :class="{active: visible && selectField === c.uuid}">
-            <div @click="dropOptionValues(c.uuid)">
-              未设置
+            <div @click="dropOptionValues(c.uuid)" class="flex-row align-items-center" style="flex: 1;">
+              <div v-if="c.value">{{c.value}}</div>
+              <div v-else-if="c.number_value">{{c.number_value}}</div>
+              <div v-else>未设置</div>
             </div>
             <div style="position: absolute;" class="edit ibox" :class="{open: visible && selectField === c.uuid}">
               <div v-for="option in options" class="option-item" :key="option.uuid" @click="updateOption(c.uuid, option.uuid)">
@@ -199,10 +201,11 @@ export default {
     },
     updateOption: function (field, option) {
       let self = this;
+      self.visible = false;
       let data = { task: self.task.uuid, field: field, option: option };
       http.post(self.urls.field_option_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
         if (response.status) {
-          self.visible = false;
+          self.$parent.task_get(self.task.uuid);
         }
       });
     }
