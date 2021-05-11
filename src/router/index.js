@@ -76,7 +76,7 @@ const routes = [
                 name: 'IssueTypeSetting',
                 component: IssueTypeSetting
             }, {
-                path: ':team/projects',
+                path: ':team/project_list',
                 meta: { title: "项目管理", tagIndex: 21 },
                 name: 'Projects',
                 component: Projects
@@ -133,20 +133,20 @@ const routes = [
             }
         ]
     }, {
-        path: '/workbench',
+        path: '/team',
         meta: { title: "我的工作台" },
         name: 'WorkbenchLayout',
         component: WorkbenchLayout,
         children: [
             {
-                path: 'team/:team/:type',
+                path: ':team/workbench/:type',
                 meta: { title: "我的工作台", tagIndex: 1 },
                 name: 'Workbench',
                 component: Workbench
             }
         ]
     }, {
-        path: '/project',
+        path: '/team',
         meta: { title: "我的工作台" },
         name: 'ProjectLayout',
         component: ProjectLayout,
@@ -174,7 +174,7 @@ const routes = [
             }
         ]
     }, {
-        path: '/wiki',
+        path: '/team',
         meta: { title: "文档" },
         name: 'Wiki',
         component: WikiLayout,
