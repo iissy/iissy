@@ -50,7 +50,7 @@ let urls = {
     project_update: '/api/team/{0}/project/{1}/update',
     project_first_component: '/api/team/{0}/project/{1}/components/first',
     project_template: '/api/team/{0}/project/{1}/setting/template',
-    project_get: '/api/team/{0}/project/{1}/get',
+    project_get: '/api/team/{0}/project/{1}',
     status_data_list: '/api/team/{0}/project/{1}/status_data_list',
     project_change_assign: '/api/team/{0}/project/{1}/change_assign',
     project_role_members: '/api/team/{0}/project/{1}/project_role_members',
