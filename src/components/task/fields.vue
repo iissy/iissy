@@ -49,7 +49,7 @@
         </div>
       </b-modal>
 
-      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
+      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
         <froala :config="config" v-model="task.desc"/>
       </div>
 
@@ -194,6 +194,7 @@ export default {
         charCounterCount: false,
         toolbarVisibleWithoutSelection: false,
         toolbarSticky: true,
+        heightMin: 100,
         events : {
           'contentChanged' : function() {
             that.updateDesc();

@@ -40,7 +40,9 @@
         </div>
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="描述" label-for="desc-input">
-            <b-form-textarea id="desc-input" v-model="desc" rows="5" required></b-form-textarea>
+            <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
+              <froala :config="config" v-model="desc"/>
+            </div>
           </b-form-group>
         </div>
       </form>
@@ -69,7 +71,32 @@ export default {
       issue_types: [],
       assigns: [],
       priorities: [],
-      hasEmail: true
+      hasEmail: true,
+      config: {
+        placeholderText: '',
+        toolbarButtons: {
+          'moreText': {
+            'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough',
+              'subscript', 'superscript',
+              'align', 'formatOL', 'formatUL', 'quote'],
+            'align': 'left',
+            'buttonsVisible': 1000
+          }
+        },
+        imageCORSProxy: null,
+        fontFamilySelection: true,
+        fontSizeSelection: true,
+        paragraphFormatSelection: true,
+        tabSpaces: 8,
+        colorsHEXInput: true,
+        fileUploadURL: '/upload_file',
+        colorsStep: 14,
+        toolbarInline: true,
+        charCounterCount: false,
+        toolbarVisibleWithoutSelection: false,
+        toolbarSticky: true,
+        height: 300
+      }
     }
   },
   props: {
