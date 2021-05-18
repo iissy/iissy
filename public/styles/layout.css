@@ -44,3 +44,7 @@
 #scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-element) { display: none; }
 #scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-view) { display: none; }
 .modal-dialog .btn { padding: 3px 15px; }
+
+#desc_scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-element) { display: none; }
+#desc_scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-view) { display: none; }
+#desc_scrollable_container img { width: 98%; }

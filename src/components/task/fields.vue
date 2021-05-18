@@ -37,21 +37,20 @@
           <div style="flex: 1;padding: 0 5px 0 0;">
             描述
           </div>
-          <div v-if="descEditing" style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;" @click="updateDesc">
-            保存描述
-          </div>
-          <div v-else style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;" @click="editDesc">
-            编辑描述
+          <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" v-b-modal.modal-issue-content>
+            放大浏览
           </div>
         </div>
       </div>
-      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;">
-        <div v-if="descEditing" style="flex: 1;height: 100%;width: 100%;">
-          <b-form-textarea style="height: 100%;width: 100%;" v-model="task.desc"/>
+
+      <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop hide-footer>
+        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" class="flex-row">
+          <div style="padding: 10px;" v-html="task.desc"></div>
         </div>
-        <div v-else style="padding: 10px;">
-          {{ task.desc }}
-        </div>
+      </b-modal>
+
+      <div style="min-height: 100px;border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
+        <froala :config="config" v-model="task.desc"/>
       </div>
 
       <div class="field-type-group option">
@@ -114,18 +113,6 @@
         </div>
       </div>
 
-      <div class="field-type-group">
-        <div class="flex-row">
-          <div style="flex: 1;">文件</div>
-          <div style="flex: 0 0 auto;color: #000000;cursor: pointer;">
-            <b-icon icon="plus" scale="1.8"></b-icon>
-          </div>
-        </div>
-        <div style="color: #999999;margin-top: 10px;">
-          暂无文件
-        </div>
-      </div>
-
       <div style="margin-top: 30px;">评论</div>
       <div style="color: #999999;margin-top: 10px;margin-bottom: 20px;">暂无评论</div>
     </div>
@@ -154,6 +141,7 @@ import http from "../../utils/http";
 
 export default {
   data() {
+    let that = this;
     return {
       team: '',
       project: '',
@@ -182,7 +170,36 @@ export default {
         labelHelp: '使用光标键浏览日期'
       },
       summaryEditing: false,
-      descEditing: false
+      config: {
+        placeholderText: '',
+        toolbarButtons: {
+          'moreText': {
+            'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough',
+              'subscript', 'superscript', 'textColor', 'backgroundColor',
+              'align', 'formatOL', 'formatUL', 'quote',
+              'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable'],
+            'align': 'left',
+            'buttonsVisible': 1000
+          }
+        },
+        imageCORSProxy: null,
+        fontFamilySelection: true,
+        fontSizeSelection: true,
+        paragraphFormatSelection: true,
+        tabSpaces: 8,
+        colorsHEXInput: true,
+        fileUploadURL: '/upload_file',
+        colorsStep: 14,
+        toolbarInline: true,
+        charCounterCount: false,
+        toolbarVisibleWithoutSelection: false,
+        toolbarSticky: true,
+        events : {
+          'contentChanged' : function() {
+            that.updateDesc();
+          }
+        }
+      }
     }
   },
   props: {
@@ -300,15 +317,9 @@ export default {
         });
       }
     },
-    editDesc: function () {
-      let self = this;
-      self.descEditing = true;
-    },
     updateDesc: function () {
       let self = this;
-      console.log(self.task.desc);
       if (self.task.desc) {
-        self.descEditing = false;
         let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
           if (response.status) {
