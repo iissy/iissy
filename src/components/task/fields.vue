@@ -44,7 +44,7 @@
       </div>
 
       <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop hide-footer>
-        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" class="flex-row">
+        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row">
           <div style="padding: 10px;" v-html="task.desc"></div>
         </div>
       </b-modal>
