@@ -81,6 +81,7 @@
                 :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
                 :no-flip="noFlip"
                 :hide-header="true"
+                @shown="onShown"
                 @context="onContext"
                 placeholder="未设置">
             </b-form-datepicker>
@@ -175,7 +176,9 @@ export default {
         labelNav: '日历导航',
         labelHelp: '使用光标键浏览日期'
       },
+      deadlineChanged: false,
       summaryEditing: false,
+      descChanged: false,
       config: {
         placeholderText: '',
         toolbarButtons: {
@@ -203,6 +206,9 @@ export default {
         heightMin: 100,
         events : {
           'contentChanged' : function() {
+            that.descChanged = true;
+          },
+          'blur' : function() {
             that.updateDesc();
           }
         }
@@ -221,6 +227,8 @@ export default {
   },
   created() {
     let self = this;
+    self.deadlineChanged = false;
+    self.descChanged = false;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.formatDeadline();
@@ -229,6 +237,7 @@ export default {
     task() {
       let self = this;
       self.summaryEditing = false;
+      self.descChanged = false;
       self.formatDeadline();
     }
   },
@@ -295,10 +304,15 @@ export default {
         }
       });
     },
+    onShown: function () {
+      let self = this;
+      self.deadlineChanged = true;
+    },
     onContext: function (ctx) {
       let self = this;
-      if (ctx.selectedYMD) {
+      if (self.deadlineChanged && ctx.selectedYMD) {
         self.hasNotTimer = false;
+        self.descChanged = false;
         let dt = new Date(ctx.selectedYMD);
         let data = { uuid: self.task.uuid, deadline: dt.getTime(), which_field: 'deadline' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
@@ -326,7 +340,8 @@ export default {
     },
     updateDesc: function () {
       let self = this;
-      if (self.task.desc) {
+      if (self.descChanged && self.task.desc) {
+        self.descChanged = false;
         let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
           if (response.status) {
