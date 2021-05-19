@@ -113,8 +113,14 @@
         </div>
       </div>
 
-      <div style="margin-top: 30px;">评论</div>
-      <div style="color: #999999;margin-top: 10px;margin-bottom: 20px;">暂无评论</div>
+      <div style="margin-top: 20px;">
+        <div class="flex-row field-row">
+          <div class="field-cell">评论</div>
+        </div>
+        <div class="flex-row field-row">
+          <div>暂无评论</div>
+        </div>
+      </div>
     </div>
     <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;" class="flex-row align-items-center">
       <div class="watchers flex-row" style="flex: 1;">
