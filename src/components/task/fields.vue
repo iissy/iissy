@@ -49,8 +49,9 @@
         </div>
       </b-modal>
 
-      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
-        <froala :config="config" v-model="task.desc"/>
+      <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" @click="onUpdateDesc">
+        <froala v-if="descEditing" :config="config" v-model="task.desc"/>
+        <div v-else v-html="task.desc" class="fr-view flex-column" style="flex: 1;min-height: 78px;"></div>
       </div>
 
       <div class="field-type-group option">
@@ -178,15 +179,13 @@ export default {
       },
       deadlineChanged: false,
       summaryEditing: false,
+      descEditing: false,
       descChanged: false,
       config: {
         placeholderText: '',
         toolbarButtons: {
           'moreText': {
-            'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough',
-              'subscript', 'superscript', 'textColor', 'backgroundColor',
-              'align', 'formatOL', 'formatUL', 'quote',
-              'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable'],
+            'buttons': ['undo', 'redo', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough', 'textColor', 'backgroundColor', 'align', 'formatOL', 'formatUL', 'quote'],
             'align': 'left',
             'buttonsVisible': 1000
           }
@@ -203,7 +202,8 @@ export default {
         charCounterCount: false,
         toolbarVisibleWithoutSelection: false,
         toolbarSticky: true,
-        heightMin: 100,
+        heightMin: 78,
+        autofocus: true,
         events : {
           'contentChanged' : function() {
             that.descChanged = true;
@@ -229,6 +229,7 @@ export default {
     let self = this;
     self.deadlineChanged = false;
     self.descChanged = false;
+    self.descEditing = false;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.formatDeadline();
@@ -238,6 +239,7 @@ export default {
       let self = this;
       self.summaryEditing = false;
       self.descChanged = false;
+      self.descEditing = false;
       self.formatDeadline();
     }
   },
@@ -303,6 +305,10 @@ export default {
           self.$parent.task_get(self.task.uuid);
         }
       });
+    },
+    onUpdateDesc: function () {
+      let self = this;
+      self.descEditing = true;
     },
     onShown: function () {
       let self = this;

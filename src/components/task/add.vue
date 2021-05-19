@@ -76,8 +76,7 @@ export default {
         placeholderText: '',
         toolbarButtons: {
           'moreText': {
-            'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough',
-              'subscript', 'superscript',
+            'buttons': ['undo', 'redo', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough', 'textColor', 'backgroundColor',
               'align', 'formatOL', 'formatUL', 'quote'],
             'align': 'left',
             'buttonsVisible': 1000
@@ -88,14 +87,15 @@ export default {
         fontSizeSelection: true,
         paragraphFormatSelection: true,
         tabSpaces: 8,
-        colorsHEXInput: true,
+        colorsHEXInput: false,
         fileUploadURL: '/upload_file',
         colorsStep: 14,
         toolbarInline: true,
         charCounterCount: false,
         toolbarVisibleWithoutSelection: false,
         toolbarSticky: true,
-        height: 300
+        height: 300,
+        zIndex: 9999
       }
     }
   },
