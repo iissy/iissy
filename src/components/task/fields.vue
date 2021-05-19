@@ -35,7 +35,7 @@
       <div class="field-block">
         <div class="flex-row">
           <div style="flex: 1;padding: 0 5px 0 0;">
-            描述
+            描述（富文本编辑）
           </div>
           <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" v-b-modal.modal-issue-content>
             放大浏览

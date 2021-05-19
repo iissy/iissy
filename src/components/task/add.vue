@@ -39,7 +39,7 @@
           </div>
         </div>
         <div style="padding: 0 10px 0 10px;">
-          <b-form-group label="描述" label-for="desc-input">
+          <b-form-group label="描述（富文本编辑）" label-for="desc-input">
             <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
               <froala :config="config" v-model="desc"/>
             </div>
