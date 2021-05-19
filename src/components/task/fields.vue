@@ -210,6 +210,9 @@ export default {
           },
           'blur' : function() {
             that.updateDesc();
+          },
+          'initialized' : function() {
+            that.descChanged = false;
           }
         }
       }
