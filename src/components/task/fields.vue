@@ -51,7 +51,7 @@
 
       <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;">
         <div v-show="descEditing" id="taskToolBar"></div>
-        <div id="taskDescContainer" style="flex: 1;min-height: 100px;" class="flex-column">
+        <div id="taskDescContainer" style="flex: 1;min-height: 138px;" class="flex-column">
           <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @focus="descEditing=true;" @blur="updateDesc" @input="onChangedDesc" :config="editorConfig"/>
         </div>
       </div>
@@ -187,9 +187,8 @@ export default {
       editorConfig: {
         toolbar: {
           items: [
-            'undo', 'redo', 'fontColor', 'fontBackgroundColor', 'bold', 'italic',
-            'underline', 'strikethrough', 'subscript', 'superscript', 'alignment', 'numberedList', 'bulletedList',
-            'link', 'blockquote'
+            'fontColor', 'fontBackgroundColor', 'bold', 'italic',
+            'underline', 'strikethrough', 'subscript', 'superscript', 'numberedList', 'bulletedList', 'alignment', 'link'
           ]
         },
         ckfinder: {
