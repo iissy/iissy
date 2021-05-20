@@ -13,17 +13,20 @@
       </div>
     </div>
     <div style="flex: 1;overflow-y: auto;background-color: #ffffff;" id="scrollable_container" class="flex-row">
-      <div style="flex: 1;height: 100%;">
+      <div style="flex: 1;height: 100%;" class="flex-column">
         <div style="flex: 0 0 auto;padding: 20px 60px 0 60px;">
           <input type="text" class="title" v-model="title" placeholder="我的标题">
         </div>
-        <froala :tag="'textarea'" :config="config" v-model="model"/>
+        <div id="bodyContainer" style="flex: 1;padding: 0 60px 0 60px;" class="flex-column">
+          <ckeditor :editor="editor" @ready="onReady" v-model="model" :config="editorConfig"/>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import AddAndBackButton from '../../button/custom';
 import router from "../../../router";
 import http from "../../../utils/http";
@@ -38,32 +41,24 @@ export default {
       fill: false,
       list: [],
       draft: '',
-      config: {
-        placeholderText: '',
-        toolbarButtons: {
-          'moreText': {
-            'buttons': ['undo', 'redo', 'paragraphFormat', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', '|',
-              'subscript', 'superscript', 'textColor', 'backgroundColor', '|',
-              'align', 'formatOL', 'formatUL', 'quote', '|',
-              'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable'],
-            'align': 'left',
-            'buttonsVisible': 1000
-          },
-        },
-        fontFamilySelection: true,
-        fontSizeSelection: true,
-        paragraphFormatSelection: true,
-        tabSpaces: 8,
-        colorsHEXInput: true,
-        fileUploadURL: '/upload_file',
-        colorsStep: 14,
-        toolbarContainer: '#toolbarContainer',
-        toolbarInline: true,
-        charCounterCount: true,
-        toolbarVisibleWithoutSelection: true,
-        toolbarSticky: true
-      },
       model: '',
+      editor: DecoupledEditor,
+      editorConfig: {
+        toolbar: {
+          items: [
+            'undo', 'redo', 'heading',
+            'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic',
+            'underline', 'strikethrough', 'subscript', 'superscript', '|', 'alignment', 'numberedList', 'bulletedList', 'todoList', 'outdent', 'indent', '|',
+            'link', 'blockquote', 'imageUpload', 'insertTable'
+          ]
+        },
+        ckfinder: {
+          uploadUrl: "/upload",
+          options: {
+            resourceType: 'Images'
+          }
+        }
+      },
       mod: '',
       loaded: false,
       ing: -1,
@@ -125,6 +120,10 @@ export default {
     self.loaded = true;
   },
   methods: {
+    onReady(editor) {
+      document.querySelector( '#toolbarContainer' ).appendChild( editor.ui.view.toolbar.element );
+      document.querySelector( '#bodyContainer' ).appendChild( editor.ui.getEditableElement() );
+    },
     back: function () {
       let self = this;
       if (self.mod === 'EditDraft') {

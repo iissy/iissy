@@ -40,8 +40,11 @@
         </div>
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="描述（富文本编辑）" label-for="desc-input">
-            <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" id="desc_scrollable_container">
-              <froala :config="config" v-model="desc"/>
+            <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;" id="desc_scrollable_container">
+              <div id="addTaskToolBar"></div>
+              <div id="addTaskContainer" style="flex: 1;min-height: 300px;" class="flex-column">
+                <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
+              </div>
             </div>
           </b-form-group>
         </div>
@@ -54,6 +57,7 @@
 import AddTaskButton from '../common/form/button';
 import User from '../common/block/user';
 import http from "../../utils/http";
+import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 
 export default {
   data: function () {
@@ -72,30 +76,21 @@ export default {
       assigns: [],
       priorities: [],
       hasEmail: true,
-      config: {
-        placeholderText: '',
-        toolbarButtons: {
-          'moreText': {
-            'buttons': ['undo', 'redo', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough', 'textColor', 'backgroundColor',
-              'align', 'formatOL', 'formatUL', 'quote'],
-            'align': 'left',
-            'buttonsVisible': 1000
-          }
+      editor: DecoupledEditor,
+      editor2: null,
+      editorConfig: {
+        toolbar: {
+          items: [
+            'undo', 'redo', 'fontColor', 'fontBackgroundColor', 'bold', 'italic',
+            'underline', 'strikethrough', 'subscript', 'superscript', 'alignment', 'numberedList', 'bulletedList', 'blockquote'
+          ]
         },
-        imageCORSProxy: null,
-        fontFamilySelection: true,
-        fontSizeSelection: true,
-        paragraphFormatSelection: true,
-        tabSpaces: 8,
-        colorsHEXInput: false,
-        fileUploadURL: '/upload_file',
-        colorsStep: 14,
-        toolbarInline: true,
-        charCounterCount: false,
-        toolbarVisibleWithoutSelection: false,
-        toolbarSticky: true,
-        height: 300,
-        zIndex: 9999
+        ckfinder: {
+          uploadUrl: "/upload",
+          options: {
+            resourceType: 'Images'
+          }
+        }
       }
     }
   },
@@ -120,7 +115,20 @@ export default {
       self.project_list();
     });
   },
+  // updated() {
+  //   let self = this;
+  //   console.log(2);
+  //   document.querySelector( '#addTaskToolBar' ).appendChild( self.editor2.ui.view.toolbar.element );
+  //   document.querySelector( '#addTaskContainer' ).appendChild( self.editor2.ui.getEditableElement() );
+  // },
   methods: {
+    onReady(e) {
+      // let self = this;
+      // self.editor2 = e;
+      // console.log(1);
+      document.querySelector( '#addTaskToolBar' ).appendChild( e.ui.view.toolbar.element );
+      document.querySelector( '#addTaskContainer' ).appendChild( e.ui.getEditableElement() );
+    },
     checkFormValidity() {
       let valid = this.$refs.form.checkValidity()
       return valid

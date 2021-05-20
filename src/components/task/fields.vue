@@ -49,9 +49,11 @@
         </div>
       </b-modal>
 
-      <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;padding: 10px;overflow: hidden;" @click="onUpdateDesc">
-        <froala v-if="descEditing" :config="config" v-model="task.desc"/>
-        <div v-else v-html="task.desc" class="fr-view flex-column" style="flex: 1;min-height: 78px;"></div>
+      <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;">
+        <div v-show="descEditing" id="taskToolBar"></div>
+        <div id="taskDescContainer" style="flex: 1;min-height: 100px;" class="flex-column">
+          <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @focus="descEditing=true;" @blur="updateDesc" @input="onChangedDesc" :config="editorConfig"/>
+        </div>
       </div>
 
       <div class="field-type-group option">
@@ -146,10 +148,10 @@ import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';
 import http from "../../utils/http";
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 export default {
   data() {
-    let that = this;
     return {
       team: '',
       project: '',
@@ -181,38 +183,19 @@ export default {
       summaryEditing: false,
       descEditing: false,
       descChanged: false,
-      config: {
-        placeholderText: '',
-        toolbarButtons: {
-          'moreText': {
-            'buttons': ['undo', 'redo', 'fontSize', 'bold', 'italic', 'underline', 'strikeThrough', 'textColor', 'backgroundColor', 'align', 'formatOL', 'formatUL', 'quote'],
-            'align': 'left',
-            'buttonsVisible': 1000
-          }
+      editor: DecoupledEditor,
+      editorConfig: {
+        toolbar: {
+          items: [
+            'undo', 'redo', 'fontColor', 'fontBackgroundColor', 'bold', 'italic',
+            'underline', 'strikethrough', 'subscript', 'superscript', 'alignment', 'numberedList', 'bulletedList',
+            'link', 'blockquote'
+          ]
         },
-        imageCORSProxy: null,
-        fontFamilySelection: true,
-        fontSizeSelection: true,
-        paragraphFormatSelection: true,
-        tabSpaces: 8,
-        colorsHEXInput: true,
-        fileUploadURL: '/upload_file',
-        colorsStep: 14,
-        toolbarInline: true,
-        charCounterCount: false,
-        toolbarVisibleWithoutSelection: false,
-        toolbarSticky: true,
-        heightMin: 78,
-        autofocus: true,
-        events : {
-          'contentChanged' : function() {
-            that.descChanged = true;
-          },
-          'blur' : function() {
-            that.updateDesc();
-          },
-          'initialized' : function() {
-            that.descChanged = false;
+        ckfinder: {
+          uploadUrl: "/upload",
+          options: {
+            resourceType: 'Images'
           }
         }
       }
@@ -253,6 +236,10 @@ export default {
     }
   },
   methods: {
+    onReady(editor) {
+      document.querySelector( '#taskToolBar' ).appendChild( editor.ui.view.toolbar.element );
+      document.querySelector( '#taskDescContainer' ).appendChild( editor.ui.getEditableElement() );
+    },
     formatDeadline: function () {
       let self = this;
       if (self.task.deadline) {
@@ -309,9 +296,9 @@ export default {
         }
       });
     },
-    onUpdateDesc: function () {
+    onChangedDesc: function () {
       let self = this;
-      self.descEditing = true;
+      self.descChanged = true;
     },
     onShown: function () {
       let self = this;
@@ -349,6 +336,7 @@ export default {
     },
     updateDesc: function () {
       let self = this;
+      self.descEditing = false;
       if (self.descChanged && self.task.desc) {
         self.descChanged = false;
         let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };

@@ -12,6 +12,8 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-build-decoupled-document": "^27.1.0",
+    "@ckeditor/ckeditor5-vue2": "^1.0.5",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
@@ -22,7 +24,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-chartjs": "^3.5.1",
-    "vue-froala-wysiwyg": "^3.2.7",
     "vue-router": "^3.5.1",
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.6.2"
