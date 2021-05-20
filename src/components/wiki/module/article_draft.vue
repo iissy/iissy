@@ -28,7 +28,7 @@
     <div style="flex: 1;background-color: #ffffff;padding: 30px;overflow-y: auto;" class="flex-column">
       <div :class="{unnamed: !item.title}" style="font-size: 28px;font-weight: 800;">{{ item.title || '未命名' }}</div>
       <div style="color: #909090;margin-top: 5px;">最后编辑于 {{ item.updated_time | formatTime }}</div>
-      <div style="margin-top: 20px;" v-html="item.content"></div>
+      <div class="ck-content" style="margin-top: 20px;" v-html="item.content"></div>
     </div>
   </div>
 </template>

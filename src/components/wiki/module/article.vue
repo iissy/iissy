@@ -15,7 +15,7 @@
     <div style="flex: 1;background-color: #ffffff;padding: 30px;overflow-y: auto;" class="flex-column">
       <div style="font-size: 28px;font-weight: 800;">{{ item.title }}</div>
       <div style="color: #909090;margin-top: 5px;">{{ user.name }}于 {{ item.updated_time | formatTime }} 修改</div>
-      <div style="margin-top: 20px;" v-html="item.content"></div>
+      <div class="ck-content" style="margin-top: 20px;" v-html="item.content"></div>
     </div>
   </div>
 </template>
