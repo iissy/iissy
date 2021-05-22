@@ -51,4 +51,5 @@
 
 #toolbarContainer .ck.ck-toolbar,#taskToolBar .ck.ck-toolbar,#addTaskToolBar .ck.ck-toolbar { border: none;padding: 0;border-radius: 5px; }
 #bodyContainer .ck-content.ck-editor__editable { box-shadow: none;flex: 1;margin: 0;border: 1px #ffffff solid;background-color: #fff; }
-#taskDescContainer .ck-content.ck-editor__editable,#addTaskContainer .ck-content.ck-editor__editable { box-shadow: none;flex: 1;margin: 0; }
+#taskDescContainer .ck-content.ck-editor__editable,
+#addTaskContainer .ck-content.ck-editor__editable { box-shadow: none;flex: 1;margin: 0;border-radius: 3px;border: none; }

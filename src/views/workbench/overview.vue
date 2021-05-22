@@ -4,7 +4,8 @@
       <div style="flex: 1;font-size: 18px;">常用仪表盘</div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row">
-      <Dashboard/>
+      <Dashboard name="我的仪表盘"/>
+      <Dashboard name="项目仪表盘"/>
     </div>
 
     <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px;">
