@@ -11,10 +11,10 @@
       </div>
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
-          <div v-if="summaryEditing" style="flex: 1;">
-            <b-form-input v-model="task.summary" @blur="updateSummary"/>
+          <div v-if="summaryEditing" style="flex: 1;height: 30px;">
+            <b-form-input autofocus v-model="task.summary" @blur="updateSummary"/>
           </div>
-          <div v-else class="summary" @click="editSummary">
+          <div v-else class="summary" @click="editSummary" style="height: 30px;">
             {{ task.summary }}
           </div>
         </div>
