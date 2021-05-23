@@ -50,9 +50,9 @@
       </b-modal>
 
       <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;">
-        <div v-show="descEditing" id="taskToolBar"></div>
+        <div id="taskToolBar"></div>
         <div id="taskDescContainer" style="flex: 1;min-height: 138px;" class="flex-column">
-          <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @focus="descEditing=true;" @input="onChangedDesc" @blur="updateDesc" :config="editorConfig"/>
+          <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" @blur="updateDesc" :config="editorConfig"/>
         </div>
       </div>
 
@@ -181,14 +181,13 @@ export default {
       },
       deadlineChanged: false,
       summaryEditing: false,
-      descEditing: false,
       descChanged: false,
       editor: DecoupledEditor,
       editorConfig: {
         toolbar: {
           items: [
             'fontColor', 'fontBackgroundColor', 'bold', 'italic',
-            'underline', 'strikethrough', 'subscript', 'superscript', 'numberedList', 'bulletedList', 'alignment', 'link'
+            'underline', 'strikethrough', 'numberedList', 'bulletedList', 'alignment', 'link', 'blockquote', 'imageUpload'
           ]
         },
         ckfinder: {
@@ -214,7 +213,6 @@ export default {
     let self = this;
     self.deadlineChanged = false;
     self.descChanged = false;
-    self.descEditing = false;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.formatDeadline();
@@ -224,7 +222,6 @@ export default {
       let self = this;
       self.summaryEditing = false;
       self.descChanged = false;
-      self.descEditing = false;
       self.formatDeadline();
     }
   },
@@ -335,7 +332,6 @@ export default {
     },
     updateDesc: function () {
       let self = this;
-      self.descEditing = false;
       if (self.descChanged && self.task.desc) {
         self.descChanged = false;
         let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };

@@ -3,7 +3,7 @@
     <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
       <AddTaskButton :title="title" v-b-modal.modal-add-task></AddTaskButton>
     </div>
-    <b-modal size="lg" id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+    <b-modal size="lg" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
@@ -82,7 +82,7 @@ export default {
         toolbar: {
           items: [
             'undo', 'redo', 'fontColor', 'fontBackgroundColor', 'bold', 'italic',
-            'underline', 'strikethrough', 'subscript', 'superscript', 'alignment', 'numberedList', 'bulletedList', 'blockquote'
+            'underline', 'strikethrough', 'alignment', 'numberedList', 'bulletedList', 'blockquote', 'insertTable'
           ]
         },
         ckfinder: {

@@ -48,7 +48,7 @@ export default {
           items: [
             'undo', 'redo', 'heading',
             'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic',
-            'underline', 'strikethrough', 'subscript', 'superscript', '|', 'alignment', 'numberedList', 'bulletedList', 'todoList', 'outdent', 'indent', '|',
+            'underline', 'strikethrough', '|', 'alignment', 'numberedList', 'bulletedList', 'outdent', 'indent', '|',
             'link', 'blockquote', 'imageUpload', 'insertTable'
           ]
         },
