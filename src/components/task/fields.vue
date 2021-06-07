@@ -4,11 +4,18 @@
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
           <div style="flex: 1;">#{{ task.number }}</div>
-          <div style="flex: 0 0 auto;">
-            <svg t="1601948666806" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10407" width="20" height="20"><path d="M509.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10408"></path><path d="M849.1 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10409"></path><path d="M174.9 512m-111 0a111 111 0 1 0 222 0 111 111 0 1 0-222 0Z" fill="#515151" p-id="10410"></path></svg>
+          <div class="three-dots-class flex-column align-items-center justify-content-center" v-b-modal.modal-related-task>
+            <b-icon icon="three-dots" scale="1.7"/>
           </div>
         </div>
       </div>
+
+      <b-modal size="lg" :title="task.summary" id="modal-related-task" no-close-on-backdrop>
+        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
+          <div style="padding: 10px;" v-html="task.desc"></div>
+        </div>
+      </b-modal>
+
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
           <div v-if="summaryEditing" style="flex: 1;height: 30px;">
@@ -376,4 +383,7 @@ export default {
 }
 .option-item { padding: 5px; }
 .option-item:hover { background-color: #eff6fd; }
+
+.three-dots-class { color: #666666;flex: 0 0 30px;cursor: pointer; }
+.three-dots-class:hover { color: #17C4BB; }
 </style>
