@@ -15,12 +15,29 @@
             </div>
           </div>
           <div class="flex-row field-row">
-            <div style="padding: 3px 0;">暂无关联</div>
+            <div v-if="linkedTasks && linkedTasks.length > 0" class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;">
+              <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
+                <div id="linked-task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
+                  <div v-for="t in linkedTasks" v-bind:key="t.uuid" class="flex-row task-item align-items-center">
+                    <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0 10px 5px;">
+                      <div style="flex: 0 0 auto;">
+                        <b-icon icon="signpost"/>
+                      </div>
+                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{t.summary}}</div>
+                      <div style="flex: 0 0 auto;">
+                        <Status :name="t.task_status.name" :color="t.task_status.category.toString()"></Status>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-else style="padding: 3px 0;">暂无关联</div>
           </div>
         </div>
       </template>
     </Com00000>
-    <b-modal size="lg" title="关联任务" id="modal-related-task" no-close-on-backdrop>
+    <b-modal size="lg" title="关联任务" id="modal-related-task" no-close-on-backdrop cancel-title="取消" ok-title="确定" @ok="beLinkedTasks">
       <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-column ck-content">
         <div style="flex: 0 0 auto;padding: 0 10px;">
           <b-form-group
@@ -72,33 +89,54 @@ export default {
       team: '',
       project: '',
       summary: '',
+      task: '',
       tasks: [],
-      linkedTasks: []
+      linkedTasks: [],
+      addingTasks: []
     };
   },
   props: {
     comName: String,
     issue_type: String
   },
+  watch: {
+    '$route' () {
+      let self = this;
+      self.team = self.$route.params.team;
+      self.project = self.$route.params.project;
+      self.task = self.$route.params.task;
+      self.linked_task_list();
+    }
+  },
   created() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.task = self.$route.params.task;
+    self.linked_task_list();
   },
   mounted() {
     let self = this;
     self.$root.$on('bv::modal::show', (bvEvent, modalId) => {
       if (modalId === "modal-related-task") {
-        self.link_task_list("任务");
+        self.task_list("任务");
       }
     });
   },
   methods: {
-    link_task_list: function(issue_type_name) {
+    task_list: function(issue_type_name) {
       let self = this;
       let url = self.urls.link_tasks.format(self.team, self.project);
       http.post(url, { name: issue_type_name, summary: self.summary }).then(function (response) {
         self.tasks = response.data;
+      });
+    },
+    linked_task_list: function() {
+      let self = this;
+      let url = self.urls.linked_tasks.format(self.team, self.task);
+      http.get(url).then(function (response) {
+        self.linkedTasks = response.data;
+        console.log(self.linkedTasks);
       });
     },
     exist: function (uuid) {
@@ -112,6 +150,25 @@ export default {
       }
 
       return false;
+    },
+    beLinkedTasks: function () {
+      let self = this;
+      if(self.tasks) {
+        for(let i = 0;i < self.tasks.length;i++) {
+          let item = self.tasks[i];
+          if(item.sel) {
+            let o = {uuid: item.uuid, issue_type: item.issue_type.uuid};
+            self.addingTasks.push(o)
+          }
+        }
+      }
+
+      let data = self.addingTasks;
+      http.post(self.urls.linked_tasks_add.format(self.team, self.task), data).then(function (response) {
+        if(response.data.status) {
+          self.$parent.get_depart_members();
+        }
+      });
     }
   },
   components: {
