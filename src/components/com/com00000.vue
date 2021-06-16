@@ -39,7 +39,9 @@
                 </div>
               </div>
             </div>
-            <Fields :task="task" :issue_type="issue_type" v-if="task_completed"/>
+            <Fields :task="task" :issue_type="issue_type" v-if="task_completed">
+              <template v-slot:workField><slot name="workField"></slot></template>
+            </Fields>
           </div>
           <div v-else style="flex: 1;display: flex;padding: 10px;">
             <div v-if="tasks_completed && !has" style="display: flex;flex: 1;" class="align-items-center justify-content-center">

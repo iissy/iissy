@@ -1,6 +1,7 @@
 <template>
   <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
     <Com00000 :comName="comName" :issue_type="issue_type">
+      <template v-slot:workField/>
     </Com00000>
   </div>
 </template>

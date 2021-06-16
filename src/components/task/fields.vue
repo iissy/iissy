@@ -4,17 +4,11 @@
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
           <div style="flex: 1;">#{{ task.number }}</div>
-          <div class="three-dots-class flex-column align-items-center justify-content-center" v-b-modal.modal-related-task>
+          <div class="three-dots-class flex-column align-items-center justify-content-center">
             <b-icon icon="three-dots" scale="1.7"/>
           </div>
         </div>
       </div>
-
-      <b-modal size="lg" :title="task.summary" id="modal-related-task" no-close-on-backdrop>
-        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
-          <div style="padding: 10px;" v-html="task.desc"></div>
-        </div>
-      </b-modal>
 
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
@@ -52,7 +46,7 @@
 
       <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop hide-footer>
         <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
-          <div style="padding: 10px;" v-html="task.desc"></div>
+          <div style="padding: 10px;flex: 1;" v-html="task.desc"></div>
         </div>
       </b-modal>
 
@@ -124,14 +118,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 20px;">
-        <div class="flex-row field-row">
-          <div class="field-cell">评论</div>
-        </div>
-        <div class="flex-row field-row">
-          <div>暂无评论</div>
-        </div>
-      </div>
+      <slot name="workField"></slot>
     </div>
     <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;" class="flex-row align-items-center">
       <div class="watchers flex-row" style="flex: 1;">
@@ -386,4 +373,6 @@ export default {
 
 .three-dots-class { color: #666666;flex: 0 0 30px;cursor: pointer; }
 .three-dots-class:hover { color: #17C4BB; }
+
+.link:hover { color: #17C4BB; }
 </style>
