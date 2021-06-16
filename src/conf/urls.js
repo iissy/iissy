@@ -82,6 +82,7 @@ let urls = {
     task_list_by_owner: '/api/team/{0}/task_list_by_owner',
     task_list_by_watcher: '/api/team/{0}/task_list_by_watcher',
     watchers_add: '/api/team/{0}/task/{1}/watchers/add',
+    link_tasks: '/api/team/{0}/project/{1}/link_tasks',
 
     department_add: '/api/team/{0}/setting/department/add',
     department_tree: '/api/team/{0}/setting/department/tree',

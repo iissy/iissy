@@ -111,8 +111,10 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
-    self.$root.$on('bv::modal::show', () => {
-      self.project_list();
+    self.$root.$on('bv::modal::show', (bvEvent, modalId) => {
+      if (modalId === "modal-add-task") {
+        self.project_list();
+      }
     });
   },
   // updated() {

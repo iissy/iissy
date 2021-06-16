@@ -23,7 +23,6 @@
     <b-modal size="lg" title="关联需求" id="modal-related-task" no-close-on-backdrop>
       <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
         <div style="padding: 10px;">
-          asdf
         </div>
       </div>
     </b-modal>
