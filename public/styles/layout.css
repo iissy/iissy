@@ -54,4 +54,4 @@
 #taskDescContainer .ck-content.ck-editor__editable,
 #addTaskContainer .ck-content.ck-editor__editable { box-shadow: none;flex: 1;margin: 0;border-radius: 3px;border: none; }
 
-div.ck-content blockquote { border-radius: 5px;overflow: hidden;padding: 0.5em 1em;margin-left: 0;margin-right: 0;border: 1px solid #eeeeee;background-color: #f0f0f0;font-style: normal; }
+div.ck-content blockquote { border-radius: 3px;overflow: hidden;padding: 0.5em 1em;margin-left: 0;margin-right: 0;border: 1px solid #f0f0f0;background-color: #f8f8f8;font-style: normal; }
