@@ -23,10 +23,7 @@
                       <div style="flex: 0 0 auto;">
                         <b-icon icon="signpost"/>
                       </div>
-                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{t.summary}}</div>
-                      <div style="flex: 0 0 auto;">
-                        <Status :name="t.task_status.name" :color="t.task_status.category.toString()"></Status>
-                      </div>
+                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">{{t.summary}}</div>
                     </div>
                   </div>
                 </div>
@@ -181,4 +178,5 @@ export default {
 
 <style scoped>
 .field-type-group-last { margin-top: 20px;padding-bottom: 0; }
+.task-item .del { text-decoration: line-through; }
 </style>
