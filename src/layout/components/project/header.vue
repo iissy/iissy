@@ -30,7 +30,7 @@
         <UserCenterAvatar/>
       </div>
     </div>
-    <div v-if="designer" style="flex: 1;line-height: 30px;height: 30px;background-color: #fafbfe;box-shadow: rgb(211 211 211) 0px 2px 4px 0px;" class="flex-row justify-content-center">
+    <div v-if="designer" style="padding: 5px 0;flex: 1;line-height: 30px;height: 30px;background-color: #fafbfe;box-shadow: rgb(211 211 211) 0px 2px 4px 0px;" class="flex-row justify-content-center">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
         <router-link :class="{active: isActive(a, attr)}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
@@ -171,10 +171,9 @@ export default {
 </script>
 
 <style scoped>
-/*.app-header .wrapper { display: flex; justify-content: center; flex: 0;height: 100%;margin-right: 10px; }*/
 .attr { flex: 0 0 auto;padding: 0 10px;display: flex;height: 100%;align-items: center; }
 .attr a { padding: 0 5px;font-size: 15px;text-decoration: none;display: flex;align-items: center;border-radius: 3px; }
-.attr a.active { color: #17C4BB!important;background-color: #E0EEEE;margin: 5px 0; }
+.attr a.active { color: #17C4BB!important;background-color: #E0EEEE; }
 
 .com-outline { background-color: #ffffff;height:48px;display: flex;flex-direction: row;width: 100%;flex: 1; }
 .com-outline a.com { flex:1;vertical-align: middle;height: 100%;display: flex;padding: 0 20px 0 20px;cursor: pointer;text-decoration: none; }

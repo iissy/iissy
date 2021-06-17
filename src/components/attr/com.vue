@@ -112,6 +112,7 @@ export default {
           self.$refs.alert.success('更新成功');
           self.disabled = true;
           self.bus.$emit('updateComponents');
+          self.$parent.components_get();
         } else {
           self.$refs.alert.danger('更新失败');
         }
