@@ -86,6 +86,7 @@ let urls = {
     linked_tasks_add: '/api/team/{0}/task/{1}/linked_tasks_add',
     linked_tasks: '/api/team/{0}/task/{1}/linked_tasks',
     linked_source_tasks: '/api/team/{0}/task/{1}/linked_source_tasks',
+    linked_tasks_del: '/api/team/{0}/task/{1}/linked_tasks_del/{2}',
 
     department_add: '/api/team/{0}/setting/department/add',
     department_tree: '/api/team/{0}/setting/department/tree',

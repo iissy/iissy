@@ -1,6 +1,6 @@
 <template>
   <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
-    <Com00000 :comName="comName" :issue_type="issue_type">
+    <Com00000 :comName="comName" :issue_type="issue_type" ref="com">
       <template v-slot:workField>
         <div class="field-type-group option">
           <div class="flex-row field-row">
@@ -19,11 +19,14 @@
               <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
                 <div id="linked-task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
                   <div v-for="t in linkedTasks" v-bind:key="t.uuid" class="flex-row task-item align-items-center">
-                    <div class="flex-row" style="flex: 1;padding: 5px 0 5px 5px;">
+                    <div class="flex-row related-task align-items-center" style="flex: 1;padding: 5px 0 5px 5px;cursor: pointer;" @mouseover="delUUID=t.uuid;" @mouseleave="delUUID='';">
                       <div style="flex: 0 0 auto;">
                         <b-icon icon="stickies"/>
                       </div>
                       <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">{{t.summary}}</div>
+                      <div style="flex: 0 0 20px;margin-left: 5px" v-if="t.uuid === delUUID" @click="delRelatedTask(t.uuid)" class="flex-row align-items-center">
+                        <svg t="1619925824323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24636" width="12" height="12"><path d="M647.168 512L1024 888.832 888.832 1024 512 647.168 135.168 1024 0 888.832 376.832 512 0 135.168 135.168 0 512 376.832 888.832 0 1024 135.168 647.168 512z" p-id="24637" fill="#2c2c2c"></path></svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -89,7 +92,8 @@ export default {
       task: '',
       tasks: [],
       linkedTasks: [],
-      addingTasks: []
+      addingTasks: [],
+      delUUID: ''
     };
   },
   props: {
@@ -162,7 +166,17 @@ export default {
       let data = self.addingTasks;
       http.post(self.urls.linked_tasks_add.format(self.team, self.task), data).then(function (response) {
         if(response.data.status) {
-          self.$parent.get_depart_members();
+          self.linked_task_list();
+          self.$refs.com.task_list(self.task);
+        }
+      });
+    },
+    delRelatedTask: function (uuid) {
+      let self = this;
+      http.post(self.urls.linked_tasks_del.format(self.team, self.task, uuid)).then(function (response) {
+        if(response.data.status) {
+          self.linked_task_list();
+          self.$refs.com.task_list(self.task);
         }
       });
     }
@@ -177,4 +191,5 @@ export default {
 
 <style scoped>
 .task-item .del { text-decoration: line-through; }
+.related-task:hover { background-color: #f0f0f0; }
 </style>
