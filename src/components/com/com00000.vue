@@ -32,6 +32,14 @@
                       <div style="flex: 0 0 auto;margin-left: 5px;background-color: #efefef;border-radius: 4px!important;padding: 0 6px 0 6px;height: 20px;">{{t.assign.name}}</div>
                     </div>
                     <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 0;">{{t.summary}}</div>
+                    <div style="flex: 0 0 auto;margin-right: 10px;margin-left: 5px; background-color: rgb(239, 239, 239); border-radius: 4px !important; padding: 0px 6px; height: 20px;" class="flex-row align-items-center">
+                      <div style="flex: 0 0 auto;">
+                        <svg t="1623897554814" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4488" width="12" height="12"><path d="M64 128a128 128 0 0 1 128-128h64a128 128 0 0 1 128 128v64a128 128 0 0 1-121.6 127.872V425.6h409.6a166.4 166.4 0 0 1 166.4 166.4v112.128A128 128 0 0 1 960 832v64a128 128 0 0 1-128 128h-64a128 128 0 0 1-128-128v-64a128 128 0 0 1 121.6-127.872V592a89.6 89.6 0 0 0-89.6-89.6H262.4v201.728A128 128 0 0 1 384 832v64a128 128 0 0 1-128 128H192a128 128 0 0 1-128-128v-64a128 128 0 0 1 121.6-127.872V319.872A128 128 0 0 1 64 192V128z m128-51.2a51.2 51.2 0 0 0-51.2 51.2v64a51.2 51.2 0 0 0 51.2 51.2h64a51.2 51.2 0 0 0 51.2-51.2V128a51.2 51.2 0 0 0-51.2-51.2H192z m0 704a51.2 51.2 0 0 0-51.2 51.2v64a51.2 51.2 0 0 0 51.2 51.2h64a51.2 51.2 0 0 0 51.2-51.2v-64a51.2 51.2 0 0 0-51.2-51.2H192z m576 0a51.2 51.2 0 0 0-51.2 51.2v64a51.2 51.2 0 0 0 51.2 51.2h64a51.2 51.2 0 0 0 51.2-51.2v-64a51.2 51.2 0 0 0-51.2-51.2h-64z" p-id="4489" fill="#515151"></path></svg>
+                      </div>
+                      <div style="flex: 0 0 auto;margin-left: 5px;font-size: 12px;">
+                        {{t.related_task_count[0]}}/{{t.related_task_count[1]}}
+                      </div>
+                    </div>
                     <div style="flex: 0 0 auto;">
                       <Status :name="t.task_status.name" :color="t.task_status.category.toString()"></Status>
                     </div>

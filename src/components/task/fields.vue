@@ -57,6 +57,8 @@
         </div>
       </div>
 
+      <slot name="workField"></slot>
+
       <div class="field-type-group option">
         <div class="flex-row field-row" v-for="c in task.field_values" :key="c.uuid">
           <div class="field-cell">{{c.name}}</div>
@@ -93,7 +95,7 @@
         </div>
       </div>
 
-      <div class="field-type-group option">
+      <div class="field-type-group-last option">
         <div class="flex-row field-row">
           <div class="field-cell">所属项目</div>
           <div class="field-cell-value header">{{ task.project.name }}</div>
@@ -117,8 +119,6 @@
           <div class="field-cell-value header">{{ task.server_update_stamp / 1000 | formatDate }}</div>
         </div>
       </div>
-
-      <slot name="workField"></slot>
     </div>
     <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px;" class="flex-row align-items-center">
       <div class="watchers flex-row" style="flex: 1;">
@@ -344,6 +344,7 @@ export default {
 .summary { flex: 1;width: 0;height: 30px;line-height: 30px;flex: 1;font-size: 18px;text-shadow: #EEE 1px 1px 1px;color: #4F4F4F;letter-spacing: 1px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; }
 .field-block { margin-top: 10px; }
 .field-type-group { margin-top: 20px;border-bottom: 1px solid #e8e8e8;padding-bottom: 10px; }
+.field-type-group-last { margin-top: 20px;padding-bottom: 0; }
 .watch:hover { color: #17C4BB; }
 .option .header {
   position: relative;

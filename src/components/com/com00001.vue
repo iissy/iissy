@@ -2,7 +2,7 @@
   <div style="flex: 1 0 auto;display: flex;height: 100%;width: 100%;">
     <Com00000 :comName="comName" :issue_type="issue_type">
       <template v-slot:workField>
-        <div class="field-type-group-last option">
+        <div class="field-type-group option">
           <div class="flex-row field-row">
             <div class="field-cell">关联任务</div>
             <div class="field-cell-value header">
@@ -19,9 +19,9 @@
               <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
                 <div id="linked-task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
                   <div v-for="t in linkedTasks" v-bind:key="t.uuid" class="flex-row task-item align-items-center">
-                    <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 0 10px 5px;">
+                    <div class="flex-row" style="flex: 1;padding: 5px 0 5px 5px;">
                       <div style="flex: 0 0 auto;">
-                        <b-icon icon="signpost"/>
+                        <b-icon icon="stickies"/>
                       </div>
                       <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">{{t.summary}}</div>
                     </div>
@@ -133,7 +133,6 @@ export default {
       let url = self.urls.linked_tasks.format(self.team, self.task);
       http.get(url).then(function (response) {
         self.linkedTasks = response.data;
-        console.log(self.linkedTasks);
       });
     },
     exist: function (uuid) {
@@ -177,6 +176,5 @@ export default {
 </script>
 
 <style scoped>
-.field-type-group-last { margin-top: 20px;padding-bottom: 0; }
 .task-item .del { text-decoration: line-through; }
 </style>
