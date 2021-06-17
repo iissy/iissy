@@ -83,5 +83,5 @@ export default {
 .reg a { color: #333333; }
 .copyright div,.copyright a { color: #909090;font-size: 12px;opacity: 0.6; }
 .login { flex: 1;background-color: #364150;height: 100%;padding-right: 20px;border-radius: 0 0 5px 0;color: #cccccc;cursor: pointer; }
-.login-name { border: none;border-bottom: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;line-height: 30px; }
+.login-name { border: none;border-bottom: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;line-height: 30px;padding-left: 10px;border-radius: 3px; }
 </style>

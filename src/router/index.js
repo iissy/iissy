@@ -40,15 +40,12 @@ const routes = [
         path: '/',
         meta: { title: "Soul 项目管理系统" },
         name: 'Main',
-        component: Main,
-        children: [
-            {
-                path: 'reg',
-                meta: { title: "注册 - Soul 项目管理系统" },
-                name: 'Reg',
-                component: Reg
-            }
-        ]
+        component: Main
+    }, {
+        path: '/reg',
+        meta: { title: "注册 - Soul 项目管理系统" },
+        name: 'Reg',
+        component: Reg
     }, {
         path: '/team',
         meta: { title: "我的工作台" },

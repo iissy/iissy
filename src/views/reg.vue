@@ -172,5 +172,5 @@ export default {
 #master { background-color: #e8e8e8; }
 .enter a { color: #cccccc;letter-spacing: 2px; }
 .copyright div,.copyright a { color: #909090;font-size: 12px;opacity: 0.6; }
-.reg-input { border: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;height: 40px;padding-left: 10px; }
+.reg-input { border: 1px solid #e8e8e8;width: 100%;box-shadow: none;outline: none;height: 40px;padding-left: 10px;border-radius: 3px; }
 </style>

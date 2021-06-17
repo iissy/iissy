@@ -86,13 +86,16 @@ export default {
     self.bus.$on('updateProjectInfo', function() {
       self.project_get();
     });
+    self.bus.$on('updateComponents', function() {
+      self.components_get();
+    });
   },
   methods: {
     components_get: function () {
       let self = this;
       http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
         self.items = response.data;
-        self.$store.state.items = self.items;
+        // self.$store.state.items = self.items;
       });
     },
     project_get: function () {

@@ -65,6 +65,7 @@ let urls = {
     project_issue_type_flow_submit: '/api/team/{0}/project/{1}/issue_type/{2}/update_project_issue_type_flow',
 
     component_get: '/api/team/{0}/project/{1}/component/{2}',
+    component_update: '/api/team/{0}/project/{1}/component/{2}/update',
     components: '/api/team/{0}/project/{1}/components',
 
     next_status_list: '/api/team/{0}/project/{1}/issue_type/{2}/next_status_list/{3}',

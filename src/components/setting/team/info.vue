@@ -86,7 +86,7 @@ export default {
           self.$refs.alert.danger('更新失败');
         }
       });
-    },
+    }
   },
   components: {
     UpdateButton,

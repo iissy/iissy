@@ -28,7 +28,7 @@
                 <span style="color: #ff0000;">*</span>组件显示名称
               </div>
               <div style="margin-left: 10px;flex: 1;">
-                <b-form-input v-bind:value="name"></b-form-input>
+                <b-form-input v-model="name" @change="change"/>
               </div>
             </div>
             <div class="flex-row align-items-center" style="margin-top: 20px;">
@@ -36,7 +36,7 @@
                 组件名称
               </div>
               <div style="margin-left: 10px;flex: 1;">
-                项目概览
+                {{selectedComTempUUID | formatComponentTemplate}}
               </div>
             </div>
             <div class="flex-row align-items-center" style="margin-top: 20px;">
@@ -44,18 +44,19 @@
                 组件描述
               </div>
               <div style="margin-left: 10px;flex: 1;overflow: hidden;">
-                <b-form-textarea v-model="desc" rows="3" max-rows="3" style="overflow: hidden;"></b-form-textarea>
+                <b-form-textarea v-model="desc" rows="3" max-rows="3" style="overflow: hidden;" @change="change"/>
               </div>
             </div>
             <div class="flex-row align-items-center" style="margin-top: 20px;">
               <div style="text-align: right;flex: 0 0 100px;"></div>
               <div style="margin-left: 10px;flex: 1;overflow: hidden;">
-                <b-button variant="outline-info">修改组建</b-button>
+                <UpdateButton :disabled="disabled" title="更新信息" @submit="update"></UpdateButton>
               </div>
             </div>
           </div>
           <div v-show="cur===1" style="">&nbsp;</div>
         </div>
+        <Alert ref="alert"></Alert>
       </div>
     </div>
   </div>
@@ -63,19 +64,28 @@
 
 <script>
 import PermissionHeader from '../common/permission/header';
+import UpdateButton from '../button/common';
+import Alert from '../common/block/alert';
+import http from "@/utils/http";
 
 export default {
   data() {
     return {
+      team: '',
+      project: '',
       tabTitle: ['基础设置'],
       cur: 0,
       selectedComUUID: '',
+      selectedComTempUUID: '',
       name: '',
-      desc: ''
+      desc: '',
+      disabled: true
     }
   },
   created() {
     let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
     if (self.items && self.items.length > 0) {
       self.set_value(self.items[0]);
     }
@@ -87,12 +97,31 @@ export default {
     set_value: function (item) {
       let self = this;
       self.selectedComUUID = item.uuid;
+      self.selectedComTempUUID = item.template_uuid;
       self.name = item.name;
       self.desc = item.desc;
+    },
+    change: function () {
+      let self = this;
+      self.disabled = false;
+    },
+    update: function () {
+      let self = this;
+      http.post(self.urls.component_update.format(self.team, self.project, self.selectedComUUID), {name: self.name, desc: self.desc}).then(function (response) {
+        if (response.data.status === true) {
+          self.$refs.alert.success('更新成功');
+          self.disabled = true;
+          self.bus.$emit('updateComponents');
+        } else {
+          self.$refs.alert.danger('更新失败');
+        }
+      });
     }
   },
   components: {
-    PermissionHeader
+    PermissionHeader,
+    UpdateButton,
+    Alert
   }
 }
 </script>
