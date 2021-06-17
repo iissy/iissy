@@ -15,7 +15,9 @@
                       <div style="flex: 0 0 auto;">
                         <b-icon icon="folder2"/>
                       </div>
-                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">{{t.summary}}</div>
+                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">
+                        #{{t.number}} {{t.summary}}
+                      </div>
                     </div>
                   </div>
                 </div>

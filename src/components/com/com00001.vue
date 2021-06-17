@@ -23,7 +23,9 @@
                       <div style="flex: 0 0 auto;">
                         <b-icon icon="stickies"/>
                       </div>
-                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">{{t.summary}}</div>
+                      <div style="flex: 1;margin-left: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" :class="{ del: t.task_status.category === 3 }">
+                        #{{t.number}} {{t.summary}}
+                      </div>
                       <div style="flex: 0 0 20px;margin-left: 5px" v-if="t.uuid === delUUID" @click="delRelatedTask(t.uuid)" class="flex-row align-items-center">
                         <svg t="1619925824323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24636" width="12" height="12"><path d="M647.168 512L1024 888.832 888.832 1024 512 647.168 135.168 1024 0 888.832 376.832 512 0 135.168 135.168 0 512 376.832 888.832 0 1024 135.168 647.168 512z" p-id="24637" fill="#2c2c2c"></path></svg>
                       </div>
