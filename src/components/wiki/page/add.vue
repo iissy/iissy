@@ -53,7 +53,7 @@ export default {
           ]
         },
         ckfinder: {
-          uploadUrl: "/upload",
+          uploadUrl: "",
           options: {
             resourceType: 'Images'
           }
@@ -87,6 +87,7 @@ export default {
     self.team = self.$route.params.team;
     self.space = self.$route.params.space;
     self.mod = self.$route.name;
+    self.editorConfig.ckfinder.uploadUrl = self.urls.upload.format(self.team);
     if (self.mod === 'EditDraft') {
       self.draft = self.$route.params.draft;
       self.draft_get();

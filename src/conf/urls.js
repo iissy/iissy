@@ -1,3 +1,5 @@
+import config from "./config";
+
 let urls = {
     team_create: '/api/team',
     login_url: '/api/login',
@@ -9,6 +11,7 @@ let urls = {
     team_task_list: '/api/team/{0}/tasks',
     team_roles_members: '/api/team/{0}/team_roles_members',
     user_get: '/api/team/{0}/user/{1}',
+    upload: config.upload_url,
 
     department_member_list: '/api/team/{0}/department/{1}/list',
     department_member_add: '/api/team/{0}/department/{1}/add_members',

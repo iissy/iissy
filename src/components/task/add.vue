@@ -86,7 +86,7 @@ export default {
           ]
         },
         ckfinder: {
-          uploadUrl: "/upload",
+          uploadUrl: "",
           options: {
             resourceType: 'Images'
           }
@@ -106,28 +106,22 @@ export default {
       self.priority_list();
     }
   },
-  mounted() {
+  created() {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
+  },
+  mounted() {
+    let self = this;
     self.$root.$on('bv::modal::show', (bvEvent, modalId) => {
       if (modalId === "modal-add-task") {
         self.project_list();
       }
     });
   },
-  // updated() {
-  //   let self = this;
-  //   console.log(2);
-  //   document.querySelector( '#addTaskToolBar' ).appendChild( self.editor2.ui.view.toolbar.element );
-  //   document.querySelector( '#addTaskContainer' ).appendChild( self.editor2.ui.getEditableElement() );
-  // },
   methods: {
     onReady(e) {
-      // let self = this;
-      // self.editor2 = e;
-      // console.log(1);
       document.querySelector( '#addTaskToolBar' ).appendChild( e.ui.view.toolbar.element );
       document.querySelector( '#addTaskContainer' ).appendChild( e.ui.getEditableElement() );
     },

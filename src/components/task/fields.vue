@@ -185,7 +185,7 @@ export default {
           ]
         },
         ckfinder: {
-          uploadUrl: "/upload",
+          uploadUrl: "",
           options: {
             resourceType: 'Images'
           }
@@ -209,6 +209,7 @@ export default {
     self.descChanged = false;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
+    self.editorConfig.ckfinder.uploadUrl = self.urls.upload.format(self.team);
     self.formatDeadline();
   },
   watch: {
