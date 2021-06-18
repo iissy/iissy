@@ -4,7 +4,7 @@
       <div class="project-top-row">
         <div style="flex: 0 1 auto;">
           <div class="tab-title">
-            <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
+            <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title.format(comName)}}</div>
           </div>
         </div>
         <div style="flex: 1;">&nbsp;</div>
@@ -79,12 +79,14 @@ export default {
       team: '',
       project: '',
       com: '',
-      tabTitle: ['进行中', '未开始', '已完成', '全部需求'],
+      tabTitle: ['全部{0}', '未开始', '进行中', '已完成'],
       task: {},
       tasks: [],
       selectedUUID: '',
       task_completed: false,
-      tasks_completed: false
+      tasks_completed: false,
+      owner: '',
+      assign: ''
     };
   },
   props: {
@@ -102,7 +104,8 @@ export default {
     task_list: function(taskUUID) {
       let self = this;
       let url = self.urls.task_list.format(self.team, self.project, self.issue_type);
-      http.post(url).then(function (response) {
+      let params = { category: self.cur, owner: self.owner, assign: self.assign }
+      http.post(url, params).then(function (response) {
         self.tasks = response.data;
         self.tasks_completed = true;
         if(self.tasks && self.tasks.length > 0) {

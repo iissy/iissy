@@ -127,10 +127,10 @@ export default {
     });
   },
   methods: {
-    task_list: function(issue_type_name) {
+    task_list: function(issueType_name) {
       let self = this;
       let url = self.urls.link_tasks.format(self.team, self.project);
-      http.post(url, { name: issue_type_name, summary: self.summary }).then(function (response) {
+      http.post(url, { issueType_name: issueType_name, summary: self.summary }).then(function (response) {
         self.tasks = response.data;
       });
     },
