@@ -4,7 +4,7 @@
       <div class="project-top-row">
         <div style="flex: 0 1 auto;">
           <div class="tab-title">
-            <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title.format(comName)}}</div>
+            <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="selectTab(index)" :class="{active:cur==index}" :key="index">{{title.format(comName)}}</div>
           </div>
         </div>
         <div style="flex: 1;">&nbsp;</div>
@@ -21,9 +21,9 @@
         </div>
       </div>
       <div class="h-flex">
-        <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;" class="t-line">
+        <div style="position: relative;z-index: 0;-webkit-flex: 1;flex: 1;" class="t-line flex">
           <div v-if="tasks && tasks.length > 0" class="flex-row" style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;width: 0;">
-            <div style="overflow: auto;flex: 1;display: flex;height: 100%;">
+            <div style="overflow: auto;-webkit-flex: 1;flex: 1;display: flex;height: 100%;">
               <div id="task-list" style="flex-direction: column;flex: 1;display: flex;overflow: auto;">
                 <div v-for="t in tasks" v-bind:key="t.uuid" class="flex-row task-item" :class="{active: (selectedUUID === t.uuid)}" @click="select_task(t.uuid)">
                   <div class="flex-row" style="border-bottom: 1px solid #f8f8f8;flex: 1;padding: 10px 10px 10px 7px;">
@@ -51,8 +51,8 @@
               <template v-slot:workField><slot name="workField"></slot></template>
             </Fields>
           </div>
-          <div v-else style="flex: 1;display: flex;padding: 10px;">
-            <div v-if="tasks_completed && !has" style="display: flex;flex: 1;" class="align-items-center justify-content-center">
+          <div v-else style="-webkit-flex: 1;flex: 1;" class="flex">
+            <div v-if="tasks_completed && !has" style="-webkit-flex: 1;flex: 1;" class="flex-row align-items-center justify-content-center">
               暂无{{ comName }}
             </div>
           </div>
@@ -101,7 +101,7 @@ export default {
     self.task_list();
   },
   methods: {
-    task_list: function(taskUUID) {
+    task_list: function(taskUUID, first) {
       let self = this;
       let url = self.urls.task_list.format(self.team, self.project, self.issue_type);
       let params = { category: self.cur, owner: self.owner, assign: self.assign }
@@ -109,24 +109,32 @@ export default {
         self.tasks = response.data;
         self.tasks_completed = true;
         if(self.tasks && self.tasks.length > 0) {
-          if (self.$route.name === 'Task') {
-            self.selectedUUID = taskUUID || self.$route.params.task;
-            self.task_get(self.selectedUUID);
-          } else {
-            self.selectedUUID = taskUUID || self.tasks[0].uuid;
-            router.push({ name: 'Task', params: { team: self.team, project: self.project, com: self.com, task: self.selectedUUID } });
-            self.task_get(self.selectedUUID);
+          if (!taskUUID) {
+            if (first) {
+              taskUUID = self.tasks[0].uuid;
+            } else if (self.$route.name === 'Task') {
+              taskUUID = self.$route.params.task;
+            } else {
+              taskUUID = self.tasks[0].uuid;
+            }
           }
+
+          self.select_task(taskUUID);
         }
       });
     },
     select_task: function (uuid) {
       let self = this;
+      console.log(uuid);
+      console.log(self.selectedUUID);
       if (uuid !== self.selectedUUID) {
         self.selectedUUID = uuid;
-        router.push({name: 'Task', params: {team: self.team, project: self.project, com: self.com, task: uuid}});
-        self.task_get(uuid);
       }
+      if (self.$route.name !== "Task") {
+        router.push({name: 'Task', params: {team: self.team, project: self.project, com: self.com, task: uuid}});
+      }
+
+      self.task_get(uuid);
     },
     task_get: function (uuid) {
       let self = this;
@@ -135,6 +143,11 @@ export default {
         self.task = response.data;
         self.task_completed = true;
       });
+    },
+    selectTab: function (index) {
+      let self = this;
+      self.cur = index;
+      self.task_list(null, true);
     }
   },
   computed: {
