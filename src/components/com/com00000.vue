@@ -125,12 +125,10 @@ export default {
     },
     select_task: function (uuid) {
       let self = this;
-      console.log(uuid);
-      console.log(self.selectedUUID);
       if (uuid !== self.selectedUUID) {
         self.selectedUUID = uuid;
       }
-      if (self.$route.name !== "Task") {
+      if (self.$route.name !== "Task" || self.$route.params.task !== uuid) {
         router.push({name: 'Task', params: {team: self.team, project: self.project, com: self.com, task: uuid}});
       }
 
