@@ -16,7 +16,7 @@
       <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
         <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
           <div style="flex: 1;display: inline-block;">
-            <Search placeholder="项目名字" />
+            <Search placeholder="项目名称" />
           </div>
         </div>
       </div>
