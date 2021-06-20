@@ -23,18 +23,18 @@
     </div>
     <div class="h-flex">
       <div v-if="tasks_completed && has" style="-webkit-flex: 1;flex: 1;overflow-x: auto;padding: 0 20px" class="i-table">
-        <b-table :fields="fields" :items="items" outlined table-class="bbox">
+        <b-table :fields="fields" :items="items">
           <template v-slot:cell(nameuuid)="data">
             <router-link :to="{ name:'Project', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
           </template>
           <template v-slot:cell(status)="data">
             <Status :name="data.item.status_category" :color="data.item.status_uuid" />
           </template>
-          <template v-slot:cell(progress_rate)="data">
-            <b-progress :value="(data.item.done_count * 100/(data.item.to_do_count + data.item.in_progress_count + data.item.done_count)).toFixed(0)" variant="success" striped animate></b-progress>
-          </template>
           <template v-slot:cell(assign)="data">
             <User :user="data.item.assign" :hasEmail="hasEmail"/>
+          </template>
+          <template v-slot:cell(progress_rate)="data">
+            <b-progress :value="(data.item.done_count * 100/(data.item.to_do_count + data.item.in_progress_count + data.item.done_count)).toFixed(0)" variant="success" striped animate></b-progress>
           </template>
           <template v-slot:cell(plan_start_time)="data">
             {{ data.value | formatDate }}
