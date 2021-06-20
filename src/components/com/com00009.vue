@@ -3,8 +3,10 @@
     <div class="flex-row" style="border-radius: 3px;flex: 1;">
       <div class="left flex-row align-items-center">
         <div style="flex: 1;" class="flex-row align-items-center">
-          <div style="flex: 0 0 auto;font-size: 18px;">项目概览</div>
-          <ChangeStatus :name="item.status_uuid" style="margin-left: 5px;" :color="item.status_uuid" :team="team" :project="project"/>
+          <div style="flex: 1;font-size: 18px;">项目概览</div>
+          <div style="flex: 0 0 auto;">
+            <ChangeStatus :name="item.status_uuid" style="margin-left: 5px;" :color="item.status_uuid" :team="team" :project="project"/>
+          </div>
         </div>
       </div>
     </div>
