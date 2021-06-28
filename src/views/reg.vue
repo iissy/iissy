@@ -67,7 +67,7 @@
                     <svg t="1604535926297" class="icon" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5606" width="25" height="25"><path d="M1150.244571 327.0656L925.2864 26.975086c-3.920457-5.880686-14.862629-9.0112-25.951086-9.0112-10.620343 0-21.211429 2.8672-25.980343 9.0112l-207.608685 282.799543c-24.488229 37.917257-12.522057 51.931429 34.552685 51.931428h103.892115c-0.468114 50.5856-3.364571 102.341486-7.753143 137.216-20.948114 167.087543-127.268571 211.646171-131.744914 213.577143-15.594057 6.436571-12.6976 29.9008 6.407314 29.9008 268.463543 0 331.103086-310.915657 340.757943-380.693943h103.8336c1.462857 0.117029 3.861943 0.292571 6.816914 0.292572 15.623314 0 46.021486-3.978971 27.735771-34.933029z" fill="#333333" p-id="5607"></path><path d="M600.736914 567.968914h-134.026971c0.585143-65.301943 4.271543-132.213029 9.947428-177.210514 27.092114-215.683657 164.308114-273.261714 170.130286-275.6608 20.187429-8.367543 16.384-38.619429-8.279771-38.619429-346.5216 0-427.446857 401.408-439.9104 491.461486H64.570514a88.4736 88.4736 0 0 0-8.894171-0.4096c-20.099657 0-59.392 5.090743-35.810743 45.143772l290.464914 387.452342c5.061486 7.606857 19.2512 11.644343 33.528686 11.644343 13.692343 0 27.4432-3.715657 33.440914-11.644343l268.0832-365.187657c31.685486-48.9472 16.1792-66.9696-44.6464-66.9696z" fill="#333333" p-id="5608"></path></svg>
                   </div>
                   <div style="flex: 0 0 auto;margin-left: 5px;">
-                    <span style="font-size: 26px;font-weight: bold;color: #333333;letter-spacing: 3px;margin: 0 0 0 0;text-align: center;font-weight: 700;">Soul</span>
+                    <span style="font-size: 26px;font-weight: bold;color: #333333;letter-spacing: 3px;margin: 0 0 0 0;text-align: center;font-weight: 700;">ZERO</span>
                   </div>
                   <div style="flex: 0 0 auto;">
                     <svg t="1608034654856" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5182" width="32" height="32"><path d="M479.40136719 120.88671875h65.20605468v782.2265625h-65.20605468z" p-id="5183" fill="#2c2c2c"></path></svg>
@@ -82,7 +82,7 @@
               </div>
               <div style="flex: 1;" class="flex-column">
                 <div style="flex: 0 0 auto;font-size: 16px;font-weight: 600;text-align: left;padding-left: 20px;padding-top: 10px;color: #333333;margin: 10px 0;">
-                  您可以尝试 Soul 全线产品的功能
+                  您可以尝试 ZERO 全线产品的功能
                 </div>
                 <div v-for="item in items" :key="item.uuid" style="padding: 5px 0 5px 0;margin-left: 20px;" class="flex-row b-line align-items-center">
                   <div style="flex: 1;text-align: left;">
@@ -99,7 +99,7 @@
         <div style="position: absolute;bottom: 10px;">
           <div style="flex: 0 0 60px;" class="flex-row align-items-center justify-content-center copyright">
             <div>
-              Copyright ©2020 <a href="/">Soul</a>
+              Copyright ©2020 <a href="/">ZERO</a>
             </div>
             <div style="margin-left: 5px;">
               <a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2020117325号</a>

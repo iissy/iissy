@@ -17,7 +17,7 @@
       </div>
       <div style="position: absolute;width: 600px;height: 400px;background-color: #ffffff;border-radius: 5px;" class="enter flex-column justify-content-center">
         <div style="flex: 1;padding: 60px 60px;" class="flex-column">
-          <div style="font-size: 18px;" class="flex-row align-items-center">登录 Soul 项目管理系统</div>
+          <div style="font-size: 18px;" class="flex-row align-items-center">登录 ZERO 项目管理系统</div>
           <div class="flex-row align-items-center" style="padding: 30px 0;">
             <input type="text" v-model="s_email" class="login-name" placeholder="Email" autocomplete="off"/>
           </div>
@@ -40,7 +40,7 @@
       <div style="position: absolute;bottom: 10px;">
         <div style="flex: 0 0 60px;" class="flex-row align-items-center justify-content-center copyright">
           <div>
-            Copyright ©2020 <a href="/">Soul</a>
+            Copyright ©2020 <a href="/">ZERO</a>
           </div>
           <div style="margin-left: 5px;">
             <a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2020117325号</a>

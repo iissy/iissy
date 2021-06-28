@@ -38,12 +38,12 @@ Vue.use(Router);
 const routes = [
     {
         path: '/',
-        meta: { title: "Soul 项目管理系统" },
+        meta: { title: "ZERO 项目管理系统" },
         name: 'Main',
         component: Main
     }, {
         path: '/reg',
-        meta: { title: "注册 - Soul 项目管理系统" },
+        meta: { title: "注册 - ZERO 项目管理系统" },
         name: 'Reg',
         component: Reg
     }, {
