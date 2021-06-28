@@ -301,8 +301,8 @@ export default {
         self.hasNotTimer = false;
         self.descChanged = false;
         let dt = new Date(ctx.selectedYMD);
-        let data = { uuid: self.task.uuid, deadline: dt.getTime(), which_field: 'deadline' };
-        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+        let data = { deadline: dt.getTime(), which_field: 'deadline' };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.status) {
             self.$parent.task_get(self.task.uuid);
           }
@@ -317,8 +317,8 @@ export default {
       let self = this;
       if (self.task.summary) {
         self.summaryEditing = false;
-        let data = { uuid: self.task.uuid, summary: self.task.summary, which_field: 'summary' };
-        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+        let data = { summary: self.task.summary, which_field: 'summary' };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.status) {
             self.$parent.task_list(self.task.uuid);
           }
@@ -329,8 +329,8 @@ export default {
       let self = this;
       if (self.descChanged && self.task.desc) {
         self.descChanged = false;
-        let data = { uuid: self.task.uuid, desc: self.task.desc, which_field: 'desc' };
-        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
+        let data = { desc: self.task.desc, which_field: 'desc' };
+        http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.status) {
             self.$parent.task_get(self.task.uuid);
           }

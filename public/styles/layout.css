@@ -25,7 +25,7 @@
 .form-group label { font-size: 15px; }
 .form-group.required label:after { content: "*";color: #ff0000; }
 
-div.popover { border: 1px solid #e7ebf0;box-shadow: 0 0 35px 0 rgba(154 161 171 0.15); }
+div.popover { border: 1px solid #e7ebf0;box-shadow: 0 0 35px 0 rgba(154 161 171 0.15);background-color: #ffffff; }
 div.bs-popover-bottom > div.arrow::before, div.bs-popover-auto[x-placement^="bottom"] > div.arrow::before {
     border-bottom-color: #e7ebf0;
 }

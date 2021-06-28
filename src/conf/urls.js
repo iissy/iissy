@@ -76,7 +76,7 @@ let urls = {
     certificate_add: '/api/ding/login_certificate/add',
 
     task_add: '/api/team/{0}/project/{1}/issue_type/{2}/tasks/add',
-    task_update: '/api/team/{0}/project/{1}/issue_type/{2}/tasks/update',
+    task_update: '/api/team/{0}/project/{1}/issue_type/{2}/task/{3}/update',
     task_list: '/api/team/{0}/project/{1}/issue_type/{2}/tasks',
     task_get: '/api/team/{0}/task/{1}',
     task_change_assign: '/api/team/{0}/task/{1}/change_assign',
