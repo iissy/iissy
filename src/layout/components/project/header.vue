@@ -71,18 +71,6 @@ export default {
   },
   mounted() {
     let self = this;
-    self.team = self.$route.params.team;
-    self.project = self.$route.params.project;
-    self.com = self.$route.params.com;
-    self.selectedCom = self.$route.params.com;
-    self.components_get();
-    self.project_get();
-  },
-  created: function () {
-    let self = this;
-    self.shift();
-    self.initData();
-    self.title = self.$route.meta.title;
     self.bus.$on('updateProjectInfo', function() {
       self.project_get();
     });
@@ -90,12 +78,22 @@ export default {
       self.components_get();
     });
   },
+  created: function () {
+    let self = this;
+    self.team = self.$route.params.team;
+    self.project = self.$route.params.project;
+    self.com = self.$route.params.com;
+    self.selectedCom = self.$route.params.com;
+    self.title = self.$route.meta.title;
+    self.project_get();
+    self.components_get();
+    self.shift();
+  },
   methods: {
     components_get: function () {
       let self = this;
       http.get(self.urls.components.format(self.team, self.project)).then(function (response) {
         self.items = response.data;
-        // self.$store.state.items = self.items;
       });
     },
     project_get: function () {
@@ -125,11 +123,6 @@ export default {
           self.issue_type = response.data.objects[0].uuid;
         }
       });
-    },
-    initData: function () {
-      let self = this;
-      self.team = self.$route.params.team;
-      self.project = self.$route.params.project;
     },
     isActive: function (o, i) {
       if (o.uuid === i) {
