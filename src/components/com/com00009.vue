@@ -28,11 +28,11 @@
               <div style="flex: 1;">
                 <ProjectAssign :user="item.assign"></ProjectAssign>
               </div>
-              <div style="flex: 1;">
+              <div style="flex: 1;padding: 5px;">
                 <div>开始时间</div>
                 <div>~</div>
               </div>
-              <div style="flex: 1;">
+              <div style="flex: 1;padding: 5px;">
                 <div>结束时间</div>
                 <div>~</div>
               </div>

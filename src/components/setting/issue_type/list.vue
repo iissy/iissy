@@ -13,9 +13,9 @@
               <div class="th op-big">操作</div>
             </div>
             <div class="table-row" v-for="item in items" v-bind:key="item.uuid">
-              <div style="flex: 1 1 260px;" class="td flex-row">
-                <IBIcon :icon="item.icon.toString()" scale="1.2"/>
-                <div class="flex-column" style="margin-left: 15px;">
+              <div style="flex: 1 1 260px;" class="td flex-row align-items-center">
+                <IBIcon :icon="item.icon.toString()" scale="2"/>
+                <div class="flex-column" style="margin-left: 20px;">
                   <div class="flex-row">
                     <div style="color:#17C4BB;">{{ item.name }}</div>
                     <div style="flex: 0 0 auto;height: 100%;display: flex;align-items: center;margin-left: 5px;">

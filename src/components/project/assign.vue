@@ -1,13 +1,16 @@
 <template>
-  <div id="popover-assign" class="flex-row assign align-items-center" style="display: inline-flex;" hidefocus="true" tabindex="0">
-    <div style="flex: 0 0 auto;">
-      <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
+  <div id="popover-assign" class="flex-row" style="flex: 0;" hidefocus="true" tabindex="0">
+    <div class="flex-row assign align-items-center" style="padding: 5px 20px 5px 5px;flex: 0 0 auto;">
+      <div style="flex: 0 0 auto;">
+        <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
+      </div>
+      <div style="flex: 0 0 auto;margin-left: 10px;align-items: normal;" class="flex-column">
+        <div style="text-align: left;color: #363636;">{{ user.name }}</div>
+        <div style="text-align: left;color: #999999;font-size: 12px;">项目负责人</div>
+      </div>
     </div>
-    <div style="flex: 0 0 auto;margin-left: 10px;align-items: normal;" class="flex-column">
-      <div style="text-align: left;color: #363636;">{{ user.name }}</div>
-      <div style="text-align: left;color: #999999;font-size: 12px;">项目负责人</div>
-    </div>
-    <b-popover ref="popover" target="popover-assign" offset="70" triggers="focus" placement="bottom">
+    <div style="flex: 1;">&nbsp;</div>
+    <b-popover ref="popover" target="popover-assign" offset="0" triggers="focus" placement="bottom">
       <div style="padding: 5px;">
         <Search placeholder="搜索项目负责人"/>
       </div>
@@ -75,8 +78,8 @@ export default {
 
 <style scoped>
 #popover-assign { box-shadow: none;outline: none; }
-#popover-assign.assign { border-radius: 30px;cursor: pointer;padding: 0; }
-#popover-assign.assign:hover { background-color: #F0F8FF; }
+#popover-assign .assign { border-radius: 30px;cursor: pointer; }
+#popover-assign .assign:hover { background-color: #F0F8FF; }
 .status-item { padding: 5px 10px 5px 10px;border-radius: 0.3rem;cursor: pointer; }
 .status-item:hover { background-color: #F0F8FF; }
 </style>
