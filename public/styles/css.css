@@ -201,9 +201,7 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
     overflow: hidden;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
-    border-left: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+    border: 1px solid #eef2f7;
 }
 
 .memberList {

@@ -25,24 +25,21 @@
             <b-form-input id="input-sm" v-model="memberName"></b-form-input>
           </b-form-group>
 
-          <b-form-group label-cols="4" label-cols-lg="2" label="E-mail:" label-for="input-default">
+          <b-form-group label-cols="4" label-cols-lg="2" label="E-mail" label-for="input-default">
             <b-form-input id="input-default" v-model="memberEmail"></b-form-input>
           </b-form-group>
 
           <b-form-group label-cols="4" label-cols-lg="2" label="状态">
             <b-form-select :options="options" v-model="verify_status"></b-form-select>
           </b-form-group>
-
-          <b-form-group label-cols="4" label-cols-lg="2">
-            <div class="flex-row align-items-center">
-              <div style="flex: 1;">
-                <UpdateButton title="更新信息" @submit="save"></UpdateButton>
-              </div>
-            </div>
-          </b-form-group>
         </div>
-        <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;text-align: right;padding: 10px 0 0 0;">
-          <b-button @click="del" variant="danger">删除成员</b-button>
+        <div style="flex: 0 0 auto;border-top: 1px solid #e8e8e8;padding: 10px 0 0 0;" class="flex-row">
+          <div style="flex: 1;">
+            <b-button @click="save" variant="success">更新信息</b-button>
+          </div>
+          <div style="flex: 0 0 auto;">
+            <b-button @click="del" variant="danger">删除成员</b-button>
+          </div>
         </div>
       </div>
     </b-sidebar>
@@ -51,7 +48,6 @@
 
 <script>
 import http from "../../../utils/http";
-import UpdateButton from '../../button/common';
 
 export default {
   data() {
@@ -155,9 +151,6 @@ export default {
         }
       }).catch(err => {console.log(err);})
     }
-  },
-  components: {
-    UpdateButton
   }
 }
 </script>
