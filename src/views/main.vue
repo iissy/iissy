@@ -1,6 +1,6 @@
 <template>
   <div id="master">
-    <Login msg="欢迎使用 ZERO 管理系统"/>
+    <Login msg="欢迎使用 Jitask 管理系统"/>
   </div>
 </template>
 
