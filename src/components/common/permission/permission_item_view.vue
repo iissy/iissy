@@ -18,7 +18,7 @@
       <div class="perm-row">
         <div class="content">
           <div ref="permBody" class="select" :class="{open: visible}">
-            <input @click="show" type="text" placeholder="搜索角色、用户组、部门、成员">
+            <b-form-input @click="show" placeholder="搜索角色、用户组、部门、成员"/>
             <div style="position: absolute;" ref="layer" class="group ibox">
               <div v-for="item in items" :key="item.uuid">
                 <div v-if="item.groups && item.groups.length > 0" style="color: #909090;" class="domain-group-header">
@@ -64,8 +64,12 @@ export default {
     },
     show () {
       let self = this;
-      self.visible = true
-      document.addEventListener('click', self.hidePanel, false)
+      if (self.visible === true) {
+        self.hide();
+      } else {
+        self.visible = true
+        document.addEventListener('click', self.hidePanel, false)
+      }
     },
     hide () {
       let self = this;
