@@ -7,7 +7,7 @@
     <div :class="{active: (currentIndex == 2)}"><router-link :to="{ name: 'CenterSafe' }">安全设置</router-link></div>
 
     <div style="flex: 0;padding: 20px 0 5px 30px;width: 100%;color:#aaaaaa;">钉钉账号</div>
-    <div :class="{active: (currentIndex == 10)}"><router-link :to="{ name: 'CenterCertificate' }">登陆凭证</router-link></div>
+    <div :class="{active: (currentIndex == 11)}"><router-link :to="{ name: 'CenterCertificate' }">登陆凭证</router-link></div>
   </div>
 </template>
 
