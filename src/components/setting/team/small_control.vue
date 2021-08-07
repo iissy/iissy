@@ -131,7 +131,7 @@ export default {
       this.$bvModal.msgBoxConfirm('仅仅将成员从部门删除，是否确定？', {
         title: '删除成员',
         okVariant: 'danger',
-        okTitle: '删除',
+        okTitle: '确定',
         cancelTitle: '取消',
         footerClass: 'p-2',
         hideHeaderClose: false,

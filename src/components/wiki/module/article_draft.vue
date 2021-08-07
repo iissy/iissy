@@ -64,7 +64,7 @@ export default {
       this.$bvModal.msgBoxConfirm('此操作不可撤销，是否确定？', {
         title: '删除草稿',
         okVariant: 'danger',
-        okTitle: '删除',
+        okTitle: '确定',
         cancelTitle: '取消',
         footerClass: 'p-2',
         hideHeaderClose: false,
