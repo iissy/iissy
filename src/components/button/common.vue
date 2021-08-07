@@ -1,16 +1,34 @@
 <template>
-  <div style="display: inline-block;box-shadow: none;outline: none;">
-    <div  style="box-shadow: none;outline: none;" class="button" :class="{disabled: disabled}" v-on:click="onsubmit">{{title}}</div>
-  </div>
+  <b-button variant="submit" :disabled="disabled" v-on:click="onsubmit">
+    <div class="flex-row align-items-center" style="color: inherit;">
+      <div v-if="plus" style="flex: 0 0 auto;margin-right: 0;" class="flex">
+        <svg t="1601478700106" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34798" width="12" height="12"><path d="M956.1240653818753 579.0559211537523h-377.4918801217032v377.55208924331106c0 36.792317387069836-29.839867873102275 66.60264870994936-66.63332128133455 66.60264870994936-36.792317387069836 0-66.63218526017215-29.81033132287954-66.63218526017215-66.60264870994936v-377.55208924331106h-377.49415216402804c-36.822989958455004 0-66.63218526017215-29.81033132287954-66.63218526017215-66.60264870994936 0-36.77868513312089 29.812603365204367-66.60264870994936 66.63218526017215-66.60264870994936h377.4918801217032v-377.55208924331106c0-36.77868513312089 29.839867873102275-66.60264870994936 66.63218526017215-66.60264870994936 36.793453408232246 0 66.63332128133455 29.825099597990917 66.63332128133455 66.60264870994936v377.55322526447344h377.4918801217032c36.822989958455004 0 66.63332128133455 29.822827555666088 66.63332128133455 66.60037666762456-0.0011360211624130007 36.792317387069836-29.81033132287954 66.60037666762456-66.63332128133455 66.60037666762456z" fill="#ffffff" p-id="34799"></path></svg>
+      </div>
+      <div style="flex: 1;color: inherit;">
+        {{title}}
+      </div>
+    </div>
+  </b-button>
 </template>
 
 <script>
 export default {
   data: function () {
-    return {
-    };
+    return {};
   },
-  props: ['title','disabled'],
+  props: {
+    title: {
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    plus: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     onsubmit: function () {
       let self = this;
@@ -21,8 +39,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.button { background-color: #36c6d3;color:#ffffff;padding: 5px 10px 5px 10px;font-size:14px;border-radius:3px;cursor: pointer; }
-.disabled { opacity: .65; }
-</style>

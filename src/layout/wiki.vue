@@ -1,5 +1,5 @@
 <template>
-  <div class="app-column">
+  <div class="flex-column">
     <Header ref="Header" :page="page"/>
     <Main/>
   </div>

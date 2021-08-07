@@ -38,7 +38,7 @@
             <div class="form-group">
               <label class="col-md-1 control-label"></label>
               <div class="col-md-3">
-                <button style="color:#ffffff;padding:5px 0 5px 0;background-color: #36c6d3;font-size:16px;width: 100%;border: 1px solid #2bb8c4;" v-on:click="add">添  加</button>
+                <UpdateButton title="更新信息" @submit="update" :disabled="disabled"></UpdateButton>
               </div>
             </div>
           </div>
@@ -50,6 +50,7 @@
 
 <script>
 import Personal from '../../components/center/personal';
+import UpdateButton from '../../components/button/common';
 
 export default {
   data: function () {
@@ -57,16 +58,18 @@ export default {
       avatar: '',
       name: '',
       email: '',
-      phone: ''
+      phone: '',
+      disabled: false
     };
   },
   components: {
-    Personal
+    Personal,
+    UpdateButton
   },
   created: function () {
   },
   methods: {
-    add: function () {
+    update: function () {
     }
   }
 };

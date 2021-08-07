@@ -1,6 +1,6 @@
 <template>
-  <div class="app-main-center ibox">
-    <div style="display: flex;flex-direction: column;height: 100%;">
+  <div class="app-main-center ibox flex-column">
+    <div style="flex: 1;" class="flex-column">
       <div style="flex: 0 0 auto;padding: 20px;font-size: 18px;">
         新建项目
       </div>
@@ -10,12 +10,12 @@
         </div>
         <div>
           <div class="col-md-8">
-            <input type="text" v-model="name" name="name" class="form-control" placeholder="项目名字">
+            <input type="text" v-model.trim="name" name="name" class="form-control" placeholder="项目名字">
           </div>
         </div>
       </div>
       <div style="flex: 0 0 auto;text-align: right;" class="t-line padding20">
-        <AddProjectButton title="确定提交" @submit="add"></AddProjectButton>
+        <AddProjectButton title="确定提交" @submit="add" :disabled="disabled"></AddProjectButton>
       </div>
     </div>
   </div>
@@ -30,7 +30,8 @@ export default {
   data: function () {
     return {
       name: '',
-      team: ''
+      team: '',
+      disabled: false
     };
   },
   components: {
@@ -45,14 +46,16 @@ export default {
   methods: {
     add: function () {
       let self = this;
-      http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1" }
-      ).then(function (response) {
-        if (response.data.status === true) {
-          router.push({ name: 'Projects', params: { team: self.team } });
-        } else {
-          alert(response.data.msg)
-        }
-      });
+      if (self.name) {
+        self.disabled = true;
+        http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1" }).then(function (response) {
+          if (response.data.status === true) {
+            router.push({ name: 'Projects', params: { team: self.team } });
+          } else {
+            self.disabled = false;
+          }
+        });
+      }
     }
   }
 };

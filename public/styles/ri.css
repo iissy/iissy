@@ -26,8 +26,8 @@ div.bs-popover-bottom > div.arrow::before, div.bs-popover-auto[x-placement^="bot
     border-bottom-color: #e7ebf0;
 }
 
-/*时间控件*/
 .field-cell-time .form-control { border: none; }
+.form-control.focus,
 .form-control:focus,
 .custom-select:focus,
 .btn:focus {
@@ -37,6 +37,16 @@ div.bs-popover-bottom > div.arrow::before, div.bs-popover-auto[x-placement^="bot
 .form-control:focus,
 .custom-select:focus {
     border: 1px solid #17C4BB !important;
+}
+.btn.btn-submit {
+    color: #f8f8f8;
+    background-color: #2DCCD3;
+    border-color: #2DCCD3;
+}
+.btn.btn-submit:hover {
+    color: #ffffff;
+    background-color: #2ABDC7;
+    border-color: #2ABDC7;
 }
 
 #toolbarContainer .fr-separator.fr-vs { margin: 4px; }
@@ -53,7 +63,6 @@ div.bs-popover-bottom > div.arrow::before, div.bs-popover-auto[x-placement^="bot
 #article td { line-height: 30px;padding: 0 5px; }
 #scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-element) { display: none; }
 #scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-view) { display: none; }
-.modal-dialog .btn { padding: 3px 15px; }
 
 #desc_scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-element) { display: none; }
 #desc_scrollable_container .fr-box.fr-inline > .fr-wrapper > div:not(.fr-view) { display: none; }

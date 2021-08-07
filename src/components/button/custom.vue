@@ -1,6 +1,6 @@
 <template>
   <div style="box-shadow: none;outline: none;">
-    <div style="box-shadow: none;outline: none;" class="button" :class="{disabled: disabled, fill: fill}" v-on:click="onsubmit">{{title}}</div>
+    <div class="button" :class="{disabled: disabled, fill: fill}" v-on:click="onsubmit">{{title}}</div>
   </div>
 </template>
 
@@ -31,7 +31,9 @@ export default {
 </script>
 
 <style scoped>
-.button { padding: 0 15px;font-size:14px;border-radius:3px;cursor: pointer;border: 1px solid #dedede;line-height: 24px; }
+.button { padding: 0 15px;font-size:14px;border-radius:3px;cursor: pointer;border: 1px solid #dedede;line-height: 24px;color: #666666; }
+.button:hover { color: #333333;background-color: #ffffff; }
 .disabled { opacity: .5; }
-.fill { background-color: #36c6d3;color:#ffffff;border: 1px solid #36c6d3; }
+.fill { color: #f8f8f8;background-color: #2DCCD3;border-color: #2DCCD3; }
+.fill:hover { color: #ffffff;background-color: #2ABDC7;border-color: #2ABDC7; }
 </style>
