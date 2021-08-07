@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px;">
+    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px 20px 0 20px;">
       <div style="flex: 1;font-size: 18px;">常用仪表盘</div>
     </div>
     <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row">
@@ -8,17 +8,17 @@
       <Dashboard name="项目仪表盘"/>
     </div>
 
-    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px;">
+    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px 20px 0 20px;">
       <div style="flex: 1;font-size: 18px;">项目 / 最近浏览</div>
     </div>
-    <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row">
+    <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row flex-wrap">
       <Project v-for="p in projects" :project="p" :key="p.uuid"/>
     </div>
 
-    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px;">
+    <div class="flex-row b-line" style="padding: 0 20px 5px 0;margin: 20px 20px 0 20px;">
       <div style="flex: 1;font-size: 18px;">文档 / 最近浏览</div>
     </div>
-    <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row">
+    <div style="flex: 1;flex-direction: row;margin-left: 20px;position: relative;" class="flex-row flex-wrap">
       <Space v-for="space in spaces" :key="space.uuid" :space="space" desc="最近页面更新于 8 小时前"/>
     </div>
   </div>
