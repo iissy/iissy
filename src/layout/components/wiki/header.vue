@@ -17,7 +17,7 @@
     </div>
     <div style="flex: 0 0 auto;" class="flex-column">
       <div style="flex: 1;margin-left: 20px;">
-        <AddButton title="新建页面" :plus="plus" @submit="add"></AddButton>
+        <AddButton title="新建页面" :plus="true" @submit="add"></AddButton>
       </div>
     </div>
     <div style="flex: 1;"></div>
@@ -36,8 +36,7 @@ export default {
     return {
       team: '',
       space: '',
-      page: '',
-      plus: true
+      page: ''
     }
   },
   created() {

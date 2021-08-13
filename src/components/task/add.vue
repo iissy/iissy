@@ -1,7 +1,7 @@
 <template>
   <div id="AddTask">
     <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
-      <AddTaskButton :title="title" v-b-modal.modal-add-task :plus="plus"></AddTaskButton>
+      <AddTaskButton :title="title" v-b-modal.modal-add-task :plus="true"></AddTaskButton>
     </div>
     <b-modal size="lg" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
@@ -76,7 +76,6 @@ export default {
       assigns: [],
       priorities: [],
       hasEmail: true,
-      plus: true,
       editor: DecoupledEditor,
       editor2: null,
       editorConfig: {

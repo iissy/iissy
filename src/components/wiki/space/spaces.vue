@@ -2,7 +2,7 @@
   <div class="overview padding20" style="overflow:auto;flex: 1 0 auto;width: 100%;position: relative;">
     <div class="flex-row header-container-inner" style="border-radius: 3px;flex: 1;">
       <div style="flex: 0 0 auto;">
-        <AddButton title="新建页面组" v-b-modal.modal-wiki-add :plus="plus"></AddButton>
+        <AddButton title="新建页面组" v-b-modal.modal-wiki-add :plus="true"></AddButton>
       </div>
     </div>
     <div style="flex: 1;flex-direction: row;position: relative;" class="flex-row flex-wrap">
@@ -23,8 +23,7 @@ export default {
     return {
       title: '',
       description: '',
-      spaces: [],
-      plus: true
+      spaces: []
     }
   },
   created () {

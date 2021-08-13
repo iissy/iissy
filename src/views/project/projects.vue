@@ -10,7 +10,7 @@
     </div>
     <div class="project-new-row flex-row">
       <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
-        <AddProjectButton title="新增项目" :plus="plus" @submit="add"></AddProjectButton>
+        <AddProjectButton title="新增项目" :plus="true" @submit="add"></AddProjectButton>
       </div>
       <div style="flex: 1;display: inline-block;"></div>
       <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
@@ -70,7 +70,6 @@ export default {
       cur: 0,
       team: '',
       com: '',
-      plus: true,
       tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
       fields: [
         { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
