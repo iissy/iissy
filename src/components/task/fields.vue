@@ -85,7 +85,7 @@
                 v-model="deadline"
                 v-bind="zh"
                 :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
-                :no-flip="noFlip"
+                :no-flip="true"
                 :hide-header="true"
                 @shown="onShown"
                 @context="onContext"
@@ -153,10 +153,8 @@ export default {
       optionValue: '',
       options: [],
       selectField: '',
-      hasEmail: false,
       hasNotTimer: true,
       deadline: '',
-      noFlip: true,
       zh: {
         weekdayHeaderFormat: 'narrow',
         labelPrevDecade: '过去十年',

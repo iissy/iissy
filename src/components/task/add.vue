@@ -27,7 +27,7 @@
             <b-form-group label="负责人" label-for="assign-select">
               <b-form-select id="assign-select" v-model="assignSelect" required>
                 <b-form-select-option v-for="assign in assigns" :value="assign.uuid" :key="assign.uuid">
-                  <User :user="assign" :hasEmail="hasEmail"/>
+                  <User :user="assign" :hasEmail="true"/>
                 </b-form-select-option>
               </b-form-select>
             </b-form-group>
@@ -75,7 +75,6 @@ export default {
       issue_types: [],
       assigns: [],
       priorities: [],
-      hasEmail: true,
       editor: DecoupledEditor,
       editor2: null,
       editorConfig: {

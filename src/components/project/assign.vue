@@ -16,7 +16,7 @@
       </div>
       <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
-          <User @submit="change_assign" class="status-item" :user="u" :selected="u.uuid===user.uuid" :hasEmail="hasEmail"/>
+          <User @submit="change_assign" class="status-item" :user="u" :selected="u.uuid===user.uuid" :hasEmail="true"/>
         </div>
       </div>
     </b-popover>
@@ -33,8 +33,7 @@ import Alert from '../common/block/alert';
 export default {
   data() {
     return {
-      users: [],
-      hasEmail: true
+      users: []
     }
   },
   created() {

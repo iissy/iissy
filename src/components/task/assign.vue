@@ -13,7 +13,7 @@
       </div>
       <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;">
         <div v-for="u in users" :key="u.uuid">
-          <User @submit="change_assign" class="status-item" :user="u" :selected="u.uuid===user.uuid" :hasEmail="hasEmail"/>
+          <User @submit="change_assign" class="status-item" :user="u" :selected="u.uuid===user.uuid" :hasEmail="true"/>
         </div>
       </div>
     </b-popover>
@@ -31,8 +31,7 @@ export default {
   data() {
     return {
       team: '',
-      users: [],
-      hasEmail: true
+      users: []
     }
   },
   created() {

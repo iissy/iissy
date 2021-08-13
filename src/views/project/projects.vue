@@ -31,7 +31,7 @@
             <Status :name="data.item.status_category" :color="data.item.status_uuid" />
           </template>
           <template v-slot:cell(assign)="data">
-            <User :user="data.item.assign" :hasEmail="hasEmail"/>
+            <User :user="data.item.assign"/>
           </template>
           <template v-slot:cell(progress_rate)="data">
             <b-progress :value="(data.item.done_count * 100/(data.item.to_do_count + data.item.in_progress_count + data.item.done_count)).toFixed(0)" variant="success" striped animate></b-progress>
@@ -66,7 +66,6 @@ import http from "../../utils/http";
 export default {
   data: function () {
     return {
-      hasEmail: false,
       cur: 0,
       team: '',
       com: '',

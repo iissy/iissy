@@ -53,7 +53,6 @@ export default {
   data() {
     return {
       name: '',
-      member_show: false,
       memberUUID: '',
       memberName: '',
       memberEmail: '',
