@@ -6,7 +6,7 @@
     <div :class="{active: (tagIndex === 1)}"><router-link :to="{name: 'TeamSetting', params: { team: team, type: 'info' }}">团队信息</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">成员</div>
-    <div :class="{active: (tagIndex === 11)}"><router-link :to="{name: 'Department', params: { team: team, department: 'all' }}">成员管理</router-link></div>
+    <div :class="{active: (tagIndex === 11)}"><router-link :to="{name: 'TeamSetting', params: { team: team, type: 'department' }}">成员管理</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">权限</div>
     <div :class="{active: (tagIndex === 21)}"><router-link :to="{name: 'TeamSetting', params: { team: team, type: 'permission' }}">团队权限</router-link></div>

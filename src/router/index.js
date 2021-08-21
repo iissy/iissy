@@ -28,7 +28,6 @@ import AddPage from "../views/wiki/add_page";
 import EditPage from "../views/wiki/edit_page";
 import Settings from "../views/wiki/settings";
 import TeamSetting from "../views/setting/team_setting";
-import Department from "../views/setting/department";
 import IssueTypeSetting from "../views/setting/issue_type_setting";
 import Help from "../views/help/help";
 
@@ -100,11 +99,6 @@ const routes = [
                 meta: { title: "团队配置中心", tagIndex: 26 },
                 name: 'TeamSetting',
                 component: TeamSetting
-            }, {
-                path: ':team/setting/department/:department',
-                meta: { title: "团队配置中心", tagIndex: 26 },
-                name: 'Department',
-                component: Department
             }, {
                 path: ':team/center/account',
                 meta: { title: "个人中心" },

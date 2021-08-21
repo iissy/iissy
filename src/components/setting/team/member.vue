@@ -84,7 +84,7 @@ export default {
       show: false,
       modifyMember: {},
       modify_title: '',
-      departmentUUID: '',
+      departmentUUID: 'all',
       inside: false,
       departMembers: []
     };
@@ -100,21 +100,17 @@ export default {
   watch: {
     '$route' () {
       let self = this;
-      if (self.departmentUUID !== self.$route.params.department) {
-        self.departmentUUID = self.$route.params.department;
-        if (self.departmentUUID === 'all') {
-          self.get_department_tree();
-          self.get_team_members();
-        } else {
-          self.get_depart_members();
-        }
+      if (self.departmentUUID === 'all') {
+        self.get_department_tree();
+        self.get_team_members();
+      } else {
+        self.get_depart_members();
       }
     }
   },
   created: function () {
     let self = this;
     self.team = self.$route.params.team;
-    self.departmentUUID = self.$route.params.department;
     self.get_department_tree();
     self.get_team_members();
     if (self.departmentUUID !== 'all') {
