@@ -224,3 +224,19 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 .app-main-center { margin: 20px;-webkit-flex: 1 0 auto;flex: 1 0 auto;max-width: 100%;box-sizing: border-box;width: 1000px;
     background-color: #ffffff;
 }
+
+/*fade-transform*/
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+    transition: all .5s;
+}
+
+.fade-transform-enter {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}

@@ -3,8 +3,6 @@ import Router from 'vue-router';
 
 import Layout from '../layout';
 import WikiLayout from '../layout/wiki';
-import ProjectLayout from "../layout/project";
-import WorkbenchLayout from "../layout/workbench";
 
 import Main from '../views/main';
 import Reg from '../views/reg';
@@ -127,45 +125,29 @@ const routes = [
                 meta: { title: "退出登录" },
                 name: 'Logout',
                 component: Logout
-            }
-        ]
-    }, {
-        path: '/team',
-        meta: { title: "我的工作台" },
-        name: 'WorkbenchLayout',
-        component: WorkbenchLayout,
-        children: [
-            {
+            }, {
                 path: ':team/workbench/:type',
                 meta: { title: "我的工作台", tagIndex: 1 },
                 name: 'Workbench',
                 component: Workbench
-            }
-        ]
-    }, {
-        path: '/team',
-        meta: { title: "我的工作台" },
-        name: 'ProjectLayout',
-        component: ProjectLayout,
-        children: [
-            {
+            }, {
                 path: ':team/project/:project/component/:com',
-                meta: { title: "项目管理", tagIndex: 21 },
+                meta: { title: "项目管理", tagIndex: 21, tab: "project" },
                 name: 'Component',
                 component: Component
             }, {
                 path: ':team/project/:project/component/:com/:attr',
-                meta: { title: "项目管理", tagIndex: 21 },
+                meta: { title: "项目管理", tagIndex: 21, tab: "project" },
                 name: 'ComponentDesigner',
                 component: Component
             }, {
                 path: ':team/project/:project/component/:com/issue_type/:issue_type/:attr',
-                meta: { title: "项目管理", tagIndex: 21 },
+                meta: { title: "项目管理", tagIndex: 21, tab: "project" },
                 name: 'ComponentIssueTypeDesigner',
                 component: Component
             }, {
                 path: ':team/project/:project/component/:com/task/:task',
-                meta: { title: "项目管理", tagIndex: 21 },
+                meta: { title: "项目管理", tagIndex: 21, tab: "project" },
                 name: 'Task',
                 component: Component
             }

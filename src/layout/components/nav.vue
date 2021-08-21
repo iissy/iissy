@@ -21,6 +21,12 @@ export default {
       title: ''
     }
   },
+  watch: {
+    '$route' () {
+      let self = this;
+      self.title = self.$route.meta.title;
+    }
+  },
   created() {
     let self = this;
     self.title = self.$route.meta.title;
