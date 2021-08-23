@@ -3,11 +3,11 @@
     <div style="flex: 0;padding: 5px 0 5px 30px;width: 100%;font-size: 18px;margin-bottom: 20px;">账号管理</div>
 
     <div style="flex: 0;padding: 5px 0 5px 30px;width: 100%;color:#aaaaaa;">个人信息</div>
-    <div :class="{active: (currentIndex == 1)}"><router-link :to="{ name: 'CenterAccount' }">账号信息</router-link></div>
-    <div :class="{active: (currentIndex == 2)}"><router-link :to="{ name: 'CenterSafe' }">安全设置</router-link></div>
+    <div :class="{active: (currentIndex === 1)}"><router-link :to="{ name: 'Center', params: { type: 'account' }}">账号信息</router-link></div>
+    <div :class="{active: (currentIndex === 2)}"><router-link :to="{ name: 'Center', params: { type: 'safe' }}">安全设置</router-link></div>
 
     <div style="flex: 0;padding: 20px 0 5px 30px;width: 100%;color:#aaaaaa;">钉钉账号</div>
-    <div :class="{active: (currentIndex == 11)}"><router-link :to="{ name: 'CenterCertificate' }">登陆凭证</router-link></div>
+    <div :class="{active: (currentIndex === 11)}"><router-link :to="{ name: 'Center', params: { type: 'certificate' }}">登陆凭证</router-link></div>
   </div>
 </template>
 
@@ -15,10 +15,25 @@
 export default {
   data: function () {
     return {
-      currentIndex: parseInt(this.tagIndex)
+      currentIndex: 1
     };
   },
-  props: ['tagIndex']
+  watch: {
+    '$route' () {
+      let self = this;
+      switch (self.$route.params.type) {
+        case "account":
+          self.currentIndex = 1;
+          break
+        case "safe":
+          self.currentIndex = 2;
+          break
+        case "certificate":
+          self.currentIndex = 11;
+          break
+      }
+    }
+  }
 };
 </script>
 

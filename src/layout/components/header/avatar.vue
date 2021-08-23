@@ -18,17 +18,21 @@
       <b-popover
           target="popover-user-center"
           placement="bottom"
-          triggers="focus">
+          triggers="focus"
+          :show.sync="show">
         <div class="flex-column" id="center">
           <div class="menu-item">
-            <router-link :to="{ name: 'CenterAccount' }">账号设置</router-link>
+            <div @click="goto('account')">账号设置</div>
           </div>
           <div class="menu-item">
-            <router-link :to="{ name: 'CenterSafe' }">安全设置</router-link>
+            <div @click="goto('safe')">安全设置</div>
+          </div>
+          <div class="menu-item">
+            <div @click="goto('certificate')">登录凭证</div>
           </div>
           <div class="menu-line"></div>
           <div class="menu-item">
-            <router-link :to="{ name: 'Logout' }">注销</router-link>
+            <div @click="goto('Logout')">注销</div>
           </div>
         </div>
       </b-popover>
@@ -37,12 +41,26 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   data() {
     return {
+      show: false
     }
   },
-  mounted() {
+  created() {
+    let self = this;
+    self.team = self.$route.params.team;
+  },
+  methods: {
+    goto: function (name) {
+      let self = this;
+      self.show = false;
+      if (self.$route.params.type !== name) {
+        router.push({ name: 'Center', params: {type: name}});
+      }
+    }
   }
 }
 </script>

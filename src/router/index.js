@@ -7,10 +7,8 @@ import WikiLayout from '../layout/wiki';
 import Main from '../views/main';
 import Reg from '../views/reg';
 
-import CenterAccount from '../views/center/account';
-import CenterSafe from '../views/center/safe';
-import CenterCertificate from '../views/center/certificate';
-import Logout from '../views/center/logout';
+import Center from '../views/center/center';
+import Logout from '../views/logout';
 
 import Workbench from '../views/workbench/index';
 import Projects from "../views/project/projects";
@@ -43,6 +41,11 @@ const routes = [
         meta: { title: "注册 - 爱斯园" },
         name: 'Reg',
         component: Reg
+    }, {
+        path: '/logout',
+        meta: { title: "退出登录" },
+        name: 'Logout',
+        component: Logout
     }, {
         path: '/team',
         meta: { title: "我的工作台" },
@@ -100,25 +103,10 @@ const routes = [
                 name: 'TeamSetting',
                 component: TeamSetting
             }, {
-                path: ':team/center/account',
+                path: ':team/center/:type',
                 meta: { title: "个人中心" },
-                name: 'CenterAccount',
-                component: CenterAccount
-            }, {
-                path: ':team/center/safe',
-                meta: { title: "个人中心" },
-                name: 'CenterSafe',
-                component: CenterSafe
-            }, {
-                path: ':team/center/certificate',
-                meta: { title: "个人中心" },
-                name: 'CenterCertificate',
-                component: CenterCertificate
-            }, {
-                path: 'logout',
-                meta: { title: "退出登录" },
-                name: 'Logout',
-                component: Logout
+                name: 'Center',
+                component: Center
             }, {
                 path: ':team/workbench/:type',
                 meta: { title: "我的工作台", tagIndex: 1 },
