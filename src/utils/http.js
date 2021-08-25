@@ -10,8 +10,8 @@ let http = {
                 if (response) {
                     resolve(response);
                 }
-            }).catch((error) => {
-                reject(error);
+            }).catch((err) => {
+                reject(err);
             })
         })
     },
@@ -22,8 +22,8 @@ let http = {
                 if (response) {
                     resolve(response);
                 }
-            }).catch((error) => {
-                reject(error);
+            }).catch((err) => {
+                reject(err);
             })
         })
     }

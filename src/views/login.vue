@@ -75,6 +75,8 @@ export default {
             router.push({ name:'Workbench', params: { team: response.data.result.teams[0].uuid, type: 'overview' } });
           }
         }
+      }).catch(function (err) {
+        console.log(err.response.data);
       });
     }
   },
