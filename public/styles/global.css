@@ -100,7 +100,7 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 
 .app-main-container {
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
     width: auto;
@@ -109,6 +109,7 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .app-main-content {

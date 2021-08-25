@@ -1,10 +1,8 @@
 <template>
-  <div class="app-main-container">
-    <div class="app-main-no-border">
-      <div style="display: flex;flex-direction: row;height: 100%;">
-        <personal/>
-        <component v-bind:is="currentTabComponent"></component>
-      </div>
+  <div class="app-main-no-border">
+    <div style="display: flex;flex-direction: row;height: 100%;">
+      <personal/>
+      <component v-bind:is="currentTabComponent"></component>
     </div>
   </div>
 </template>
