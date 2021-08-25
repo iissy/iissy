@@ -54,6 +54,7 @@
 <script>
 import http from "../utils/http";
 import router from "../router";
+import { setUser } from "@/filters";
 
 export default {
   data: function () {
@@ -67,8 +68,12 @@ export default {
       let self = this;
       let data = { email: self.s_email, password: self.s_password };
       http.post(self.urls.login_url, data).then(function (response) {
-        if (response.data.result && response.data.result.teams && response.data.result.teams.length > 0) {
-          router.push({ name:'Workbench', params: { team: response.data.result.teams[0].uuid, type: 'overview' } });
+        if (response.data.result.user && response.data.result.user.uuid && response.data.result.user.email) {
+          setUser(response.data.result.user.uuid);
+
+          if (response.data.result && response.data.result.teams && response.data.result.teams.length > 0) {
+            router.push({ name:'Workbench', params: { team: response.data.result.teams[0].uuid, type: 'overview' } });
+          }
         }
       });
     }

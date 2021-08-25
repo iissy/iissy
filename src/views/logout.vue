@@ -1,6 +1,6 @@
 <template>
   <div id="logout">
-    再见！
+    Bye-Bye, Baby!
   </div>
 </template>
 
@@ -23,5 +23,5 @@ export default {
 </script>
 
 <style scoped>
-#logout{ margin: 100px auto 0 auto;font-size: 38px;text-align: center;color: #ff0000; }
+#logout{ margin: 100px auto 0 auto;font-size: 38px;text-align: center;color: #333333;opacity: 0.3;font-style: italic; }
 </style>
