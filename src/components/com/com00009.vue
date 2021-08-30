@@ -219,8 +219,7 @@ export default {
 </script>
 
 <style scoped>
-#com00009Line > div { position: relative;display: block; }
-.overview .right { flex: 0 0 44%;width: 44%;max-width: 700px;min-width: 560px; }
+.overview .right { flex: 0 0 44%;width: 44%;max-width: 800px;min-width: 300px; }
 .overview .middle { flex: 0 0 2%;max-width: 20px;width: 2%; }
 .overview .left { flex: 1 1 55%;width: 55%;min-width: 55%; }
 </style>
