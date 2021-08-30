@@ -52,7 +52,7 @@
 
       <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;">
         <div id="taskToolBar"></div>
-        <div id="taskDescContainer" style="flex: 1;min-height: 138px;" class="flex-column">
+        <div id="taskDescContainer" style="flex: 1;height: 138px;" class="flex-column">
           <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" @blur="updateDesc" :config="editorConfig"/>
         </div>
       </div>

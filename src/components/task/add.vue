@@ -4,13 +4,13 @@
       <AddTaskButton :title="title" v-b-modal.modal-add-task :plus="true"></AddTaskButton>
     </div>
     <b-modal :no-enforce-focus="true" size="xl" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <div style="padding: 0 10px 0 10px;">
+      <form ref="form" @submit.stop.prevent="handleSubmit" class="flex-column" style="flex: 1;height: 100%;">
+        <div style="flex: 0 0 auto;padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
             <b-form-input id="name-input" v-model="name" required></b-form-input>
           </b-form-group>
         </div>
-        <div style="" class="flex-row">
+        <div style="flex: 0 0 auto;" class="flex-row">
           <div style="flex: 1;padding: 0 10px 0 10px;">
             <b-form-group label="所在项目" label-for="project-select">
               <b-form-select id="project-select" v-model="projectSelect" :options="projects" required></b-form-select>
@@ -22,7 +22,7 @@
             </b-form-group>
           </div>
         </div>
-        <div style="" class="flex-row">
+        <div style="flex: 0 0 auto;" class="flex-row">
           <div style="flex: 1;padding: 0 10px 0 10px;">
             <b-form-group label="负责人" label-for="assign-select">
               <b-form-select id="assign-select" v-model="assignSelect" required>
@@ -38,15 +38,18 @@
             </b-form-group>
           </div>
         </div>
-        <div style="padding: 0 10px 0 10px;">
-          <b-form-group label="描述（富文本编辑）" label-for="desc-input">
-            <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;" id="desc_scrollable_container">
-              <div id="addTaskToolBar"></div>
-              <div id="addTaskContainer" style="flex: 1;min-height: 400px;" class="flex-column">
-                <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
-              </div>
+        <div style="flex: 0 0 auto;padding: 0 10px 7px 10px;">
+          描述（富文本编辑）
+        </div>
+        <div style="margin: 0 10px;flex: 1;height: 0;border: 1px solid #ced4da;border-radius: 0.25rem;" class="flex-column">
+          <div style="flex: 0 0 auto;">
+            <div id="addTaskToolBar"></div>
+          </div>
+          <div style="flex: 1;height: 0;" class="flex-column">
+            <div id="addTaskContainer" style="flex: 1;min-height: 380px;overflow-y: auto;" class="flex-column">
+              <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
             </div>
-          </b-form-group>
+          </div>
         </div>
       </form>
     </b-modal>
