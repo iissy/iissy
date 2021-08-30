@@ -3,7 +3,7 @@
     <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
       <AddTaskButton :title="title" v-b-modal.modal-add-task :plus="true"></AddTaskButton>
     </div>
-    <b-modal size="lg" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+    <b-modal :no-enforce-focus="true" size="xl" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
@@ -42,7 +42,7 @@
           <b-form-group label="描述（富文本编辑）" label-for="desc-input">
             <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;" id="desc_scrollable_container">
               <div id="addTaskToolBar"></div>
-              <div id="addTaskContainer" style="flex: 1;min-height: 300px;" class="flex-column">
+              <div id="addTaskContainer" style="flex: 1;min-height: 400px;" class="flex-column">
                 <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
               </div>
             </div>
@@ -76,12 +76,13 @@ export default {
       assigns: [],
       priorities: [],
       editor: DecoupledEditor,
-      editor2: null,
       editorConfig: {
         toolbar: {
           items: [
-            'undo', 'redo', 'fontColor', 'fontBackgroundColor', 'bold', 'italic',
-            'underline', 'strikethrough', 'alignment', 'numberedList', 'bulletedList', 'blockquote', 'insertTable'
+            'undo', 'redo', 'heading',
+            'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic',
+            'underline', 'strikethrough', '|', 'alignment', 'numberedList', 'bulletedList', 'outdent', 'indent', '|',
+            'link', 'blockquote', 'imageUpload', 'insertTable'
           ]
         },
         ckfinder: {
@@ -110,6 +111,7 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.com = self.$route.params.com;
+    self.editorConfig.ckfinder.uploadUrl = self.urls.upload.format(self.team);
   },
   mounted() {
     let self = this;
