@@ -26,12 +26,12 @@ export default {
   },
   methods: {
     success: function (o) {
-      this.dismissCountDown = 1;
+      this.dismissCountDown = 3;
       this.variant = 'success';
       this.msg = o;
     },
     danger: function (o) {
-      this.dismissCountDown = 1;
+      this.dismissCountDown = 3;
       this.variant = 'danger';
       this.msg = o;
     }
@@ -40,19 +40,20 @@ export default {
 </script>
 
 <style scoped>
-#iissy.alert-box { position:fixed;top: 50px;right:20px;text-align:center;opacity: 0.8;z-index: 999; }
+#iissy.alert-box { position:fixed;bottom: 10px;right:20px;text-align:center;opacity: 1;z-index: 999; }
 #iissy .alert { padding: 7px 17px 7px 7px;border: 1px solid transparent; }
 
 .shake {
-  animation: shake 0.2s ease-out 0s 1;
+  animation: shake 0.1s cubic-bezier(0.15, 0, 0.28, 1.0) 0s 1;
 }
 @keyframes shake {
   0% {
-    transform:translateY(10px);
-    -webkit-transform:translateY(10px);
-    -moz-transform:translateY(10px);
-    -o-transform:translateY(10px);
-    -ms-transform:translateY(10px);
+    transform:translateY(20px);
+    -webkit-transform:translateY(20px);
+    -moz-transform:translateY(20px);
+    -o-transform:translateY(20px);
+    -ms-transform:translateY(20px);
+    opacity: 0.5;
   }
   100% {
     transform:translateY(0px);
@@ -60,6 +61,7 @@ export default {
     -moz-transform:translateY(0px);
     -o-transform:translateY(0px);
     -ms-transform:translateY(0px);
+    opacity: 1;
   }
 }
 </style>
