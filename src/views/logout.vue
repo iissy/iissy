@@ -14,7 +14,7 @@ export default {
   },
   created: function () {
     http.get(this.urls.logout).then(function (response) {
-      if(response.data.status) {
+      if(response.data.code === 200) {
         window.location.href="/"
       }
     });
