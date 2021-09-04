@@ -158,7 +158,7 @@ export default {
           self.$refs.alert.success('更新成功');
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data);
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     },
     addOption: function () {

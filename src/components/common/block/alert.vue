@@ -5,7 +5,7 @@
         <div class="flex-row align-items-center" style="color: inherit;">
           <div class="mb-0" style="display: flex;">
             <b-iconstack font-scale="1.5">
-              <b-icon stacked icon="check-circle" :variant="variant" style="opacity: 0.8;"/>
+              <b-icon stacked icon="check-circle" :variant="variant"/>
             </b-iconstack>
           </div>
           <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;">{{ msg }}</div>
@@ -53,7 +53,6 @@ export default {
     -moz-transform:translateY(30px);
     -o-transform:translateY(30px);
     -ms-transform:translateY(30px);
-    opacity: 0.2;
   }
 
   100% {
@@ -62,7 +61,6 @@ export default {
     -moz-transform:translateY(0px);
     -o-transform:translateY(0px);
     -ms-transform:translateY(0px);
-    opacity: 0.6;
   }
 }
 </style>
