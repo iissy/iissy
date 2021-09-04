@@ -157,6 +157,8 @@ export default {
         if (response.data.code === 200) {
           self.$refs.alert.success('更新成功');
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data);
       });
     },
     addOption: function () {

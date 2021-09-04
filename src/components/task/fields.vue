@@ -133,6 +133,7 @@
         </div>
       </div>
     </div>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
@@ -143,6 +144,7 @@ import TaskStatus from './status';
 import TaskPriority from './priority';
 import http from "../../utils/http";
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import Alert from '../common/block/alert';
 
 export default {
   data() {
@@ -199,7 +201,8 @@ export default {
     User,
     Assign,
     TaskStatus,
-    TaskPriority
+    TaskPriority,
+    Alert
   },
   created() {
     let self = this;
@@ -247,6 +250,8 @@ export default {
         if (response.data.code === 200) {
           self.$parent.task_get(self.task.uuid);
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     },
     dropOptionValues: function (fieldUUID) {
@@ -283,6 +288,8 @@ export default {
         if (response.status) {
           self.$parent.task_get(self.task.uuid);
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     },
     onChangedDesc: function () {
@@ -304,6 +311,8 @@ export default {
           if (response.status) {
             self.$parent.task_get(self.task.uuid);
           }
+        }).catch(function (err) {
+          self.$refs.alert.danger(err.response.data.errcode);
         });
       }
     },
@@ -320,6 +329,8 @@ export default {
           if (response.status) {
             self.$parent.task_list(self.task.uuid);
           }
+        }).catch(function (err) {
+          self.$refs.alert.danger(err.response.data.errcode);
         });
       }
     },
@@ -332,6 +343,8 @@ export default {
           if (response.status) {
             self.$parent.task_get(self.task.uuid);
           }
+        }).catch(function (err) {
+          self.$refs.alert.danger(err.response.data.errcode);
         });
       }
     }

@@ -68,11 +68,11 @@ export default {
       let self = this;
       http.post(self.urls.space_update.format(self.team, self.space), {title: self.title, description: self.description}).then(function (response) {
         if (response.data.code === 200) {
-          self.$refs.alert.success('更新成功');
           self.disabled = true;
-        } else {
-          self.$refs.alert.danger('更新失败');
+          self.$refs.alert.success('更新成功');
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     }
   },
@@ -82,7 +82,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

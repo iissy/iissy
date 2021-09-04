@@ -174,6 +174,8 @@ export default {
           self.$refs.com.task_list(self.task);
           self.$refs.alert.success('更新成功');
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     },
     delRelatedTask: function (uuid) {
@@ -184,6 +186,8 @@ export default {
           self.$refs.com.task_list(self.task);
           self.$refs.alert.success('更新成功');
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     }
   },

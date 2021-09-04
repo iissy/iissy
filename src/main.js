@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import './utils/string';
 import urls from './conf/urls';
+import codes from './conf/codes';
 
 import * as filters from './filters'
 Object.keys(filters).forEach(key => {
@@ -19,6 +20,7 @@ Vue.use(Vuex);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.prototype.urls = urls;
+Vue.prototype.codes = codes;
 Vue.config.productionTip = false;
 
 Vue.prototype.bus = new Vue();

@@ -33,7 +33,7 @@ export default {
     danger: function (o) {
       this.dismissCountDown = 2;
       this.variant = 'danger';
-      this.msg = o;
+      this.msg = this.codes[o];
     }
   }
 }

@@ -109,13 +109,13 @@ export default {
       let self = this;
       http.post(self.urls.component_update.format(self.team, self.project, self.selectedComUUID), {name: self.name, desc: self.desc}).then(function (response) {
         if (response.data.code === 200) {
-          self.$refs.alert.success('更新成功');
           self.disabled = true;
+          self.$refs.alert.success('更新成功');
           self.bus.$emit('updateComponents');
           self.$parent.components_get();
-        } else {
-          self.$refs.alert.danger('更新失败');
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     }
   },

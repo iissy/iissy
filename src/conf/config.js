@@ -3,4 +3,4 @@ let config  = {
     upload_url: "/proxy/api/team/{0}/upload"
 };
 
-export default config
+export default config;

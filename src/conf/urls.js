@@ -108,4 +108,4 @@ let urls = {
     logout: '/api/logout',
 };
 
-export default urls
+export default urls;
