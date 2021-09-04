@@ -14,7 +14,7 @@ let urls = {
     upload: config.upload_url,
 
     department_member_list: '/api/team/{0}/department/{1}/list',
-    department_member_add: '/api/team/{0}/department/{1}/add_members',
+    // department_member_add: '/api/team/{0}/department/{1}/add_members',
     department_delete: '/api/team/{0}/department/{1}/delete',
 
     priority_options_get: '/api/team/{0}/priority_options_get',
@@ -24,7 +24,7 @@ let urls = {
     space_update: '/api/team/{0}/space/{1}/update',
     space_user_domain_group: '/api/team/{0}/space/{1}/space_user_domain_group',
     spaces: '/api/team/{0}/spaces',
-    pages: '/api/team/{0}/space/{1}/pages',
+    // pages: '/api/team/{0}/space/{1}/pages',
     page_tree_get: '/api/team/{0}/space/{1}/page_tree_get',
     default_main_page: '/api/team/{0}/space/{1}/default_main_page',
     page_get: '/api/team/{0}/space/{1}/page/{2}',

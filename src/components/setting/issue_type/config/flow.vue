@@ -129,6 +129,8 @@ export default {
 
       http.post(this.urls.issue_type_task_status_list.format(self.team, self.issue_type), taskStatusUUIDs).then(function (response) {
         self.taskStatusItems = response.data;
+        self.headers = [];
+        self.flows = [];
         for(let i=0;i<self.taskStatusConfigs.length;i++) {
           let start = self.taskStatusConfigs[i].status_uuid;
           let flow = { items: []};

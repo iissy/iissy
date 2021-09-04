@@ -157,8 +157,8 @@ export default {
         team_role: 'admin'
       };
       http.post(self.urls.team_create, data).then(function (response) {
-        if (response.data.status) {
-          router.push({ name: 'Master' });
+        if (response.data.code === 200) {
+          window.location.href="/";
         }
       });
     }
