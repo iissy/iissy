@@ -113,7 +113,6 @@
 
 <script>
 import http from "../utils/http";
-import router from "../router";
 
 export default {
   data: function () {
