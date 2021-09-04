@@ -244,7 +244,7 @@ export default {
       let self = this;
       self.team = self.$route.params.team;
       http.post(self.urls.watchers_add.format(self.team, self.task.uuid), {}).then(function (response) {
-        if (response.data.status) {
+        if (response.data.code === 200) {
           self.$parent.task_get(self.task.uuid);
         }
       });

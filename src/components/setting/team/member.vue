@@ -14,7 +14,6 @@
         <div style="flex: 1;">
           <Search placeholder="输入用户名，邮箱查找成员" />
         </div>
-        <AddDepartMember v-if="departmentUUID !== 'all'" :members="items" :curMember="departMembers" :department="departmentUUID"></AddDepartMember>
         <InviterUser></InviterUser>
       </div>
       <div class="member-left">
@@ -49,7 +48,7 @@
         </div>
       </div>
     </div>
-    <SmallControl ref="SmallControl" :modifyMember="modifyMember"/>
+    <MemberSideBar :modifyMember="modifyMember"/>
   </div>
 </template>
 
@@ -59,8 +58,7 @@ import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
 import User from '../../common/block/user';
 import DepartmentTree from "./department_tree";
-import SmallControl from "./small_control";
-import AddDepartMember from "./add_department_member";
+import MemberSideBar from "./member_sidebar";
 
 export default {
   data: function () {
@@ -94,8 +92,7 @@ export default {
     InviterUser,
     User,
     DepartmentTree,
-    SmallControl,
-    AddDepartMember
+    MemberSideBar
   },
   watch: {
     '$route' () {
@@ -177,7 +174,6 @@ export default {
     fn_show: function () {
       let self = this;
       self.show = true;
-      console.log(self.show);
     }
   },
   computed: {

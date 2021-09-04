@@ -109,7 +109,7 @@ export default {
 
       let data = { members: self.members, role_uuid: self.role }
       http.post(self.urls.project_member_add.format(self.team, self.project), data).then(function (response) {
-        if(response.data.status) {
+        if(response.data.code === 200) {
           self.$parent.get_role_members();
         }
       });

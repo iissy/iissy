@@ -62,7 +62,7 @@ export default {
       self.team = self.$route.params.team;
       let data = { title: self.title, description: self.description }
       http.post(self.urls.space_add.format(self.team), data).then(function (response) {
-        if(response.data.status) {
+        if(response.data.code === 200) {
           self.$parent.space_list();
         }
       });
@@ -70,7 +70,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

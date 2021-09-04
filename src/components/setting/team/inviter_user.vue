@@ -69,7 +69,7 @@ export default {
       self.team = self.$route.params.team;
       let data = { email: self.email }
       http.post(self.urls.team_member_add.format(self.team), data).then(function (response) {
-        if(response.data.status) {
+        if(response.data.code === 200) {
           self.$parent.get_team_members();
         }
       });

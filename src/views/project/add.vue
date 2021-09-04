@@ -49,7 +49,7 @@ export default {
       if (self.name) {
         self.disabled = true;
         http.post(self.urls.project_add.format(self.team), { project: {"name":self.name}, "template_id":"project-t1" }).then(function (response) {
-          if (response.data.status === true) {
+          if (response.data.code === 200) {
             router.push({ name: 'Projects', params: { team: self.team } });
           } else {
             self.disabled = false;

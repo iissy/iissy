@@ -51,7 +51,7 @@ export default {
       if (self.user.uuid !== uuid) {
         let param = { uuid: uuid }
         http.post(self.urls.task_change_assign.format(self.team, self.task), param).then(function (response) {
-          if (response.data.status) {
+          if (response.data.code === 200) {
             self.$refs.popover.$emit('close')
             self.$refs.alert.success('更新成功');
             self.$parent.$parent.task_list();

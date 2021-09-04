@@ -76,6 +76,7 @@
         </div>
       </div>
     </b-modal>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
@@ -83,6 +84,7 @@
 import Com00000 from "./com00000";
 import Priority from "../common/block/priority";
 import Status from '../common/block/status';
+import Alert from '../common/block/alert';
 import http from "@/utils/http";
 
 export default {
@@ -167,18 +169,20 @@ export default {
 
       let data = self.addingTasks;
       http.post(self.urls.linked_tasks_add.format(self.team, self.task), data).then(function (response) {
-        if(response.data.status) {
+        if(response.data.code === 200) {
           self.linked_task_list();
           self.$refs.com.task_list(self.task);
+          self.$refs.alert.success('更新成功');
         }
       });
     },
     delRelatedTask: function (uuid) {
       let self = this;
       http.post(self.urls.linked_tasks_del.format(self.team, self.task, uuid)).then(function (response) {
-        if(response.data.status) {
+        if(response.data.code === 200) {
           self.linked_task_list();
           self.$refs.com.task_list(self.task);
+          self.$refs.alert.success('更新成功');
         }
       });
     }
@@ -186,7 +190,8 @@ export default {
   components: {
     Com00000,
     Priority,
-    Status
+    Status,
+    Alert
   }
 }
 </script>

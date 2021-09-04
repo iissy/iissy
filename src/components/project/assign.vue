@@ -53,7 +53,7 @@ export default {
       let self = this;
       let param = { uuid: uuid }
       http.post(self.urls.project_change_assign.format(self.team, self.project), param).then(function (response) {
-        if (response.data.status) {
+        if (response.data.code === 200) {
           self.$refs.popover.$emit('close')
           self.$refs.alert.success('更新成功');
           self.$parent.project_get(self.project);

@@ -72,7 +72,7 @@ export default {
       }).then(value => {
         if (value) {
           http.post(self.urls.draft_delete.format(self.team, self.space, self.item.uuid)).then(function (response) {
-            if (response.data.status === true) {
+            if (response.data.code === 200) {
               router.push({ name:'Space', params: { team: self.team, space: self.space } });
             }
           });

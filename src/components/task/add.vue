@@ -159,9 +159,7 @@ export default {
         issue_type: self.issueTypeSelect
       }
       http.post(self.urls.task_add.format(self.team, self.project, self.issueTypeSelect), data).then(function (response) {
-        if (response.data.status) {
-          self.$parent.task_list(response.data.payload.uuid);
-        }
+        self.$parent.task_list(response.data.uuid);
       });
     },
     users_list: function (p) {

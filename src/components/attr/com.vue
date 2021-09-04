@@ -108,7 +108,7 @@ export default {
     update: function () {
       let self = this;
       http.post(self.urls.component_update.format(self.team, self.project, self.selectedComUUID), {name: self.name, desc: self.desc}).then(function (response) {
-        if (response.data.status === true) {
+        if (response.data.code === 200) {
           self.$refs.alert.success('更新成功');
           self.disabled = true;
           self.bus.$emit('updateComponents');

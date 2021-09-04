@@ -44,7 +44,7 @@ export default {
       }).then(value => {
         if (value) {
           http.post(self.urls.project_delete.format(self.team, self.project)).then(function (response) {
-            if (response.data.status === true) {
+            if (response.data.code === 200) {
               router.push({ name: 'Projects', params: { team: self.team } });
             }
           });

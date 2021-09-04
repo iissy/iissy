@@ -59,7 +59,7 @@ export default {
       let self = this;
       let param = { priority: priorityUUID }
       http.post(self.urls.task_change_priority.format(self.team, self.task_uuid), param).then(function (response) {
-        if (response.data.status) {
+        if (response.data.code === 200) {
           self.$refs.popover.$emit('close')
           self.$refs.alert.success('更新成功');
           self.$parent.$parent.task_list();

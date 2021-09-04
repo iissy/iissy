@@ -7,6 +7,7 @@ let urls = {
     team_update: '/api/team/{0}/update',
     team_member_list: '/api/team/{0}/get_team_members',
     team_member_add: '/api/team/{0}/members/add',
+    team_member_delete: '/api/team/{0}/members/delete',
     team_project_list: '/api/team/{0}/projects',
     // team_task_list: '/api/team/{0}/tasks',
     team_roles_members: '/api/team/{0}/team_roles_members',
@@ -15,7 +16,7 @@ let urls = {
 
     department_member_list: '/api/team/{0}/department/{1}/list',
     // department_member_add: '/api/team/{0}/department/{1}/add_members',
-    department_delete: '/api/team/{0}/department/{1}/delete',
+    // department_delete: '/api/team/{0}/department/{1}/delete',
 
     priority_options_get: '/api/team/{0}/priority_options_get',
 
@@ -91,7 +92,7 @@ let urls = {
     linked_source_tasks: '/api/team/{0}/task/{1}/linked_source_tasks',
     linked_tasks_del: '/api/team/{0}/task/{1}/linked_tasks_delete/{2}',
 
-    department_add: '/api/team/{0}/setting/department/add',
+    // department_add: '/api/team/{0}/setting/department/add',
     department_tree: '/api/team/{0}/setting/department/tree',
 
     permission_rules_add: '/api/team/{0}/permission_rules/add',

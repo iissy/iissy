@@ -66,6 +66,7 @@
                 </div>
               </form>
             </b-modal>
+            <Alert ref="alert"></Alert>
           </div>
         </div>
       </div>
@@ -74,10 +75,11 @@
 </template>
 
 <script>
-import http from "../../../utils/http";
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
 import AddButton from '../../button/common';
+import Alert from '../../common/block/alert';
+import http from "../../../utils/http";
 
 export default {
   data: function () {
@@ -152,8 +154,8 @@ export default {
         options: self.options
       }
       http.post(self.urls.issue_type_field_update.format(self.team), data).then(function (response) {
-        if (response.data.status) {
-          self.$parent.task_list(response.data.payload.uuid);
+        if (response.data.code === 200) {
+          self.$refs.alert.success('更新成功');
         }
       });
     },
@@ -197,7 +199,8 @@ export default {
   components: {
     Search,
     ProjectMangeHeader,
-    AddButton
+    AddButton,
+    Alert
   }
 };
 </script>

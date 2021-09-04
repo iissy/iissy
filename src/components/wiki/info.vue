@@ -67,7 +67,7 @@ export default {
     update: function () {
       let self = this;
       http.post(self.urls.space_update.format(self.team, self.space), {title: self.title, description: self.description}).then(function (response) {
-        if (response.data.status === true) {
+        if (response.data.code === 200) {
           self.$refs.alert.success('更新成功');
           self.disabled = true;
         } else {
