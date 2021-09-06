@@ -1,7 +1,7 @@
 <template>
   <div class="flex-row user align-items-center" :class="{selected: selected}" @click="onsubmit">
     <div style="flex: 0 0 auto;" class="flex-row align-items-center">
-      <b-img left src="/images/touxiang.jpg" style="height: 16px;" rounded="circle"></b-img>
+      <b-img left :src="user.avatar" style="height: 16px;" rounded="circle"></b-img>
     </div>
     <div style="flex: 0 0 auto;margin-left: 5px;" class="flex-row align-items-center">
       {{ user.name }}

@@ -1,7 +1,7 @@
 <template>
   <div class="flex-row">
     <div style="flex: 0 0 auto;">
-      <img src="/images/touxiang.jpg" style="height: 20px;width: 20px;border-radius: 20px;">
+      <img :src="user.avatar" style="height: 20px;width: 20px;border-radius: 20px;">
     </div>
     <div style="flex: 0 0 auto;margin-left: 10px;">
       <div style="text-align: left;color: #363636;">{{ user.name }} ({{ user.email }})</div>

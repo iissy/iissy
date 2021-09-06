@@ -37,7 +37,7 @@
     <div id="popover-user-center" style="flex: 1;align-items: center;display: flex;padding-left: 20px;overflow: hidden;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer;" hidefocus="true" tabindex="0">
       <div class="flex-row">
         <div style="flex: 0 0 40px;" class="align-items-center flex-row">
-          <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
+          <img :src="user.avatar" style="height: 30px;width: 30px;border-radius: 30px;">
         </div>
       </div>
     </div>

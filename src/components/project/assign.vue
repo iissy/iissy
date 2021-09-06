@@ -2,7 +2,7 @@
   <div class="flex-row" style="flex: 0;">
     <div id="popover-assign" class="flex-row assign align-items-center" style="padding: 5px 20px 5px 5px;flex: 0 0 auto;" hidefocus="true" tabindex="0">
       <div style="flex: 0 0 auto;">
-        <img src="/images/touxiang.jpg" style="height: 30px;width: 30px;border-radius: 30px;">
+        <img :src="user.avatar" style="height: 30px;width: 30px;border-radius: 30px;">
       </div>
       <div style="flex: 0 0 auto;margin-left: 10px;align-items: normal;" class="flex-column">
         <div style="text-align: left;color: #363636;">{{ user.name }}</div>

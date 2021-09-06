@@ -147,7 +147,6 @@ export default {
       }
       let data = {
         name: username,
-        logo: '/images/touxiang.jpg',
         team_name: self.s_team_name,
         email: self.s_email,
         password: self.s_password,
@@ -161,8 +160,6 @@ export default {
         }
       });
     }
-  },
-  computed: {
   }
 }
 </script>
