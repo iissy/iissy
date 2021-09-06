@@ -48,10 +48,12 @@
         </div>
       </div>
     </div>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
+import Alert from '../components/common/block/alert';
 import http from "../utils/http";
 import router from "../router";
 import { setUser } from "@/filters";
@@ -76,11 +78,12 @@ export default {
           }
         }
       }).catch(function (err) {
-        console.log(err.response.data);
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     }
   },
-  computed: {
+  components: {
+    Alert
   }
 }
 </script>

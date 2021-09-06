@@ -33,7 +33,12 @@ export default {
     danger: function (o) {
       this.dismissCountDown = 2;
       this.variant = 'danger';
-      this.msg = this.codes[o];
+      let codeArray = o.split(".");
+      let result = "";
+      for(let i=codeArray.length-1;i>=0;i--) {
+        result += this.codes[codeArray[i]];
+      }
+      this.msg = result;
     }
   }
 }
