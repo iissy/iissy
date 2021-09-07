@@ -19,11 +19,13 @@
         </div>
       </form>
     </b-modal>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
 import AddProjectButton from '../../button/common';
+import Alert from '../../common/block/alert';
 import http from "../../../utils/http";
 
 export default {
@@ -34,7 +36,8 @@ export default {
     };
   },
   components: {
-    AddProjectButton
+    AddProjectButton,
+    Alert
   },
   created: function () {
   },
@@ -72,12 +75,10 @@ export default {
         if(response.data.code === 200) {
           self.$parent.get_team_members();
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
     }
   }
 };
 </script>
-
-<style scoped>
-
-</style>

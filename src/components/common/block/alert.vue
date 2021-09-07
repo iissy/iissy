@@ -4,8 +4,11 @@
       <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
         <div class="flex-row align-items-center" style="color: inherit;">
           <div class="mb-0" style="display: flex;">
-            <b-iconstack font-scale="1.5">
+            <b-iconstack v-if="variant === 'success'" font-scale="1.5">
               <b-icon stacked icon="check-circle" :variant="variant"/>
+            </b-iconstack>
+            <b-iconstack v-else font-scale="1.5">
+              <b-icon stacked icon="x-circle" :variant="variant"/>
             </b-iconstack>
           </div>
           <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;">{{ msg }}</div>
@@ -16,6 +19,8 @@
 </template>
 
 <script>
+import * as errors from '../../../filters';
+
 export default {
   data() {
     return {
@@ -26,18 +31,37 @@ export default {
   },
   methods: {
     success: function (o) {
-      this.dismissCountDown = 2;
+      this.dismissCountDown = 3;
       this.variant = 'success';
       this.msg = o;
     },
     danger: function (o) {
-      this.dismissCountDown = 2;
+      this.dismissCountDown = 3;
       this.variant = 'danger';
+      let code = "";
       let codeArray = o.split(".");
       let result = "";
-      for(let i=codeArray.length-1;i>=0;i--) {
-        result += this.codes[codeArray[i]];
+      if (codeArray.length >= 1) {
+        code = codeArray[0];
+        switch (code) {
+          case "ServerError":
+            result = errors.ServerError(codeArray);
+            break;
+          case "NotFound":
+            result = errors.NotFound(codeArray);
+            break;
+          case "InvalidParameter":
+            result = errors.InvalidParameter(codeArray);
+            break;
+          case "VerificationFailure":
+            result = errors.VerificationFailure(codeArray);
+            break;
+          case "AlreadyExists":
+            result = errors.AlreadyExists(codeArray);
+            break;
+        }
       }
+
       this.msg = result;
     }
   }
@@ -46,7 +70,7 @@ export default {
 
 <style scoped>
 #iissy.alert-box { position:fixed;bottom: 30px;right:30px;text-align:center;opacity: 1;z-index: 999; }
-#iissy .alert { padding: 7px 17px 7px 7px;border: 1px solid transparent;margin-bottom: 0; }
+#iissy .alert { padding: 10px 17px 10px 10px;border: 1px solid transparent;margin-bottom: 0; }
 
 .shake {
   animation: shake 0.1s cubic-bezier(.1,.65,.48,.98) 0s 1;

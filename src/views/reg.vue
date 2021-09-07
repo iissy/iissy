@@ -29,14 +29,14 @@
               <div v-if="first_part" style="flex: 1;">
                 <div class="flex-row align-items-center" style="padding: 30px 0;">
                   <div style="flex: 1 1 70%;">
-                    <input type="text" v-model="s_mobile" class="reg-input" placeholder="请输入手机号码" autocomplete="off"/>
+                    <input type="text" v-model.trim="s_mobile" class="reg-input" placeholder="请输入手机号码" autocomplete="off"/>
                   </div>
                   <div style="flex: 1 1 30%;text-align: right;">
-                    <b-button variant="outline-primary" style="height: 40px;outline: none;box-shadow: none;">发送验证码</b-button>
+                    <b-button variant="outline-primary" style="height: 40px;outline: none;box-shadow: none;" :disabled="sendBtnDisabled" @click="sendPhoneCode">发送验证码</b-button>
                   </div>
                 </div>
                 <div class="flex-row align-items-center">
-                  <input type="text" v-model="s_code" class="reg-input" placeholder="请输入 6 位数字验证码" autocomplete="off"/>
+                  <input type="text" v-model.trim="s_code" class="reg-input" placeholder="请输入 6 位数字验证码" autocomplete="off"/>
                 </div>
                 <div style="margin-top: 60px;color: #909090;" class="flex-row align-items-center justify-content-center">
                   <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="reg_next">提交验证</b-button>
@@ -44,13 +44,13 @@
               </div>
               <div v-if="second_part" style="flex: 1;">
                 <div class="flex-row align-items-center" style="padding: 15px 0;">
-                  <input type="text" v-model="s_email" class="reg-input" placeholder="请输入您的邮箱" autocomplete="off"/>
+                  <input type="text" v-model.trim="s_email" class="reg-input" placeholder="请输入您的邮箱" autocomplete="off"/>
                 </div>
                 <div class="flex-row align-items-center" style="padding: 15px 0;">
-                  <input type="password" v-model="s_password" class="reg-input" placeholder="密码应为8-32位，必须同时包含数字字母" autocomplete="off"/>
+                  <input type="password" v-model.trim="s_password" class="reg-input" placeholder="密码应为8-32位，必须同时包含数字字母" autocomplete="off"/>
                 </div>
                 <div class="flex-row align-items-center" style="padding: 15px 0;">
-                  <input type="text" v-model="s_team_name" class="reg-input" placeholder="请输入团队名称" autocomplete="off"/>
+                  <input type="text" v-model.trim="s_team_name" class="reg-input" placeholder="请输入团队名称" autocomplete="off"/>
                 </div>
                 <div style="margin-top: 60px;color: #909090;" class="flex-row align-items-center justify-content-center">
                   <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="create_team">创建团队</b-button>
@@ -67,7 +67,9 @@
                     <svg t="1604535926297" class="icon" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5606" width="25" height="25"><path d="M1150.244571 327.0656L925.2864 26.975086c-3.920457-5.880686-14.862629-9.0112-25.951086-9.0112-10.620343 0-21.211429 2.8672-25.980343 9.0112l-207.608685 282.799543c-24.488229 37.917257-12.522057 51.931429 34.552685 51.931428h103.892115c-0.468114 50.5856-3.364571 102.341486-7.753143 137.216-20.948114 167.087543-127.268571 211.646171-131.744914 213.577143-15.594057 6.436571-12.6976 29.9008 6.407314 29.9008 268.463543 0 331.103086-310.915657 340.757943-380.693943h103.8336c1.462857 0.117029 3.861943 0.292571 6.816914 0.292572 15.623314 0 46.021486-3.978971 27.735771-34.933029z" fill="#333333" p-id="5607"></path><path d="M600.736914 567.968914h-134.026971c0.585143-65.301943 4.271543-132.213029 9.947428-177.210514 27.092114-215.683657 164.308114-273.261714 170.130286-275.6608 20.187429-8.367543 16.384-38.619429-8.279771-38.619429-346.5216 0-427.446857 401.408-439.9104 491.461486H64.570514a88.4736 88.4736 0 0 0-8.894171-0.4096c-20.099657 0-59.392 5.090743-35.810743 45.143772l290.464914 387.452342c5.061486 7.606857 19.2512 11.644343 33.528686 11.644343 13.692343 0 27.4432-3.715657 33.440914-11.644343l268.0832-365.187657c31.685486-48.9472 16.1792-66.9696-44.6464-66.9696z" fill="#333333" p-id="5608"></path></svg>
                   </div>
                   <div style="flex: 0 0 auto;margin-left: 5px;">
-                    <span style="font-size: 26px;font-weight: bold;color: #333333;letter-spacing: 3px;margin: 0 0 0 0;text-align: center;font-weight: 700;">Jitask</span>
+                    <span>
+                      <a href="/" style="font-size: 26px;font-weight: bold;color: #333333;letter-spacing: 3px;margin: 0 0 0 0;text-align: center;font-weight: 700;">Jitask</a>
+                    </span>
                   </div>
                   <div style="flex: 0 0 auto;">
                     <svg t="1608034654856" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5182" width="32" height="32"><path d="M479.40136719 120.88671875h65.20605468v782.2265625h-65.20605468z" p-id="5183" fill="#2c2c2c"></path></svg>
@@ -108,10 +110,12 @@
         </div>
       </div>
     </div>
+    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
+import Alert from '../components/common/block/alert';
 import http from "../utils/http";
 
 export default {
@@ -124,6 +128,7 @@ export default {
       s_team_name: '',
       first_part: true,
       second_part: false,
+      sendBtnDisabled: false,
       items: [
         {uuid: 'a', name: '管理团队，部门，角色成员，任务管理，权限配置'},
         {uuid: 'c', name: '文档资料管理'},
@@ -135,8 +140,16 @@ export default {
   methods: {
     reg_next: function () {
       let self = this;
-      self.first_part = false;
-      self.second_part = true;
+      if (self.s_mobile && self.s_code) {
+        http.post(self.urls.verify_phone.format('+' + self.s_mobile, self.s_code)).then(function (response) {
+          if (response.data.code === 200) {
+            self.first_part = false;
+            self.second_part = true;
+          }
+        }).catch(function (err) {
+          self.$refs.alert.danger(err.response.data.errcode);
+        });
+      }
     },
     create_team: function () {
       let self = this;
@@ -158,8 +171,17 @@ export default {
         if (response.data.code === 200) {
           window.location.href="/";
         }
+      }).catch(function (err) {
+        self.$refs.alert.danger(err.response.data.errcode);
       });
+    },
+    sendPhoneCode: function () {
+      let self = this;
+      self.sendBtnDisabled = true;
     }
+  },
+  components: {
+    Alert
   }
 }
 </script>
