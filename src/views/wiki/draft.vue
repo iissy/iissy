@@ -1,6 +1,5 @@
 <template>
   <div class="flex-row" style="flex: 1;">
-    <Catalog ref="Catalog" :selected="draft"/>
     <div class="app-main-container" style="flex: 1;">
       <Article v-if="loaded" ref="Article" :item="item"/>
     </div>
@@ -8,7 +7,6 @@
 </template>
 
 <script>
-import Catalog from '../../components/wiki/catalog';
 import Article from "../../components/wiki/module/article_draft";
 import http from "../../utils/http";
 
@@ -33,8 +31,7 @@ export default {
     }
   },
   components: {
-    Article,
-    Catalog
+    Article
   },
   mounted() {
     let self = this;

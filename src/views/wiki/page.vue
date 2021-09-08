@@ -1,6 +1,5 @@
 <template>
   <div class="flex-row" style="flex: 1;">
-    <Catalog ref="Catalog" :selected="page"/>
     <div class="app-main-container" style="flex: 1;">
       <Article v-if="loaded" ref="Article" :item="item"/>
     </div>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-import Catalog from '../../components/wiki/catalog';
 import Dynamic from '../../components/wiki/dynamic';
 import Article from "../../components/wiki/module/article";
 import http from "../../utils/http";
@@ -26,7 +24,6 @@ export default {
   },
   components: {
     Article,
-    Catalog,
     Dynamic
   },
   watch: {

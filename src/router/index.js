@@ -20,6 +20,7 @@ import Component from "../views/project/component";
 import Spaces from "../views/wiki/spaces";
 import WikiSetting from "../views/setting/wiki_setting";
 import Space from "../views/wiki/space";
+import Article from "../views/wiki/article_layout";
 import Page from "../views/wiki/page";
 import Draft from "../views/wiki/draft";
 import AddPage from "../views/wiki/add_page";
@@ -146,15 +147,23 @@ const routes = [
                 name: 'Space',
                 component: Space
             }, {
-                path: ':team/space/:space/page/:page',
+                path: ':team/space/:space/article',
                 meta: { title: "文档中心" },
-                name: 'Page',
-                component: Page
-            }, {
-                path: ':team/space/:space/draft/:draft',
-                meta: { title: "文档中心" },
-                name: 'Draft',
-                component: Draft
+                name: 'Article',
+                component: Article,
+                children: [
+                    {
+                        path: 'page/:page',
+                        meta: { title: "文档中心" },
+                        name: 'Page',
+                        component: Page
+                    }, {
+                        path: 'draft/:draft',
+                        meta: { title: "文档中心" },
+                        name: 'Draft',
+                        component: Draft
+                    }
+                ]
             }, {
                 path: ':team/space/:space/page/:page/add',
                 meta: { title: "添加页面" },
