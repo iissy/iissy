@@ -25,7 +25,7 @@
             <input type="password" v-model="s_password" class="login-name" placeholder="Password" autocomplete="off"/>
           </div>
           <div style="margin-top: 30px;color: #909090;" class="flex-row align-items-center justify-content-center">
-            演示版本，点击登录进入系统，只可浏览无法操作
+            演示版本，点击登录进入系统，或者自己注册一个试试
           </div>
         </div>
         <div style="flex: 0 0 48px;background-color: #f0f0f0;" class="flex-row align-items-center">
