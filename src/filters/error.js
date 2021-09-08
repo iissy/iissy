@@ -55,6 +55,23 @@ export function AlreadyExists(codeArray) {
     return three(codeArray);
 }
 
+// 格式：PermissionDenied.PERMISSION
+// ex. PermissionDenied.AddTask
+export function PermissionDenied(codeArray) {
+    return two(codeArray);
+}
+
+function two(codeArray) {
+    let result = "";
+    if (codeArray.length === 2) {
+        for(let i=codeArray.length - 1;i>=0;i--) {
+            result += codes[codeArray[i]];
+        }
+    }
+
+    return result;
+}
+
 function three(codeArray) {
     let result = "";
     if (codeArray.length === 2) {

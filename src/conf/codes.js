@@ -17,7 +17,9 @@ let codes = {
     Name: '名称',
     Password: '密码',
     TooLong: '太长',
-    CodeExpired: '验证码过期'
+    CodeExpired: '验证码过期',
+    PermissionDenied: '权限禁止',
+    CreateSpace: '新建页面组'
 };
 
 export default codes;

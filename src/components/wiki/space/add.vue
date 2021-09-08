@@ -65,6 +65,8 @@ export default {
         if(response.data.code === 200) {
           self.$parent.space_list();
         }
+      }).catch(function (err) {
+        self.bus.$emit('alertDanger', err.response.data.errcode);
       });
     }
   }

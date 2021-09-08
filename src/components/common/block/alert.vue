@@ -1,19 +1,21 @@
 <template>
-  <div id="iissy" :class="{ shake: dismissCountDown > 0 }" class="alert-box flex-column align-items-center">
-    <div style="align-items: center;flex: 1;">
-      <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
-        <div class="flex-row align-items-center" style="color: inherit;">
-          <div class="mb-0" style="display: flex;">
-            <b-iconstack v-if="variant === 'success'" font-scale="1.5">
-              <b-icon stacked icon="check-circle" :variant="variant"/>
-            </b-iconstack>
-            <b-iconstack v-else font-scale="1.5">
-              <b-icon stacked icon="x-circle" :variant="variant"/>
-            </b-iconstack>
+  <div>
+    <div id="iissy" :class="{ shake: dismissCountDown > 0 }" class="alert-box flex-column align-items-center">
+      <div style="align-items: center;flex: 1;">
+        <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
+          <div class="flex-row align-items-center" style="color: inherit;">
+            <div class="mb-0" style="display: flex;">
+              <b-iconstack v-if="variant === 'success'" font-scale="1.5">
+                <b-icon stacked icon="check-circle" :variant="variant"/>
+              </b-iconstack>
+              <b-iconstack v-else font-scale="1.5">
+                <b-icon stacked icon="x-circle" :variant="variant"/>
+              </b-iconstack>
+            </div>
+            <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;">{{ msg }}</div>
           </div>
-          <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;">{{ msg }}</div>
-        </div>
-      </b-alert>
+        </b-alert>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +60,9 @@ export default {
             break;
           case "AlreadyExists":
             result = errors.AlreadyExists(codeArray);
+            break;
+          case "PermissionDenied":
+            result = errors.PermissionDenied(codeArray);
             break;
           default:
             result = code
