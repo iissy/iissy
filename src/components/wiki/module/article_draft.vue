@@ -77,7 +77,9 @@ export default {
             }
           });
         }
-      }).catch(err => {console.log(err);})
+      }).catch(function (err) {
+        self.bus.$emit("alertDanger", err.response.data.errcode);
+      });
     },
     update: function () {
       let self = this;
