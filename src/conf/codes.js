@@ -16,7 +16,8 @@ let codes = {
     Team: '团队',
     Name: '名称',
     Password: '密码',
-    TooLong: '太长'
+    TooLong: '太长',
+    CodeExpired: '验证码过期'
 };
 
 export default codes;
