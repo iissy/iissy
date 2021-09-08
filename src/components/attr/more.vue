@@ -9,12 +9,10 @@
         <b-button variant="danger" @click="del">删除项目</b-button>
       </div>
     </div>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
-import Alert from '../common/block/alert';
 import http from "@/utils/http";
 import router from "@/router";
 
@@ -51,13 +49,6 @@ export default {
         }
       }).catch(err => {console.log(err);})
     }
-  },
-  components: {
-    Alert
   }
 }
 </script>
-
-<style scoped>
-
-</style>

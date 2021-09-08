@@ -20,7 +20,6 @@ export default {
       self.$refs.alert.success(code);
     });
     self.bus.$on('alertDanger', function(code) {
-      console.log(code);
       self.$refs.alert.danger(code);
     });
   },

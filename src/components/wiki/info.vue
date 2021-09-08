@@ -27,12 +27,10 @@
         </div>
       </div>
     </div>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
-import Alert from '../common/block/alert';
 import SaveButton from '../button/common';
 import http from "../../utils/http";
 
@@ -69,16 +67,15 @@ export default {
       http.post(self.urls.space_update.format(self.team, self.space), {title: self.title, description: self.description}).then(function (response) {
         if (response.data.code === 200) {
           self.disabled = true;
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
   },
   components: {
-    SaveButton,
-    Alert
+    SaveButton
   }
 }
 </script>

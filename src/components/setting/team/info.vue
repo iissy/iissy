@@ -40,7 +40,6 @@
         </b-col>
       </b-row>
     </b-container>
-    <Alert ref="alert"></Alert>
   </div>
   </div>
 </template>
@@ -48,7 +47,6 @@
 <script>
 import UpdateButton from '../../button/common';
 import ProjectMangeHeader from '../../common/permission/header';
-import Alert from '../../common/block/alert';
 import http from "../../../utils/http";
 
 export default {
@@ -81,16 +79,15 @@ export default {
       http.post(self.urls.team_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
         if (response.data.code === 200) {
           self.disabled = true;
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
   },
   components: {
     UpdateButton,
-    Alert,
     ProjectMangeHeader
   }
 }

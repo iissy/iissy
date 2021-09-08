@@ -20,13 +20,11 @@
         </div>
       </div>
     </b-popover>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
 import http from "../../utils/http";
-import Alert from '../common/block/alert';
 
 export default {
   data() {
@@ -51,12 +49,12 @@ export default {
       http.post(self.urls.project_change_status.format(self.team, self.project), param).then(function (response) {
         if (response.data.code === 200) {
           self.$refs.popover.$emit('close')
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
           self.$parent.project_get();
         }
       }).catch(function (err) {
         self.$refs.popover.$emit('close')
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
   },
@@ -98,9 +96,6 @@ export default {
 
       return resultColor;
     }
-  },
-  components: {
-    Alert
   }
 }
 </script>

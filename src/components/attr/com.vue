@@ -56,7 +56,6 @@
           </div>
           <div v-show="cur===1" style="">&nbsp;</div>
         </div>
-        <Alert ref="alert"></Alert>
       </div>
     </div>
   </div>
@@ -65,7 +64,6 @@
 <script>
 import PermissionHeader from '../common/permission/header';
 import UpdateButton from '../button/common';
-import Alert from '../common/block/alert';
 import http from "@/utils/http";
 
 export default {
@@ -110,19 +108,18 @@ export default {
       http.post(self.urls.component_update.format(self.team, self.project, self.selectedComUUID), {name: self.name, desc: self.desc}).then(function (response) {
         if (response.data.code === 200) {
           self.disabled = true;
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", "更新成功");
           self.bus.$emit('updateComponents');
           self.$parent.components_get();
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
   },
   components: {
     PermissionHeader,
-    UpdateButton,
-    Alert
+    UpdateButton
   }
 }
 </script>

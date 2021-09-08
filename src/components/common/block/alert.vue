@@ -35,7 +35,11 @@ export default {
     success: function (o) {
       this.dismissCountDown = 3;
       this.variant = 'success';
-      this.msg = o;
+      if (o) {
+        this.msg = o;
+      } else {
+        this.msg = '操作成功';
+      }
     },
     danger: function (o) {
       this.dismissCountDown = 3;

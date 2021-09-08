@@ -133,7 +133,6 @@
         </div>
       </div>
     </div>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
@@ -144,7 +143,6 @@ import TaskStatus from './status';
 import TaskPriority from './priority';
 import http from "../../utils/http";
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
-import Alert from '../common/block/alert';
 
 export default {
   data() {
@@ -201,8 +199,7 @@ export default {
     User,
     Assign,
     TaskStatus,
-    TaskPriority,
-    Alert
+    TaskPriority
   },
   created() {
     let self = this;
@@ -248,11 +245,11 @@ export default {
       self.team = self.$route.params.team;
       http.post(self.urls.watchers_add.format(self.team, self.task.uuid), {}).then(function (response) {
         if (response.data.code === 200) {
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
           self.$parent.task_get(self.task.uuid);
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
     dropOptionValues: function (fieldUUID) {
@@ -287,11 +284,11 @@ export default {
       let data = { task: self.task.uuid, field: field, option: option };
       http.post(self.urls.field_option_update.format(self.team, self.project, self.issue_type), data).then(function (response) {
         if (response.data.code === 200) {
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
           self.$parent.task_get(self.task.uuid);
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
     onChangedDesc: function () {
@@ -311,11 +308,11 @@ export default {
         let data = { deadline: dt.getTime(), which_field: 'deadline' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.data.code === 200) {
-            self.$refs.alert.success('更新成功');
+            self.bus.$emit("alertSuccess", '更新成功');
             self.$parent.task_get(self.task.uuid);
           }
         }).catch(function (err) {
-          self.$refs.alert.danger(err.response.data.errcode);
+          self.bus.$emit("alertDanger", err.response.data.errcode);
         });
       }
     },
@@ -330,11 +327,11 @@ export default {
         let data = { summary: self.task.summary, which_field: 'summary' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.data.code === 200) {
-            self.$refs.alert.success('更新成功');
+            self.bus.$emit("alertSuccess", '更新成功');
             self.$parent.task_list(self.task.uuid);
           }
         }).catch(function (err) {
-          self.$refs.alert.danger(err.response.data.errcode);
+          self.bus.$emit("alertDanger", err.response.data.errcode);
         });
       }
     },
@@ -345,11 +342,11 @@ export default {
         let data = { desc: self.task.desc, which_field: 'desc' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.data.code === 200) {
-            self.$refs.alert.success('更新成功');
+            self.bus.$emit("alertSuccess", '更新成功');
             self.$parent.task_get(self.task.uuid);
           }
         }).catch(function (err) {
-          self.$refs.alert.danger(err.response.data.errcode);
+          self.bus.$emit("alertDanger", err.response.data.errcode);
         });
       }
     }

@@ -76,7 +76,6 @@
         </div>
       </div>
     </b-modal>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
@@ -84,7 +83,6 @@
 import Com00000 from "./com00000";
 import Priority from "../common/block/priority";
 import Status from '../common/block/status';
-import Alert from '../common/block/alert';
 import http from "@/utils/http";
 
 export default {
@@ -172,10 +170,10 @@ export default {
         if(response.data.code === 200) {
           self.linked_task_list();
           self.$refs.com.task_list(self.task);
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
     delRelatedTask: function (uuid) {
@@ -184,18 +182,17 @@ export default {
         if(response.data.code === 200) {
           self.linked_task_list();
           self.$refs.com.task_list(self.task);
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
   },
   components: {
     Com00000,
     Priority,
-    Status,
-    Alert
+    Status
   }
 }
 </script>

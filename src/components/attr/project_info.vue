@@ -37,14 +37,12 @@
         </div>
       </div>
     </div>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
 import Creator from '../task/creator';
 import AddProjectButton from '../button/common';
-import Alert from '../common/block/alert';
 import http from "../../utils/http";
 
 export default {
@@ -73,11 +71,11 @@ export default {
       http.post(self.urls.project_update.format(self.team, self.project), {name: self.name, uuid: self.project}).then(function (response) {
         if (response.data.code === 200) {
           self.disabled = true;
-          self.$refs.alert.success('更新成功');
+          self.bus.$emit("alertSuccess", '更新成功');
           self.bus.$emit('updateProjectInfo', self.project);
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
     project_get: function () {
@@ -89,8 +87,7 @@ export default {
   },
   components: {
     Creator,
-    AddProjectButton,
-    Alert
+    AddProjectButton
   }
 }
 </script>

@@ -116,12 +116,10 @@
         </div>
       </div>
     </div>
-    <Alert ref="alert"></Alert>
   </div>
 </template>
 
 <script>
-import Alert from '../components/common/block/alert';
 import http from "../utils/http";
 
 export default {
@@ -147,15 +145,15 @@ export default {
     reg_next: function () {
       let self = this;
       if (!self.s_phone) {
-        self.$refs.alert.danger("请输入手机号码");
+        self.bus.$emit("alertDanger", "请输入手机号码");
         return
       }
       if (!self.s_code) {
-        self.$refs.alert.danger("请输入验证码");
+        self.bus.$emit("alertDanger", "请输入验证码");
         return
       }
       if (self.s_code.toString().length !== 6) {
-        self.$refs.alert.danger("验证码是六位数字");
+        self.bus.$emit("alertDanger", "验证码是六位数字");
         return
       }
       if (self.s_phone && self.s_code) {
@@ -165,7 +163,7 @@ export default {
             self.second_part = true;
           }
         }).catch(function (err) {
-          self.$refs.alert.danger(err.response.data.errcode);
+          self.bus.$emit("alertDanger", err.response.data.errcode);
         });
       }
     },
@@ -195,14 +193,14 @@ export default {
           window.location.href="/";
         }
       }).catch(function (err) {
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
     sendPhoneCode: function () {
       let self = this;
       self.sendBtnDisabled = true;
       if (!self.s_phone) {
-        self.$refs.alert.danger("请输入手机号码");
+        self.bus.$emit("alertDanger", "请输入手机号码");
         return
       }
 
@@ -212,12 +210,9 @@ export default {
         }
       }).catch(function (err) {
         self.sendBtnDisabled = false;
-        self.$refs.alert.danger(err.response.data.errcode);
+        self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     }
-  },
-  components: {
-    Alert
   }
 }
 </script>
