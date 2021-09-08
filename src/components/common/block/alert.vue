@@ -59,6 +59,9 @@ export default {
           case "AlreadyExists":
             result = errors.AlreadyExists(codeArray);
             break;
+          default:
+            result = code
+            break;
         }
       }
 

@@ -12,7 +12,11 @@ let codes = {
     InvalidFormat: '格式无效',
     VerificationFailure: '验证失败',
     InvalidCode: '验证码无效',
-    EmailExists: '邮箱地址存在'
+    EmailExists: '邮箱地址存在',
+    Team: '团队',
+    Name: '名称',
+    Password: '密码',
+    TooLong: '太长'
 };
 
 export default codes;

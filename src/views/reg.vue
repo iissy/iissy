@@ -29,7 +29,7 @@
               <div v-if="first_part" style="flex: 1;">
                 <div class="flex-row align-items-center" style="padding: 30px 0;">
                   <div style="flex: 1 1 70%;">
-                    <input type="text" v-model.trim="s_mobile" class="reg-input" placeholder="请输入手机号码" autocomplete="off"/>
+                    <input type="text" v-model.trim="s_phone" class="reg-input" placeholder="请输入手机号码" autocomplete="off"/>
                   </div>
                   <div style="flex: 1 1 30%;text-align: right;">
                     <b-button variant="outline-primary" style="height: 40px;outline: none;box-shadow: none;" :disabled="sendBtnDisabled" @click="sendPhoneCode">发送验证码</b-button>
@@ -53,7 +53,13 @@
                   <input type="text" v-model.trim="s_team_name" class="reg-input" placeholder="请输入团队名称" autocomplete="off"/>
                 </div>
                 <div style="margin-top: 60px;color: #909090;" class="flex-row align-items-center justify-content-center">
-                  <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="create_team">创建团队</b-button>
+                  <div style="flex: 0 0 100px;">
+                    <b-button variant="outline-primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="back">返回</b-button>
+                  </div>
+                  <div style="flex: 0 0 20px;">&nbsp;</div>
+                  <div style="flex: 1;">
+                    <b-button variant="primary" style="height: 40px;width: 100%;outline: none;box-shadow: none;" @click="create_team">创建团队</b-button>
+                  </div>
                 </div>
               </div>
               <div style="color: #909090;flex: 0 0 80px;">
@@ -121,7 +127,7 @@ import http from "../utils/http";
 export default {
   data: function () {
     return {
-      s_mobile: '',
+      s_phone: '',
       s_code: '',
       s_email: '',
       s_password: '',
@@ -140,8 +146,20 @@ export default {
   methods: {
     reg_next: function () {
       let self = this;
-      if (self.s_mobile && self.s_code) {
-        http.post(self.urls.verify_phone.format('+' + self.s_mobile, self.s_code)).then(function (response) {
+      if (!self.s_phone) {
+        self.$refs.alert.danger("请输入手机号码");
+        return
+      }
+      if (!self.s_code) {
+        self.$refs.alert.danger("请输入验证码");
+        return
+      }
+      if (self.s_code.toString().length !== 6) {
+        self.$refs.alert.danger("验证码是六位数字");
+        return
+      }
+      if (self.s_phone && self.s_code) {
+        http.post(self.urls.verify_phone.format('+' + self.s_phone)).then(function (response) {
           if (response.data.code === 200) {
             self.first_part = false;
             self.second_part = true;
@@ -150,6 +168,11 @@ export default {
           self.$refs.alert.danger(err.response.data.errcode);
         });
       }
+    },
+    back: function () {
+      let self = this;
+      self.first_part = true;
+      self.second_part = false;
     },
     create_team: function () {
       let self = this;
@@ -163,7 +186,7 @@ export default {
         team_name: self.s_team_name,
         email: self.s_email,
         password: self.s_password,
-        phone: '+' + self.s_mobile,
+        phone: '+' + self.s_phone,
         phone_code: self.s_code,
         team_role: 'admin'
       };
@@ -178,6 +201,19 @@ export default {
     sendPhoneCode: function () {
       let self = this;
       self.sendBtnDisabled = true;
+      if (!self.s_phone) {
+        self.$refs.alert.danger("请输入手机号码");
+        return
+      }
+
+      http.post(self.urls.send_phone_code.format('+' + self.s_phone)).then(function (response) {
+        if (response.data.code) {
+          self.s_code = response.data.code;
+        }
+      }).catch(function (err) {
+        self.sendBtnDisabled = false;
+        self.$refs.alert.danger(err.response.data.errcode);
+      });
     }
   },
   components: {
