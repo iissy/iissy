@@ -12,7 +12,7 @@
                 <b-icon stacked icon="x-circle" :variant="variant"/>
               </b-iconstack>
             </div>
-            <div style="margin-left: 15px;color: inherit;display: flex;flex: 1;letter-spacing: 1px;font-size: 15px;">{{ msg }}</div>
+            <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;letter-spacing: 1px;font-size: 15px;">{{ msg }}</div>
           </div>
         </b-alert>
       </div>
@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .alert-box { position:fixed;bottom: 30px;right:30px;text-align:center;opacity: 1;z-index: 999; }
-.alert-box .alert { padding: 10px 20px;border: 1px solid transparent;margin-bottom: 0; }
+.alert-box .alert { padding: 10px 15px 10px 10px;border: 1px solid transparent;margin-bottom: 0; }
 
 .shake {
   animation: shake 0.1s cubic-bezier(.1,.65,.48,.98) 0s 1;
