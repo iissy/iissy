@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div :class="{ shake: dismissCountDown > 0 }" class="alert-box flex-column align-items-center">
+    <div v-for="(m, i) in messages" :class="{ shake: m.dismiss > 0 }" class="alert-box flex-column align-items-center"
+         :key="m.key"
+         :style="{ bottom: `${i * 60 + 30}px`, right: '30px' }">
       <div style="align-items: center;flex: 1;">
-        <b-alert :show="dismissCountDown" :variant="variant" @dismissed="dismissCountDown=0">
+        <b-alert :show="m.dismiss" :variant="m.variant" @dismissed="m.dismiss=0" @dismiss-count-down="countDownChanged">
           <div class="flex-row align-items-center" style="color: inherit;">
             <div class="mb-0" style="display: flex;">
-              <b-iconstack v-if="variant === 'success'" font-scale="1.5">
-                <b-icon stacked icon="check-circle" :variant="variant"/>
+              <b-iconstack v-if="m.variant === 'success'" font-scale="1.5">
+                <b-icon stacked icon="check-circle" :variant="m.variant"/>
               </b-iconstack>
               <b-iconstack v-else font-scale="1.5">
-                <b-icon stacked icon="x-circle" :variant="variant"/>
+                <b-icon stacked icon="x-circle" :variant="m.variant"/>
               </b-iconstack>
             </div>
-            <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;letter-spacing: 1px;font-size: 15px;">{{ msg }}</div>
+            <div style="margin-left: 10px;color: inherit;display: flex;flex: 1;letter-spacing: 1px;font-size: 15px;">{{ m.msg }}</div>
           </div>
         </b-alert>
       </div>
@@ -26,24 +28,27 @@ import * as errors from '../../../filters';
 export default {
   data() {
     return {
-      dismissCountDown: 0,
-      variant: '',
-      msg: ''
+      dismissCountDown: 5,
+      messages: [],
+      index: 0
     }
   },
   methods: {
     success: function (o) {
-      this.dismissCountDown = 3;
-      this.variant = 'success';
+      let self = this;
+      self.index += 1;
       if (o) {
-        this.msg = o;
+        self.msg = o;
       } else {
-        this.msg = '操作成功';
+        self.msg = '操作成功';
       }
+
+      let message = { key: self.index, dismiss: self.dismissCountDown, variant: 'success', msg: self.msg }
+      self.messages.push(message);
     },
     danger: function (o) {
-      this.dismissCountDown = 3;
-      this.variant = 'danger';
+      let self = this;
+      self.index += 1;
       let code = "";
       let codeArray = o.split(".");
       let result = "";
@@ -74,14 +79,22 @@ export default {
         }
       }
 
-      this.msg = result;
+      self.msg = result;
+      let message = { key: self.index, dismiss: self.dismissCountDown, variant: 'danger', msg: self.msg }
+      self.messages.push(message);
+    },
+    countDownChanged(countDown) {
+      if (countDown === 0) {
+        let self = this;
+        self.messages.shift();
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-.alert-box { position:fixed;bottom: 30px;right:30px;text-align:center;opacity: 1;z-index: 999; }
+.alert-box { position:fixed;text-align:center;opacity: 1;z-index: 999;height: 40px; }
 .alert-box .alert { padding: 10px 15px 10px 10px;border: 1px solid transparent;margin-bottom: 0; }
 
 .shake {
