@@ -3,7 +3,7 @@
     <div v-for="(m, i) in messages" :class="{ shake: m.dismiss > 0 }" class="alert-box flex-column align-items-center"
          :key="m.key"
          :style="{ bottom: `${i * 60 + 30}px`, right: '30px' }">
-      <div style="align-items: center;flex: 1;">
+      <div style="align-items: center;flex: 1;" class="flex-column">
         <b-alert :show="m.dismiss" :variant="m.variant" @dismissed="m.dismiss=0" @dismiss-count-down="countDownChanged">
           <div class="flex-row align-items-center" style="color: inherit;">
             <div class="mb-0" style="display: flex;">
@@ -28,7 +28,7 @@ import * as errors from '../../../filters';
 export default {
   data() {
     return {
-      dismissCountDown: 5,
+      dismissCountDown: 3,
       messages: [],
       index: 0
     }
@@ -94,8 +94,8 @@ export default {
 </script>
 
 <style scoped>
-.alert-box { position:fixed;text-align:center;opacity: 1;z-index: 999;height: 40px; }
-.alert-box .alert { padding: 10px 15px 10px 10px;border: 1px solid transparent;margin-bottom: 0; }
+.alert-box { position:fixed;text-align:center;opacity: 1;z-index: 999;height: 46px; }
+.alert-box .alert { padding: 0 15px 0 10px;border: 1px solid transparent;margin-bottom: 0;flex-direction: column;flex: 1;justify-content: center;display: flex; }
 
 .shake {
   animation: shake 0.1s cubic-bezier(.1,.65,.48,.98) 0s 1;
