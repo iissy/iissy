@@ -16,7 +16,7 @@
       <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
         <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
           <div style="flex: 1;display: inline-block;">
-            <Search :value="project_name" placeholder="项目名称"/>
+            <Search @search="search" placeholder="项目名称"/>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default {
       ],
       items: [],
       tasks_completed: false,
-      project_name: ''
+      name: ''
     };
   },
   components: {
@@ -104,14 +104,16 @@ export default {
     project_list: function() {
       let self = this;
       let url = self.urls.team_project_list.format(self.team);
-      let params = { category: self.cur, name: self.project_name }
+      let params = { category: self.cur, name: self.name }
       http.post(url, params).then(function (response) {
         self.items = response.data;
         self.tasks_completed = true;
       });
     },
-    input(value) {
-      console.log(value)
+    search(value) {
+      let self = this;
+      self.name = value;
+      self.project_list();
     },
     selectTab: function (index) {
       let self = this;
