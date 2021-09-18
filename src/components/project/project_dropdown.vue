@@ -34,7 +34,8 @@ export default {
     project_list: function() {
       let self = this;
       let url = self.urls.team_project_list.format(self.team);
-      http.post(url).then(function (response) {
+      let params = { category: 2, name: "" }
+      http.post(url, params).then(function (response) {
         self.projects = response.data;
       });
     }

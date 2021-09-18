@@ -3,7 +3,7 @@
     <div class="project-top-row">
       <div style="flex: 0 1 auto;">
         <div class="tab-title">
-          <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}" :key="index">{{title}}</div>
+          <div style="flex:0 0 auto;text-align: center;cursor: pointer;padding: 0 10px 10px 10px;" v-for="(title,index) in tabTitle" @click="selectTab(index)" :class="{active:cur===index}" :key="index">{{title}}</div>
         </div>
       </div>
       <div style="flex: 1;">&nbsp;</div>
@@ -16,13 +16,13 @@
       <div style="flex: 0 0 auto;flex-direction: column;align-items: center;display: flex;">
         <div style="width: 100%;text-align: right;flex: 1;align-items: center;display: flex;">
           <div style="flex: 1;display: inline-block;">
-            <Search placeholder="项目名称" />
+            <Search :value="project_name" placeholder="项目名称"/>
           </div>
         </div>
       </div>
     </div>
-    <div class="h-flex">
-      <div v-if="tasks_completed && has" style="-webkit-flex: 1;flex: 1;overflow-x: auto;padding: 0 20px" class="i-table">
+    <div v-if="tasks_completed" class="h-flex flex-row">
+      <div v-if="has" style="flex: auto;overflow-x: auto;padding: 0 20px" class="i-table">
         <b-table :fields="fields" :items="items">
           <template v-slot:cell(nameuuid)="data">
             <router-link :to="{ name:'Project', params: { team: team, project: data.item.uuid } }">{{ data.item.name }}</router-link>
@@ -47,8 +47,8 @@
           </template>
         </b-table>
       </div>
-      <div v-if="tasks_completed && !has" style="display: flex;flex: 1;" class="align-items-center justify-content-center t-line">
-        暂无项目
+      <div v-else style="flex: auto;" class="flex t-line">
+        <div class="flex-row align-items-center justify-content-center" style="flex: 1 1 0%;">暂无项目</div>
       </div>
     </div>
   </div>
@@ -66,10 +66,10 @@ import http from "../../utils/http";
 export default {
   data: function () {
     return {
-      cur: 0,
+      cur: 2,
       team: '',
       com: '',
-      tabTitle: ['进行中', '未开始', '已完成', '全部项目'],
+      tabTitle: ['全部项目', '未开始', '进行中', '已完成'],
       fields: [
         { key: 'nameuuid', label: '项目名称', formatter: '项目名称' },
         { key: 'status', label: '项目状态', formatter: '项目状态' },
@@ -81,7 +81,8 @@ export default {
         { key: 'in_progress_count', label: '进行中工作项', formatter: '进行中工作项' }
       ],
       items: [],
-      tasks_completed: false
+      tasks_completed: false,
+      project_name: ''
     };
   },
   components: {
@@ -103,10 +104,19 @@ export default {
     project_list: function() {
       let self = this;
       let url = self.urls.team_project_list.format(self.team);
-      http.post(url).then(function (response) {
+      let params = { category: self.cur, name: self.project_name }
+      http.post(url, params).then(function (response) {
         self.items = response.data;
         self.tasks_completed = true;
       });
+    },
+    input(value) {
+      console.log(value)
+    },
+    selectTab: function (index) {
+      let self = this;
+      self.cur = index;
+      self.project_list();
     }
   },
   computed: {

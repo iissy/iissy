@@ -52,7 +52,9 @@ export default {
     },
     project_list: function() {
       let self = this;
-      http.post(self.urls.team_project_list.format(self.team)).then(function (response) {
+      let url = self.urls.team_project_list.format(self.team);
+      let params = { category: 2, name: "" }
+      http.post(url, params).then(function (response) {
         self.projects = response.data;
       });
     }

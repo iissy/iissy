@@ -5,7 +5,7 @@
         <b-icon icon="search"></b-icon>
       </div>
     </div>
-    <b-form-input style="padding-left: 30px;" v-model="name" :placeholder="placeholder"></b-form-input>
+    <b-form-input style="padding-left: 30px;" v-model="name" :placeholder="placeholder"/>
   </div>
 </template>
 
@@ -17,7 +17,14 @@ export default {
     };
   },
   props: {
+    value: String,
     placeholder: String
+  },
+  computed: {
+    my_value: function () {
+      let self = this;
+      return self.value;
+    }
   }
 }
 </script>

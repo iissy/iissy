@@ -172,7 +172,8 @@ export default {
     project_list: function() {
       let self = this;
       let url = self.urls.team_project_list.format(self.team);
-      http.post(url).then(function (response) {
+      let params = { category: 2, name: "" }
+      http.post(url, params).then(function (response) {
         let dataset = response.data;
         if (dataset && dataset.length > 0) {
           for (let i=0;i<dataset.length;i++) {
