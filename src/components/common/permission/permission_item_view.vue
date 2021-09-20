@@ -19,7 +19,7 @@
         <div class="content">
           <div ref="permBody" class="select" :class="{open: visible}">
             <b-form-input @click="show" placeholder="搜索角色、用户组、部门、成员"/>
-            <div style="position: absolute;" ref="layer" class="group ibox">
+            <div style="position: absolute;" ref="layer" class="group per-box">
               <div v-for="item in items" :key="item.uuid">
                 <div v-if="item.groups && item.groups.length > 0" style="color: #909090;" class="domain-group-header">
                   {{ item.title }}
@@ -136,7 +136,8 @@ export default {
   margin: 0;
   padding: 0;
   background-color: #ff0000;
-  transition: max-height .3s ease-out;
+  opacity: 0;
+  transition: opacity .5s cubic-bezier(0.17, 0.51, 0.51, 0.9);
 }
 .content .select .group .domain-group-header { padding: 0 15px;line-height: 34px;background-color: #f0f0f0; }
 .content .select .group .domain-item { padding: 0 15px;line-height: 34px;cursor: pointer;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; }
@@ -146,9 +147,7 @@ export default {
 /*transform-origin设置缩放下拉框的基点位置*/
 .content .select.open .group {
   max-height: 170px;
-  -webkit-animation: slide-down .3s ease-in;
-  transition: max-height .3s ease-in;
-  transform-origin: 50% 0;
+  opacity: 1;
 }
 /*设置展开时下拉箭头的旋转动画*/
 .content .select.open:after {
@@ -156,10 +155,6 @@ export default {
   top: initial;
   bottom: 14px;
   transition: all .3s ease-in-out;
-}
-/*为下拉框展开时添加名称为slide-down的关键帧动画*/
-@-webkit-keyframes slide-down{
-  100%{transform: scale(1,1);}
 }
 
 div.perm-row-header { flex: 0 0 auto;display: flex;border-bottom: 1px solid #eef2f7;border-top: 1px solid #eef2f7;background-color: #f8f8f8;font-weight: bolder; }
