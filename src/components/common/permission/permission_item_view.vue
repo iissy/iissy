@@ -146,7 +146,8 @@ export default {
 /*下拉框展开时调用动画slide-down*/
 /*transform-origin设置缩放下拉框的基点位置*/
 .content .select.open .group {
-  max-height: 170px;
+  max-height: 272px;
+  z-index: 999;
   opacity: 1;
 }
 /*设置展开时下拉箭头的旋转动画*/
