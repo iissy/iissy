@@ -22,9 +22,8 @@
           <span style="font-size: 18px;color: #909090;">工作项工作流</span>
         </div>
       </div>
-      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
-        <b-icon icon="exclamation-diamond"/>
-        配置中心下，工作项工作流修改，不会同步到已经应用的项目中。
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
       </div>
     </div>
     <div style="padding: 0 20px 20px 20px;">
@@ -77,6 +76,7 @@
 <script>
 import http from '../../../../utils/http';
 import ColorStatus from "../../../common/block/color-status";
+import Summary from "../../../common/block/summary";
 
 export default {
   data: function () {
@@ -88,7 +88,8 @@ export default {
       lock: true,
       taskStatusConfigs: [],
       transitions: [],
-      taskStatusItems: []
+      taskStatusItems: [],
+      desc: '配置中心下，工作项工作流修改，不会同步到已经应用的项目中。'
     };
   },
   created: function () {
@@ -162,7 +163,8 @@ export default {
     },
   },
   components: {
-    ColorStatus
+    ColorStatus,
+    Summary
   }
 };
 </script>

@@ -22,9 +22,8 @@
           <span style="font-size: 18px;color: #909090;">工作项属性</span>
         </div>
       </div>
-      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
-        <b-icon icon="exclamation-diamond"/>
-        配置中心下，工作项属性修改，不会同步到已经应用的项目中。
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
       </div>
     </div>
     <div style="padding: 0 20px 20px 20px;">
@@ -73,6 +72,7 @@
 <script>
 import http from "../../../../utils/http";
 import Search from "../../../common/form/search";
+import Summary from "../../../common/block/summary";
 
 export default {
   data: function () {
@@ -83,7 +83,8 @@ export default {
       project: '',
       issue_type: '',
       fields: [],
-      fieldTemplates: []
+      fieldTemplates: [],
+      desc: '配置中心下，工作项属性修改，不会同步到已经应用的项目中。'
     };
   },
   created: function () {
@@ -132,7 +133,8 @@ export default {
     }
   },
   components: {
-    Search
+    Search,
+    Summary
   }
 };
 </script>

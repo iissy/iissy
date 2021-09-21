@@ -22,9 +22,8 @@
           <span style="font-size: 18px;color: #909090;">工作项权限</span>
         </div>
       </div>
-      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
-        <b-icon icon="exclamation-diamond"/>
-        配置中心下，工作项权限修改，不会同步到已经应用的项目中。
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
       </div>
     </div>
     <div style="padding: 0 20px 20px 20px;" v-if="loaded">
@@ -35,6 +34,7 @@
 
 <script>
 import PermissionItem from './permission_item';
+import Summary from "../../../common/block/summary";
 import http from "../../../../utils/http";
 
 export default {
@@ -54,7 +54,8 @@ export default {
       loaded: false,
       data: {
         permission_rule: {}
-      }
+      },
+      desc: '配置中心下，工作项权限修改，不会同步到已经应用的项目中。'
     }
   },
   created: function () {
@@ -120,7 +121,8 @@ export default {
     }
   },
   components: {
-    PermissionItem
+    PermissionItem,
+    Summary
   }
 }
 </script>
