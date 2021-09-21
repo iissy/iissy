@@ -97,24 +97,15 @@ export default {
 .alert-box { position:fixed;text-align:center;opacity: 1;z-index: 999;height: 46px; }
 .alert-box .alert { padding: 0 15px 0 10px;border: 1px solid transparent;margin-bottom: 0;flex-direction: column;flex: 1;justify-content: center;display: flex; }
 
-.shake {
-  animation: shake 0.1s cubic-bezier(.1,.65,.48,.98) 0s 1;
+.alert-box.shake {
+  animation: shake .3s cubic-bezier(.17,.92,.1,.95) 0s 1;
 }
 @keyframes shake {
   0% {
-    transform:translateY(30px);
-    -webkit-transform:translateY(30px);
-    -moz-transform:translateY(30px);
-    -o-transform:translateY(30px);
-    -ms-transform:translateY(30px);
+    transform:translateY(100px);
   }
-
   100% {
     transform:translateY(0px);
-    -webkit-transform:translateY(0px);
-    -moz-transform:translateY(0px);
-    -o-transform:translateY(0px);
-    -ms-transform:translateY(0px);
   }
 }
 </style>
