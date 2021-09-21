@@ -3,7 +3,7 @@
     <div style="flex: 0 0 auto;" class="flex-row b-line align-items-center padding20">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;display: flex;">
-          <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">
+          <router-link :to="{ name: 'IssueTypeSettingManager', params: { team: team } }">
             <span style="font-size: 18px;">工作项类型</span>
           </router-link>
         </div>

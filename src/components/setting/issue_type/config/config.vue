@@ -2,7 +2,7 @@
   <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="ibox padding20">
     <div style="padding-bottom: 10px;" class="flex-row align-items-center">
       <div style="flex: 0 0 auto;">
-        <router-link :to="{ name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' } }">
+        <router-link :to="{ name: 'IssueTypeSettingManager', params: { team: team } }">
           <span style="font-size: 18px;">工作项类型</span>
         </router-link>
       </div>

@@ -82,7 +82,7 @@ const routes = [
                         name: 'ProjectSettingStatus',
                         component: ProjectSettingStatus,
                     }, {
-                        path: 'project/:project/permission',
+                        path: ':project/permission',
                         meta: { title: "项目配置中心", tagIndex: 82 },
                         name: 'ProjectPermissionSetting',
                         component: ProjectPermissionSetting,
@@ -114,13 +114,13 @@ const routes = [
                         meta: { title: "项目配置中心", tagIndex: 82 },
                         name: 'IssueTypeSettingPriority',
                         component: IssueTypeSettingPriority,
+                    }, {
+                        path: ':issue_type/:type',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'IssueTypeSetting',
+                        component: IssueTypeSetting
                     }
                 ]
-            }, {
-                path: ':team/setting/issue_type/:issue_type/:type',
-                meta: { title: "项目配置中心", tagIndex: 82 },
-                name: 'IssueTypeSetting',
-                component: IssueTypeSetting
             }, {
                 path: ':team/project_list',
                 meta: { title: "项目管理", tagIndex: 21 },
