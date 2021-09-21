@@ -48,6 +48,7 @@ export default {
         case "ProjectSettingStatus":
           self.tagIndex = 3;
           break;
+        case "IssueTypeSetting":
         case "IssueTypeSettingManager":
           self.tagIndex = 11;
           break;
