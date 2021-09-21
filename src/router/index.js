@@ -18,6 +18,10 @@ import ProjectSetting from "../views/setting/project_setting";
 import ProjectSettingManager from "../components/setting/project/list";
 import ProjectSettingField from "../components/setting/project/field";
 import ProjectSettingStatus from "../components/setting/project/status";
+import IssueTypeSettingManager from "../components/setting/issue_type/list";
+import IssueTypeSettingField from "../components/setting/issue_type/field";
+import IssueTypeSettingStatus from "../components/setting/issue_type/status";
+import IssueTypeSettingPriority from "../components/setting/issue_type/priority";
 import ProjectPermissionSetting from "../components/setting/project/permission";
 import Component from "../views/project/component";
 import Spaces from "../views/wiki/spaces";
@@ -85,10 +89,33 @@ const routes = [
                     }
                 ]
             }, {
-                path: ':team/setting/issue_type/:type',
-                meta: { title: "项目配置中心", tagIndex: 82 },
+                path: ':team/setting/issue_type',
+                meta: { title: "项目配置中心" },
                 name: 'TeamIssueTypeSetting',
-                component: ProjectSetting
+                component: ProjectSetting,
+                children: [
+                    {
+                        path: 'manager',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'IssueTypeSettingManager',
+                        component: IssueTypeSettingManager,
+                    }, {
+                        path: 'field',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'IssueTypeSettingField',
+                        component: IssueTypeSettingField,
+                    }, {
+                        path: 'status',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'IssueTypeSettingStatus',
+                        component: IssueTypeSettingStatus,
+                    }, {
+                        path: 'priority',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'IssueTypeSettingPriority',
+                        component: IssueTypeSettingPriority,
+                    }
+                ]
             }, {
                 path: ':team/setting/issue_type/:issue_type/:type',
                 meta: { title: "项目配置中心", tagIndex: 82 },

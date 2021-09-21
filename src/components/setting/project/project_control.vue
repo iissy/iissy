@@ -8,10 +8,10 @@
     <div :class="{active: (tagIndex === 3)}"><router-link :to="{name: 'ProjectSettingStatus', params: { team: team }}">项目状态</router-link></div>
 
     <div style="flex: 0;padding: 20px 30px 5px 30px;width: 100%;color:#aaaaaa;">工作项</div>
-    <div :class="{active: (tagIndex === 11)}"><router-link :to="{name: 'TeamIssueTypeSetting', params: { team: team, type: 'list' }}">工作项类型</router-link></div>
-    <div :class="{active: (tagIndex === 12)}"><router-link :to="{name: 'TeamIssueTypeSetting', params: { team: team, type: 'field' }}">工作项属性</router-link></div>
-    <div :class="{active: (tagIndex === 13)}"><router-link :to="{name: 'TeamIssueTypeSetting', params: { team: team, type: 'status' }}">工作项状态</router-link></div>
-    <div :class="{active: (tagIndex === 14)}"><router-link :to="{name: 'TeamIssueTypeSetting', params: { team: team, type: 'priority' }}">优先级</router-link></div>
+    <div :class="{active: (tagIndex === 11)}"><router-link :to="{name: 'IssueTypeSettingManager', params: { team: team }}">工作项类型</router-link></div>
+    <div :class="{active: (tagIndex === 12)}"><router-link :to="{name: 'IssueTypeSettingField', params: { team: team }}">工作项属性</router-link></div>
+    <div :class="{active: (tagIndex === 13)}"><router-link :to="{name: 'IssueTypeSettingStatus', params: { team: team }}">工作项状态</router-link></div>
+    <div :class="{active: (tagIndex === 14)}"><router-link :to="{name: 'IssueTypeSettingPriority', params: { team: team }}">优先级</router-link></div>
   </div>
 </template>
 

@@ -13,28 +13,15 @@
 
 <script>
 import Control from '../../components/setting/project/project_control';
-//
-// import IssueTypeList from "../../components/setting/issue_type/list";
-// import IssueTypeField from "../../components/setting/issue_type/field";
-// import IssueTypeStatus from "../../components/setting/issue_type/status";
-// import IssueTypePriority from "../../components/setting/issue_type/priority";
 
 export default {
   data: function () {
     return {
-      // currentTabComponent: ProjectList,
       tagIndex: 1
     };
   },
   components: {
-    Control,
-    // ProjectList,
-    // ProjectField,
-    // ProjectStatus,
-    // IssueTypeList,
-    // IssueTypeField,
-    // IssueTypeStatus,
-    // IssueTypePriority
+    Control
   },
   created: function () {
     let self = this;
@@ -61,16 +48,16 @@ export default {
         case "ProjectSettingStatus":
           self.tagIndex = 3;
           break;
-        case "TeamIssueTypeSettingManager":
+        case "IssueTypeSettingManager":
           self.tagIndex = 11;
           break;
-        case "TeamIssueTypeSetting_field":
+        case "IssueTypeSettingField":
           self.tagIndex = 12;
           break;
-        case "TeamIssueTypeSetting_status":
+        case "IssueTypeSettingStatus":
           self.tagIndex = 13;
           break;
-        case "TeamIssueTypeSetting_priority":
+        case "IssueTypeSettingPriority":
           self.tagIndex = 14;
           break;
       }
