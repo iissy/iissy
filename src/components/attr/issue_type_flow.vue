@@ -1,26 +1,26 @@
 <template>
-  <div class="app-main-content padding20 ibox">
-    <div style="margin-bottom: 30px;" class="flex-row align-items-center">
+  <div class="app-main-content ibox">
+    <div style="flex: 0 0 auto;padding: 20px;" class="flex-row b-line align-items-center">
       <div style="flex: 0 0 auto;display: flex;">
         <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">
-          <span style="font-size: 16px;">工作项类型</span>
+          <span style="font-size: 18px;">工作项类型</span>
         </router-link>
       </div>
       <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
         <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
       </div>
-      <div style="color:#909090;font-size: 16px;display: flex;">{{ title }}</div>
+      <div style="color:#909090;font-size: 18px;display: flex;">{{ title }}</div>
       <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
         <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
       </div>
       <div style="flex: 0 0 auto;display: flex;">
-        <span style="font-size: 16px;color: #909090;">工作项工作流</span>
+        <span style="font-size: 18px;color: #909090;">工作项工作流</span>
       </div>
       <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
         <Summary :desc="desc"/>
       </div>
     </div>
-    <div id="project-main" style="margin-top: 20px;">
+    <div id="project-main" style="margin: 20px;">
       <div class="flex-column workFlowTable" style="border-left: 1px solid #dedede;border-top: 1px solid #dedede;">
         <div style="flex: 1;">
           <div class="flex-row" style="flex: 1;background-color: #f8f8f8;border-bottom: 1px solid #dedede;height: 60px;">

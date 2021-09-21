@@ -1,26 +1,25 @@
 <template>
   <div class="app-main-content ibox">
-    <div style="flex: 0 0 auto;padding: 20px 0 10px 20px;" class="flex-row b-line align-items-center">
+    <div style="flex: 0 0 auto;padding: 20px;" class="flex-row b-line align-items-center">
       <div style="flex: 1;" class="flex-row align-items-center">
         <div style="flex: 0 0 auto;display: flex;">
           <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">
-            <span style="font-size: 16px;">工作项类型</span>
+            <span style="font-size: 18px;">工作项类型</span>
           </router-link>
         </div>
         <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
           <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
         </div>
-        <div style="color:#909090;font-size: 16px;display: flex;">{{ title }}</div>
+        <div style="color:#909090;font-size: 18px;display: flex;">{{ title }}</div>
         <div style="flex: 0 0 auto;margin: 0 10px;display: flex;">
           <svg t="1600623000490" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7272" width="10" height="10"><path d="M810.217293 510.20351q0-10.778943-10.778943-21.557886L321.571884 10.779158a34.449501 34.449501 0 0 0-25.150866-10.778942q-10.778943 0-21.557886 10.778942L224.561399 61.080892a34.449501 34.449501 0 0 0-10.778943 25.150866q0 10.778943 10.778943 21.557886l402.413866 402.413866L224.561399 916.210356q-10.778943 10.778943-10.778943 21.557886a34.449501 34.449501 0 0 0 10.778943 25.150866l50.301733 50.301734q10.778943 10.778943 21.557886 10.778942a34.449501 34.449501 0 0 0 25.150866-10.778942l477.866466-477.866466a34.449501 34.449501 0 0 0 10.778943-25.150866z" p-id="7273" fill="#8a8a8a"></path></svg>
         </div>
         <div style="flex: 0 0 auto;display: flex;">
-          <span style="font-size: 16px;color: #909090;">工作项权限</span>
+          <span style="font-size: 18px;color: #909090;">工作项权限</span>
         </div>
       </div>
-      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
-        <b-icon icon="exclamation-diamond"/>
-        工作项权限可以用于定制工作项的操作权限控制。
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
       </div>
     </div>
     <div style="padding: 0 20px 20px 20px;" v-if="loaded">
@@ -31,6 +30,7 @@
 
 <script>
 import PermissionItem from '../common/permission/permission_item';
+import Summary from "../common/block/summary";
 import http from "../../utils/http";
 
 export default {
@@ -45,7 +45,8 @@ export default {
         transit: { code: 1206, permission: 'transit_tasks', title: '更新#状态', desc: '允许成员更新#状态', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] }
       },
       loaded: false,
-      data: {}
+      data: {},
+      desc: '工作项权限可以用于定制工作项的操作权限控制。'
     }
   },
   mounted() {
@@ -136,7 +137,8 @@ export default {
     }
   },
   components: {
-    PermissionItem
+    PermissionItem,
+    Summary
   }
 }
 </script>
