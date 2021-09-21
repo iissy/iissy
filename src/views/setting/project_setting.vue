@@ -3,7 +3,9 @@
     <div style="height: 100%;flex: 1;" class="flex-row">
       <Control :tagIndex="tagIndex" @tag_switch="tag_switch"></Control>
       <div style="max-width:1200px;flex: 1 1 auto;min-height: 100%;" class="ibox">
-        <component v-bind:is="currentTabComponent"></component>
+        <transition name="fade-transform" mode="out-in">
+          <router-view />
+        </transition>
       </div>
     </div>
   </div>
@@ -11,76 +13,65 @@
 
 <script>
 import Control from '../../components/setting/project/project_control';
-import ProjectList from "../../components/setting/project/list";
-import ProjectField from "../../components/setting/project/field";
-import ProjectStatus from "../../components/setting/project/status";
-
-import IssueTypeList from "../../components/setting/issue_type/list";
-import IssueTypeField from "../../components/setting/issue_type/field";
-import IssueTypeStatus from "../../components/setting/issue_type/status";
-import IssueTypePriority from "../../components/setting/issue_type/priority";
+//
+// import IssueTypeList from "../../components/setting/issue_type/list";
+// import IssueTypeField from "../../components/setting/issue_type/field";
+// import IssueTypeStatus from "../../components/setting/issue_type/status";
+// import IssueTypePriority from "../../components/setting/issue_type/priority";
 
 export default {
   data: function () {
     return {
-      currentTabComponent: ProjectList,
+      // currentTabComponent: ProjectList,
       tagIndex: 1
     };
   },
   components: {
     Control,
-    ProjectList,
-    ProjectField,
-    ProjectStatus,
-    IssueTypeList,
-    IssueTypeField,
-    IssueTypeStatus,
-    IssueTypePriority
+    // ProjectList,
+    // ProjectField,
+    // ProjectStatus,
+    // IssueTypeList,
+    // IssueTypeField,
+    // IssueTypeStatus,
+    // IssueTypePriority
   },
   created: function () {
     let self = this;
     let id = self.$route.name;
-    let type = self.$route.params.type;
-    self.tag_switch("{0}_{1}".format(id, type));
+    self.tag_switch("{0}".format(id));
   },
   watch: {
     '$route' () {
-      let id = this.$route.name;
-      let type = this.$route.params.type;
-      this.tag_switch("{0}_{1}".format(id, type));
+      let self = this;
+      let id = self.$route.name;
+      self.tag_switch("{0}".format(id));
     }
   },
   methods: {
     tag_switch: function (com) {
       let self = this;
       switch (com) {
-        case "ProjectSetting_list":
+        case "ProjectSettingManager":
           self.tagIndex = 1;
-          self.currentTabComponent = ProjectList;
           break;
-        case "ProjectSetting_field":
+        case "ProjectSettingField":
           self.tagIndex = 2;
-          self.currentTabComponent = ProjectField;
           break;
-        case "ProjectSetting_status":
+        case "ProjectSettingStatus":
           self.tagIndex = 3;
-          self.currentTabComponent = ProjectStatus;
           break;
-        case "TeamIssueTypeSetting_list":
+        case "TeamIssueTypeSettingManager":
           self.tagIndex = 11;
-          self.currentTabComponent = IssueTypeList;
           break;
         case "TeamIssueTypeSetting_field":
           self.tagIndex = 12;
-          self.currentTabComponent = IssueTypeField;
           break;
         case "TeamIssueTypeSetting_status":
           self.tagIndex = 13;
-          self.currentTabComponent = IssueTypeStatus;
           break;
         case "TeamIssueTypeSetting_priority":
           self.tagIndex = 14;
-          self.currentTabComponent = IssueTypePriority;
           break;
       }
     }

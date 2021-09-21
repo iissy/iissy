@@ -15,7 +15,10 @@ import Projects from "../views/project/projects";
 import AddProject from "../views/project/add";
 import Project from "../views/project/project";
 import ProjectSetting from "../views/setting/project_setting";
-import ProjectPermissionSetting from "../views/setting/permission";
+import ProjectSettingManager from "../components/setting/project/list";
+import ProjectSettingField from "../components/setting/project/field";
+import ProjectSettingStatus from "../components/setting/project/status";
+import ProjectPermissionSetting from "../components/setting/project/permission";
 import Component from "../views/project/component";
 import Spaces from "../views/wiki/spaces";
 import WikiSetting from "../views/setting/wiki_setting";
@@ -54,15 +57,33 @@ const routes = [
         component: Layout,
         children: [
             {
-                path: ':team/setting/project/:type',
-                meta: { title: "项目配置中心", tagIndex: 82 },
+                path: ':team/setting/project',
+                meta: { title: "项目配置中心" },
                 name: 'ProjectSetting',
-                component: ProjectSetting
-            }, {
-                path: ':team/setting/project/:project/manager/permission',
-                meta: { title: "项目配置中心", tagIndex: 82 },
-                name: 'ProjectPermissionSetting',
-                component: ProjectPermissionSetting
+                component: ProjectSetting,
+                children: [
+                    {
+                        path: 'manager',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'ProjectSettingManager',
+                        component: ProjectSettingManager,
+                    }, {
+                        path: 'field',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'ProjectSettingField',
+                        component: ProjectSettingField,
+                    }, {
+                        path: 'status',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'ProjectSettingStatus',
+                        component: ProjectSettingStatus,
+                    }, {
+                        path: 'project/:project/permission',
+                        meta: { title: "项目配置中心", tagIndex: 82 },
+                        name: 'ProjectPermissionSetting',
+                        component: ProjectPermissionSetting,
+                    }
+                ]
             }, {
                 path: ':team/setting/issue_type/:type',
                 meta: { title: "项目配置中心", tagIndex: 82 },

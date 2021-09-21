@@ -8,9 +8,8 @@
         </div>
         <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;color: #909090;">{{ ProjectName }}</div>
       </div>
-      <div style="flex: 0 0 auto;margin-right: 10px;color: #909090;">
-        <b-icon icon="exclamation-diamond"/>
-        项目管理、查看基本权限配置，需要更细致权限请到各个具体项目下配置。
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
       </div>
     </div>
     <div style="padding: 0 20px 20px 20px;">
@@ -22,6 +21,7 @@
 
 <script>
 import PermissionItem from '../../common/permission/permission_item';
+import Summary from "../../common/block/summary";
 import http from "../../../utils/http";
 
 export default {
@@ -36,7 +36,8 @@ export default {
         write: { code: 1101, permission: 'manage_project', title: '管理项目', desc: '管理当前项目并更新项目的配置信息', groups: [], roles: [], members: [], in_roles: ['everyone', 'project_assign'] }
       },
       role_members: [],
-      loaded: false
+      loaded: false,
+      desc: '项目管理、查看基本权限配置，需要更细致权限请到各个具体项目下配置。'
     };
   },
   mounted() {
@@ -121,7 +122,8 @@ export default {
     }
   },
   components: {
-    PermissionItem
+    PermissionItem,
+    Summary
   }
 };
 </script>

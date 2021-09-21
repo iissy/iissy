@@ -31,7 +31,7 @@
           <li :class="{active: (currentIndex === 26)}"><Link icon="TeamSetting" :to="{ name: 'TeamSetting', params: { team: team, type: 'info', title: '组织架构' } }" /></li>
 
           <li><span></span></li>
-          <li :class="{active: (currentIndex === 82)}"><Link icon="ProjectSetting" :to="{ name: 'ProjectSetting', params: { team: team, type: 'list', title: '项目配置中心' } }" /></li>
+          <li :class="{active: (currentIndex === 82)}"><Link icon="ProjectSetting" :to="{ name: 'ProjectSettingManager', params: { team: team, title: '项目配置中心' } }" /></li>
           <li :class="{active: (currentIndex === 83)}"><Link icon="WikiSetting" :to="{ name:'WikiSetting', params: { team: team, type: 'list', title: '文档配置中心' } }" /></li>
         </ul>
       </div>
