@@ -1,6 +1,6 @@
 <template>
   <div class="app-main-content ibox padding20">
-    <div style="margin-bottom: 20px;background-color: #f0f0f0;padding: 10px;border-radius: 3px;" class="flex-row align-items-center">
+    <div style="margin-bottom: 30px;" class="flex-row align-items-center">
       <div style="flex: 0 0 auto;display: flex;">
         <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">
           <span style="font-size: 16px;">工作项类型</span>
@@ -16,8 +16,10 @@
       <div style="flex: 0 0 auto;display: flex;">
         <span style="font-size: 16px;color: #909090;">工作项属性</span>
       </div>
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
+      </div>
     </div>
-    <Summary :desc="desc"/>
     <Search style="margin: 20px 0;" placeholder="搜索工作项属性"/>
     <div id="project-main">
       <div style="-webkit-flex: 1;flex: 1;position: relative;z-index: 0;display: flex;">

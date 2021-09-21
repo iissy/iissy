@@ -1,6 +1,6 @@
 <template>
   <div class="app-main-content padding20 ibox">
-    <div style="margin-bottom: 20px;background-color: #f0f0f0;padding: 10px;border-radius: 3px;" class="flex-row align-items-center">
+    <div style="margin-bottom: 30px;" class="flex-row align-items-center">
       <div style="flex: 0 0 auto;display: flex;">
         <router-link :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: 'issue_type' } }">
           <span style="font-size: 16px;">工作项类型</span>
@@ -16,8 +16,10 @@
       <div style="flex: 0 0 auto;display: flex;">
         <span style="font-size: 16px;color: #909090;">工作项工作流</span>
       </div>
+      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+        <Summary :desc="desc"/>
+      </div>
     </div>
-    <Summary :desc="desc"/>
     <div id="project-main" style="margin-top: 20px;">
       <div class="flex-column workFlowTable" style="border-left: 1px solid #dedede;border-top: 1px solid #dedede;">
         <div style="flex: 1;">
