@@ -4,13 +4,13 @@
 
 <script>
 import http from "../../utils/http";
-import com00001 from '../../components/com/com00001';
-import com00002 from '../../components/com/com00002';
-import com00003 from '../../components/com/com00003';
-import com00004 from '../../components/com/com00004';
-import com00005 from '../../components/com/com00005';
-import com00009 from '../../components/com/com00009';
-import designer from '../../components/com/designer';
+import com00001 from '../../components/project/com00001';
+import com00002 from '../../components/project/com00002';
+import com00003 from '../../components/project/com00003';
+import com00004 from '../../components/project/com00004';
+import com00005 from '../../components/project/com00005';
+import com00009 from '../../components/project/com00009';
+import designer from '../../components/project/designer';
 
 export default {
   data: function () {
