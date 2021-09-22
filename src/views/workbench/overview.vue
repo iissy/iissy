@@ -26,7 +26,7 @@
 
 <script>
 import Dashboard from '../../components/workbench/dashboard_item';
-import Project from '../../components/project/module/project';
+import Project from '../../components/workbench/project';
 import Space from '../../components/wiki/module/space';
 import http from "../../utils/http";
 
