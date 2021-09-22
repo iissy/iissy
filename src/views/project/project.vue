@@ -1,3 +1,7 @@
+<template>
+  <div/>
+</template>
+
 <script>
 import http from "../../utils/http";
 import router from '../../router';

@@ -2,7 +2,7 @@
   <div style="flex: 0 0 auto;" class="flex-column ibox">
     <div class="app-header">
       <div class="flex-row align-items-center" style="width: 100%;">
-        <Nav/>
+        <Toggle/>
         <div style="flex: 1;">
           <WorkbenchHeader v-if="isWorkbench"/>
         </div>
@@ -15,7 +15,7 @@
 <script>
 import WorkbenchHeader from "../../components/workbench/header";
 import UserCenterAvatar from "./avatar";
-import Nav from "../sidebar/switch";
+import Toggle from "../sidebar/toggle";
 
 export default {
   data() {
@@ -64,7 +64,7 @@ export default {
   components: {
     WorkbenchHeader,
     UserCenterAvatar,
-    Nav
+    Toggle
   }
 }
 </script>

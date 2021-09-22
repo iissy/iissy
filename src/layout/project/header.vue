@@ -2,7 +2,7 @@
   <div style="flex: 0 0 auto;" class="flex-column ibox">
     <div class="app-header">
       <div class="flex-row align-items-center" style="width: 100%;">
-        <Nav/>
+        <Toggle/>
         <div style="flex: 1;">
           <div id="com" class="com-outline" v-if="items && items.length > 0">
             <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
@@ -41,7 +41,7 @@
 <script>
 import DropDown from "../../components/project/project_dropdown";
 import UserCenterAvatar from '../header/avatar';
-import Nav from "../sidebar/switch";
+import Toggle from "../sidebar/toggle";
 import http from "../../utils/http";
 
 export default {
@@ -158,7 +158,7 @@ export default {
   components: {
     DropDown,
     UserCenterAvatar,
-    Nav
+    Toggle
   }
 }
 </script>
