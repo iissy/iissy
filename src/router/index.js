@@ -133,7 +133,7 @@ const routes = [
                 component: AddProject
             }, {
                 path: ':team/project/:project',
-                meta: { title: "正在跳转中...", tagIndex: 21 },
+                meta: { title: "项目管理", tagIndex: 21 },
                 name: 'Project',
                 component: Project
             }, {
