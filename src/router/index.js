@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Layout from '../layout';
-import WikiLayout from '../layout/wiki';
+import Layout from '../layout/index';
+import WikiLayout from '../layout/wiki/index';
 
 import Main from '../views/main';
 import Reg from '../views/reg';

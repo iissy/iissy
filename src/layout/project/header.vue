@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import DropDown from "../../../components/project/project_dropdown";
+import DropDown from "../../components/project/project_dropdown";
 import UserCenterAvatar from '../header/avatar';
-import Nav from "../nav";
-import http from "../../../utils/http";
+import Nav from "../sidebar/switch";
+import http from "../../utils/http";
 
 export default {
   data() {

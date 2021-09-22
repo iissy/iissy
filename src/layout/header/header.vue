@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import WorkbenchHeader from "../../../components/workbench/header";
+import WorkbenchHeader from "../../components/workbench/header";
 import UserCenterAvatar from "./avatar";
-import Nav from "../nav";
+import Nav from "../sidebar/switch";
 
 export default {
   data() {

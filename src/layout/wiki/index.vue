@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Header from './components/wiki/header';
-import Main from './components/wiki/main';
+import Header from './header';
+import Main from './main';
 
 export default {
   data: function () {

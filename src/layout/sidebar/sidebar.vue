@@ -46,7 +46,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Link from '../../../components/common/block/link';
+import Link from '../../components/common/block/link';
 
 export default {
   data: function () {

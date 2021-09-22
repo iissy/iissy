@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Header from './components/header/header';
-import ProjectHeader from "./components/project/header";
-import Main from './components/main';
-import Sidebar from "./components/sidebar/sidebar";
+import Header from './header/header';
+import ProjectHeader from "./project/header";
+import Main from './main';
+import Sidebar from "./sidebar/sidebar";
 
 export default {
   data: function () {
