@@ -4,16 +4,16 @@
 
 <script>
 import http from "../../utils/http";
-import com from '../attr/com';
-import issue_type from '../attr/issue_type';
-import more from '../attr/more';
-import project_info from '../attr/project_info';
-import project_permission from '../attr/project_permission';
-import project_field from '../attr/project_field';
-import project_status from '../attr/project_status';
-import field from '../attr/field';
-import issue_type_permission from '../attr/issue_type_permission';
-import issue_type_flow from '../attr/issue_type_flow';
+import com from '../designer/com';
+import issue_type from '../designer/issue_type';
+import more from '../designer/more';
+import project_info from '../designer/project_info';
+import project_permission from '../designer/project_permission';
+import project_field from '../designer/project_field';
+import project_status from '../designer/project_status';
+import field from '../designer/field';
+import issue_type_permission from '../designer/issue_type_permission';
+import issue_type_flow from '../designer/issue_type_flow';
 
 export default {
   data() {
