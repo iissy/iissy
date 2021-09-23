@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import AddButton from '../../components/common/button/common';
+import AddButton from '../../components/common/button/universal';
 import UserCenterAvatar from '../header/avatar';
 import router from "../../router";
 import http from "../../utils/http";

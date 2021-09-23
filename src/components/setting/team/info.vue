@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import UpdateButton from '../../common/button/common';
+import UpdateButton from '../../common/button/universal';
 import ProjectMangeHeader from '../../common/permission/header';
 import http from "../../../utils/http";
 

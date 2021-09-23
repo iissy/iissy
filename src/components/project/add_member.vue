@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../common/button/common';
+import AddProjectButton from '../common/button/universal';
 import http from "../../utils/http";
 import Search from "../common/form/search";
 import User from '../common/control/user';

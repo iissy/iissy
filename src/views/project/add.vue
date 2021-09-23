@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../../components/common/button/common';
+import AddProjectButton from '../../components/common/button/universal';
 import http from "../../utils/http";
 import router from '../../router';
 
