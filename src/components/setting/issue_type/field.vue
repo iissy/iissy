@@ -76,7 +76,7 @@
 <script>
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
-import AddButton from '../../button/common';
+import AddButton from '../../common/button/common';
 import http from "../../../utils/http";
 
 export default {

@@ -42,7 +42,7 @@
 
 <script>
 import Creator from '../task/creator';
-import AddProjectButton from '../button/common';
+import AddProjectButton from '../common/button/common';
 import http from "../../utils/http";
 
 export default {

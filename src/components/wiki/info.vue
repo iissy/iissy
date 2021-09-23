@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import SaveButton from '../button/common';
+import SaveButton from '../common/button/common';
 import http from "../../utils/http";
 
 export default {

@@ -63,7 +63,7 @@
 
 <script>
 import PermissionHeader from '../common/permission/header';
-import UpdateButton from '../button/common';
+import UpdateButton from '../common/button/common';
 import http from "@/utils/http";
 
 export default {

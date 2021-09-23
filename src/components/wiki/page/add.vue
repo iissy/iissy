@@ -27,7 +27,7 @@
 
 <script>
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
-import AddAndBackButton from '../../button/custom';
+import AddAndBackButton from '../../common/button/custom';
 import router from "../../../router";
 import http from "../../../utils/http";
 

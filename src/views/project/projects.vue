@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import AddProjectButton from '../../components/button/common';
+import AddProjectButton from '../../components/common/button/common';
 import Status from '../../components/common/control/status';
 import Search from '../../components/common/form/search';
 import User from '../../components/common/control/user';

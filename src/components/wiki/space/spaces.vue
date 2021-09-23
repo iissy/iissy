@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AddButton from '../../button/common';
+import AddButton from '../../common/button/common';
 import Space from '../module/space';
 import AddSpace from './add';
 import http from "../../../utils/http";

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import UpdateButton from '../../components/button/common';
+import UpdateButton from '../../components/common/button/common';
 
 export default {
   data: function () {
