@@ -1,5 +1,5 @@
 <template>
-  <div style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;min-width: 500px;">
+  <div class="fields" style="overflow: auto;flex: 0 0 500px;display: flex;height: 100%;border-left: 5px solid #e8e8e8;flex-direction: column;min-width: 500px;">
     <div style="flex-direction: column;flex: 1;display: flex;overflow: auto;padding: 20px;">
       <div class="field-block">
         <div class="flex-row" style="width: 100%;">
@@ -44,18 +44,20 @@
         </div>
       </div>
 
-      <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop hide-footer>
-        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
-          <div style="padding: 10px;flex: 1;" v-html="task.desc"></div>
+      <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :hide-footer="isDisplay"
+               cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit">
+        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" @dblclick="editDesc" class="flex-row ck-content">
+          <div v-if="isDisplay" style="padding: 20px;flex: 1;" title="双击编辑" v-html="task.desc"></div>
+          <div v-else style="flex: 1;" class="flex-column">
+            <div id="taskToolBar" style="flex: 0 0 auto;"></div>
+            <div id="taskDescContainer" style="flex: 1;" class="flex-column">
+              <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" :config="editorConfig"/>
+            </div>
+          </div>
         </div>
       </b-modal>
 
-      <div id="desc_scrollable_container" style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;">
-        <div id="taskToolBar"></div>
-        <div id="taskDescContainer" style="flex: 1;height: 138px;" class="flex-column">
-          <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" @blur="updateDesc" :config="editorConfig"/>
-        </div>
-      </div>
+      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;height: 180px;padding: 10px;" v-html="task.desc"/>
 
       <slot name="workField"></slot>
 
@@ -188,7 +190,8 @@ export default {
             resourceType: 'Images'
           }
         }
-      }
+      },
+      isDisplay: true
     }
   },
   props: {
@@ -337,6 +340,7 @@ export default {
     },
     updateDesc: function () {
       let self = this;
+      self.isDisplay = true;
       if (self.descChanged && self.task.desc) {
         self.descChanged = false;
         let data = { desc: self.task.desc, which_field: 'desc' };
@@ -349,6 +353,14 @@ export default {
           self.bus.$emit("alertDanger", err.response.data.errcode);
         });
       }
+    },
+    editDesc: function () {
+      let self = this;
+      self.isDisplay = false;
+    },
+    cancelEdit: function () {
+      let self = this;
+      self.isDisplay = true;
     }
   }
 }
