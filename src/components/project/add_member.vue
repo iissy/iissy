@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import AddProjectButton from '../../button/common';
-import http from "../../../utils/http";
-import Search from "../form/search";
-import User from './user';
+import AddProjectButton from '../button/common';
+import http from "../../utils/http";
+import Search from "../common/form/search";
+import User from '../common/block/user';
 
 export default {
   data: function () {
