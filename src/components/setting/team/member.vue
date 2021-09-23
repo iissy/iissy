@@ -56,7 +56,7 @@
 import http from '../../../utils/http';
 import Search from '../../common/form/search';
 import InviterUser from './inviter_user';
-import User from '../../common/block/user';
+import User from '../../common/control/user';
 import DepartmentTree from "./department_tree";
 import MemberSideBar from "./member_sidebar";
 

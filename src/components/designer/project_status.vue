@@ -34,7 +34,7 @@
 
 <script>
 import http from '../../utils/http';
-import Status from '../common/block/status';
+import Status from '../common/control/status';
 import Search from '../common/form/search';
 import PermissionHeader from '../common/permission/header';
 

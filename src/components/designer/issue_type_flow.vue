@@ -67,8 +67,8 @@
 
 <script>
 import http from '../../utils/http';
-import Summary from "../common/block/summary";
-import ColorStatus from "../common/block/color-status";
+import Summary from "../common/control/summary";
+import ColorStatus from "../common/control/color-status";
 
 export default {
   data: function () {

@@ -41,7 +41,7 @@
 import http from '../../utils/http';
 import Search from '../common/form/search';
 import AddMember from './add_member';
-import User from '../common/block/suser';
+import User from '../common/control/suser';
 
 export default {
   data: function () {

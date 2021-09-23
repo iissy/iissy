@@ -72,7 +72,7 @@
 <script>
 import http from "../../../../utils/http";
 import Search from "../../../common/form/search";
-import Summary from "../../../common/block/summary";
+import Summary from "../../../common/control/summary";
 
 export default {
   data: function () {

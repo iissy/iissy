@@ -58,7 +58,7 @@
 
 <script>
 import AddTaskButton from '../button/common';
-import User from '../common/block/user';
+import User from '../common/control/user';
 import http from "../../utils/http";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 

@@ -45,7 +45,7 @@
 import AddProjectButton from '../button/common';
 import http from "../../utils/http";
 import Search from "../common/form/search";
-import User from '../common/block/user';
+import User from '../common/control/user';
 
 export default {
   data: function () {
@@ -131,7 +131,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-
-</style>

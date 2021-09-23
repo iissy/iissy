@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import Priority from "../common/block/priority";
-import Status from '../common/block/status';
+import Priority from "../common/control/priority";
+import Status from '../common/control/status';
 // import router from "../../router";
-import User from "../common/block/suser";
+import User from "../common/control/suser";
 
 export default {
   data() {

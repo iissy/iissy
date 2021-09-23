@@ -58,7 +58,7 @@
 
 <script>
 import PermissionHeader from '../common/permission/header';
-import IBIcon from '../common/block/i_b_icon';
+import IBIcon from '../common/control/i_b_icon';
 import Search from "../common/form/search";
 import http from "../../utils/http";
 

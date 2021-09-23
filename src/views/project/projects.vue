@@ -56,9 +56,9 @@
 
 <script>
 import AddProjectButton from '../../components/button/common';
-import Status from '../../components/common/block/status';
+import Status from '../../components/common/control/status';
 import Search from '../../components/common/form/search';
-import User from '../../components/common/block/user';
+import User from '../../components/common/control/user';
 
 import router from '../../router';
 import http from "../../utils/http";

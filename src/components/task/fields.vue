@@ -137,7 +137,7 @@
 </template>
 
 <script>
-import User from '../common/block/suser';
+import User from '../common/control/suser';
 import Assign from './assign';
 import TaskStatus from './status';
 import TaskPriority from './priority';

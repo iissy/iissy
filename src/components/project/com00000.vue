@@ -64,8 +64,8 @@
 
 <script>
 import Search from "../common/form/search";
-import Priority from "../common/block/priority";
-import Status from '../common/block/status';
+import Priority from "../common/control/priority";
+import Status from '../common/control/status';
 import Fields from '../task/fields';
 import AddTask from '../task/add';
 

@@ -46,7 +46,7 @@
 
 <script>
 import http from "../../../utils/http";
-import Priority from "../../common/block/priority";
+import Priority from "../../common/control/priority";
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
 

@@ -22,7 +22,7 @@
 
 <script>
 import http from "../../utils/http";
-import User from '../common/block/user';
+import User from '../common/control/user';
 import Search from '../common/form/search';
 
 export default {

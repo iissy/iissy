@@ -81,8 +81,8 @@
 
 <script>
 import Com00000 from "./com00000";
-import Priority from "../common/block/priority";
-import Status from '../common/block/status';
+import Priority from "../common/control/priority";
+import Status from '../common/control/status';
 import http from "@/utils/http";
 
 export default {

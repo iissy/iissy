@@ -63,7 +63,7 @@
 import http from "../../../utils/http";
 import ProjectMangeHeader from '../../common/permission/header';
 import Search from "../../common/form/search";
-import IBIcon from '../../common/block/i_b_icon';
+import IBIcon from '../../common/control/i_b_icon';
 
 export default {
   data: function () {

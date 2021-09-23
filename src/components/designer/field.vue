@@ -67,7 +67,7 @@
 
 <script>
 import http from "../../utils/http";
-import Summary from "../common/block/summary";
+import Summary from "../common/control/summary";
 import Search from "../common/form/search";
 
 export default {

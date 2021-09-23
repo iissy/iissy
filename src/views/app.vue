@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Alert from '../components/common/block/alert';
+import Alert from '../components/common/control/alert';
 
 export default {
   name: 'App',

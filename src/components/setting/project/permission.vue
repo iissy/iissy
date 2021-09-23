@@ -21,7 +21,7 @@
 
 <script>
 import PermissionItem from '../../common/permission/permission_item';
-import Summary from "../../common/block/summary";
+import Summary from "../../common/control/summary";
 import http from "../../../utils/http";
 
 export default {

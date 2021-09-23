@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Summary from "../block/summary";
+import Summary from "../control/summary";
 
 export default {
   props: ['title', 'desc'],
