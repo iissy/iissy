@@ -38,14 +38,14 @@
           <div style="flex: 1;padding: 0 5px 0 0;">
             描述（富文本编辑）
           </div>
-          <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" v-b-modal.modal-issue-content>
+          <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" class="shadow-none" v-b-modal.modal-issue-content>
             放大浏览
           </div>
         </div>
       </div>
 
       <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :hide-footer="isDisplay"
-               cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit">
+               cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit" @close="cancelEdit">
         <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" @dblclick="editDesc" class="flex-row ck-content">
           <div v-if="isDisplay" style="padding: 20px;flex: 1;" title="双击编辑" v-html="task.desc"></div>
           <div v-else style="flex: 1;" class="flex-column">
@@ -180,8 +180,10 @@ export default {
       editorConfig: {
         toolbar: {
           items: [
-            'fontColor', 'fontBackgroundColor', 'bold', 'italic',
-            'underline', 'strikethrough', 'numberedList', 'bulletedList', 'alignment', 'link', 'blockquote', 'imageUpload'
+            'undo', 'redo', 'heading',
+            'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic',
+            'underline', 'strikethrough', '|', 'alignment', 'numberedList', 'bulletedList', 'outdent', 'indent', '|',
+            'link', 'blockquote', 'imageUpload', 'insertTable'
           ]
         },
         ckfinder: {

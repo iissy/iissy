@@ -77,5 +77,4 @@ div.ck-content blockquote { border-radius: 3px;overflow: hidden;padding: 0.5em 1
 
 :root { --ck-z-modal: 2000 !important; }
 
-#modal-issue-content .ck.ck-toolbar>.ck-toolbar__items { justify-content: center; }
 #modal-issue-content .modal-body { padding: 0; }
