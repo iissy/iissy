@@ -130,14 +130,14 @@ export default {
 .content .select .group {
   overflow-y: auto;
   width: 100%;
-  top: 40px;
+  top: 50px;
   left: 0;
   max-height: 0;
   margin: 0;
   padding: 0;
   background-color: #ff0000;
   opacity: 0;
-  transition: opacity .5s cubic-bezier(0.17, 0.51, 0.51, 0.9);
+  transition: opacity .2s linear;
 }
 .content .select .group .domain-group-header { padding: 0 15px;line-height: 34px;background-color: #f0f0f0; }
 .content .select .group .domain-item { padding: 0 15px;line-height: 34px;cursor: pointer;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; }
@@ -149,6 +149,7 @@ export default {
   max-height: 272px;
   z-index: 999;
   opacity: 1;
+  top: 40px;
 }
 /*设置展开时下拉箭头的旋转动画*/
 .content .select.open:after {
