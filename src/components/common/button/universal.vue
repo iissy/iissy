@@ -33,7 +33,7 @@ export default {
     onsubmit: function () {
       let self = this;
       if (!self.disabled) {
-        this.$emit('submit');
+        self.$emit('submit');
       }
     }
   }
