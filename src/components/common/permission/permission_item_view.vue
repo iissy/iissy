@@ -130,7 +130,7 @@ export default {
 .content .select .group {
   overflow-y: auto;
   width: 100%;
-  top: 50px;
+  top: 40px;
   left: 0;
   max-height: 0;
   margin: 0;
@@ -149,7 +149,6 @@ export default {
   max-height: 272px;
   z-index: 999;
   opacity: 1;
-  top: 40px;
 }
 /*设置展开时下拉箭头的旋转动画*/
 .content .select.open:after {
