@@ -46,8 +46,11 @@
 
       <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :hide-footer="isDisplay"
                cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit" @close="cancelEdit">
-        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" @dblclick="editDesc" class="flex-row ck-content">
-          <div v-if="isDisplay" style="padding: 20px;flex: 1;" title="双击编辑" v-html="task.desc"></div>
+        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
+          <div v-if="isDisplay" style="padding: 20px;flex: 1;">
+            <div v-html="task.desc"/>
+            <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFB90F;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
+          </div>
           <div v-else style="flex: 1;" class="flex-column">
             <div id="taskToolBar" style="flex: 0 0 auto;"></div>
             <div id="taskDescContainer" style="flex: 1;" class="flex-column">
