@@ -49,7 +49,7 @@
         <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
           <div v-if="isDisplay" style="padding: 20px;flex: 1;">
             <div v-html="task.desc"/>
-            <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFB90F;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
+            <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFA500;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
           </div>
           <div v-else style="flex: 1;" class="flex-column">
             <div id="taskToolBar" style="flex: 0 0 auto;"></div>
