@@ -41,7 +41,7 @@ Vue.use(Router);
 const routes = [
     {
         path: '/',
-        meta: { title: "爱斯园" },
+        meta: { title: "爱斯园 - 上善若水，贤贤易色" },
         name: 'Main',
         component: Main
     }, {

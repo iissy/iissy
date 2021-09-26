@@ -10,7 +10,7 @@
       </div>
     </div>
     <div style="flex: 1;">&nbsp;</div>
-    <b-popover ref="popover" target="popover-assign" triggers="focus" placement="right">
+    <b-popover ref="popover" target="popover-assign" triggers="focus" placement="bottom">
       <div style="padding: 5px;">
         <Search placeholder="搜索项目负责人"/>
       </div>
