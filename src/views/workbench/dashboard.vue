@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="flex-row" style="padding: 20px 0 0 0;flex: 1;">
-      <Tasks :tasks="tasks_assign" :count="tasks_assign.length" v-if="tasks_assign.length > 0" title="我负责的工作项"/>
-      <Tasks style="margin-left: 20px;" :tasks="tasks_owner" :count="tasks_owner.length" v-if="tasks_owner.length > 0" title="我提交的工作项"/>
-      <Tasks style="margin-left: 20px;" :tasks="tasks_watcher" :count="tasks_watcher.length" v-if="tasks_watcher.length > 0" title="我关注的工作项"/>
-      <Tasks style="margin-left: 20px;" :tasks="tasks_done" :count="tasks_done.length" v-if="tasks_done.length > 0" title="完成的工作项"/>
+      <Tasks :tasks="tasks_assign" :count="tasks_assign.length" title="我负责的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_owner" :count="tasks_owner.length" title="我提交的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_watcher" :count="tasks_watcher.length" title="我关注的工作项"/>
+      <Tasks style="margin-left: 20px;" :tasks="tasks_done" :count="tasks_done.length" title="完成的工作项"/>
     </div>
   </div>
 </template>

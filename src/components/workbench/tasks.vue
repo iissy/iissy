@@ -47,7 +47,6 @@
 <script>
 import Priority from "../common/control/priority";
 import Status from '../common/control/status';
-// import router from "../../router";
 import User from "../common/control/suser";
 
 export default {
@@ -66,13 +65,6 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
   },
-  // methods: {
-  //   task_get: function (taskUUID) {
-  //     let self = this;
-  //     let path = { name: 'TaskInTeam', params: { team: self.team, type: 'filters', task: taskUUID } };
-  //     router.push(path);
-  //   }
-  // },
   components: {
     Priority,
     Status,
