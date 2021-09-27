@@ -75,6 +75,4 @@ div.bs-popover-bottom > div.arrow::before, div.bs-popover-auto[x-placement^="bot
 
 div.ck-content blockquote { border-radius: 3px;overflow: hidden;padding: 0.5em 1em;margin-left: 0;margin-right: 0;border: 1px solid #f0f0f0;background-color: #f8f8f8;font-style: normal; }
 
-:root { --ck-z-modal: 2000 !important; }
-
 #modal-issue-content .modal-body { padding: 0; }
