@@ -1,6 +1,6 @@
 <template>
   <div class="flex-row avatar-container">
-    <div class="flex-row align-items-center">
+    <div class="flex-row align-items-center avatar-header-person-plus">
       <b-icon icon="person-plus" scale="1.5"/>
     </div>
     <div id="popover-user-center" class="avatar-center" hidefocus="true" tabindex="0">
@@ -79,9 +79,9 @@ export default {
 </script>
 
 <style scoped>
-.avatar-container { height: var(--task-line-height); }
-.avatar-center { flex: 1;align-items: center;display: flex;padding-left: 20px;overflow: hidden;margin-right: 20px;box-shadow: none;outline: none;cursor: pointer; }
-.avatar-center-icon { flex: 0 0 40px; }
+.avatar-container { height: var(--task-line-height);width: 80px; }
+.avatar-center { flex: 1;align-items: center;display: flex;padding-left: 20px;overflow: hidden;box-shadow: none;outline: none;cursor: pointer; }
+.avatar-center-icon { flex: 0 0 auto;border-radius: 30px; }
 .avatar-center-icon img { height: 30px;width: 30px;border-radius: 30px; }
 .avatar-dropdown { min-width: 188px; }
 .avatar-dropdown-item, .avatar-dropdown-header { flex: 1;padding: 0 20px 0 20px;letter-spacing: 1px;line-height: 30px; }

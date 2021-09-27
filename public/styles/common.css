@@ -5,3 +5,5 @@
 
 .task-flex-auto { flex: auto; }
 .task-flex-none { flex: none; }
+.wiki-header .avatar-header-person-plus { color: #cccccc;cursor: pointer; }
+.wiki-header .avatar-center-icon { box-shadow: 0 0 10px #ffffff; }
