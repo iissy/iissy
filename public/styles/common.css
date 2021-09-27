@@ -2,3 +2,6 @@
     --ck-z-modal: 2000 !important;
     --task-line-height: 48px;
 }
+
+.task-flex-auto { flex: auto; }
+.task-flex-none { flex: none; }

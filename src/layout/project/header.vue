@@ -1,36 +1,34 @@
 <template>
-  <div style="flex: 0 0 auto;" class="flex-column ibox">
-    <div class="app-header">
-      <div class="flex-row align-items-center" style="width: 100%;">
-        <Toggle/>
-        <div style="flex: 1;">
-          <div id="com" class="com-outline" v-if="items && items.length > 0">
-            <div style="flex: 0 0 auto;margin-right: 10px;display: flex;">
-              <DropDown :team="team" :name="projectName"/>
-            </div>
-            <div v-for="item in items" :key="item.com">
-              <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
-                <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
-                  <b-icon v-if="item.uuid === 'designer'" scale="0.9" icon="gear"></b-icon>
-                  {{ item.name }}
-                </div>
-              </router-link>
-            </div>
-            <div>
-              <router-link :class="{active: ('designer' === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'ComponentDesigner', params: { team: team, project: project, com: 'designer', attr: 'com' } }">
-                <div style="font-size: 16px;font-weight: 500;flex: 0 0 auto;">
-                  <b-icon scale="0.9" icon="gear"></b-icon>
-                  项目设置
-                </div>
-              </router-link>
-            </div>
+  <div class="flex-column ibox">
+    <div class="app-header flex-row align-items-center">
+      <Toggle/>
+      <div class="task-flex-auto">
+        <div id="com" class="com-outline" v-if="items && items.length > 0">
+          <div class="project-header-dropdown">
+            <DropDown :team="team" :name="projectName"/>
           </div>
-          <div v-else class="com-outline">&nbsp;</div>
+          <div v-for="item in items" :key="item.com">
+            <router-link :class="{active: (item.uuid === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'Component', params: { team: team, project: project, com: item.uuid } }">
+              <div class="project-header-com">
+                <b-icon v-if="item.uuid === 'designer'" scale="0.9" icon="gear"></b-icon>
+                {{ item.name }}
+              </div>
+            </router-link>
+          </div>
+          <div>
+            <router-link :class="{active: ('designer' === selectedCom)}" class="com align-items-center justify-content-center" :to="{ name:'ComponentDesigner', params: { team: team, project: project, com: 'designer', attr: 'com' } }">
+              <div class="project-header-designer">
+                <b-icon scale="0.9" icon="gear"></b-icon>
+                项目设置
+              </div>
+            </router-link>
+          </div>
         </div>
-        <UserCenterAvatar/>
+        <div v-else class="com-outline">&nbsp;</div>
       </div>
+      <UserCenterAvatar/>
     </div>
-    <div v-if="designer" style="flex: 1;line-height: 40px;height: 40px;background-color: #fafbfe;box-shadow: rgb(211 211 211) 0px 2px 4px 0px;" class="flex-row justify-content-center">
+    <div v-if="designer" class="flex-row justify-content-center project-header-designer-attr">
       <div class="attr" v-for="a in attrs" :key="a.uuid">
         <router-link :class="{active: isActive(a, attr)}" :to="{ name: 'ComponentDesigner', params: { team: team, project: project, com:'designer', attr: a.uuid } }">{{ a.name }}</router-link>
       </div>
@@ -164,6 +162,10 @@ export default {
 </script>
 
 <style scoped>
+.project-header-dropdown { flex: 0 0 auto;margin-right: 10px;display: flex; }
+.project-header-com { font-size: 16px;font-weight: 500;flex: 0 0 auto; }
+.project-header-designer { font-size: 16px;font-weight: 500;flex: 0 0 auto; }
+.project-header-designer-attr { flex: 1;line-height: 40px;height: 40px;background-color: #fafbfe;box-shadow: rgb(211 211 211) 0px 2px 4px 0px; }
 .attr { flex: 0 0 auto;padding: 0 10px;display: flex;align-items: center;margin: 5px 0; }
 .attr a { padding: 0 5px;font-size: 15px;text-decoration: none;display: flex;align-items: center;border-radius: 3px;height: 30px;line-height: 30px; }
 .attr a.active { color: #17C4BB!important;background-color: #E0EEEE; }

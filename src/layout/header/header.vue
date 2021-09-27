@@ -2,7 +2,7 @@
   <div class="flex-column ibox">
     <div class="app-header flex-row align-items-center">
       <Toggle/>
-      <div style="flex: 1;">
+      <div class="task-flex-auto">
         <WorkbenchHeader v-if="isWorkbench"/>
       </div>
       <UserCenterAvatar/>
