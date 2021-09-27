@@ -78,11 +78,8 @@ input:-ms-input-placeholder{ color:#b0b0b0; }
 
 .left-header {
     color: #ffffff;
-    padding: 0;
+    padding: 10px 10px 20px 30px;
     text-align: center;
-    margin-bottom: 20px;
-    height: 40px;
-    /*overflow: hidden;*/
 }
 
 .app-header {
