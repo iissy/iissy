@@ -102,7 +102,7 @@ export default {
 }
 
 .sidebar-logo-title { margin-left: 5px; }
-.sidebar-logo-title span { font-size: 1.5rem;font-weight: bold;color: #ffffff;letter-spacing: 3px;margin: 0 0 0 0;text-align: center; }
+.sidebar-logo-title span { font-size: 1.8rem;font-weight: bold;color: #ffffff;letter-spacing: 3px;margin: 0 0 0 0;text-align: center; }
 .sidebar-toggle-icon { cursor: pointer; }
 .sidebar-help { margin: 5px 0; }
 </style>
