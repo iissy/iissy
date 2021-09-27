@@ -41,7 +41,7 @@
         <div style="flex: 0 0 auto;padding: 0 10px 7px 10px;">
           描述（富文本编辑）
         </div>
-        <div style="margin: 0 10px;flex: 1;height: 0;border: 1px solid #ced4da;border-radius: 0.25rem;" class="flex-column">
+        <div style="margin: 0 10px;flex: 1;overflow:hidden;border: 1px solid #ced4da;border-radius: 0.25rem;" class="flex-column">
           <div style="flex: 0 0 auto;">
             <div id="addTaskToolBar"></div>
           </div>
