@@ -53,7 +53,7 @@
         <div v-else class="flex-column task-flex-auto" style="height: 100%;">
           <div id="taskToolBar" class="task-flex-none"></div>
           <div id="taskDescContainer" class="flex-column task-flex-auto task-edit-editor">
-            <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" :config="editorConfig"/>
+            <ckeditor :editor="editor" @ready="onReady" v-model="editDescModel" :config="editorConfig"/>
           </div>
         </div>
       </b-modal>
@@ -176,7 +176,6 @@ export default {
       },
       deadlineChanged: false,
       summaryEditing: false,
-      descChanged: false,
       editor: DecoupledEditor,
       editorConfig: {
         toolbar: {
@@ -194,7 +193,8 @@ export default {
           }
         }
       },
-      isDisplay: true
+      isDisplay: true,
+      editDescModel: ''
     }
   },
   props: {
@@ -210,17 +210,17 @@ export default {
   created() {
     let self = this;
     self.deadlineChanged = false;
-    self.descChanged = false;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.editorConfig.ckfinder.uploadUrl = self.urls.upload.format(self.team);
+    self.editDescModel = self.task.desc;
     self.formatDeadline();
   },
   watch: {
-    task() {
+    task(v) {
       let self = this;
       self.summaryEditing = false;
-      self.descChanged = false;
+      self.editDescModel = v;
       self.formatDeadline();
     }
   },
@@ -297,10 +297,6 @@ export default {
         self.bus.$emit("alertDanger", err.response.data.errcode);
       });
     },
-    onChangedDesc: function () {
-      let self = this;
-      self.descChanged = true;
-    },
     onShown: function () {
       let self = this;
       self.deadlineChanged = true;
@@ -309,7 +305,6 @@ export default {
       let self = this;
       if (self.deadlineChanged && ctx.selectedYMD) {
         self.hasNotTimer = false;
-        self.descChanged = false;
         let dt = new Date(ctx.selectedYMD);
         let data = { deadline: dt.getTime(), which_field: 'deadline' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
@@ -344,9 +339,8 @@ export default {
     updateDesc: function () {
       let self = this;
       self.isDisplay = true;
-      if (self.descChanged && self.task.desc) {
-        self.descChanged = false;
-        let data = { desc: self.task.desc, which_field: 'desc' };
+      if (self.task.desc) {
+        let data = { desc: self.editDescModel, which_field: 'desc' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
           if (response.data.code === 200) {
             self.bus.$emit("alertSuccess", '更新成功');
