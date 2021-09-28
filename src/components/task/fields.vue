@@ -220,7 +220,7 @@ export default {
     task(v) {
       let self = this;
       self.summaryEditing = false;
-      self.editDescModel = v;
+      self.editDescModel = v.desc;
       self.formatDeadline();
     }
   },
