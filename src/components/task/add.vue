@@ -1,9 +1,9 @@
 <template>
-  <div id="AddTask">
-    <div style="flex: 0 0 auto;flex-direction: row;text-align: left;">
+  <div id="AddTask" class="task-add">
+    <div class="task-add-btn">
       <AddTaskButton :title="title" v-b-modal.modal-add-task :plus="true"></AddTaskButton>
     </div>
-    <b-modal :no-enforce-focus="true" size="xl" scrollable id="modal-add-task" ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+    <b-modal :no-enforce-focus="true" size="xl" id="modal-add-task" scrollable ref="modal" :title="title" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" @show="resetModal" @hidden="resetModal" @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit" class="flex-column" style="flex: 1;height: 100%;">
         <div style="flex: 0 0 auto;padding: 0 10px 0 10px;">
           <b-form-group label="标题" label-for="name-input">
@@ -42,13 +42,9 @@
           描述（富文本编辑）
         </div>
         <div style="margin: 0 10px;flex: 1;min-height: 0;border: 1px solid #ced4da;border-radius: 0.25rem;" class="flex-column">
-          <div style="flex: 0 0 auto;">
-            <div id="addTaskToolBar"></div>
-          </div>
-          <div style="flex: 1;min-height: 0;" class="flex-column">
-            <div id="addTaskContainer" style="flex: 1;min-height: 380px;overflow-y: auto;" class="flex-column">
-              <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
-            </div>
+          <div id="addTaskToolBar"></div>
+          <div id="addTaskContainer" class="flex-column task-flex-auto task-add-editor">
+            <ckeditor :editor="editor" @ready="onReady" v-model="desc" :config="editorConfig"/>
           </div>
         </div>
       </form>
@@ -230,5 +226,6 @@ export default {
 </script>
 
 <style scoped>
-
+.task-add-btn { flex: 0 0 auto;flex-direction: row;text-align: left; }
+.task-add-editor { height: 380px;overflow-y: auto; }
 </style>
