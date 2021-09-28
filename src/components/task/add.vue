@@ -227,5 +227,5 @@ export default {
 
 <style scoped>
 .task-add-btn { flex: 0 0 auto;flex-direction: row;text-align: left; }
-.task-add-editor { height: 380px;overflow-y: auto; }
+.task-add-editor { overflow-y: auto;height: 2000px; }
 </style>

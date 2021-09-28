@@ -44,23 +44,21 @@
         </div>
       </div>
 
-      <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :hide-footer="isDisplay"
+      <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :dialog-class="{edit: !isDisplay}" :hide-footer="isDisplay"
                cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit" @close="cancelEdit">
-        <div style="flex: 1;overflow-y: auto;background-color: #ffffff;min-height: 500px;" class="flex-row ck-content">
-          <div v-if="isDisplay" style="padding: 20px;flex: 1;">
-            <div v-html="task.desc"/>
-            <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFA500;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
-          </div>
-          <div v-else style="flex: 1;" class="flex-column">
-            <div id="taskToolBar" style="flex: 0 0 auto;"></div>
-            <div id="taskDescContainer" style="flex: 1;" class="flex-column">
-              <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" :config="editorConfig"/>
-            </div>
+        <div v-if="isDisplay" style="padding: 20px;min-height: 500px;position: relative;" class="task-flex-auto">
+          <div v-html="task.desc"/>
+          <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFA500;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
+        </div>
+        <div v-else class="flex-column task-flex-auto" style="height: 100%;">
+          <div id="taskToolBar" class="task-flex-none"></div>
+          <div id="taskDescContainer" class="flex-column task-flex-auto task-edit-editor">
+            <ckeditor :editor="editor" @ready="onReady" v-model="task.desc" @input="onChangedDesc" :config="editorConfig"/>
           </div>
         </div>
       </b-modal>
 
-      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow: hidden;height: 180px;padding: 10px;" v-html="task.desc"/>
+      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow-y: auto;overflow-x: hidden;height: 180px;padding: 10px;" v-html="task.desc"/>
 
       <slot name="workField"></slot>
 
@@ -407,4 +405,6 @@ export default {
 .three-dots-class:hover { color: #17C4BB; }
 
 .link:hover { color: #17C4BB; }
+
+.task-edit-editor { overflow-y: auto;height: 100%;min-height: 380px; }
 </style>
