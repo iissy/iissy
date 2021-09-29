@@ -3,7 +3,12 @@
     <div class="flex-row" style="border-radius: 3px;flex: 1;">
       <div class="left flex-row align-items-center">
         <div style="flex: 1;" class="flex-row align-items-center">
-          <div style="flex: 1;font-size: 18px;">项目概览</div>
+          <div style="font-size: 18px;">项目概览</div>
+          <div class="project-overview-progress align-items-center justify-content-center task-flex-auto">
+            <b-progress :value="progressRate" variant="warning" height="2rem" striped animate>
+              <b-progress-bar :value="progressRate" :label="`${((progressRate / 100) * 100).toFixed(0)}%`"></b-progress-bar>
+            </b-progress>
+          </div>
           <div style="flex: 0 0 auto;">
             <ChangeStatus :name="item.status_uuid" style="margin-left: 5px;" :color="item.status_uuid" :team="team" :project="project"/>
           </div>
@@ -72,36 +77,19 @@
             <div>~</div>
           </div>
         </div>
+
+        <div class="project-overview-member">
+          <div style="font-size: 16px;">项目成员：</div>
+          <div class="flex-row" style="padding: 5px 0 0 0;">
+            <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
+          </div>
+        </div>
+
       </div>
       <div class="project-overview-issue-stat ibox">
         <div style="font-size: 16px;">工作项类型统计</div>
         <div style="flex: 1;margin-top: 30px;">
           <bar :chartData="chartData" :options="options" :height="canvasHeight" />
-        </div>
-      </div>
-    </div>
-    <div class="ibox project-overview">
-      <div class="project-overview-progress-header">
-        项目总进度
-      </div>
-      <div class="flex-row project-overview-progress">
-        <div style="flex: 0 0 auto;">
-          <svg t="1602158437574" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26855" width="20" height="20"><path d="M862.315789 916.210526h26.947369v80.842106H134.736842v-80.842106h26.947369c0-154.543158 99.705263-336.842105 239.831578-404.210526C261.389474 444.631579 161.684211 262.305684 161.684211 107.789474H134.736842V26.947368h754.526316v80.842106h-26.947369c0 154.516211-99.705263 336.842105-239.831578 404.210526 140.126316 67.368421 239.831579 249.667368 239.831578 404.210526zM808.421053 161.684211V107.789474H242.526316v53.894737h565.894737zM512 538.947368c-164.378947 0-296.421053 213.557895-296.421053 377.263158h592.842106c0-163.705263-132.042105-377.263158-296.421053-377.263158z" p-id="26856" fill="#515151"></path></svg>
-        </div>
-        <div style="flex: 1;margin-left: 10px;align-items: normal;" class="flex-column">
-          <div style="text-align: left;padding: 0 0 3px 0;">
-            <b-progress :value="progressRate" variant="warning" height="2rem" striped animate/>
-          </div>
-          <div style="text-align: left;color: #999999;">项目进度</div>
-        </div>
-        <div style="flex: 0 0 100px;margin-left: 10px;align-items: normal;justify-content: center;height: 100%;display: flex;" class="flex-column">
-          <div style="flex: 1;height: 100%;text-align: left;">{{ progressRate }}%</div>
-        </div>
-      </div>
-      <div class="project-overview-member">
-        <div style="font-size: 16px;">项目成员：</div>
-        <div class="flex-row" style="padding: 5px 0 0 0;">
-          <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
         </div>
       </div>
     </div>
@@ -118,9 +106,6 @@ import Avatar from "./avatar";
 export default {
   data() {
     return {
-      headerHeight: 15,
-      lineHeight: 45,
-      count: 6,
       team: '',
       project: '',
       projectName: '',
@@ -165,11 +150,9 @@ export default {
           barPercentage: 0.6,
           backgroundColor: 'rgba(255, 206, 86, 0.5)'
         }]
-      }
+      },
+      canvasHeight: 400
     }
-  },
-  created () {
-    //this.fillData();
   },
   mounted() {
     let self = this;
@@ -205,9 +188,6 @@ export default {
     Avatar
   },
   computed: {
-    canvasHeight() {
-      return this.headerHeight + this.count * this.lineHeight;
-    },
     progressRate() {
       let self = this;
       if (self.item.to_do_count + self.item.in_progress_count + self.item.done_count === 0) {
@@ -235,8 +215,7 @@ export default {
 .project-overview { flex: 1;margin-top: 20px; }
 .project-overview-info { flex: 1 1 50%;margin-right: 10px;padding: 20px;max-width: 50%; }
 .project-overview-issue-stat { flex: 1 1 50%;margin-left: 10px;padding: 20px;max-width: 50%; }
-.project-overview-progress-header { padding: 20px;font-size: 16px; }
-.project-overview-progress { flex: 1;padding: 0 0 20px 20px; }
+.project-overview-progress { padding: 0 20px; }
 .project-overview-time { flex: 1;justify-content: space-between;margin-top: 50px; }
-.project-overview-member { flex: 1;padding: 20px; }
+.project-overview-member { flex: 1;margin-top: 50px; }
 </style>
