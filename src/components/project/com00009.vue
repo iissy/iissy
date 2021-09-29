@@ -69,12 +69,36 @@
             <ProjectAssign :user="item.assign"></ProjectAssign>
           </div>
           <div style="flex: 1;padding: 5px;">
-            <div>开始时间</div>
-            <div>~</div>
+            <div style="padding-left: 7px;">开始时间</div>
+            <div class="field-cell-time header edit">
+              <b-form-datepicker
+                  size="sm"
+                  v-model="planStartTime"
+                  v-bind="zh"
+                  :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
+                  :no-flip="true"
+                  :hide-header="true"
+                  @shown="onShownStart"
+                  @context="onContextStart"
+                  placeholder="未设置">
+              </b-form-datepicker>
+            </div>
           </div>
           <div style="flex: 1;padding: 5px;">
-            <div>结束时间</div>
-            <div>~</div>
+            <div style="padding-left: 7px;">结束时间</div>
+            <div class="field-cell-time header edit">
+              <b-form-datepicker
+                  size="sm"
+                  v-model="planEndTime"
+                  v-bind="zh"
+                  :date-format-options="{ 'year': 'numeric', 'month': 'numeric', 'day': 'numeric' }"
+                  :no-flip="true"
+                  :hide-header="true"
+                  @shown="onShownEnd"
+                  @context="onContextEnd"
+                  placeholder="未设置">
+              </b-form-datepicker>
+            </div>
           </div>
         </div>
 
@@ -151,7 +175,33 @@ export default {
           backgroundColor: 'rgba(255, 206, 86, 0.5)'
         }]
       },
-      canvasHeight: 400
+      canvasHeight: 400,
+      zh: {
+        weekdayHeaderFormat: 'narrow',
+        labelPrevDecade: '过去十年',
+        labelPrevYear: '上一年',
+        labelPrevMonth: '上个月',
+        labelCurrentMonth: '当前月份',
+        labelNextMonth: '下个月',
+        labelNextYear: '明年',
+        labelNextDecade: '下一个十年',
+        labelToday: '今天',
+        labelSelected: '选定日期',
+        labelNoDateSelected: '未选择日期',
+        labelCalendar: '日历',
+        labelNav: '日历导航',
+        labelHelp: '使用光标键浏览日期'
+      },
+      planChanged: false,
+      planStartTime: '',
+      planEndTime: ''
+    }
+  },
+  watch: {
+    item(v) {
+      let self = this;
+      self.planStartTime = v.plan_start_time ? new Date(v.plan_start_time) : "";
+      self.planEndTime = v.plan_end_time ? new Date(v.plan_end_time) : "";
     }
   },
   mounted() {
@@ -179,6 +229,46 @@ export default {
         self.chartData2.datasets[2].data = response.data.datas[2];
         self.chartData = self.chartData2;
       });
+    },
+    onShownStart: function () {
+      let self = this;
+      self.planChanged = true;
+    },
+    onShownEnd: function () {
+      let self = this;
+      self.planChanged = true;
+    },
+    onContextStart: function (ctx) {
+      let self = this;
+      if (self.planChanged && ctx.selectedYMD) {
+        self.planChanged = false;
+        let dt = new Date(ctx.selectedYMD);
+        let data = { plan_start_time: dt.getTime() };
+        http.post(self.urls.project_plan_update.format(self.team, self.project), data).then(function (response) {
+          if (response.data.code === 200) {
+            self.bus.$emit("alertSuccess", '更新成功');
+            self.project_get();
+          }
+        }).catch(function (err) {
+          self.bus.$emit("alertDanger", err.response.data.errcode);
+        });
+      }
+    },
+    onContextEnd: function (ctx) {
+      let self = this;
+      if (self.planChanged && ctx.selectedYMD) {
+        self.planChanged = false;
+        let dt = new Date(ctx.selectedYMD);
+        let data = { plan_end_time: dt.getTime() };
+        http.post(self.urls.project_plan_update.format(self.team, self.project), data).then(function (response) {
+          if (response.data.code === 200) {
+            self.bus.$emit("alertSuccess", '更新成功');
+            self.project_get();
+          }
+        }).catch(function (err) {
+          self.bus.$emit("alertDanger", err.response.data.errcode);
+        });
+      }
     }
   },
   components: {

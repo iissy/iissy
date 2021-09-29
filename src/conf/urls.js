@@ -52,6 +52,7 @@ let urls = {
     project_status: '/api/team/{0}/projects/status',
     project_add: '/api/team/{0}/projects/add',
     project_update: '/api/team/{0}/project/{1}/update',
+    project_plan_update: '/api/team/{0}/project/{1}/update_plan',
     project_first_component: '/api/team/{0}/project/{1}/components/first',
     project_template: '/api/team/{0}/project/{1}/setting/template',
     project_get: '/api/team/{0}/project/{1}',

@@ -82,7 +82,7 @@
         </div>
         <div class="flex-row field-row">
           <div class="field-cell">截止日期</div>
-          <div class="field-cell-time header edit" :class="{none: hasNotTimer}">
+          <div class="field-cell-time header edit">
             <b-form-datepicker
                 size="sm"
                 v-model="deadline"
@@ -156,7 +156,6 @@ export default {
       optionValue: '',
       options: [],
       selectField: '',
-      hasNotTimer: true,
       deadline: '',
       zh: {
         weekdayHeaderFormat: 'narrow',
@@ -238,10 +237,8 @@ export default {
     formatDeadline: function () {
       let self = this;
       if (self.task.deadline) {
-        self.hasNotTimer = false;
         self.deadline = new Date(self.task.deadline);
       } else {
-        self.hasNotTimer = true;
         self.deadline = null;
         return null;
       }
@@ -304,7 +301,7 @@ export default {
     onContext: function (ctx) {
       let self = this;
       if (self.deadlineChanged && ctx.selectedYMD) {
-        self.hasNotTimer = false;
+        self.deadlineChanged = false;
         let dt = new Date(ctx.selectedYMD);
         let data = { deadline: dt.getTime(), which_field: 'deadline' };
         http.post(self.urls.task_update.format(self.team, self.project, self.issue_type, self.task.uuid), data).then(function (response) {
