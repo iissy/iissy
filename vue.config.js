@@ -1,5 +1,5 @@
 module.exports = {
-    // publicPath:'https://cdn.jsdelivr.net/gh/iissy/soul@main/dist',
+    // publicPath:'https://cdn.jsdelivr.net/gh/jitask/jitask/dist',
     devServer: {
         proxy: {
             '/proxy': {
