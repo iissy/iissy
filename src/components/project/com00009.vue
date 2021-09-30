@@ -3,7 +3,7 @@
     <div class="flex-row" style="border-radius: 3px;flex: 1;">
       <div class="left flex-row align-items-center">
         <div style="flex: 1;" class="flex-row align-items-center">
-          <div style="font-size: 18px;">项目概览</div>
+          <div style="font-size: 18px;">项目进度</div>
           <div class="project-overview-progress align-items-center justify-content-center task-flex-auto">
             <b-progress :value="progressRate" variant="warning" height="2rem" striped animate>
               <b-progress-bar :value="progressRate" :label="`${((progressRate / 100) * 100).toFixed(0)}%`"></b-progress-bar>
