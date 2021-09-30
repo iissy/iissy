@@ -127,9 +127,17 @@
       <div class="watchers flex-row" style="flex: 1;">
         <User v-for="u in task.watchers" :user="u" :key="u.uuid" :includeName="false"/>
       </div>
-      <div style="flex: 0 0 auto;cursor: pointer;" class="flex-row align-items-center watch" @click="watchers_add">
+      <div v-if="watched" style="flex: 0 0 auto;cursor: pointer;" class="flex-row align-items-center watch" @click="watchers_cancel">
         <div style="flex: 0 0 auto;color: inherit;">
-          <b-icon icon="binoculars-fill"/>
+          <b-icon icon="eye-slash"/>
+        </div>
+        <div style="flex: 0 0 auto;margin-left: 5px;color: inherit;">
+          取消关注
+        </div>
+      </div>
+      <div v-else style="flex: 0 0 auto;cursor: pointer;" class="flex-row align-items-center watch" @click="watchers_add">
+        <div style="flex: 0 0 auto;color: inherit;">
+          <b-icon icon="eyeglasses"/>
         </div>
         <div style="flex: 0 0 auto;margin-left: 5px;color: inherit;">
           关注
@@ -146,6 +154,7 @@ import TaskStatus from './status';
 import TaskPriority from './priority';
 import http from "../../utils/http";
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import { getUser } from '@/filters';
 
 export default {
   data() {
@@ -193,7 +202,8 @@ export default {
         }
       },
       isDisplay: true,
-      editDescModel: ''
+      editDescModel: '',
+      watched: false
     }
   },
   props: {
@@ -214,6 +224,7 @@ export default {
     self.editorConfig.ckfinder.uploadUrl = self.urls.upload.format(self.team);
     self.editDescModel = self.task.desc;
     self.formatDeadline();
+    self.checkWatcher();
   },
   watch: {
     task(v) {
@@ -221,6 +232,7 @@ export default {
       self.summaryEditing = false;
       self.editDescModel = v.desc;
       self.formatDeadline();
+      self.checkWatcher();
     }
   },
   computed: {
@@ -246,7 +258,19 @@ export default {
     watchers_add: function () {
       let self = this;
       self.team = self.$route.params.team;
-      http.post(self.urls.watchers_add.format(self.team, self.task.uuid), {}).then(function (response) {
+      http.post(self.urls.watchers_update.format(self.team, self.project, self.task.uuid, 'add')).then(function (response) {
+        if (response.data.code === 200) {
+          self.bus.$emit("alertSuccess", '更新成功');
+          self.$parent.task_get(self.task.uuid);
+        }
+      }).catch(function (err) {
+        self.bus.$emit("alertDanger", err.response.data.errcode);
+      });
+    },
+    watchers_cancel: function () {
+      let self = this;
+      self.team = self.$route.params.team;
+      http.post(self.urls.watchers_update.format(self.team, self.project, self.task.uuid, 'cancel')).then(function (response) {
         if (response.data.code === 200) {
           self.bus.$emit("alertSuccess", '更新成功');
           self.$parent.task_get(self.task.uuid);
@@ -355,6 +379,18 @@ export default {
     cancelEdit: function () {
       let self = this;
       self.isDisplay = true;
+    },
+    checkWatcher: function () {
+      let self = this;
+      self.watched = false;
+      let uuid = getUser();
+      if (self.task.watchers) {
+        for (let i=0;i<self.task.watchers.length;i++) {
+          if (self.task.watchers[i].uuid === uuid) {
+            self.watched = true;
+          }
+        }
+      }
     }
   }
 }
