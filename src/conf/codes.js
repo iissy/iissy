@@ -5,7 +5,7 @@ let codes = {
     Phone: '手机号码',
     AuthFailure: '授权失败',
     InvalidParameter: '参数无效',
-    InvalidToken: '凭证无效',
+    InvalidToken: '登录凭证失效',
     MissingToken: '缺失凭证',
     AlreadyExists: '已经存在',
     PhoneExists: '手机号码存在',

@@ -104,7 +104,7 @@
 
         <div class="project-overview-member">
           <div style="font-size: 16px;">项目成员：</div>
-          <div class="flex-row" style="padding: 5px 0 0 0;">
+          <div class="flex-row" style="padding: 10px 0 0 0;">
             <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
           </div>
         </div>

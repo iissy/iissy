@@ -46,7 +46,7 @@
 
       <b-modal size="xl" scrollable :title="task.summary" id="modal-issue-content" no-close-on-backdrop :dialog-class="{edit: !isDisplay}" :hide-footer="isDisplay"
                cancel-title="取消" ok-title="确定" @ok="updateDesc" @cancel="cancelEdit" @close="cancelEdit">
-        <div v-if="isDisplay" style="padding: 20px;min-height: 500px;position: relative;" class="task-flex-auto">
+        <div v-if="isDisplay" style="padding: 20px;min-height: 500px;position: relative;" class="task-flex-auto ck-content">
           <div v-html="task.desc"/>
           <div style="position: absolute;right: 20px;top: 0;line-height: 1.2;padding: 5px 10px;background-color: #FFA500;color:#ffffff;cursor: pointer;" @click="editDesc">编辑</div>
         </div>
@@ -58,7 +58,7 @@
         </div>
       </b-modal>
 
-      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow-y: auto;overflow-x: hidden;height: 180px;padding: 10px;" v-html="task.desc"/>
+      <div style="border: 1px solid #e8e8e8;flex: 0 0 auto;margin-top: 5px;border-radius: 5px;overflow-y: auto;overflow-x: hidden;height: 180px;padding: 10px;" class="ck-content" v-html="task.desc"/>
 
       <slot name="workField"></slot>
 

@@ -28,7 +28,7 @@ import * as errors from '../../../filters';
 export default {
   data() {
     return {
-      dismissCountDown: 3,
+      dismissCountDown: 2,
       messages: [],
       index: 0
     }
@@ -73,6 +73,9 @@ export default {
           case "PermissionDenied":
             result = errors.PermissionDenied(codeArray);
             break;
+          case "AuthFailure":
+            result = errors.AuthFailure(codeArray);
+            break;
           default:
             result = code
             break;
@@ -98,7 +101,7 @@ export default {
 .alert-box .alert { padding: 0 15px 0 10px;border: 1px solid transparent;margin-bottom: 0;flex-direction: column;flex: 1;justify-content: center;display: flex; }
 
 .alert-box.shake {
-  animation: shake .3s cubic-bezier(.17,.92,.1,.95) 0s 1;
+  animation: shake .1s cubic-bezier(.74,.41,.45,.82) 0s 1;
 }
 @keyframes shake {
   0% {

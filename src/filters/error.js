@@ -48,6 +48,19 @@ export function VerificationFailure(codeArray) {
     return result;
 }
 
+// 用户授权失败，比如登录失败或者 token 过期
+// 格式：AuthFailure.REASON
+// ex. AuthFailure.InvalidPassword
+// ex. AuthFailure.InvalidToken
+export function AuthFailure(codeArray) {
+    let result = "";
+    if (codeArray.length === 2) {
+        result = codes[codeArray[1]];
+    }
+
+    return result;
+}
+
 // 格式: AlreadyExists.MODEL[.REASON]
 // ex. AlreadyExists.Task
 // ex. AlreadyExists.Field.NameConflict

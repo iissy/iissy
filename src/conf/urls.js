@@ -3,6 +3,8 @@ import config from "./config";
 let urls = {
     team_create: '/api/team',
     login_url: '/api/login',
+    check_login_status: "/api/check_login_status",
+    logout: '/api/logout',
     verify_phone: '/api/verify_phone/{0}',
     send_phone_code: '/api/send_phone_code/{0}',
     team_get: '/api/team/{0}',
@@ -107,8 +109,6 @@ let urls = {
 
     field_option_value_list: '/api/team/{0}/project/{1}/issue_type/{2}/field/{3}/list',
     field_option_update: '/api/team/{0}/project/{1}/issue_type/{2}/update_field_option',
-
-    logout: '/api/logout',
 };
 
 export default urls;
