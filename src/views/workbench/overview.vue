@@ -33,8 +33,8 @@ import http from "../../utils/http";
 export default {
   data() {
     return {
-      projects: [],
-      spaces: []
+      projects: [{uuid: 'none'}],
+      spaces: [{uuid: 'none'}]
     }
   },
   created () {
