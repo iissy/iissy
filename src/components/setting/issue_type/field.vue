@@ -99,11 +99,11 @@ export default {
   },
   mounted() {
     let self = this;
-    self.project_list();
+    self.field_list();
 
   },
   methods: {
-    project_list: function() {
+    field_list: function() {
       let self = this;
       http.post(this.urls.issue_type_field_list.format(self.team)).then(function (response) {
         self.items = response.data;
@@ -154,6 +154,7 @@ export default {
       };
       http.post(self.urls.issue_type_field_update.format(self.team, self.uuid), data).then(function (response) {
         if (response.data.code === 200) {
+          self.field_list();
           self.bus.$emit("alertSuccess", '更新成功');
         }
       }).catch(function (err) {
