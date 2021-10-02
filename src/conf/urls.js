@@ -43,7 +43,7 @@ let urls = {
     issue_type_template_get: '/api/team/{0}/issue_type/{1}/get_issue_type_template',
     issue_type_field_list: '/api/team/{0}/issue_type_field',
     issue_type_field_option_list: '/api/team/{0}/issue_type_field_options/{1}',
-    issue_type_field_update: '/api/team/{0}/issue_type_field/update',
+    issue_type_field_update: '/api/team/{0}/issue_type_field/{1}/update',
     issue_type_list: '/api/team/{0}/issue_type_list',
     issue_type_priority: '/api/team/{0}/issue_type_priority',
     issue_type_status: '/api/team/{0}/issue_type_status',

@@ -146,12 +146,13 @@ export default {
     },
     submit: function () {
       let self = this;
-      let data = {
-        uuid: self.uuid,
-        name: self.name,
-        options: self.options
-      }
-      http.post(self.urls.issue_type_field_update.format(self.team), data).then(function (response) {
+      let data = {field: {
+          uuid: self.uuid,
+          name: self.name,
+          options: self.options
+        }
+      };
+      http.post(self.urls.issue_type_field_update.format(self.team, self.uuid), data).then(function (response) {
         if (response.data.code === 200) {
           self.bus.$emit("alertSuccess", '更新成功');
         }
