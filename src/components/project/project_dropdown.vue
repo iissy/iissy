@@ -33,7 +33,7 @@ export default {
       let self = this;
       self.isShow = true;
       let url = self.urls.team_project_list.format(self.team);
-      let params = { category: 2, name: "" }
+      let params = { categories: [2], name: "" }
       http.post(url, params).then(function (response) {
         self.projects = response.data;
       });

@@ -104,7 +104,8 @@ export default {
     project_list: function() {
       let self = this;
       let url = self.urls.team_project_list.format(self.team);
-      let params = { category: self.cur, name: self.name }
+      let categories = self.cur === 0 ? [] : [self.cur];
+      let params = { categories: categories, name: self.name }
       http.post(url, params).then(function (response) {
         self.items = response.data;
         self.tasks_completed = true;
