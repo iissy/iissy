@@ -66,7 +66,7 @@ import http from "../../utils/http";
 export default {
   data: function () {
     return {
-      cur: 2,
+      cur: 0,
       team: '',
       com: '',
       tabTitle: ['全部项目', '未开始', '进行中', '已完成'],

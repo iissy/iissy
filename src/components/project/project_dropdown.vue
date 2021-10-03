@@ -5,7 +5,7 @@
       <div style="font-size: 16px;">{{ name }}</div>
       <b-popover ref="popover" target="popover-project" triggers="focus" placement="bottom" @show="project_list" @hidden="fnHidden">
         <div style="max-height: 234px;overflow-y:auto;overflow-x: hidden;margin: 3px 0;">
-          <div style="padding: 5px 10px;" v-for="p in projects" :key="p.uuid" class="status-item">
+          <div style="padding: 5px 20px 5px 10px;" v-for="p in projects" :key="p.uuid" class="status-item">
             <router-link :to="{ name:'Project', params: { team: team, project: p.uuid } }">{{ p.name }}</router-link>
           </div>
         </div>
