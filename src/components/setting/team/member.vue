@@ -3,7 +3,7 @@
     <div class="left-team-tree ibox">
       <div style="font-size: 18px;margin-bottom: 20px;flex: 0 0 auto;padding: 20px 0 0 20px;">组织架构</div>
       <div style="padding-right: 10px;">
-        <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" @open="fn_show" v-if="departmentTree && departmentTree.opened"/>
+        <DepartmentTree :tree="departmentTree" :selected="departmentUUID" :team="team" v-if="departmentTree && departmentTree.opened"/>
       </div>
     </div>
     <div class="right-member-list ibox">
@@ -64,7 +64,6 @@ export default {
   data: function () {
     return {
       team: '',
-      departmentOption: [],
       departmentTree: {},
       fields: [
         { key: 'name', label: '用户名' },
@@ -76,13 +75,9 @@ export default {
         { key: 'op', label: '操作' }
       ],
       members: [],
-      nameState: null,
-      selectedDepartment: '',
-      email: '',
       show: false,
       modifyMember: {},
       modify_title: '',
-      inside: false,
       departMembers: [],
       departmentUUID: 'all'
     };
@@ -124,15 +119,7 @@ export default {
     setValue: function (item) {
       let self = this;
       self.modifyMember = item;
-    },
-    fn_show: function () {
-      let self = this;
-      self.show = true;
     }
   }
 };
 </script>
-
-<style scoped>
-
-</style>
