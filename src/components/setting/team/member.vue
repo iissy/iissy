@@ -75,16 +75,16 @@ export default {
         { key: 'access_time', label: '最后访问时间' },
         { key: 'op', label: '操作' }
       ],
-      items: [],
+      members: [],
       nameState: null,
       selectedDepartment: '',
       email: '',
       show: false,
       modifyMember: {},
       modify_title: '',
-      departmentUUID: 'all',
       inside: false,
-      departMembers: []
+      departMembers: [],
+      departmentUUID: 'all'
     };
   },
   components: {
@@ -97,12 +97,8 @@ export default {
   watch: {
     '$route' () {
       let self = this;
-      if (self.departmentUUID === 'all') {
-        self.get_department_tree();
-        self.get_team_members();
-      } else {
-        self.get_depart_members();
-      }
+      self.get_department_tree();
+      self.get_team_members();
     }
   },
   created: function () {
@@ -110,61 +106,19 @@ export default {
     self.team = self.$route.params.team;
     self.get_department_tree();
     self.get_team_members();
-    if (self.departmentUUID !== 'all') {
-      self.get_depart_members();
-    }
   },
   methods: {
     get_department_tree: function () {
       let self = this;
       http.get(self.urls.team_department_tree.format(self.team)).then(function (response) {
-        self.set_opened_attr(response.data);
-        self.find_department(response.data);
         response.data.opened = true;
         self.departmentTree = response.data;
       });
     },
-    set_opened_attr: function (t) {
-      let self = this;
-      t.opened = false;
-      if (t.children && t.children.length > 0) {
-        for (let i=0;i<t.children.length;i++) {
-          self.set_opened_attr(t.children[i]);
-        }
-      }
-    },
-    find_department: function (tree) {
-      let self = this;
-      if (tree.children && tree.children.length > 0) {
-        for (let i=0;i<tree.children.length;i++) {
-          let depart = tree.children[i];
-          if (depart.uuid === self.departmentUUID) {
-            tree.opened = true;
-            self.inside = true;
-          } else {
-            self.find_department(depart);
-          }
-
-          if (self.inside) {
-            break;
-          }
-        }
-      }
-
-      if (self.inside) {
-        tree.opened = true;
-      }
-    },
     get_team_members: function() {
       let self = this;
       http.get(self.urls.team_member_list.format(self.team)).then(function (response) {
-        self.items = response.data;
-      });
-    },
-    get_depart_members: function() {
-      let self = this;
-      http.get(self.urls.department_member_list.format(self.team, self.departmentUUID)).then(function (response) {
-        self.departMembers = response.data;
+        self.members = response.data;
       });
     },
     setValue: function (item) {
@@ -175,22 +129,10 @@ export default {
       let self = this;
       self.show = true;
     }
-  },
-  computed: {
-    members: function () {
-      let self = this;
-      if (self.departmentUUID === 'all') {
-        return self.items;
-      } else {
-        return self.departMembers;
-      }
-    }
   }
 };
 </script>
 
 <style scoped>
-.tree-item { cursor: pointer;line-height: 30px; }
-.left-team-tree .active { background-color: #f3f3f3; }
-.tree-item:hover { background-color: #F0FFFF; }
+
 </style>
