@@ -19,8 +19,6 @@ let urls = {
     team_user_get: '/api/team/{0}/user/{1}',
     upload: config.upload_url,
 
-    department_member_list: '/api/team/{0}/department/{1}/list',
-
     space_add: '/api/team/{0}/spaces/add',
     space_get: '/api/team/{0}/space/{1}',
     space_update: '/api/team/{0}/space/{1}/update',
