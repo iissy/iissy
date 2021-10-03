@@ -72,8 +72,8 @@
               <div class="none" v-else>未设置</div>
             </div>
             <div style="position: absolute;" class="edit ibox" :class="{open: visible && selectField === c.uuid}">
-              <div v-for="option in options" class="option-item" :key="option.uuid" @click="updateOption(c.uuid, option.uuid)">
-                <div style="color: #909090;">
+              <div v-for="option in options" class="option-item flex-row align-items-center" :key="option.uuid" @click="updateOption(c.uuid, option.uuid)">
+                <div style="color: #909090;" class="task-flex-auto">
                   {{ option.value }}
                 </div>
               </div>
@@ -418,14 +418,14 @@ export default {
   /*transition: max-height .3s ease-out;*/
 }
 .option .open.edit {
-  max-height: 170px;
+  max-height: 180px;
   /*-webkit-animation: slide-down .3s ease-in;*/
   /*transition: max-height .3s ease-in;*/
   transform-origin: 50% 0;
   box-shadow: 0 1px 6px rgba(0,0,0,0.2);
   z-index: 9999;
 }
-.option-item { padding: 5px; }
+.option-item { padding: 0 10px;height: 30px; }
 .option-item:hover { background-color: #eff6fd; }
 
 .three-dots-class { color: #666666;flex: 0 0 30px;cursor: pointer; }
