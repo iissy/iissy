@@ -74,7 +74,7 @@ export default {
     get_role_members: function() {
       let self = this;
       self.roles = [];
-      http.post(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
+      http.post(self.urls.project_members.format(self.team, self.project)).then(function (response) {
         self.items = response.data;
         let roleUUIDs = []
         for (let i=0;i<self.items.length;i++) {

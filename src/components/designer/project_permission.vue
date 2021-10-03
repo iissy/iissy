@@ -76,7 +76,7 @@ export default {
     },
     GetRoleMembers: function () {
       let self = this;
-      http.get(self.urls.role_members.format(self.team, self.project)).then(function (response) {
+      http.get(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
         if(response.data && response.data.role_members && response.data.role_members.length > 0) {
           for (let i = 0; i < response.data.role_members.length; i++) {
             let role_member = response.data.role_members[i];

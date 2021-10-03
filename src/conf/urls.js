@@ -54,13 +54,12 @@ let urls = {
     project_get: '/api/team/{0}/project/{1}',
     status_data_list: '/api/team/{0}/project/{1}/status_data_list',
     project_change_assign: '/api/team/{0}/project/{1}/change_assign',
+    project_members: '/api/team/{0}/project/{1}/project_members',
     project_role_members: '/api/team/{0}/project/{1}/project_role_members',
     project_member_add: '/api/team/{0}/project/{1}/members/add',
     project_change_status: '/api/team/{0}/project/{1}/project_change_status',
     project_user_domain_group: '/api/team/{0}/project/{1}/project_user_domain_group',
     project_delete: '/api/team/{0}/project/{1}/delete',
-
-    role_members: '/api/team/{0}/project/{1}/role_members',
 
     project_issue_type_field: '/api/team/{0}/project/{1}/issue_type/{2}/field',
     project_issue_type_flow: '/api/team/{0}/project/{1}/issue_type/{2}/get_project_issue_type_flow',

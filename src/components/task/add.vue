@@ -160,7 +160,7 @@ export default {
     },
     users_list: function (p) {
       let self = this;
-      http.post(self.urls.project_role_members.format(self.team, p)).then(function (response) {
+      http.post(self.urls.project_members.format(self.team, p)).then(function (response) {
         self.assigns = response.data;
         self.assignSelect = self.assigns[0].uuid;
       });

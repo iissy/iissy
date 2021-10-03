@@ -40,7 +40,7 @@ export default {
   methods: {
     users_list: function () {
       let self = this;
-      http.post(self.urls.project_role_members.format(self.team, self.project)).then(function (response) {
+      http.post(self.urls.project_members.format(self.team, self.project)).then(function (response) {
         self.users = response.data;
       });
     },
