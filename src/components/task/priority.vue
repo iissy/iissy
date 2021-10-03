@@ -44,12 +44,12 @@ export default {
   created() {
     let self = this;
     self.team = self.$route.params.team;
-    self.priority_options_get();
+    self.get_task_priority_options();
   },
   methods: {
-    priority_options_get: function() {
+    get_task_priority_options: function() {
       let self = this;
-      http.get(self.urls.priority_options_get.format(self.team)).then(function (response) {
+      http.get(self.urls.task_priority_options.format(self.team)).then(function (response) {
             self.options = response.data;
       });
     },

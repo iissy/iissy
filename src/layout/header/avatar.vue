@@ -66,7 +66,7 @@ export default {
     },
     get_user: function() {
       let self = this;
-      let url = self.urls.user_get.format(self.team, getUser());
+      let url = self.urls.team_user_get.format(self.team, getUser());
       http.get(url).then(function (response) {
         self.user = response.data;
       });

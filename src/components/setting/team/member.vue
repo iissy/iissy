@@ -117,7 +117,7 @@ export default {
   methods: {
     get_department_tree: function () {
       let self = this;
-      http.get(self.urls.department_tree.format(self.team)).then(function (response) {
+      http.get(self.urls.team_department_tree.format(self.team)).then(function (response) {
         self.set_opened_attr(response.data);
         self.find_department(response.data);
         response.data.opened = true;

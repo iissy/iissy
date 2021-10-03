@@ -43,7 +43,7 @@ export default {
   methods: {
     user_get: function () {
       let self = this;
-      http.get(self.urls.user_get.format(self.team, self.item.owner_uuid)).then(function (response) {
+      http.get(self.urls.team_user_get.format(self.team, self.item.owner_uuid)).then(function (response) {
         self.user = response.data;
       });
     }
