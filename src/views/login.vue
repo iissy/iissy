@@ -17,7 +17,7 @@
       </div>
       <div style="position: absolute;width: 600px;height: 400px;background-color: #ffffff;border-radius: 5px;" class="enter flex-column justify-content-center">
         <div style="flex: 1;padding: 60px 60px;" class="flex-column">
-          <div style="font-size: 18px;" class="flex-row align-items-center">登录 Jitask 项目管理系统<sup style="color: #17C4BB;">beta</sup></div>
+          <div style="font-size: 18px;" class="flex-row align-items-center">登录 Jitask 项目管理系统<sup style="color: #17C4BB;margin-left: 5px;">beta</sup></div>
           <div class="flex-row align-items-center" style="padding: 30px 0;">
             <input type="text" v-model="s_email" class="login-name" placeholder="Email" autocomplete="off"/>
           </div>
