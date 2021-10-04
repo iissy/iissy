@@ -8,7 +8,7 @@
           <b-icon v-else @click="pin" icon="star" scale="1.3"></b-icon>
         </div>
       </div>
-      <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">{{ desc }}</div>
+      <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">更新于 {{ project.task_update_time/1000 | timeFormat }}</div>
     </div>
     <div style="flex: 1;" class="flex-row align-items-center">
       <div style="flex: 1;">
@@ -87,11 +87,6 @@ export default {
       }).catch(function (err) {
         self.bus.$emit('alertDanger', err.response.data.errcode);
       });
-    }
-  },
-  computed: {
-    desc: function () {
-      return "最近页面更新于 8 小时前"
     }
   },
   components: {
