@@ -1,7 +1,7 @@
 <template>
   <div class="flex-row avatar-container">
     <div class="flex-row align-items-center avatar-header-person-plus">
-      <b-icon icon="person-plus" scale="1.5"/>
+      <router-link :to="{ name: 'TeamSetting', params: { team: team, type: 'member', title: '组织架构' } }"><b-icon icon="person-plus" scale="1.5"/></router-link>
     </div>
     <div id="popover-user-center" class="avatar-center" hidefocus="true" tabindex="0">
       <div class="align-items-center flex-row avatar-center-icon">
@@ -48,7 +48,8 @@ export default {
   data() {
     return {
       show: false,
-      user: {}
+      user: {},
+      team: ''
     }
   },
   created() {
