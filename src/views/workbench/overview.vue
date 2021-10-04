@@ -50,9 +50,8 @@ export default {
   methods: {
     project_list: function() {
       let self = this;
-      let url = self.urls.team_project_list.format(self.team);
-      let params = { categories: [1, 2], name: "" }
-      http.post(url, params).then(function (response) {
+      let url = self.urls.team_recent_projects.format(self.team);
+      http.post(url).then(function (response) {
         self.projects = response.data;
         self.space_list();
       });

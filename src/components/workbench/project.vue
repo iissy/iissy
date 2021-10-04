@@ -3,8 +3,9 @@
     <div style="flex: 0 0 auto;">
       <div style="flex: 0 0 auto;color: #333333;padding-right: 5px;" class="flex-row align-items-center">
         <div style="flex: 1;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;font-size: 15px;">{{ project.name }}</div>
-        <div style="flex: 0 0 auto;align-content: end;" class="pin-star">
-          <b-icon @click="setPin" icon="star" scale="1.3"></b-icon>
+        <div style="flex: 0 0 auto;align-content: end;" :class="{pined: project.is_pin}" class="pin-star">
+          <b-icon v-if="project.is_pin" @click="unPin" icon="star-fill" scale="1.3"></b-icon>
+          <b-icon v-else @click="pin" icon="star" scale="1.3"></b-icon>
         </div>
       </div>
       <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">{{ desc }}</div>
@@ -20,6 +21,7 @@
 <script>
 import router from "../../router";
 import Pie from '../../chart/pie';
+import http from "@/utils/http";
 
 export default {
   data() {
@@ -64,8 +66,27 @@ export default {
       let self = this;
       router.push({ name: 'Project', params: { team: self.team, project: self.project.uuid } });
     },
-    setPin: function (event) {
+    pin: function (event) {
+      let self = this;
       event.stopPropagation();
+      http.post(self.urls.project_pin.format(self.team, self.project.uuid)).then(function (response) {
+        if(response.data.code === 200) {
+          self.$parent.project_list();
+        }
+      }).catch(function (err) {
+        self.bus.$emit('alertDanger', err.response.data.errcode);
+      });
+    },
+    unPin: function (event) {
+      let self = this;
+      event.stopPropagation();
+      http.post(self.urls.project_unpin.format(self.team, self.project.uuid)).then(function (response) {
+        if(response.data.code === 200) {
+          self.$parent.project_list();
+        }
+      }).catch(function (err) {
+        self.bus.$emit('alertDanger', err.response.data.errcode);
+      });
     }
   },
   computed: {
@@ -80,5 +101,5 @@ export default {
 </script>
 
 <style scoped>
-.pin-star:hover { color: #f0a100; }
+.pin-star.pined,.pin-star:hover { color: #f0a100; }
 </style>

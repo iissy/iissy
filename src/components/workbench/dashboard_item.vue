@@ -3,9 +3,6 @@
     <div style="flex: 0 0 auto;">
       <div style="flex: 0 0 auto;color: #333333;padding-right: 5px;" class="flex-row align-items-center">
         <div style="flex: 1;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;font-size: 15px;">{{name}}</div>
-        <div style="flex: 0 0 auto;align-content: end;" class="pin-star">
-          <b-icon @click="setPin" icon="star" scale="1.3"></b-icon>
-        </div>
       </div>
       <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">4 张卡片</div>
     </div>
