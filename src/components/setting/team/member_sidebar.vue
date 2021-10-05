@@ -105,7 +105,14 @@ export default {
     save: function () {
       let self = this;
       self.member_sidebar_show = false;
-      self.$parent.get_team_members();
+      let data = { uuid: self.memberUUID, name: self.memberName }
+      http.post(self.urls.team_member_update.format(self.team), data).then(function (response) {
+        if (response.data.code === 200) {
+          self.$parent.get_team_members();
+        }
+      }).catch(function (err) {
+        self.bus.$emit("alertDanger", err.response.data.errcode);
+      });
     },
     del: function () {
       let self = this;

@@ -14,6 +14,7 @@ let urls = {
     team_update: '/api/team/{0}/update',
     team_member_list: '/api/team/{0}/get_team_members',
     team_member_add: '/api/team/{0}/members/add',
+    team_member_update: '/api/team/{0}/members/update',
     team_member_delete: '/api/team/{0}/members/delete',
     team_project_list: '/api/team/{0}/projects',
     team_recent_projects: '/api/team/{0}/recent_projects',
