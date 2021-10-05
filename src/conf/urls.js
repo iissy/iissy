@@ -65,6 +65,7 @@ let urls = {
     project_members: '/api/team/{0}/project/{1}/project_members',
     project_role_members: '/api/team/{0}/project/{1}/project_role_members',
     project_member_add: '/api/team/{0}/project/{1}/members/add',
+    project_member_delete: '/api/team/{0}/project/{1}/members/delete',
     project_change_status: '/api/team/{0}/project/{1}/project_change_status',
     project_user_domain_group: '/api/team/{0}/project/{1}/project_user_domain_group',
     project_delete: '/api/team/{0}/project/{1}/delete',

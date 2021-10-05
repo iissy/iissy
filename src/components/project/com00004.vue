@@ -28,8 +28,10 @@
           <template v-slot:cell(role)>
             <div>无</div>
           </template>
-          <template v-slot:cell(op)>
-            <div><b-icon icon="x" scale="1.8"></b-icon></div>
+          <template v-slot:cell(op)="data">
+            <div class="member-delete-x" @click="delMember(data.item.role_uuid, data.item.uuid)">
+              <b-icon icon="x" scale="1.8"></b-icon>
+            </div>
           </template>
         </b-table>
       </div>
@@ -96,6 +98,29 @@ export default {
           self.selectedRole = self.roles[0].uuid;
         }
       });
+    },
+    delMember:function (roleUUID, userUUID) {
+      let self = this;
+      this.$bvModal.msgBoxConfirm('此操作不可撤销，是否确定？', {
+        title: '删除项目成员',
+        okVariant: 'danger',
+        okTitle: '确定',
+        cancelTitle: '取消',
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
+      }).then(value => {
+        if (value) {
+          let data = { role_uuid: roleUUID, members: [userUUID] }
+          http.post(self.urls.project_member_delete.format(self.team, self.project), data).then(function () {
+            self.get_role_members();
+          }).catch(function (err) {
+            self.bus.$emit("alertDanger", err.response.data.errcode);
+          });
+        }
+      }).catch(err => {
+        console.log(err);
+      });
     }
   }
 };
@@ -104,4 +129,6 @@ export default {
 <style scoped>
 .members .role { border-bottom: 1px solid #eef2f7;line-height: 48px;padding-left: 20px; }
 .members .active { border-left: 3px solid #17C4BB;padding-left: 17px; }
+.member-delete-x { cursor: pointer; }
+.member-delete-x:hover { color: #17C4BB; }
 </style>

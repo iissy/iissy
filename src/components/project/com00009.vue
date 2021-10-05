@@ -105,7 +105,7 @@
         <div class="project-overview-member">
           <div style="font-size: 16px;">项目成员：</div>
           <div class="flex-row" style="padding: 10px 0 0 0;">
-            <Avatar v-for="a in pics" :pic="a.path" :key="a.uuid"/>
+            <Avatar v-for="m in members" :pic="m.avatar" :key="m.uuid"/>
           </div>
         </div>
 
@@ -134,12 +134,6 @@ export default {
       project: '',
       projectName: '',
       item: { assign: {} },
-      pics: [{uuid: 1, path:"/images/avatar-0.jpg"},
-        {uuid: 2, path: "/images/avatar-1.jpg"},
-        {uuid: 3, path: "/images/avatar-2.jpg"},
-        {uuid: 4, path: "/images/avatar-3.jpg"},
-        {uuid: 5, path: "/images/avatar-4.jpg"},
-        {uuid: 6, path: "/images/avatar-5.jpg"}],
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -194,7 +188,8 @@ export default {
       },
       planChanged: false,
       planStartTime: '',
-      planEndTime: ''
+      planEndTime: '',
+      members: []
     }
   },
   watch: {
@@ -209,9 +204,16 @@ export default {
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
     self.project_get();
-    self.status_data_list();
+    self.list_status_data();
+    self.members_list();
   },
   methods: {
+    members_list: function () {
+      let self = this;
+      http.post(self.urls.project_members.format(self.team, self.project)).then(function (response) {
+        self.members = response.data;
+      });
+    },
     project_get: function () {
       let self = this;
       let url = self.urls.project_get.format(self.team, self.project);
@@ -219,7 +221,7 @@ export default {
         self.item = response.data;
       });
     },
-    status_data_list: function () {
+    list_status_data: function () {
       let self = this;
       let url = self.urls.status_data_list.format(self.team, self.project);
       http.get(url).then(function (response) {
