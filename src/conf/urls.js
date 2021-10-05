@@ -7,6 +7,8 @@ let urls = {
     logout: '/api/logout',
     verify_phone: '/api/verify_phone/{0}',
     send_phone_code: '/api/send_phone_code/{0}',
+    user_get: '/api/user/{0}',
+    user_update: '/api/user/{0}/update',
 
     team_get: '/api/team/{0}',
     team_global_setting: '/api/team/{0}/global_setting',
