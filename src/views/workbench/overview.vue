@@ -124,10 +124,12 @@ export default {
     },
     projectShow: function () {
       let self = this;
+      self.size = self.project_size;
       self.setting_key = 'workbench_project_size';
     },
     spaceShow: function () {
       let self = this;
+      self.size = self.space_size;
       self.setting_key = 'workbench_space_size';
     },
     add(bvModalEvt) {
@@ -140,16 +142,16 @@ export default {
       }
       this.submit();
       this.$nextTick(() => {
-        this.$bvModal.hide('modal-wiki-add')
+        this.$bvModal.hide('modal-wb-setting')
       })
     },
     submit: function () {
       let self = this;
       self.team = self.$route.params.team;
       let data = { setting_key: self.setting_key, setting_value: self.size }
-      http.post(self.urls.team_global_setting_add.format(self.team), data).then(function (response) {
+      http.post(self.urls.team_global_setting_update.format(self.team), data).then(function (response) {
         if(response.data.code === 200) {
-          self.$parent.project_list();
+          self.globalSetting();
         }
       }).catch(function (err) {
         self.bus.$emit('alertDanger', err.response.data.errcode);

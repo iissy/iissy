@@ -10,7 +10,7 @@ let urls = {
 
     team_get: '/api/team/{0}',
     team_global_setting: '/api/team/{0}/global_setting',
-    team_global_setting_add: '/api/team/{0}/global_setting_add',
+    team_global_setting_update: '/api/team/{0}/global_setting_update',
     team_update: '/api/team/{0}/update',
     team_member_list: '/api/team/{0}/get_team_members',
     team_member_add: '/api/team/{0}/members/add',
