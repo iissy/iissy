@@ -1,7 +1,7 @@
 <template>
   <div style="flex: 1;text-align: right;">
     <AddProjectButton title="添加成员" v-b-modal.modal-add-member></AddProjectButton>
-    <b-modal size="lg" id="modal-add-member" ref="addMember" title="邀请新用户" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @ok="addMember">
+    <b-modal size="lg" id="modal-add-member" ref="addMember" title="邀请新用户" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="get_team_members" @ok="addMember">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <div style="flex: 1;height: 100%;" class="flex-row align-items-center">
           <div style="flex: 1;display: flex;">
@@ -70,7 +70,6 @@ export default {
     let self = this;
     self.team = self.$route.params.team;
     self.project = self.$route.params.project;
-    self.get_team_members();
   },
   methods: {
     addMember(bvModalEvt) {
@@ -99,6 +98,7 @@ export default {
     add_member: function () {
       let self = this;
       if(self.items) {
+        self.members = [];
         for(let i = 0;i < self.items.length;i++) {
           let item = self.items[i];
           if(item.sel) {
