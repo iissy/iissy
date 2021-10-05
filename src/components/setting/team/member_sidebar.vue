@@ -1,23 +1,5 @@
 <template>
   <div>
-<!--    <b-modal size="lg" id="modal-prevent-closing" ref="modal" title="添加新部门" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">-->
-<!--      <form ref="form" @submit.stop.prevent="handleSubmit">-->
-<!--        <div style="height: 40px;margin-bottom: 10px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;border-right: 1px solid #e8e8e8;">-->
-<!--          <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >-->
-<!--            <div style="flex: 0 0 auto;">-->
-<!--              可以将新的部门添加到任何的一个部门下面作为子部门，或者添加到团队下面作为一级部门。-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div style="flex: 1;" class="flex-row">-->
-<!--          <div style="flex: 1;">-->
-<!--            <b-form-group label="部门名称" label-for="name-input">-->
-<!--              <b-form-input id="name-input" v-model="name" required></b-form-input>-->
-<!--            </b-form-group>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </b-modal>-->
     <b-sidebar v-model="member_sidebar_show" header-class="modify" id="member-sidebar" title="编辑状态" width="500px" backdrop right shadow>
       <div class="px-3 py-2 flex-column" style="border-top: 1px solid #e8e8e8;height: 100%;">
         <div style="margin-top: 20px;flex: 1;">
@@ -143,10 +125,12 @@ export default {
               self.$parent.get_department_tree();
               self.$parent.get_team_members();
             }
+          }).catch(function (err) {
+            self.bus.$emit("alertDanger", err.response.data.errcode);
           });
         }
-      }).catch(function (err) {
-        self.bus.$emit("alertDanger", err.response.data.errcode);
+      }).catch(err => {
+        console.log(err);
       });
     }
   }

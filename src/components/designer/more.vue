@@ -45,10 +45,12 @@ export default {
             if (response.data.code === 200) {
               router.push({ name: 'Projects', params: { team: self.team } });
             }
+          }).catch(function (err) {
+            self.bus.$emit("alertDanger", err.response.data.errcode);
           });
         }
-      }).catch(function (err) {
-        self.bus.$emit("alertDanger", err.response.data.errcode);
+      }).catch(err => {
+        console.log(err);
       });
     }
   }

@@ -75,10 +75,12 @@ export default {
             if (response.data.code === 200) {
               router.push({ name:'Space', params: { team: self.team, space: self.space } });
             }
+          }).catch(function (err) {
+            self.bus.$emit("alertDanger", err.response.data.errcode);
           });
         }
-      }).catch(function (err) {
-        self.bus.$emit("alertDanger", err.response.data.errcode);
+      }).catch(err => {
+        console.log(err);
       });
     },
     update: function () {
