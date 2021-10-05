@@ -34,6 +34,7 @@ import http from "../../../utils/http";
 export default {
   data() {
     return {
+      team: '',
       name: '',
       memberUUID: '',
       memberName: '',
@@ -57,6 +58,10 @@ export default {
       self.memberEmail = newValue.email;
       self.verify_status = newValue.verify_status;
     }
+  },
+  created() {
+    let self = this;
+    self.team = self.$route.params.team;
   },
   methods: {
     // checkFormValidity() {
@@ -100,12 +105,7 @@ export default {
     save: function () {
       let self = this;
       self.member_sidebar_show = false;
-      let departmentUUID = self.$route.params.department;
-      if (departmentUUID === 'all') {
-        self.$parent.get_team_members();
-      } else {
-        self.$parent.get_depart_members();
-      }
+      self.$parent.get_team_members();
     },
     del: function () {
       let self = this;
@@ -119,10 +119,9 @@ export default {
         centered: true
       }).then(value => {
         if (value) {
-          http.post(self.urls.team_member_delete.format(self.team), { uuid: self.selected }).then(function (response) {
+          http.post(self.urls.team_member_delete.format(self.team), { uuid: self.memberUUID }).then(function (response) {
             if (response.data.code === 200) {
               self.member_sidebar_show = false;
-              self.$parent.get_department_tree();
               self.$parent.get_team_members();
             }
           }).catch(function (err) {
