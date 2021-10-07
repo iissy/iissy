@@ -11,11 +11,11 @@
     <div style="margin: 20px 0 0 0;">
       <div class="flex-row b-line" style="padding: 0 20px 5px 0;">
         <div style="flex: 1;font-size: 18px;">项目 / 最近更新</div>
-        <div class="flex-row wb-setting" @click="projectShow" v-b-modal.modal-wb-setting>
+        <div class="flex-row wb-setting shadow-none" @click="projectShow" v-b-modal.modal-wb-setting>
           <div style="flex: 0 0 auto;color: inherit;" class="flex-row align-items-center">
             <b-icon scale="1.2" icon="gear"></b-icon>
           </div>
-          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center shadow-none">
+          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center">
             显示设置
           </div>
         </div>
@@ -28,11 +28,11 @@
     <div v-if="loaded" style="margin: 20px 0 0 0;">
       <div class="flex-row b-line" style="padding: 0 20px 5px 0;">
         <div style="flex: 1;font-size: 18px;">文档 / 最近更新</div>
-        <div class="flex-row wb-setting" @click="spaceShow" v-b-modal.modal-wb-setting>
+        <div class="flex-row wb-setting shadow-none" @click="spaceShow" v-b-modal.modal-wb-setting>
           <div style="flex: 0 0 auto;color: inherit;" class="flex-row align-items-center">
             <b-icon scale="1.2" icon="gear"></b-icon>
           </div>
-          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center shadow-none">
+          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center">
             显示设置
           </div>
         </div>
