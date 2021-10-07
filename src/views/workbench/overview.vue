@@ -15,7 +15,7 @@
           <div style="flex: 0 0 auto;color: inherit;" class="flex-row align-items-center">
             <b-icon scale="1.2" icon="gear"></b-icon>
           </div>
-          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center">
+          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center shadow-none">
             显示设置
           </div>
         </div>
@@ -32,7 +32,7 @@
           <div style="flex: 0 0 auto;color: inherit;" class="flex-row align-items-center">
             <b-icon scale="1.2" icon="gear"></b-icon>
           </div>
-          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center">
+          <div style="margin-left: 5px;font-size: 15px;color: inherit;" class="flex-row align-items-center shadow-none">
             显示设置
           </div>
         </div>
