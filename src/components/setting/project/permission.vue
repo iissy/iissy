@@ -8,7 +8,7 @@
         </div>
         <div style="margin-left: 10px;flex: 0 0 auto;font-size: 18px;color: #909090;">{{ ProjectName }}</div>
       </div>
-      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+      <div style="align-items: center;justify-content: end;" class="flex-row">
         <Summary :desc="desc"/>
       </div>
     </div>

@@ -16,7 +16,7 @@
       <div style="flex: 0 0 auto;display: flex;">
         <span style="font-size: 18px;color: #909090;">工作项工作流</span>
       </div>
-      <div style="flex: auto;align-items: center;justify-content: end;" class="flex-row">
+      <div style="align-items: center;justify-content: end;" class="flex-row">
         <Summary :desc="desc"/>
       </div>
     </div>
