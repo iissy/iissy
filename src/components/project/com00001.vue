@@ -8,7 +8,7 @@
             <div class="field-cell-value header">
               <div class="flex-row">
                 <div style="flex: 1;"></div>
-                <div style="flex: 0 0 auto;color: #303030;cursor: pointer;" v-b-modal.modal-related-task>
+                <div style="flex: 0 0 auto;color: #303030;cursor: pointer;" class="outline-none" v-b-modal.modal-related-task>
                   <b-icon class="link" icon="link" scale="1.8"/>
                 </div>
               </div>

@@ -38,7 +38,7 @@
           <div style="flex: 1;padding: 0 5px 0 0;">
             描述（富文本编辑）
           </div>
-          <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" class="outline-none shadow-none" v-b-modal.modal-issue-content>
+          <div style="padding: 0 5px 0 0;flex: 0 0 auto;cursor: pointer;color: #17C4BB;" class="outline-none" v-b-modal.modal-issue-content>
             放大浏览
           </div>
         </div>

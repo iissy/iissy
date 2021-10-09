@@ -31,7 +31,6 @@
               </div>
               <div class="td flex-row align-items-center">3个项目</div>
               <div class="td flex-row align-items-center op-big">
-                <span v-if="!item.built_in" v-b-modal.modal-prevent-closing>重命名</span>
                 <router-link :to="{name:'IssueTypeSetting', params: { team: team, issue_type: item.uuid, title: item.name, type: 'config' }}">
                   编辑
                 </router-link>
@@ -39,21 +38,6 @@
             </div>
           </div>
         </div>
-
-        <b-modal id="modal-prevent-closing" ref="modal" title="重命名工作项类型" :no-close-on-backdrop="true" cancel-title="取消" ok-title="确定" :centered="true" @show="resetModal" @hidden="resetModal" @ok="handleOk">
-          <form ref="form" @submit.stop.prevent="handleSubmit">
-            <div style="height: 40px;margin-bottom: 10px;border-top: 1px solid #e8e8e8;border-bottom: 1px solid #e8e8e8;border-left: 3px solid #f0ad4e;border-right: 1px solid #e8e8e8;">
-              <div style="flex: 1;align-items: center;height: 100%;display: flex;margin-left: 20px;" >
-                <div style="flex: 0 0 auto;">
-                  项目管理页展示当前所有项目，可对项目进行权限编辑和删除操作。
-                </div>
-              </div>
-            </div>
-            <b-form-group :state="nameState" label="类型名称" label-for="name-input" invalid-feedback="Name is required">
-              <b-form-input id="name-input" v-model="name" :state="nameState" required></b-form-input>
-            </b-form-group>
-          </form>
-        </b-modal>
       </div>
     </div>
   </div>
@@ -68,9 +52,6 @@ import IBIcon from '../../common/control/i_b_icon';
 export default {
   data: function () {
     return {
-      query: '',
-      name: '',
-      nameState: null,
       team: '',
       items: []
     };
@@ -86,33 +67,6 @@ export default {
       http.post(this.urls.issue_type_list.format(self.team)).then(function (response) {
         self.items = response.data;
       });
-    },
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity()
-      this.nameState = valid
-      return valid
-    },
-    resetModal() {
-      this.name = ''
-      this.nameState = null
-    },
-    handleOk(bvModalEvt) {
-      // Prevent modal from closing
-      bvModalEvt.preventDefault()
-      // Trigger submit handler
-      this.handleSubmit()
-    },
-    handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return
-      }
-      // Push the name to submitted names
-      // alert(this.name)
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing')
-      })
     }
   },
   components: {
