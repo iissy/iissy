@@ -1,5 +1,5 @@
 <template>
-  <div @click="goto" style="width: 250px;height: 175px;padding: 15px 15px 10px 20px;cursor: pointer;margin-right: 20px;margin-top: 20px;" class="ibox flex-column">
+  <div style="width: 250px;height: 175px;padding: 15px 15px 10px 20px;margin-right: 20px;margin-top: 20px;" class="ibox flex-column">
     <div style="flex: 0 0 auto;">
       <div style="flex: 0 0 auto;color: #333333;padding-right: 5px;" class="flex-row align-items-center">
         <div style="flex: 1;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;font-size: 15px;">{{ space.title }}</div>
@@ -10,7 +10,7 @@
       </div>
       <div style="flex: 0 0 auto;color: #909090;font-size: 14px;">更新于 {{ space.updated_time | timeFormat }}</div>
     </div>
-    <div style="flex: 1;" class="flex-row align-items-center justify-content-center">
+    <div @click="goto" style="flex: 1;cursor: pointer;" class="flex-row align-items-center justify-content-center">
       <div style="flex: 1;font-size: 66px;font-weight: bolder;color: #800000;opacity: 0.4;font-family: Georgia, 'Times New Roman', Times, serif;" class="flex-row align-items-center justify-content-center">
         {{ space.page_count }}
       </div>
@@ -69,5 +69,6 @@ export default {
 </script>
 
 <style scoped>
+.pin-star { cursor: pointer; }
 .pin-star.pined,.pin-star:hover { color: #f0a100; }
 </style>
