@@ -8,5 +8,8 @@
 .wiki-header .avatar-header-person-plus a { color: #cccccc;cursor: pointer; }
 .wiki-header .avatar-center-icon { box-shadow: 0 0 10px #ffffff; }
 
+.pin-star { cursor: pointer;padding-left: 10px; }
+.pin-star.pined,.pin-star:hover { color: #f0a100; }
+
 #modal-add-task .modal-dialog-scrollable .modal-body,
 #modal-issue-content .modal-dialog-scrollable.edit .modal-body { overflow-y: hidden; }

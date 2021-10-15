@@ -69,6 +69,4 @@ export default {
 </script>
 
 <style scoped>
-.pin-star { cursor: pointer; }
-.pin-star.pined,.pin-star:hover { color: #f0a100; }
 </style>
